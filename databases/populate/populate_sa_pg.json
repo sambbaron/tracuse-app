@@ -1,0 +1,507 @@
+{
+  "DatumType": [
+    {
+      "name": "Category",
+      "sort": 1010,
+      "long_description": null,
+      "datum_group_id": 1,
+      "short_description": null
+    },
+    {
+      "name": "Project",
+      "sort": 1020,
+      "long_description": null,
+      "datum_group_id": 1,
+      "short_description": null
+    },
+    {
+      "name": "Context",
+      "sort": 1030,
+      "long_description": null,
+      "datum_group_id": 1,
+      "short_description": null
+    },
+    {
+      "name": "Person",
+      "sort": 1040,
+      "long_description": null,
+      "datum_group_id": 1,
+      "short_description": null
+    },
+    {
+      "name": "Entity",
+      "sort": 1050,
+      "long_description": null,
+      "datum_group_id": 1,
+      "short_description": null
+    },
+    {
+      "name": "Location",
+      "sort": 1060,
+      "long_description": null,
+      "datum_group_id": 1,
+      "short_description": null
+    },
+    {
+      "name": "Contact",
+      "sort": 1070,
+      "long_description": null,
+      "datum_group_id": 1,
+      "short_description": null
+    },
+    {
+      "name": "Action",
+      "sort": 2010,
+      "long_description": null,
+      "datum_group_id": 2,
+      "short_description": null
+    },
+    {
+      "name": "Principle",
+      "sort": 2020,
+      "long_description": null,
+      "datum_group_id": 2,
+      "short_description": null
+    },
+    {
+      "name": "Journal",
+      "sort": 2030,
+      "long_description": null,
+      "datum_group_id": 2,
+      "short_description": null
+    },
+    {
+      "name": "Schedule",
+      "sort": 3010,
+      "long_description": null,
+      "datum_group_id": 3,
+      "short_description": null
+    },
+    {
+      "name": "Event",
+      "sort": 3020,
+      "long_description": null,
+      "datum_group_id": 3,
+      "short_description": null
+    },
+    {
+      "name": "Reminder",
+      "sort": 3030,
+      "long_description": null,
+      "datum_group_id": 3,
+      "short_description": null
+    },
+    {
+      "name": "Note",
+      "sort": 4010,
+      "long_description": null,
+      "datum_group_id": 4,
+      "short_description": null
+    },
+    {
+      "name": "File",
+      "sort": 4020,
+      "long_description": null,
+      "datum_group_id": 4,
+      "short_description": null
+    },
+    {
+      "name": "Directory",
+      "sort": 4030,
+      "long_description": null,
+      "datum_group_id": 4,
+      "short_description": null
+    },
+    {
+      "name": "Webpage",
+      "sort": 4040,
+      "long_description": null,
+      "datum_group_id": 4,
+      "short_description": null
+    },
+    {
+      "name": "Message",
+      "sort": 4050,
+      "long_description": null,
+      "datum_group_id": 4,
+      "short_description": null
+    },
+    {
+      "name": "Post",
+      "sort": 4060,
+      "long_description": null,
+      "datum_group_id": 4,
+      "short_description": null
+    }
+  ],
+  "DatumGroup": [
+    {
+      "name": "Area",
+      "sort": 10,
+      "long_description": null,
+      "short_description": null
+    },
+    {
+      "name": "Activity",
+      "sort": 20,
+      "long_description": null,
+      "short_description": null
+    },
+    {
+      "name": "Time",
+      "sort": 30,
+      "long_description": null,
+      "short_description": null
+    },
+    {
+      "name": "Item",
+      "sort": 40,
+      "long_description": null,
+      "short_description": null
+    }
+  ],
+  "ElementType": [
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Name",
+      "sort": 1000100,
+      "datum_type_id": null,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "boolean",
+      "long_description": null,
+      "name": "Active",
+      "sort": 1000200,
+      "datum_type_id": null,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Description",
+      "sort": 1010100,
+      "datum_type_id": 1,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Description",
+      "sort": 1020100,
+      "datum_type_id": 2,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Description",
+      "sort": 1030100,
+      "datum_type_id": 3,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "First Name",
+      "sort": 1040100,
+      "datum_type_id": 4,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Last Name",
+      "sort": 1040200,
+      "datum_type_id": 4,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Nickname",
+      "sort": 1040300,
+      "datum_type_id": 4,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "datetime",
+      "long_description": null,
+      "name": "Birthday",
+      "sort": 1040400,
+      "datum_type_id": 4,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Entity Type",
+      "sort": 1050100,
+      "datum_type_id": 5,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Action Status",
+      "sort": 2010100,
+      "datum_type_id": 8,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Street Address",
+      "sort": 2010100,
+      "datum_type_id": 6,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "City",
+      "sort": 2010200,
+      "datum_type_id": 6,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Action Effort",
+      "sort": 2010200,
+      "datum_type_id": 8,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "State",
+      "sort": 2010300,
+      "datum_type_id": 6,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Zip",
+      "sort": 2010400,
+      "datum_type_id": 6,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Country",
+      "sort": 2010500,
+      "datum_type_id": 6,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Latitude",
+      "sort": 2010600,
+      "datum_type_id": 6,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Longitude",
+      "sort": 2010700,
+      "datum_type_id": 6,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Phone",
+      "sort": 2020100,
+      "datum_type_id": 7,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Email",
+      "sort": 2020200,
+      "datum_type_id": 7,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Website",
+      "sort": 2020300,
+      "datum_type_id": 7,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Facebook",
+      "sort": 2020400,
+      "datum_type_id": 7,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "LinkedIn",
+      "sort": 2020500,
+      "datum_type_id": 7,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Twitter",
+      "sort": 2020600,
+      "datum_type_id": 7,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Schedule Type",
+      "sort": 3010100,
+      "datum_type_id": 11,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "link",
+      "long_description": null,
+      "name": "Schedule",
+      "sort": 3020100,
+      "datum_type_id": 12,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "datetime",
+      "long_description": null,
+      "name": "Beginning Buffer",
+      "sort": 3020200,
+      "datum_type_id": 12,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "datetime",
+      "long_description": null,
+      "name": "Beginning Event",
+      "sort": 3020300,
+      "datum_type_id": 12,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "datetime",
+      "long_description": null,
+      "name": "Ending Event",
+      "sort": 3020400,
+      "datum_type_id": 12,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "datetime",
+      "long_description": null,
+      "name": "Ending Buffer",
+      "sort": 3020500,
+      "datum_type_id": 12,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "float",
+      "long_description": null,
+      "name": "Event Time",
+      "sort": 3020600,
+      "datum_type_id": 12,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "float",
+      "long_description": null,
+      "name": "Total Time",
+      "sort": 3020700,
+      "datum_type_id": 12,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "embeddedmap",
+      "long_description": null,
+      "name": "Recurring Options",
+      "sort": 3020800,
+      "datum_type_id": 12,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "datetime",
+      "long_description": null,
+      "name": "Alert",
+      "sort": 3030100,
+      "datum_type_id": 13,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "embeddedmap",
+      "long_description": null,
+      "name": "Recurring Options",
+      "sort": 3030200,
+      "datum_type_id": 13,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "boolean",
+      "long_description": null,
+      "name": "Logged In",
+      "sort": 3030300,
+      "datum_type_id": 13,
+      "short_description": null
+    },
+    {
+      "default": null,
+      "data_type": "string",
+      "long_description": null,
+      "name": "Item Status",
+      "sort": 4010100,
+      "datum_type_id": 14,
+      "short_description": null
+    }
+  ]
+}
