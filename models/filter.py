@@ -112,12 +112,15 @@ class FilterSetElementRule(Base, FilterSetRuleMixin):
 
     Attributes:
         See FilterSetRuleMixin
-        element_rule_id (integer, fk): FilterRuleElement
+        element_rule_id (integer, fk, required): FilterRuleElement
     """
     __tablename__ = "filter_set_element_rule"
 
     filter_set_element_rule_id = Column(Integer, primary_key=True)
-    element_rule_id = Column(Integer, ForeignKey("filter_rule_element.element_rule_id"))
+    element_rule_id = Column(Integer,
+                             ForeignKey("filter_rule_element.element_rule_id"),
+                             nullable=False
+                             )
 
 
 class FilterRuleMixin(object):
