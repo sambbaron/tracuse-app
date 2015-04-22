@@ -17,14 +17,14 @@ class DefinitionMixin(object):
 
     Attributes:
         sort (integer)
-        name (string, indexed)
+        name (string, unique, notnull, indexed)
         short_description (string): Word or two about object
         long_description (string): Long description of object
         schema_name (string): Underscore/lower-case class name
     """
 
     sort = Column(Integer, default=0)
-    name = Column(String(25), index=True)
+    name = Column(String(25), unique=True, nullable=False, index=True)
     short_description = Column(String(25))
     long_description = Column(String(100))
     active = Column(Boolean, default=True, index=True)
@@ -114,7 +114,7 @@ class ElementType(Base, DefinitionMixin):
     Has metadata
 
     Attributes:
-        datum_type_id (integer, fk): DatumType
+        datum_type_id (integer, fk, nullable): DatumType
         data_type (string): Common string label of data types
         extended_properties (string): Other metadata properties (default, unique, etc.)
     """
