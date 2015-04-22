@@ -172,7 +172,7 @@ class FilterRuleAssociation(FilterRuleMixin, Base):
     Attributes:
         See FilterRuleMixin (includes SortActiveMixin)
         datum_object_id (integer, fk, required): DatumObject
-        direction (integer, required): -1: Parent, 1: Child, 0: Bidirectional
+        association_direction_id (integer, fk, required): AssociationDirection
         association_type_id (integer, fk, required): AssociationType
         depth (integer, required):
     """
@@ -183,7 +183,10 @@ class FilterRuleAssociation(FilterRuleMixin, Base):
                              ForeignKey("datum_object.datum_object_id"),
                              nullable=False
                              )
-    direction = Column(SmallInteger, nullable=False)  #TODO create association direction table
+    association_direction_id = Column(Integer,
+                                 ForeignKey("association_direction.association_direction_id"),
+                                 nullable=False
+                                 )
     association_type_id = Column(Integer,
                                  ForeignKey("association_type.association_type_id"),
                                  nullable=False

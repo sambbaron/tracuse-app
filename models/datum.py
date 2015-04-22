@@ -222,6 +222,7 @@ class AssociationDirection(DefinitionMixin, Base):
     __tablename__ = "association_direction"
 
     association_direction_id = Column(Integer, primary_key=True)
+    association_rules = relationship("FilterRuleAssociation", backref="association_direction")
 
 
 class AssociationObject(Base):
