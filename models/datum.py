@@ -11,7 +11,7 @@ from databases.postgres import Base
 from models.base import DefinitionMixin
 
 
-class DatumGroup(Base, DefinitionMixin):
+class DatumGroup(DefinitionMixin, Base):
     """Collection of Datum Types
 
     Has common functional uses
@@ -28,7 +28,7 @@ class DatumGroup(Base, DefinitionMixin):
     group_rules = relationship("FilterRuleGroup", backref="datum_group")
 
 
-class DatumType(Base, DefinitionMixin):
+class DatumType(DefinitionMixin, Base):
     """Type of Datum Objects
 
     Has common functional use and properties (elements)
@@ -52,7 +52,7 @@ class DatumType(Base, DefinitionMixin):
     type_rules = relationship("FilterRuleType", backref="datum_type")
 
 
-class DatumObject(Base, DefinitionMixin):
+class DatumObject(DefinitionMixin, Base):
     """Primary personal information data object
 
     Node/Vertex in graph
@@ -89,7 +89,7 @@ class DatumObject(Base, DefinitionMixin):
     #TODO Property with element data
 
 
-class ElementType(Base, DefinitionMixin):
+class ElementType(DefinitionMixin, Base):
     """Property types by Datum Type
 
     Has metadata
@@ -117,7 +117,7 @@ class ElementType(Base, DefinitionMixin):
     element_rules = relationship("FilterRuleElement", backref="element_type")
 
 
-class ElementOption(Base, DefinitionMixin):
+class ElementOption(DefinitionMixin, Base):
     """Value options for elements
 
     Example:
@@ -176,7 +176,7 @@ class ElementValue(Base):
     ix_datobj_elmtyp = Index("ix_datum_object_element_type", datum_object_id, element_type_id)
 
 
-class AssociationType(Base, DefinitionMixin):
+class AssociationType(DefinitionMixin, Base):
     """Types of relationships/edges between Datums
 
     Attributes:

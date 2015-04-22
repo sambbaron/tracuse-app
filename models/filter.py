@@ -9,7 +9,7 @@ from databases.postgres import Base
 from models.base import SortActiveMixin
 
 
-class FilterSet(Base, SortActiveMixin):
+class FilterSet(SortActiveMixin, Base):
     """Datum filter with multiple rules
 
     Attributes:
@@ -53,7 +53,7 @@ class FilterSetRuleMixin(SortActiveMixin):
                       )
 
 
-class FilterSetGroupRule(Base, FilterSetRuleMixin):
+class FilterSetGroupRule(FilterSetRuleMixin, Base):
     """Assign Group Filter Rules to Filter Sets
 
     Attributes:
@@ -69,7 +69,7 @@ class FilterSetGroupRule(Base, FilterSetRuleMixin):
                            )
 
 
-class FilterSetTypeRule(Base, FilterSetRuleMixin):
+class FilterSetTypeRule(FilterSetRuleMixin, Base):
     """Assign Type Filter Rules to Filter Sets
 
     Attributes:
@@ -85,7 +85,7 @@ class FilterSetTypeRule(Base, FilterSetRuleMixin):
                           )
 
 
-class FilterSetAssociationRule(Base, FilterSetRuleMixin):
+class FilterSetAssociationRule(FilterSetRuleMixin, Base):
     """Assign Association Filter Rules to Filter Sets
 
     Attributes:
@@ -101,7 +101,7 @@ class FilterSetAssociationRule(Base, FilterSetRuleMixin):
                                  )
 
 
-class FilterSetElementRule(Base, FilterSetRuleMixin):
+class FilterSetElementRule(FilterSetRuleMixin, Base):
     """Assign Element Filter Rules to Filter Sets
 
     Attributes:
@@ -130,7 +130,7 @@ class FilterRuleMixin(SortActiveMixin):
     conditional = Column(String(3), nullable=True)
 
 
-class FilterRuleGroup(Base, FilterRuleMixin):
+class FilterRuleGroup(FilterRuleMixin, Base):
     """Filter Rules by Datum Group
 
     Attributes:
@@ -148,7 +148,7 @@ class FilterRuleGroup(Base, FilterRuleMixin):
     filter_sets = relationship("FilterSetGroupRule", "filter_rule_group")
 
 
-class FilterRuleType(Base, FilterRuleMixin):
+class FilterRuleType(FilterRuleMixin, Base):
     """Filter Rules by Datum Type
 
     Attributes:
@@ -166,7 +166,7 @@ class FilterRuleType(Base, FilterRuleMixin):
     filter_sets = relationship("FilterSetTypeRule", "filter_rule_type")
 
 
-class FilterRuleAssociation(Base, FilterRuleMixin):
+class FilterRuleAssociation(FilterRuleMixin, Base):
     """Filter Rules by Datum Association
 
     Attributes:
@@ -193,7 +193,7 @@ class FilterRuleAssociation(Base, FilterRuleMixin):
     filter_sets = relationship("FilterSetAssociationRule", "filter_rule_association")
 
 
-class FilterRuleElement(Base, FilterRuleMixin):
+class FilterRuleElement(FilterRuleMixin, Base):
     """Filter Rules by Element Value
 
     Attributes:
