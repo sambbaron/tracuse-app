@@ -58,13 +58,13 @@ class FilterSetGroupRule(FilterSetRuleMixin, Base):
 
     Attributes:
         See FilterSetRuleMixin (includes SortActiveMixin)
-        group_rule_id (integer, fk, required): FilterRuleGroup
+        filter_rule_group_id (integer, fk, required): FilterRuleGroup
     """
     __tablename__ = "filter_set_group_rule"
     
-    filter_set_group_rule_id = Column(Integer, primary_key=True)
-    group_rule_id = Column(Integer,
-                           ForeignKey("filter_rule_group.group_rule_id"),
+    filter_set_filter_rule_group_id = Column(Integer, primary_key=True)
+    filter_rule_group_id = Column(Integer,
+                           ForeignKey("filter_rule_group.filter_rule_group_id"),
                            nullable=False
                            )
 
@@ -74,13 +74,13 @@ class FilterSetTypeRule(FilterSetRuleMixin, Base):
 
     Attributes:
         See FilterSetRuleMixin (includes SortActiveMixin)
-        type_rule_id (integer, fk, required): FilterRuleType
+        filter_rule_type_id (integer, fk, required): FilterRuleType
     """
     __tablename__ = "filter_set_type_rule"
 
-    filter_set_type_rule_id = Column(Integer, primary_key=True)
-    type_rule_id = Column(Integer,
-                          ForeignKey("filter_rule_type.type_rule_id"),
+    filter_set_filter_rule_type_id = Column(Integer, primary_key=True)
+    filter_rule_type_id = Column(Integer,
+                          ForeignKey("filter_rule_type.filter_rule_type_id"),
                           nullable=False
                           )
 
@@ -90,13 +90,13 @@ class FilterSetAssociationRule(FilterSetRuleMixin, Base):
 
     Attributes:
         See FilterSetRuleMixin (includes SortActiveMixin)
-        association_rule_id (integer, fk, required): FilterRuleAssociation
+        filter_rule_association_id (integer, fk, required): FilterRuleAssociation
     """
     __tablename__ = "filter_set_association_rule"
 
-    filter_set_association_rule_id = Column(Integer, primary_key=True)
-    association_rule_id = Column(Integer,
-                                 ForeignKey("filter_rule_association.association_rule_id"),
+    filter_set_filter_rule_association_id = Column(Integer, primary_key=True)
+    filter_rule_association_id = Column(Integer,
+                                 ForeignKey("filter_rule_association.filter_rule_association_id"),
                                  nullable=False
                                  )
 
@@ -106,13 +106,13 @@ class FilterSetElementRule(FilterSetRuleMixin, Base):
 
     Attributes:
         See FilterSetRuleMixin (includes SortActiveMixin)
-        element_rule_id (integer, fk, required): FilterRuleElement
+        filter_rule_element_id (integer, fk, required): FilterRuleElement
     """
     __tablename__ = "filter_set_element_rule"
 
-    filter_set_element_rule_id = Column(Integer, primary_key=True)
-    element_rule_id = Column(Integer,
-                             ForeignKey("filter_rule_element.element_rule_id"),
+    filter_set_filter_rule_element_id = Column(Integer, primary_key=True)
+    filter_rule_element_id = Column(Integer,
+                             ForeignKey("filter_rule_element.filter_rule_element_id"),
                              nullable=False
                              )
 
@@ -139,7 +139,7 @@ class FilterRuleGroup(FilterRuleMixin, Base):
     """
     __tablename__ = "filter_rule_group"
 
-    group_rule_id = Column(Integer, primary_key=True)
+    filter_rule_group_id = Column(Integer, primary_key=True)
     datum_group_id = Column(Integer,
                             ForeignKey("datum_group.datum_group_id"),
                             nullable=False
@@ -155,7 +155,7 @@ class FilterRuleType(FilterRuleMixin, Base):
     """
     __tablename__ = "filter_rule_type"
 
-    type_rule_id = Column(Integer, primary_key=True)
+    filter_rule_type_id = Column(Integer, primary_key=True)
     datum_type_id = Column(Integer,
                            ForeignKey("datum_type.datum_type_id"),
                            nullable=False
@@ -174,7 +174,7 @@ class FilterRuleAssociation(FilterRuleMixin, Base):
     """
     __tablename__ = "filter_rule_association"
     
-    association_rule_id = Column(Integer, primary_key=True)
+    filter_rule_association_id = Column(Integer, primary_key=True)
     datum_object_id = Column(Integer,
                              ForeignKey("datum_object.datum_object_id"),
                              nullable=False
@@ -200,7 +200,7 @@ class FilterRuleElement(FilterRuleMixin, Base):
     """
     __tablename__ = "filter_rule_element"
 
-    element_rule_id = Column(Integer, primary_key=True)
+    filter_rule_element_id = Column(Integer, primary_key=True)
     element_type_id = Column(Integer,
                              ForeignKey("element_type.element_type_id"),
                              nullable=False
