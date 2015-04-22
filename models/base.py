@@ -29,7 +29,7 @@ class DefinitionMixin(SortActiveMixin):
         schema_name (string): Underscore/lower-case class name
     """
     #TODO problem with unique names and element types
-    name = Column(String(25), unique=False, nullable=False, index=True)
+    name = Column(String(25), unique=True, nullable=False, index=True)
     short_definition = Column(String(25))
     long_definition = Column(String(100))
 
