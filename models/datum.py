@@ -90,12 +90,11 @@ class DatumObject(DefinitionMixin, Base):
 
 
 class ElementType(DefinitionMixin, Base):
-    """Property types by Datum Type
+    """Property types available to Datums
 
     Has metadata
 
     Attributes:
-        datum_type_id (integer, fk, nullable): DatumType
         data_type (string): Common string label of data types
         extended_properties (string): Other metadata properties (default, unique, etc.)
     """
@@ -105,11 +104,6 @@ class ElementType(DefinitionMixin, Base):
 
     element_type_id = Column(Integer, primary_key=True)
 
-    # Null datum type assumes applies to all Datum Types
-    datum_type_id = Column(Integer,
-                           ForeignKey("datum_type.datum_type_id"),
-                           nullable=True
-                           )
     data_type = Column(String(20))
     extended_properties = Column(String(100))
 
@@ -144,8 +138,29 @@ class ElementOption(DefinitionMixin, Base):
     element_values = relationship("ElementValue", backref="element_option")
 
 
+class DatumTypeElement(Base):
+    """Default Element Types assigned to Datum Types
+
+    Used at Datum creation - Added to element_value table
+
+        Attributes:
+            datum_type_id (integer, fk, pk): DatumType
+            element_type_id (integer, fk, pk): ElementType
+    """
+    __tablename__ = "datum_type_element"
+
+    datum_type_id = Column(Integer,
+                       ForeignKey("datum_type.datum_type_id"),
+                       primary_key=True
+                       )
+    element_type_id = Column(Integer,
+                             ForeignKey("element_type.element_type_id"),
+                             primary_key=True
+                             )
+
+
 class ElementValue(Base):
-    """Element property values for Datums
+    """Element values for Datums
 
     Attributes:
         datum_object_id (integer, fk, required): DatumObject
