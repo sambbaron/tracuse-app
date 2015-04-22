@@ -207,13 +207,16 @@ class FilterRuleElement(Base, FilterRuleMixin):
 
     Attributes:
         See FilterRuleMixin
-        element_type_id (integer, fk): ElementType
+        element_type_id (integer, fk, required): ElementType
         element_value (string):  ***Must match value string
     """
     __tablename__ = "filter_rule_element"
 
     element_rule_id = Column(Integer, primary_key=True)
-    element_type_id = Column(Integer, ForeignKey("element_type.element_type_id"))
+    element_type_id = Column(Integer,
+                             ForeignKey("element_type.element_type_id"),
+                             nullable=False
+                             )
     element_value = Column(String)
 
     filter_sets = relationship("FilterSetElementRule", "filter_rule_element")
