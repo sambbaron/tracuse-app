@@ -177,10 +177,10 @@ class ElementValue(Base):
     """Element property values for Datums
 
     Attributes:
-        datum_object_id (integer, fk): DatumObject
-        element_type_id (integer, fk): ElementType
+        datum_object_id (integer, fk, required): DatumObject
+        element_type_id (integer, fk, required): ElementType
         element_option_id (integer, fk, nullable): ElementOption
-        element_value (string): Can be anything
+        element_value (string, nullable, indexed): Can be anything
     """
 
     #TODO Entity-Attribute-Value anti-pattern: Avoid one giant table, manage constraints
@@ -188,10 +188,21 @@ class ElementValue(Base):
     __tablename__ = "element_value"
 
     element_value_id = Column(Integer, primary_key=True)
-    datum_object_id = Column(Integer, ForeignKey("datum_object.datum_object_id"))
-    element_type_id = Column(Integer, ForeignKey("element_type.element_type_id"))
-    element_option_id = Column(Integer, ForeignKey("element_option.element_option_id"), nullable=True)
-    element_value = Column(String)
+    datum_object_id = Column(Integer,
+                             ForeignKey("datum_object.datum_object_id"),
+                             nullable=False
+                             )
+    element_type_id = Column(Integer,
+                             ForeignKey("element_type.element_type_id"),
+                             nullable=False
+                             )
+    element_option_id = Column(Integer,
+                               ForeignKey("element_option.element_option_id"),
+                               nullable=True
+                               )
+    element_value = Column(String, nullable=True, index=True)
+
+    ix_datobj_elmtyp = Index("ix_datum_object_element_type", datum_object_id, element_type_id)
 
 
 class AssociationType(Base, DefinitionMixin):
