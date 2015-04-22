@@ -48,7 +48,7 @@ class DatumType(DefinitionMixin, Base):
                             )
 
     datum_objects = relationship("DatumObject", backref="datum_type")
-    element_types = relationship("ElementType", backref="datum_type")
+    element_types = relationship("DatumTypeElement", backref="datum_type")
     type_rules = relationship("FilterRuleType", backref="datum_type")
 
 
@@ -108,6 +108,8 @@ class ElementType(DefinitionMixin, Base):
     extended_properties = Column(String(100))
 
     element_options = relationship("ElementOption", backref="element_type")
+    datum_types = relationship("DatumTypeElement", backref="element_type")
+    element_values = relationship("ElementValue", backref="element_type")
     element_rules = relationship("FilterRuleElement", backref="element_type")
 
 
