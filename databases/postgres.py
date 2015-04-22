@@ -16,7 +16,7 @@ DB_URI = "postgresql://{}:{}@{}:{}/{}".format(USERNAME,
                                               PORT,
                                               DATABASE_NAME)
 
-engine = create_engine(DB_URI, echo=True)
+engine = create_engine(DB_URI, echo=False)
 Base = declarative_base(bind=engine)
 Session = sessionmaker(bind=engine)
 session = Session()
