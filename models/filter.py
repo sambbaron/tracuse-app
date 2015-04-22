@@ -96,12 +96,15 @@ class FilterSetAssociationRule(Base, FilterSetRuleMixin):
 
     Attributes:
         See FilterSetRuleMixin
-        association_rule_id (integer, fk): FilterRuleAssociation
+        association_rule_id (integer, fk, required): FilterRuleAssociation
     """
     __tablename__ = "filter_set_association_rule"
 
     filter_set_association_rule_id = Column(Integer, primary_key=True)
-    association_rule_id = Column(Integer, ForeignKey("filter_rule_association.association_rule_id"))
+    association_rule_id = Column(Integer,
+                                 ForeignKey("filter_rule_association.association_rule_id"),
+                                 nullable=False
+                                 )
 
 
 class FilterSetElementRule(Base, FilterSetRuleMixin):
