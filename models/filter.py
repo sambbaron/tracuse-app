@@ -43,15 +43,20 @@ class FilterSetRuleMixin(object):
     Includes rule ordering
 
     Attributes:
-        filter_set_id (integer, fk): FilterSet
-        sort (integer): 
+        filter_set_id (integer, fk, required): FilterSet
+        sort (integer):
+        active (boolean, indexed):
     """
 
     @declared_attr
     def filter_set_id(self):
-        return Column(Integer, ForeignKey("filter_set.filter_set_id"))
+        return Column(Integer,
+                      ForeignKey("filter_set.filter_set_id"),
+                      nullable=False
+                      )
 
-    sort = Column(Integer)
+    sort = Column(Integer, default=0)
+    active = Column(Boolean, default=True, index=True)
 
 
 class FilterSetGroupRule(Base, FilterSetRuleMixin):
