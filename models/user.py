@@ -11,17 +11,17 @@ class User(Base):
     """Application Users
 
     Attributes:
-        username (string): Login username
-        email (string): Email address
-        password (string): User password (unhashed)
+        username (string, required, unique, indexed): Login username
+        email (string, required, unique, indexed): Email address
+        password (string): User password ***HASHING
     """
     #TODO need user security and authentication plug-in
 
     __tablename__ = "user"
 
     user_id = Column(Integer, primary_key=True)
-    username = Column(String(50), unique=True)
-    email = Column(String(50), unique=True)
+    username = Column(String(50), nullable=False, unique=True, index=True)
+    email = Column(String(50), nullable=False, unique=True, index=True)
     password = Column(String(128))
 
     datum_objects = relationship("DatumObject", backref="user")
