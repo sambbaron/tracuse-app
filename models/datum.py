@@ -231,12 +231,15 @@ class AssociationObject(Base):
         parent_datum_id (integer, pk, fk): DatumObject
         child_datum_id (integer, pk, fk): DatumObject
         depth (integer):  
-        association_type_id (integer, fk): AssociationType
+        association_type_id (integer, fk, required): AssociationType
     """
 
     __tablename__ = "association_object"
 
     parent_datum_id = Column(Integer, ForeignKey("datum_object.datum_object_id"), primary_key=True)
     child_datum_id = Column(Integer, ForeignKey("datum_object.datum_object_id"), primary_key=True)
-    depth = Column(Integer)
-    association_type_id = Column(Integer, ForeignKey("association_type.association_type_id"))
+    depth = Column(Integer, default=0)
+    association_type_id = Column(Integer,
+                                 ForeignKey("association_type.association_type_id"),
+                                 nullable=False
+                                 )
