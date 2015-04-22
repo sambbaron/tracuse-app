@@ -64,7 +64,7 @@ class DatumType(Base, DefinitionMixin):
 
     Attributes:
         See DefinitionMixin
-        datum_group_id: fk -> DatumGroup
+        datum_group_id: (integer, fk): DatumGroup
     """
 
     __tablename__ = "datum_type"
@@ -86,9 +86,9 @@ class DatumObject(Base, DefinitionMixin):
 
     Attributes:
         See DefinitionMixin
-        user_id: fk -> User Model
-        datum_type_id: fk -> DatumType
-        creation_date: datetime
+        user_id (integer, fk): User
+        datum_type_id (integer, fk): DatumType
+        creation_date (datetime)
     """
 
     __tablename__ = "datum_object"
@@ -114,9 +114,9 @@ class ElementType(Base, DefinitionMixin):
     Has metadata
 
     Attributes:
-        datum_type_id: fk -> DatumType
-        data_type: string -> Common string label of data types
-        extended_properties: string -> Other metadata properties (default, unique, etc.)
+        datum_type_id (integer, fk): DatumType
+        data_type (string): Common string label of data types
+        extended_properties (string): Other metadata properties (default, unique, etc.)
     """
     #TODO Entity-Attribute-Value anti-pattern: Metadata in table
 
@@ -141,7 +141,7 @@ class ElementOption(Base, DefinitionMixin):
 
     Attributes:
         See DefinitionMixin
-        element_type_id: fk -> ElementType
+        element_type_id (integer, fk): ElementType
     """
     #TODO Entity-Attribute-Value anti-pattern: Enforce option values
 
@@ -158,10 +158,10 @@ class ElementValue(Base):
     """Element property values for Datums
 
     Attributes:
-        datum_object_id: fk -> DatumObject
-        element_type_id: fk -> ElementType
-        element_option_id: fk, nullable -> ElementOption
-        element_value: string -> Can be anything
+        datum_object_id (integer, fk): DatumObject
+        element_type_id (integer, fk): ElementType
+        element_option_id (integer, fk, nullable): ElementOption
+        element_value (string): Can be anything
     """
 
     #TODO Entity-Attribute-Value anti-pattern: Avoid one giant table, manage constraints
@@ -198,10 +198,10 @@ class AssociationObject(Base):
     Stores every path through tree
 
     Attributes:
-        parent_datum_id: fk, PK -> DatumObject
-        child_datum_id: fk, PK -> DatumObject
-        depth: integer
-        association_type_id: fk -> AssociationType
+        parent_datum_id (integer, pk, fk): DatumObject
+        child_datum_id (integer, pk, fk): DatumObject
+        depth (integer):  
+        association_type_id (integer, fk): AssociationType
     """
 
     __tablename__ = "association_object"

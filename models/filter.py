@@ -12,10 +12,10 @@ class FilterSet(Base):
     """Datum filter with multiple rules
 
     Attributes:
-        user_id: fk -> User
-        name: string
-        description: string
-        sort: integer
+        user_id (integer, fk): User
+        name (string): 
+        description (string): 
+        sort (integer): 
     """
     __tablename__ = "filter_set"
 
@@ -36,8 +36,8 @@ class FilterSetRuleMixin(object):
     Includes rule ordering
 
     Attributes:
-        filter_set_id: fk -> FilterSet
-        sort: integer
+        filter_set_id (integer, fk): FilterSet
+        sort (integer): 
     """
 
     @declared_attr
@@ -52,7 +52,7 @@ class FilterSetGroupRule(Base, FilterSetRuleMixin):
 
     Attributes:
         See FilterSetRuleMixin
-        group_rule_id: fk -> FilterRuleGroup
+        group_rule_id (integer, fk): FilterRuleGroup
     """
     __tablename__ = "filter_set_group_rule"
     
@@ -65,7 +65,7 @@ class FilterSetTypeRule(Base, FilterSetRuleMixin):
 
     Attributes:
         See FilterSetRuleMixin
-        type_rule_id: fk -> FilterRuleType
+        type_rule_id (integer, fk): FilterRuleType
     """
     __tablename__ = "filter_set_type_rule"
 
@@ -78,7 +78,7 @@ class FilterSetAssociationRule(Base, FilterSetRuleMixin):
 
     Attributes:
         See FilterSetRuleMixin
-        association_rule_id: fk -> FilterRuleAssociation
+        association_rule_id (integer, fk): FilterRuleAssociation
     """
     __tablename__ = "filter_set_association_rule"
 
@@ -91,7 +91,7 @@ class FilterSetElementRule(Base, FilterSetRuleMixin):
 
     Attributes:
         See FilterSetRuleMixin
-        element_rule_id: fk -> FilterRuleElement
+        element_rule_id (integer, fk): FilterRuleElement
     """
     __tablename__ = "filter_set_element_rule"
 
@@ -103,9 +103,9 @@ class FilterRuleMixin(object):
     """Common properties for Filter Rules
 
     Attributes:
-        sort: integer
-        operator: string -> = <> => <=
-        conditional: string -> And, Or
+        sort (integer): 
+        operator (string):  -> = <> => <=
+        conditional (string):  -> And, Or
     """
 
     sort = Column(Integer)
@@ -118,7 +118,7 @@ class FilterRuleGroup(Base, FilterRuleMixin):
 
     Attributes:
         See FilterRuleMixin
-        datum_group_id: fk -> DatumGroup
+        datum_group_id (integer, fk): DatumGroup
     """
     __tablename__ = "filter_rule_group"
 
@@ -133,7 +133,7 @@ class FilterRuleType(Base, FilterRuleMixin):
 
     Attributes:
         See FilterRuleMixin
-        datum_type_id: fk -> DatumGroup
+        datum_type_id (integer, fk): DatumGroup
     """
     __tablename__ = "filter_rule_type"
 
@@ -148,10 +148,10 @@ class FilterRuleAssociation(Base, FilterRuleMixin):
 
     Attributes:
         See FilterRuleMixin
-        datum_object_id: fk -> DatumObject
-        direction: integer -> -1: Parent, 1: Child, 0: Bidirectional
-        association_type_id: fk -> AssociationType
-        depth: integer
+        datum_object_id (integer, fk): DatumObject
+        direction (integer): -1: Parent, 1: Child, 0: Bidirectional
+        association_type_id (integer, fk): AssociationType
+        depth (integer): 
     """
     __tablename__ = "filter_rule_association"
     
@@ -169,8 +169,8 @@ class FilterRuleElement(Base, FilterRuleMixin):
 
     Attributes:
         See FilterRuleMixin
-        element_type_id: fk -> ElementType
-        element_value: string -> ***Must match value string
+        element_type_id (integer, fk): ElementType
+        element_value (string):  ***Must match value string
     """
     __tablename__ = "filter_rule_element"
 

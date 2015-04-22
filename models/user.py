@@ -11,9 +11,9 @@ class User(Base):
     """Application Users
 
     Attributes:
-        username: string -> Login username
-        email: string -> Email address
-        password: string -> User password (unhashed)
+        username (string): Login username
+        email (string): Email address
+        password (string): User password (unhashed)
     """
     #TODO need user security and authentication plug-in
 
