@@ -162,12 +162,15 @@ class FilterRuleType(Base, FilterRuleMixin):
 
     Attributes:
         See FilterRuleMixin
-        datum_type_id (integer, fk): DatumGroup
+        datum_type_id (integer, fk, required): DatumGroup
     """
     __tablename__ = "filter_rule_type"
 
     type_rule_id = Column(Integer, primary_key=True)
-    datum_type_id = Column(Integer, ForeignKey("datum_type.datum_type_id"))
+    datum_type_id = Column(Integer,
+                           ForeignKey("datum_type.datum_type_id"),
+                           nullable=False
+                           )
 
     filter_sets = relationship("FilterSetTypeRule", "filter_rule_type")
 
