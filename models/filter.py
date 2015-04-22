@@ -29,10 +29,10 @@ class FilterSet(SortActiveMixin, Base):
     name = Column(String(25), unique=True, nullable=False, index=True)
     description = Column(String(100))
 
-    group_rules = relationship("FilterSetGroupRule", backref="filter_rule_group")
-    type_rules = relationship("FilterSetGroupRule", backref="filter_rule_type")
-    association_rules = relationship("FilterSetGroupRule", backref="filter_rule_association")
-    element_rules = relationship("FilterSetGroupRule", backref="filter_rule_element")
+    group_rules = relationship("FilterSetGroupRule", backref="filter_set")
+    type_rules = relationship("FilterSetTypeRule", backref="filter_set")
+    association_rules = relationship("FilterSetAssociationRule", backref="filter_set")
+    element_rules = relationship("FilterSetElementRule", backref="filter_set")
 
 
 class FilterSetRuleMixin(SortActiveMixin):
@@ -145,8 +145,6 @@ class FilterRuleGroup(FilterRuleMixin, Base):
                             nullable=False
                             )
 
-    filter_sets = relationship("FilterSetGroupRule", "filter_rule_group")
-
 
 class FilterRuleType(FilterRuleMixin, Base):
     """Filter Rules by Datum Type
@@ -162,8 +160,6 @@ class FilterRuleType(FilterRuleMixin, Base):
                            ForeignKey("datum_type.datum_type_id"),
                            nullable=False
                            )
-
-    filter_sets = relationship("FilterSetTypeRule", "filter_rule_type")
 
 
 class FilterRuleAssociation(FilterRuleMixin, Base):
@@ -193,8 +189,6 @@ class FilterRuleAssociation(FilterRuleMixin, Base):
                                  )
     depth = Column(Integer, default=1, nullable=False)
 
-    filter_sets = relationship("FilterSetAssociationRule", "filter_rule_association")
-
 
 class FilterRuleElement(FilterRuleMixin, Base):
     """Filter Rules by Element Value
@@ -212,5 +206,3 @@ class FilterRuleElement(FilterRuleMixin, Base):
                              nullable=False
                              )
     element_value = Column(String)
-
-    filter_sets = relationship("FilterSetElementRule", "filter_rule_element")
