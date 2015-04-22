@@ -23,13 +23,13 @@ class DefinitionMixin(SortActiveMixin):
 
     Attributes:
         See SortActiveMixin
-        name (string, unique, required, indexed)
+        name (string, not unique, required, indexed)
         short_description (string): Word or two about object
         long_description (string): Long description of object
         schema_name (string): Underscore/lower-case class name
     """
-
-    name = Column(String(25), unique=True, nullable=False, index=True)
+    #TODO problem with unique names and element types
+    name = Column(String(25), unique=False, nullable=False, index=True)
     short_description = Column(String(25))
     long_description = Column(String(100))
 
