@@ -144,12 +144,15 @@ class FilterRuleGroup(Base, FilterRuleMixin):
 
     Attributes:
         See FilterRuleMixin
-        datum_group_id (integer, fk): DatumGroup
+        datum_group_id (integer, fk, required): DatumGroup
     """
     __tablename__ = "filter_rule_group"
 
     group_rule_id = Column(Integer, primary_key=True)
-    datum_group_id = Column(Integer, ForeignKey("datum_group.datum_group_id"))
+    datum_group_id = Column(Integer,
+                            ForeignKey("datum_group.datum_group_id"),
+                            nullable=False
+                            )
 
     filter_sets = relationship("FilterSetGroupRule", "filter_rule_group")
 
