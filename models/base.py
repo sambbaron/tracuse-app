@@ -30,8 +30,8 @@ class DefinitionMixin(SortActiveMixin):
     """
     #TODO problem with unique names and element types
     name = Column(String(25), unique=False, nullable=False, index=True)
-    short_description = Column(String(25))
-    long_description = Column(String(100))
+    short_definition = Column(String(25))
+    long_definition = Column(String(100))
 
     def __str__(self):
         return "<{class_name}(Name={instance_name})>".format(
