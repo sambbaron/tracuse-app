@@ -18,14 +18,14 @@ def sqlalchemy_json_dump(classes, json_file_name):
     output = {}
     for cls in classes:
         class_name = cls.__name__
-        if session.query(cls).count() > 0:
-            model_data = session.query(cls).order_by("sort").all()
-            rows_count = len(model_data)
+        model_data = session.query(cls).order_by("sort").all()
+        rows_count = len(model_data)
+        if rows_count > 0:
             rows = []
             for datum_group in model_data:
                 row = {}
                 for col in cls.__table__.c:
-                    if col.name is not "id":
+                    if not col.primary_key:
                         row[col.name] = getattr(datum_group, col.name)
                 rows.append(row)
 
