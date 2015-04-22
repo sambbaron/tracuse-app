@@ -1,7 +1,7 @@
 """SQLAlchemy Models for Datum Filter-related entities"""
 
 from sqlalchemy import Column
-from sqlalchemy import ForeignKey, Integer, String, SmallInteger
+from sqlalchemy import ForeignKey, Integer, String, SmallInteger, Boolean
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declared_attr
 
@@ -12,17 +12,24 @@ class FilterSet(Base):
     """Datum filter with multiple rules
 
     Attributes:
-        user_id (integer, fk): User
-        name (string): 
+        user_id (integer, fk, nullable): User
+        name (string, required):
         description (string): 
-        sort (integer): 
+        sort (integer):
+        active (boolean, indexed):
     """
     __tablename__ = "filter_set"
 
     filter_set_id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey("user.user_id"))
-    name = Column(String(25), unique=True, index=True)
+    # Null user means filter set available to all users??
+    user_id = Column(Integer,
+                     ForeignKey("user.user_id"),
+                     nullable=True
+                     )
+    sort = Column(Integer, default=0)
+    name = Column(String(25), unique=True, nullable=False, index=True)
     description = Column(String(100))
+    active = Column(Boolean, default=True, index=True)
 
     group_rules = relationship("FilterSetGroupRule", backref="filter_rule_group")
     type_rules = relationship("FilterSetGroupRule", backref="filter_rule_type")
