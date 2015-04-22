@@ -208,6 +208,22 @@ class AssociationType(DefinitionMixin, Base):
     association_rules = relationship("FilterRuleAssociation", backref="association_type")
 
 
+class AssociationDirection(DefinitionMixin, Base):
+    """Direction of Association from a particular Datum (node)
+
+    Used for filters
+
+    Examples:
+        Parent, Child, Both
+
+    Attributes:
+        See DefinitionMixin (includes SortActiveMixin)
+    """
+    __tablename__ = "association_direction"
+
+    association_direction_id = Column(Integer, primary_key=True)
+
+
 class AssociationObject(Base):
     """Relationship between Datums
 
