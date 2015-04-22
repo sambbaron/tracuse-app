@@ -135,7 +135,10 @@ class ElementType(Base, DefinitionMixin):
     element_type_id = Column(Integer, primary_key=True)
 
     # Null datum type assumes applies to all Datum Types
-    datum_type_id = Column(Integer, ForeignKey("datum_type.datum_type_id"), nullable=True)
+    datum_type_id = Column(Integer,
+                           ForeignKey("datum_type.datum_type_id"),
+                           nullable=True
+                           )
     data_type = Column(String(20))
     extended_properties = Column(String(100))
 
