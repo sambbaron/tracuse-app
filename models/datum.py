@@ -130,7 +130,8 @@ class ElementOption(DefinitionMixin, Base):
     __tablename__ = "element_option"
 
     element_option_id = Column(Integer, primary_key=True)
-
+    # Override unique constraint on name
+    name = Column(String(25), unique=False, nullable=False, index=True)
     element_type_id = Column(Integer,
                              ForeignKey("element_type.element_type_id"),
                              nullable=False
