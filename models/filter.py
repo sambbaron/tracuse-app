@@ -80,12 +80,15 @@ class FilterSetTypeRule(Base, FilterSetRuleMixin):
 
     Attributes:
         See FilterSetRuleMixin
-        type_rule_id (integer, fk): FilterRuleType
+        type_rule_id (integer, fk, required): FilterRuleType
     """
     __tablename__ = "filter_set_type_rule"
 
     filter_set_type_rule_id = Column(Integer, primary_key=True)
-    type_rule_id = Column(Integer, ForeignKey("filter_rule_type.type_rule_id"))
+    type_rule_id = Column(Integer,
+                          ForeignKey("filter_rule_type.type_rule_id"),
+                          nullable=False
+                          )
 
 
 class FilterSetAssociationRule(Base, FilterSetRuleMixin):
