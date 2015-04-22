@@ -64,12 +64,15 @@ class FilterSetGroupRule(Base, FilterSetRuleMixin):
 
     Attributes:
         See FilterSetRuleMixin
-        group_rule_id (integer, fk): FilterRuleGroup
+        group_rule_id (integer, fk, required): FilterRuleGroup
     """
     __tablename__ = "filter_set_group_rule"
     
     filter_set_group_rule_id = Column(Integer, primary_key=True)
-    group_rule_id = Column(Integer, ForeignKey("filter_rule_group.group_rule_id"))
+    group_rule_id = Column(Integer,
+                           ForeignKey("filter_rule_group.group_rule_id"),
+                           nullable=False
+                           )
 
 
 class FilterSetTypeRule(Base, FilterSetRuleMixin):
