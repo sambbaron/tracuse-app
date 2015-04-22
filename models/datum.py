@@ -80,6 +80,7 @@ class DatumType(Base, DefinitionMixin):
 class DatumObject(Base, DefinitionMixin):
     """Primary personal information data object
 
+    Node/Vertex in graph
     Has Datum Type which defines properties (elements)
 
     Attributes:
@@ -189,8 +190,9 @@ class AssociationType(Base, DefinitionMixin):
 
 
 class AssociationObject(Base):
-    """Relationship/Link/Edge between Datums
+    """Relationship between Datums
 
+    Edge/Link in graph
     Using Closure table pattern
     Stores every path through tree
 
