@@ -109,7 +109,7 @@ class FilterRuleMixin(object):
     """
 
     sort = Column(Integer)
-    operator = Column(String(5))
+    operator = Column(String(5)) #TODO set default as equals
     conditional = Column(String(3))
 
 
@@ -159,7 +159,7 @@ class FilterRuleAssociation(Base, FilterRuleMixin):
     datum_object_id = Column(Integer, ForeignKey("datum_object.datum_object_id"))
     direction = Column(SmallInteger)
     association_type_id = Column(Integer, ForeignKey("association_type.association_type_id"))
-    depth = Column(Integer)
+    depth = Column(Integer)  #TODO Set default depth
 
     filter_sets = relationship("FilterSetAssociationRule", "filter_rule_association")
 
