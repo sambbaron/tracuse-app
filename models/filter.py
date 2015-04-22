@@ -180,18 +180,24 @@ class FilterRuleAssociation(Base, FilterRuleMixin):
 
     Attributes:
         See FilterRuleMixin
-        datum_object_id (integer, fk): DatumObject
-        direction (integer): -1: Parent, 1: Child, 0: Bidirectional
-        association_type_id (integer, fk): AssociationType
-        depth (integer): 
+        datum_object_id (integer, fk, required): DatumObject
+        direction (integer, required): -1: Parent, 1: Child, 0: Bidirectional
+        association_type_id (integer, fk, required): AssociationType
+        depth (integer, required):
     """
     __tablename__ = "filter_rule_association"
     
     association_rule_id = Column(Integer, primary_key=True)
-    datum_object_id = Column(Integer, ForeignKey("datum_object.datum_object_id"))
-    direction = Column(SmallInteger)
-    association_type_id = Column(Integer, ForeignKey("association_type.association_type_id"))
-    depth = Column(Integer)  #TODO Set default depth
+    datum_object_id = Column(Integer,
+                             ForeignKey("datum_object.datum_object_id"),
+                             nullable=False
+                             )
+    direction = Column(SmallInteger, nullable=False)  #TODO create association direction table
+    association_type_id = Column(Integer,
+                                 ForeignKey("association_type.association_type_id"),
+                                 nullable=False
+                                 )
+    depth = Column(Integer, default=1, nullable=False)
 
     filter_sets = relationship("FilterSetAssociationRule", "filter_rule_association")
 
