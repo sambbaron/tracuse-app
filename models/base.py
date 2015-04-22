@@ -1,8 +1,7 @@
 """SQLAlchemy Models for General Mixins and Base extension"""
 
-from sqlalchemy import Column, Index
-from sqlalchemy import ForeignKey, Integer, String, DateTime, Boolean
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy import Column
+from sqlalchemy import Integer, String, Boolean
 from sqlalchemy.ext.hybrid import hybrid_property
 
 from utils import camel_to_underscore
