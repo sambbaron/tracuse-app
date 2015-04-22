@@ -64,14 +64,17 @@ class DatumType(Base, DefinitionMixin):
 
     Attributes:
         See DefinitionMixin
-        datum_group_id: (integer, fk): DatumGroup
+        datum_group_id: (integer, fk, notnull): DatumGroup
     """
 
     __tablename__ = "datum_type"
 
     datum_type_id = Column(Integer, primary_key=True)
 
-    datum_group_id = Column(Integer, ForeignKey('datum_group.datum_group_id'))
+    datum_group_id = Column(Integer,
+                            ForeignKey('datum_group.datum_group_id'),
+                            nullable=False
+                            )
 
     datum_objects = relationship("DatumObject", backref="datum_type")
     element_types = relationship("ElementType", backref="datum_type")
