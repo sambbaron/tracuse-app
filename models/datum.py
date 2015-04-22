@@ -123,8 +123,6 @@ class ElementOption(DefinitionMixin, Base):
     Attributes:
         See DefinitionMixin (includes SortActiveMixin)
         element_type_id (integer, fk): ElementType
-        element_option_value (string, required, indexed)
-            ***must match element value format
     """
     #TODO Entity-Attribute-Value anti-pattern: Enforce option values
 
@@ -137,7 +135,6 @@ class ElementOption(DefinitionMixin, Base):
                              ForeignKey("element_type.element_type_id"),
                              nullable=False
                              )
-    element_option_value = Column(String, nullable=False, index=True)
 
     element_values = relationship("ElementValue", backref="element_option")
 
