@@ -48,7 +48,7 @@ class DatumType(DefinitionMixin, Base):
                             )
 
     datum_objects = relationship("DatumObject", backref="datum_type")
-    element_types = relationship("DatumTypeElement", backref="datum_type")
+    element_types = relationship("ElementTypeDatumType", backref="datum_type")
     type_rules = relationship("FilterRuleType", backref="datum_type")
 
 
@@ -108,7 +108,7 @@ class ElementType(DefinitionMixin, Base):
     extended_properties = Column(String(100))
 
     element_options = relationship("ElementOption", backref="element_type")
-    datum_types = relationship("DatumTypeElement", backref="element_type")
+    datum_types = relationship("ElementTypeDatumType", backref="element_type")
     element_values = relationship("ElementValue", backref="element_type")
     element_rules = relationship("FilterRuleElement", backref="element_type")
 
@@ -140,7 +140,7 @@ class ElementOption(DefinitionMixin, Base):
     element_values = relationship("ElementValue", backref="element_option")
 
 
-class DatumTypeElement(Base):
+class ElementTypeDatumType(Base):
     """Default Element Types assigned to Datum Types
 
     Used at Datum creation - Added to element_value table
@@ -149,7 +149,7 @@ class DatumTypeElement(Base):
             datum_type_id (integer, fk, pk): DatumType
             element_type_id (integer, fk, pk): ElementType
     """
-    __tablename__ = "datum_type_element"
+    __tablename__ = "element_type_datum_type"
 
     datum_type_id = Column(Integer,
                        ForeignKey("datum_type.datum_type_id"),
