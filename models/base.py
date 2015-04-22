@@ -28,7 +28,7 @@ class DefinitionMixin(SortActiveMixin):
         long_description (string): Long description of object
         schema_name (string): Underscore/lower-case class name
     """
-    #TODO problem with unique names and element types
+    #TODO problem with unique names and element option values
     name = Column(String(25), unique=True, nullable=False, index=True)
     short_definition = Column(String(25))
     long_definition = Column(String(100))
