@@ -128,13 +128,15 @@ class FilterRuleMixin(object):
 
     Attributes:
         sort (integer): 
-        operator (string):  -> = <> => <=
-        conditional (string):  -> And, Or
+        operator (string, required):  -> = <> => <=
+        conditional (string, nullable): And, Or
+        active (boolean, indexed):
     """
 
-    sort = Column(Integer)
-    operator = Column(String(5)) #TODO set default as equals
-    conditional = Column(String(3))
+    sort = Column(Integer, default=0)
+    operator = Column(String(5), default="=")
+    conditional = Column(String(3), nullable=True)
+    active = Column(Boolean, default=True, index=True)
 
 
 class FilterRuleGroup(Base, FilterRuleMixin):
