@@ -62,7 +62,7 @@ class FilterSetGroupRule(FilterSetRuleMixin, Base):
     """
     __tablename__ = "filter_set_group_rule"
     
-    filter_set_filter_rule_group_id = Column(Integer, primary_key=True)
+    filter_set_group_rule_id = Column(Integer, primary_key=True)
     filter_rule_group_id = Column(Integer,
                            ForeignKey("filter_rule_group.filter_rule_group_id"),
                            nullable=False
@@ -78,7 +78,7 @@ class FilterSetTypeRule(FilterSetRuleMixin, Base):
     """
     __tablename__ = "filter_set_type_rule"
 
-    filter_set_filter_rule_type_id = Column(Integer, primary_key=True)
+    filter_set_type_rule_id = Column(Integer, primary_key=True)
     filter_rule_type_id = Column(Integer,
                           ForeignKey("filter_rule_type.filter_rule_type_id"),
                           nullable=False
@@ -94,7 +94,7 @@ class FilterSetAssociationRule(FilterSetRuleMixin, Base):
     """
     __tablename__ = "filter_set_association_rule"
 
-    filter_set_filter_rule_association_id = Column(Integer, primary_key=True)
+    filter_set_association_rule_id = Column(Integer, primary_key=True)
     filter_rule_association_id = Column(Integer,
                                  ForeignKey("filter_rule_association.filter_rule_association_id"),
                                  nullable=False
@@ -110,7 +110,7 @@ class FilterSetElementRule(FilterSetRuleMixin, Base):
     """
     __tablename__ = "filter_set_element_rule"
 
-    filter_set_filter_rule_element_id = Column(Integer, primary_key=True)
+    filter_set_element_rule_id = Column(Integer, primary_key=True)
     filter_rule_element_id = Column(Integer,
                              ForeignKey("filter_rule_element.filter_rule_element_id"),
                              nullable=False
