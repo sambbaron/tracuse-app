@@ -155,6 +155,8 @@ class ElementOption(Base, DefinitionMixin):
     Attributes:
         See DefinitionMixin
         element_type_id (integer, fk): ElementType
+        element_option_value (string, required, indexed)
+            ***must match element value format
     """
     #TODO Entity-Attribute-Value anti-pattern: Enforce option values
 
@@ -162,7 +164,11 @@ class ElementOption(Base, DefinitionMixin):
 
     element_option_id = Column(Integer, primary_key=True)
 
-    element_type_id = Column(Integer, ForeignKey("element_type.element_type_id"))
+    element_type_id = Column(Integer,
+                             ForeignKey("element_type.element_type_id"),
+                             nullable=False
+                             )
+    element_option_value = Column(String, nullable=False, index=True)
 
     element_values = relationship("ElementValue", backref="element_option")
 
