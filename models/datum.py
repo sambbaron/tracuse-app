@@ -17,7 +17,7 @@ class DefinitionMixin(object):
 
     Attributes:
         sort (integer)
-        name (string, unique, notnull, indexed)
+        name (string, unique, required, indexed)
         short_description (string): Word or two about object
         long_description (string): Long description of object
         schema_name (string): Underscore/lower-case class name
@@ -64,7 +64,7 @@ class DatumType(Base, DefinitionMixin):
 
     Attributes:
         See DefinitionMixin
-        datum_group_id: (integer, fk, notnull): DatumGroup
+        datum_group_id: (integer, fk, required): DatumGroup
     """
 
     __tablename__ = "datum_type"
@@ -89,8 +89,8 @@ class DatumObject(Base, DefinitionMixin):
 
     Attributes:
         See DefinitionMixin
-        user_id (integer, fk): User
-        datum_type_id (integer, fk): DatumType
+        user_id (integer, fk, required): User
+        datum_type_id (integer, fk, required): DatumType
         creation_date (datetime)
     """
 
@@ -98,8 +98,15 @@ class DatumObject(Base, DefinitionMixin):
 
     datum_object_id = Column(Integer, primary_key=True)
 
-    user_id = Column(Integer, ForeignKey("user.user_id"))
-    datum_type_id = Column(Integer, ForeignKey("datum_type.datum_type_id"))
+    user_id = Column(Integer,
+                     ForeignKey("user.user_id"),
+                     nullable=False,
+                     index=True
+                     )
+    datum_type_id = Column(Integer,
+                           ForeignKey("datum_type.datum_type_id"),
+                           nullable=False
+                           )
     creation_date = Column(DateTime, default=datetime.now())
 
     element_values = relationship("ElementValue", backref="datum_object")
