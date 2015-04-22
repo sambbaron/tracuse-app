@@ -17,7 +17,7 @@ class DatumGroup(Base, DefinitionMixin):
     Has common functional uses
 
     Attributes:
-        See DefinitionMixin
+        See DefinitionMixin (includes SortActiveMixin)
     """
 
     __tablename__ = "datum_group"
@@ -34,7 +34,7 @@ class DatumType(Base, DefinitionMixin):
     Has common functional use and properties (elements)
 
     Attributes:
-        See DefinitionMixin
+        See DefinitionMixin (includes SortActiveMixin)
         datum_group_id: (integer, fk, required): DatumGroup
     """
 
@@ -59,7 +59,7 @@ class DatumObject(Base, DefinitionMixin):
     Has Datum Type which defines properties (elements)
 
     Attributes:
-        See DefinitionMixin
+        See DefinitionMixin (includes SortActiveMixin)
         user_id (integer, fk, required): User
         datum_type_id (integer, fk, required): DatumType
         creation_date (datetime)
@@ -124,7 +124,7 @@ class ElementOption(Base, DefinitionMixin):
         Action Status - New, Someday, Upcoming, etc.
 
     Attributes:
-        See DefinitionMixin
+        See DefinitionMixin (includes SortActiveMixin)
         element_type_id (integer, fk): ElementType
         element_option_value (string, required, indexed)
             ***must match element value format
@@ -180,7 +180,7 @@ class AssociationType(Base, DefinitionMixin):
     """Types of relationships/edges between Datums
 
     Attributes:
-        See DefinitionMixin
+        See DefinitionMixin (includes SortActiveMixin)
     """
 
     __tablename__ = "association_type"

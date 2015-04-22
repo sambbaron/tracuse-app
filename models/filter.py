@@ -6,17 +6,17 @@ from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declared_attr
 
 from databases.postgres import Base
+from models.base import SortActiveMixin
 
 
-class FilterSet(Base):
+class FilterSet(Base, SortActiveMixin):
     """Datum filter with multiple rules
 
     Attributes:
+        See SortActiveMixin
         user_id (integer, fk, nullable): User
         name (string, required):
         description (string): 
-        sort (integer):
-        active (boolean, indexed):
     """
     __tablename__ = "filter_set"
 
@@ -26,10 +26,8 @@ class FilterSet(Base):
                      ForeignKey("user.user_id"),
                      nullable=True
                      )
-    sort = Column(Integer, default=0)
     name = Column(String(25), unique=True, nullable=False, index=True)
     description = Column(String(100))
-    active = Column(Boolean, default=True, index=True)
 
     group_rules = relationship("FilterSetGroupRule", backref="filter_rule_group")
     type_rules = relationship("FilterSetGroupRule", backref="filter_rule_type")
@@ -37,15 +35,14 @@ class FilterSet(Base):
     element_rules = relationship("FilterSetGroupRule", backref="filter_rule_element")
 
 
-class FilterSetRuleMixin(object):
+class FilterSetRuleMixin(SortActiveMixin):
     """Common properties for assigning Filter Rules to Filter Sets
 
     Includes rule ordering
 
     Attributes:
+        See SortActiveMixin
         filter_set_id (integer, fk, required): FilterSet
-        sort (integer):
-        active (boolean, indexed):
     """
 
     @declared_attr
@@ -55,15 +52,12 @@ class FilterSetRuleMixin(object):
                       nullable=False
                       )
 
-    sort = Column(Integer, default=0)
-    active = Column(Boolean, default=True, index=True)
-
 
 class FilterSetGroupRule(Base, FilterSetRuleMixin):
     """Assign Group Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleMixin
+        See FilterSetRuleMixin (includes SortActiveMixin)
         group_rule_id (integer, fk, required): FilterRuleGroup
     """
     __tablename__ = "filter_set_group_rule"
@@ -79,7 +73,7 @@ class FilterSetTypeRule(Base, FilterSetRuleMixin):
     """Assign Type Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleMixin
+        See FilterSetRuleMixin (includes SortActiveMixin)
         type_rule_id (integer, fk, required): FilterRuleType
     """
     __tablename__ = "filter_set_type_rule"
@@ -95,7 +89,7 @@ class FilterSetAssociationRule(Base, FilterSetRuleMixin):
     """Assign Association Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleMixin
+        See FilterSetRuleMixin (includes SortActiveMixin)
         association_rule_id (integer, fk, required): FilterRuleAssociation
     """
     __tablename__ = "filter_set_association_rule"
@@ -111,7 +105,7 @@ class FilterSetElementRule(Base, FilterSetRuleMixin):
     """Assign Element Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleMixin
+        See FilterSetRuleMixin (includes SortActiveMixin)
         element_rule_id (integer, fk, required): FilterRuleElement
     """
     __tablename__ = "filter_set_element_rule"
@@ -123,27 +117,24 @@ class FilterSetElementRule(Base, FilterSetRuleMixin):
                              )
 
 
-class FilterRuleMixin(object):
+class FilterRuleMixin(SortActiveMixin):
     """Common properties for Filter Rules
 
     Attributes:
-        sort (integer): 
+        See SortActiveMixin
         operator (string, required):  -> = <> => <=
         conditional (string, nullable): And, Or
-        active (boolean, indexed):
     """
 
-    sort = Column(Integer, default=0)
     operator = Column(String(5), default="=")
     conditional = Column(String(3), nullable=True)
-    active = Column(Boolean, default=True, index=True)
 
 
 class FilterRuleGroup(Base, FilterRuleMixin):
     """Filter Rules by Datum Group
 
     Attributes:
-        See FilterRuleMixin
+        See FilterRuleMixin (includes SortActiveMixin)
         datum_group_id (integer, fk, required): DatumGroup
     """
     __tablename__ = "filter_rule_group"
@@ -161,7 +152,7 @@ class FilterRuleType(Base, FilterRuleMixin):
     """Filter Rules by Datum Type
 
     Attributes:
-        See FilterRuleMixin
+        See FilterRuleMixin (includes SortActiveMixin)
         datum_type_id (integer, fk, required): DatumGroup
     """
     __tablename__ = "filter_rule_type"
@@ -179,7 +170,7 @@ class FilterRuleAssociation(Base, FilterRuleMixin):
     """Filter Rules by Datum Association
 
     Attributes:
-        See FilterRuleMixin
+        See FilterRuleMixin (includes SortActiveMixin)
         datum_object_id (integer, fk, required): DatumObject
         direction (integer, required): -1: Parent, 1: Child, 0: Bidirectional
         association_type_id (integer, fk, required): AssociationType
@@ -206,7 +197,7 @@ class FilterRuleElement(Base, FilterRuleMixin):
     """Filter Rules by Element Value
 
     Attributes:
-        See FilterRuleMixin
+        See FilterRuleMixin (includes SortActiveMixin)
         element_type_id (integer, fk, required): ElementType
         element_value (string):  ***Must match value string
     """
