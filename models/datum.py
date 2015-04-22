@@ -9,6 +9,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 
 from databases.postgres import Base
 from models.base import DefinitionMixin
+from models.filter import FilterRuleAssociation
 
 
 class DatumGroup(DefinitionMixin, Base):
@@ -82,7 +83,7 @@ class DatumObject(DefinitionMixin, Base):
 
     element_values = relationship("ElementValue", backref="datum_object")
     parent_associations = relationship("AssociationObject",
-                                     primaryjoin="DatumObject.id == association_object.c.parent_datum_id",
+                                     primaryjoin="DatumObject.datum_object_id == association_object.c.parent_datum_id",
                                      backref="child_associations")
 
     #TODO Property for associated Datums
