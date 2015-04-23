@@ -11,10 +11,10 @@ class SortActiveMixin(object):
     """Adds Sort and Active columns
 
     Attributes:
-        sort (integer)
+        sort (integer, indexed)
         active (boolean, indexed)
     """
-    sort = Column(Integer, default=0)
+    sort = Column(Integer, default=0, index=True)
     active = Column(Boolean, default=True, index=True)
 
 
