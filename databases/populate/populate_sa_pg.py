@@ -8,7 +8,14 @@ import json
 from databases.postgres import engine, drop_create, session
 from models import datum, filter, user
 
-classes = [datum.DatumGroup, datum.DatumType, datum.ElementType]
+classes = [user.User,
+           datum.DatumGroup,
+           datum.DatumType,
+           datum.ElementType,
+           datum.ElementOption,
+           datum.DatumObject
+           ]
+
 json_file = "populate_sa_pg.json"
 
 def sqlalchemy_json_dump(classes, json_file_name):
@@ -18,7 +25,10 @@ def sqlalchemy_json_dump(classes, json_file_name):
     output = {}
     for cls in classes:
         class_name = cls.__name__
-        model_data = session.query(cls).order_by("sort").all()
+        if "sort" in cls.__table__.c:
+            model_data = session.query(cls).order_by("sort").all()
+        else:
+            model_data = session.query(cls).all()
         rows_count = len(model_data)
         if rows_count > 0:
             rows = []
