@@ -13,7 +13,8 @@ classes = [user.User,
            datum.DatumType,
            datum.ElementType,
            datum.ElementOption,
-           datum.DatumObject
+           datum.DatumObject,
+           datum.ElementValue
            ]
 
 json_file = "populate_sa_pg.json"
