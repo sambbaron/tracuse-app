@@ -8,8 +8,7 @@ from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.hybrid import hybrid_property
 
 from databases.postgres import Base
-from models.base import DefinitionMixin
-from models.filter import FilterRuleAssociation
+from models.base import DefinitionMixin, SortActiveMixin
 
 
 class DatumGroup(DefinitionMixin, Base):
@@ -53,14 +52,14 @@ class DatumType(DefinitionMixin, Base):
     type_rules = relationship("FilterRuleType", backref="datum_type")
 
 
-class DatumObject(DefinitionMixin, Base):
+class DatumObject(SortActiveMixin, Base):
     """Primary personal information data object
 
     Node/Vertex in graph
     Has Datum Type which defines properties (elements)
 
     Attributes:
-        See DefinitionMixin (includes SortActiveMixin)
+        See SortActiveMixin
         user_id (integer, fk, required): User
         datum_type_id (integer, fk, required): DatumType
         creation_date (datetime)
