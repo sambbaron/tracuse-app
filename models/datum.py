@@ -159,10 +159,11 @@ class ElementTypeDatumType(Base):
                              )
 
 
-class ElementValue(Base):
+class ElementValue(SortActiveMixin, Base):
     """Element values for Datums
 
     Attributes:
+        See SortActiveMixin
         datum_object_id (integer, fk, required): DatumObject
         element_type_id (integer, fk, required): ElementType
         element_option_id (integer, fk, nullable): ElementOption
