@@ -247,3 +247,13 @@ class AssociationObject(Base):
                                  ForeignKey("association_type.association_type_id"),
                                  nullable=False
                                  )
+
+
+class AssociationKeywords():
+    """Keywords in Datum that trigger dynamic association
+
+    Attributes:
+        See SortActiveMixin
+        datum_object_id (integer, fk, required): DatumObject
+        keyword (string, required)
+    """
