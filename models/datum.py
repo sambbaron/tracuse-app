@@ -3,11 +3,12 @@
 from datetime import datetime
 
 from sqlalchemy import Column, Index
-from sqlalchemy import ForeignKey, Integer, String, DateTime, Boolean
+from sqlalchemy import ForeignKey, Integer, String, DateTime, text
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.hybrid import hybrid_property
 
 from databases.postgres import Base
+from models import filter, user
 from models.base import DefinitionMixin, SortActiveMixin
 
 
@@ -78,7 +79,7 @@ class DatumObject(SortActiveMixin, Base):
                            ForeignKey("datum_type.datum_type_id"),
                            nullable=False
                            )
-    creation_date = Column(DateTime, server_default="current_timestamp")
+    creation_date = Column(DateTime, server_default=text("current_timestamp"))
 
     element_values = relationship("ElementValue", backref="datum_object")
     parent_associations = relationship("AssociationObject",

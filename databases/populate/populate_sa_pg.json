@@ -1,1 +1,1233 @@
-{"ElementOption": [{"sort": 8010, "element_type_id": 8, "long_definition": null, "name": "Business", "active": true, "short_definition": null}, {"sort": 8020, "element_type_id": 8, "long_definition": null, "name": "Non-Profit", "active": true, "short_definition": null}, {"sort": 8030, "element_type_id": 8, "long_definition": null, "name": "Education", "active": true, "short_definition": null}, {"sort": 8040, "element_type_id": 8, "long_definition": null, "name": "Food", "active": true, "short_definition": null}, {"sort": 8050, "element_type_id": 8, "long_definition": null, "name": "Service", "active": true, "short_definition": null}, {"sort": 8060, "element_type_id": 8, "long_definition": null, "name": "Cultural", "active": true, "short_definition": null}, {"sort": 8070, "element_type_id": 8, "long_definition": null, "name": "Religious", "active": true, "short_definition": null}, {"sort": 8080, "element_type_id": 8, "long_definition": null, "name": "Government", "active": true, "short_definition": null}, {"sort": 8090, "element_type_id": 8, "long_definition": null, "name": "Social", "active": true, "short_definition": null}, {"sort": 11010, "element_type_id": 11, "long_definition": null, "name": "Other", "active": true, "short_definition": null}, {"sort": 11020, "element_type_id": 11, "long_definition": null, "name": "AL", "active": true, "short_definition": "Alabama"}, {"sort": 11030, "element_type_id": 11, "long_definition": null, "name": "AK", "active": true, "short_definition": "Alaska"}, {"sort": 11040, "element_type_id": 11, "long_definition": null, "name": "AZ", "active": true, "short_definition": "Arizona"}, {"sort": 11050, "element_type_id": 11, "long_definition": null, "name": "AR", "active": true, "short_definition": "Arkansas"}, {"sort": 11060, "element_type_id": 11, "long_definition": null, "name": "CA", "active": true, "short_definition": "California"}, {"sort": 11070, "element_type_id": 11, "long_definition": null, "name": "CO", "active": true, "short_definition": "Colorado"}, {"sort": 11080, "element_type_id": 11, "long_definition": null, "name": "CT", "active": true, "short_definition": "Connecticut"}, {"sort": 11090, "element_type_id": 11, "long_definition": null, "name": "DE", "active": true, "short_definition": "Delaware"}, {"sort": 13010, "element_type_id": 13, "long_definition": null, "name": "Other", "active": true, "short_definition": "Other Country"}, {"sort": 13020, "element_type_id": 13, "long_definition": null, "name": "USA", "active": true, "short_definition": "United States"}, {"sort": 22010, "element_type_id": 22, "long_definition": null, "name": "New", "active": true, "short_definition": null}, {"sort": 22020, "element_type_id": 22, "long_definition": null, "name": "Someday", "active": true, "short_definition": null}, {"sort": 22030, "element_type_id": 22, "long_definition": null, "name": "Upcoming", "active": true, "short_definition": null}, {"sort": 22040, "element_type_id": 22, "long_definition": null, "name": "Current", "active": true, "short_definition": null}, {"sort": 22050, "element_type_id": 22, "long_definition": null, "name": "In Progress", "active": true, "short_definition": null}, {"sort": 22060, "element_type_id": 22, "long_definition": null, "name": "Complete", "active": true, "short_definition": null}, {"sort": 22070, "element_type_id": 22, "long_definition": null, "name": "Waiting For", "active": true, "short_definition": null}, {"sort": 23010, "element_type_id": 23, "long_definition": null, "name": "1", "active": true, "short_definition": "Very Easy"}, {"sort": 23020, "element_type_id": 23, "long_definition": null, "name": "2", "active": true, "short_definition": "Easy"}, {"sort": 23030, "element_type_id": 23, "long_definition": null, "name": "3", "active": true, "short_definition": "Neither Easy or Hard"}, {"sort": 23040, "element_type_id": 23, "long_definition": null, "name": "4", "active": true, "short_definition": "Hard"}, {"sort": 23050, "element_type_id": 23, "long_definition": null, "name": "5", "active": true, "short_definition": "Very Hard"}, {"sort": 24010, "element_type_id": 24, "long_definition": null, "name": "Actual", "active": true, "short_definition": null}, {"sort": 24020, "element_type_id": 24, "long_definition": null, "name": "Planned", "active": true, "short_definition": null}, {"sort": 32010, "element_type_id": 32, "long_definition": null, "name": "Placeholder", "active": true, "short_definition": null}, {"sort": 35010, "element_type_id": 35, "long_definition": null, "name": "New", "active": true, "short_definition": null}, {"sort": 35020, "element_type_id": 35, "long_definition": null, "name": "Start", "active": true, "short_definition": null}, {"sort": 35030, "element_type_id": 35, "long_definition": null, "name": "Working", "active": true, "short_definition": null}, {"sort": 35040, "element_type_id": 35, "long_definition": null, "name": "Edit", "active": true, "short_definition": null}, {"sort": 35050, "element_type_id": 35, "long_definition": null, "name": "Complete", "active": true, "short_definition": null}, {"sort": 110100, "element_type_id": 11, "long_definition": null, "name": "FL", "active": true, "short_definition": "Florida"}, {"sort": 110110, "element_type_id": 11, "long_definition": null, "name": "GA", "active": true, "short_definition": "Georgia"}, {"sort": 110120, "element_type_id": 11, "long_definition": null, "name": "HI", "active": true, "short_definition": "Hawaii"}, {"sort": 110130, "element_type_id": 11, "long_definition": null, "name": "ID", "active": true, "short_definition": "Idaho"}, {"sort": 110140, "element_type_id": 11, "long_definition": null, "name": "IL", "active": true, "short_definition": "Illinois"}, {"sort": 110150, "element_type_id": 11, "long_definition": null, "name": "IN", "active": true, "short_definition": "Indiana"}, {"sort": 110160, "element_type_id": 11, "long_definition": null, "name": "IA", "active": true, "short_definition": "Iowa"}, {"sort": 110170, "element_type_id": 11, "long_definition": null, "name": "KS", "active": true, "short_definition": "Kansas"}, {"sort": 110180, "element_type_id": 11, "long_definition": null, "name": "KY", "active": true, "short_definition": "Kentucky"}, {"sort": 110190, "element_type_id": 11, "long_definition": null, "name": "LA", "active": true, "short_definition": "Louisiana"}, {"sort": 110200, "element_type_id": 11, "long_definition": null, "name": "ME", "active": true, "short_definition": "Maine"}, {"sort": 110210, "element_type_id": 11, "long_definition": null, "name": "MD", "active": true, "short_definition": "Maryland"}, {"sort": 110220, "element_type_id": 11, "long_definition": null, "name": "MA", "active": true, "short_definition": "Massachusetts"}, {"sort": 110230, "element_type_id": 11, "long_definition": null, "name": "MI", "active": true, "short_definition": "Michigan"}, {"sort": 110240, "element_type_id": 11, "long_definition": null, "name": "MN", "active": true, "short_definition": "Minnesota"}, {"sort": 110250, "element_type_id": 11, "long_definition": null, "name": "MS", "active": true, "short_definition": "Mississippi"}, {"sort": 110260, "element_type_id": 11, "long_definition": null, "name": "MO", "active": true, "short_definition": "Missouri"}, {"sort": 110270, "element_type_id": 11, "long_definition": null, "name": "MT", "active": true, "short_definition": "Montana"}, {"sort": 110280, "element_type_id": 11, "long_definition": null, "name": "NE", "active": true, "short_definition": "Nebraska"}, {"sort": 110290, "element_type_id": 11, "long_definition": null, "name": "NV", "active": true, "short_definition": "Nevada"}, {"sort": 110300, "element_type_id": 11, "long_definition": null, "name": "NH", "active": true, "short_definition": "New Hampshire"}, {"sort": 110310, "element_type_id": 11, "long_definition": null, "name": "NJ", "active": true, "short_definition": "New Jersey"}, {"sort": 110320, "element_type_id": 11, "long_definition": null, "name": "NM", "active": true, "short_definition": "New Mexico"}, {"sort": 110330, "element_type_id": 11, "long_definition": null, "name": "NY", "active": true, "short_definition": "New York"}, {"sort": 110340, "element_type_id": 11, "long_definition": null, "name": "NC", "active": true, "short_definition": "North Carolina"}, {"sort": 110350, "element_type_id": 11, "long_definition": null, "name": "ND", "active": true, "short_definition": "North Dakota"}, {"sort": 110360, "element_type_id": 11, "long_definition": null, "name": "OH", "active": true, "short_definition": "Ohio"}, {"sort": 110370, "element_type_id": 11, "long_definition": null, "name": "OK", "active": true, "short_definition": "Oklahoma"}, {"sort": 110380, "element_type_id": 11, "long_definition": null, "name": "OR", "active": true, "short_definition": "Oregon"}, {"sort": 110390, "element_type_id": 11, "long_definition": null, "name": "PA", "active": true, "short_definition": "Pennsylvania"}, {"sort": 110400, "element_type_id": 11, "long_definition": null, "name": "RI", "active": true, "short_definition": "Rhode Island"}, {"sort": 110410, "element_type_id": 11, "long_definition": null, "name": "SC", "active": true, "short_definition": "South Carolina"}, {"sort": 110420, "element_type_id": 11, "long_definition": null, "name": "SD", "active": true, "short_definition": "South Dakota"}, {"sort": 110430, "element_type_id": 11, "long_definition": null, "name": "TN", "active": true, "short_definition": "Tennessee"}, {"sort": 110440, "element_type_id": 11, "long_definition": null, "name": "TX", "active": true, "short_definition": "Texas"}, {"sort": 110450, "element_type_id": 11, "long_definition": null, "name": "UT", "active": true, "short_definition": "Utah"}, {"sort": 110460, "element_type_id": 11, "long_definition": null, "name": "VT", "active": true, "short_definition": "Vermont"}, {"sort": 110470, "element_type_id": 11, "long_definition": null, "name": "VA", "active": true, "short_definition": "Virginia"}, {"sort": 110480, "element_type_id": 11, "long_definition": null, "name": "WA", "active": true, "short_definition": "Washington"}, {"sort": 110490, "element_type_id": 11, "long_definition": null, "name": "WV", "active": true, "short_definition": "West Virginia"}, {"sort": 110500, "element_type_id": 11, "long_definition": null, "name": "WI", "active": true, "short_definition": "Wisconsin"}, {"sort": 110510, "element_type_id": 11, "long_definition": null, "name": "WY", "active": true, "short_definition": "Wyoming"}], "DatumGroup": [{"long_definition": null, "sort": 10, "name": "Area", "active": true, "short_definition": null}, {"long_definition": null, "sort": 20, "name": "Activity", "active": true, "short_definition": null}, {"long_definition": null, "sort": 30, "name": "Time", "active": true, "short_definition": null}, {"long_definition": null, "sort": 40, "name": "Item", "active": true, "short_definition": null}], "DatumType": [{"sort": 1010, "long_definition": null, "name": "Category", "active": true, "short_definition": null, "datum_group_id": 1}, {"sort": 1020, "long_definition": null, "name": "Project", "active": true, "short_definition": null, "datum_group_id": 1}, {"sort": 1030, "long_definition": null, "name": "Context", "active": true, "short_definition": null, "datum_group_id": 1}, {"sort": 1040, "long_definition": null, "name": "Person", "active": true, "short_definition": null, "datum_group_id": 1}, {"sort": 1050, "long_definition": null, "name": "Entity", "active": true, "short_definition": null, "datum_group_id": 1}, {"sort": 1060, "long_definition": null, "name": "Location", "active": true, "short_definition": null, "datum_group_id": 1}, {"sort": 1070, "long_definition": null, "name": "Contact", "active": true, "short_definition": null, "datum_group_id": 1}, {"sort": 2010, "long_definition": null, "name": "Action", "active": true, "short_definition": null, "datum_group_id": 2}, {"sort": 2020, "long_definition": null, "name": "Principle", "active": true, "short_definition": null, "datum_group_id": 2}, {"sort": 2030, "long_definition": null, "name": "Journal", "active": true, "short_definition": null, "datum_group_id": 2}, {"sort": 3010, "long_definition": null, "name": "Schedule", "active": true, "short_definition": null, "datum_group_id": 3}, {"sort": 3020, "long_definition": null, "name": "Event", "active": true, "short_definition": null, "datum_group_id": 3}, {"sort": 3030, "long_definition": null, "name": "Reminder", "active": true, "short_definition": null, "datum_group_id": 3}, {"sort": 4010, "long_definition": null, "name": "Note", "active": true, "short_definition": null, "datum_group_id": 4}, {"sort": 4020, "long_definition": null, "name": "File", "active": true, "short_definition": null, "datum_group_id": 4}, {"sort": 4030, "long_definition": null, "name": "Directory", "active": true, "short_definition": null, "datum_group_id": 4}, {"sort": 4040, "long_definition": null, "name": "Webpage", "active": true, "short_definition": null, "datum_group_id": 4}, {"sort": 4050, "long_definition": null, "name": "Message", "active": true, "short_definition": null, "datum_group_id": 4}, {"sort": 4060, "long_definition": null, "name": "Post", "active": true, "short_definition": null, "datum_group_id": 4}], "ElementValue": [{"datum_object_id": 1, "sort": 11010110, "element_type_id": 1, "element_option_id": null, "active": true, "element_value": "Personal"}, {"datum_object_id": 1, "sort": 11010120, "element_type_id": 2, "element_option_id": null, "active": true, "element_value": "What I do for me"}], "ElementType": [{"sort": 10, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Name", "active": true, "short_definition": null}, {"sort": 20, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Description", "active": true, "short_definition": null}, {"sort": 30, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "First Name", "active": true, "short_definition": null}, {"sort": 40, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Last Name", "active": true, "short_definition": null}, {"sort": 50, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Nickname", "active": true, "short_definition": null}, {"sort": 60, "data_type": "datetime", "long_definition": null, "extended_properties": null, "name": "Birthday", "active": true, "short_definition": null}, {"sort": 70, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Entity Type", "active": true, "short_definition": null}, {"sort": 80, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Street Address", "active": true, "short_definition": null}, {"sort": 90, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "City", "active": true, "short_definition": null}, {"sort": 100, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "State", "active": true, "short_definition": null}, {"sort": 110, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Zip", "active": true, "short_definition": null}, {"sort": 120, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Country", "active": true, "short_definition": null}, {"sort": 130, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Latitude", "active": true, "short_definition": null}, {"sort": 140, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Longitude", "active": true, "short_definition": null}, {"sort": 150, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Phone", "active": true, "short_definition": null}, {"sort": 160, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Email", "active": true, "short_definition": null}, {"sort": 170, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Website", "active": true, "short_definition": null}, {"sort": 180, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Facebook", "active": true, "short_definition": null}, {"sort": 190, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "LinkedIn", "active": true, "short_definition": null}, {"sort": 200, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Twitter", "active": true, "short_definition": null}, {"sort": 210, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Action Status", "active": true, "short_definition": null}, {"sort": 220, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Action Effort", "active": true, "short_definition": null}, {"sort": 230, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Schedule Type", "active": true, "short_definition": null}, {"sort": 240, "data_type": "link", "long_definition": null, "extended_properties": null, "name": "Schedule", "active": true, "short_definition": null}, {"sort": 250, "data_type": "datetime", "long_definition": null, "extended_properties": null, "name": "Beginning Buffer", "active": true, "short_definition": null}, {"sort": 260, "data_type": "datetime", "long_definition": null, "extended_properties": null, "name": "Beginning Event", "active": true, "short_definition": null}, {"sort": 270, "data_type": "datetime", "long_definition": null, "extended_properties": null, "name": "Ending Event", "active": true, "short_definition": null}, {"sort": 280, "data_type": "datetime", "long_definition": null, "extended_properties": null, "name": "Ending Buffer", "active": true, "short_definition": null}, {"sort": 290, "data_type": "float", "long_definition": null, "extended_properties": null, "name": "Event Time", "active": true, "short_definition": null}, {"sort": 300, "data_type": "float", "long_definition": null, "extended_properties": null, "name": "Total Time", "active": true, "short_definition": null}, {"sort": 310, "data_type": "json", "long_definition": null, "extended_properties": null, "name": "Recurring Options", "active": true, "short_definition": null}, {"sort": 320, "data_type": "datetime", "long_definition": null, "extended_properties": null, "name": "Alert", "active": true, "short_definition": null}, {"sort": 330, "data_type": "boolean", "long_definition": null, "extended_properties": null, "name": "Logged In", "active": true, "short_definition": null}, {"sort": 340, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Item Status", "active": true, "short_definition": null}, {"sort": 350, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "Item Content", "active": true, "short_definition": null}, {"sort": 360, "data_type": "link", "long_definition": null, "extended_properties": null, "name": "Data Source", "active": true, "short_definition": null}, {"sort": 370, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "From", "active": true, "short_definition": null}, {"sort": 380, "data_type": "string", "long_definition": null, "extended_properties": null, "name": "To", "active": true, "short_definition": null}], "DatumObject": [{"datum_type_id": 1, "creation_date": null, "sort": 110101, "active": true, "user_id": 1}, {"datum_type_id": 2, "creation_date": null, "sort": 110201, "active": true, "user_id": 1}, {"datum_type_id": 3, "creation_date": null, "sort": 110301, "active": true, "user_id": 1}], "User": [{"password": "1234", "email": "test@example.com", "username": "test"}]}
+{
+  "ElementType": [
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Name",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 10
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Description",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 20
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "First Name",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 30
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Last Name",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 40
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Nickname",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 50
+    },
+    {
+      "long_definition": null,
+      "data_type": "datetime",
+      "name": "Birthday",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 60
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Entity Type",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 70
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Street Address",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 80
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "City",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 90
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "State",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 100
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Zip",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 110
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Country",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 120
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Latitude",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 130
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Longitude",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 140
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Phone",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 150
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Email",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 160
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Website",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 170
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Facebook",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 180
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "LinkedIn",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 190
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Twitter",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 200
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Action Status",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 210
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Action Effort",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 220
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Schedule Type",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 230
+    },
+    {
+      "long_definition": null,
+      "data_type": "link",
+      "name": "Schedule",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 240
+    },
+    {
+      "long_definition": null,
+      "data_type": "datetime",
+      "name": "Beginning Buffer",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 250
+    },
+    {
+      "long_definition": null,
+      "data_type": "datetime",
+      "name": "Beginning Event",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 260
+    },
+    {
+      "long_definition": null,
+      "data_type": "datetime",
+      "name": "Ending Event",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 270
+    },
+    {
+      "long_definition": null,
+      "data_type": "datetime",
+      "name": "Ending Buffer",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 280
+    },
+    {
+      "long_definition": null,
+      "data_type": "float",
+      "name": "Event Time",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 290
+    },
+    {
+      "long_definition": null,
+      "data_type": "float",
+      "name": "Total Time",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 300
+    },
+    {
+      "long_definition": null,
+      "data_type": "json",
+      "name": "Recurring Options",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 310
+    },
+    {
+      "long_definition": null,
+      "data_type": "datetime",
+      "name": "Alert",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 320
+    },
+    {
+      "long_definition": null,
+      "data_type": "boolean",
+      "name": "Logged In",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 330
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Item Status",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 340
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "Item Content",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 350
+    },
+    {
+      "long_definition": null,
+      "data_type": "link",
+      "name": "Data Source",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 360
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "From",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 370
+    },
+    {
+      "long_definition": null,
+      "data_type": "string",
+      "name": "To",
+      "short_definition": null,
+      "extended_properties": null,
+      "active": true,
+      "sort": 380
+    }
+  ],
+  "DatumType": [
+    {
+      "long_definition": null,
+      "name": "Category",
+      "short_definition": null,
+      "datum_group_id": 1,
+      "active": true,
+      "sort": 1010
+    },
+    {
+      "long_definition": null,
+      "name": "Project",
+      "short_definition": null,
+      "datum_group_id": 1,
+      "active": true,
+      "sort": 1020
+    },
+    {
+      "long_definition": null,
+      "name": "Context",
+      "short_definition": null,
+      "datum_group_id": 1,
+      "active": true,
+      "sort": 1030
+    },
+    {
+      "long_definition": null,
+      "name": "Person",
+      "short_definition": null,
+      "datum_group_id": 1,
+      "active": true,
+      "sort": 1040
+    },
+    {
+      "long_definition": null,
+      "name": "Entity",
+      "short_definition": null,
+      "datum_group_id": 1,
+      "active": true,
+      "sort": 1050
+    },
+    {
+      "long_definition": null,
+      "name": "Location",
+      "short_definition": null,
+      "datum_group_id": 1,
+      "active": true,
+      "sort": 1060
+    },
+    {
+      "long_definition": null,
+      "name": "Contact",
+      "short_definition": null,
+      "datum_group_id": 1,
+      "active": true,
+      "sort": 1070
+    },
+    {
+      "long_definition": null,
+      "name": "Action",
+      "short_definition": null,
+      "datum_group_id": 2,
+      "active": true,
+      "sort": 2010
+    },
+    {
+      "long_definition": null,
+      "name": "Principle",
+      "short_definition": null,
+      "datum_group_id": 2,
+      "active": true,
+      "sort": 2020
+    },
+    {
+      "long_definition": null,
+      "name": "Journal",
+      "short_definition": null,
+      "datum_group_id": 2,
+      "active": true,
+      "sort": 2030
+    },
+    {
+      "long_definition": null,
+      "name": "Schedule",
+      "short_definition": null,
+      "datum_group_id": 3,
+      "active": true,
+      "sort": 3010
+    },
+    {
+      "long_definition": null,
+      "name": "Event",
+      "short_definition": null,
+      "datum_group_id": 3,
+      "active": true,
+      "sort": 3020
+    },
+    {
+      "long_definition": null,
+      "name": "Reminder",
+      "short_definition": null,
+      "datum_group_id": 3,
+      "active": true,
+      "sort": 3030
+    },
+    {
+      "long_definition": null,
+      "name": "Note",
+      "short_definition": null,
+      "datum_group_id": 4,
+      "active": true,
+      "sort": 4010
+    },
+    {
+      "long_definition": null,
+      "name": "File",
+      "short_definition": null,
+      "datum_group_id": 4,
+      "active": true,
+      "sort": 4020
+    },
+    {
+      "long_definition": null,
+      "name": "Directory",
+      "short_definition": null,
+      "datum_group_id": 4,
+      "active": true,
+      "sort": 4030
+    },
+    {
+      "long_definition": null,
+      "name": "Webpage",
+      "short_definition": null,
+      "datum_group_id": 4,
+      "active": true,
+      "sort": 4040
+    },
+    {
+      "long_definition": null,
+      "name": "Message",
+      "short_definition": null,
+      "datum_group_id": 4,
+      "active": true,
+      "sort": 4050
+    },
+    {
+      "long_definition": null,
+      "name": "Post",
+      "short_definition": null,
+      "datum_group_id": 4,
+      "active": true,
+      "sort": 4060
+    }
+  ],
+  "User": [
+    {
+      "email": "test@example.com",
+      "password": "1234",
+      "username": "test"
+    }
+  ],
+  "DatumGroup": [
+    {
+      "name": "Area",
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 10
+    },
+    {
+      "name": "Activity",
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 20
+    },
+    {
+      "name": "Time",
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 30
+    },
+    {
+      "name": "Item",
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 40
+    }
+  ],
+  "ElementValue": [
+    {
+      "active": true,
+      "element_type_id": 1,
+      "element_value": "Personal",
+      "element_option_id": null,
+      "sort": 11010110,
+      "datum_object_id": 1
+    },
+    {
+      "active": true,
+      "element_type_id": 2,
+      "element_value": "What I do for me",
+      "element_option_id": null,
+      "sort": 11010120,
+      "datum_object_id": 1
+    }
+  ],
+  "ElementOption": [
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 8,
+      "name": "Business",
+      "sort": 8010
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 8,
+      "name": "Non-Profit",
+      "sort": 8020
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 8,
+      "name": "Education",
+      "sort": 8030
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 8,
+      "name": "Food",
+      "sort": 8040
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 8,
+      "name": "Service",
+      "sort": 8050
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 8,
+      "name": "Cultural",
+      "sort": 8060
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 8,
+      "name": "Religious",
+      "sort": 8070
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 8,
+      "name": "Government",
+      "sort": 8080
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 8,
+      "name": "Social",
+      "sort": 8090
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 11,
+      "name": "Other",
+      "sort": 11010
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Alabama",
+      "element_type_id": 11,
+      "name": "AL",
+      "sort": 11020
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Alaska",
+      "element_type_id": 11,
+      "name": "AK",
+      "sort": 11030
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Arizona",
+      "element_type_id": 11,
+      "name": "AZ",
+      "sort": 11040
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Arkansas",
+      "element_type_id": 11,
+      "name": "AR",
+      "sort": 11050
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "California",
+      "element_type_id": 11,
+      "name": "CA",
+      "sort": 11060
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Colorado",
+      "element_type_id": 11,
+      "name": "CO",
+      "sort": 11070
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Connecticut",
+      "element_type_id": 11,
+      "name": "CT",
+      "sort": 11080
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Delaware",
+      "element_type_id": 11,
+      "name": "DE",
+      "sort": 11090
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Other Country",
+      "element_type_id": 13,
+      "name": "Other",
+      "sort": 13010
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "United States",
+      "element_type_id": 13,
+      "name": "USA",
+      "sort": 13020
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 22,
+      "name": "New",
+      "sort": 22010
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 22,
+      "name": "Someday",
+      "sort": 22020
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 22,
+      "name": "Upcoming",
+      "sort": 22030
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 22,
+      "name": "Current",
+      "sort": 22040
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 22,
+      "name": "In Progress",
+      "sort": 22050
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 22,
+      "name": "Complete",
+      "sort": 22060
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 22,
+      "name": "Waiting For",
+      "sort": 22070
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Very Easy",
+      "element_type_id": 23,
+      "name": "1",
+      "sort": 23010
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Easy",
+      "element_type_id": 23,
+      "name": "2",
+      "sort": 23020
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Neither Easy or Hard",
+      "element_type_id": 23,
+      "name": "3",
+      "sort": 23030
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Hard",
+      "element_type_id": 23,
+      "name": "4",
+      "sort": 23040
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Very Hard",
+      "element_type_id": 23,
+      "name": "5",
+      "sort": 23050
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 24,
+      "name": "Actual",
+      "sort": 24010
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 24,
+      "name": "Planned",
+      "sort": 24020
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 32,
+      "name": "Placeholder",
+      "sort": 32010
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 35,
+      "name": "New",
+      "sort": 35010
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 35,
+      "name": "Start",
+      "sort": 35020
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 35,
+      "name": "Working",
+      "sort": 35030
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 35,
+      "name": "Edit",
+      "sort": 35040
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": null,
+      "element_type_id": 35,
+      "name": "Complete",
+      "sort": 35050
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Florida",
+      "element_type_id": 11,
+      "name": "FL",
+      "sort": 110100
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Georgia",
+      "element_type_id": 11,
+      "name": "GA",
+      "sort": 110110
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Hawaii",
+      "element_type_id": 11,
+      "name": "HI",
+      "sort": 110120
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Idaho",
+      "element_type_id": 11,
+      "name": "ID",
+      "sort": 110130
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Illinois",
+      "element_type_id": 11,
+      "name": "IL",
+      "sort": 110140
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Indiana",
+      "element_type_id": 11,
+      "name": "IN",
+      "sort": 110150
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Iowa",
+      "element_type_id": 11,
+      "name": "IA",
+      "sort": 110160
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Kansas",
+      "element_type_id": 11,
+      "name": "KS",
+      "sort": 110170
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Kentucky",
+      "element_type_id": 11,
+      "name": "KY",
+      "sort": 110180
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Louisiana",
+      "element_type_id": 11,
+      "name": "LA",
+      "sort": 110190
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Maine",
+      "element_type_id": 11,
+      "name": "ME",
+      "sort": 110200
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Maryland",
+      "element_type_id": 11,
+      "name": "MD",
+      "sort": 110210
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Massachusetts",
+      "element_type_id": 11,
+      "name": "MA",
+      "sort": 110220
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Michigan",
+      "element_type_id": 11,
+      "name": "MI",
+      "sort": 110230
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Minnesota",
+      "element_type_id": 11,
+      "name": "MN",
+      "sort": 110240
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Mississippi",
+      "element_type_id": 11,
+      "name": "MS",
+      "sort": 110250
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Missouri",
+      "element_type_id": 11,
+      "name": "MO",
+      "sort": 110260
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Montana",
+      "element_type_id": 11,
+      "name": "MT",
+      "sort": 110270
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Nebraska",
+      "element_type_id": 11,
+      "name": "NE",
+      "sort": 110280
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Nevada",
+      "element_type_id": 11,
+      "name": "NV",
+      "sort": 110290
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "New Hampshire",
+      "element_type_id": 11,
+      "name": "NH",
+      "sort": 110300
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "New Jersey",
+      "element_type_id": 11,
+      "name": "NJ",
+      "sort": 110310
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "New Mexico",
+      "element_type_id": 11,
+      "name": "NM",
+      "sort": 110320
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "New York",
+      "element_type_id": 11,
+      "name": "NY",
+      "sort": 110330
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "North Carolina",
+      "element_type_id": 11,
+      "name": "NC",
+      "sort": 110340
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "North Dakota",
+      "element_type_id": 11,
+      "name": "ND",
+      "sort": 110350
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Ohio",
+      "element_type_id": 11,
+      "name": "OH",
+      "sort": 110360
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Oklahoma",
+      "element_type_id": 11,
+      "name": "OK",
+      "sort": 110370
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Oregon",
+      "element_type_id": 11,
+      "name": "OR",
+      "sort": 110380
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Pennsylvania",
+      "element_type_id": 11,
+      "name": "PA",
+      "sort": 110390
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Rhode Island",
+      "element_type_id": 11,
+      "name": "RI",
+      "sort": 110400
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "South Carolina",
+      "element_type_id": 11,
+      "name": "SC",
+      "sort": 110410
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "South Dakota",
+      "element_type_id": 11,
+      "name": "SD",
+      "sort": 110420
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Tennessee",
+      "element_type_id": 11,
+      "name": "TN",
+      "sort": 110430
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Texas",
+      "element_type_id": 11,
+      "name": "TX",
+      "sort": 110440
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Utah",
+      "element_type_id": 11,
+      "name": "UT",
+      "sort": 110450
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Vermont",
+      "element_type_id": 11,
+      "name": "VT",
+      "sort": 110460
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Virginia",
+      "element_type_id": 11,
+      "name": "VA",
+      "sort": 110470
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Washington",
+      "element_type_id": 11,
+      "name": "WA",
+      "sort": 110480
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "West Virginia",
+      "element_type_id": 11,
+      "name": "WV",
+      "sort": 110490
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Wisconsin",
+      "element_type_id": 11,
+      "name": "WI",
+      "sort": 110500
+    },
+    {
+      "long_definition": null,
+      "active": true,
+      "short_definition": "Wyoming",
+      "element_type_id": 11,
+      "name": "WY",
+      "sort": 110510
+    }
+  ],
+  "DatumObject": [
+    {
+      "user_id": 1,
+      "active": true,
+      "sort": 110101,
+      "datum_type_id": 1
+    },
+    {
+      "user_id": 1,
+      "active": true,
+      "sort": 110201,
+      "datum_type_id": 2
+    },
+    {
+      "user_id": 1,
+      "active": true,
+      "sort": 110301,
+      "datum_type_id": 3
+    }
+  ]
+}

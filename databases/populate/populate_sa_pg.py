@@ -36,7 +36,7 @@ def sqlalchemy_json_dump(classes, json_file_name):
             for datum_group in model_data:
                 row = {}
                 for col in cls.__table__.c:
-                    if not col.primary_key:
+                    if not col.primary_key and col.name is not "creation_date":
                         row[col.name] = getattr(datum_group, col.name)
                 rows.append(row)
 
