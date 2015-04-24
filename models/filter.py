@@ -126,7 +126,7 @@ class FilterRuleMixin(SortActiveMixin):
         conditional (string, nullable): And, Or
     """
 
-    operator = Column(String(5), default="=")
+    operator = Column(String(5), server_default="=")
     conditional = Column(String(3), nullable=True)
 
 
@@ -187,7 +187,7 @@ class FilterRuleAssociation(FilterRuleMixin, Base):
                                  ForeignKey("association_type.association_type_id"),
                                  nullable=False
                                  )
-    depth = Column(Integer, default=1, nullable=False)
+    depth = Column(Integer, server_default="1", nullable=False)
 
 
 class FilterRuleElement(FilterRuleMixin, Base):

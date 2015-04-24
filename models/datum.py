@@ -78,7 +78,7 @@ class DatumObject(SortActiveMixin, Base):
                            ForeignKey("datum_type.datum_type_id"),
                            nullable=False
                            )
-    creation_date = Column(DateTime, default=datetime.now())
+    creation_date = Column(DateTime, server_default="current_timestamp")
 
     element_values = relationship("ElementValue", backref="datum_object")
     parent_associations = relationship("AssociationObject",
@@ -242,7 +242,7 @@ class AssociationObject(Base):
 
     parent_datum_id = Column(Integer, ForeignKey("datum_object.datum_object_id"), primary_key=True)
     child_datum_id = Column(Integer, ForeignKey("datum_object.datum_object_id"), primary_key=True)
-    depth = Column(Integer, default=0)
+    depth = Column(Integer, server_default="0")
     association_type_id = Column(Integer,
                                  ForeignKey("association_type.association_type_id"),
                                  nullable=False

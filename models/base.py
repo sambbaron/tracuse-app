@@ -14,8 +14,8 @@ class SortActiveMixin(object):
         sort (integer, indexed)
         active (boolean, indexed)
     """
-    sort = Column(Integer, default=0, index=True)
-    active = Column(Boolean, default=True, index=True)
+    sort = Column(Integer, server_default="0", index=True)
+    active = Column(Boolean, server_default="True", index=True)
 
 
 class DefinitionMixin(SortActiveMixin):
