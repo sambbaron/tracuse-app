@@ -1,8 +1,8 @@
 """SQLAlchemy Models for Datum Filter-related entities"""
 
 from sqlalchemy import Column
-from sqlalchemy import ForeignKey, Integer, String, SmallInteger, Boolean
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy import ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declared_attr
 
 from databases.postgres import Base

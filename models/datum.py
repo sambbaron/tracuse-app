@@ -1,14 +1,11 @@
 """SQLAlchemy Models for Datum-related entities"""
 
-from datetime import datetime
-
 from sqlalchemy import Column, Index
 from sqlalchemy import ForeignKey, Integer, String, DateTime, text
-from sqlalchemy.orm import relationship, backref
-from sqlalchemy.ext.hybrid import hybrid_property
+from sqlalchemy.orm import relationship
 
 from databases.postgres import Base
-from models import filter, user
+from models import filter, user  # Do not delete, needed for relationships
 from models.base import DefinitionMixin, SortActiveMixin
 
 
