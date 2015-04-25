@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'common',
-    'user',
+    'tracuser',
     'datum',
     'element',
     'association',
