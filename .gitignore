@@ -65,8 +65,4 @@ target/
 
 # OrientDB/Graph files
 */orientdb.py
-databases/populate/populate_orientdb.py
 *orientdbutils/
-
-# Other Files
-sandbox.py
