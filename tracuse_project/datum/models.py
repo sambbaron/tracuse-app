@@ -1,12 +1,7 @@
-import sys
 
 from django.db import models
 
-try:
-    from common import mixins
-except ImportError:
-    from ..common import mixins
-
+from common import mixins
 
 class DatumGroup(mixins.DefinitionMixin):
     """Collection of Datum Types
