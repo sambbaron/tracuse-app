@@ -75,7 +75,8 @@ class ElementOption(EntityMixin):
         db_table = "element_option"
 
     element_option_id = models.AutoField(primary_key=True)
-    EntityMixin.entity_name.unique = False
+    # FIXME Django Limitation - Can't override field property from Abstract Mixin Class
+    # FIXME Django Limitation - Change 'entity_name' unique false
     element_type = models.ForeignKey("ElementType",
                                      db_column="element_type_id",
                                      null=False, blank=False
