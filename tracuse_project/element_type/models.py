@@ -3,8 +3,7 @@ from django.db import models
 from common.mixins import EntityMixin
 from datum.models import DatumType
 
-
-class DataType(EntityMixin):
+class ElementDataType(EntityMixin):
     """Data types available to Elements
 
     Mapped to element value tables and presentation formatting
@@ -18,7 +17,9 @@ class DataType(EntityMixin):
     """
 
     class Meta(EntityMixin.Meta):
-        db_table = "data_type"
+        db_table = "element_data_type"
+
+    element_data_type_id = models.AutoField(primary_key=True)
 
     html_tag = models.CharField(max_length=10)
 
@@ -49,7 +50,7 @@ class ElementType(EntityMixin):
 
     element_type_id = models.AutoField(primary_key=True)
 
-    data_type = models.ForeignKey("DataType",
+    data_type = models.ForeignKey("ElementDataType",
                                   db_column="data_type_id",
                                   null=False, blank=False
                                   )
