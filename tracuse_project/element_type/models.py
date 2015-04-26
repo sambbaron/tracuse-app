@@ -49,8 +49,8 @@ class ElementType(EntityMixin):
 
     element_type_id = models.AutoField(primary_key=True)
 
-    data_type = models.ForeignKey("ElementDataType",
-                                  db_column="data_type_id",
+    element_data_type = models.ForeignKey("ElementDataType",
+                                  db_column="element_data_type_id",
                                   null=False, blank=False
                                   )
     default_expression = models.CharField(max_length=255,
