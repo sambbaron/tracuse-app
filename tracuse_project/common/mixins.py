@@ -14,8 +14,12 @@ class SortActiveMixin(models.Model):
     class Meta:
         abstract = True
 
-    sort = models.IntegerField(default=0, db_index=True)
-    active = models.BooleanField(default=True, db_index=True)
+    sort = models.IntegerField(default=0,
+                               db_default="0",
+                               db_index=True)
+    active = models.BooleanField(default=True,
+                                 db_default="True",
+                                 db_index=True)
 
 
 class DefinitionMixin(SortActiveMixin):
@@ -31,7 +35,12 @@ class DefinitionMixin(SortActiveMixin):
     class Meta:
         abstract = True
     #TODO problem with unique name and element option values
-    name = models.CharField(max_length=25, unique=False, null=False, default="", db_index=True)
+    name = models.CharField(max_length=25,
+                            default="",
+                            unique=False,
+                            null=False,
+                            db_index=True,
+                            blank=False)
     short_definition = models.CharField(max_length=25, null=True, blank=True)
     long_definition = models.CharField(max_length=100, null=True, blank=True)
 
