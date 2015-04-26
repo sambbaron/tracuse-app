@@ -6,22 +6,21 @@ from datum.models import DatumType
 class ElementDataType(EntityMixin):
     """Data types available to Elements
 
-    Mapped to element value tables and presentation formatting
+    Mapped to element value tables
+
+    FUTURE: Possible presentation formatting properties
 
     Attributes:
         element_class (string, calculated):
             "Element" + data type entity name --> ElementString
         element_table (string, calculated): Element value table name
             "Element" + data type schema name --> element_string
-        html_tag (string): HTML form input tag for data type
     """
 
     class Meta(EntityMixin.Meta):
         db_table = "element_data_type"
 
     element_data_type_id = models.AutoField(primary_key=True)
-
-    html_tag = models.CharField(max_length=10)
 
     @property
     def element_class(self):
