@@ -1,6 +1,6 @@
 from django.db import models
 
-from common.mixins import EntityMixin
+from common.mixins import EntityMixin, BaseMixin
 from datum.models import DatumType
 
 class ElementDataType(EntityMixin):
@@ -82,7 +82,7 @@ class ElementOption(EntityMixin):
                                      )
 
 
-class ElementTypeDatumType(EntityMixin):
+class ElementTypeDatumType(BaseMixin):
     """Default Element Types assigned to Datum Types
 
     Used at Datum creation - Added to element_value table
@@ -92,7 +92,7 @@ class ElementTypeDatumType(EntityMixin):
             element_type_id (integer, fk, pk): ElementType
     """
 
-    class Meta(EntityMixin.Meta):
+    class Meta(BaseMixin.Meta):
         db_table = "element_type_datum_type"
         unique_together = ("datum_type", "element_type")
         index_together = ("datum_type", "element_type")
