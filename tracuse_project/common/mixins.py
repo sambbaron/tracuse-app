@@ -1,14 +1,19 @@
+
+from datetime import datetime
+
 from django.db import models
 
 from .utils import camel_to_underscore, camel_to_spaced_lower, camel_to_spaced_capital
 
 
-class SortActiveMixin(models.Model):
-    """Adds Sort and Active columns
+class BaseMixin(models.Model):
+    """Adds default column set
 
     Attributes:
         sort (integer, indexed)
         active (boolean, indexed)
+        created (datetime): Timestamp at row insertion
+        modified (datetime): Timestamp at row update
     """
 
     class Meta:
@@ -20,13 +25,15 @@ class SortActiveMixin(models.Model):
     active = models.BooleanField(default=True,
                                  db_index=True
                                  )
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
 
-class EntityMixin(SortActiveMixin):
+class EntityMixin(BaseMixin):
     """Common properties for models that define an entity
 
     Attributes:
-        See SortActiveMixin
+        See BaseMixin
         entity_name (string, required, unique, indexed):
             CamelCase entity name --> ItemStatus
             Used for class mapping

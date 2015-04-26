@@ -11,7 +11,7 @@ class DatumGroup(mixins.EntityMixin):
     Has common functional uses
 
     Attributes:
-        See EntityMixin (includes SortActiveMixin)
+        See EntityMixin (includes BaseMixin)
     """
 
     class Meta(mixins.EntityMixin.Meta):
@@ -26,7 +26,7 @@ class DatumType(mixins.EntityMixin):
     Has common functional use and properties (elements)
 
     Attributes:
-        See EntityMixin (includes SortActiveMixin)
+        See EntityMixin (includes BaseMixin)
         datum_group_id (integer, fk, required): DatumGroup
         repr_expression (string): Expression that results in
             representation string, can reference element types
@@ -48,20 +48,20 @@ class DatumType(mixins.EntityMixin):
                                        )
 
 
-class DatumObject(mixins.SortActiveMixin):
+class DatumObject(mixins.BaseMixin):
     """Primary personal information data object
 
     Node/Vertex in graph
     Has Datum Type which defines properties (elements)
 
     Attributes:
-        See SortActiveMixin
+        See BaseMixin
         user_id (integer, fk, required): User
         datum_type_id (integer, fk, required): DatumType
         creation_date (datetime)
     """
 
-    class Meta(mixins.SortActiveMixin.Meta):
+    class Meta(mixins.BaseMixin.Meta):
         db_table = "datum_object"
 
     datum_object_id = models.AutoField(primary_key=True)
@@ -76,7 +76,7 @@ class DatumObject(mixins.SortActiveMixin):
                                    null=False, blank=False,
                                    db_index=True
                                    )
-    creation_date = models.DateTimeField(auto_now_add=True)
+
 
     # TODO Property for associated Datums
     # TODO Property with element data
