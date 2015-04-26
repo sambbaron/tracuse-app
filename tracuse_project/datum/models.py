@@ -2,10 +2,10 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-from common import mixins
+from common.mixins import EntityMixin
 
 
-class DatumGroup(mixins.EntityMixin):
+class DatumGroup(EntityMixin):
     """Collection of Datum Types
 
     Has common functional uses
@@ -14,13 +14,13 @@ class DatumGroup(mixins.EntityMixin):
         See EntityMixin (includes BaseMixin)
     """
 
-    class Meta(mixins.EntityMixin.Meta):
+    class Meta(EntityMixin.Meta):
         db_table = "datum_group"
 
     datum_group_id = models.AutoField(primary_key=True)
 
 
-class DatumType(mixins.EntityMixin):
+class DatumType(EntityMixin):
     """Type of Datum Objects
 
     Has common functional use and properties (elements)
@@ -33,7 +33,7 @@ class DatumType(mixins.EntityMixin):
             --> !name + " " + !description
     """
 
-    class Meta(mixins.EntityMixin.Meta):
+    class Meta(EntityMixin.Meta):
         db_table = "datum_type"
 
     datum_type_id = models.AutoField(primary_key=True)
