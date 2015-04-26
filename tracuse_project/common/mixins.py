@@ -25,8 +25,10 @@ class BaseMixin(models.Model):
     active = models.BooleanField(default=True,
                                  db_index=True
                                  )
-    created = models.DateTimeField(default=datetime.now)
-    modified = models.DateTimeField(auto_now=True)
+    # TODO Add columns when schema is more stable
+    # FIXME Django Limitation - Can't do DEFAULT SQL statement
+    # created = models.DateTimeField(default=datetime.now)
+    # modified = models.DateTimeField(auto_now=True)
 
 
 class EntityMixin(BaseMixin):
