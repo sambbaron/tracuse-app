@@ -1,25 +1,39 @@
+"""String Manipulation Utilities for Entities"""
 
-
-def camel_to_underscore(camel_string):
-
+def camel_to_common(camel_string):
     output = ""
 
     if camel_string:
         for letter in camel_string:
-            if letter.isupper():
-                output += "_" + letter.lower()
+            prior_letter = camel_string[camel_string.index(letter) - 1]
+            if letter.isupper() and prior_letter is not " ":
+                output += " " + letter.lower()
             else:
-                output += letter
+                output += letter.lower()
 
-        output = output.replace(" ", "")
-
-        if output[0] == "_":
+        if output[0] == " ":
             output = output[1:]
 
     return output
 
-# tests = ["First Name", "FirstName", "firstName", "First", "firstname"]
-#
-# for test in tests:
-#     result = camel_to_underscore(test)
-#     print("{} --> {}".format(test, result))
+
+def camel_to_underscore(camel_string):
+    output = ""
+
+    common_string = camel_to_common(camel_string)
+
+    output = common_string.replace(" ", "_")
+
+    return output
+
+
+if __name__ == "__main__":
+    # Tests
+
+    functions = [camel_to_common, camel_to_underscore]
+    tests = ["First Name", "FirstName", "firstName", "First", "firstname", "FIRSTNAME"]
+
+    for test in tests:
+        for function in functions:
+            result = function(test)
+            print("{} >>> {} >>> {}".format(test, function.__name__, result))
