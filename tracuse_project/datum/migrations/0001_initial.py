@@ -17,10 +17,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('sort', models.IntegerField(db_index=True, default=0)),
                 ('active', models.BooleanField(db_index=True, default=True)),
-                ('name', models.CharField(db_index=True, default='', max_length=25)),
-                ('short_definition', models.CharField(null=True, max_length=25, blank=True)),
-                ('long_definition', models.CharField(null=True, max_length=100, blank=True)),
-                ('datum_group_id', models.AutoField(primary_key=True, serialize=False)),
+                ('entity_name', models.CharField(db_index=True, max_length=25, default='')),
+                ('short_definition', models.CharField(null=True, blank=True, max_length=25)),
+                ('long_definition', models.CharField(null=True, blank=True, max_length=100)),
+                ('datum_group_id', models.AutoField(serialize=False, primary_key=True)),
             ],
             options={
                 'db_table': 'datum_group',
@@ -32,8 +32,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('sort', models.IntegerField(db_index=True, default=0)),
                 ('active', models.BooleanField(db_index=True, default=True)),
-                ('datum_object_id', models.AutoField(primary_key=True, serialize=False)),
-                ('creation_date', models.DateTimeField(auto_now_add=True)),
+                ('datum_object_id', models.AutoField(serialize=False, primary_key=True)),
             ],
             options={
                 'db_table': 'datum_object',
@@ -45,11 +44,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('sort', models.IntegerField(db_index=True, default=0)),
                 ('active', models.BooleanField(db_index=True, default=True)),
-                ('name', models.CharField(db_index=True, default='', max_length=25)),
-                ('short_definition', models.CharField(null=True, max_length=25, blank=True)),
-                ('long_definition', models.CharField(null=True, max_length=100, blank=True)),
-                ('datum_type_id', models.AutoField(primary_key=True, serialize=False)),
-                ('datum_group', models.ForeignKey(db_column='datum_group_id', to='datum.DatumGroup')),
+                ('entity_name', models.CharField(db_index=True, max_length=25, default='')),
+                ('short_definition', models.CharField(null=True, blank=True, max_length=25)),
+                ('long_definition', models.CharField(null=True, blank=True, max_length=100)),
+                ('datum_type_id', models.AutoField(serialize=False, primary_key=True)),
+                ('repr_expression', models.CharField(max_length=255)),
+                ('datum_group', models.ForeignKey(to='datum.DatumGroup', db_column='datum_group_id')),
             ],
             options={
                 'db_table': 'datum_type',
@@ -59,11 +59,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='datumobject',
             name='datum_type',
-            field=models.ForeignKey(db_column='datum_type_id', to='datum.DatumType'),
+            field=models.ForeignKey(to='datum.DatumType', db_column='datum_type_id'),
         ),
         migrations.AddField(
             model_name='datumobject',
             name='user',
-            field=models.ForeignKey(db_column='user_id', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(to=settings.AUTH_USER_MODEL, db_column='user_id'),
         ),
     ]
