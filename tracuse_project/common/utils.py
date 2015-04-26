@@ -1,6 +1,9 @@
 """String Manipulation Utilities for Entities"""
 
-def camel_to_common(camel_string):
+from string import capwords
+
+
+def camel_to_spaced_lower(camel_string):
     output = ""
 
     if camel_string:
@@ -17,10 +20,20 @@ def camel_to_common(camel_string):
     return output
 
 
+def camel_to_spaced_capital(camel_string):
+    output = ""
+
+    common_string = camel_to_spaced_lower(camel_string)
+
+    output = capwords(common_string, " ")
+
+    return output
+
+
 def camel_to_underscore(camel_string):
     output = ""
 
-    common_string = camel_to_common(camel_string)
+    common_string = camel_to_spaced_lower(camel_string)
 
     output = common_string.replace(" ", "_")
 
@@ -30,7 +43,7 @@ def camel_to_underscore(camel_string):
 if __name__ == "__main__":
     # Tests
 
-    functions = [camel_to_common, camel_to_underscore]
+    functions = [camel_to_spaced_lower, camel_to_underscore, camel_to_spaced_capital]
     tests = ["First Name", "FirstName", "firstName", "First", "firstname", "FIRSTNAME"]
 
     for test in tests:
