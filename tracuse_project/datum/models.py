@@ -1,4 +1,3 @@
-
 from django.db import models
 
 from django.contrib.auth.models import User
@@ -56,6 +55,7 @@ class DatumObject(mixins.SortActiveMixin):
         datum_type_id (integer, fk, required): DatumType
         creation_date (datetime)
     """
+
     class Meta(mixins.SortActiveMixin.Meta):
         db_table = "datum_object"
 
@@ -73,9 +73,7 @@ class DatumObject(mixins.SortActiveMixin):
                                    db_index=True,
                                    blank=False
                                    )
-    creation_date = models.DateTimeField(auto_now_add=True,
-                                         db_default="CURRENT_TIMESTAMP"
-                                         )
+    creation_date = models.DateTimeField(auto_now_add=True)
 
     #TODO Property for associated Datums
     #TODO Property with element data

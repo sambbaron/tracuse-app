@@ -15,10 +15,8 @@ class SortActiveMixin(models.Model):
         abstract = True
 
     sort = models.IntegerField(default=0,
-                               db_default="0",
                                db_index=True)
     active = models.BooleanField(default=True,
-                                 db_default="True",
                                  db_index=True)
 
 
