@@ -95,13 +95,17 @@ class ElementTypeDatumType(EntityMixin):
 
     class Meta(EntityMixin.Meta):
         db_table = "element_type_datum_type"
+        unique_together = ("datum_type", "element_type")
+        index_together = ("datum_type", "element_type")
 
-    datum_type = models.ForeignKey("DatumType",
+    # FIXME Django Limitation - composite primary keys
+    element_type_datum_type_id = models.AutoField(primary_key=True)
+    datum_type = models.ForeignKey(DatumType,
                                    db_column="datum_type_id",
-                                   primary_key=True
+                                   null=False
                                    )
     element_type = models.ForeignKey("ElementType",
                                      db_column="element_type_id",
-                                     primary_key=True
+                                     null=False
                                      )
 
