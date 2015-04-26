@@ -25,7 +25,7 @@ class BaseMixin(models.Model):
     active = models.BooleanField(default=True,
                                  db_index=True
                                  )
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(default=datetime.now)
     modified = models.DateTimeField(auto_now=True)
 
 
