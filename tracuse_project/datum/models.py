@@ -2,7 +2,7 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-from common.mixins import EntityMixin
+from common.mixins import EntityMixin, BaseMixin
 
 
 class DatumGroup(EntityMixin):
@@ -48,7 +48,7 @@ class DatumType(EntityMixin):
                                        )
 
 
-class DatumObject(mixins.BaseMixin):
+class DatumObject(BaseMixin):
     """Primary personal information data object
 
     Node/Vertex in graph
@@ -61,7 +61,7 @@ class DatumObject(mixins.BaseMixin):
         creation_date (datetime)
     """
 
-    class Meta(mixins.BaseMixin.Meta):
+    class Meta(BaseMixin.Meta):
         db_table = "datum_object"
 
     datum_object_id = models.AutoField(primary_key=True)
