@@ -27,7 +27,9 @@ class DatumType(mixins.DefinitionMixin):
 
     Attributes:
         See DefinitionMixin (includes SortActiveMixin)
-        datum_group_id: (integer, fk, required): DatumGroup
+        datum_group_id (integer, fk, required): DatumGroup
+        repr_expression (string): Expression that results in
+            representation string
     """
 
     class Meta(mixins.DefinitionMixin.Meta):
@@ -37,10 +39,12 @@ class DatumType(mixins.DefinitionMixin):
 
     datum_group = models.ForeignKey("DatumGroup",
                                     db_column="datum_group_id",
-                                    null=False,
-                                    db_index=True,
-                                    blank=False
+                                    null=False, blank=False,
+                                    db_index=True
                                     )
+    repr_expression = models.CharField(max_length=255,
+                                       null=False, blank=False
+                                       )
 
 
 class DatumObject(mixins.SortActiveMixin):
@@ -63,17 +67,15 @@ class DatumObject(mixins.SortActiveMixin):
 
     user = models.ForeignKey(User,
                              db_column="user_id",
-                             null=False,
-                             db_index=True,
-                             blank=False
+                             null=False, blank=False,
+                             db_index=True
                              )
     datum_type = models.ForeignKey("DatumType",
                                    db_column="datum_type_id",
-                                   null=False,
-                                   db_index=True,
-                                   blank=False
+                                   null=False, blank=False,
+                                   db_index=True
                                    )
     creation_date = models.DateTimeField(auto_now_add=True)
 
-    #TODO Property for associated Datums
-    #TODO Property with element data
+    # TODO Property for associated Datums
+    # TODO Property with element data

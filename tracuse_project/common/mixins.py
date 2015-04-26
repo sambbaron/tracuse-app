@@ -15,9 +15,11 @@ class SortActiveMixin(models.Model):
         abstract = True
 
     sort = models.IntegerField(default=0,
-                               db_index=True)
+                               db_index=True
+                               )
     active = models.BooleanField(default=True,
-                                 db_index=True)
+                                 db_index=True
+                                 )
 
 
 class DefinitionMixin(SortActiveMixin):
@@ -35,12 +37,15 @@ class DefinitionMixin(SortActiveMixin):
     #TODO problem with unique name and element option values
     name = models.CharField(max_length=25,
                             default="",
-                            unique=False,
-                            null=False,
-                            db_index=True,
-                            blank=False)
-    short_definition = models.CharField(max_length=25, null=True, blank=True)
-    long_definition = models.CharField(max_length=100, null=True, blank=True)
+                            null=False, blank=False,
+                            unique=False, db_index=True
+                            )
+    short_definition = models.CharField(max_length=25,
+                                        null=True, blank=True
+                                        )
+    long_definition = models.CharField(max_length=100,
+                                       null=True, blank=True
+                                       )
 
     def __str__(self):
         return "<{class_name}(Name={instance_name})>".format(
