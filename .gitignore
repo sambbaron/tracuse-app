@@ -66,3 +66,5 @@ target/
 # OrientDB/Graph files
 */orientdb.py
 *orientdbutils/
+*/common/management/commands/sandbox.py
+*/sql.sql
