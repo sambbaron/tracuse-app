@@ -5,34 +5,35 @@ from django.contrib.auth.models import User
 from common import mixins
 
 
-class DatumGroup(mixins.DefinitionMixin):
+class DatumGroup(mixins.EntityMixin):
     """Collection of Datum Types
 
     Has common functional uses
 
     Attributes:
-        See DefinitionMixin (includes SortActiveMixin)
+        See EntityMixin (includes SortActiveMixin)
     """
 
-    class Meta(mixins.DefinitionMixin.Meta):
+    class Meta(mixins.EntityMixin.Meta):
         db_table = "datum_group"
 
     datum_group_id = models.AutoField(primary_key=True)
 
 
-class DatumType(mixins.DefinitionMixin):
+class DatumType(mixins.EntityMixin):
     """Type of Datum Objects
 
     Has common functional use and properties (elements)
 
     Attributes:
-        See DefinitionMixin (includes SortActiveMixin)
+        See EntityMixin (includes SortActiveMixin)
         datum_group_id (integer, fk, required): DatumGroup
         repr_expression (string): Expression that results in
-            representation string
+            representation string, can reference element types
+            --> !name + " " + !description
     """
 
-    class Meta(mixins.DefinitionMixin.Meta):
+    class Meta(mixins.EntityMixin.Meta):
         db_table = "datum_type"
 
     datum_type_id = models.AutoField(primary_key=True)
