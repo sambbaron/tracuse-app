@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'common',
     'tracuser',
     'datum',
-    'element',
+    'element_type',
     'association',
     'filter'
 )
