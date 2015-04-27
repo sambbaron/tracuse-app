@@ -37,7 +37,7 @@ class ElementValueString(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (string, required)
+        element_value (string, nullable)
     """
 
     class Meta(ElementValueMixin.Meta):
@@ -45,7 +45,7 @@ class ElementValueString(ElementValueMixin):
 
     element_value_string_id = models.AutoField(primary_key=True)
     element_value = models.CharField(max_length=150,
-                                     null=False, blank=False
+                                     null=True, blank=True
                                      )
 
 
@@ -54,14 +54,14 @@ class ElementValueTextData(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (text, required)
+        element_value (text, nullable)
     """
 
     class Meta(ElementValueMixin.Meta):
         db_table = "element_value_textdata"
 
     element_value_textdata_id = models.AutoField(primary_key=True)
-    element_value = models.TextField(null=False, blank=False
+    element_value = models.TextField(null=True, blank=True
                                      )
 
 
@@ -85,14 +85,14 @@ class ElementValueDatetime(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (datetime, required)
+        element_value (datetime, nullable)
     """
 
     class Meta(ElementValueMixin.Meta):
         db_table = "element_value_datetime"
 
     element_value_datetime_id = models.AutoField(primary_key=True)
-    element_value = models.DateTimeField(null=False, blank=False
+    element_value = models.DateTimeField(null=True, blank=True
                                          )
 
 
@@ -101,7 +101,7 @@ class ElementValueDecimal(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (decimal, required)
+        element_value (decimal, nullable)
     """
 
     class Meta(ElementValueMixin.Meta):
@@ -109,7 +109,7 @@ class ElementValueDecimal(ElementValueMixin):
 
     element_value_decimal_id = models.AutoField(primary_key=True)
     element_value = models.DecimalField(max_digits=10, decimal_places=2,
-                                        null=False, blank=False
+                                        null=True, blank=True
                                         )
 
 
@@ -118,12 +118,12 @@ class ElementValueBinary(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (binary, required)
+        element_value (binary, nullable)
     """
 
     class Meta(ElementValueMixin.Meta):
         db_table = "element_value_binary"
 
     element_value_binary_id = models.AutoField(primary_key=True)
-    element_value = models.BinaryField(null=False, blank=False
+    element_value = models.BinaryField(null=True, blank=True
                                        )
