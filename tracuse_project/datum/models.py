@@ -79,7 +79,16 @@ class DatumObject(BaseMixin):
                                    null=False, blank=False,
                                    db_index=True
                                    )
-
+    parent_associations_adjacent = models.ManyToManyField("self",
+                                                        related_name="child_associations_adjacent",
+                                                        through="association.AssociationAdjacent",
+                                                        symmetrical=False
+                                                        )
+    parent_associations_all = models.ManyToManyField("self",
+                                                     related_name="child_associations_all",
+                                                     through="association.AssociationAll",
+                                                     symmetrical=False
+                                                     )
 
     # TODO Property for associated Datums
     # TODO Property with element data
