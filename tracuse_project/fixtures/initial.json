@@ -1,1 +1,3000 @@
-[{"fields": {"app_label": "admin", "model": "logentry"}, "pk": 1, "model": "contenttypes.contenttype"}, {"fields": {"app_label": "auth", "model": "permission"}, "pk": 2, "model": "contenttypes.contenttype"}, {"fields": {"app_label": "auth", "model": "group"}, "pk": 3, "model": "contenttypes.contenttype"}, {"fields": {"app_label": "auth", "model": "user"}, "pk": 4, "model": "contenttypes.contenttype"}, {"fields": {"app_label": "contenttypes", "model": "contenttype"}, "pk": 5, "model": "contenttypes.contenttype"}, {"fields": {"app_label": "sessions", "model": "session"}, "pk": 6, "model": "contenttypes.contenttype"}, {"fields": {"app_label": "datum", "model": "datumgroup"}, "pk": 7, "model": "contenttypes.contenttype"}, {"fields": {"app_label": "datum", "model": "datumtype"}, "pk": 8, "model": "contenttypes.contenttype"}, {"fields": {"app_label": "datum", "model": "datumobject"}, "pk": 9, "model": "contenttypes.contenttype"}, {"fields": {"app_label": "element_type", "model": "elementdatatype"}, "pk": 10, "model": "contenttypes.contenttype"}, {"fields": {"app_label": "element_type", "model": "elementtype"}, "pk": 11, "model": "contenttypes.contenttype"}, {"fields": {"app_label": "element_type", "model": "elementoption"}, "pk": 12, "model": "contenttypes.contenttype"}, {"fields": {"app_label": "element_type", "model": "elementtypedatumtype"}, "pk": 13, "model": "contenttypes.contenttype"}, {"fields": {"long_definition": null, "entity_name": "Area", "short_definition": null, "active": true, "sort": 10}, "pk": 1, "model": "datum.datumgroup"}, {"fields": {"long_definition": null, "entity_name": "Activity", "short_definition": null, "active": true, "sort": 20}, "pk": 2, "model": "datum.datumgroup"}, {"fields": {"long_definition": null, "entity_name": "Time", "short_definition": null, "active": true, "sort": 30}, "pk": 3, "model": "datum.datumgroup"}, {"fields": {"long_definition": null, "entity_name": "Item", "short_definition": null, "active": true, "sort": 40}, "pk": 4, "model": "datum.datumgroup"}, {"fields": {"long_definition": null, "sort": 1010, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 1, "entity_name": "Category"}, "pk": 2, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 1020, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 1, "entity_name": "Project"}, "pk": 3, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 1030, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 1, "entity_name": "Context"}, "pk": 4, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 1040, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 1, "entity_name": "Person"}, "pk": 5, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 1050, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 1, "entity_name": "Entity"}, "pk": 6, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 1060, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 1, "entity_name": "Location"}, "pk": 7, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 1070, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 1, "entity_name": "Contact"}, "pk": 8, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 2010, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 2, "entity_name": "Action"}, "pk": 9, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 2020, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 2, "entity_name": "Principle"}, "pk": 10, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 2030, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 2, "entity_name": "Journal"}, "pk": 11, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 3010, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 3, "entity_name": "Schedule"}, "pk": 12, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 3020, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 3, "entity_name": "Event"}, "pk": 13, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 3030, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 3, "entity_name": "Reminder"}, "pk": 14, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 4010, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 4, "entity_name": "Note"}, "pk": 15, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 4020, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 4, "entity_name": "File"}, "pk": 16, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 4030, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 4, "entity_name": "Directory"}, "pk": 17, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 4040, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 4, "entity_name": "Webpage"}, "pk": 18, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 4050, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 4, "entity_name": "Message"}, "pk": 19, "model": "datum.datumtype"}, {"fields": {"long_definition": null, "sort": 4060, "short_definition": null, "repr_expression": "name", "active": true, "datum_group": 4, "entity_name": "Post"}, "pk": 20, "model": "datum.datumtype"}, {"fields": {"long_definition": "Used for all major text-based elements", "entity_name": "ShortString", "short_definition": "VarChar(255)", "active": true, "sort": 10}, "pk": 2, "model": "element_type.elementdatatype"}, {"fields": {"long_definition": "Only used for string-based sub-data types, such as json or html", "entity_name": "LongString", "short_definition": "Text", "active": true, "sort": 20}, "pk": 3, "model": "element_type.elementdatatype"}, {"fields": {"long_definition": null, "entity_name": "Boolean", "short_definition": "Boolean", "active": true, "sort": 30}, "pk": 4, "model": "element_type.elementdatatype"}, {"fields": {"long_definition": null, "entity_name": "Datetime", "short_definition": "Datetime with Timezone", "active": true, "sort": 40}, "pk": 5, "model": "element_type.elementdatatype"}, {"fields": {"long_definition": null, "entity_name": "Decimal", "short_definition": "Decimal(scale=2)", "active": true, "sort": 50}, "pk": 6, "model": "element_type.elementdatatype"}, {"fields": {"long_definition": "Used for any attachments and large data", "entity_name": "Files", "short_definition": "Blob", "active": true, "sort": 60}, "pk": 7, "model": "element_type.elementdatatype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 110, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "Name"}, "pk": 1, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 120, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "Description"}, "pk": 2, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 130, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "FirstName"}, "pk": 3, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 140, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "LastName"}, "pk": 4, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 150, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "Nickname"}, "pk": 5, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 160, "element_data_type": 5, "short_definition": null, "active": true, "entity_name": "Birthday"}, "pk": 6, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 170, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "EntityType"}, "pk": 7, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 180, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "StreetAddress"}, "pk": 8, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 190, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "City"}, "pk": 9, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 200, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "State"}, "pk": 10, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 210, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "Zip"}, "pk": 11, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 220, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "Country"}, "pk": 12, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 230, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "Latitude"}, "pk": 13, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 240, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "Longitude"}, "pk": 14, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 250, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "Phone"}, "pk": 15, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 260, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "Email"}, "pk": 16, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 270, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "Website"}, "pk": 17, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 280, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "Facebook"}, "pk": 18, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 290, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "LinkedIn"}, "pk": 19, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 300, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "Twitter"}, "pk": 20, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 310, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "ActionStatus"}, "pk": 21, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 320, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "ActionEffort"}, "pk": 22, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 330, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "ScheduleType"}, "pk": 23, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 340, "element_data_type": 5, "short_definition": null, "active": true, "entity_name": "BeginningBuffer"}, "pk": 24, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 350, "element_data_type": 5, "short_definition": null, "active": true, "entity_name": "BeginningEvent"}, "pk": 25, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 360, "element_data_type": 5, "short_definition": null, "active": true, "entity_name": "EndingEvent"}, "pk": 26, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 370, "element_data_type": 5, "short_definition": null, "active": true, "entity_name": "EndingBuffer"}, "pk": 27, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 380, "element_data_type": 6, "short_definition": null, "active": true, "entity_name": "EventTime"}, "pk": 28, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 390, "element_data_type": 6, "short_definition": null, "active": true, "entity_name": "TotalTime"}, "pk": 29, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 400, "element_data_type": 3, "short_definition": null, "active": true, "entity_name": "RecurringOptions"}, "pk": 30, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 410, "element_data_type": 5, "short_definition": null, "active": true, "entity_name": "Alert"}, "pk": 31, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 420, "element_data_type": 4, "short_definition": null, "active": true, "entity_name": "LoggedIn"}, "pk": 32, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 430, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "ItemStatus"}, "pk": 33, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 440, "element_data_type": 3, "short_definition": null, "active": true, "entity_name": "ItemContent"}, "pk": 34, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 450, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "From"}, "pk": 35, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": null, "sort": 460, "element_data_type": 2, "short_definition": null, "active": true, "entity_name": "To"}, "pk": 36, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": "Any local, network, or www address", "sort": 470, "element_data_type": 2, "short_definition": "URL", "active": true, "entity_name": "Link"}, "pk": 37, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": "File attachment", "sort": 480, "element_data_type": 7, "short_definition": null, "active": true, "entity_name": "Attachment"}, "pk": 38, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": "SHOULD THIS BE ROLLED INTO EVENTS?", "sort": 490, "element_data_type": 5, "short_definition": null, "active": true, "entity_name": "CreationDate"}, "pk": 40, "model": "element_type.elementtype"}, {"fields": {"default_expression": null, "editable": true, "long_definition": "SHOULD THIS BE ROLLED INTO EVENTS?", "sort": 500, "element_data_type": 5, "short_definition": null, "active": true, "entity_name": "ModificationDate"}, "pk": 41, "model": "element_type.elementtype"}, {"fields": {"long_definition": null, "element_type": 7, "sort": 7010, "short_definition": null, "active": true, "entity_name": "Business"}, "pk": 1, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 7, "sort": 7020, "short_definition": null, "active": true, "entity_name": "Non-Profit"}, "pk": 2, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 7, "sort": 7030, "short_definition": null, "active": true, "entity_name": "Education"}, "pk": 3, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 7, "sort": 7040, "short_definition": null, "active": true, "entity_name": "Food"}, "pk": 4, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 7, "sort": 7050, "short_definition": null, "active": true, "entity_name": "Service"}, "pk": 5, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 7, "sort": 7060, "short_definition": null, "active": true, "entity_name": "Cultural"}, "pk": 6, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 7, "sort": 7070, "short_definition": null, "active": true, "entity_name": "Religious"}, "pk": 7, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 7, "sort": 7080, "short_definition": null, "active": true, "entity_name": "Government"}, "pk": 8, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 7, "sort": 7090, "short_definition": null, "active": true, "entity_name": "Social"}, "pk": 9, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 21, "sort": 21010, "short_definition": null, "active": true, "entity_name": "New"}, "pk": 10, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 21, "sort": 21020, "short_definition": null, "active": true, "entity_name": "Someday"}, "pk": 11, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 21, "sort": 21030, "short_definition": null, "active": true, "entity_name": "Upcoming"}, "pk": 12, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 21, "sort": 21040, "short_definition": null, "active": true, "entity_name": "Current"}, "pk": 13, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 21, "sort": 21050, "short_definition": null, "active": true, "entity_name": "InProgress"}, "pk": 14, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 21, "sort": 21060, "short_definition": null, "active": true, "entity_name": "Complete"}, "pk": 15, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 21, "sort": 21070, "short_definition": null, "active": true, "entity_name": "WaitingFor"}, "pk": 16, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 22, "sort": 22010, "short_definition": "Very Easy", "active": true, "entity_name": "1"}, "pk": 17, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 22, "sort": 22020, "short_definition": "Easy", "active": true, "entity_name": "2"}, "pk": 18, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 22, "sort": 22030, "short_definition": "Neither Easy or Hard", "active": true, "entity_name": "3"}, "pk": 19, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 22, "sort": 22040, "short_definition": "Hard", "active": true, "entity_name": "4"}, "pk": 20, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 22, "sort": 22050, "short_definition": "Very Hard", "active": true, "entity_name": "5"}, "pk": 21, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 23, "sort": 23010, "short_definition": null, "active": true, "entity_name": "Actual"}, "pk": 22, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 23, "sort": 23020, "short_definition": null, "active": true, "entity_name": "Planned"}, "pk": 23, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 30, "sort": 30010, "short_definition": null, "active": true, "entity_name": "Placeholder"}, "pk": 24, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 33, "sort": 33010, "short_definition": null, "active": true, "entity_name": "New"}, "pk": 25, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 33, "sort": 33020, "short_definition": null, "active": true, "entity_name": "Start"}, "pk": 26, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 33, "sort": 33030, "short_definition": null, "active": true, "entity_name": "Working"}, "pk": 27, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 33, "sort": 33040, "short_definition": null, "active": true, "entity_name": "Edit"}, "pk": 28, "model": "element_type.elementoption"}, {"fields": {"long_definition": null, "element_type": 33, "sort": 33050, "short_definition": null, "active": true, "entity_name": "Complete"}, "pk": 29, "model": "element_type.elementoption"}, {"fields": {"element_type": 1, "datum_type": 2, "active": true, "sort": 1010110}, "pk": 1, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 2, "active": true, "sort": 1010120}, "pk": 2, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 3, "active": true, "sort": 1020110}, "pk": 3, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 3, "active": true, "sort": 1020120}, "pk": 4, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 4, "active": true, "sort": 1030110}, "pk": 5, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 4, "active": true, "sort": 1030120}, "pk": 6, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 5, "active": true, "sort": 1040110}, "pk": 7, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 5, "active": true, "sort": 1040120}, "pk": 8, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 3, "datum_type": 5, "active": true, "sort": 1040130}, "pk": 9, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 4, "datum_type": 5, "active": true, "sort": 1040140}, "pk": 10, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 5, "datum_type": 5, "active": true, "sort": 1040150}, "pk": 11, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 6, "datum_type": 5, "active": true, "sort": 1040160}, "pk": 12, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 6, "active": true, "sort": 1050110}, "pk": 13, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 6, "active": true, "sort": 1050120}, "pk": 14, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 7, "datum_type": 6, "active": true, "sort": 1050170}, "pk": 15, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 7, "active": true, "sort": 1060110}, "pk": 16, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 10, "datum_type": 7, "active": true, "sort": 1060200}, "pk": 17, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 11, "datum_type": 7, "active": true, "sort": 1060210}, "pk": 18, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 12, "datum_type": 7, "active": true, "sort": 1060220}, "pk": 19, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 13, "datum_type": 7, "active": true, "sort": 1060230}, "pk": 20, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 14, "datum_type": 7, "active": true, "sort": 1060240}, "pk": 21, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 7, "active": true, "sort": 1060120}, "pk": 22, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 8, "datum_type": 7, "active": true, "sort": 1060180}, "pk": 23, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 9, "datum_type": 7, "active": true, "sort": 1060190}, "pk": 24, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 8, "active": true, "sort": 1070110}, "pk": 25, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 15, "datum_type": 8, "active": true, "sort": 1070250}, "pk": 26, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 16, "datum_type": 8, "active": true, "sort": 1070260}, "pk": 27, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 17, "datum_type": 8, "active": true, "sort": 1070270}, "pk": 28, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 18, "datum_type": 8, "active": true, "sort": 1070280}, "pk": 29, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 19, "datum_type": 8, "active": true, "sort": 1070290}, "pk": 30, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 8, "active": true, "sort": 1070120}, "pk": 31, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 20, "datum_type": 8, "active": true, "sort": 1070300}, "pk": 32, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 9, "active": true, "sort": 2010120}, "pk": 33, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 21, "datum_type": 9, "active": true, "sort": 2010310}, "pk": 34, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 22, "datum_type": 9, "active": true, "sort": 2010320}, "pk": 35, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 10, "active": true, "sort": 2020120}, "pk": 36, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 11, "active": true, "sort": 2030120}, "pk": 37, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 12, "active": true, "sort": 3010110}, "pk": 38, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 23, "datum_type": 12, "active": true, "sort": 3010330}, "pk": 39, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 24, "datum_type": 13, "active": true, "sort": 3020340}, "pk": 40, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 25, "datum_type": 13, "active": true, "sort": 3020350}, "pk": 41, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 26, "datum_type": 13, "active": true, "sort": 3020360}, "pk": 42, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 27, "datum_type": 13, "active": true, "sort": 3020370}, "pk": 43, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 28, "datum_type": 13, "active": true, "sort": 3020380}, "pk": 44, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 29, "datum_type": 13, "active": true, "sort": 3020390}, "pk": 45, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 30, "datum_type": 13, "active": true, "sort": 3020400}, "pk": 46, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 30, "datum_type": 14, "active": true, "sort": 3030400}, "pk": 47, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 31, "datum_type": 14, "active": true, "sort": 3030410}, "pk": 48, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 32, "datum_type": 14, "active": true, "sort": 3030420}, "pk": 49, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 15, "active": true, "sort": 4010110}, "pk": 50, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 33, "datum_type": 15, "active": true, "sort": 4010430}, "pk": 51, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 34, "datum_type": 15, "active": true, "sort": 4010440}, "pk": 52, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 37, "datum_type": 15, "active": true, "sort": 4010470}, "pk": 53, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 16, "active": true, "sort": 4020110}, "pk": 54, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 16, "active": true, "sort": 4020120}, "pk": 55, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 33, "datum_type": 16, "active": true, "sort": 4020430}, "pk": 56, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 37, "datum_type": 16, "active": true, "sort": 4020470}, "pk": 57, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 38, "datum_type": 16, "active": true, "sort": 4020480}, "pk": 58, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 40, "datum_type": 16, "active": true, "sort": 4020490}, "pk": 59, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 41, "datum_type": 16, "active": true, "sort": 4020500}, "pk": 60, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 17, "active": true, "sort": 4030110}, "pk": 61, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 17, "active": true, "sort": 4030120}, "pk": 62, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 33, "datum_type": 17, "active": true, "sort": 4030430}, "pk": 63, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 37, "datum_type": 17, "active": true, "sort": 4030470}, "pk": 64, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 40, "datum_type": 17, "active": true, "sort": 4030490}, "pk": 65, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 41, "datum_type": 17, "active": true, "sort": 4030500}, "pk": 66, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 18, "active": true, "sort": 4040110}, "pk": 67, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 18, "active": true, "sort": 4040120}, "pk": 68, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 33, "datum_type": 18, "active": true, "sort": 4040430}, "pk": 69, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 37, "datum_type": 18, "active": true, "sort": 4040470}, "pk": 70, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 19, "active": true, "sort": 4050110}, "pk": 71, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 34, "datum_type": 19, "active": true, "sort": 4050440}, "pk": 72, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 35, "datum_type": 19, "active": true, "sort": 4050450}, "pk": 73, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 36, "datum_type": 19, "active": true, "sort": 4050460}, "pk": 74, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 40, "datum_type": 19, "active": true, "sort": 4050490}, "pk": 75, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 1, "datum_type": 20, "active": true, "sort": 4060110}, "pk": 76, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 2, "datum_type": 20, "active": true, "sort": 4060120}, "pk": 77, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 33, "datum_type": 20, "active": true, "sort": 4060430}, "pk": 78, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 34, "datum_type": 20, "active": true, "sort": 4060440}, "pk": 79, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 37, "datum_type": 20, "active": true, "sort": 4060470}, "pk": 80, "model": "element_type.elementtypedatumtype"}, {"fields": {"element_type": 40, "datum_type": 20, "active": true, "sort": 4060490}, "pk": 81, "model": "element_type.elementtypedatumtype"}, {"fields": {"codename": "add_logentry", "name": "Can add log entry", "content_type": 1}, "pk": 1, "model": "auth.permission"}, {"fields": {"codename": "change_logentry", "name": "Can change log entry", "content_type": 1}, "pk": 2, "model": "auth.permission"}, {"fields": {"codename": "delete_logentry", "name": "Can delete log entry", "content_type": 1}, "pk": 3, "model": "auth.permission"}, {"fields": {"codename": "add_permission", "name": "Can add permission", "content_type": 2}, "pk": 4, "model": "auth.permission"}, {"fields": {"codename": "change_permission", "name": "Can change permission", "content_type": 2}, "pk": 5, "model": "auth.permission"}, {"fields": {"codename": "delete_permission", "name": "Can delete permission", "content_type": 2}, "pk": 6, "model": "auth.permission"}, {"fields": {"codename": "add_group", "name": "Can add group", "content_type": 3}, "pk": 7, "model": "auth.permission"}, {"fields": {"codename": "change_group", "name": "Can change group", "content_type": 3}, "pk": 8, "model": "auth.permission"}, {"fields": {"codename": "delete_group", "name": "Can delete group", "content_type": 3}, "pk": 9, "model": "auth.permission"}, {"fields": {"codename": "add_user", "name": "Can add user", "content_type": 4}, "pk": 10, "model": "auth.permission"}, {"fields": {"codename": "change_user", "name": "Can change user", "content_type": 4}, "pk": 11, "model": "auth.permission"}, {"fields": {"codename": "delete_user", "name": "Can delete user", "content_type": 4}, "pk": 12, "model": "auth.permission"}, {"fields": {"codename": "add_contenttype", "name": "Can add content type", "content_type": 5}, "pk": 13, "model": "auth.permission"}, {"fields": {"codename": "change_contenttype", "name": "Can change content type", "content_type": 5}, "pk": 14, "model": "auth.permission"}, {"fields": {"codename": "delete_contenttype", "name": "Can delete content type", "content_type": 5}, "pk": 15, "model": "auth.permission"}, {"fields": {"codename": "add_session", "name": "Can add session", "content_type": 6}, "pk": 16, "model": "auth.permission"}, {"fields": {"codename": "change_session", "name": "Can change session", "content_type": 6}, "pk": 17, "model": "auth.permission"}, {"fields": {"codename": "delete_session", "name": "Can delete session", "content_type": 6}, "pk": 18, "model": "auth.permission"}, {"fields": {"codename": "add_datumgroup", "name": "Can add datum group", "content_type": 7}, "pk": 19, "model": "auth.permission"}, {"fields": {"codename": "change_datumgroup", "name": "Can change datum group", "content_type": 7}, "pk": 20, "model": "auth.permission"}, {"fields": {"codename": "delete_datumgroup", "name": "Can delete datum group", "content_type": 7}, "pk": 21, "model": "auth.permission"}, {"fields": {"codename": "add_datumtype", "name": "Can add datum type", "content_type": 8}, "pk": 22, "model": "auth.permission"}, {"fields": {"codename": "change_datumtype", "name": "Can change datum type", "content_type": 8}, "pk": 23, "model": "auth.permission"}, {"fields": {"codename": "delete_datumtype", "name": "Can delete datum type", "content_type": 8}, "pk": 24, "model": "auth.permission"}, {"fields": {"codename": "add_datumobject", "name": "Can add datum object", "content_type": 9}, "pk": 25, "model": "auth.permission"}, {"fields": {"codename": "change_datumobject", "name": "Can change datum object", "content_type": 9}, "pk": 26, "model": "auth.permission"}, {"fields": {"codename": "delete_datumobject", "name": "Can delete datum object", "content_type": 9}, "pk": 27, "model": "auth.permission"}, {"fields": {"codename": "add_elementdatatype", "name": "Can add element data type", "content_type": 10}, "pk": 28, "model": "auth.permission"}, {"fields": {"codename": "change_elementdatatype", "name": "Can change element data type", "content_type": 10}, "pk": 29, "model": "auth.permission"}, {"fields": {"codename": "delete_elementdatatype", "name": "Can delete element data type", "content_type": 10}, "pk": 30, "model": "auth.permission"}, {"fields": {"codename": "add_elementtype", "name": "Can add element type", "content_type": 11}, "pk": 31, "model": "auth.permission"}, {"fields": {"codename": "change_elementtype", "name": "Can change element type", "content_type": 11}, "pk": 32, "model": "auth.permission"}, {"fields": {"codename": "delete_elementtype", "name": "Can delete element type", "content_type": 11}, "pk": 33, "model": "auth.permission"}, {"fields": {"codename": "add_elementoption", "name": "Can add element option", "content_type": 12}, "pk": 34, "model": "auth.permission"}, {"fields": {"codename": "change_elementoption", "name": "Can change element option", "content_type": 12}, "pk": 35, "model": "auth.permission"}, {"fields": {"codename": "delete_elementoption", "name": "Can delete element option", "content_type": 12}, "pk": 36, "model": "auth.permission"}, {"fields": {"codename": "add_elementtypedatumtype", "name": "Can add element type datum type", "content_type": 13}, "pk": 37, "model": "auth.permission"}, {"fields": {"codename": "change_elementtypedatumtype", "name": "Can change element type datum type", "content_type": 13}, "pk": 38, "model": "auth.permission"}, {"fields": {"codename": "delete_elementtypedatumtype", "name": "Can delete element type datum type", "content_type": 13}, "pk": 39, "model": "auth.permission"}, {"fields": {"date_joined": "2015-04-26T23:28:20.184Z", "last_name": "", "groups": [], "username": "test", "is_active": true, "user_permissions": [], "last_login": null, "first_name": "", "password": "pbkdf2_sha256$20000$RUXLdDzdpcdK$LC4GplZ+whUEALdGNvJGAr1u8RDbc1u16WBQG5aQNAQ=", "is_superuser": true, "email": "test@test.com", "is_staff": true}, "pk": 1, "model": "auth.user"}, {"fields": {"user": 1, "datum_type": 2, "active": true, "sort": 110101}, "pk": 17, "model": "datum.datumobject"}, {"fields": {"user": 1, "datum_type": 2, "active": true, "sort": 110101}, "pk": 18, "model": "datum.datumobject"}, {"fields": {"user": 1, "datum_type": 2, "active": true, "sort": 110101}, "pk": 19, "model": "datum.datumobject"}]
+[
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "logentry",
+      "app_label": "admin"
+    },
+    "pk": 1
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "permission",
+      "app_label": "auth"
+    },
+    "pk": 2
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "group",
+      "app_label": "auth"
+    },
+    "pk": 3
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "user",
+      "app_label": "auth"
+    },
+    "pk": 4
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "contenttype",
+      "app_label": "contenttypes"
+    },
+    "pk": 5
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "session",
+      "app_label": "sessions"
+    },
+    "pk": 6
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "datumgroup",
+      "app_label": "datum"
+    },
+    "pk": 7
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "datumtype",
+      "app_label": "datum"
+    },
+    "pk": 8
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "datumobject",
+      "app_label": "datum"
+    },
+    "pk": 9
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "elementdatatype",
+      "app_label": "element_type"
+    },
+    "pk": 10
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "elementtype",
+      "app_label": "element_type"
+    },
+    "pk": 11
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "elementoption",
+      "app_label": "element_type"
+    },
+    "pk": 12
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "elementtypedatumtype",
+      "app_label": "element_type"
+    },
+    "pk": 13
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "associationtype",
+      "app_label": "association"
+    },
+    "pk": 14
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "associationdirection",
+      "app_label": "association"
+    },
+    "pk": 15
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "associationkeyword",
+      "app_label": "association"
+    },
+    "pk": 17
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "associationadjacent",
+      "app_label": "association"
+    },
+    "pk": 18
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "associationall",
+      "app_label": "association"
+    },
+    "pk": 19
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "elementtypedatumobject",
+      "app_label": "element_type"
+    },
+    "pk": 20
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "elementvaluestring",
+      "app_label": "element_value"
+    },
+    "pk": 21
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "elementvaluetextdata",
+      "app_label": "element_value"
+    },
+    "pk": 22
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "elementvalueboolean",
+      "app_label": "element_value"
+    },
+    "pk": 23
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "elementvaluedatetime",
+      "app_label": "element_value"
+    },
+    "pk": 24
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "elementvaluedecimal",
+      "app_label": "element_value"
+    },
+    "pk": 25
+  },
+  {
+    "model": "contenttypes.contenttype",
+    "fields": {
+      "model": "elementvaluebinary",
+      "app_label": "element_value"
+    },
+    "pk": 26
+  },
+  {
+    "model": "datum.datumgroup",
+    "fields": {
+      "sort": 10,
+      "long_definition": null,
+      "entity_name": "Area",
+      "active": true,
+      "short_definition": null
+    },
+    "pk": 1
+  },
+  {
+    "model": "datum.datumgroup",
+    "fields": {
+      "sort": 20,
+      "long_definition": null,
+      "entity_name": "Activity",
+      "active": true,
+      "short_definition": null
+    },
+    "pk": 2
+  },
+  {
+    "model": "datum.datumgroup",
+    "fields": {
+      "sort": 30,
+      "long_definition": null,
+      "entity_name": "Time",
+      "active": true,
+      "short_definition": null
+    },
+    "pk": 3
+  },
+  {
+    "model": "datum.datumgroup",
+    "fields": {
+      "sort": 40,
+      "long_definition": null,
+      "entity_name": "Item",
+      "active": true,
+      "short_definition": null
+    },
+    "pk": 4
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 1,
+      "sort": 1010,
+      "entity_name": "Category"
+    },
+    "pk": 2
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 1,
+      "sort": 1020,
+      "entity_name": "Project"
+    },
+    "pk": 3
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 1,
+      "sort": 1030,
+      "entity_name": "Context"
+    },
+    "pk": 4
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 1,
+      "sort": 1040,
+      "entity_name": "Person"
+    },
+    "pk": 5
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 1,
+      "sort": 1050,
+      "entity_name": "Entity"
+    },
+    "pk": 6
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 1,
+      "sort": 1060,
+      "entity_name": "Location"
+    },
+    "pk": 7
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 1,
+      "sort": 1070,
+      "entity_name": "Contact"
+    },
+    "pk": 8
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 2,
+      "sort": 2010,
+      "entity_name": "Action"
+    },
+    "pk": 9
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 2,
+      "sort": 2020,
+      "entity_name": "Principle"
+    },
+    "pk": 10
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 2,
+      "sort": 2030,
+      "entity_name": "Journal"
+    },
+    "pk": 11
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 3,
+      "sort": 3010,
+      "entity_name": "Schedule"
+    },
+    "pk": 12
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 3,
+      "sort": 3020,
+      "entity_name": "Event"
+    },
+    "pk": 13
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 3,
+      "sort": 3030,
+      "entity_name": "Reminder"
+    },
+    "pk": 14
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 4,
+      "sort": 4010,
+      "entity_name": "Note"
+    },
+    "pk": 15
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 4,
+      "sort": 4020,
+      "entity_name": "File"
+    },
+    "pk": 16
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 4,
+      "sort": 4030,
+      "entity_name": "Directory"
+    },
+    "pk": 17
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 4,
+      "sort": 4040,
+      "entity_name": "Webpage"
+    },
+    "pk": 18
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 4,
+      "sort": 4050,
+      "entity_name": "Message"
+    },
+    "pk": 19
+  },
+  {
+    "model": "datum.datumtype",
+    "fields": {
+      "long_definition": null,
+      "repr_expression": "name",
+      "active": true,
+      "short_definition": null,
+      "datum_group": 4,
+      "sort": 4060,
+      "entity_name": "Post"
+    },
+    "pk": 20
+  },
+  {
+    "model": "element_type.elementdatatype",
+    "fields": {
+      "sort": 10,
+      "long_definition": "Used for all major text-based elements",
+      "entity_name": "String",
+      "active": true,
+      "short_definition": "VarChar(255)"
+    },
+    "pk": 2
+  },
+  {
+    "model": "element_type.elementdatatype",
+    "fields": {
+      "sort": 20,
+      "long_definition": "Only used for string-based sub-data types, such as json or html",
+      "entity_name": "TextData",
+      "active": true,
+      "short_definition": "Text"
+    },
+    "pk": 3
+  },
+  {
+    "model": "element_type.elementdatatype",
+    "fields": {
+      "sort": 30,
+      "long_definition": null,
+      "entity_name": "Boolean",
+      "active": true,
+      "short_definition": "Boolean"
+    },
+    "pk": 4
+  },
+  {
+    "model": "element_type.elementdatatype",
+    "fields": {
+      "sort": 40,
+      "long_definition": null,
+      "entity_name": "Datetime",
+      "active": true,
+      "short_definition": "Datetime with Timezone"
+    },
+    "pk": 5
+  },
+  {
+    "model": "element_type.elementdatatype",
+    "fields": {
+      "sort": 50,
+      "long_definition": null,
+      "entity_name": "Decimal",
+      "active": true,
+      "short_definition": "Decimal(scale=2)"
+    },
+    "pk": 6
+  },
+  {
+    "model": "element_type.elementdatatype",
+    "fields": {
+      "sort": 60,
+      "long_definition": "Used for any attachments and large data",
+      "entity_name": "Binary",
+      "active": true,
+      "short_definition": "Blob"
+    },
+    "pk": 7
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 110,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Name"
+    },
+    "pk": 1
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 120,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Description"
+    },
+    "pk": 2
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 130,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "FirstName"
+    },
+    "pk": 3
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 140,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "LastName"
+    },
+    "pk": 4
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 150,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Nickname"
+    },
+    "pk": 5
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 160,
+      "editable": true,
+      "element_data_type": 5,
+      "entity_name": "Birthday"
+    },
+    "pk": 6
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 170,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "EntityType"
+    },
+    "pk": 7
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 180,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "StreetAddress"
+    },
+    "pk": 8
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 190,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "City"
+    },
+    "pk": 9
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 200,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "State"
+    },
+    "pk": 10
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 210,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Zip"
+    },
+    "pk": 11
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 220,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Country"
+    },
+    "pk": 12
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 230,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Latitude"
+    },
+    "pk": 13
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 240,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Longitude"
+    },
+    "pk": 14
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 250,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Phone"
+    },
+    "pk": 15
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 260,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Email"
+    },
+    "pk": 16
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 270,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Website"
+    },
+    "pk": 17
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 280,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Facebook"
+    },
+    "pk": 18
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 290,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "LinkedIn"
+    },
+    "pk": 19
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 300,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Twitter"
+    },
+    "pk": 20
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 310,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "ActionStatus"
+    },
+    "pk": 21
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 320,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "ActionEffort"
+    },
+    "pk": 22
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 330,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "ScheduleType"
+    },
+    "pk": 23
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 340,
+      "editable": true,
+      "element_data_type": 5,
+      "entity_name": "BeginningBuffer"
+    },
+    "pk": 24
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 350,
+      "editable": true,
+      "element_data_type": 5,
+      "entity_name": "BeginningEvent"
+    },
+    "pk": 25
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 360,
+      "editable": true,
+      "element_data_type": 5,
+      "entity_name": "EndingEvent"
+    },
+    "pk": 26
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 370,
+      "editable": true,
+      "element_data_type": 5,
+      "entity_name": "EndingBuffer"
+    },
+    "pk": 27
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 380,
+      "editable": true,
+      "element_data_type": 6,
+      "entity_name": "EventTime"
+    },
+    "pk": 28
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 390,
+      "editable": true,
+      "element_data_type": 6,
+      "entity_name": "TotalTime"
+    },
+    "pk": 29
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 400,
+      "editable": true,
+      "element_data_type": 3,
+      "entity_name": "RecurringOptions"
+    },
+    "pk": 30
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 410,
+      "editable": true,
+      "element_data_type": 5,
+      "entity_name": "Alert"
+    },
+    "pk": 31
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 420,
+      "editable": true,
+      "element_data_type": 4,
+      "entity_name": "LoggedIn"
+    },
+    "pk": 32
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 430,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "ItemStatus"
+    },
+    "pk": 33
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 440,
+      "editable": true,
+      "element_data_type": 3,
+      "entity_name": "ItemContent"
+    },
+    "pk": 34
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 450,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "From"
+    },
+    "pk": 35
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": null,
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 460,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "To"
+    },
+    "pk": 36
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": "Any local, network, or www address",
+      "default_expression": null,
+      "active": true,
+      "short_definition": "URL",
+      "sort": 470,
+      "editable": true,
+      "element_data_type": 2,
+      "entity_name": "Link"
+    },
+    "pk": 37
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": "File attachment",
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 480,
+      "editable": true,
+      "element_data_type": 7,
+      "entity_name": "Attachment"
+    },
+    "pk": 38
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": "SHOULD THIS BE ROLLED INTO EVENTS?",
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 490,
+      "editable": true,
+      "element_data_type": 5,
+      "entity_name": "CreationDate"
+    },
+    "pk": 40
+  },
+  {
+    "model": "element_type.elementtype",
+    "fields": {
+      "long_definition": "SHOULD THIS BE ROLLED INTO EVENTS?",
+      "default_expression": null,
+      "active": true,
+      "short_definition": null,
+      "sort": 500,
+      "editable": true,
+      "element_data_type": 5,
+      "entity_name": "ModificationDate"
+    },
+    "pk": 41
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 7,
+      "active": true,
+      "short_definition": null,
+      "sort": 7010,
+      "entity_name": "Business"
+    },
+    "pk": 1
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 7,
+      "active": true,
+      "short_definition": null,
+      "sort": 7020,
+      "entity_name": "Non-Profit"
+    },
+    "pk": 2
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 7,
+      "active": true,
+      "short_definition": null,
+      "sort": 7030,
+      "entity_name": "Education"
+    },
+    "pk": 3
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 7,
+      "active": true,
+      "short_definition": null,
+      "sort": 7040,
+      "entity_name": "Food"
+    },
+    "pk": 4
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 7,
+      "active": true,
+      "short_definition": null,
+      "sort": 7050,
+      "entity_name": "Service"
+    },
+    "pk": 5
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 7,
+      "active": true,
+      "short_definition": null,
+      "sort": 7060,
+      "entity_name": "Cultural"
+    },
+    "pk": 6
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 7,
+      "active": true,
+      "short_definition": null,
+      "sort": 7070,
+      "entity_name": "Religious"
+    },
+    "pk": 7
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 7,
+      "active": true,
+      "short_definition": null,
+      "sort": 7080,
+      "entity_name": "Government"
+    },
+    "pk": 8
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 7,
+      "active": true,
+      "short_definition": null,
+      "sort": 7090,
+      "entity_name": "Social"
+    },
+    "pk": 9
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 21,
+      "active": true,
+      "short_definition": null,
+      "sort": 21010,
+      "entity_name": "New"
+    },
+    "pk": 10
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 21,
+      "active": true,
+      "short_definition": null,
+      "sort": 21020,
+      "entity_name": "Someday"
+    },
+    "pk": 11
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 21,
+      "active": true,
+      "short_definition": null,
+      "sort": 21030,
+      "entity_name": "Upcoming"
+    },
+    "pk": 12
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 21,
+      "active": true,
+      "short_definition": null,
+      "sort": 21040,
+      "entity_name": "Current"
+    },
+    "pk": 13
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 21,
+      "active": true,
+      "short_definition": null,
+      "sort": 21050,
+      "entity_name": "InProgress"
+    },
+    "pk": 14
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 21,
+      "active": true,
+      "short_definition": null,
+      "sort": 21060,
+      "entity_name": "Complete"
+    },
+    "pk": 15
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 21,
+      "active": true,
+      "short_definition": null,
+      "sort": 21070,
+      "entity_name": "WaitingFor"
+    },
+    "pk": 16
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 22,
+      "active": true,
+      "short_definition": "Very Easy",
+      "sort": 22010,
+      "entity_name": "1"
+    },
+    "pk": 17
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 22,
+      "active": true,
+      "short_definition": "Easy",
+      "sort": 22020,
+      "entity_name": "2"
+    },
+    "pk": 18
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 22,
+      "active": true,
+      "short_definition": "Neither Easy or Hard",
+      "sort": 22030,
+      "entity_name": "3"
+    },
+    "pk": 19
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 22,
+      "active": true,
+      "short_definition": "Hard",
+      "sort": 22040,
+      "entity_name": "4"
+    },
+    "pk": 20
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 22,
+      "active": true,
+      "short_definition": "Very Hard",
+      "sort": 22050,
+      "entity_name": "5"
+    },
+    "pk": 21
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 23,
+      "active": true,
+      "short_definition": null,
+      "sort": 23010,
+      "entity_name": "Actual"
+    },
+    "pk": 22
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 23,
+      "active": true,
+      "short_definition": null,
+      "sort": 23020,
+      "entity_name": "Planned"
+    },
+    "pk": 23
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 30,
+      "active": true,
+      "short_definition": null,
+      "sort": 30010,
+      "entity_name": "Placeholder"
+    },
+    "pk": 24
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 33,
+      "active": true,
+      "short_definition": null,
+      "sort": 33010,
+      "entity_name": "New"
+    },
+    "pk": 25
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 33,
+      "active": true,
+      "short_definition": null,
+      "sort": 33020,
+      "entity_name": "Start"
+    },
+    "pk": 26
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 33,
+      "active": true,
+      "short_definition": null,
+      "sort": 33030,
+      "entity_name": "Working"
+    },
+    "pk": 27
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 33,
+      "active": true,
+      "short_definition": null,
+      "sort": 33040,
+      "entity_name": "Edit"
+    },
+    "pk": 28
+  },
+  {
+    "model": "element_type.elementoption",
+    "fields": {
+      "long_definition": null,
+      "element_type": 33,
+      "active": true,
+      "short_definition": null,
+      "sort": 33050,
+      "entity_name": "Complete"
+    },
+    "pk": 29
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1010110,
+      "datum_type": 2,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 1
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1010120,
+      "datum_type": 2,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 2
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1020110,
+      "datum_type": 3,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 3
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1020120,
+      "datum_type": 3,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 4
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1030110,
+      "datum_type": 4,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 5
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1030120,
+      "datum_type": 4,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 6
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1040110,
+      "datum_type": 5,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 7
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1040120,
+      "datum_type": 5,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 8
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1040130,
+      "datum_type": 5,
+      "active": true,
+      "element_type": 3
+    },
+    "pk": 9
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1040140,
+      "datum_type": 5,
+      "active": true,
+      "element_type": 4
+    },
+    "pk": 10
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1040150,
+      "datum_type": 5,
+      "active": true,
+      "element_type": 5
+    },
+    "pk": 11
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1040160,
+      "datum_type": 5,
+      "active": true,
+      "element_type": 6
+    },
+    "pk": 12
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1050110,
+      "datum_type": 6,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 13
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1050120,
+      "datum_type": 6,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 14
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1050170,
+      "datum_type": 6,
+      "active": true,
+      "element_type": 7
+    },
+    "pk": 15
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1060110,
+      "datum_type": 7,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 16
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1060200,
+      "datum_type": 7,
+      "active": true,
+      "element_type": 10
+    },
+    "pk": 17
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1060210,
+      "datum_type": 7,
+      "active": true,
+      "element_type": 11
+    },
+    "pk": 18
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1060220,
+      "datum_type": 7,
+      "active": true,
+      "element_type": 12
+    },
+    "pk": 19
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1060230,
+      "datum_type": 7,
+      "active": true,
+      "element_type": 13
+    },
+    "pk": 20
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1060240,
+      "datum_type": 7,
+      "active": true,
+      "element_type": 14
+    },
+    "pk": 21
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1060120,
+      "datum_type": 7,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 22
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1060180,
+      "datum_type": 7,
+      "active": true,
+      "element_type": 8
+    },
+    "pk": 23
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1060190,
+      "datum_type": 7,
+      "active": true,
+      "element_type": 9
+    },
+    "pk": 24
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1070110,
+      "datum_type": 8,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 25
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1070250,
+      "datum_type": 8,
+      "active": true,
+      "element_type": 15
+    },
+    "pk": 26
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1070260,
+      "datum_type": 8,
+      "active": true,
+      "element_type": 16
+    },
+    "pk": 27
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1070270,
+      "datum_type": 8,
+      "active": true,
+      "element_type": 17
+    },
+    "pk": 28
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1070280,
+      "datum_type": 8,
+      "active": true,
+      "element_type": 18
+    },
+    "pk": 29
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1070290,
+      "datum_type": 8,
+      "active": true,
+      "element_type": 19
+    },
+    "pk": 30
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1070120,
+      "datum_type": 8,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 31
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 1070300,
+      "datum_type": 8,
+      "active": true,
+      "element_type": 20
+    },
+    "pk": 32
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 2010120,
+      "datum_type": 9,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 33
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 2010310,
+      "datum_type": 9,
+      "active": true,
+      "element_type": 21
+    },
+    "pk": 34
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 2010320,
+      "datum_type": 9,
+      "active": true,
+      "element_type": 22
+    },
+    "pk": 35
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 2020120,
+      "datum_type": 10,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 36
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 2030120,
+      "datum_type": 11,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 37
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 3010110,
+      "datum_type": 12,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 38
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 3010330,
+      "datum_type": 12,
+      "active": true,
+      "element_type": 23
+    },
+    "pk": 39
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 3020340,
+      "datum_type": 13,
+      "active": true,
+      "element_type": 24
+    },
+    "pk": 40
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 3020350,
+      "datum_type": 13,
+      "active": true,
+      "element_type": 25
+    },
+    "pk": 41
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 3020360,
+      "datum_type": 13,
+      "active": true,
+      "element_type": 26
+    },
+    "pk": 42
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 3020370,
+      "datum_type": 13,
+      "active": true,
+      "element_type": 27
+    },
+    "pk": 43
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 3020380,
+      "datum_type": 13,
+      "active": true,
+      "element_type": 28
+    },
+    "pk": 44
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 3020390,
+      "datum_type": 13,
+      "active": true,
+      "element_type": 29
+    },
+    "pk": 45
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 3020400,
+      "datum_type": 13,
+      "active": true,
+      "element_type": 30
+    },
+    "pk": 46
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 3030400,
+      "datum_type": 14,
+      "active": true,
+      "element_type": 30
+    },
+    "pk": 47
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 3030410,
+      "datum_type": 14,
+      "active": true,
+      "element_type": 31
+    },
+    "pk": 48
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 3030420,
+      "datum_type": 14,
+      "active": true,
+      "element_type": 32
+    },
+    "pk": 49
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4010110,
+      "datum_type": 15,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 50
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4010430,
+      "datum_type": 15,
+      "active": true,
+      "element_type": 33
+    },
+    "pk": 51
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4010440,
+      "datum_type": 15,
+      "active": true,
+      "element_type": 34
+    },
+    "pk": 52
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4010470,
+      "datum_type": 15,
+      "active": true,
+      "element_type": 37
+    },
+    "pk": 53
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4020110,
+      "datum_type": 16,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 54
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4020120,
+      "datum_type": 16,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 55
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4020430,
+      "datum_type": 16,
+      "active": true,
+      "element_type": 33
+    },
+    "pk": 56
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4020470,
+      "datum_type": 16,
+      "active": true,
+      "element_type": 37
+    },
+    "pk": 57
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4020480,
+      "datum_type": 16,
+      "active": true,
+      "element_type": 38
+    },
+    "pk": 58
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4020490,
+      "datum_type": 16,
+      "active": true,
+      "element_type": 40
+    },
+    "pk": 59
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4020500,
+      "datum_type": 16,
+      "active": true,
+      "element_type": 41
+    },
+    "pk": 60
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4030110,
+      "datum_type": 17,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 61
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4030120,
+      "datum_type": 17,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 62
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4030430,
+      "datum_type": 17,
+      "active": true,
+      "element_type": 33
+    },
+    "pk": 63
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4030470,
+      "datum_type": 17,
+      "active": true,
+      "element_type": 37
+    },
+    "pk": 64
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4030490,
+      "datum_type": 17,
+      "active": true,
+      "element_type": 40
+    },
+    "pk": 65
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4030500,
+      "datum_type": 17,
+      "active": true,
+      "element_type": 41
+    },
+    "pk": 66
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4040110,
+      "datum_type": 18,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 67
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4040120,
+      "datum_type": 18,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 68
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4040430,
+      "datum_type": 18,
+      "active": true,
+      "element_type": 33
+    },
+    "pk": 69
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4040470,
+      "datum_type": 18,
+      "active": true,
+      "element_type": 37
+    },
+    "pk": 70
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4050110,
+      "datum_type": 19,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 71
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4050440,
+      "datum_type": 19,
+      "active": true,
+      "element_type": 34
+    },
+    "pk": 72
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4050450,
+      "datum_type": 19,
+      "active": true,
+      "element_type": 35
+    },
+    "pk": 73
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4050460,
+      "datum_type": 19,
+      "active": true,
+      "element_type": 36
+    },
+    "pk": 74
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4050490,
+      "datum_type": 19,
+      "active": true,
+      "element_type": 40
+    },
+    "pk": 75
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4060110,
+      "datum_type": 20,
+      "active": true,
+      "element_type": 1
+    },
+    "pk": 76
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4060120,
+      "datum_type": 20,
+      "active": true,
+      "element_type": 2
+    },
+    "pk": 77
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4060430,
+      "datum_type": 20,
+      "active": true,
+      "element_type": 33
+    },
+    "pk": 78
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4060440,
+      "datum_type": 20,
+      "active": true,
+      "element_type": 34
+    },
+    "pk": 79
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4060470,
+      "datum_type": 20,
+      "active": true,
+      "element_type": 37
+    },
+    "pk": 80
+  },
+  {
+    "model": "element_type.elementtypedatumtype",
+    "fields": {
+      "sort": 4060490,
+      "datum_type": 20,
+      "active": true,
+      "element_type": 40
+    },
+    "pk": 81
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_logentry",
+      "content_type": 1,
+      "name": "Can add log entry"
+    },
+    "pk": 1
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_logentry",
+      "content_type": 1,
+      "name": "Can change log entry"
+    },
+    "pk": 2
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_logentry",
+      "content_type": 1,
+      "name": "Can delete log entry"
+    },
+    "pk": 3
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_permission",
+      "content_type": 2,
+      "name": "Can add permission"
+    },
+    "pk": 4
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_permission",
+      "content_type": 2,
+      "name": "Can change permission"
+    },
+    "pk": 5
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_permission",
+      "content_type": 2,
+      "name": "Can delete permission"
+    },
+    "pk": 6
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_group",
+      "content_type": 3,
+      "name": "Can add group"
+    },
+    "pk": 7
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_group",
+      "content_type": 3,
+      "name": "Can change group"
+    },
+    "pk": 8
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_group",
+      "content_type": 3,
+      "name": "Can delete group"
+    },
+    "pk": 9
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_user",
+      "content_type": 4,
+      "name": "Can add user"
+    },
+    "pk": 10
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_user",
+      "content_type": 4,
+      "name": "Can change user"
+    },
+    "pk": 11
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_user",
+      "content_type": 4,
+      "name": "Can delete user"
+    },
+    "pk": 12
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_contenttype",
+      "content_type": 5,
+      "name": "Can add content type"
+    },
+    "pk": 13
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_contenttype",
+      "content_type": 5,
+      "name": "Can change content type"
+    },
+    "pk": 14
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_contenttype",
+      "content_type": 5,
+      "name": "Can delete content type"
+    },
+    "pk": 15
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_session",
+      "content_type": 6,
+      "name": "Can add session"
+    },
+    "pk": 16
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_session",
+      "content_type": 6,
+      "name": "Can change session"
+    },
+    "pk": 17
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_session",
+      "content_type": 6,
+      "name": "Can delete session"
+    },
+    "pk": 18
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_datumgroup",
+      "content_type": 7,
+      "name": "Can add datum group"
+    },
+    "pk": 19
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_datumgroup",
+      "content_type": 7,
+      "name": "Can change datum group"
+    },
+    "pk": 20
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_datumgroup",
+      "content_type": 7,
+      "name": "Can delete datum group"
+    },
+    "pk": 21
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_datumtype",
+      "content_type": 8,
+      "name": "Can add datum type"
+    },
+    "pk": 22
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_datumtype",
+      "content_type": 8,
+      "name": "Can change datum type"
+    },
+    "pk": 23
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_datumtype",
+      "content_type": 8,
+      "name": "Can delete datum type"
+    },
+    "pk": 24
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_datumobject",
+      "content_type": 9,
+      "name": "Can add datum object"
+    },
+    "pk": 25
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_datumobject",
+      "content_type": 9,
+      "name": "Can change datum object"
+    },
+    "pk": 26
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_datumobject",
+      "content_type": 9,
+      "name": "Can delete datum object"
+    },
+    "pk": 27
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_elementdatatype",
+      "content_type": 10,
+      "name": "Can add element data type"
+    },
+    "pk": 28
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_elementdatatype",
+      "content_type": 10,
+      "name": "Can change element data type"
+    },
+    "pk": 29
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_elementdatatype",
+      "content_type": 10,
+      "name": "Can delete element data type"
+    },
+    "pk": 30
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_elementtype",
+      "content_type": 11,
+      "name": "Can add element type"
+    },
+    "pk": 31
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_elementtype",
+      "content_type": 11,
+      "name": "Can change element type"
+    },
+    "pk": 32
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_elementtype",
+      "content_type": 11,
+      "name": "Can delete element type"
+    },
+    "pk": 33
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_elementoption",
+      "content_type": 12,
+      "name": "Can add element option"
+    },
+    "pk": 34
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_elementoption",
+      "content_type": 12,
+      "name": "Can change element option"
+    },
+    "pk": 35
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_elementoption",
+      "content_type": 12,
+      "name": "Can delete element option"
+    },
+    "pk": 36
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_elementtypedatumtype",
+      "content_type": 13,
+      "name": "Can add element type datum type"
+    },
+    "pk": 37
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_elementtypedatumtype",
+      "content_type": 13,
+      "name": "Can change element type datum type"
+    },
+    "pk": 38
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_elementtypedatumtype",
+      "content_type": 13,
+      "name": "Can delete element type datum type"
+    },
+    "pk": 39
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_associationtype",
+      "content_type": 14,
+      "name": "Can add association type"
+    },
+    "pk": 40
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_associationtype",
+      "content_type": 14,
+      "name": "Can change association type"
+    },
+    "pk": 41
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_associationtype",
+      "content_type": 14,
+      "name": "Can delete association type"
+    },
+    "pk": 42
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_associationdirection",
+      "content_type": 15,
+      "name": "Can add association direction"
+    },
+    "pk": 43
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_associationdirection",
+      "content_type": 15,
+      "name": "Can change association direction"
+    },
+    "pk": 44
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_associationdirection",
+      "content_type": 15,
+      "name": "Can delete association direction"
+    },
+    "pk": 45
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_associationkeyword",
+      "content_type": 17,
+      "name": "Can add association keyword"
+    },
+    "pk": 49
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_associationkeyword",
+      "content_type": 17,
+      "name": "Can change association keyword"
+    },
+    "pk": 50
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_associationkeyword",
+      "content_type": 17,
+      "name": "Can delete association keyword"
+    },
+    "pk": 51
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_associationadjacent",
+      "content_type": 18,
+      "name": "Can add association adjacent"
+    },
+    "pk": 52
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_associationadjacent",
+      "content_type": 18,
+      "name": "Can change association adjacent"
+    },
+    "pk": 53
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_associationadjacent",
+      "content_type": 18,
+      "name": "Can delete association adjacent"
+    },
+    "pk": 54
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_associationall",
+      "content_type": 19,
+      "name": "Can add association all"
+    },
+    "pk": 55
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_associationall",
+      "content_type": 19,
+      "name": "Can change association all"
+    },
+    "pk": 56
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_associationall",
+      "content_type": 19,
+      "name": "Can delete association all"
+    },
+    "pk": 57
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_elementtypedatumobject",
+      "content_type": 20,
+      "name": "Can add element type datum object"
+    },
+    "pk": 58
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_elementtypedatumobject",
+      "content_type": 20,
+      "name": "Can change element type datum object"
+    },
+    "pk": 59
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_elementtypedatumobject",
+      "content_type": 20,
+      "name": "Can delete element type datum object"
+    },
+    "pk": 60
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_elementvaluestring",
+      "content_type": 21,
+      "name": "Can add element value string"
+    },
+    "pk": 61
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_elementvaluestring",
+      "content_type": 21,
+      "name": "Can change element value string"
+    },
+    "pk": 62
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_elementvaluestring",
+      "content_type": 21,
+      "name": "Can delete element value string"
+    },
+    "pk": 63
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_elementvaluetextdata",
+      "content_type": 22,
+      "name": "Can add element value text data"
+    },
+    "pk": 64
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_elementvaluetextdata",
+      "content_type": 22,
+      "name": "Can change element value text data"
+    },
+    "pk": 65
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_elementvaluetextdata",
+      "content_type": 22,
+      "name": "Can delete element value text data"
+    },
+    "pk": 66
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_elementvalueboolean",
+      "content_type": 23,
+      "name": "Can add element value boolean"
+    },
+    "pk": 67
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_elementvalueboolean",
+      "content_type": 23,
+      "name": "Can change element value boolean"
+    },
+    "pk": 68
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_elementvalueboolean",
+      "content_type": 23,
+      "name": "Can delete element value boolean"
+    },
+    "pk": 69
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_elementvaluedatetime",
+      "content_type": 24,
+      "name": "Can add element value datetime"
+    },
+    "pk": 70
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_elementvaluedatetime",
+      "content_type": 24,
+      "name": "Can change element value datetime"
+    },
+    "pk": 71
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_elementvaluedatetime",
+      "content_type": 24,
+      "name": "Can delete element value datetime"
+    },
+    "pk": 72
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_elementvaluedecimal",
+      "content_type": 25,
+      "name": "Can add element value decimal"
+    },
+    "pk": 73
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_elementvaluedecimal",
+      "content_type": 25,
+      "name": "Can change element value decimal"
+    },
+    "pk": 74
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_elementvaluedecimal",
+      "content_type": 25,
+      "name": "Can delete element value decimal"
+    },
+    "pk": 75
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "add_elementvaluebinary",
+      "content_type": 26,
+      "name": "Can add element value binary"
+    },
+    "pk": 76
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "change_elementvaluebinary",
+      "content_type": 26,
+      "name": "Can change element value binary"
+    },
+    "pk": 77
+  },
+  {
+    "model": "auth.permission",
+    "fields": {
+      "codename": "delete_elementvaluebinary",
+      "content_type": 26,
+      "name": "Can delete element value binary"
+    },
+    "pk": 78
+  },
+  {
+    "model": "auth.user",
+    "fields": {
+      "groups": [],
+      "password": "pbkdf2_sha256$20000$RUXLdDzdpcdK$LC4GplZ+whUEALdGNvJGAr1u8RDbc1u16WBQG5aQNAQ=",
+      "is_superuser": true,
+      "user_permissions": [],
+      "date_joined": "2015-04-26T23:28:20.184Z",
+      "is_active": true,
+      "is_staff": true,
+      "email": "test@test.com",
+      "first_name": "",
+      "last_name": "",
+      "last_login": null,
+      "username": "test"
+    },
+    "pk": 1
+  },
+  {
+    "model": "datum.datumobject",
+    "fields": {
+      "sort": 110101,
+      "user": 1,
+      "active": true,
+      "datum_type": 2
+    },
+    "pk": 17
+  },
+  {
+    "model": "datum.datumobject",
+    "fields": {
+      "sort": 110101,
+      "user": 1,
+      "active": true,
+      "datum_type": 2
+    },
+    "pk": 18
+  },
+  {
+    "model": "datum.datumobject",
+    "fields": {
+      "sort": 110101,
+      "user": 1,
+      "active": true,
+      "datum_type": 2
+    },
+    "pk": 19
+  }
+]

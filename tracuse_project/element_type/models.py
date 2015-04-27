@@ -89,9 +89,9 @@ class ElementTypeDatumType(BaseMixin):
 
     Used at Datum creation - Added to element_value table
 
-        Attributes:
-            datum_type_id (integer, fk, pk): DatumType
-            element_type_id (integer, fk, pk): ElementType
+    Attributes:
+        datum_type_id (integer, fk, pk): DatumType
+        element_type_id (integer, fk, pk): ElementType
     """
 
     class Meta(BaseMixin.Meta):
@@ -109,6 +109,35 @@ class ElementTypeDatumType(BaseMixin):
     element_type = models.ForeignKey("ElementType",
                                      db_column="element_type_id",
                                      related_name="datum_types",
+                                     null=False, blank=False
+                                     )
+
+
+class ElementTypeDatumObject(BaseMixin):
+    """Element Types assigned to Datum Types
+
+    One-To-One relationship with Element Values tables
+
+    Attributes:
+        datum_object_id (integer, fk, pk): DatumObject
+        element_type_id (integer, fk, pk): ElementType
+    """
+
+    class Meta(BaseMixin.Meta):
+        db_table = "element_type_datum_object"
+        unique_together = ("datum_object", "element_type")
+        index_together = ("datum_object", "element_type")
+
+    # FIXME Django Limitation - composite primary keys
+    element_type_datum_object_id = models.AutoField(primary_key=True)
+    datum_object = models.ForeignKey("datum.DatumObject",
+                                   db_column="datum_object_id",
+                                   related_name="element_types",
+                                   null=False, blank=False
+                                   )
+    element_type = models.ForeignKey("ElementType",
+                                     db_column="element_type_id",
+                                     related_name="datum_objects",
                                      null=False, blank=False
                                      )
 
