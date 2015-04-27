@@ -16,6 +16,8 @@ class FilterRuleMixin(BaseMixin):
 
     class Meta(BaseMixin.Meta):
         abstract = True
+        db_table = ""
+        default_related_name = db_table + "s"
 
     CONDITIONAL_CHOICES = (
         ('AND', 'AND'),
