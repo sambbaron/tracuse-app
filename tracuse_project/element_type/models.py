@@ -1,7 +1,7 @@
 from django.db import models
 
 from common.mixins import EntityMixin, BaseMixin
-from datum.models import DatumType
+
 
 class ElementDataType(EntityMixin):
     """Data types available to Elements
@@ -50,9 +50,9 @@ class ElementType(EntityMixin):
     element_type_id = models.AutoField(primary_key=True)
 
     element_data_type = models.ForeignKey("ElementDataType",
-                                  db_column="element_data_type_id",
-                                  null=False, blank=False
-                                  )
+                                          db_column="element_data_type_id",
+                                          null=False, blank=False
+                                          )
     default_expression = models.CharField(max_length=255,
                                           null=True, blank=True
                                           )
@@ -99,7 +99,7 @@ class ElementTypeDatumType(BaseMixin):
 
     # FIXME Django Limitation - composite primary keys
     element_type_datum_type_id = models.AutoField(primary_key=True)
-    datum_type = models.ForeignKey(DatumType,
+    datum_type = models.ForeignKey("datum.DatumType",
                                    db_column="datum_type_id",
                                    null=False
                                    )
