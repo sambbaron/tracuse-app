@@ -28,7 +28,7 @@ class ElementValueMixin(BaseMixin):
                              )
     element_option = models.ForeignKey("element_type.ElementOption",
                                        db_column="element_option_id",
-                                       null=False, blank=False
+                                       null=True, blank=True
                                        )
 
 
