@@ -51,6 +51,7 @@ class ElementType(EntityMixin):
 
     element_data_type = models.ForeignKey("ElementDataType",
                                           db_column="element_data_type_id",
+                                          related_name="element_types",
                                           null=False, blank=False
                                           )
     default_expression = models.CharField(max_length=255,
@@ -78,6 +79,7 @@ class ElementOption(EntityMixin):
     # FIXME Django Limitation - Change 'entity_name' unique false
     element_type = models.ForeignKey("ElementType",
                                      db_column="element_type_id",
+                                     related_name="element_options",
                                      null=False, blank=False
                                      )
 
@@ -101,10 +103,12 @@ class ElementTypeDatumType(BaseMixin):
     element_type_datum_type_id = models.AutoField(primary_key=True)
     datum_type = models.ForeignKey("datum.DatumType",
                                    db_column="datum_type_id",
-                                   null=False
+                                   related_name="element_types",
+                                   null=False, blank=False
                                    )
     element_type = models.ForeignKey("ElementType",
                                      db_column="element_type_id",
-                                     null=False
+                                     related_name="datum_types",
+                                     null=False, blank=False
                                      )
 

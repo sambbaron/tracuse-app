@@ -40,6 +40,7 @@ class DatumType(EntityMixin):
 
     datum_group = models.ForeignKey("DatumGroup",
                                     db_column="datum_group_id",
+                                    related_name="datum_types",
                                     null=False, blank=False,
                                     db_index=True
                                     )
@@ -68,11 +69,13 @@ class DatumObject(BaseMixin):
 
     user = models.ForeignKey(User,
                              db_column="user_id",
+                             related_name="datum_objects",
                              null=False, blank=False,
                              db_index=True
                              )
     datum_type = models.ForeignKey("DatumType",
                                    db_column="datum_type_id",
+                                   related_name="datum_objects",
                                    null=False, blank=False,
                                    db_index=True
                                    )
