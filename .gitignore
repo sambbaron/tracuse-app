@@ -68,3 +68,4 @@ target/
 *orientdbutils/
 */common/management/commands/sandbox.py
 */sql.sql
+x_old_models/
