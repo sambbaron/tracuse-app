@@ -1,6 +1,7 @@
 from django.db import models
 
 from common.mixins import EntityMixin, BaseMixin
+from element_value.models import ElementValueModel
 
 
 class ElementDataType(EntityMixin):
@@ -113,6 +114,10 @@ class ElementTypeDatumObject(BaseMixin):
     Attributes:
         datum_object_id (integer, fk, pk): DatumObject
         element_type_id (integer, fk, pk): ElementType
+        element_value_object (ElementValue object):
+            ElementValue objects for ElementType
+        element_value (variable):
+            'element_value' column from ElementValue model record
     """
 
     class Meta(BaseMixin.Meta):
@@ -123,13 +128,23 @@ class ElementTypeDatumObject(BaseMixin):
     # FIXME Django Limitation - composite primary keys
     element_type_datum_object_id = models.AutoField(primary_key=True)
     datum_object = models.ForeignKey("datum.DatumObject",
-                                   db_column="datum_object_id",
-                                   related_name="element_types",
-                                   null=False, blank=False
-                                   )
+                                     db_column="datum_object_id",
+                                     related_name="element_types",
+                                     null=False, blank=False
+                                     )
     element_type = models.ForeignKey("ElementType",
                                      db_column="element_type_id",
                                      related_name="datum_objects",
                                      null=False, blank=False
                                      )
 
+    @property
+    def element_value_object(self):
+        data_type_name = self.element_type.element_data_type.entity_name
+        element_value_model = ElementValueModel(data_type_name)
+        element_value_record = element_value_model.objects.get(element_type_datum_object=self)
+        return element_value_record
+
+    @property
+    def element_value(self):
+        return self.element_value_object.element_value
