@@ -16,8 +16,6 @@ class FilterRuleMixin(BaseMixin):
 
     class Meta(BaseMixin.Meta):
         abstract = True
-        db_table = ""
-        default_related_name = db_table + "s"
 
     CONDITIONAL_CHOICES = (
         ('AND', 'AND'),
@@ -44,10 +42,12 @@ class FilterRuleGroup(FilterRuleMixin):
 
     class Meta(FilterRuleMixin.Meta):
         db_table = "filter_rule_group"
+        verbose_name = "Filter Rule - Group"
 
     filter_rule_group_id = models.AutoField(primary_key=True)
     datum_group = models.ForeignKey("datum.DatumGroup",
                                     db_column="datum_group_id",
+                                    related_name="filter_rule_groups",
                                     null=False, blank=False
                                     )
 
@@ -62,10 +62,12 @@ class FilterRuleType(FilterRuleMixin):
 
     class Meta(FilterRuleMixin.Meta):
         db_table = "filter_rule_type"
+        verbose_name = "Filter Rule - Type"
 
     filter_rule_type_id = models.AutoField(primary_key=True)
     datum_type = models.ForeignKey("datum.DatumType",
                                    db_column="datum_type_id",
+                                   related_name="filter_rule_types",
                                    null=False, blank=False
                                    )
 
@@ -83,18 +85,22 @@ class FilterRuleAssociation(FilterRuleMixin):
 
     class Meta(FilterRuleMixin.Meta):
         db_table = "filter_rule_association"
+        verbose_name = "Filter Rule - Association"
 
     filter_rule_association_id = models.AutoField(primary_key=True)
     datum_object = models.ForeignKey("datum.DatumObject",
                                      db_column="datum_object_id",
+                                     related_name="filter_rule_associations",
                                      null=False, blank=False
                                      )
     association_direction = models.ForeignKey("association.AssociationDirection",
                                               db_column="association_direction_id",
+                                              related_name="filter_rule_associations",
                                               null=False, blank=False
                                               )
     association_type_id = models.ForeignKey("association.AssociationType",
                                             db_column="association_type_id",
+                                            related_name="filter_rule_associations",
                                             null=False, blank=False
                                             )
     depth = models.IntegerField(default=1,
@@ -111,13 +117,14 @@ class FilterRuleElement(FilterRuleMixin):
         element_value (string):  ***Must match value
     """
 
-
     class Meta(FilterRuleMixin.Meta):
         db_table = "filter_rule_element"
+        verbose_name = "Filter Rule - Element"
 
     filter_rule_element_id = models.AutoField(primary_key=True)
     element_type = models.ForeignKey("element_type.ElementType",
                                      db_column="element_type_id",
+                                     related_name="filter_rule_elements",
                                      null=False, blank=False
                                      )
     element_value = models.CharField(max_length=255)
@@ -135,11 +142,13 @@ class FilterSet(EntityMixin):
 
     class Meta(EntityMixin.Meta):
         db_table = "filter_set"
+        verbose_name = "Filter Set"
 
     filter_set_id = models.AutoField(primary_key=True)
     # Null user means filter set available to all users??
     user_id = models.ForeignKey(User,
                                 db_column="user_id",
+                                related_name="filter_sets",
                                 null=True, blank=True
                                 )
 
@@ -156,8 +165,6 @@ class FilterSetRuleMixin(BaseMixin):
 
     class Meta(BaseMixin.Meta):
         abstract = True
-        db_table = ""
-        default_related_name = db_table + "s"
 
     filter_set_id = models.ForeignKey("FilterSet",
                                       db_column="filter_set_id",
@@ -175,10 +182,11 @@ class FilterSetGroupRule(FilterSetRuleMixin):
 
     class Meta(BaseMixin.Meta):
         db_table = "filter_set_group_rule"
+        default_related_name = "filter_set_group_rules"
 
     filter_set_group_rule_id = models.AutoField(primary_key=True)
     filter_rule_group_id = models.ForeignKey("FilterRuleGroup",
-                                             "filter_rule_group_id",
+                                             db_column = "filter_rule_group_id",
                                              null=False, blank=False
                                              )
 
@@ -193,10 +201,11 @@ class FilterSetTypeRule(FilterSetRuleMixin):
 
     class Meta(BaseMixin.Meta):
         db_table = "filter_set_type_rule"
+        default_related_name = "filter_set_type_rules"
 
     filter_set_type_rule_id = models.AutoField(primary_key=True)
     filter_rule_type_id = models.ForeignKey("FilterRuleType",
-                                            "filter_rule_type_id",
+                                            db_column="filter_rule_type_id",
                                             null=False, blank=False
                                             )
 
@@ -211,10 +220,11 @@ class FilterSetAssociationRule(FilterSetRuleMixin):
 
     class Meta(BaseMixin.Meta):
         db_table = "filter_set_association_rule"
+        default_related_name = "filter_set_association_rules"
 
     filter_set_association_rule_id = models.AutoField(primary_key=True)
     filter_rule_association_id = models.ForeignKey("FilterRuleAssociation",
-                                                   "filter_rule_association_id",
+                                                   db_column="filter_rule_association_id",
                                                    null=False, blank=False
                                                    )
 
@@ -229,9 +239,10 @@ class FilterSetElementRule(FilterSetRuleMixin):
 
     class Meta(BaseMixin.Meta):
         db_table = "filter_set_element_rule"
+        default_related_name = "filter_set_element_rules"
 
     filter_set_element_rule_id = models.AutoField(primary_key=True)
     filter_rule_element_id = models.ForeignKey("FilterRuleElement",
-                                               "filter_rule_element_id",
+                                               db_column="filter_rule_element_id",
                                                null=False, blank=False
                                                )

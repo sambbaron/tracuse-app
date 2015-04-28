@@ -16,6 +16,7 @@ class DatumGroup(EntityMixin):
 
     class Meta(EntityMixin.Meta):
         db_table = "datum_group"
+        verbose_name = "Datum Group"
 
     datum_group_id = models.AutoField(primary_key=True)
 
@@ -35,12 +36,12 @@ class DatumType(EntityMixin):
 
     class Meta(EntityMixin.Meta):
         db_table = "datum_type"
+        verbose_name = "Datum Type"
 
     datum_type_id = models.AutoField(primary_key=True)
 
     datum_group = models.ForeignKey("DatumGroup",
                                     db_column="datum_group_id",
-                                    related_name="datum_types",
                                     null=False, blank=False,
                                     db_index=True
                                     )
@@ -77,6 +78,7 @@ class DatumObject(BaseMixin):
 
     class Meta(BaseMixin.Meta):
         db_table = "datum_object"
+        verbose_name = "Datum"
 
     datum_object_id = models.AutoField(primary_key=True)
 

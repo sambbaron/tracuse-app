@@ -12,6 +12,7 @@ class AssociationType(EntityMixin):
 
     class Meta(EntityMixin.Meta):
         db_table = "association_type"
+        verbose_name = "Association Type"
 
     association_type_id = models.AutoField(primary_key=True)
 
@@ -30,6 +31,7 @@ class AssociationDirection(EntityMixin):
 
     class Meta(EntityMixin.Meta):
         db_table = "association_direction"
+        verbose_name = "Association Direction"
 
     association_direction_id = models.AutoField(primary_key=True)
 
@@ -73,6 +75,8 @@ class AssociationAdjacent(AssociationMixin):
 
     class Meta(AssociationMixin.Meta):
         db_table = "association_adjacent"
+        verbose_name = "Association Adjacent"
+        verbose_name_plural = "Associations Adjacent"
 
     association_adjacent_id = models.AutoField(primary_key=True)
     association_type = models.ForeignKey("AssociationType",
@@ -95,6 +99,8 @@ class AssociationAll(AssociationMixin):
 
     class Meta(AssociationMixin.Meta):
         db_table = "association_all"
+        verbose_name = "Association All"
+        verbose_name_plural = "Associations All"
 
     association_all_id = models.AutoField(primary_key=True)
     depth = models.IntegerField(default=0)
@@ -115,6 +121,7 @@ class AssociationDatumKeyword(BaseMixin):
 
     class Meta(BaseMixin.Meta):
         db_table = "association_datum_keyword"
+        verbose_name = "Association Datum Keyword"
 
     association_datum_keyword_id = models.AutoField(primary_key=True)
     datum_object = models.ForeignKey("datum.DatumObject",
@@ -149,6 +156,7 @@ class AssociationTypeDatumType(BaseMixin):
 
     class Meta(BaseMixin.Meta):
         db_table = "association_type_datum_type"
+        verbose_name = "Association Datum Type Map"
         index_together = ("parent_datum_type", "child_datum_type")
 
     association_type_datum_type_id = models.AutoField(primary_key=True)

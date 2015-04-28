@@ -20,6 +20,7 @@ class ElementDataType(EntityMixin):
 
     class Meta(EntityMixin.Meta):
         db_table = "element_data_type"
+        verbose_name = "Element Data Type"
 
     element_data_type_id = models.AutoField(primary_key=True)
 
@@ -66,6 +67,7 @@ class ElementOption(EntityMixin):
 
     class Meta(EntityMixin.Meta):
         db_table = "element_option"
+        verbose_name = "Element Option"
 
     element_option_id = models.AutoField(primary_key=True)
     # FIXME Django Limitation - Can't override field property from Abstract Mixin Class
@@ -122,6 +124,7 @@ class ElementTypeDatumObject(BaseMixin):
 
     class Meta(BaseMixin.Meta):
         db_table = "element_type_datum_object"
+        verbose_name = "Element Type"
         unique_together = ("datum_object", "element_type")
         index_together = ("datum_object", "element_type")
 

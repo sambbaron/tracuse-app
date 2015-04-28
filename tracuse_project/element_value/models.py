@@ -38,6 +38,7 @@ class ElementValueMixin(BaseMixin):
     # FIXME Django Limitation - Can't create custom Meta property for db_table expression
     class Meta(BaseMixin.Meta):
         abstract = True
+        verbose_name = "Element Value"
 
     element_type_datum_object = \
         models.OneToOneField("element_type.ElementTypeDatumObject",
