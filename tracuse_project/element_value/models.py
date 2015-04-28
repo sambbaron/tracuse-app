@@ -50,7 +50,7 @@ class ElementValueMixin(BaseMixin):
                                        )
 
     def __str__(self):
-        return "Value=" + camel_to_spaced_capital(self.element_value)
+        return camel_to_spaced_capital(self.element_value)
 
 
 

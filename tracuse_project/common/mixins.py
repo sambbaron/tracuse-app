@@ -87,4 +87,4 @@ class EntityMixin(BaseMixin):
         return output
 
     def __str__(self):
-        return "Name=" + camel_to_spaced_capital(self.entity_name)
+        return camel_to_spaced_capital(self.entity_name)
