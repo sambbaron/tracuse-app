@@ -14,7 +14,7 @@ class ElementValueMixin(BaseMixin):
         datum_object_id (integer, fk, required): DatumObject
          element_type_datum_object (integer, fk, required):
             ElementTypeDatumObject --> One-To-One
-        element_option_id (integer, fk, nullable): ElementOption
+        element_option_id (integer, fk, optional): ElementOption
     """
 
     # FIXME Django Limitation - Can't create custom Meta property for db_table expression
@@ -37,7 +37,7 @@ class ElementValueString(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (string, nullable)
+        element_value (string, optional)
     """
 
     class Meta(ElementValueMixin.Meta):
@@ -54,7 +54,7 @@ class ElementValueTextData(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (text, nullable)
+        element_value (text, optional)
     """
 
     class Meta(ElementValueMixin.Meta):
@@ -85,7 +85,7 @@ class ElementValueDatetime(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (datetime, nullable)
+        element_value (datetime, optional)
     """
 
     class Meta(ElementValueMixin.Meta):
@@ -101,7 +101,7 @@ class ElementValueDecimal(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (decimal, nullable)
+        element_value (decimal, optional)
     """
 
     class Meta(ElementValueMixin.Meta):
@@ -118,7 +118,7 @@ class ElementValueBinary(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (binary, nullable)
+        element_value (binary, optional)
     """
 
     class Meta(ElementValueMixin.Meta):

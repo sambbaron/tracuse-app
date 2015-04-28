@@ -11,7 +11,7 @@ class FilterRuleMixin(BaseMixin):
     Attributes:
         See BaseMixin
         operator (string, required):  -> = <> => <=
-        conditional (string, nullable): And, Or
+        conditional (string, optional): And, Or
     """
 
     class Meta(BaseMixin.Meta):
@@ -130,7 +130,7 @@ class FilterSet(EntityMixin):
 
     Attributes:
         See EntityMixin (includes BaseMixin)
-        user_id (integer, fk, nullable): User
+        user_id (integer, fk, optional): User
     """
 
     class Meta(EntityMixin.Meta):
