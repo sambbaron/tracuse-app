@@ -116,7 +116,7 @@ class AssociationDatumKeyword(BaseMixin):
     class Meta(BaseMixin.Meta):
         db_table = "association_datum_keyword"
 
-    association_keyword_id = models.AutoField(primary_key=True)
+    association_datum_keyword_id = models.AutoField(primary_key=True)
     datum_object = models.ForeignKey("datum.DatumObject",
                                      db_column="datum_object_id",
                                      related_name="association_keywords",
