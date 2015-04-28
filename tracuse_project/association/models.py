@@ -100,8 +100,8 @@ class AssociationAll(AssociationMixin):
     depth = models.IntegerField(default=0)
 
 
-class AssociationKeyword(BaseMixin):
-    """Keywords in Datum that trigger dynamic association
+class AssociationDatumKeyword(BaseMixin):
+    """Datum Element Value Keywords that trigger dynamic association
 
     Attributes:
         See BaseMixin
@@ -114,7 +114,7 @@ class AssociationKeyword(BaseMixin):
     """
 
     class Meta(BaseMixin.Meta):
-        db_table = "association_keyword"
+        db_table = "association_datum_keyword"
 
     association_keyword_id = models.AutoField(primary_key=True)
     datum_object = models.ForeignKey("datum.DatumObject",
@@ -125,8 +125,8 @@ class AssociationKeyword(BaseMixin):
     keyword = models.CharField(max_length=100,
                                null=False, blank=False
                                )
-    # filter_test_scope = models.ForeignKey("filter.FilterSet",
-    # db_column="filter_set_id",
-    # related_name="association_keywords",
-    # null=True, blank=True
-    #                                       )
+    filter_test_scope = models.ForeignKey("filter.FilterSet",
+                                          db_column="filter_set_id",
+                                          related_name="association_keywords",
+                                          null=True, blank=True
+                                          )
