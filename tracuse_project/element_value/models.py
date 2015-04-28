@@ -1,6 +1,7 @@
 from django.db import models
 
 from common.mixins import BaseMixin
+from common.utils import camel_to_spaced_capital
 
 
 class ElementValueModel(object):
@@ -47,6 +48,10 @@ class ElementValueMixin(BaseMixin):
                                        db_column="element_option_id",
                                        null=True, blank=True
                                        )
+
+    def __str__(self):
+        return "Value=" + camel_to_spaced_capital(self.element_value)
+
 
 
 class ElementValueString(ElementValueMixin):
