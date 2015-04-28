@@ -98,12 +98,12 @@ class ElementTypeDatumType(BaseMixin):
     element_type_datum_type_id = models.AutoField(primary_key=True)
     datum_type = models.ForeignKey("datum.DatumType",
                                    db_column="datum_type_id",
-                                   related_name="element_types",
+                                   related_name="element_types_datum_types",
                                    null=False, blank=False
                                    )
     element_type = models.ForeignKey("ElementType",
                                      db_column="element_type_id",
-                                     related_name="datum_types",
+                                     related_name="datum_types_element_types",
                                      null=False, blank=False
                                      )
 
@@ -132,12 +132,12 @@ class ElementTypeDatumObject(BaseMixin):
     element_type_datum_object_id = models.AutoField(primary_key=True)
     datum_object = models.ForeignKey("datum.DatumObject",
                                      db_column="datum_object_id",
-                                     related_name="element_types",
+                                     related_name="element_types_datum_objects",
                                      null=False, blank=False
                                      )
     element_type = models.ForeignKey("ElementType",
                                      db_column="element_type_id",
-                                     related_name="datum_objects",
+                                     related_name="datum_objects_element_types",
                                      null=False, blank=False
                                      )
 
