@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from common.mixins import EntityMixin, BaseMixin
+from element_type.models import ElementType
 
 
 class DatumGroup(EntityMixin):
@@ -69,11 +70,14 @@ class DatumObject(BaseMixin):
             ElementTypes from ElementTypeDatumType
         assigned_element_types (list):
             ElementTypes from ElementTypeDatumObject
+        element_values_objects (list):
+            ElementValue objects
 
     Methods:
-        element_values (dict):
-            Return element_values for selected element_types
-
+        element_values_dict (dict):
+            Return element values for multiple element types
+        element_value_one (variable):
+            Return single element value for selected element type
     """
 
     class Meta(BaseMixin.Meta):
@@ -111,27 +115,29 @@ class DatumObject(BaseMixin):
     def default_element_types(self):
         element_types = []
         for datum_type_element_type in self.datum_type.element_types_datum_types.all():
-            element_types.append(datum_type_element_type.element_type)
+            related_element_type = datum_type_element_type.element_type
+            element_types.append(related_element_type)
         return element_types
 
     @property
     def assigned_element_types(self):
         element_types = []
         for datum_object_element_type in self.element_types_datum_objects.all():
-            element_types.append(datum_object_element_type.element_type)
+            related_element_type = datum_object_element_type.element_type
+            element_types.append(related_element_type)
         return element_types
 
-    def element_values(self, element_type_list=None):
+    def element_values_dict(self, element_type_list=None):
         """Retrieve Element Values for Datum Object
 
         Args:
-            element_type_list (list):
-                List of ElementType objects
-                Defaults to assigned element types
+            element_type_list (ElementType objects list, optional):
+                Specific element types to return
+                Defaults to all element types in assigned element types
 
         Return:
             dict:
-                key: ElementType object
+                key: ElementType.element_type_id
                 value: ElementValue object
         """
         result_dict = {}
@@ -139,13 +145,12 @@ class DatumObject(BaseMixin):
         if not element_type_list:
             element_type_list = self.assigned_element_types
 
-        # Loop through element types
         for element_type in element_type_list:
             element_type_id = element_type.element_type_id
             # Lookup ElementTypeDatumType object for association
-            element_type_datum_object = self.element_types.get(element_type=element_type)
-            # Lookup ElementValueModel value
+            element_type_datum_object = self.element_types_datum_objects.get(element_type=element_type)
+
             element_value = element_type_datum_object.element_value_object
-            result_dict[element_type] = element_value
+            result_dict[element_type_id] = element_value
 
         return result_dict
