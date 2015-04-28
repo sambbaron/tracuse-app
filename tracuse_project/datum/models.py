@@ -64,7 +64,12 @@ class DatumObject(BaseMixin):
         See BaseMixin
         user_id (integer, fk, required): User
         datum_type_id (integer, fk, required): DatumType
-        creation_date (datetime)
+        default_element_types (list):
+            ElementTypes from ElementTypeDatumType
+        assigned_element_types (list):
+            ElementTypes from ElementTypeDatumObject
+        element_values (dict):
+
     """
 
     class Meta(BaseMixin.Meta):
@@ -84,16 +89,23 @@ class DatumObject(BaseMixin):
                                    null=False, blank=False,
                                    db_index=True
                                    )
-    parent_associations_adjacent = models.ManyToManyField("self",
-                                                        related_name="child_associations_adjacent",
-                                                        through="association.AssociationAdjacent",
-                                                        symmetrical=False
-                                                        )
-    parent_associations_all = models.ManyToManyField("self",
-                                                     related_name="child_associations_all",
-                                                     through="association.AssociationAll",
-                                                     symmetrical=False
-                                                     )
+    parent_associations_adjacent = \
+        models.ManyToManyField("self",
+                               related_name="child_associations_adjacent",
+                               through="association.AssociationAdjacent",
+                               symmetrical=False
+                               )
+    parent_associations_all = \
+        models.ManyToManyField("self",
+                               related_name="child_associations_all",
+                               through="association.AssociationAll",
+                               symmetrical=False
+                               )
 
-    # TODO Property for associated Datums
-    # TODO Property with element data
+    @property
+    def default_element_types(self):
+        return self.datum_type.element_types
+
+    @property
+    def assigned_element_types(self):
+        return self.element_types
