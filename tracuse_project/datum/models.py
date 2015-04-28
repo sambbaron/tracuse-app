@@ -110,14 +110,14 @@ class DatumObject(BaseMixin):
     @property
     def default_element_types(self):
         element_types = []
-        for datum_type_element_type in self.datum_type.element_types.all():
+        for datum_type_element_type in self.datum_type.element_types_datum_types.all():
             element_types.append(datum_type_element_type.element_type)
         return element_types
 
     @property
     def assigned_element_types(self):
         element_types = []
-        for datum_object_element_type in self.element_types.all():
+        for datum_object_element_type in self.element_types_datum_objects.all():
             element_types.append(datum_object_element_type.element_type)
         return element_types
 
