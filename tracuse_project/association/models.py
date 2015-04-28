@@ -130,3 +130,38 @@ class AssociationDatumKeyword(BaseMixin):
                                           related_name="association_keywords",
                                           null=True, blank=True
                                           )
+
+class AssociationTypeDatumType(BaseMixin):
+    """Association Type Keywords that trigger dynamic association
+
+    Used to filter available Association Types by Datum Type
+        and assign using keywords
+
+    Attributes:
+        See BaseMixin
+        parent_datum_type_id (integer, fk, required):
+            Parent DatumType associated
+        child_datum_type_id (integer, fk, required):
+            Child DatumType associated
+        keyword (string, required):
+            Default to AssociationType common name
+    """
+
+    class Meta(BaseMixin.Meta):
+        db_table = "association_type_datum_type"
+        index_together = ("parent_datum_type", "child_datum_type")
+
+    association_type_datum_type_id = models.AutoField(primary_key=True)
+    parent_datum_type = models.ForeignKey("datum.DatumType",
+                                          db_column="parent_datum_type_id",
+                                          related_name="+",
+                                          null=False, blank=False
+                                          )
+    child_datum_type = models.ForeignKey("datum.DatumType",
+                                          db_column="child_datum_type_id",
+                                          related_name="+",
+                                          null=False, blank=False
+                                          )
+    keyword = models.CharField(max_length=100,
+                               null=False, blank=False
+                               )

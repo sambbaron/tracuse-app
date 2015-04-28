@@ -47,6 +47,11 @@ class DatumType(EntityMixin):
     repr_expression = models.CharField(max_length=255,
                                        null=False, blank=False
                                        )
+    parent_associations_all = models.ManyToManyField("self",
+                                                     related_name="child_associations_all",
+                                                     through="association.AssociationAll",
+                                                     symmetrical=False
+                                                     )
 
 
 class DatumObject(BaseMixin):
