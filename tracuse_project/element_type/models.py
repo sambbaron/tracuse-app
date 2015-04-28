@@ -22,14 +22,6 @@ class ElementDataType(EntityMixin):
 
     element_data_type_id = models.AutoField(primary_key=True)
 
-    @property
-    def element_value_class(self):
-        return "ElementValue" + self.entity_name
-
-    @property
-    def element_value_table(self):
-        return "element_value_" + self.schema_name
-
 
 class ElementType(EntityMixin):
     """Property types available to Datums

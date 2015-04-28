@@ -3,6 +3,23 @@ from django.db import models
 from common.mixins import BaseMixin
 
 
+class ElementValueModel(object):
+    """Factory class for ElementValue models
+
+    Model Name = "ElementValue" + ElementDataType.entity_name
+
+    Attributes:
+        data_type_name (string): ElementDataType.entity_name
+    """
+
+    def __init__(self, data_type_name):
+        self.data_type_name = data_type_name
+
+    def __new__(cls, data_type_name):
+        value_model_name = "ElementValue" + data_type_name
+        return globals()[value_model_name]
+
+
 class ElementValueMixin(BaseMixin):
     """Common columns for ElementValue models
 
