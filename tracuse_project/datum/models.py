@@ -68,7 +68,10 @@ class DatumObject(BaseMixin):
             ElementTypes from ElementTypeDatumType
         assigned_element_types (list):
             ElementTypes from ElementTypeDatumObject
+
+    Methods:
         element_values (dict):
+            Return element_values for selected element_types
 
     """
 
@@ -115,3 +118,32 @@ class DatumObject(BaseMixin):
         for datum_object_element_type in self.element_types.all():
             element_types.append(datum_object_element_type.element_type)
         return element_types
+
+    def element_values(self, element_type_list=None):
+        """Retrieve Element Values for Datum Object
+
+        Args:
+            element_type_list (list):
+                List of ElementType objects
+                Defaults to assigned element types
+
+        Return:
+            dict:
+                key: ElementType object
+                value: ElementValue object
+        """
+        result_dict = {}
+
+        if not element_type_list:
+            element_type_list = self.assigned_element_types
+
+        # Loop through element types
+        for element_type in element_type_list:
+            element_type_id = element_type.element_type_id
+            # Lookup ElementTypeDatumType object for association
+            element_type_datum_object = self.element_types.get(element_type=element_type)
+            # Lookup ElementValueModel value
+            element_value = element_type_datum_object.element_value_object
+            result_dict[element_type] = element_value
+
+        return result_dict
