@@ -33,6 +33,8 @@ class ElementValueMixin(BaseMixin):
          element_type_datum_object (integer, fk, required):
             ElementTypeDatumObject --> One-To-One
         element_option_id (integer, fk, optional): ElementOption
+        datum_object (DatumObject):
+        element_type (ElementType):
     """
 
     # FIXME Django Limitation - Can't create custom Meta property for db_table expression
@@ -50,9 +52,16 @@ class ElementValueMixin(BaseMixin):
                                        null=True, blank=True
                                        )
 
+    @property
+    def datum_object(self):
+        return self.element_type_datum_object.datum_object
+
+    @property
+    def element_type(self):
+        return self.element_type_datum_object.element_type
+
     def __str__(self):
         return camel_to_spaced_capital(self.element_value)
-
 
 
 class ElementValueString(ElementValueMixin):
