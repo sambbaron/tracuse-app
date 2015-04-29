@@ -18,10 +18,10 @@ class Migration(migrations.Migration):
                 ('association_adjacent_id', models.AutoField(serialize=False, primary_key=True)),
             ],
             options={
+                'verbose_name_plural': 'Associations Adjacent',
+                'verbose_name': 'Association Adjacent',
                 'db_table': 'association_adjacent',
                 'abstract': False,
-                'verbose_name': 'Association Adjacent',
-                'verbose_name_plural': 'Associations Adjacent',
             },
         ),
         migrations.CreateModel(
@@ -33,10 +33,10 @@ class Migration(migrations.Migration):
                 ('depth', models.IntegerField(default=0)),
             ],
             options={
+                'verbose_name_plural': 'Associations All',
+                'verbose_name': 'Association All',
                 'db_table': 'association_all',
                 'abstract': False,
-                'verbose_name': 'Association All',
-                'verbose_name_plural': 'Associations All',
             },
         ),
         migrations.CreateModel(
@@ -45,14 +45,14 @@ class Migration(migrations.Migration):
                 ('sort', models.IntegerField(default=0, db_index=True)),
                 ('active', models.BooleanField(default=True, db_index=True)),
                 ('entity_name', models.CharField(default='', max_length=25, db_index=True)),
-                ('short_definition', models.CharField(null=True, blank=True, max_length=25)),
-                ('long_definition', models.CharField(null=True, blank=True, max_length=100)),
+                ('short_definition', models.CharField(null=True, max_length=25, blank=True)),
+                ('long_definition', models.CharField(null=True, max_length=100, blank=True)),
                 ('association_direction_id', models.AutoField(serialize=False, primary_key=True)),
             ],
             options={
-                'db_table': 'association_direction',
                 'abstract': False,
                 'verbose_name': 'Association Direction',
+                'db_table': 'association_direction',
             },
         ),
         migrations.CreateModel(
@@ -61,14 +61,14 @@ class Migration(migrations.Migration):
                 ('sort', models.IntegerField(default=0, db_index=True)),
                 ('active', models.BooleanField(default=True, db_index=True)),
                 ('entity_name', models.CharField(default='', max_length=25, db_index=True)),
-                ('short_definition', models.CharField(null=True, blank=True, max_length=25)),
-                ('long_definition', models.CharField(null=True, blank=True, max_length=100)),
+                ('short_definition', models.CharField(null=True, max_length=25, blank=True)),
+                ('long_definition', models.CharField(null=True, max_length=100, blank=True)),
                 ('association_type_id', models.AutoField(serialize=False, primary_key=True)),
             ],
             options={
-                'db_table': 'association_type',
                 'abstract': False,
                 'verbose_name': 'Association Type',
+                'db_table': 'association_type',
             },
         ),
     ]

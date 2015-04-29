@@ -2,8 +2,8 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-from common.mixins import EntityMixin, BaseMixin
-from element_type.models import ElementType
+from components.common.mixins import EntityMixin, BaseMixin
+from components.element_type.models import ElementType
 
 
 class DatumGroup(EntityMixin):
@@ -49,11 +49,6 @@ class DatumType(EntityMixin):
     repr_expression = models.CharField(max_length=255,
                                        null=False, blank=False
                                        )
-    parent_associations_all = models.ManyToManyField("self",
-                                                     related_name="child_associations_all",
-                                                     through="association.AssociationAll",
-                                                     symmetrical=False
-                                                     )
 
 
 class DatumObject(BaseMixin):

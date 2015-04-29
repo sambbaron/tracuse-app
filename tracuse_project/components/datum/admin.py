@@ -1,8 +1,7 @@
 from django.contrib import admin
 
-from .models import DatumObject
-from element_type.models import ElementTypeDatumObject
-from element_value.models import ElementValueModel, ElementValueString
+from components.datum.models import DatumObject
+from components.element_type.models import ElementTypeDatumObject
 
 
 class ElementTypeInline(admin.StackedInline):

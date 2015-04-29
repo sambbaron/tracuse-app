@@ -1,6 +1,6 @@
 import unittest
 
-from common import utils
+from components.common import utils
 
 
 class TestStringUtils(unittest.TestCase):

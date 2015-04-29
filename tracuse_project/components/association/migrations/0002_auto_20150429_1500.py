@@ -15,27 +15,27 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='associationall',
             name='child_datum',
-            field=models.ForeignKey(related_name='+', db_column='child_datum_id', to='datum.DatumObject'),
+            field=models.ForeignKey(db_column='child_datum_id', related_name='+', to='datum.DatumObject'),
         ),
         migrations.AddField(
             model_name='associationall',
             name='parent_datum',
-            field=models.ForeignKey(related_name='+', db_column='parent_datum_id', to='datum.DatumObject'),
+            field=models.ForeignKey(db_column='parent_datum_id', related_name='+', to='datum.DatumObject'),
         ),
         migrations.AddField(
             model_name='associationadjacent',
             name='association_type',
-            field=models.ForeignKey(related_name='associations_adjacent', db_column='association_type_id', to='association.AssociationType'),
+            field=models.ForeignKey(db_column='association_type_id', related_name='associations_adjacent', to='association.AssociationType'),
         ),
         migrations.AddField(
             model_name='associationadjacent',
             name='child_datum',
-            field=models.ForeignKey(related_name='+', db_column='child_datum_id', to='datum.DatumObject'),
+            field=models.ForeignKey(db_column='child_datum_id', related_name='+', to='datum.DatumObject'),
         ),
         migrations.AddField(
             model_name='associationadjacent',
             name='parent_datum',
-            field=models.ForeignKey(related_name='+', db_column='parent_datum_id', to='datum.DatumObject'),
+            field=models.ForeignKey(db_column='parent_datum_id', related_name='+', to='datum.DatumObject'),
         ),
         migrations.AlterUniqueTogether(
             name='associationall',

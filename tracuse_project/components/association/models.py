@@ -1,6 +1,6 @@
 from django.db import models
 
-from common.mixins import EntityMixin, BaseMixin
+from components.common.mixins import EntityMixin, BaseMixin
 
 
 class AssociationType(EntityMixin):

@@ -1,8 +1,6 @@
-from django.shortcuts import render
-
-from datum.models import DatumObject, DatumType
-from element_type.models import ElementTypeDatumObject
-from element_value import models as ElementValueModels
+from components.datum.models import DatumObject, DatumType
+from components.element_type.models import ElementTypeDatumObject
+from components.element_value import models as ElementValueModels
 
 
 def create_datum_with_elements(user_id, datum_type_id):
