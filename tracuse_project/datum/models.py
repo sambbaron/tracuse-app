@@ -66,6 +66,7 @@ class DatumObject(BaseMixin):
         See BaseMixin
         user_id (integer, fk, required): User
         datum_type_id (integer, fk, required): DatumType
+        datum_group (DatumGroup):
         default_element_types (list):
             ElementTypes from ElementTypeDatumType
         assigned_element_types (list):
@@ -112,6 +113,10 @@ class DatumObject(BaseMixin):
                                through="association.AssociationAll",
                                symmetrical=False
                                )
+
+    @property
+    def datum_group(self):
+        return self.datum_type.datum_group
 
     @property
     def default_element_types(self):
