@@ -154,8 +154,9 @@ class DatumObject(BaseMixin):
 
 
     def get_element_value(self, element_type_object):
-        element_value_object = self.element_value(element_type_object)
-        return element_value_object.element_value
+        element_type_datum_object = self.element_types_datum_objects. \
+            get(element_type=element_type_object)
+        return element_type_datum_object.get_element_value
 
 
     def element_values_dict(self, element_type_list=None):
