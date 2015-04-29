@@ -75,7 +75,7 @@ class DatumObject(BaseMixin):
             ElementValue objects
 
     Methods:
-        element_value_object (ElementValue):
+        element_value (ElementValue):
             Return single ElementValue object for selected element type
         get_element_value (variable):
             Return element value for selected element type
@@ -134,7 +134,7 @@ class DatumObject(BaseMixin):
             element_types.append(related_element_type)
         return element_types
 
-    def element_value_object(self, element_type_object):
+    def element_value(self, element_type_object):
         """Retrieve Single Element Value Object for Element Type
 
         Args:
@@ -150,11 +150,11 @@ class DatumObject(BaseMixin):
         # Lookup ElementTypeDatumType object for association
         element_type_datum_object = self.element_types_datum_objects. \
             get(element_type=element_type_object)
-        return element_type_datum_object.element_value_object
+        return element_type_datum_object.element_value
 
 
     def get_element_value(self, element_type_object):
-        element_value_object = self.element_value_object(element_type_object)
+        element_value_object = self.element_value(element_type_object)
         return element_value_object.element_value
 
 
@@ -177,7 +177,7 @@ class DatumObject(BaseMixin):
             element_type_list = self.assigned_element_types
 
         for element_type in element_type_list:
-            element_value_object = self.element_value_object(element_type)
+            element_value_object = self.element_value(element_type)
             result_dict[element_type] = element_value_object
 
         return result_dict
