@@ -65,6 +65,7 @@ class ElementValueString(ElementValueMixin):
 
     class Meta(ElementValueMixin.Meta):
         db_table = "element_value_string"
+        default_related_name = "element_value_string"
 
     element_value_string_id = models.AutoField(primary_key=True)
     element_value = models.CharField(max_length=150,
@@ -82,6 +83,7 @@ class ElementValueTextData(ElementValueMixin):
 
     class Meta(ElementValueMixin.Meta):
         db_table = "element_value_textdata"
+        default_related_name = "element_value_textdata"
 
     element_value_textdata_id = models.AutoField(primary_key=True)
     element_value = models.TextField(null=True, blank=True
@@ -98,6 +100,7 @@ class ElementValueBoolean(ElementValueMixin):
 
     class Meta(ElementValueMixin.Meta):
         db_table = "element_value_boolean"
+        default_related_name = "element_value_boolean"
 
     element_value_boolean_id = models.AutoField(primary_key=True)
     element_value = models.BooleanField()
@@ -113,6 +116,7 @@ class ElementValueDatetime(ElementValueMixin):
 
     class Meta(ElementValueMixin.Meta):
         db_table = "element_value_datetime"
+        default_related_name = "element_value_datetime"
 
     element_value_datetime_id = models.AutoField(primary_key=True)
     element_value = models.DateTimeField(null=True, blank=True
@@ -129,6 +133,7 @@ class ElementValueDecimal(ElementValueMixin):
 
     class Meta(ElementValueMixin.Meta):
         db_table = "element_value_decimal"
+        default_related_name = "element_value_decimal"
 
     element_value_decimal_id = models.AutoField(primary_key=True)
     element_value = models.DecimalField(max_digits=10, decimal_places=2,
@@ -146,6 +151,7 @@ class ElementValueBinary(ElementValueMixin):
 
     class Meta(ElementValueMixin.Meta):
         db_table = "element_value_binary"
+        default_related_name = "element_value_binary"
 
     element_value_binary_id = models.AutoField(primary_key=True)
     element_value = models.BinaryField(null=True, blank=True
