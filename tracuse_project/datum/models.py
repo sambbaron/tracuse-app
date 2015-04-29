@@ -176,3 +176,8 @@ class DatumObject(BaseMixin):
             result_dict[element_type] = element_value_object
 
         return result_dict
+
+    def __str__(self):
+        name_element_type = ElementType.objects.get(entity_name="Name")
+        name_value = self.get_element_value(name_element_type)
+        return "{} - {}".format(self.datum_type, name_value)
