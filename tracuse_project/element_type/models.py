@@ -91,6 +91,7 @@ class ElementTypeDatumType(BaseMixin):
 
     class Meta(BaseMixin.Meta):
         db_table = "element_type_datum_type"
+        verbose_name = "Element Type - Datum Type"
         unique_together = ("datum_type", "element_type")
         index_together = ("datum_type", "element_type")
 
@@ -127,7 +128,7 @@ class ElementTypeDatumObject(BaseMixin):
 
     class Meta(BaseMixin.Meta):
         db_table = "element_type_datum_object"
-        verbose_name = "Element Type"
+        verbose_name = "Element Type - Datum Object"
         unique_together = ("datum_object", "element_type")
         index_together = ("datum_object", "element_type")
 
