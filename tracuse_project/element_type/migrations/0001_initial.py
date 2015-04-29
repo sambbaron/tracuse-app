@@ -16,14 +16,15 @@ class Migration(migrations.Migration):
             fields=[
                 ('sort', models.IntegerField(default=0, db_index=True)),
                 ('active', models.BooleanField(default=True, db_index=True)),
-                ('entity_name', models.CharField(default='', db_index=True, max_length=25)),
-                ('short_definition', models.CharField(blank=True, null=True, max_length=25)),
-                ('long_definition', models.CharField(blank=True, null=True, max_length=100)),
-                ('element_data_type_id', models.AutoField(primary_key=True, serialize=False)),
+                ('entity_name', models.CharField(default='', max_length=25, db_index=True)),
+                ('short_definition', models.CharField(null=True, blank=True, max_length=25)),
+                ('long_definition', models.CharField(null=True, blank=True, max_length=100)),
+                ('element_data_type_id', models.AutoField(serialize=False, primary_key=True)),
             ],
             options={
                 'db_table': 'element_data_type',
                 'abstract': False,
+                'verbose_name': 'Element Data Type',
             },
         ),
         migrations.CreateModel(
@@ -31,14 +32,15 @@ class Migration(migrations.Migration):
             fields=[
                 ('sort', models.IntegerField(default=0, db_index=True)),
                 ('active', models.BooleanField(default=True, db_index=True)),
-                ('entity_name', models.CharField(default='', db_index=True, max_length=25)),
-                ('short_definition', models.CharField(blank=True, null=True, max_length=25)),
-                ('long_definition', models.CharField(blank=True, null=True, max_length=100)),
-                ('element_option_id', models.AutoField(primary_key=True, serialize=False)),
+                ('entity_name', models.CharField(default='', max_length=25, db_index=True)),
+                ('short_definition', models.CharField(null=True, blank=True, max_length=25)),
+                ('long_definition', models.CharField(null=True, blank=True, max_length=100)),
+                ('element_option_id', models.AutoField(serialize=False, primary_key=True)),
             ],
             options={
                 'db_table': 'element_option',
                 'abstract': False,
+                'verbose_name': 'Element Option',
             },
         ),
         migrations.CreateModel(
@@ -46,13 +48,13 @@ class Migration(migrations.Migration):
             fields=[
                 ('sort', models.IntegerField(default=0, db_index=True)),
                 ('active', models.BooleanField(default=True, db_index=True)),
-                ('entity_name', models.CharField(default='', db_index=True, max_length=25)),
-                ('short_definition', models.CharField(blank=True, null=True, max_length=25)),
-                ('long_definition', models.CharField(blank=True, null=True, max_length=100)),
-                ('element_type_id', models.AutoField(primary_key=True, serialize=False)),
-                ('default_expression', models.CharField(blank=True, null=True, max_length=255)),
+                ('entity_name', models.CharField(default='', max_length=25, db_index=True)),
+                ('short_definition', models.CharField(null=True, blank=True, max_length=25)),
+                ('long_definition', models.CharField(null=True, blank=True, max_length=100)),
+                ('element_type_id', models.AutoField(serialize=False, primary_key=True)),
+                ('default_expression', models.CharField(null=True, blank=True, max_length=255)),
                 ('editable', models.BooleanField()),
-                ('element_data_type', models.ForeignKey(db_column='element_data_type_id', to='element_type.ElementDataType')),
+                ('element_data_type', models.ForeignKey(related_name='element_types', db_column='element_data_type_id', to='element_type.ElementDataType')),
             ],
             options={
                 'db_table': 'element_type',
@@ -60,26 +62,39 @@ class Migration(migrations.Migration):
             },
         ),
         migrations.CreateModel(
+            name='ElementTypeDatumObject',
+            fields=[
+                ('sort', models.IntegerField(default=0, db_index=True)),
+                ('active', models.BooleanField(default=True, db_index=True)),
+                ('element_type_datum_object_id', models.AutoField(serialize=False, primary_key=True)),
+                ('datum_object', models.ForeignKey(related_name='element_types_datum_objects', db_column='datum_object_id', to='datum.DatumObject')),
+                ('element_type', models.ForeignKey(related_name='datum_objects_element_types', db_column='element_type_id', to='element_type.ElementType')),
+            ],
+            options={
+                'db_table': 'element_type_datum_object',
+                'abstract': False,
+                'verbose_name': 'Element Type - Datum Object',
+            },
+        ),
+        migrations.CreateModel(
             name='ElementTypeDatumType',
             fields=[
                 ('sort', models.IntegerField(default=0, db_index=True)),
                 ('active', models.BooleanField(default=True, db_index=True)),
-                ('entity_name', models.CharField(default='', db_index=True, max_length=25)),
-                ('short_definition', models.CharField(blank=True, null=True, max_length=25)),
-                ('long_definition', models.CharField(blank=True, null=True, max_length=100)),
-                ('element_type_datum_type_id', models.AutoField(primary_key=True, serialize=False)),
-                ('datum_type', models.ForeignKey(db_column='datum_type_id', to='datum.DatumType')),
-                ('element_type', models.ForeignKey(db_column='element_type_id', to='element_type.ElementType')),
+                ('element_type_datum_type_id', models.AutoField(serialize=False, primary_key=True)),
+                ('datum_type', models.ForeignKey(related_name='element_types_datum_types', db_column='datum_type_id', to='datum.DatumType')),
+                ('element_type', models.ForeignKey(related_name='datum_types_element_types', db_column='element_type_id', to='element_type.ElementType')),
             ],
             options={
                 'db_table': 'element_type_datum_type',
                 'abstract': False,
+                'verbose_name': 'Element Type - Datum Type',
             },
         ),
         migrations.AddField(
             model_name='elementoption',
             name='element_type',
-            field=models.ForeignKey(db_column='element_type_id', to='element_type.ElementType'),
+            field=models.ForeignKey(related_name='element_options', db_column='element_type_id', to='element_type.ElementType'),
         ),
         migrations.AlterUniqueTogether(
             name='elementtypedatumtype',
@@ -88,5 +103,13 @@ class Migration(migrations.Migration):
         migrations.AlterIndexTogether(
             name='elementtypedatumtype',
             index_together=set([('datum_type', 'element_type')]),
+        ),
+        migrations.AlterUniqueTogether(
+            name='elementtypedatumobject',
+            unique_together=set([('datum_object', 'element_type')]),
+        ),
+        migrations.AlterIndexTogether(
+            name='elementtypedatumobject',
+            index_together=set([('datum_object', 'element_type')]),
         ),
     ]
