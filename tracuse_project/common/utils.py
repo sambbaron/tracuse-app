@@ -38,15 +38,3 @@ def camel_to_underscore(camel_string):
     output = common_string.replace(" ", "_")
 
     return output
-
-
-if __name__ == "__main__":
-    # Tests
-
-    functions = [camel_to_spaced_lower, camel_to_underscore, camel_to_spaced_capital]
-    tests = ["First Name", "FirstName", "firstName", "First", "firstname", "FIRSTNAME"]
-
-    for test in tests:
-        for function in functions:
-            result = function(test)
-            print("{} >>> {} >>> {}".format(test, function.__name__, result))
