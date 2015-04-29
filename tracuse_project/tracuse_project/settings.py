@@ -43,7 +43,8 @@ INSTALLED_APPS = (
     'element_type',
     'element_value',
     'association',
-    'filter'
+    'filter',
+    'watchword'
 )
 
 MIDDLEWARE_CLASSES = (
