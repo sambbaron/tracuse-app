@@ -74,10 +74,12 @@ class DatumObject(BaseMixin):
             ElementValue objects
 
     Methods:
+        element_value_object (ElementValue):
+            Return single ElementValue object for selected element type
+        get_element_value (variable):
+            Return element value for selected element type
         element_values_dict (dict):
             Return element values for multiple element types
-        element_value_one (variable):
-            Return single element value for selected element type
     """
 
     class Meta(BaseMixin.Meta):
@@ -144,6 +146,11 @@ class DatumObject(BaseMixin):
         element_type_datum_object = self.element_types_datum_objects. \
             get(element_type=element_type_object)
         return element_type_datum_object.element_value_object
+
+
+    def get_element_value(self, element_type_object):
+        element_value_object = self.element_value_object(element_type_object)
+        return element_value_object.element_value
 
 
     def element_values_dict(self, element_type_list=None):
