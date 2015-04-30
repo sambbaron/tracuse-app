@@ -1,5 +1,5 @@
 """
-WSGI config for tracuse_app project.
+WSGI config for tracuse_project project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

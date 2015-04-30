@@ -66,6 +66,6 @@ target/
 # OrientDB/Graph files
 */orientdb.py
 *orientdbutils/
-tracuse_app/components/common/management/commands/sandbox.py
+tracuse_project/components/common/management/commands/sandbox.py
 */sql.sql
 x_old_models/
