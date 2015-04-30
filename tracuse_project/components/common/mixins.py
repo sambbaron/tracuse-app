@@ -58,6 +58,21 @@ class EntityMixin(BaseMixin):
                                    null=False, blank=False,
                                    unique=False, db_index=True
                                    )
+    readable_name = models.CharField(max_length=25,
+                                     default="",
+                                     null=False, blank=False,
+                                     unique=False, db_index=True
+                                     )
+    schema_name = models.CharField(max_length=25,
+                                   default="",
+                                   null=False, blank=False,
+                                   unique=False
+                                   )
+    plural_name = models.CharField(max_length=25,
+                                   default="",
+                                   null=False, blank=False,
+                                   unique=False
+                                   )
     short_definition = models.CharField(max_length=25,
                                         null=True, blank=True
                                         )
@@ -65,23 +80,25 @@ class EntityMixin(BaseMixin):
                                        null=True, blank=True
                                        )
 
-    @property
-    def schema_name(self):
-        return camel_to_underscore(self.entity_name)
-
-    @property
-    def common_name(self):
-        return camel_to_spaced_lower(self.entity_name)
-
-    @property
-    def plural_name(self):
-        output = ""
-        spaced_lower = camel_to_spaced_lower(self.entity_name)
-        if spaced_lower[-1] is "s":
-            output = spaced_lower + "es"
-        else:
-            output = spaced_lower + "s"
-        return output
-
     def __str__(self):
-        return camel_to_spaced_capital(self.entity_name)
+        return self.readable_name
+
+    def _set_readable_name(self):
+        self.entity_name = camel_to_spaced_capital(self.entity_name)
+
+    def _set_schema_name(self):
+        self.schema_name = camel_to_underscore(self.entity_name)
+
+    def _set_plural_name(self):
+        readable_name = self.readable_name
+        if readable_name[-1] is "s":
+            output = readable_name + "es"
+        else:
+            output = readable_name + "s"
+        self.plural_name = output
+
+    def save(self, *args, **kwargs):
+        self._set_readable_name()
+        self._set_schema_name()
+        self._set_plural_name()
+        super(EntityMixin, self).save(*args, **kwargs)

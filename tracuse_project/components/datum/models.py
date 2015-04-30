@@ -191,14 +191,14 @@ class DatumObject(BaseMixin):
 
         output = {
             output_key: {
-                "group": self.datum_group.common_name,
-                "type": self.datum_type.common_name,
+                "group": self.datum_group.readable_name,
+                "type": self.datum_type.readable_name,
                 "headline": self.__str__()
             }
         }
 
         for element_type in self.assigned_element_types:
-            element_value_key = element_type.common_name
+            element_value_key = element_type.readable_name
             element_value_value = self.get_element_value(element_type)
             output[output_key][element_value_key] = element_value_value
 
