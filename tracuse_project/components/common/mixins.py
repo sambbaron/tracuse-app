@@ -84,14 +84,14 @@ class EntityMixin(BaseMixin):
         return self.readable_name
 
     def _set_readable_name(self):
-        self.entity_name = camel_to_spaced_capital(self.entity_name)
+        self.readable_name = camel_to_spaced_capital(self.entity_name)
 
     def _set_schema_name(self):
         self.schema_name = camel_to_underscore(self.entity_name)
 
     def _set_plural_name(self):
         readable_name = self.readable_name
-        if readable_name[-1] is "s":
+        if readable_name and readable_name[-1] is "s":
             output = readable_name + "es"
         else:
             output = readable_name + "s"
