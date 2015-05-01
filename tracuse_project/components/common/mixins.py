@@ -42,7 +42,7 @@ class EntityMixin(BaseMixin):
         common_name (string, calculated):
             lower case, spaced entity name --> item status
             Used for datum associations
-        plural_name (string, calculated):
+        readable_plural_name (string, calculated):
             common name, pluralized --> item statuses
         short_description (string): Word or two about object
         long_description (string): Long description of object
@@ -68,7 +68,7 @@ class EntityMixin(BaseMixin):
                                    null=False, blank=False,
                                    unique=False
                                    )
-    plural_name = models.CharField(max_length=25,
+    readable_plural_name = models.CharField(max_length=25,
                                    default="",
                                    null=False, blank=False,
                                    unique=False
@@ -89,16 +89,16 @@ class EntityMixin(BaseMixin):
     def _set_schema_name(self):
         self.schema_name = camel_to_underscore(self.entity_name)
 
-    def _set_plural_name(self):
+    def _set_readable_plural_name(self):
         readable_name = self.readable_name
         if readable_name and readable_name[-1] is "s":
             output = readable_name + "es"
         else:
             output = readable_name + "s"
-        self.plural_name = output
+        self.readable_plural_name = output
 
     def save(self, *args, **kwargs):
         self._set_readable_name()
         self._set_schema_name()
-        self._set_plural_name()
+        self._set_readable_plural_name()
         super(EntityMixin, self).save(*args, **kwargs)

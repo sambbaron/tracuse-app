@@ -74,26 +74,26 @@ class TestModelEntityMixin(TestCase):
         expected = "custom_schema_name"
         self.assertEqual(expected, actual)
 
-    def test_plural_name_default_s(self):
+    def test_readable_plural_name_default_s(self):
         with mock.patch("django.db.models.base.Model.save"):
             self.test_mixin.save()
 
-        actual = self.test_mixin.plural_name
+        actual = self.test_mixin.readable_plural_name
         expected = "This Objects"
         self.assertEqual(expected, actual)
 
-    def test_plural_name_default_es(self):
+    def test_readable_plural_name_default_es(self):
         self.test_mixin.entity_name = "ThisStatus"
         with mock.patch("django.db.models.base.Model.save"):
             self.test_mixin.save()
 
-        actual = self.test_mixin.plural_name
+        actual = self.test_mixin.readable_plural_name
         expected = "This Statuses"
         self.assertEqual(expected, actual)
 
-    def test_plural_name_input(self):
-        self.test_mixin.plural_name = "custom plural names"
-        actual = self.test_mixin.plural_name
+    def test_readable_plural_name_input(self):
+        self.test_mixin.readable_plural_name = "custom plural names"
+        actual = self.test_mixin.readable_plural_name
         expected = "custom plural names"
         self.assertEqual(expected, actual)
 
