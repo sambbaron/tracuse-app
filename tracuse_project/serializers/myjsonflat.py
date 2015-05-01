@@ -91,7 +91,7 @@ class Serializer(PythonSerializer):
         self._init_options()
         # Set class name as dictionary key
         class_name = force_text(self.queryset.model._meta.model_name)
-        self.stream.write("{" + class_name + ": [")
+        self.stream.write("{\"" + class_name + "\": [")
 
     def end_serialization(self):
         if self.options.get("indent"):
