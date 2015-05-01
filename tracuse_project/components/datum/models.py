@@ -117,7 +117,10 @@ class DatumObject(BaseMixin):
     def __str__(self):
         name_element_type = ElementType.objects.get(entity_name="Name")
         name_value = self.get_element_value(name_element_type)
-        return "{} - {}".format(self.datum_type, name_value)
+        if name_value is not None:
+            return "{} - {}".format(self.datum_type, name_value)
+        else:
+            return "Blank {}".format(self.datum_type)
 
     @property
     def datum_group(self):
