@@ -56,6 +56,9 @@ class TestModelEntityMixin(TestCase):
 
     def test_readable_name_input(self):
         self.test_mixin.readable_name = "Custom Readable Name"
+        with mock.patch("django.db.models.base.Model.save"):
+            self.test_mixin.save()
+
         actual = self.test_mixin.readable_name
         expected = "Custom Readable Name"
         self.assertEqual(expected, actual)
@@ -70,6 +73,9 @@ class TestModelEntityMixin(TestCase):
 
     def test_schema_name_input(self):
         self.test_mixin.schema_name = "custom_schema_name"
+        with mock.patch("django.db.models.base.Model.save"):
+            self.test_mixin.save()
+
         actual = self.test_mixin.schema_name
         expected = "custom_schema_name"
         self.assertEqual(expected, actual)
@@ -93,7 +99,9 @@ class TestModelEntityMixin(TestCase):
 
     def test_readable_plural_name_input(self):
         self.test_mixin.readable_plural_name = "custom plural names"
+        with mock.patch("django.db.models.base.Model.save"):
+            self.test_mixin.save()
+
         actual = self.test_mixin.readable_plural_name
         expected = "custom plural names"
         self.assertEqual(expected, actual)
-

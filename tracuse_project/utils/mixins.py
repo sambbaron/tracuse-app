@@ -69,10 +69,10 @@ class EntityMixin(BaseMixin):
                                    unique=False
                                    )
     readable_plural_name = models.CharField(max_length=25,
-                                   default="",
-                                   null=False, blank=False,
-                                   unique=False
-                                   )
+                                            default="",
+                                            null=False, blank=False,
+                                            unique=False
+                                            )
     short_definition = models.CharField(max_length=25,
                                         null=True, blank=True
                                         )
@@ -84,18 +84,21 @@ class EntityMixin(BaseMixin):
         return self.readable_name
 
     def _set_readable_name(self):
-        self.readable_name = camel_to_spaced_capital(self.entity_name)
+        if self.readable_name is "":
+            self.readable_name = camel_to_spaced_capital(self.entity_name)
 
     def _set_schema_name(self):
-        self.schema_name = camel_to_underscore(self.entity_name)
+        if self.schema_name is "":
+            self.schema_name = camel_to_underscore(self.entity_name)
 
     def _set_readable_plural_name(self):
-        readable_name = self.readable_name
-        if readable_name and readable_name[-1] is "s":
-            output = readable_name + "es"
-        else:
-            output = readable_name + "s"
-        self.readable_plural_name = output
+        if self.readable_plural_name is "":
+            readable_name = self.readable_name
+            if readable_name and readable_name[-1] is "s":
+                output = readable_name + "es"
+            else:
+                output = readable_name + "s"
+            self.readable_plural_name = output
 
     def save(self, *args, **kwargs):
         self._set_readable_name()
