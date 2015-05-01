@@ -1,11 +1,10 @@
 import os
-from unittest import TestCase, mock
+import json
 
-from mock_django.query import QuerySetMock
+from django.test import TestCase
 
 from django.conf import settings
 from django.core import serializers
-from django.db.models import QuerySet
 
 from components.datum.models import DatumType
 
@@ -13,41 +12,41 @@ from components.datum.models import DatumType
 class TestSerializers(TestCase):
     """Test custom serializers"""
 
+    class_setup = False
+
+    def setUp(self):
+        if not self.class_setup:
+            fixture_path = self.fixture_path("test_serializers.json")
+            deserialized_data = self.deserialize_fixture(fixture_path)
+            self.deserialize_to_db(deserialized_data)
+
     def fixture_path(self, fixture_name):
         return os.path.join(settings.FIXTURE_DIRS[0], fixture_name)
 
-    def test_myjsonflat(self):
+    def deserialize_fixture(self, fixture_path):
+        fixture_path = self.fixture_path("test_serializers.json")
+        with open(fixture_path, "r") as f:
+            fixture_data = f.read()
+        return serializers.deserialize(format="json",
+                                       stream_or_string=fixture_data)
+
+    def deserialize_to_db(self, deserialized_data):
+        for obj in deserialized_data:
+            obj.save()
+
+
+    def test_myjsonflat_serialize(self):
         """Test myjsonflat serializer format using
         sample DatumType data in Django json format
         """
 
-        fixture_path = self.fixture_path("test_serializers.json")
-        with open(fixture_path, "r") as f:
-            fixture_data = f.read()
-        deserialized_data = serializers.deserialize(format="json",
-                                                    stream_or_string=fixture_data)
+        test_queryset = DatumType.objects.all()
+        actual_json = serializers.serialize(format="myjsonflat",
+                                            queryset=test_queryset
+                                            )
 
-        # with mock.patch("django.db.models.QuerySet") as mock_queryset:
+        expected_file = self.fixture_path("test_expected.json")
+        with open(expected_file, "r") as f:
+            expected_json = json.loads(f.read())
 
-
-        fixture_objects = []
-        for obj in deserialized_data:
-            with mock.patch("components.datum.models.DatumType") as mock_object:
-                mock_object = obj.object
-                # mock_object._meta = DatumType._meta
-                fixture_objects.append(mock_object)
-
-        mock_queryset = QuerySetMock(DatumType, *fixture_objects)
-        mock_queryset.model = DatumType
-
-        expected_string = ""
-        actual = serializers.serialize(format="myjsonflat",
-                                       queryset=mock_queryset
-                                       )
-        expected = expected_string
-
-        fixture_path = settings.FIXTURE_DIRS[0] + "\\test_results.json"
-        with open(fixture_path, "w") as f:
-            f.write(actual)
-
-        return self.assertEqual(expected, actual)
+        return self.assertJSONEqual(actual_json, expected_json)
