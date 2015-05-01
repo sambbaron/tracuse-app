@@ -49,6 +49,8 @@ class DatumType(EntityMixin):
     repr_expression = models.CharField(max_length=255,
                                        null=False, blank=False
                                        )
+    assigned_element_types = models.ManyToManyField("element_type.ElementType",
+                                                    through="element_type.ElementTypeDatumType")
 
 
 class DatumObject(BaseMixin):
