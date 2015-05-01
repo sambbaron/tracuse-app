@@ -1,4 +1,4 @@
-"""String Manipulation Utilities for Entities"""
+"""String Manipulation Utilities for Naming Entities"""
 
 from string import capwords
 

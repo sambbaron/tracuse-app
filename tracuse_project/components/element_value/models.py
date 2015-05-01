@@ -1,7 +1,7 @@
 from django.db import models
 
 from components.common.mixins import BaseMixin
-from components.common.utils import camel_to_spaced_capital
+from components.common.names import camel_to_spaced_capital
 
 
 class ElementValueModel(object):

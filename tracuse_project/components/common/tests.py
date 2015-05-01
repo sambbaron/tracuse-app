@@ -1,6 +1,6 @@
 from django.test import TestCase, mock
 
-from components.common import utils
+from components.common import names
 
 
 class TestStringUtils(TestCase):
@@ -14,21 +14,21 @@ class TestStringUtils(TestCase):
     def test_camel_to_spaced_lower(self):
         expected_strings = ["first name", "first name", "first name", "first", "firstname", "f i r s t n a m e"]
         for test in self.test_strings:
-            actual = utils.camel_to_spaced_lower(test)
+            actual = names.camel_to_spaced_lower(test)
             expected = expected_strings[self.test_strings.index(test)]
             return self.assertEqual(expected, actual)
 
     def test_camel_to_underscore(self):
         expected_strings = ["first_name", "first_name", "first_name", "first", "firstname", "f_i_r_s_t_n_a_m_e"]
         for test in self.test_strings:
-            actual = utils.camel_to_underscore(test)
+            actual = names.camel_to_underscore(test)
             expected = expected_strings[self.test_strings.index(test)]
             return self.assertEqual(expected, actual)
 
     def test_camel_to_spaced_capital(self):
         expected_strings = ["First Name", "First Name", "First Name", "First", "Firstname", "FIRSTNAME"]
         for test in self.test_strings:
-            actual = utils.camel_to_spaced_capital(test)
+            actual = names.camel_to_spaced_capital(test)
             expected = expected_strings[self.test_strings.index(test)]
             return self.assertEqual(expected, actual)
 
