@@ -38,7 +38,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'utils',
-    'components.common',
     'components.tracuser',
     'components.datum',
     'components.element_type',
