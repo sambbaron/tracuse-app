@@ -1,6 +1,6 @@
 from django.test import TestCase, mock
 
-from components.common import names
+from utils import names
 
 
 class TestStringUtils(TestCase):
@@ -37,7 +37,7 @@ class TestModelEntityMixin(TestCase):
     """Test Django ORM mixin classes used by all models"""
 
     def setUp(self):
-        from .mixins import EntityMixin
+        from utils.mixins import EntityMixin
 
         self.test_mixin = EntityMixin()
         self.test_mixin.entity_name = "ThisObject"

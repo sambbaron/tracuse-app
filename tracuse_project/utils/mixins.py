@@ -1,6 +1,6 @@
 from django.db import models
 
-from components.common.names import camel_to_underscore, camel_to_spaced_lower, camel_to_spaced_capital
+from utils.names import camel_to_underscore, camel_to_spaced_capital
 
 
 class BaseMixin(models.Model):

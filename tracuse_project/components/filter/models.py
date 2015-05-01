@@ -2,7 +2,7 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-from components.common.mixins import EntityMixin, BaseMixin
+from utils.mixins import EntityMixin, BaseMixin
 
 
 class FilterRuleMixin(BaseMixin):
