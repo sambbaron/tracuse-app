@@ -126,11 +126,13 @@ SERIALIZATION_MODULES = {
 # Custom model groups
 # Setup Models used for initial groups and types
 MODEL_GROUPS = {
-    "setupdata":
-        ["datum.DatumGroup",
+    "setup_data":
+        ["auth",
+         "datum.DatumGroup",
          "datum.DatumType",
          "element_type.ElementDataType",
          "element_type.ElementType",
          "element_type.ElementTypeDatumType",
-         "element_type.ElementOption"]
+         "element_type.ElementOption"
+         ]
 }
