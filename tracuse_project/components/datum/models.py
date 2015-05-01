@@ -96,6 +96,8 @@ class DatumObject(BaseMixin):
                                    null=False, blank=False,
                                    db_index=True
                                    )
+    assigned_element_types = models.ManyToManyField("element_type.ElementType",
+                                                    through="element_type.ElementTypeDatumObject")
     parent_associations_adjacent = \
         models.ManyToManyField("self",
                                related_name="child_associations_adjacent",
@@ -124,14 +126,6 @@ class DatumObject(BaseMixin):
         element_types = []
         for datum_type_element_type in self.datum_type.element_types_datum_types.all():
             related_element_type = datum_type_element_type.element_type
-            element_types.append(related_element_type)
-        return element_types
-
-    @property
-    def assigned_element_types(self):
-        element_types = []
-        for datum_object_element_type in self.element_types_datum_objects.all():
-            related_element_type = datum_object_element_type.element_type
             element_types.append(related_element_type)
         return element_types
 

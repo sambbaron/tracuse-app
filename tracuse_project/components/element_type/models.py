@@ -52,6 +52,8 @@ class ElementType(EntityMixin):
                                           null=True, blank=True
                                           )
     editable = models.BooleanField()
+    assigned_datum_objects = models.ManyToManyField("datum.DatumObject",
+                                                    through="element_type.ElementTypeDatumObject")
 
 
 class ElementOption(EntityMixin):
