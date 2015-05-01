@@ -122,3 +122,15 @@ STATIC_URL = '/static/'
 SERIALIZATION_MODULES = {
     "myjsonflat": "serializers.myjsonflat",
 }
+
+# Custom model groups
+# Setup Models used for initial groups and types
+MODEL_GROUPS = {
+    "setupdata":
+        ["datum.DatumGroup",
+         "datum.DatumType",
+         "element_type.ElementDataType",
+         "element_type.ElementType",
+         "element_type.ElementTypeDatumType",
+         "element_type.ElementOption"]
+}
