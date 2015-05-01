@@ -1,3 +1,16 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+class TestModelDatumObject(TestCase):
+
+    def setUp(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+
+    def test_element_value(self):
+        actual = ""
+        expected = ""
+        self.assertEqual(expected, actual)
