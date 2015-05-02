@@ -12,6 +12,9 @@ class TestDataSimple(object):
                                       repr_expression = "{{name}}")
         self.datum_object1 = mommy.make("datum.DatumObject",
                                         datum_type=self.datum_type1)
+        self.datum_object2 = mommy.make("datum.DatumObject",
+                                        datum_type=self.datum_type1)
+
 
         # Mock Element Type objects
         self.element_data_type1 = mommy.make("element_type.ElementDataType",

@@ -1,3 +1,5 @@
+import re
+
 from django.db import models
 
 from django.contrib.auth.models import User
@@ -31,8 +33,8 @@ class DatumType(EntityMixin):
         See EntityMixin (includes BaseMixin)
         datum_group_id (integer, fk, required): DatumGroup
         repr_expression (string): Expression that results in
-            representation string, can reference element types
-            --> !name + " " + !description
+            representation string referencing element types in {{}}
+            --> {{name}} and {{description}}
         element_types (ElementType set):
             related element types from ElementTypeDatumType
     """
@@ -127,6 +129,9 @@ class DatumObject(BaseMixin):
                 element_test = element_type.element_type.entity_name.lower()
                 expression = expression.replace("{{" + element_test + "}}",
                                                 element_type.get_element_value)
+
+        # Remove placeholders not replaced
+        expression = re.sub(r"\{\{.*?\}\}", "", expression)
         if expression:
             output = expression
         else:

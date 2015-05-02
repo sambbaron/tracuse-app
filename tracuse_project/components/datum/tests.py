@@ -10,10 +10,20 @@ class TestModelDatumObject(TestCase):
         cls.test = TestDataSimple()
 
 
-    def test_str(self):
-        """Test DatumObject.__str__ property"""
+    def test_str_with_element(self):
+        """Test DatumObject.__str__ property
+        with "name" element type matching repr_expression
+        """
         actual = self.test.datum_object1.__str__()
         expected = "Test Object Name"
+        self.assertEqual(expected, actual)
+
+    def test_str_without_element(self):
+        """Test DatumObject.__str__ property
+        without element type matching repr_expression
+        """
+        actual = self.test.datum_object2.__str__()
+        expected = "Blank Test Datum Type"
         self.assertEqual(expected, actual)
 
     def test_datum_group(self):
