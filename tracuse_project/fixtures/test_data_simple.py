@@ -5,9 +5,9 @@ class TestDataSimple(object):
     def __init__(self):
         # Mock Datum objects
         self.datum_group1 = mommy.make("datum.DatumGroup",
-                                       entity_name="TestGroup")
+                                       entity_name="TestDatumGroup")
         self.datum_type1 = mommy.make("datum.DatumType",
-                                      entity_name="TestType",
+                                      entity_name="TestDatumType",
                                       datum_group=self.datum_group1)
         self.datum_object1 = mommy.make("datum.DatumObject",
                                         datum_type=self.datum_type1)
