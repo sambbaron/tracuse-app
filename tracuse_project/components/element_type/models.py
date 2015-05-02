@@ -151,7 +151,7 @@ class ElementTypeDatumObject(BaseMixin):
 
 
     def __str__(self):
-        return "{} - {}".format(self.datum_object.__str__(), self.element_type.readable_name)
+        return "{} - {}".format(self.datum_object.__str__, self.element_type.readable_name)
 
     @property
     def data_type(self):
@@ -171,5 +171,10 @@ class ElementTypeDatumObject(BaseMixin):
     def get_element_value(self):
         return self.element_value.element_value
 
-    def __str__(self):
-        return "{} - {}".format(self.datum_object.__str__(), self.element_type.readable_name)
+    def save(self, *args, **kwargs):
+        """Create ElementValue record if it doesn't exist"""
+        super(ElementTypeDatumObject, self).save(*args, **kwargs)
+        if not self.element_value:
+            new_element_value = self.element_value_model()
+            new_element_value.element_type_datum_object_id = \
+                self.element_type_datum_object_id
