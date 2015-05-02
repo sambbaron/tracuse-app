@@ -12,7 +12,7 @@ class TestModelElementTypeDatumType(TestCase):
     def test_str(self):
         """Test ElementTypeDatumType.__str__ property"""
         actual = self.test.element_type_datum_type1.__str__()
-        expected = "Test Datum Type - Test Element Type1"
+        expected = "Test Datum Type - Name"
         self.assertEqual(expected, actual)
 
 
