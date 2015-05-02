@@ -180,6 +180,9 @@ class DatumObject(BaseMixin):
         Return:
             ElementValue value: Data type depends on element type
         """
+        if element_type_object not in self.element_types.all():
+            return
+
         element_type_datum_object = self.element_types_datum_objects. \
             get(element_type=element_type_object)
         return element_type_datum_object.get_element_value
