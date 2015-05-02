@@ -1,18 +1,20 @@
 import os
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.commands.dumpdata import Command as DumpData
+from django.core.management.base import CommandError
 from django.core.management import call_command
 
 from django.conf import settings
 
 
-class Command(BaseCommand):
+class Command(DumpData):
     help = ("Extended dumpdata command. "
             "Output the contents of a group of models as a fixture of the given format."
             "Input model group - replaces 'app_label.model_name'. "
             "Same arguments as built-in dumpdata.")
 
     def add_arguments(self, parser):
+        super().add_arguments(parser)
         parser.add_argument('model_group', metavar='model_group',
                             help='Model group defined in settings.MODEL_GROUPS.')
 
@@ -27,7 +29,7 @@ class Command(BaseCommand):
         # Set default output as fixtures directory/model name
         if not options.get("output"):
             fixture_path = settings.FIXTURE_DIRS[0]
-            file_name = model_group + "." + options.get("format")
+            file_name = model_group + "." + "json"
             file_path = os.path.join(fixture_path, file_name)
             options["output"] = file_path
 
