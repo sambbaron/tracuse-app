@@ -4,7 +4,6 @@ from fixtures.test_data_simple import TestDataSimple
 
 
 class TestModelElementTypeDatumType(TestCase):
-
     @classmethod
     def setUpTestData(cls):
         cls.test = TestDataSimple()
@@ -16,4 +15,16 @@ class TestModelElementTypeDatumType(TestCase):
         self.assertEqual(expected, actual)
 
 
-# Test that there is an element value table for each element data type
+class TestModelElementTypeDatumObject(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataSimple()
+
+    def test_str(self):
+        """Test ElementTypeDatumObject.__str__ property"""
+        actual = self.test.element_type_datum_object1.__str__()
+        expected = "Name - Test Object Name"
+        self.assertEqual(expected, actual)
+
+
+        # Test that there is an element value table for each element data type

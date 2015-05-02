@@ -157,7 +157,7 @@ class ElementTypeDatumObject(BaseMixin):
 
 
     def __str__(self):
-        return "{} - {}".format(self.datum_object.__str__, self.element_type.readable_name)
+        return "{} - {}".format(self.element_type.readable_name, self.datum_object.__str__())
 
     @property
     def data_type(self):
