@@ -149,11 +149,22 @@ class ElementTypeDatumObject(BaseMixin):
                                      null=False, blank=False
                                      )
 
+
+    def __str__(self):
+        return "{} - {}".format(self.datum_object.__str__(), self.element_type.readable_name)
+
+    @property
+    def data_type(self):
+        return self.element_type.element_data_type.entity_name
+
+    @property
+    def element_value_model(self):
+        return ElementValueModel(self.data_type)
+
     @property
     def element_value(self):
-        data_type_name = self.element_type.element_data_type.entity_name
-        element_value_model = ElementValueModel(data_type_name)
-        element_value_record = element_value_model.objects.get(element_type_datum_object=self)
+        element_value_record = \
+            self.element_value_model.objects.get(element_type_datum_object=self)
         return element_value_record
 
     @property
