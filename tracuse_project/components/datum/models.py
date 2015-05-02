@@ -113,15 +113,6 @@ class DatumObject(BaseMixin):
                                symmetrical=False
                                )
 
-
-    def __str__(self):
-        name_element_type = ElementType.objects.get(entity_name="Name")
-        name_value = self.get_element_value(name_element_type)
-        if name_value is not None:
-            return "{} - {}".format(self.datum_type, name_value)
-        else:
-            return "Blank {}".format(self.datum_type)
-
     @property
     def datum_group(self):
         return self.datum_type.datum_group
@@ -154,9 +145,18 @@ class DatumObject(BaseMixin):
 
 
     def get_element_value(self, element_type_object):
+        """Return value from ElementValue object"""
         element_type_datum_object = self.element_types_datum_objects. \
             get(element_type=element_type_object)
         return element_type_datum_object.get_element_value
+
+    def __str__(self):
+        name_element_type = ElementType.objects.get(entity_name="Name")
+        name_value = self.get_element_value(name_element_type)
+        if name_value is not None:
+            return "{} - {}".format(self.datum_type, name_value)
+        else:
+            return "Blank {}".format(self.datum_type)
 
 
     def element_values_dict(self, element_type_list=None):
