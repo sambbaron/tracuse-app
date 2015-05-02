@@ -9,9 +9,12 @@ class TestModelDatumObject(TestCase):
     def setUpTestData(cls):
         cls.test = TestDataSimple()
 
-    def tearDown(self):
-        pass
 
+    def test_str(self):
+        """Test DatumObject.__str__ property"""
+        actual = self.test.datum_object1.__str__()
+        expected = "Test Object Name"
+        self.assertEqual(expected, actual)
 
     def test_datum_group(self):
         """Test DatumObject.datum_group property"""

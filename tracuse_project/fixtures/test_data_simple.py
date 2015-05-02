@@ -8,7 +8,8 @@ class TestDataSimple(object):
                                        entity_name="TestDatumGroup")
         self.datum_type1 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType",
-                                      datum_group=self.datum_group1)
+                                      datum_group=self.datum_group1,
+                                      repr_expression = "{{name}}")
         self.datum_object1 = mommy.make("datum.DatumObject",
                                         datum_type=self.datum_type1)
 
@@ -17,10 +18,10 @@ class TestDataSimple(object):
                                              entity_name="String"
                                              )
         self.element_type1 = mommy.make("element_type.ElementType",
-                                        entity_name="TestElementType1",
+                                        entity_name="Name",
                                         element_data_type=self.element_data_type1)
         self.element_type2 = mommy.make("element_type.ElementType",
-                                        entity_name="TestElementType2",
+                                        entity_name="Description",
                                         element_data_type=self.element_data_type1)
 
         # Mock many-to-many relationships between Datum and Element Type objects
