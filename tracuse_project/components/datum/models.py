@@ -33,6 +33,8 @@ class DatumType(EntityMixin):
         repr_expression (string): Expression that results in
             representation string, can reference element types
             --> !name + " " + !description
+        element_types (ElementType set):
+            related element types from ElementTypeDatumType
     """
 
     class Meta(EntityMixin.Meta):
@@ -65,13 +67,11 @@ class DatumObject(BaseMixin):
         See BaseMixin
         user_id (integer, fk, required): User
         datum_type_id (integer, fk, required): DatumType
+        element_types (ElementType set):
+            related element types from ElementTypeDatumObject
         datum_group (DatumGroup):
         default_element_types (list):
             ElementTypes from ElementTypeDatumType
-        assigned_element_types (list):
-            ElementTypes from ElementTypeDatumObject
-        element_values_objects (list):
-            ElementValue objects
 
     Methods:
         element_value (ElementValue):
@@ -136,7 +136,7 @@ class DatumObject(BaseMixin):
             element_type (ElementType object)
 
         Return:
-            ElementValue value: data type depends on element type
+            ElementValue object instance from model based on data type
         """
 
         if element_type_object not in self.element_types.all():

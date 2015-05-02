@@ -36,6 +36,10 @@ class ElementType(EntityMixin):
             --> string, integer, datetime, etc.
         default_expression (string): Default expression
         editable (boolean): Whether value can be edited by user
+        datum_types (DatumType set):
+            related datum types from ElementTypeDatumType
+        datum_objects (DatumObject set):
+            related datum objects from ElementTypeDatumObject
     """
 
     class Meta(EntityMixin.Meta):
@@ -78,8 +82,6 @@ class ElementOption(EntityMixin):
         verbose_name = "Element Option"
 
     element_option_id = models.AutoField(primary_key=True)
-    # FIXME Django Limitation - Can't override field property from Abstract Mixin Class
-    # FIXME Django Limitation - Change 'entity_name' unique false
     element_type = models.ForeignKey("ElementType",
                                      db_column="element_type_id",
                                      related_name="element_options",
