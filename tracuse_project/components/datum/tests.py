@@ -49,8 +49,15 @@ class TestModelDatumObject(TestCase):
     def tearDown(self):
         pass
 
+
     def test_datum_group(self):
         """Test DatumObject.datum_group property"""
         actual = self.datum_object1.datum_group
         expected = self.datum_group1
+        self.assertEqual(expected, actual)
+
+    def test_default_element_types(self):
+        """Test DatumObject.default_element_types property"""
+        actual = self.datum_object1.default_element_types
+        expected = [self.element_type1]
         self.assertEqual(expected, actual)
