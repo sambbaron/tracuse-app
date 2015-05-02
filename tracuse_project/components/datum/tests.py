@@ -61,3 +61,11 @@ class TestModelDatumObject(TestCase):
         actual = self.datum_object1.default_element_types
         expected = [self.element_type1]
         self.assertEqual(expected, actual)
+
+    def test_element_value(self):
+        """Test DatumObject.element_value method"""
+        actual = self.datum_object1.element_value(
+            element_type_object=self.element_type1
+        )
+        expected = self.element_value_string1
+        self.assertEqual(expected, actual)

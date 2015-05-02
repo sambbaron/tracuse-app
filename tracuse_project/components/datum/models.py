@@ -139,7 +139,7 @@ class DatumObject(BaseMixin):
             ElementValue value: data type depends on element type
         """
 
-        if element_type_object not in self.assigned_element_types:
+        if element_type_object not in self.element_types.all():
             return
 
         # Lookup ElementTypeDatumType object for association
