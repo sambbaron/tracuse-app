@@ -167,9 +167,9 @@ class ElementTypeDatumObject(BaseMixin):
 
     @property
     def element_value(self):
-        element_value_record = \
-            self.element_value_model.objects.get(element_type_datum_object=self)
-        return element_value_record
+        element_value_query = self.element_value_model.objects.filter(element_type_datum_object=self)
+        if element_value_query.exists():
+            return element_value_query[0]
 
     @property
     def get_element_value(self):
