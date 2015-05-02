@@ -24,7 +24,7 @@ class DatumAdmin(admin.ModelAdmin):
     list_editable = ("user", "active", "sort", "datum_type")
 
     fields = (("user", "active", "sort", "datum_type"),)
-    readonly_fields = ("assigned_element_types",)
+    readonly_fields = ("element_types",)
 
     inlines = [ElementTypeInline, ]
 

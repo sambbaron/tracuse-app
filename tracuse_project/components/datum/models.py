@@ -49,8 +49,10 @@ class DatumType(EntityMixin):
     repr_expression = models.CharField(max_length=255,
                                        null=False, blank=False
                                        )
-    assigned_element_types = models.ManyToManyField("element_type.ElementType",
-                                                    through="element_type.ElementTypeDatumType")
+    element_types = models.ManyToManyField("element_type.ElementType",
+                                           through="element_type.ElementTypeDatumType",
+                                           related_name="+"
+                                           )
 
 
 class DatumObject(BaseMixin):
@@ -98,8 +100,10 @@ class DatumObject(BaseMixin):
                                    null=False, blank=False,
                                    db_index=True
                                    )
-    assigned_element_types = models.ManyToManyField("element_type.ElementType",
-                                                    through="element_type.ElementTypeDatumObject")
+    element_types = models.ManyToManyField("element_type.ElementType",
+                                           through="element_type.ElementTypeDatumObject",
+                                           related_name="+"
+                                           )
     parent_associations_adjacent = \
         models.ManyToManyField("self",
                                related_name="child_associations_adjacent",

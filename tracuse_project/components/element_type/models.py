@@ -52,10 +52,14 @@ class ElementType(EntityMixin):
                                           null=True, blank=True
                                           )
     editable = models.BooleanField()
-    assigned_datum_types = models.ManyToManyField("datum.DatumType",
-                                                    through="element_type.ElementTypeDatumType")
-    assigned_datum_objects = models.ManyToManyField("datum.DatumObject",
-                                                    through="element_type.ElementTypeDatumObject")
+    datum_types = models.ManyToManyField("datum.DatumType",
+                                         through="element_type.ElementTypeDatumType",
+                                         related_name="+"
+                                         )
+    datum_objects = models.ManyToManyField("datum.DatumObject",
+                                           through="element_type.ElementTypeDatumObject",
+                                           related_name="+"
+                                           )
 
 
 class ElementOption(EntityMixin):
