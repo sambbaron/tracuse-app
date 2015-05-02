@@ -19,11 +19,15 @@ class TestModelDatumObject(TestCase):
     def tearDown(self):
         pass
 
-    def tearDown(self):
+
+    def test_str_no_name(self):
         pass
 
+    def test_str_has_name(self):
+        pass
 
-    def test_element_value(self):
-        actual = ""
-        expected = ""
+    def test_datum_group(self):
+        """Test DatumObject.datum_group property"""
+        actual = self.datum_object1.datum_group
+        expected = self.datum_group1
         self.assertEqual(expected, actual)
