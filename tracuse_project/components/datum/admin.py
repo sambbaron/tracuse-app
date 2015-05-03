@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from utils.admin import BaseMixinAdmin, BaseMixinInline, EntityMixinAdmin
-from .models import DatumType, DatumObject
+from utils.admin import BaseMixinAdmin, BaseMixinInline, EntityMixinAdmin, EntityMixinInline
+from .models import DatumGroup, DatumType, DatumObject
 from components.element_type.admin import ElementTypeDatumObjectInline
 
 
@@ -11,7 +11,6 @@ class DatumObjectInline(BaseMixinInline):
 
 @admin.register(DatumObject)
 class DatumObjectAdmin(BaseMixinAdmin):
-
     list_display = BaseMixinAdmin.list_display + ("user", "datum_type", "datum_group")
     list_editable = BaseMixinAdmin.list_editable + ("user", "datum_type")
 
@@ -23,10 +22,19 @@ class DatumObjectAdmin(BaseMixinAdmin):
 
 @admin.register(DatumType)
 class DatumTypeAdmin(EntityMixinAdmin):
-
     list_display = EntityMixinAdmin.list_display + ("repr_expression", )
     list_editable = EntityMixinAdmin.list_editable + ("repr_expression", )
 
     fields = EntityMixinAdmin.fields + ("repr_expression", )
 
     inlines = [DatumObjectInline, ]
+
+
+class DatumTypeInline(EntityMixinInline):
+    model = DatumType
+    fields = EntityMixinAdmin.fields + ("repr_expression", )
+
+
+@admin.register(DatumGroup)
+class DatumGroupAdmin(EntityMixinAdmin):
+    inlines = [DatumTypeInline, ]
