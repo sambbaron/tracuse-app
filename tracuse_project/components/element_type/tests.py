@@ -25,6 +25,3 @@ class TestModelElementTypeDatumObject(TestCase):
         actual = self.test.element_type_datum_object1.__str__()
         expected = "Name - Test Object Name"
         self.assertEqual(expected, actual)
-
-
-        # Test that there is an element value table for each element data type
