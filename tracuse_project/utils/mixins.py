@@ -15,6 +15,7 @@ class BaseMixin(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ["sort"]
 
     sort = models.IntegerField(default=0,
                                db_index=True
