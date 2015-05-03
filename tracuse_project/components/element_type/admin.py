@@ -1,26 +1,34 @@
 from django.contrib import admin
 
-from .models import ElementTypeDatumObject, ElementType
+from utils.admin import BaseMixinAdmin, BaseMixinInline, EntityMixinAdmin
+from .models import ElementType, ElementTypeDatumType, ElementTypeDatumObject
 from components.element_value.admin import ElementValuesInline
 
 
-class ElementTypeDatumObjectInline(admin.TabularInline):
+class ElementTypeDatumTypeAdmin(BaseMixinInline):
+    model = ElementTypeDatumType
+
+    fields = BaseMixinInline.fields + ("datum_type", "element_type")
+
+
+class ElementTypeDatumObjectInline(BaseMixinInline):
     model = ElementTypeDatumObject
 
-    fields = ("active", "sort", "datum_object", "element_type", "element_value",)
-    readonly_fields = ("element_value", )
-    extra = 1
-    list_select_related = True
-    show_change_link = True
+    fields = BaseMixinInline.fields + ("datum_object", "element_type", "element_value")
+    readonly_fields = BaseMixinInline.readonly_fields + ("element_value", )
 
 
 @admin.register(ElementTypeDatumObject)
-class ElementTypeDatumObjectAdmin(admin.ModelAdmin):
-    list_display = ("active", "sort", "datum_object", "element_type", "element_value",)
-    list_editable = ("active", "sort")
-    list_display_links = ("element_value",)
-    list_select_related = True
+class ElementTypeDatumObjectAdmin(BaseMixinAdmin):
 
-    fields = (("active", "sort"), ("datum_object", "element_type"),)
+    list_display = BaseMixinAdmin.list_display + ("datum_object", "element_type", "element_value")
+    list_display_links = ("element_value",)
+
+    fields = BaseMixinAdmin.fields + (("datum_object", "element_type"),)
 
     inlines = [ElementValuesInline, ]
+
+
+@admin.register(ElementType)
+class ElementTypeAdmin(EntityMixinAdmin):
+    inlines = [ElementTypeDatumTypeAdmin, ]
