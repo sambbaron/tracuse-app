@@ -34,5 +34,10 @@ class ElementValuesInline(admin.TabularInline):
 
 @admin.register(ElementTypeDatumObject)
 class ElementTypeDatumObjectAdmin(admin.ModelAdmin):
-    pass
-    # inlines = [ElementValuesInline, ]
+
+    list_display = ("datum_object", "element_type", "element_value",)
+    list_editable = ("datum_object", "element_type", )
+    list_display_links = ("element_value",)
+    list_select_related = True
+
+    inlines = [ElementValuesInline, ]
