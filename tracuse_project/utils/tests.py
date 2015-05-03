@@ -3,8 +3,8 @@ from django.test import TestCase, mock
 from utils import names
 
 
-class TestStringUtils(TestCase):
-    """Test string manipulation functions
+class TestUtilsNames(TestCase):
+    """Test name string manipulation functions
     """
 
     @property
