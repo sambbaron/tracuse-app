@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import ElementValueModel
+
+
+class ElementValuesInline(admin.TabularInline):
+    model = ElementValueModel("String")
+

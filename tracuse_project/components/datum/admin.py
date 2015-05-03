@@ -1,8 +1,7 @@
 from django.contrib import admin
 
-from components.datum.models import DatumType, DatumObject
-from components.element_type.models import ElementTypeDatumObject, ElementType
-from components.element_value.models import ElementValueModel
+from .models import DatumType, DatumObject
+from components.element_type.admin import ElementTypeDatumObjectInline
 
 
 class DatumObjectInline(admin.TabularInline):
@@ -39,16 +38,6 @@ class DatumTypeAdmin(admin.ModelAdmin):
     inlines = [DatumObjectInline, ]
 
 
-class ElementTypeDatumObjectInline(admin.TabularInline):
-    model = ElementTypeDatumObject
-
-    fields = ("datum_object", "element_type", "element_value",)
-    readonly_fields = ("element_value", )
-    extra = 1
-    list_select_related = True
-    show_change_link = True
-
-
 @admin.register(DatumObject)
 class DatumObjectAdmin(admin.ModelAdmin):
     actions_on_top = True
@@ -62,17 +51,3 @@ class DatumObjectAdmin(admin.ModelAdmin):
     readonly_fields = ("element_types",)
 
     inlines = [ElementTypeDatumObjectInline, ]
-
-
-class ElementValuesInline(admin.TabularInline):
-    model = ElementValueModel("String")
-
-
-@admin.register(ElementTypeDatumObject)
-class ElementTypeDatumObjectAdmin(admin.ModelAdmin):
-    list_display = ("datum_object", "element_type", "element_value",)
-    # list_editable = ("datum_object", "element_type", )
-    list_display_links = ("element_value",)
-    list_select_related = True
-
-    inlines = [ElementValuesInline, ]
