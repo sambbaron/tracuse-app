@@ -10,7 +10,7 @@ class TestModelElementValueModel(TestCase):
     def setUpTestData(cls):
         cls.test = TestDataSimple()
 
-    def test_init_good(self):
+    def test_init_good_data_type(self):
         """Test ElementValueModel.__init__
         with data type name that corresponds to model name
         """
@@ -18,7 +18,7 @@ class TestModelElementValueModel(TestCase):
         expected = ElementValueString
         self.assertEqual(expected, actual)
 
-    def test_init_bad(self):
+    def test_init_bad_data_type(self):
         """Test ElementValueModel.__init__
         with data type name that does not correspond to model name
         """
