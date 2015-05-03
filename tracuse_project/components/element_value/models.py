@@ -18,7 +18,10 @@ class ElementValueModel(object):
 
     def __new__(cls, data_type_name):
         value_model_name = "ElementValue" + data_type_name
-        return globals()[value_model_name]
+        try:
+            return globals()[value_model_name]
+        except KeyError as e:
+            print(e)
 
 
 class ElementValueMixin(BaseMixin):

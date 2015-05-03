@@ -10,12 +10,20 @@ class TestModelElementValueModel(TestCase):
     def setUpTestData(cls):
         cls.test = TestDataSimple()
 
-    def test_init(self):
+    def test_init_good(self):
         """Test ElementValueModel.__init__
-        with data type name
+        with data type name that corresponds to model name
         """
-        actual = ElementValueModel("String")
+        actual = ElementValueModel(data_type_name="String")
         expected = ElementValueString
+        self.assertEqual(expected, actual)
+
+    def test_init_bad(self):
+        """Test ElementValueModel.__init__
+        with data type name that does not correspond to model name
+        """
+        actual = ElementValueModel(data_type_name="Other")
+        expected = None
         self.assertEqual(expected, actual)
 
 
