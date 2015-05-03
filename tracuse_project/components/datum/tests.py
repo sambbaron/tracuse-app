@@ -6,25 +6,33 @@ from fixtures.test_data_simple import TestDataSimple
 
 
 class TestModelDatumObject(TestCase):
-
     @classmethod
     def setUpTestData(cls):
         cls.test = TestDataSimple()
 
 
-    def test_str_with_element(self):
+    def test_str_with_element_type(self):
         """Test DatumObject.__str__ property
-        with "name" element type matching repr_expression
+        with element type matching repr_expression in ElementTypeDatumObject,
         """
         actual = self.test.datum_object1.__str__()
         expected = "Test Object Name"
         self.assertEqual(expected, actual)
 
-    def test_str_without_element(self):
+    def test_str_without_element_value(self):
         """Test DatumObject.__str__ property
-        without element type matching repr_expression
+        with element type matching repr_expression in ElementTypeDatumObject,
+        but no element_value in ElementValueModel
         """
         actual = self.test.datum_object2.__str__()
+        expected = "Blank Test Datum Type"
+        self.assertEqual(expected, actual)
+
+    def test_str_without_element_type(self):
+        """Test DatumObject.__str__ property
+        without element type matching repr_expression in ElementTypeDatumObject,
+        """
+        actual = self.test.datum_object3.__str__()
         expected = "Blank Test Datum Type"
         self.assertEqual(expected, actual)
 

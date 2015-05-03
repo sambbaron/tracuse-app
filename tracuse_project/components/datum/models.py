@@ -126,9 +126,10 @@ class DatumObject(BaseMixin):
         expression = self.datum_type.repr_expression
         if expression:
             for element_type in self.element_types_datum_objects.all():
-                element_test = element_type.element_type.entity_name.lower()
-                expression = expression.replace("{{" + element_test + "}}",
-                                                element_type.get_element_value)
+                if element_type.element_value:
+                    element_test = element_type.element_type.entity_name.lower()
+                    expression = expression.replace("{{" + element_test + "}}",
+                                                    element_type.get_element_value)
 
         # Remove placeholders not replaced
         expression = re.sub(r"\{\{.*?\}\}", "", expression)

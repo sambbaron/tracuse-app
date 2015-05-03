@@ -3,16 +3,24 @@ from model_mommy import mommy
 
 class TestDataSimple(object):
     def __init__(self):
-        # Mock Datum objects
+        # Mock Datum Groups
         self.datum_group1 = mommy.make("datum.DatumGroup",
                                        entity_name="TestDatumGroup")
+
+        # Mock Datum Types
         self.datum_type1 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType",
                                       datum_group=self.datum_group1,
                                       repr_expression = "{{name}}")
+        # Mock Datum Objects
+        # Has element_type and element_value
         self.datum_object1 = mommy.make("datum.DatumObject",
                                         datum_type=self.datum_type1)
+        # Has element_type, but no element_value
         self.datum_object2 = mommy.make("datum.DatumObject",
+                                        datum_type=self.datum_type1)
+        # Does not have element_type, or element_value
+        self.datum_object3 = mommy.make("datum.DatumObject",
                                         datum_type=self.datum_type1)
 
 
@@ -37,6 +45,11 @@ class TestDataSimple(object):
                                                      make_m2m=True,
                                                      element_type=self.element_type1,
                                                      datum_object=self.datum_object1
+                                                     )
+        self.element_type_datum_object2 = mommy.make("element_type.ElementTypeDatumObject",
+                                                     make_m2m=True,
+                                                     element_type=self.element_type1,
+                                                     datum_object=self.datum_object2
                                                      )
 
         # Mock Element Value objects
