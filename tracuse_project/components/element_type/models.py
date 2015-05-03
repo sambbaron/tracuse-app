@@ -101,7 +101,7 @@ class ElementTypeDatumType(BaseMixin):
 
     class Meta(BaseMixin.Meta):
         db_table = "element_type_datum_type"
-        verbose_name = "Element Type - Datum Type"
+        verbose_name = "Datum Type - Element Type"
         unique_together = ("datum_type", "element_type")
         index_together = ("datum_type", "element_type")
 
@@ -123,7 +123,7 @@ class ElementTypeDatumType(BaseMixin):
 
 
 class ElementTypeDatumObject(BaseMixin):
-    """Element Types assigned to Datum Types
+    """Element Types assigned to Datum Objects
 
     One-To-One relationship with Element Values tables
 
@@ -138,7 +138,7 @@ class ElementTypeDatumObject(BaseMixin):
 
     class Meta(BaseMixin.Meta):
         db_table = "element_type_datum_object"
-        verbose_name = "Element Type - Datum Object"
+        verbose_name = "Datum Object - Element Type"
         unique_together = ("datum_object", "element_type")
         index_together = ("datum_object", "element_type")
 
@@ -157,7 +157,7 @@ class ElementTypeDatumObject(BaseMixin):
 
 
     def __str__(self):
-        return "{} - {}".format(self.element_type.readable_name, self.datum_object.__str__())
+        return "{} - {}".format(self.datum_object.__str__(), self.element_type.readable_name)
 
     @property
     def data_type(self):

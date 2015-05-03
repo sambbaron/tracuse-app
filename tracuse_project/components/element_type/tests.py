@@ -23,5 +23,5 @@ class TestModelElementTypeDatumObject(TestCase):
     def test_str(self):
         """Test ElementTypeDatumObject.__str__ property"""
         actual = self.test.element_type_datum_object1.__str__()
-        expected = "Name - Test Object Name"
+        expected = "Test Object Name - Name"
         self.assertEqual(expected, actual)
