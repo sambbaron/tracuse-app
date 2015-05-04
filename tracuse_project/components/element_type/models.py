@@ -24,6 +24,8 @@ class ElementDataType(EntityMixin):
 
     element_data_type_id = models.AutoField(primary_key=True)
 
+    sort_base_length = 2
+
 
 class ElementType(EntityMixin):
     """Property types available to Datums
@@ -65,6 +67,8 @@ class ElementType(EntityMixin):
                                            related_name="+"
                                            )
 
+    sort_base_length = 4
+
 
 class ElementOption(EntityMixin):
     """Value options for elements
@@ -87,6 +91,12 @@ class ElementOption(EntityMixin):
                                      related_name="element_options",
                                      null=False, blank=False
                                      )
+
+    sort_base_length = 2
+
+    @property
+    def sort_parts(self):
+        return [self.element_type.sort]
 
 
 class ElementTypeDatumType(BaseMixin):
@@ -117,6 +127,13 @@ class ElementTypeDatumType(BaseMixin):
                                      related_name="datum_types_element_types",
                                      null=False, blank=False
                                      )
+
+    sort_base_length = -1
+
+    @property
+    def sort_parts(self):
+        return [self.datum_type.sort, self.element_type.sort]
+
 
     def __str__(self):
         return "{} - {}".format(self.datum_type.readable_name, self.element_type.readable_name)
@@ -154,6 +171,12 @@ class ElementTypeDatumObject(BaseMixin):
                                      related_name="datum_objects_element_types",
                                      null=False, blank=False
                                      )
+
+    sort_base_length = -1
+
+    @property
+    def sort_parts(self):
+        return [self.datum_object.sort, self.element_type.sort]
 
 
     def __str__(self):

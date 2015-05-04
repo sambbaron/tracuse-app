@@ -24,6 +24,8 @@ class DatumGroup(EntityMixin):
 
     datum_group_id = models.AutoField(primary_key=True)
 
+    sort_base_zero_fill = 2
+
 
 class DatumType(EntityMixin):
     """Type of Datum Objects
@@ -62,6 +64,11 @@ class DatumType(EntityMixin):
                                            through="element_type.ElementTypeDatumType",
                                            related_name="+"
                                            )
+    sort_base_length = 3
+
+    @property
+    def sort_parts(self):
+        return [self.datum_group.sort]
 
 
 class DatumObject(BaseMixin):
@@ -123,6 +130,12 @@ class DatumObject(BaseMixin):
                                through="association.AssociationAll",
                                symmetrical=False
                                )
+
+    sort_base_length = 1
+
+    @property
+    def sort_parts(self):
+        return [self.datum_type.sort]
 
 
     def __str__(self):

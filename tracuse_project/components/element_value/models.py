@@ -55,6 +55,12 @@ class ElementValueMixin(BaseMixin):
                                        null=True, blank=True
                                        )
 
+    sort_base_length = 0
+
+    @property
+    def sort_parts(self):
+        return [self.element_type_datum_object.sort]
+
 
     def __str__(self):
         return camel_to_spaced_capital(self.element_value)
