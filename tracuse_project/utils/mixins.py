@@ -65,11 +65,6 @@ class BaseMixin(models.Model):
             sort value (integer)
         """
 
-        if sort_length == 0:
-            sort_length = self.sort_length
-        if len(sort_prefix_parts) == 0:
-            sort_prefix_parts = self.sort_parts
-
         sort_prefix = ""
         for sort_part in sort_prefix_parts:
             sort_prefix += str(sort_part)
