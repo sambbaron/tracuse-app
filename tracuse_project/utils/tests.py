@@ -87,7 +87,20 @@ class TestModelBaseMixin(TestCase):
                                                     increment=1,
                                                     sort_prefix_parts=sort_parts
                                                     )
-        expected = 101010001
+    def test_calc_sort_no_base_sort(self):
+        """Test BaseMixin._calc_sort method
+        with no zero fill: sort_base_zero_fill = -1
+        with no after_object: add to end
+        """
+        test_object = self.test.datum_object1
+        sort_parts = [test_object.datum_group.sort,
+                      test_object.datum_type.sort
+                      ]
+        actual = self.test.datum_object1._calc_sort(sort_base_zero_fill=-1,
+                                                    increment=1,
+                                                    sort_prefix_parts=sort_parts
+                                                    )
+        expected = 1010100
         self.assertEqual(expected, actual)
 
     def test_get_sort_value_with_after_object(self):

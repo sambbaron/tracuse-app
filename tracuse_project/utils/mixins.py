@@ -55,6 +55,7 @@ class BaseMixin(models.Model):
                 if none, add to end
             sort_base_zero_fill (integer):
                 number of digits to append to sort value
+                if -1, then no base sort, only sort prefix
             increment (integer):
                 add value to after_object sort
             sort_prefix_parts (list of model properties, default=self.sort_parts):
@@ -73,14 +74,16 @@ class BaseMixin(models.Model):
             # Use object with maximum sort
             after_object = self.__class__.last_sorted()
 
-        if after_object == self:
-            # Only one record in table - create first sort value
-            new_sort_suffix = "1".zfill(sort_base_zero_fill)
-        else:
-            after_sort = str(after_object.sort)
-            after_sort_value = after_sort[-sort_base_zero_fill:]
-            new_sort_value = int(after_sort_value) + increment
-            new_sort_suffix = str(new_sort_value)
+        new_sort_suffix = ""
+        if sort_base_zero_fill != -1:
+            if after_object == self:
+                # Only one record in table - create first sort value
+                new_sort_suffix = "1".zfill(sort_base_zero_fill)
+            else:
+                after_sort = str(after_object.sort)
+                after_sort_value = after_sort[-sort_base_zero_fill:]
+                new_sort_value = int(after_sort_value) + increment
+                new_sort_suffix = str(new_sort_value)
 
         new_sort = sort_prefix + new_sort_suffix
 
