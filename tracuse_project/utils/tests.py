@@ -1,5 +1,4 @@
-from django.test import SimpleTestCase, TestCase, mock
-from django.db import transaction
+from django.test import TestCase, mock
 
 from utils import names
 
@@ -88,6 +87,7 @@ class TestModelBaseMixin(TestCase):
                                                     increment=1,
                                                     sort_prefix_parts=sort_parts
                                                     )
+
     def test_calc_sort_no_base_sort(self):
         """Test BaseMixin._calc_sort method
         with no zero fill: sort_base_zero_fill = -1
@@ -97,10 +97,10 @@ class TestModelBaseMixin(TestCase):
         sort_parts = [test_object.datum_group.sort,
                       test_object.datum_type.sort
                       ]
-        actual = self.test.datum_object1._calc_sort(sort_base_zero_fill=-1,
-                                                    increment=1,
-                                                    sort_prefix_parts=sort_parts
-                                                    )
+        actual = test_object._calc_sort(sort_base_zero_fill=-1,
+                                        increment=1,
+                                        sort_prefix_parts=sort_parts
+                                        )
         expected = 1010100
         self.assertEqual(expected, actual)
 
@@ -129,69 +129,69 @@ class TestModelEntityMixin(TestCase):
     def setUp(self):
         from components.datum.models import DatumGroup
 
-        self.test_mixin = DatumGroup()
-        self.test_mixin.entity_name = "ThisObject"
+        self.test_object = DatumGroup()
+        self.test_object.entity_name = "ThisObject"
 
     def tearDown(self):
-        self.test_mixin = None
+        self.test_object = None
 
 
     def test_entity_str(self):
         with mock.patch("utils.mixins.BaseMixin.save"):
-            self.test_mixin.save()
+            self.test_object.save()
 
-        actual = self.test_mixin.__str__()
+        actual = self.test_object.__str__()
         expected = "This Object"
         self.assertEqual(expected, actual)
 
     def test_readable_name_input(self):
-        self.test_mixin.readable_name = "Custom Readable Name"
+        self.test_object.readable_name = "Custom Readable Name"
         with mock.patch("utils.mixins.BaseMixin.save"):
-            self.test_mixin.save()
+            self.test_object.save()
 
-        actual = self.test_mixin.readable_name
+        actual = self.test_object.readable_name
         expected = "Custom Readable Name"
         self.assertEqual(expected, actual)
 
     def test_schema_name_default(self):
         with mock.patch("utils.mixins.BaseMixin.save"):
-            self.test_mixin.save()
+            self.test_object.save()
 
-        actual = self.test_mixin.schema_name
+        actual = self.test_object.schema_name
         expected = "this_object"
         self.assertEqual(expected, actual)
 
     def test_schema_name_input(self):
-        self.test_mixin.schema_name = "custom_schema_name"
+        self.test_object.schema_name = "custom_schema_name"
         with mock.patch("utils.mixins.BaseMixin.save"):
-            self.test_mixin.save()
+            self.test_object.save()
 
-        actual = self.test_mixin.schema_name
+        actual = self.test_object.schema_name
         expected = "custom_schema_name"
         self.assertEqual(expected, actual)
 
     def test_readable_plural_name_default_s(self):
         with mock.patch("utils.mixins.BaseMixin.save"):
-            self.test_mixin.save()
+            self.test_object.save()
 
-        actual = self.test_mixin.readable_plural_name
+        actual = self.test_object.readable_plural_name
         expected = "This Objects"
         self.assertEqual(expected, actual)
 
     def test_readable_plural_name_default_es(self):
-        self.test_mixin.entity_name = "ThisStatus"
+        self.test_object.entity_name = "ThisStatus"
         with mock.patch("utils.mixins.BaseMixin.save"):
-            self.test_mixin.save()
+            self.test_object.save()
 
-        actual = self.test_mixin.readable_plural_name
+        actual = self.test_object.readable_plural_name
         expected = "This Statuses"
         self.assertEqual(expected, actual)
 
     def test_readable_plural_name_input(self):
-        self.test_mixin.readable_plural_name = "custom plural names"
+        self.test_object.readable_plural_name = "custom plural names"
         with mock.patch("utils.mixins.BaseMixin.save"):
-            self.test_mixin.save()
+            self.test_object.save()
 
-        actual = self.test_mixin.readable_plural_name
+        actual = self.test_object.readable_plural_name
         expected = "custom plural names"
         self.assertEqual(expected, actual)
