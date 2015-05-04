@@ -97,6 +97,12 @@ class BaseMixin(models.Model):
                                      )
         return sort_value
 
+    def save(self, *args, **kwargs):
+        if self.sort == 0:
+            self.sort = self._get_sort_value()
+
+        super().save(*args, **kwargs)
+
 
 class EntityMixin(BaseMixin):
     """Common properties for models that define an entity
