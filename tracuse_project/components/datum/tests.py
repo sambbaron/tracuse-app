@@ -25,7 +25,7 @@ class TestModelDatumObject(TestCase):
         but no element_value in ElementValueModel
         """
         actual = self.test.datum_object2.__str__()
-        expected = "Blank Test Datum Type"
+        expected = "Blank Test Datum Type1"
         self.assertEqual(expected, actual)
 
     def test_str_without_element_type(self):
@@ -33,7 +33,7 @@ class TestModelDatumObject(TestCase):
         without element type matching repr_expression in ElementTypeDatumObject,
         """
         actual = self.test.datum_object3.__str__()
-        expected = "Blank Test Datum Type"
+        expected = "Blank Test Datum Type1"
         self.assertEqual(expected, actual)
 
     def test_datum_group(self):
