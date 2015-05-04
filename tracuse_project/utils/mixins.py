@@ -115,6 +115,11 @@ class EntityMixin(BaseMixin):
         short_description (string): Word or two about object
         long_description (string): Long description of object
         schema_name (string): Underscore/lower-case class name
+
+    Methods:
+        set_readable_name
+        set_schema_name
+        set_readable_plural_name
     """
 
     class Meta:
@@ -151,25 +156,37 @@ class EntityMixin(BaseMixin):
     def __str__(self):
         return self.readable_name
 
-    def _set_readable_name(self):
-        if self.readable_name is "":
-            self.readable_name = camel_to_spaced_capital(self.entity_name)
+    def _get_readable_name(self):
+        return camel_to_spaced_capital(self.entity_name)
 
-    def _set_schema_name(self):
-        if self.schema_name is "":
-            self.schema_name = camel_to_underscore(self.entity_name)
+    def _get_schema_name(self):
+        return camel_to_underscore(self.entity_name)
 
-    def _set_readable_plural_name(self):
-        if self.readable_plural_name is "":
-            readable_name = self.readable_name
-            if readable_name and readable_name[-1] is "s":
-                output = readable_name + "es"
-            else:
-                output = readable_name + "s"
-            self.readable_plural_name = output
+    def _get_readable_plural_name(self):
+        readable_name = self.readable_name
+        if readable_name and readable_name[-1] is "s":
+            output = readable_name + "es"
+        else:
+            output = readable_name + "s"
+        return output
+
+    def set_readable_name(self):
+        self.readable_name = self._get_readable_name()
+
+    def set_schema_name(self):
+        self.schema_name = self._get_schema_name()
+
+    def set_readable_plural_name(self):
+        self.readable_plural_name = self._get_readable_plural_name()
 
     def save(self, *args, **kwargs):
-        self._set_readable_name()
-        self._set_schema_name()
-        self._set_readable_plural_name()
+        if self.readable_name is "":
+            self.set_readable_name()
+
+        if self.schema_name is "":
+            self.set_schema_name()
+
+        if self.readable_plural_name is "":
+            self.set_readable_plural_name()
+
         super(EntityMixin, self).save(*args, **kwargs)
