@@ -160,7 +160,7 @@ class DatumObject(BaseMixin):
     def element_value(self, element_type_object):
         """Retrieve Single Element Value Object for Element Type
 
-        Args:
+        Arguments:
             element_type (ElementType object)
 
         Return:
@@ -180,7 +180,7 @@ class DatumObject(BaseMixin):
         """Return value from ElementValue object
         Uses get_element_value property of ElementTypeDatumObject object
 
-        Args:
+        Arguments:
             element_type (ElementType object)
 
         Return:
@@ -196,7 +196,7 @@ class DatumObject(BaseMixin):
     def element_values_dict(self, element_type_list=None):
         """Retrieve Multiple Element Values Objects for Datum Object
 
-        Args:
+        Arguments:
             element_type_list (ElementType objects list, optional):
                 Specific element types to return
                 Defaults to all element types in assigned element types
