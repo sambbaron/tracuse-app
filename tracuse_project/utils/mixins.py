@@ -7,8 +7,13 @@ class BaseMixin(models.Model):
     """Adds default column set
 
     Attributes:
-        sort (integer, indexed)
         active (boolean, indexed)
+        sort (integer, indexed)
+        sort_length (integer, default=3):
+            number of digits in base sort value
+        sort_parts (list of model properties):
+            sort_values from parent objects
+            ordering matters to build sort value
         created (datetime): Timestamp at row insertion
         modified (datetime): Timestamp at row update
 
@@ -21,12 +26,15 @@ class BaseMixin(models.Model):
         abstract = True
         ordering = ["sort", "__str__"]
 
-    sort = models.IntegerField(default=0,
-                               db_index=True
-                               )
     active = models.BooleanField(default=True,
                                  db_index=True
                                  )
+    sort = models.IntegerField(default=0,
+                               db_index=True
+                               )
+    sort_length = 3
+    sort_parts = []
+
     # TODO Add columns when schema is more stable
     # FIXME Django Limitation - Can't do DEFAULT SQL statement
     # created = models.DateTimeField(default=datetime.now)
@@ -39,23 +47,28 @@ class BaseMixin(models.Model):
         """
         return cls.objects.order_by("-sort")[0]
 
-    def _calc_sort(self, after_object=None, sort_length=3, increment=1, sort_prefix_parts=[]):
+    def _calc_sort(self, after_object=None, sort_length=0, increment=1, sort_prefix_parts=[]):
         """Calculate sort value
 
         Arguments:
             after_object (object):
                 if none, add to end
-            sort_length (integer):
+            sort_length (integer, default=self.sort_length):
                 number of digits to append to sort value
             increment (integer):
                 add value to after_object sort
-            sort_prefix_parts (list of model properties):
+            sort_prefix_parts (list of model properties, default=self.sort_parts):
                 sort_values from parent objects
                 ordering matters to build sort value
 
         Return:
             sort value (integer)
         """
+
+        if sort_length == 0:
+            sort_length = self.sort_length
+        if len(sort_prefix_parts) == 0:
+            sort_prefix_parts = self.sort_parts
 
         sort_prefix = ""
         for sort_part in sort_prefix_parts:
