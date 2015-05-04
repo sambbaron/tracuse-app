@@ -122,6 +122,14 @@ class TestModelBaseMixin(TestCase):
         expected = 10101
         self.assertEqual(expected, actual)
 
+    def save_sort_value(self):
+        """Test BaseMixin.save method"""
+        test_object = self.test.datum_type2
+        with mock.patch("django.db.models.save"):
+            test_object.save()
+        actual = test_object.sort
+        expected = 10101
+        self.assertEqual(expected, actual)
 
 class TestModelEntityMixin(TestCase):
     """Test Django ORM mixin classes used by all models"""
