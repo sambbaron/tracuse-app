@@ -90,6 +90,24 @@ class TestModelBaseMixin(TestCase):
         expected = 101010001
         self.assertEqual(expected, actual)
 
+    def test_get_sort_value_with_after_object(self):
+        """Test BaseMixin._get_sort_value method
+        with object to sort after
+        """
+        test_object = self.test.datum_type2
+        actual = test_object._get_sort_value(after_object=self.test.datum_type1)
+        expected = 10101
+        self.assertEqual(expected, actual)
+
+    def test_get_sort_value_without_after_object(self):
+        """Test BaseMixin._get_sort_value method
+        with object to sort after
+        """
+        test_object = self.test.datum_type2
+        actual = test_object._get_sort_value()
+        expected = 10101
+        self.assertEqual(expected, actual)
+
 
 class TestModelEntityMixin(TestCase):
     """Test Django ORM mixin classes used by all models"""

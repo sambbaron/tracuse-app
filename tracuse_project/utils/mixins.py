@@ -91,6 +91,12 @@ class BaseMixin(models.Model):
 
         return int(new_sort)
 
+    def _get_sort_value(self, **kwargs):
+        sort_value = self._calc_sort(sort_length=self.sort_length,
+                                     sort_prefix_parts=self.sort_parts
+                                     )
+        return sort_value
+
 
 class EntityMixin(BaseMixin):
     """Common properties for models that define an entity
