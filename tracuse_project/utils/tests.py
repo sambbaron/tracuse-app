@@ -43,11 +43,11 @@ class TestModelBaseMixin(TestCase):
 
 
     def test_last_sorted(self):
-        """Test BaseMixin.last_sorted class method"""
-        from components.datum.models import DatumGroup
+        """Test BaseMixin.last_sort_value class method"""
+        test_object = self.test.datum_type2
 
-        actual = DatumGroup.last_sorted()
-        expected = self.test.datum_group3
+        actual = test_object.last_sort_value()
+        expected = 10100
         self.assertEqual(expected, actual)
 
     def test_calc_sort_with_after_object(self):

@@ -18,7 +18,7 @@ class BaseMixin(models.Model):
         modified (datetime): Timestamp at row update
 
     Methods:
-        last_sorted: last object by sort value
+        last_sort_value: last object by sort value
         _calc_sort: calculate sort value
     """
 
@@ -40,14 +40,16 @@ class BaseMixin(models.Model):
     # created = models.DateTimeField(default=datetime.now)
     # modified = models.DateTimeField(auto_now=True)
 
-    @classmethod
-    def last_sorted(cls):
+    def last_sort_value(self):
         """Object with maximum sort value
+        Exclusive of current object
         Used in _calc_sort methods
         """
-        sorted_objects = cls.objects.order_by("-sort")
-        if sorted_objects:
-            return sorted_objects[0]
+        max_value = self.__class__.objects.exclude(pk=self.pk).aggregate(models.Max("sort"))
+        if max_value["sort__max"] is None:
+            return 0
+        else:
+            return max_value["sort__max"]
 
     def _calc_sort(self, after_object=None, sort_base_zero_fill=0, increment=1, sort_prefix_parts=[]):
         """Calculate sort value
@@ -72,18 +74,18 @@ class BaseMixin(models.Model):
         for sort_part in sort_prefix_parts:
             sort_prefix += str(sort_part)
 
-        if not after_object:
-            # Use object with maximum sort
-            after_object = self.__class__.last_sorted()
+        if after_object:
+            after_sort = str(after_object.sort)
+        else:
+            after_sort = str(self.last_sort_value())
+        after_sort_value = after_sort[-sort_base_zero_fill:]
 
         new_sort_suffix = ""
         if sort_base_zero_fill != -1:
-            if after_object == self or not after_object:
-                # One or no records in table - create first sort value
+            if after_sort_value == 0:
+                # No records in table - create first sort value
                 new_sort_suffix = "1".zfill(sort_base_zero_fill)
             else:
-                after_sort = str(after_object.sort)
-                after_sort_value = after_sort[-sort_base_zero_fill:]
                 new_sort_value = int(after_sort_value) + increment
                 new_sort_suffix = str(new_sort_value)
 
