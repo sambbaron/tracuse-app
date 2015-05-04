@@ -126,9 +126,9 @@ class TestModelEntityMixin(TestCase):
     """Test Django ORM mixin classes used by all models"""
 
     def setUp(self):
-        from utils.mixins import EntityMixin
+        from components.datum.models import DatumGroup
 
-        self.test_mixin = EntityMixin()
+        self.test_mixin = DatumGroup()
         self.test_mixin.entity_name = "ThisObject"
 
     def tearDown(self):
