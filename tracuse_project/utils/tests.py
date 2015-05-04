@@ -1,4 +1,5 @@
 from django.test import SimpleTestCase, TestCase, mock
+from django.db import transaction
 
 from utils import names
 
@@ -136,7 +137,7 @@ class TestModelEntityMixin(TestCase):
 
 
     def test_entity_str(self):
-        with mock.patch("django.db.models.base.Model.save"):
+        with mock.patch("utils.mixins.BaseMixin.save"):
             self.test_mixin.save()
 
         actual = self.test_mixin.__str__()
@@ -145,7 +146,7 @@ class TestModelEntityMixin(TestCase):
 
     def test_readable_name_input(self):
         self.test_mixin.readable_name = "Custom Readable Name"
-        with mock.patch("django.db.models.base.Model.save"):
+        with mock.patch("utils.mixins.BaseMixin.save"):
             self.test_mixin.save()
 
         actual = self.test_mixin.readable_name
@@ -153,7 +154,7 @@ class TestModelEntityMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_schema_name_default(self):
-        with mock.patch("django.db.models.base.Model.save"):
+        with mock.patch("utils.mixins.BaseMixin.save"):
             self.test_mixin.save()
 
         actual = self.test_mixin.schema_name
@@ -162,7 +163,7 @@ class TestModelEntityMixin(TestCase):
 
     def test_schema_name_input(self):
         self.test_mixin.schema_name = "custom_schema_name"
-        with mock.patch("django.db.models.base.Model.save"):
+        with mock.patch("utils.mixins.BaseMixin.save"):
             self.test_mixin.save()
 
         actual = self.test_mixin.schema_name
@@ -170,7 +171,7 @@ class TestModelEntityMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_readable_plural_name_default_s(self):
-        with mock.patch("django.db.models.base.Model.save"):
+        with mock.patch("utils.mixins.BaseMixin.save"):
             self.test_mixin.save()
 
         actual = self.test_mixin.readable_plural_name
@@ -179,7 +180,7 @@ class TestModelEntityMixin(TestCase):
 
     def test_readable_plural_name_default_es(self):
         self.test_mixin.entity_name = "ThisStatus"
-        with mock.patch("django.db.models.base.Model.save"):
+        with mock.patch("utils.mixins.BaseMixin.save"):
             self.test_mixin.save()
 
         actual = self.test_mixin.readable_plural_name
@@ -188,7 +189,7 @@ class TestModelEntityMixin(TestCase):
 
     def test_readable_plural_name_input(self):
         self.test_mixin.readable_plural_name = "custom plural names"
-        with mock.patch("django.db.models.base.Model.save"):
+        with mock.patch("utils.mixins.BaseMixin.save"):
             self.test_mixin.save()
 
         actual = self.test_mixin.readable_plural_name
