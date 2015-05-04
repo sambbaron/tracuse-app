@@ -13,7 +13,8 @@ class BaseMixin(models.Model):
         modified (datetime): Timestamp at row update
 
     Methods:
-        last_sorted
+        last_sorted: last object by sort value
+        _calc_sort: calculate sort value
     """
 
     class Meta:
@@ -37,6 +38,45 @@ class BaseMixin(models.Model):
         Used in _calc_sort methods
         """
         return cls.objects.order_by("-sort")[0]
+
+    def _calc_sort(self, after_object=None, sort_length=3, increment=1, sort_prefix_parts=[]):
+        """Calculate sort value
+
+        Arguments:
+            after_object (object):
+                if none, add to end
+            sort_length (integer):
+                number of digits to append to sort value
+            increment (integer):
+                add value to after_object sort
+            sort_prefix_parts (list of model properties):
+                sort_values from parent objects
+                ordering matters to build sort value
+
+        Return:
+            sort value (integer)
+        """
+
+        sort_prefix = ""
+        for sort_part in sort_prefix_parts:
+            sort_prefix += str(sort_part)
+
+        if not after_object:
+            # Use object with maximum sort
+            after_object = self.__class__.last_sorted()
+
+        if after_object == self:
+            # Only one record in table - create first sort value
+            new_sort_suffix = "1".zfill(sort_length)
+        else:
+            after_sort = str(after_object.sort)
+            after_sort_value = after_sort[-sort_length:]
+            new_sort_value = int(after_sort_value) + increment
+            new_sort_suffix = str(new_sort_value)
+
+        new_sort = sort_prefix + new_sort_suffix
+
+        return int(new_sort)
 
 
 class EntityMixin(BaseMixin):

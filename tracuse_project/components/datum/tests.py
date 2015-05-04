@@ -5,32 +5,7 @@ from model_mommy import mommy
 from fixtures.test_data_simple import TestDataSimple
 
 
-class TestModelDatumType(TestCase):
-
-    @classmethod
-    def setUpTestData(cls):
-        cls.test = TestDataSimple()
-
-    def test_calc_sort_with_after_datum_type(self):
-        """Test DatumType._calc_sort method
-        with DatumType to sort after
-        """
-        actual = self.test.datum_type2._calc_sort(self.test.datum_type1)
-        expected = 10101
-        self.assertEqual(expected, actual)
-
-    def test_calc_sort_without_after_datum_type(self):
-        """Test DatumType._calc_sort method
-        without DatumType to sort after (assumes to end)
-        """
-        with mock.patch("utils.mixins.BaseMixin.last_sorted", new=self.test.datum_type1):
-            actual = self.test.datum_type2._calc_sort()
-        expected = 10101
-        self.assertEqual(expected, actual)
-
-
 class TestModelDatumObject(TestCase):
-
     @classmethod
     def setUpTestData(cls):
         cls.test = TestDataSimple()

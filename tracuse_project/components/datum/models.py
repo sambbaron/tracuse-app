@@ -63,33 +63,6 @@ class DatumType(EntityMixin):
                                            related_name="+"
                                            )
 
-    def _calc_sort(self, after_datum_type=None):
-        """Set sort property
-        Use DatumGroup.sort + 3-digit number
-        Optional between existing DatumTypes or last
-
-        Arguments:
-            after_datum_type (DatumType):
-                if none, add to end
-
-        Return:
-            sort value (integer)
-        """
-
-        sort_prefix = str(self.datum_group.sort)
-
-        if not after_datum_type:
-            # Use DatumType with maximum sort
-            after_datum_type = DatumType.last_sorted
-
-        after_sort = str(after_datum_type.sort)
-        after_sort_suffix = after_sort[-3:]
-        new_sort_suffix = str(int(after_sort_suffix) + 1)
-
-        new_sort = sort_prefix + new_sort_suffix
-
-        return int(new_sort)
-
 
 class DatumObject(BaseMixin):
     """Primary personal information data object

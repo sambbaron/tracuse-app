@@ -42,11 +42,52 @@ class TestModelBaseMixin(TestCase):
 
 
     def test_last_sorted(self):
-        """Test BaseMixin.last_sorted class method
-        """
+        """Test BaseMixin.last_sorted class method"""
         from components.datum.models import DatumGroup
+
         actual = DatumGroup.last_sorted()
         expected = self.test.datum_group3
+        self.assertEqual(expected, actual)
+
+    def test_calc_sort_with_after_object(self):
+        """Test BaseMixin._calc_sort method
+        with object to sort after
+        """
+        test_object = self.test.datum_type2
+        actual = test_object._calc_sort(after_object=self.test.datum_type1,
+                                        sort_length=3,
+                                        increment=1,
+                                        sort_prefix_parts=[test_object.datum_group.sort]
+                                        )
+        expected = 10101
+        self.assertEqual(expected, actual)
+
+    def test_calc_sort_without_after_object(self):
+        """Test BaseMixin._calc_sort method
+        without object to sort after
+        """
+        test_object = self.test.datum_type2
+        actual = test_object._calc_sort(sort_length=3,
+                                        increment=1,
+                                        sort_prefix_parts=[test_object.datum_group.sort]
+                                        )
+        expected = 10101
+        self.assertEqual(expected, actual)
+
+    def test_calc_sort_multiple_parts(self):
+        """Test BaseMixin._calc_sort method
+        with more than one parent prefix part
+        with no after_object: add to end
+        """
+        test_object = self.test.datum_object1
+        sort_parts = [test_object.datum_group.sort,
+                      test_object.datum_type.sort
+                      ]
+        actual = self.test.datum_object1._calc_sort(sort_length=2,
+                                                    increment=1,
+                                                    sort_prefix_parts=sort_parts
+                                                    )
+        expected = 101010001
         self.assertEqual(expected, actual)
 
 
