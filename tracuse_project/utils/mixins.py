@@ -11,6 +11,9 @@ class BaseMixin(models.Model):
         active (boolean, indexed)
         created (datetime): Timestamp at row insertion
         modified (datetime): Timestamp at row update
+
+    Methods:
+        last_sorted
     """
 
     class Meta:
@@ -27,6 +30,13 @@ class BaseMixin(models.Model):
     # FIXME Django Limitation - Can't do DEFAULT SQL statement
     # created = models.DateTimeField(default=datetime.now)
     # modified = models.DateTimeField(auto_now=True)
+
+    @classmethod
+    def last_sorted(cls):
+        """Object with maximum sort value
+        Used in _calc_sort methods
+        """
+        return cls.objects.order_by("-sort")[0]
 
 
 class EntityMixin(BaseMixin):
