@@ -24,7 +24,7 @@ class BaseMixin(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ["sort", "__str__"]
+        ordering = ["sort"]
 
     active = models.BooleanField(default=True,
                                  db_index=True
