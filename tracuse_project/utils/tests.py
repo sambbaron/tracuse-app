@@ -55,7 +55,7 @@ class TestModelBaseMixin(TestCase):
         """
         test_object = self.test.datum_type2
         actual = test_object._calc_sort(after_object=self.test.datum_type1,
-                                        sort_length=3,
+                                        sort_base_zero_fill=3,
                                         increment=1,
                                         sort_prefix_parts=[test_object.datum_group.sort]
                                         )
@@ -67,7 +67,7 @@ class TestModelBaseMixin(TestCase):
         without object to sort after
         """
         test_object = self.test.datum_type2
-        actual = test_object._calc_sort(sort_length=3,
+        actual = test_object._calc_sort(sort_base_zero_fill=3,
                                         increment=1,
                                         sort_prefix_parts=[test_object.datum_group.sort]
                                         )
@@ -83,7 +83,7 @@ class TestModelBaseMixin(TestCase):
         sort_parts = [test_object.datum_group.sort,
                       test_object.datum_type.sort
                       ]
-        actual = self.test.datum_object1._calc_sort(sort_length=2,
+        actual = self.test.datum_object1._calc_sort(sort_base_zero_fill=2,
                                                     increment=1,
                                                     sort_prefix_parts=sort_parts
                                                     )
