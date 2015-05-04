@@ -202,7 +202,7 @@ class ElementTypeDatumObject(BaseMixin):
 
     def save(self, *args, **kwargs):
         """Create ElementValue record if it doesn't exist"""
-        super(ElementTypeDatumObject, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
         if not self.element_value:
             new_element_value = self.element_value_model()
             new_element_value.element_type_datum_object_id = \

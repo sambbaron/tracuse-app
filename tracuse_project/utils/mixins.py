@@ -189,4 +189,4 @@ class EntityMixin(BaseMixin):
         if self.readable_plural_name is "":
             self.set_readable_plural_name()
 
-        super(EntityMixin, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
