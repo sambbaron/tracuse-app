@@ -5,13 +5,27 @@ class TestDataSimple(object):
     def __init__(self):
         # Mock Datum Groups
         self.datum_group1 = mommy.make("datum.DatumGroup",
-                                       entity_name="TestDatumGroup")
+                                       entity_name="TestDatumGroup1",
+                                       sort=10)
+        self.datum_group2 = mommy.make("datum.DatumGroup",
+                                       entity_name="TestDatumGroup2",
+                                       sort=20)
+        self.datum_group3 = mommy.make("datum.DatumGroup",
+                                       entity_name="TestDatumGroup3",
+                                       sort=30)
 
         # Mock Datum Types
         self.datum_type1 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType",
                                       datum_group=self.datum_group1,
+                                      repr_expression = "{{name}}",
+                                      sort=10100)
+        # Calculate sort
+        self.datum_type2 = mommy.make("datum.DatumType",
+                                      entity_name="TestDatumType",
+                                      datum_group=self.datum_group1,
                                       repr_expression = "{{name}}")
+
         # Mock Datum Objects
         # Has element_type and element_value
         self.datum_object1 = mommy.make("datum.DatumObject",
@@ -22,7 +36,6 @@ class TestDataSimple(object):
         # Does not have element_type, or element_value
         self.datum_object3 = mommy.make("datum.DatumObject",
                                         datum_type=self.datum_type1)
-
 
         # Mock Element Type objects
         self.element_data_type1 = mommy.make("element_type.ElementDataType",

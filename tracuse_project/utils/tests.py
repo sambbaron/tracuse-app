@@ -2,6 +2,8 @@ from django.test import TestCase, mock
 
 from utils import names
 
+from fixtures.test_data_simple import TestDataSimple
+
 
 class TestUtilsNames(TestCase):
     """Test name string manipulation functions
@@ -31,6 +33,24 @@ class TestUtilsNames(TestCase):
             actual = names.camel_to_spaced_capital(test)
             expected = expected_strings[self.test_strings.index(test)]
             return self.assertEqual(expected, actual)
+
+
+class TestModelBaseMixin(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataSimple()
+
+
+    def test_last_sorted(self):
+        """Test BaseMixin.last_sorted class method
+        """
+        from components.datum.models import DatumGroup
+        self.test.datum_group1.objects.create()
+        self.test.datum_group2.objects.create()
+        self.test.datum_group3.objects.create()
+        actual = DatumGroup.last_sorted
+        expected = self.test.datum_group3
+        self.assertEqual(expected, actual)
 
 
 class TestModelEntityMixin(TestCase):
