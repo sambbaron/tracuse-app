@@ -1,8 +1,11 @@
 from model_mommy import mommy
+from mock_django.managers import QuerySetMock
 
+from components.datum.models import DatumGroup
 
 class TestDataSimple(object):
     def __init__(self):
+
         # Mock Datum Groups
         self.datum_group1 = mommy.make("datum.DatumGroup",
                                        entity_name="TestDatumGroup1",
@@ -13,6 +16,13 @@ class TestDataSimple(object):
         self.datum_group3 = mommy.make("datum.DatumGroup",
                                        entity_name="TestDatumGroup3",
                                        sort=30)
+
+        self.datum_groups_all = [self.datum_group1,
+                                 self.datum_group2,
+                                 self.datum_group3,
+                                 ]
+        self.datum_group_qs = QuerySetMock(DatumGroup, *self.datum_groups_all)
+
 
         # Mock Datum Types
         self.datum_type1 = mommy.make("datum.DatumType",

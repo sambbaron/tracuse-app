@@ -1,4 +1,4 @@
-from django.test import TestCase, mock
+from django.test import SimpleTestCase, TestCase, mock
 
 from utils import names
 
@@ -45,10 +45,7 @@ class TestModelBaseMixin(TestCase):
         """Test BaseMixin.last_sorted class method
         """
         from components.datum.models import DatumGroup
-        self.test.datum_group1.objects.create()
-        self.test.datum_group2.objects.create()
-        self.test.datum_group3.objects.create()
-        actual = DatumGroup.last_sorted
+        actual = DatumGroup.last_sorted()
         expected = self.test.datum_group3
         self.assertEqual(expected, actual)
 
