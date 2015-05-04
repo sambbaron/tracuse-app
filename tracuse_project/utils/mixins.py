@@ -45,7 +45,9 @@ class BaseMixin(models.Model):
         """Object with maximum sort value
         Used in _calc_sort methods
         """
-        return cls.objects.order_by("-sort")[0]
+        sorted_objects = cls.objects.order_by("-sort")
+        if sorted_objects:
+            return sorted_objects[0]
 
     def _calc_sort(self, after_object=None, sort_base_zero_fill=0, increment=1, sort_prefix_parts=[]):
         """Calculate sort value
@@ -76,8 +78,8 @@ class BaseMixin(models.Model):
 
         new_sort_suffix = ""
         if sort_base_zero_fill != -1:
-            if after_object == self:
-                # Only one record in table - create first sort value
+            if after_object == self or not after_object:
+                # One or no records in table - create first sort value
                 new_sort_suffix = "1".zfill(sort_base_zero_fill)
             else:
                 after_sort = str(after_object.sort)
