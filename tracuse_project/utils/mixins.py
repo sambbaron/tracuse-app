@@ -78,16 +78,17 @@ class BaseMixin(models.Model):
             after_sort = str(after_object.sort)
         else:
             after_sort = str(self.last_sort_value())
-        after_sort_value = after_sort[-sort_base_zero_fill:]
+        after_sort_value = int(after_sort[-sort_base_zero_fill:])
 
         new_sort_suffix = ""
         if sort_base_zero_fill != -1:
             if after_sort_value == 0:
                 # No records in table - create first sort value
-                new_sort_suffix = "1".zfill(sort_base_zero_fill)
+                # new_sort_suffix = "1".zfill(sort_base_zero_fill)
+                new_sort_value = 10 ** (sort_base_zero_fill - 1)
             else:
                 new_sort_value = int(after_sort_value) + increment
-                new_sort_suffix = str(new_sort_value)
+            new_sort_suffix = str(new_sort_value)
 
         new_sort = sort_prefix + new_sort_suffix
 
