@@ -55,7 +55,7 @@ class ElementValueMixin(BaseMixin):
                                        null=True, blank=True
                                        )
 
-    sort_base_length = 0
+    sort_base_length = -1
 
     @property
     def sort_parts(self):
