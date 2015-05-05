@@ -42,7 +42,7 @@ class TestModelBaseMixin(TestCase):
 
 
     def test_last_sort_value_no_sort_range(self):
-        """Test BaseMixin._last_sort_value class method
+        """Test BaseMixin._last_sort_value
         without sort range - returns maximum sort value
             of all objects
         """
@@ -52,7 +52,7 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_last_sort_value_with_sort_range(self):
-        """Test BaseMixin._last_sort_value class method
+        """Test BaseMixin._last_sort_value
         with sort range - returns maximum sort value
             of objects in sequence
         """
