@@ -52,7 +52,7 @@ class TestDataSimple(object):
         self.datum_object3 = mommy.make("datum.DatumObject",
                                         datum_type=self.datum_type1)
 
-        # Mock Element Type objects
+        # Mock Element Types
         self.element_data_type1 = mommy.make("element_type.ElementDataType",
                                              entity_name="String"
                                              )
@@ -63,12 +63,19 @@ class TestDataSimple(object):
                                         entity_name="Description",
                                         element_data_type=self.element_data_type1)
 
-        # Mock many-to-many relationships between Datum and Element Type objects
+        # Mock Element Type - Datum Type
         self.element_type_datum_type1 = mommy.make("element_type.ElementTypeDatumType",
                                                    make_m2m=True,
-                                                   element_type=self.element_type1,
-                                                   datum_type=self.datum_type1
+                                                   datum_type=self.datum_type1,
+                                                   element_type=self.element_type1
                                                    )
+        self.element_type_datum_type2 = mommy.make("element_type.ElementTypeDatumType",
+                                                   make_m2m=True,
+                                                   datum_type=self.datum_type1,
+                                                   element_type=self.element_type2
+                                                   )
+
+        # Mock Element Type - Datum Object
         self.element_type_datum_object1 = mommy.make("element_type.ElementTypeDatumObject",
                                                      make_m2m=True,
                                                      element_type=self.element_type1,
