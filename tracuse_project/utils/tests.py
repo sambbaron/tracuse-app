@@ -55,10 +55,10 @@ class TestModelBaseMixin(TestCase):
         """
         test_object = self.test.datum_type2
         actual = test_object._calc_sort_value(after_object=self.test.datum_type1,
-                                        sort_base_length=3,
-                                        increment=1,
-                                        sort_prefix_parts=[test_object.datum_group.sort]
-                                        )
+                                              sort_base_length=3,
+                                              increment=1,
+                                              sort_prefix_parts=[test_object.datum_group.sort]
+                                              )
         expected = 10101
         self.assertEqual(expected, actual)
 
@@ -68,9 +68,9 @@ class TestModelBaseMixin(TestCase):
         """
         test_object = self.test.datum_type2
         actual = test_object._calc_sort_value(sort_base_length=3,
-                                        increment=1,
-                                        sort_prefix_parts=[test_object.datum_group.sort]
-                                        )
+                                              increment=1,
+                                              sort_prefix_parts=[test_object.datum_group.sort]
+                                              )
         expected = 10101
         self.assertEqual(expected, actual)
 
@@ -84,9 +84,9 @@ class TestModelBaseMixin(TestCase):
                       test_object.datum_type.sort
                       ]
         actual = self.test.datum_object1._calc_sort_value(sort_base_length=2,
-                                                    increment=1,
-                                                    sort_prefix_parts=sort_parts
-                                                    )
+                                                          increment=1,
+                                                          sort_prefix_parts=sort_parts
+                                                          )
 
     def test_calc_sort_no_base_sort(self):
         """Test BaseMixin._calc_sort_value method
@@ -98,9 +98,9 @@ class TestModelBaseMixin(TestCase):
                       test_object.datum_type.sort
                       ]
         actual = test_object._calc_sort_value(sort_base_length=-1,
-                                        increment=1,
-                                        sort_prefix_parts=sort_parts
-                                        )
+                                              increment=1,
+                                              sort_prefix_parts=sort_parts
+                                              )
         expected = 1010100
         self.assertEqual(expected, actual)
 
