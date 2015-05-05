@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from fixtures.test_datum_element import TestDatumElement
+from fixtures.mock_test_data import TestDatumElement
 
 
 class TestModelElementTypeDatumType(TestCase):

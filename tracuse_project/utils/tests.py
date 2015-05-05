@@ -2,7 +2,7 @@ from django.test import TestCase, mock
 
 from utils import entity
 
-from fixtures.test_datum_element import TestDatumElement
+from fixtures.mock_test_data import TestDatumElement
 
 
 class TestUtilsEntity(TestCase):

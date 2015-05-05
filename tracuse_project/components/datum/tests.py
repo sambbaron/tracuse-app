@@ -2,7 +2,7 @@ from django.test import TestCase, mock
 
 from model_mommy import mommy
 
-from fixtures.test_datum_element import TestDatumElement
+from fixtures.mock_test_data import TestDatumElement
 
 
 class TestModelDatumObject(TestCase):
