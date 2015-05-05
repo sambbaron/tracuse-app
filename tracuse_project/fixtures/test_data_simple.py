@@ -6,6 +6,11 @@ from components.datum.models import DatumGroup
 class TestDataSimple(object):
     def __init__(self):
 
+        # Mock User
+        self.user1 = mommy.make("auth.User",
+                                username="TestUser1"
+                                )
+
         # Mock Datum Groups
         self.datum_group1 = mommy.make("datum.DatumGroup",
                                        entity_name="TestDatumGroup1",
