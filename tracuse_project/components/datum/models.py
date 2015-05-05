@@ -24,7 +24,7 @@ class DatumGroup(EntityMixin):
 
     datum_group_id = models.AutoField(primary_key=True)
 
-    sort_base_zero_fill = 2
+    sort_base_length = 2
 
 
 class DatumType(EntityMixin):
