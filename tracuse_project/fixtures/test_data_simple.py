@@ -58,10 +58,12 @@ class TestDataSimple(object):
                                              )
         self.element_type1 = mommy.make("element_type.ElementType",
                                         entity_name="Name",
-                                        element_data_type=self.element_data_type1)
+                                        element_data_type=self.element_data_type1,
+                                        sort=100)
         self.element_type2 = mommy.make("element_type.ElementType",
                                         entity_name="Description",
-                                        element_data_type=self.element_data_type1)
+                                        element_data_type=self.element_data_type1,
+                                        sort=110)
 
         # Mock Element Type - Datum Type
         self.element_type_datum_type1 = mommy.make("element_type.ElementTypeDatumType",
