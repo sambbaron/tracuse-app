@@ -53,6 +53,7 @@ class BaseMixin(models.Model):
         else:
             return max_value["sort__max"]
 
+    # TODO Reset sort base values when parent value changes
     def _calc_sort_value(self, after_object=None, sort_base_length=0, increment=1, sort_prefix_parts=[]):
         """Calculate sort value
 
