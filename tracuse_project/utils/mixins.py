@@ -107,6 +107,20 @@ class BaseMixin(models.Model):
 
         super().save(*args, **kwargs)
 
+    @classmethod
+    def reset_sort(cls, increment=10):
+        """Reset all sort values based on current sort order"""
+        objects_sorted = cls.objects.order_by("sort").all()
+        objects_sorted.update(sort=0)
+
+        after_object = None
+        for obj in objects_sorted:
+            obj.sort = obj.get_sort_value(after_object=after_object,
+                                          increment=increment
+                                          )
+            obj.save()
+            after_object = obj
+
 
 class EntityMixin(BaseMixin):
     """Common properties for models that define an entity
