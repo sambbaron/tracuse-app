@@ -96,7 +96,8 @@ class BaseMixin(models.Model):
 
     def get_sort_value(self, **kwargs):
         sort_value = self._calc_sort_value(sort_base_length=self.sort_base_length,
-                                     sort_prefix_parts=self.sort_parts
+                                     sort_prefix_parts=self.sort_parts,
+                                     **kwargs
                                      )
         return sort_value
 
