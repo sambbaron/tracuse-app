@@ -9,7 +9,7 @@ class BaseMixin(models.Model):
     Attributes:
         active (boolean, indexed)
         sort (integer, indexed)
-        sort_base_zero_fill (integer, default=3):
+        sort_base_length (integer, default=3):
             number of digits in base sort value
         sort_parts (list of model properties):
             sort_values from parent objects
@@ -32,7 +32,7 @@ class BaseMixin(models.Model):
     sort = models.BigIntegerField(default=0,
                                   db_index=True
                                   )
-    sort_base_zero_fill = 3
+    sort_base_length = 3
     sort_parts = []
 
     # TODO Add columns when schema is more stable
@@ -51,13 +51,13 @@ class BaseMixin(models.Model):
         else:
             return max_value["sort__max"]
 
-    def _calc_sort(self, after_object=None, sort_base_zero_fill=0, increment=1, sort_prefix_parts=[]):
+    def _calc_sort(self, after_object=None, sort_base_length=0, increment=1, sort_prefix_parts=[]):
         """Calculate sort value
 
         Arguments:
             after_object (object):
                 if none, add to end
-            sort_base_zero_fill (integer):
+            sort_base_length (integer):
                 number of digits to append to sort value
                 if -1, then no base sort, only sort prefix
             increment (integer):
@@ -78,14 +78,14 @@ class BaseMixin(models.Model):
             after_sort = str(after_object.sort)
         else:
             after_sort = str(self.last_sort_value())
-        after_sort_value = int(after_sort[-sort_base_zero_fill:])
+        after_sort_value = int(after_sort[-sort_base_length:])
 
         new_sort_suffix = ""
-        if sort_base_zero_fill != -1:
+        if sort_base_length != -1:
             if after_sort_value == 0:
                 # No records in table - create first sort value
-                # new_sort_suffix = "1".zfill(sort_base_zero_fill)
-                new_sort_value = 10 ** (sort_base_zero_fill - 1)
+                # new_sort_suffix = "1".zfill(sort_base_length)
+                new_sort_value = 10 ** (sort_base_length - 1)
             else:
                 new_sort_value = int(after_sort_value) + increment
             new_sort_suffix = str(new_sort_value)
@@ -95,7 +95,7 @@ class BaseMixin(models.Model):
         return int(new_sort)
 
     def _get_sort_value(self, **kwargs):
-        sort_value = self._calc_sort(sort_base_zero_fill=self.sort_base_zero_fill,
+        sort_value = self._calc_sort(sort_base_length=self.sort_base_length,
                                      sort_prefix_parts=self.sort_parts
                                      )
         return sort_value

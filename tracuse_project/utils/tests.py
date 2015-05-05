@@ -55,7 +55,7 @@ class TestModelBaseMixin(TestCase):
         """
         test_object = self.test.datum_type2
         actual = test_object._calc_sort(after_object=self.test.datum_type1,
-                                        sort_base_zero_fill=3,
+                                        sort_base_length=3,
                                         increment=1,
                                         sort_prefix_parts=[test_object.datum_group.sort]
                                         )
@@ -67,7 +67,7 @@ class TestModelBaseMixin(TestCase):
         without object to sort after
         """
         test_object = self.test.datum_type2
-        actual = test_object._calc_sort(sort_base_zero_fill=3,
+        actual = test_object._calc_sort(sort_base_length=3,
                                         increment=1,
                                         sort_prefix_parts=[test_object.datum_group.sort]
                                         )
@@ -83,21 +83,21 @@ class TestModelBaseMixin(TestCase):
         sort_parts = [test_object.datum_group.sort,
                       test_object.datum_type.sort
                       ]
-        actual = self.test.datum_object1._calc_sort(sort_base_zero_fill=2,
+        actual = self.test.datum_object1._calc_sort(sort_base_length=2,
                                                     increment=1,
                                                     sort_prefix_parts=sort_parts
                                                     )
 
     def test_calc_sort_no_base_sort(self):
         """Test BaseMixin._calc_sort method
-        with no zero fill: sort_base_zero_fill = -1
+        with no zero fill: sort_base_length = -1
         with no after_object: add to end
         """
         test_object = self.test.datum_object1
         sort_parts = [test_object.datum_group.sort,
                       test_object.datum_type.sort
                       ]
-        actual = test_object._calc_sort(sort_base_zero_fill=-1,
+        actual = test_object._calc_sort(sort_base_length=-1,
                                         increment=1,
                                         sort_prefix_parts=sort_parts
                                         )
