@@ -179,7 +179,6 @@ class DatumObject(BaseMixin):
             get(element_type=element_type_object)
         return element_type_datum_object.element_value
 
-
     def get_element_value(self, element_type_object):
         """Return value from ElementValue object
         Uses get_element_value property of ElementTypeDatumObject object
@@ -197,6 +196,27 @@ class DatumObject(BaseMixin):
             get(element_type=element_type_object)
         return element_type_datum_object.get_element_value
 
+    def save(self, *args, **kwargs):
+        """For new records, create default element type assignment
+        based on datum type
+        """
+
+        create_elements = False
+
+        if self.pk is None:
+            create_elements = True
+
+        super().save(*args, **kwargs)
+
+        # Create default elements
+        if create_elements == True:
+            for element_type in self.default_element_types:
+                ElementTypeDatumObject.objects.create(datum_object=self,
+                                                      element_type=element_type
+                                                      )
+
+
+    ### UNUSED METHODS
     def element_values_dict(self, element_type_list=None):
         """Retrieve Multiple Element Values Objects for Datum Object
 
@@ -242,22 +262,3 @@ class DatumObject(BaseMixin):
         # PLACEHOLDER FOR FORMATTING
 
         return output
-
-    def save(self, *args, **kwargs):
-        """For new records, create default element type assignment
-        based on datum type
-        """
-
-        create_elements = False
-
-        if self.pk is None:
-            create_elements = True
-
-        super().save(*args, **kwargs)
-
-        # Create default elements
-        if create_elements == True:
-            for element_type in self.default_element_types:
-                ElementTypeDatumObject.objects.create(datum_object=self,
-                                                      element_type=element_type
-                                                      )
