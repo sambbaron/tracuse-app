@@ -131,6 +131,15 @@ class TestModelBaseMixin(TestCase):
         expected = 10101
         self.assertEqual(expected, actual)
 
+    def test_reset_sort(self):
+        """Test BaseMixin.reset_sort method"""
+        from components.datum.models import DatumGroup
+        DatumGroup.reset_sort()
+        first_test_object = DatumGroup.objects.first()
+        last_test_object = DatumGroup.objects.last()
+        self.assertEqual(10, first_test_object.sort)
+        self.assertEqual(30, last_test_object.sort)
+
 
 class TestModelEntityMixin(TestCase):
     """Test Django ORM mixin classes used by all models"""

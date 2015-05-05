@@ -20,6 +20,8 @@ class BaseMixin(models.Model):
     Methods:
         last_sort_value: last object by sort value
         _calc_sort_value: calculate sort value
+        get_sort_value: calculate sort value using class defaults
+        reset_sort: recalculate and update all sort values in class
     """
 
     class Meta:
