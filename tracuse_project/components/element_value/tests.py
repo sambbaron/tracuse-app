@@ -54,9 +54,11 @@ class TestModelElementValueMixin(TestCase):
         expected = "Test Object Name"
         self.assertEqual(expected, actual)
 
-    def test_element_value_sort(self):
-        """Test ElementValueMixin.sort value"""
+    def test_get_sort_value(self):
+        """Test ElementValueMixin.sort value
+        no after_object - add to end
+        """
         test_object = self.test.element_value_string1
         actual = test_object._get_sort_value()
-        expected = 0
+        expected = 101001100
         self.assertEqual(expected, actual)

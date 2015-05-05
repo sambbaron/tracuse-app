@@ -102,3 +102,12 @@ class TestModelDatumObject(TestCase):
 
         new_datum_element_count = new_datum.element_types.count()
         self.assertEqual(2, new_datum_element_count)
+
+    def test_get_sort_value(self):
+        """Test DatumObject.sort value
+        no after_object - add to end
+        """
+        test_object = self.test.datum_object1
+        actual = test_object._get_sort_value()
+        expected = 101004
+        self.assertEqual(expected, actual)
