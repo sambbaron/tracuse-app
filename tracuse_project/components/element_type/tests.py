@@ -1,12 +1,12 @@
 from django.test import TestCase
 
-from fixtures.mock_test_data import TestDatumElement
+from fixtures.mock_test_data import TestDataDatumElement
 
 
 class TestModelElementTypeDatumType(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDatumElement()
+        cls.test = TestDataDatumElement()
 
     def test_str(self):
         """Test ElementTypeDatumType.__str__ property"""
@@ -18,7 +18,7 @@ class TestModelElementTypeDatumType(TestCase):
 class TestModelElementTypeDatumObject(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDatumElement()
+        cls.test = TestDataDatumElement()
 
     def test_str(self):
         """Test ElementTypeDatumObject.__str__ property"""
