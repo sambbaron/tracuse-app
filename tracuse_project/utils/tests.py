@@ -41,11 +41,23 @@ class TestModelBaseMixin(TestCase):
         cls.test = TestDataSimple()
 
 
-    def test_last_sorted(self):
-        """Test BaseMixin.last_sort_value class method"""
+    def test_last_sort_value_no_sort_range(self):
+        """Test BaseMixin._last_sort_value class method
+        without sort range - returns maximum sort value
+            of all objects
+        """
         test_object = self.test.datum_type2
+        actual = test_object._last_sort_value()
+        expected = 20100
+        self.assertEqual(expected, actual)
 
-        actual = test_object.last_sort_value()
+    def test_last_sort_value_with_sort_range(self):
+        """Test BaseMixin._last_sort_value class method
+        with sort range - returns maximum sort value
+            of objects in sequence
+        """
+        test_object = self.test.datum_type2
+        actual = test_object._last_sort_value(10000, 10999)
         expected = 10100
         self.assertEqual(expected, actual)
 
@@ -149,6 +161,7 @@ class TestModelBaseMixin(TestCase):
     def test_reset_sort(self):
         """Test BaseMixin.reset_sort method"""
         from components.datum.models import DatumGroup
+
         DatumGroup.reset_sort()
         first_test_object = DatumGroup.objects.first()
         last_test_object = DatumGroup.objects.last()

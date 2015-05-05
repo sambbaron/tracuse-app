@@ -19,7 +19,7 @@ class BaseMixin(models.Model):
 
     Methods:
         _sort_range_value: starting and ending sort sequences
-        last_sort_value: last object by sort value
+        _last_sort_value: last object by sort value
         _calc_sort_value: calculate sort value
         get_sort_value: calculate sort value using class defaults
         reset_sort: recalculate and update all sort values in class
@@ -61,7 +61,7 @@ class BaseMixin(models.Model):
         total_length = len(sort_prefix) + sort_base_length
         return sort_prefix.ljust(total_length, fill_character)
 
-    def last_sort_value(self, sort_start=0, sort_end=0):
+    def _last_sort_value(self, sort_start=0, sort_end=0):
         """Object with maximum sort value
         Exclusive of current object
         Used in _calc_sort_value methods
@@ -119,7 +119,7 @@ class BaseMixin(models.Model):
                                                   sort_base_length=sort_base_length,
                                                   return_start=False
                                                   )
-                after_sort_str = str(self.last_sort_value(sort_start, sort_end))
+                after_sort_str = str(self._last_sort_value(sort_start, sort_end))
 
             after_sort_prefix = after_sort_str[:len(after_sort_str) - sort_base_length]
             after_sort_value = int(after_sort_str[-sort_base_length:])
