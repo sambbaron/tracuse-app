@@ -4,6 +4,9 @@ from string import capwords
 
 
 def camel_to_spaced_lower(camel_string):
+    """Example:
+        CamelCase -> camel case
+    """
     output = ""
 
     if camel_string:
@@ -21,8 +24,9 @@ def camel_to_spaced_lower(camel_string):
 
 
 def camel_to_spaced_capital(camel_string):
-    output = ""
-
+    """Example:
+        CamelCase -> Camel Case
+    """
     common_string = camel_to_spaced_lower(camel_string)
 
     output = capwords(common_string, " ")
@@ -31,8 +35,9 @@ def camel_to_spaced_capital(camel_string):
 
 
 def camel_to_underscore(camel_string):
-    output = ""
-
+    """Example:
+        CamelCase -> camel_case
+    """
     common_string = camel_to_spaced_lower(camel_string)
 
     output = common_string.replace(" ", "_")
@@ -50,6 +55,9 @@ def sort_range_value(sort_prefix, sort_base_length=0, return_start=True):
         return_start (boolean, default=True):
             True - return starting value
             False - return ending value
+
+    Return:
+        sort value (integer)
     """
     if return_start:
         fill_character = "0"

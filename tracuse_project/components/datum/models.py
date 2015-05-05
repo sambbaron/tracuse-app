@@ -76,6 +76,7 @@ class DatumObject(BaseMixin):
 
     Attributes:
         See BaseMixin
+            sort (integer): DatumType.sort + single increment
         user_id (integer, fk, required): User
         datum_type_id (integer, fk, required): DatumType
         element_types (ElementType set):
@@ -83,13 +84,6 @@ class DatumObject(BaseMixin):
         datum_group (DatumGroup):
         default_element_types (list):
             ElementTypes from ElementTypeDatumType
-
-    Methods:
-        element_value (ElementValue):
-            Return single ElementValue object for selected element type
-        get_element_value (variable):
-            Return element value for selected element type
-        element_values_dict (dict):
             Return element values for multiple element types
     """
 
@@ -250,6 +244,9 @@ class DatumObject(BaseMixin):
         return output
 
     def save(self, *args, **kwargs):
+        """For new records, create default element type assignment
+        based on datum type
+        """
 
         create_elements = False
 

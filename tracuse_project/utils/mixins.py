@@ -16,12 +16,6 @@ class BaseMixin(models.Model):
             ordering matters to build sort value
         created (datetime): Timestamp at row insertion
         modified (datetime): Timestamp at row update
-
-    Methods:
-        _last_sort_value: last object by sort value
-        _calc_sort_value: calculate sort value
-        get_sort_value: calculate sort value using class defaults
-        reset_sort: recalculate and update all sort values in class
     """
 
     class Meta:
@@ -117,6 +111,7 @@ class BaseMixin(models.Model):
         return int(new_sort)
 
     def get_sort_value(self, **kwargs):
+        """Return sort value based on model class defaults"""
         sort_value = self._calc_sort_value(sort_base_length=self.sort_base_length,
                                            sort_prefix_parts=self.sort_parts,
                                            **kwargs
@@ -124,6 +119,7 @@ class BaseMixin(models.Model):
         return sort_value
 
     def save(self, *args, **kwargs):
+        """Set calculated sort value if zero"""
         if self.sort == 0:
             self.sort = self.get_sort_value()
 
@@ -163,11 +159,6 @@ class EntityMixin(BaseMixin):
         short_description (string): Word or two about object
         long_description (string): Long description of object
         schema_name (string): Underscore/lower-case class name
-
-    Methods:
-        set_readable_name
-        set_schema_name
-        set_readable_plural_name
     """
 
     class Meta:
@@ -228,6 +219,8 @@ class EntityMixin(BaseMixin):
         self.readable_plural_name = self._get_readable_plural_name()
 
     def save(self, *args, **kwargs):
+        """Set entity names if empty"""
+
         if self.readable_name is "":
             self.set_readable_name()
 
