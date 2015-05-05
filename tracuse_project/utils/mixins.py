@@ -74,17 +74,17 @@ class BaseMixin(models.Model):
         for sort_part in sort_prefix_parts:
             sort_prefix += str(sort_part)
 
-        if after_object:
-            after_sort = str(after_object.sort)
-        else:
-            after_sort = str(self.last_sort_value())
-        after_sort_value = int(after_sort[-sort_base_length:])
-
         new_sort_suffix = ""
         if sort_base_length != -1:
+
+            if after_object:
+                after_sort = str(after_object.sort)
+            else:
+                after_sort = str(self.last_sort_value())
+            after_sort_value = int(after_sort[-sort_base_length:])
+
             if after_sort_value == 0:
                 # No records in table - create first sort value
-                # new_sort_suffix = "1".zfill(sort_base_length)
                 new_sort_value = 10 ** (sort_base_length - 1)
             else:
                 new_sort_value = int(after_sort_value) + increment
