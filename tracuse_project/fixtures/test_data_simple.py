@@ -78,13 +78,13 @@ class TestDataSimple(object):
         # Mock Element Type - Datum Object
         self.element_type_datum_object1 = mommy.make("element_type.ElementTypeDatumObject",
                                                      make_m2m=True,
-                                                     element_type=self.element_type1,
-                                                     datum_object=self.datum_object1
+                                                     datum_object=self.datum_object1,
+                                                     element_type=self.element_type1
                                                      )
         self.element_type_datum_object2 = mommy.make("element_type.ElementTypeDatumObject",
                                                      make_m2m=True,
-                                                     element_type=self.element_type1,
-                                                     datum_object=self.datum_object2
+                                                     datum_object=self.datum_object2,
+                                                     element_type=self.element_type1
                                                      )
 
         # Mock Element Value objects

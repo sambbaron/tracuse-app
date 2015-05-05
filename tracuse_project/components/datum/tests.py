@@ -45,7 +45,7 @@ class TestModelDatumObject(TestCase):
     def test_default_element_types(self):
         """Test DatumObject.default_element_types property"""
         actual = self.test.datum_object1.default_element_types
-        expected = [self.test.element_type1]
+        expected = [self.test.element_type1, self.test.element_type2]
         self.assertEqual(expected, actual)
 
     def test_element_value_with_element_type(self):
