@@ -67,7 +67,7 @@ class ElementType(EntityMixin):
                                            related_name="+"
                                            )
 
-    sort_base_length = 4
+    sort_base_length = 3
 
 
 class ElementOption(EntityMixin):
