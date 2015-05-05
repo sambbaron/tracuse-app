@@ -33,6 +33,28 @@ class TestUtilsEntity(TestCase):
             expected = expected_strings[self.test_strings.index(test)]
             return self.assertEqual(expected, actual)
 
+    def test_sort_range_value_start(self):
+        """Test sort_range_value returning start value
+        """
+        actual = entity.sort_range_value(
+            sort_prefix="22",
+            sort_base_length=4,
+            return_start=True
+        )
+        expected = 220000
+        self.assertEqual(expected, actual)
+
+    def test_sort_range_value_end(self):
+        """Test sort_range_value returning ending value
+        """
+        actual = entity.sort_range_value(
+            sort_prefix="22",
+            sort_base_length=4,
+            return_start=False
+        )
+        expected = 229999
+        self.assertEqual(expected, actual)
+
 
 class TestModelBaseMixin(TestCase):
     @classmethod

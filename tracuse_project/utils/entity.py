@@ -38,3 +38,23 @@ def camel_to_underscore(camel_string):
     output = common_string.replace(" ", "_")
 
     return output
+
+
+def sort_range_value(sort_prefix, sort_base_length=0, return_start=True):
+    """Return sort range value based on sort prefix
+    Used in last_sorted_value to search in sequence
+
+    Arguments:
+        sort_prefix (string):
+        sort_base_length (integer):
+        return_start (boolean, default=True):
+            True - return starting value
+            False - return ending value
+    """
+    if return_start:
+        fill_character = "0"
+    else:
+        fill_character = "9"
+    total_length = len(sort_prefix) + sort_base_length
+    sort_string = sort_prefix.ljust(total_length, fill_character)
+    return int(sort_string)
