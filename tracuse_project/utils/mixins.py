@@ -42,16 +42,25 @@ class BaseMixin(models.Model):
     # created = models.DateTimeField(default=datetime.now)
     # modified = models.DateTimeField(auto_now=True)
 
-    def last_sort_value(self):
+    def last_sort_value(self, sort_start=0, sort_end=0):
         """Object with maximum sort value
         Exclusive of current object
         Used in _calc_sort_value methods
+
+        Arguments:
+            sort_start (integer):
+            sort_end (integer):
+                used to lookup last sort value in sequence
         """
-        max_value = self.__class__.objects.exclude(pk=self.pk).aggregate(models.Max("sort"))
-        if max_value["sort__max"] is None:
+        max_value_objects = self.__class__.objects.exclude(pk=self.pk)
+        if sort_end != 0:
+            max_value_objects = max_value_objects.filter(sort__range=(sort_start, sort_end))
+
+        max_value_query = max_value_objects.aggregate(models.Max("sort"))
+        if max_value_query["sort__max"] is None:
             return 0
         else:
-            return max_value["sort__max"]
+            return max_value_query["sort__max"]
 
     # TODO Reset sort base values when parent value changes
     def _calc_sort_value(self, after_object=None, sort_base_length=0, increment=1, sort_prefix_parts=[]):
@@ -73,35 +82,41 @@ class BaseMixin(models.Model):
             sort value (integer)
         """
 
-        sort_prefix = ""
+        new_sort_prefix = ""
         for sort_part in sort_prefix_parts:
-            sort_prefix += str(sort_part)
+            new_sort_prefix += str(sort_part)
 
         new_sort_suffix = ""
         if sort_base_length != -1:
 
             if after_object:
-                after_sort = str(after_object.sort)
+                after_sort_str = str(after_object.sort)
             else:
-                after_sort = str(self.last_sort_value())
-            after_sort_value = int(after_sort[-sort_base_length:])
+                total_length = len(new_sort_prefix) + sort_base_length
+                start_sort_str = new_sort_prefix.ljust(total_length, "0")
+                sort_end_str = new_sort_prefix.ljust(total_length, "9")
+                after_sort_str = str(self.last_sort_value(sort_start=int(start_sort_str),
+                                                          sort_end=int(sort_end_str)
+                                                          ))
+            after_sort_prefix = after_sort_str[:len(after_sort_str) - sort_base_length]
+            after_sort_value = int(after_sort_str[-sort_base_length:])
 
-            if after_sort_value == 0:
-                # No records in table - create first sort value
+            if after_sort_value == 0 or after_sort_prefix != new_sort_prefix:
+                # Reset sort value
                 new_sort_value = 10 ** (sort_base_length - 1)
             else:
                 new_sort_value = int(after_sort_value) + increment
             new_sort_suffix = str(new_sort_value)
 
-        new_sort = sort_prefix + new_sort_suffix
+        new_sort = new_sort_prefix + new_sort_suffix
 
         return int(new_sort)
 
     def get_sort_value(self, **kwargs):
         sort_value = self._calc_sort_value(sort_base_length=self.sort_base_length,
-                                     sort_prefix_parts=self.sort_parts,
-                                     **kwargs
-                                     )
+                                           sort_prefix_parts=self.sort_parts,
+                                           **kwargs
+                                           )
         return sort_value
 
     def save(self, *args, **kwargs):

@@ -104,6 +104,21 @@ class TestModelBaseMixin(TestCase):
         expected = 1010100
         self.assertEqual(expected, actual)
 
+    def test_calc_sort_prefix_reset(self):
+        """Test BaseMixin._calc_sort_value method
+        with new prefix sort
+        base value resets
+        """
+        test_object = self.test.datum_type3
+        sort_parts = [test_object.datum_group.sort,
+                      ]
+        actual = test_object._calc_sort_value(sort_base_length=4,
+                                              increment=1,
+                                              sort_prefix_parts=sort_parts
+                                              )
+        expected = 201000
+        self.assertEqual(expected, actual)
+
     def test_get_sort_value_with_after_object(self):
         """Test BaseMixin.get_sort_value method
         with object to sort after

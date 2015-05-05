@@ -40,6 +40,11 @@ class TestDataSimple(object):
                                       entity_name="TestDatumType2",
                                       datum_group=self.datum_group1,
                                       repr_expression = "{{name}}")
+        # Calculate sort in new group
+        self.datum_type3 = mommy.make("datum.DatumType",
+                                      entity_name="TestDatumType3",
+                                      datum_group=self.datum_group2,
+                                      repr_expression = "{{name}}")
 
         # Mock Datum Objects
         # Has element_type and element_value
