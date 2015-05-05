@@ -18,6 +18,7 @@ class BaseMixin(models.Model):
         modified (datetime): Timestamp at row update
 
     Methods:
+        _sort_range_value: starting and ending sort sequences
         last_sort_value: last object by sort value
         _calc_sort_value: calculate sort value
         get_sort_value: calculate sort value using class defaults
@@ -41,6 +42,24 @@ class BaseMixin(models.Model):
     # FIXME Django Limitation - Can't do DEFAULT SQL statement
     # created = models.DateTimeField(default=datetime.now)
     # modified = models.DateTimeField(auto_now=True)
+
+    def _sort_range_value(self, sort_prefix, sort_base_length=0, return_start=True):
+        """Return sort range based on sort prefix
+        Used in last_sorted_value to search in sequence
+
+        Arguments:
+            sort_prefix (string):
+            sort_base_length (integer):
+            return_start (boolean, default=True):
+                True - return starting value
+                False - return ending value
+        """
+        if return_start:
+            fill_character = "0"
+        else:
+            fill_character = "9"
+        total_length = len(sort_prefix) + sort_base_length
+        return sort_prefix.ljust(total_length, fill_character)
 
     def last_sort_value(self, sort_start=0, sort_end=0):
         """Object with maximum sort value
@@ -92,12 +111,16 @@ class BaseMixin(models.Model):
             if after_object:
                 after_sort_str = str(after_object.sort)
             else:
-                total_length = len(new_sort_prefix) + sort_base_length
-                start_sort_str = new_sort_prefix.ljust(total_length, "0")
-                sort_end_str = new_sort_prefix.ljust(total_length, "9")
-                after_sort_str = str(self.last_sort_value(sort_start=int(start_sort_str),
-                                                          sort_end=int(sort_end_str)
-                                                          ))
+                sort_start = self._sort_range_value(sort_prefix=new_sort_prefix,
+                                                    sort_base_length=sort_base_length,
+                                                    return_start=True
+                                                    )
+                sort_end = self._sort_range_value(sort_prefix=new_sort_prefix,
+                                                  sort_base_length=sort_base_length,
+                                                  return_start=False
+                                                  )
+                after_sort_str = str(self.last_sort_value(sort_start, sort_end))
+
             after_sort_prefix = after_sort_str[:len(after_sort_str) - sort_base_length]
             after_sort_value = int(after_sort_str[-sort_base_length:])
 
