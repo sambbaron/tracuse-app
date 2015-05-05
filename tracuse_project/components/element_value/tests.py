@@ -33,13 +33,6 @@ class TestModelElementValueMixin(TestCase):
         cls.test = TestDataSimple()
 
 
-    def test_str(self):
-        """Test ElementValueMixin.__str__
-        """
-        actual = self.test.element_value_string1.__str__()
-        expected = "Test Object Name"
-        self.assertEqual(expected, actual)
-
     def test_datum_object(self):
         """Test ElementValueMixin.datum_object
         """
@@ -52,4 +45,18 @@ class TestModelElementValueMixin(TestCase):
         """
         actual = self.test.element_value_string1.element_type
         expected = self.test.element_type1
+        self.assertEqual(expected, actual)
+
+    def test_str(self):
+        """Test ElementValueMixin.__str__
+        """
+        actual = self.test.element_value_string1.__str__()
+        expected = "Test Object Name"
+        self.assertEqual(expected, actual)
+
+    def test_element_value_sort(self):
+        """Test ElementValueMixin.sort value"""
+        test_object = self.test.element_value_string1
+        actual = test_object._get_sort_value()
+        expected = 0
         self.assertEqual(expected, actual)
