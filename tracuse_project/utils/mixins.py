@@ -19,7 +19,7 @@ class BaseMixin(models.Model):
 
     Methods:
         last_sort_value: last object by sort value
-        _calc_sort: calculate sort value
+        _calc_sort_value: calculate sort value
     """
 
     class Meta:
@@ -43,7 +43,7 @@ class BaseMixin(models.Model):
     def last_sort_value(self):
         """Object with maximum sort value
         Exclusive of current object
-        Used in _calc_sort methods
+        Used in _calc_sort_value methods
         """
         max_value = self.__class__.objects.exclude(pk=self.pk).aggregate(models.Max("sort"))
         if max_value["sort__max"] is None:
@@ -51,7 +51,7 @@ class BaseMixin(models.Model):
         else:
             return max_value["sort__max"]
 
-    def _calc_sort(self, after_object=None, sort_base_length=0, increment=1, sort_prefix_parts=[]):
+    def _calc_sort_value(self, after_object=None, sort_base_length=0, increment=1, sort_prefix_parts=[]):
         """Calculate sort value
 
         Arguments:
@@ -94,15 +94,15 @@ class BaseMixin(models.Model):
 
         return int(new_sort)
 
-    def _get_sort_value(self, **kwargs):
-        sort_value = self._calc_sort(sort_base_length=self.sort_base_length,
+    def get_sort_value(self, **kwargs):
+        sort_value = self._calc_sort_value(sort_base_length=self.sort_base_length,
                                      sort_prefix_parts=self.sort_parts
                                      )
         return sort_value
 
     def save(self, *args, **kwargs):
         if self.sort == 0:
-            self.sort = self._get_sort_value()
+            self.sort = self.get_sort_value()
 
         super().save(*args, **kwargs)
 

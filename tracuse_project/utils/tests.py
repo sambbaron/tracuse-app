@@ -50,11 +50,11 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_calc_sort_with_after_object(self):
-        """Test BaseMixin._calc_sort method
+        """Test BaseMixin._calc_sort_value method
         with object to sort after
         """
         test_object = self.test.datum_type2
-        actual = test_object._calc_sort(after_object=self.test.datum_type1,
+        actual = test_object._calc_sort_value(after_object=self.test.datum_type1,
                                         sort_base_length=3,
                                         increment=1,
                                         sort_prefix_parts=[test_object.datum_group.sort]
@@ -63,11 +63,11 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_calc_sort_without_after_object(self):
-        """Test BaseMixin._calc_sort method
+        """Test BaseMixin._calc_sort_value method
         without object to sort after
         """
         test_object = self.test.datum_type2
-        actual = test_object._calc_sort(sort_base_length=3,
+        actual = test_object._calc_sort_value(sort_base_length=3,
                                         increment=1,
                                         sort_prefix_parts=[test_object.datum_group.sort]
                                         )
@@ -75,7 +75,7 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_calc_sort_multiple_parts(self):
-        """Test BaseMixin._calc_sort method
+        """Test BaseMixin._calc_sort_value method
         with more than one parent prefix part
         with no after_object: add to end
         """
@@ -83,13 +83,13 @@ class TestModelBaseMixin(TestCase):
         sort_parts = [test_object.datum_group.sort,
                       test_object.datum_type.sort
                       ]
-        actual = self.test.datum_object1._calc_sort(sort_base_length=2,
+        actual = self.test.datum_object1._calc_sort_value(sort_base_length=2,
                                                     increment=1,
                                                     sort_prefix_parts=sort_parts
                                                     )
 
     def test_calc_sort_no_base_sort(self):
-        """Test BaseMixin._calc_sort method
+        """Test BaseMixin._calc_sort_value method
         with no zero fill: sort_base_length = -1
         with no after_object: add to end
         """
@@ -97,7 +97,7 @@ class TestModelBaseMixin(TestCase):
         sort_parts = [test_object.datum_group.sort,
                       test_object.datum_type.sort
                       ]
-        actual = test_object._calc_sort(sort_base_length=-1,
+        actual = test_object._calc_sort_value(sort_base_length=-1,
                                         increment=1,
                                         sort_prefix_parts=sort_parts
                                         )
@@ -105,20 +105,20 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_get_sort_value_with_after_object(self):
-        """Test BaseMixin._get_sort_value method
+        """Test BaseMixin.get_sort_value method
         with object to sort after
         """
         test_object = self.test.datum_type2
-        actual = test_object._get_sort_value(after_object=self.test.datum_type1)
+        actual = test_object.get_sort_value(after_object=self.test.datum_type1)
         expected = 10101
         self.assertEqual(expected, actual)
 
     def test_get_sort_value_without_after_object(self):
-        """Test BaseMixin._get_sort_value method
+        """Test BaseMixin.get_sort_value method
         with object to sort after
         """
         test_object = self.test.datum_type2
-        actual = test_object._get_sort_value()
+        actual = test_object.get_sort_value()
         expected = 10101
         self.assertEqual(expected, actual)
 

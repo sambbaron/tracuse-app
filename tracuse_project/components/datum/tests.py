@@ -108,6 +108,6 @@ class TestModelDatumObject(TestCase):
         no after_object - add to end
         """
         test_object = self.test.datum_object1
-        actual = test_object._get_sort_value()
+        actual = test_object.get_sort_value()
         expected = 101004
         self.assertEqual(expected, actual)
