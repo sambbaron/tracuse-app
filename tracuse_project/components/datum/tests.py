@@ -90,6 +90,15 @@ class TestModelDatumObject(TestCase):
         expected = None
         self.assertEqual(expected, actual)
 
+    def test_get_sort_value(self):
+        """Test DatumObject.sort value
+        no after_object - add to end
+        """
+        test_object = self.test.datum_object1
+        actual = test_object.get_sort_value()
+        expected = 101004
+        self.assertEqual(expected, actual)
+
     def test_save_with_elements(self):
         """Test DatumObject.save method
         to test creation of default elements
@@ -102,12 +111,3 @@ class TestModelDatumObject(TestCase):
 
         new_datum_element_count = new_datum.element_types.count()
         self.assertEqual(2, new_datum_element_count)
-
-    def test_get_sort_value(self):
-        """Test DatumObject.sort value
-        no after_object - add to end
-        """
-        test_object = self.test.datum_object1
-        actual = test_object.get_sort_value()
-        expected = 101004
-        self.assertEqual(expected, actual)
