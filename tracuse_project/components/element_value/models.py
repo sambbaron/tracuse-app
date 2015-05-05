@@ -63,7 +63,7 @@ class ElementValueMixin(BaseMixin):
 
 
     def __str__(self):
-        return camel_to_spaced_capital(self.element_value)
+        return str(self.element_value)
 
     @property
     def datum_object(self):
