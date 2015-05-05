@@ -2,7 +2,7 @@ from django.test import TestCase, mock
 
 from utils import entity
 
-from fixtures.test_data_simple import TestDataSimple
+from fixtures.test_datum_element import TestDatumElement
 
 
 class TestUtilsEntity(TestCase):
@@ -59,7 +59,7 @@ class TestUtilsEntity(TestCase):
 class TestModelBaseMixin(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDataSimple()
+        cls.test = TestDatumElement()
 
 
     def test_last_sort_value_no_sort_range(self):

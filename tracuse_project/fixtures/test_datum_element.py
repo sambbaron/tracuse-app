@@ -3,7 +3,8 @@ from mock_django.managers import QuerySetMock
 
 from components.datum.models import DatumGroup
 
-class TestDataSimple(object):
+class TestDatumElement(object):
+    """Simple mock datum and element objects for testing"""
     def __init__(self):
 
         # Mock User

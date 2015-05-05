@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from fixtures.test_data_simple import TestDataSimple
+from fixtures.test_datum_element import TestDatumElement
 
 from components.element_value.models import ElementValueModel, ElementValueString
 
@@ -8,7 +8,7 @@ from components.element_value.models import ElementValueModel, ElementValueStrin
 class TestModelElementValueModel(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDataSimple()
+        cls.test = TestDatumElement()
 
     def test_init_good_data_type(self):
         """Test ElementValueModel.__init__
@@ -30,7 +30,7 @@ class TestModelElementValueModel(TestCase):
 class TestModelElementValueMixin(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDataSimple()
+        cls.test = TestDatumElement()
 
 
     def test_datum_object(self):
