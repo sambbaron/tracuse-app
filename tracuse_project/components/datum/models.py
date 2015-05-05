@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from utils.mixins import EntityMixin, BaseMixin
-from components.element_type.models import ElementType
+from components.element_type.models import ElementType, ElementTypeDatumObject
 
 
 class DatumGroup(EntityMixin):
@@ -41,9 +41,6 @@ class DatumType(EntityMixin):
             --> {{name}} and {{description}}
         element_types (ElementType set):
             related element types from ElementTypeDatumType
-
-    Methods:
-        set_sort:
     """
 
     class Meta(EntityMixin.Meta):
@@ -251,3 +248,19 @@ class DatumObject(BaseMixin):
         # PLACEHOLDER FOR FORMATTING
 
         return output
+
+    def save(self, *args, **kwargs):
+
+        create_elements = False
+
+        if self.pk is None:
+            create_elements = True
+
+        super().save(*args, **kwargs)
+
+        # Create default elements
+        if create_elements == True:
+            for element_type in self.default_element_types:
+                ElementTypeDatumObject.objects.create(datum_object=self,
+                                                      element_type=element_type
+                                                      )

@@ -89,3 +89,16 @@ class TestModelDatumObject(TestCase):
         )
         expected = None
         self.assertEqual(expected, actual)
+
+    def test_save_with_elements(self):
+        """Test DatumObject.save method
+        to test creation of default elements
+        """
+        new_datum = mommy.make("datum.DatumObject",
+                               user=self.test.user1,
+                               datum_type=self.test.datum_type1
+                               )
+        new_datum.save()
+
+        new_datum_element_count = new_datum.element_types.count()
+        self.assertEqual(2, new_datum_element_count)
