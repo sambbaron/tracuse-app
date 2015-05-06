@@ -140,11 +140,11 @@ class TestModelDatumObject(TestCase):
         """Test DatumObject.save method
         to test creation of default elements
         """
-        new_datum = mommy.make("datum.DatumObject",
+        test_object = mommy.make("datum.DatumObject",
                                user=self.test.user1,
                                datum_type=self.test.datum_type1
                                )
-        new_datum.save()
+        test_object.save()
 
-        new_datum_element_count = new_datum.element_types.count()
-        self.assertEqual(2, new_datum_element_count)
+        datum_element_count = test_object.element_types.count()
+        self.assertEqual(2, datum_element_count)
