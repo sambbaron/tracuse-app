@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 from utils.mixins import EntityMixin, BaseMixin
 from components.element_type.models import ElementType, ElementTypeDatumObject
+from components.association.models import AssociationAll
 
 
 class DatumGroup(EntityMixin):
@@ -196,6 +197,37 @@ class DatumObject(BaseMixin):
             get(element_type=element_type_object)
         return element_type_datum_object.get_element_value
 
+    @property
+    def _self_association(self):
+        """Datum association to self
+        Return none if not exist
+        """
+        test_self_association = AssociationAll.objects.filter(
+            parent_datum=self,
+            child_datum=self
+        )
+
+        if test_self_association:
+            return test_self_association[0]
+        else:
+            return None
+
+    def set_self_association(self):
+        """Add datum association to itself if it doesn't exist
+
+        Return:
+            New AssociationAll object
+        """
+        if not self._self_association:
+            new_self_association = AssociationAll.objects.create(
+                parent_datum=self,
+                child_datum=self,
+                depth=0
+            )
+            return new_self_association
+        else:
+            return None
+
     def save(self, *args, **kwargs):
         """For new records, create default element type assignment
         based on datum type
@@ -214,6 +246,9 @@ class DatumObject(BaseMixin):
                 ElementTypeDatumObject.objects.create(datum_object=self,
                                                       element_type=element_type
                                                       )
+
+        # Set self association
+        self.set_self_association()
 
 
     ### UNUSED METHODS
