@@ -99,39 +99,26 @@ class TestModelDatumObject(TestCase):
         expected = 101004
         self.assertEqual(expected, actual)
 
-    def test_self_association_none(self):
-        """Test DatumObject._self_association property
-        if none exists
-        """
-        from components.datum.models import DatumObject
-
-        with mock.patch("components.datum.models.DatumObject.save"):
-            test_object = DatumObject()
-            actual = test_object._self_association
-        self.assertIsNone(actual)
-
-    def test_self_association_exists(self):
+    def test_get_create_self_association(self):
         """Test DatumObject._self_association property
         if exists
         """
         test_object = self.test.datum_object2
-        actual = test_object._self_association
+        actual = test_object.get_create_self_association()
         self.assertIsNotNone(actual)
         self.assertEqual(actual.parent_datum, actual.child_datum)
         self.assertEqual(0, actual.depth)
 
-    def test_save_set_self_association(self):
+    def test_save_create_self_association(self):
         """Test DatumObject.save method
         to test creation of self association
         """
-        from components.datum.models import DatumObject
-
         test_object = mommy.make("datum.DatumObject",
                                user=self.test.user1,
                                datum_type=self.test.datum_type1
                                )
         test_object.save()
-        actual = test_object._self_association
+        actual = test_object.get_create_self_association()
         self.assertIsNotNone(actual)
         self.assertEqual(actual.parent_datum, actual.child_datum)
         self.assertEqual(0, actual.depth)

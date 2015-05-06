@@ -197,36 +197,18 @@ class DatumObject(BaseMixin):
             get(element_type=element_type_object)
         return element_type_datum_object.get_element_value
 
-    @property
-    def _self_association(self):
-        """Datum association to self
-        Return none if not exist
-        """
-        test_self_association = AssociationAll.objects.filter(
-            parent_datum=self,
-            child_datum=self
-        )
-
-        if test_self_association:
-            return test_self_association[0]
-        else:
-            return None
-
-    def set_self_association(self):
+    def get_create_self_association(self):
         """Add datum association to itself if it doesn't exist
 
         Return:
             New AssociationAll object
         """
-        if not self._self_association:
-            new_self_association = AssociationAll.objects.create(
-                parent_datum=self,
-                child_datum=self,
-                depth=0
-            )
-            return new_self_association
-        else:
-            return None
+        self_association = AssociationAll.objects.get_or_create(
+            parent_datum=self,
+            child_datum=self,
+            depth=0
+        )
+        return self_association[0]
 
     def save(self, *args, **kwargs):
         """For new records, create default element type assignment
@@ -248,7 +230,7 @@ class DatumObject(BaseMixin):
                                                       )
 
         # Set self association
-        self.set_self_association()
+        self.get_create_self_association()
 
 
     ### UNUSED METHODS
