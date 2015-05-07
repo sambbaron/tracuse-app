@@ -161,7 +161,8 @@ class AssociationAll(AssociationMixin):
 
     Attributes:
         See AssociationMixin (includes BaseMixin)
-        depth (integer):
+        depth (integer, default=0):
+            only used in searches
     """
 
     class Meta(AssociationMixin.Meta):
@@ -173,7 +174,7 @@ class AssociationAll(AssociationMixin):
     depth = models.IntegerField(default=0)
 
     @staticmethod
-    def get_create_association(parent_datum, child_datum, depth):
+    def get_create_association(parent_datum, child_datum):
         """Add association if it doesn't exist
 
         Uses Django get_or_create queryset method
@@ -184,6 +185,5 @@ class AssociationAll(AssociationMixin):
         association = AssociationAll.objects.get_or_create(
             parent_datum=parent_datum,
             child_datum=child_datum,
-            depth=depth
         )
         return association[0]

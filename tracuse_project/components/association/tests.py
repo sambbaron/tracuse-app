@@ -77,8 +77,7 @@ class TestModelAssociationAll(TestCase):
         test_object2 = mommy.make("datum.DatumObject")
         actual = AssociationAll.get_create_association(
             parent_datum=test_object1,
-            child_datum=test_object2,
-            depth=0
+            child_datum=test_object2
         )
         self.assertIsInstance(actual, AssociationAll)
         self.assertEqual(test_object1, actual.parent_datum)
