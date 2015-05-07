@@ -210,6 +210,75 @@ class DatumObject(BaseMixin):
         )
         return self_association
 
+    def _get_adjacent_associated_datums(self, direction):
+        """Return datums from AssociationAdjacent
+
+        Arguments:
+            direction (AssociationDirection):
+
+        Returns:
+            List of DatumObject objects
+        """
+        datums = []
+
+        direction_name = direction.entity_name
+
+        if direction_name is "parent" or direction_name is "both":
+            parent_datums = self.parent_associations_adjacent.all()
+            datums.extend(parent_datums)
+
+        if direction_name is "child" or direction_name is "both":
+            child_datums = self.child_associations_adjacent.all()
+            datums.extend(child_datums)
+
+        return datums
+
+    def _get_all_associated_datums(self, direction, distance_limit=1):
+        """Return associated datums from AssociationAll
+        Does not include self
+
+        Arguments:
+            direction (AssociationDirection):
+            distance_limit (integer, default=1):
+
+        Returns:
+            List of DatumObject objects
+        """
+        datums = []
+
+        direction_name = direction.entity_name
+
+        if direction_name is "parent" or direction_name is "both":
+            parent_datums = self.parent_associations_all \
+                .filter(distance__lte=distance_limit) \
+                .all()
+            datums.extend(parent_datums)
+
+        if direction_name is "child" or direction_name is "both":
+            child_datums = self.child_associations_all \
+                .filter(distance__lte=distance_limit) \
+                .all()
+            datums.extend(child_datums)
+
+        return datums
+
+    def get_associated_datums(self, direction, distance_limit=1):
+        """Return associated datums depending on distance limit
+        Use AssociationAdjacent if distance_limit = 1
+        Use AssociationAll if distance_limit > 1
+
+        Arguments:
+            direction (AssociationDirection):
+            distance_limit (integer, default=1):
+
+        Returns:
+            List of DatumObject objects
+        """
+        if distance_limit == 1:
+            return self._get_adjacent_associated_datums(direction)
+        else:
+            return self._get_all_associated_datums(direction, distance_limit)
+
     def save(self, *args, **kwargs):
         """Override save method
 

@@ -150,7 +150,7 @@ class TestModelDatumObjectAssociationProperties(TestCase):
         actual = test_object.parent_associations_adjacent.all()
         self.assertEqual(1, actual.count())
 
-    def child_parent_associations_adjacent_m2m(self):
+    def test_child_associations_adjacent_m2m(self):
         """Test DatumObject.child_associations_adjacent
         m2m to AssociationAllAdjacent exclusive of datum
         """
@@ -166,7 +166,7 @@ class TestModelDatumObjectAssociationProperties(TestCase):
         actual = test_object.parent_associations_all.all()
         self.assertEqual(4, actual.count())
 
-    def child_parent_associations_all_m2m(self):
+    def test_child_associations_all_m2m(self):
         """Test DatumObject.child_associations_all
         m2m to AssociationAll inclusive of datum
         """
@@ -174,3 +174,80 @@ class TestModelDatumObjectAssociationProperties(TestCase):
         actual = test_object.child_associations_all.all()
         self.assertEqual(7, actual.count())
 
+    def test_get_adjacent_associated_datums_parent(self):
+        """Test DatumObject._get_adjacent_associated_datums
+        """
+        test_object = self.test.datum_object3
+        parent_direction = self.test.association_direction1
+        actual = test_object._get_adjacent_associated_datums(
+            direction=parent_direction
+        )
+        self.assertEqual(1, len(actual))
+        self.assertEqual(self.test.datum_object2,
+                         actual[0])
+
+    def test_get_adjacent_associated_datums_child(self):
+        """Test DatumObject._get_adjacent_associated_datums
+        """
+        test_object = self.test.datum_object1
+        child_direction = self.test.association_direction3
+        actual = test_object._get_adjacent_associated_datums(
+            direction=child_direction
+        )
+        self.assertEqual(3, len(actual))
+        self.assertEqual(self.test.datum_object2,
+                         actual[0])
+
+    def test_get_adjacent_associated_datums_both(self):
+        """Test DatumObject._get_adjacent_associated_datums
+        """
+        test_object = self.test.datum_object6
+        both_direction = self.test.association_direction2
+        actual = test_object._get_adjacent_associated_datums(
+            direction=both_direction
+        )
+        expected = [self.test.datum_object1,
+                    self.test.datum_object7
+                    ]
+        self.assertEqual(2, len(actual))
+        self.assertEqual(expected, actual)
+
+    def test_get_all_associated_datums_parent(self):
+        """Test DatumObject._get_all_associated_datums
+        """
+        test_object = self.test.datum_object3
+        parent_direction = self.test.association_direction1
+        actual = test_object._get_all_associated_datums(
+            direction=parent_direction
+        )
+        expected = [self.test.datum_object1,
+                    self.test.datum_object2
+                    ]
+        self.assertEqual(2, len(actual))
+        self.assertEqual(expected, actual)
+
+    def test_get_all_associated_datums_child(self):
+        """Test DatumObject._get_all_associated_datums
+        """
+        test_object = self.test.datum_object1
+        child_direction = self.test.association_direction3
+        actual = test_object._get_all_associated_datums(
+            direction=child_direction
+        )
+        self.assertEqual(3, len(actual))
+        self.assertEqual(self.test.datum_object2,
+                         actual[0])
+
+    def test_get_all_associated_datums_both(self):
+        """Test DatumObject._get_all_associated_datums
+        """
+        test_object = self.test.datum_object6
+        both_direction = self.test.association_direction2
+        actual = test_object._get_all_associated_datums(
+            direction=both_direction
+        )
+        expected = [self.test.datum_object1,
+                    self.test.datum_object7
+                    ]
+        self.assertEqual(2, len(actual))
+        self.assertEqual(expected, actual)
