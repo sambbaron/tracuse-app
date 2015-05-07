@@ -62,18 +62,8 @@ class AssociationMixin(BaseMixin):
         unique_together = ("parent_datum", "child_datum")
         index_together = ("parent_datum", "child_datum")
 
-    # FIXME Django Limitation - composite primary keys
-    parent_datum = models.ForeignKey("datum.DatumObject",
-                                     db_column="parent_datum_id",
-                                     related_name="+",
-                                     null=False, blank=False
-                                     )
-    child_datum = models.ForeignKey("datum.DatumObject",
-                                    db_column="child_datum_id",
-                                    related_name="+",
-                                    null=False, blank=False
-                                    )
-
+    # parent_datum and child_datum in child classes
+    # distinction is related name
 
 class AssociationAdjacent(AssociationMixin):
     """Direct relationships between Datums
@@ -91,6 +81,16 @@ class AssociationAdjacent(AssociationMixin):
         verbose_name_plural = "Associations Adjacent"
 
     association_adjacent_id = models.AutoField(primary_key=True)
+    parent_datum = models.ForeignKey("datum.DatumObject",
+                                     db_column="parent_datum_id",
+                                     related_name="adjacent_child_associations",
+                                     null=False, blank=False
+                                     )
+    child_datum = models.ForeignKey("datum.DatumObject",
+                                    db_column="child_datum_id",
+                                    related_name="adjacent_parent_associations",
+                                    null=False, blank=False
+                                    )
     association_type = models.ForeignKey("AssociationType",
                                          db_column="association_type_id",
                                          related_name="associations_adjacent",
@@ -193,6 +193,16 @@ class AssociationAll(AssociationMixin):
         verbose_name_plural = "Associations All"
 
     association_all_id = models.AutoField(primary_key=True)
+    parent_datum = models.ForeignKey("datum.DatumObject",
+                                     db_column="parent_datum_id",
+                                     related_name="all_child_associations",
+                                     null=False, blank=False
+                                     )
+    child_datum = models.ForeignKey("datum.DatumObject",
+                                    db_column="child_datum_id",
+                                    related_name="all_parent_associations",
+                                    null=False, blank=False
+                                    )
     distance = models.IntegerField(default=0)
 
 
