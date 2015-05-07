@@ -184,8 +184,16 @@ class AssociationAll(AssociationMixin):
     association_all_id = models.AutoField(primary_key=True)
     distance = models.IntegerField(default=0)
 
+
+    def __str__(self):
+        return "{} -> {} = {}".format(
+            self.parent_datum.__str__(),
+            self.child_datum.__str__(),
+            self.distance
+        )
+
     @staticmethod
-    def get_create_association(parent_datum, child_datum):
+    def get_create_association(parent_datum, child_datum, distance):
         """Add association if it doesn't exist
 
         Uses Django get_or_create queryset method
@@ -196,5 +204,6 @@ class AssociationAll(AssociationMixin):
         association = AssociationAll.objects.get_or_create(
             parent_datum=parent_datum,
             child_datum=child_datum,
+            distance=distance
         )
         return association[0]
