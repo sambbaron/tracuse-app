@@ -168,8 +168,8 @@ class AssociationAll(AssociationMixin):
 
     Attributes:
         See AssociationMixin (includes BaseMixin)
-        depth (integer, default=0):
-            only used in searches
+        distance (integer, default=0):
+            number of steps between association
     """
 
     class Meta(AssociationMixin.Meta):
@@ -178,7 +178,7 @@ class AssociationAll(AssociationMixin):
         verbose_name_plural = "Associations All"
 
     association_all_id = models.AutoField(primary_key=True)
-    depth = models.IntegerField(default=0)
+    distance = models.IntegerField(default=0)
 
     @staticmethod
     def get_create_association(parent_datum, child_datum):
