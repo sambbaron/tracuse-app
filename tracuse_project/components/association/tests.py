@@ -15,7 +15,7 @@ class TestModelAssociationAdjacent(TestCase):
         """Test AssociationAdjacent.__str__
         """
         actual = self.test.adjacent_association1.__str__()
-        expected = "Test Object1 -> Test Object2 = "
+        expected = "Test Object1 -> Test Object2 = Default Association Type"
         self.assertEqual(expected, actual)
 
     def test_get_all_associations(self):

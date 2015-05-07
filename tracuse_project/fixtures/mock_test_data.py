@@ -182,29 +182,39 @@ class TestDataAssociation(object):
                                                 element_type_datum_object=self.element_type_datum_object7,
                                                 element_value="Test Object7")
 
+        # Association Type
+        self.association_type1 = mommy.make("association.AssociationType",
+                                            entity_name="DefaultAssociationType"
+                                            )
 
         # Adjacent Associations
         self.adjacent_association1 = mommy.make("association.AssociationAdjacent",
                                                 parent_datum=self.datum_object1,
-                                                child_datum=self.datum_object2
+                                                child_datum=self.datum_object2,
+                                                association_type=self.association_type1
                                                 )
         self.adjacent_association2 = mommy.make("association.AssociationAdjacent",
                                                 parent_datum=self.datum_object2,
-                                                child_datum=self.datum_object3
+                                                child_datum=self.datum_object3,
+                                                association_type=self.association_type1
                                                 )
         self.adjacent_association3 = mommy.make("association.AssociationAdjacent",
                                                 parent_datum=self.datum_object3,
-                                                child_datum=self.datum_object4
+                                                child_datum=self.datum_object4,
+                                                association_type=self.association_type1
                                                 )
         self.adjacent_association4 = mommy.make("association.AssociationAdjacent",
                                                 parent_datum=self.datum_object1,
-                                                child_datum=self.datum_object5
+                                                child_datum=self.datum_object5,
+                                                association_type=self.association_type1
                                                 )
         self.adjacent_association5 = mommy.make("association.AssociationAdjacent",
                                                 parent_datum=self.datum_object1,
-                                                child_datum=self.datum_object6
+                                                child_datum=self.datum_object6,
+                                                association_type=self.association_type1
                                                 )
         self.adjacent_association6 = mommy.make("association.AssociationAdjacent",
                                                 parent_datum=self.datum_object6,
-                                                child_datum=self.datum_object7
+                                                child_datum=self.datum_object7,
+                                                association_type=self.association_type1
                                                 )
