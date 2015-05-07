@@ -104,3 +104,19 @@ class AssociationAll(AssociationMixin):
 
     association_all_id = models.AutoField(primary_key=True)
     depth = models.IntegerField(default=0)
+
+    @staticmethod
+    def get_create_association(parent_datum, child_datum, depth):
+        """Add association if it doesn't exist
+
+        Uses Django get_or_create queryset method
+
+        Return:
+            AssociationAll object
+        """
+        association = AssociationAll.objects.get_or_create(
+            parent_datum=parent_datum,
+            child_datum=child_datum,
+            depth=depth
+        )
+        return association[0]

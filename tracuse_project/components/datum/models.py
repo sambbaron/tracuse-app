@@ -201,14 +201,14 @@ class DatumObject(BaseMixin):
         """Add datum association to itself if it doesn't exist
 
         Return:
-            New AssociationAll object
+            AssociationAll object
         """
-        self_association = AssociationAll.objects.get_or_create(
+        self_association = AssociationAll.get_create_association(
             parent_datum=self,
             child_datum=self,
             depth=0
         )
-        return self_association[0]
+        return self_association
 
     def save(self, *args, **kwargs):
         """Override save method
