@@ -12,11 +12,10 @@ class TestModelAssociationAdjacent(TestCase):
 
 
     def test_str(self):
-        """Test AssociationMixin.__str__
-        using AssociationAdjacent object
+        """Test AssociationAdjacent.__str__
         """
         actual = self.test.adjacent_association1.__str__()
-        expected = "Test Object1 -> Test Object2"
+        expected = "Test Object1 -> Test Object2 = "
         self.assertEqual(expected, actual)
 
     def test_get_all_associations(self):
@@ -75,6 +74,18 @@ class TestModelAssociationAll(TestCase):
     def setUpTestData(cls):
         cls.test = TestDataAssociation()
 
+
+    def test_str(self):
+        """Test AssociationAll.__str__
+        """
+        test_object = mommy.prepare("association.AssociationAll",
+                                    parent_datum=self.test.datum_object1,
+                                    child_datum=self.test.datum_object2,
+                                    distance=3
+                                    )
+        actual = test_object.__str__()
+        expected = "Test Object1 -> Test Object2 = 3"
+        self.assertEqual(expected, actual)
 
     def test_get_create_associations(self):
         """Test AssociationAll.get_create_association static method
