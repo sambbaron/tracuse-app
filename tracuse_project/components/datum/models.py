@@ -211,8 +211,14 @@ class DatumObject(BaseMixin):
         return self_association[0]
 
     def save(self, *args, **kwargs):
-        """For new records, create default element type assignment
-        based on datum type
+        """Override save method
+
+        For new records:
+            Create default element type assignment
+                based on datum type
+
+        For all records:
+            Set self association if it doesn't exist
         """
 
         create_elements = False
