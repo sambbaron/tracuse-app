@@ -2,7 +2,7 @@ from django.test import TestCase, mock
 
 from model_mommy import mommy
 
-from fixtures.mock_test_data import TestDataDatumElement
+from fixtures.mock_test_data import TestDataDatumElement, TestDataAssociation
 
 
 class TestModelDatumObject(TestCase):
@@ -134,3 +134,43 @@ class TestModelDatumObject(TestCase):
 
         datum_element_count = test_object.element_types.count()
         self.assertEqual(2, datum_element_count)
+
+
+class TestModelDatumObjectAssociationProperties(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataAssociation()
+
+
+    def test_parent_associations_adjacent_m2m(self):
+        """Test DatumObject.parent_associations_adjacent
+        m2m to AssociationAdjacent exclusive of datum
+        """
+        test_object = self.test.datum_object4
+        actual = test_object.parent_associations_adjacent.all()
+        self.assertEqual(1, actual.count())
+
+    def child_parent_associations_adjacent_m2m(self):
+        """Test DatumObject.child_associations_adjacent
+        m2m to AssociationAllAdjacent exclusive of datum
+        """
+        test_object = self.test.datum_object1
+        actual = test_object.child_associations_adjacent.all()
+        self.assertEqual(3, actual.count())
+
+    def test_parent_associations_all_m2m(self):
+        """Test DatumObject.parent_associations_all
+        m2m to AssociationAll inclusive of datum
+        """
+        test_object = self.test.datum_object4
+        actual = test_object.parent_associations_all.all()
+        self.assertEqual(4, actual.count())
+
+    def child_parent_associations_all_m2m(self):
+        """Test DatumObject.child_associations_all
+        m2m to AssociationAll inclusive of datum
+        """
+        test_object = self.test.datum_object1
+        actual = test_object.child_associations_all.all()
+        self.assertEqual(7, actual.count())
+

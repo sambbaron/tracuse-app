@@ -103,35 +103,3 @@ class TestModelAssociationAll(TestCase):
         self.assertEqual(test_object1, actual.parent_datum)
         self.assertEqual(test_object2, actual.child_datum)
         self.assertEqual(2, actual.distance)
-
-    def test_parent_associations_adjacent_m2m(self):
-        """Test DatumObject.parent_associations_adjacent
-        m2m to AssociationAdjacent exclusive of datum
-        """
-        test_object = self.test.datum_object4
-        actual = test_object.parent_associations_adjacent.all()
-        self.assertEqual(1, actual.count())
-
-    def child_parent_associations_adjacent_m2m(self):
-        """Test DatumObject.child_associations_adjacent
-        m2m to AssociationAllAdjacent exclusive of datum
-        """
-        test_object = self.test.datum_object1
-        actual = test_object.child_associations_adjacent.all()
-        self.assertEqual(3, actual.count())
-
-    def test_parent_associations_all_m2m(self):
-        """Test DatumObject.parent_associations_all
-        m2m to AssociationAll inclusive of datum
-        """
-        test_object = self.test.datum_object4
-        actual = test_object.parent_associations_all.all()
-        self.assertEqual(4, actual.count())
-
-    def child_parent_associations_all_m2m(self):
-        """Test DatumObject.child_associations_all
-        m2m to AssociationAll inclusive of datum
-        """
-        test_object = self.test.datum_object1
-        actual = test_object.child_associations_all.all()
-        self.assertEqual(7, actual.count())
