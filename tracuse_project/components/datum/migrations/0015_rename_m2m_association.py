@@ -14,20 +14,20 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RemoveField(
             model_name='datumobject',
-            name='parent_associations_adjacent',
+            name='adjacent_parent_datums',
         ),
         migrations.RemoveField(
             model_name='datumobject',
-            name='parent_associations_all',
+            name='all_parent_datums',
         ),
         migrations.AddField(
             model_name='datumobject',
-            name='child_associations_adjacent',
-            field=models.ManyToManyField(to='datum.DatumObject', related_name='parent_associations_adjacent', through='association.AssociationAdjacent'),
+            name='adjacent_child_datums',
+            field=models.ManyToManyField(to='datum.DatumObject', related_name='adjacent_parent_datums', through='association.AssociationAdjacent'),
         ),
         migrations.AddField(
             model_name='datumobject',
-            name='child_associations_all',
-            field=models.ManyToManyField(to='datum.DatumObject', related_name='parent_associations_all', through='association.AssociationAll'),
+            name='all_child_datums',
+            field=models.ManyToManyField(to='datum.DatumObject', related_name='all_parent_datums', through='association.AssociationAll'),
         ),
     ]

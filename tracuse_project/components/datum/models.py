@@ -110,15 +110,15 @@ class DatumObject(BaseMixin):
                                            through="element_type.ElementTypeDatumObject",
                                            related_name="+"
                                            )
-    child_associations_adjacent = \
+    adjacent_child_datums = \
         models.ManyToManyField("self",
-                               related_name="parent_associations_adjacent",
+                               related_name="adjacent_parent_datums",
                                through="association.AssociationAdjacent",
                                symmetrical=False
                                )
-    child_associations_all = \
+    all_child_datums = \
         models.ManyToManyField("self",
-                               related_name="parent_associations_all",
+                               related_name="all_parent_datums",
                                through="association.AssociationAll",
                                symmetrical=False
                                )
@@ -224,11 +224,11 @@ class DatumObject(BaseMixin):
         direction_name = direction.entity_name
 
         if direction_name is "parent" or direction_name is "both":
-            parent_datums = self.parent_associations_adjacent.all()
+            parent_datums = self.adjacent_parent_datums.all()
             datums.extend(parent_datums)
 
         if direction_name is "child" or direction_name is "both":
-            child_datums = self.child_associations_adjacent.all()
+            child_datums = self.adjacent_child_datums.all()
             datums.extend(child_datums)
 
         return datums
@@ -249,13 +249,13 @@ class DatumObject(BaseMixin):
         direction_name = direction.entity_name
 
         if direction_name is "parent" or direction_name is "both":
-            parent_datums = self.parent_associations_all \
+            parent_datums = self.all_parent_datums \
                 .filter(distance__lte=distance_limit) \
                 .all()
             datums.extend(parent_datums)
 
         if direction_name is "child" or direction_name is "both":
-            child_datums = self.child_associations_all \
+            child_datums = self.all_child_datums \
                 .filter(distance__lte=distance_limit) \
                 .all()
             datums.extend(child_datums)

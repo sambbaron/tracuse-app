@@ -142,36 +142,36 @@ class TestModelDatumObjectAssociationProperties(TestCase):
         cls.test = TestDataAssociation()
 
 
-    def test_parent_associations_adjacent_m2m(self):
-        """Test DatumObject.parent_associations_adjacent
+    def test_adjacent_parent_datums_m2m(self):
+        """Test DatumObject.adjacent_parent_datums
         m2m to AssociationAdjacent exclusive of datum
         """
         test_object = self.test.datum_object4
-        actual = test_object.parent_associations_adjacent.all()
+        actual = test_object.adjacent_parent_datums.all()
         self.assertEqual(1, actual.count())
 
-    def test_child_associations_adjacent_m2m(self):
-        """Test DatumObject.child_associations_adjacent
+    def test_adjacent_child_datums_m2m(self):
+        """Test DatumObject.adjacent_child_datums
         m2m to AssociationAllAdjacent exclusive of datum
         """
         test_object = self.test.datum_object1
-        actual = test_object.child_associations_adjacent.all()
+        actual = test_object.adjacent_child_datums.all()
         self.assertEqual(3, actual.count())
 
-    def test_parent_associations_all_m2m(self):
-        """Test DatumObject.parent_associations_all
+    def test_all_parent_datums_m2m(self):
+        """Test DatumObject.all_parent_datums
         m2m to AssociationAll inclusive of datum
         """
         test_object = self.test.datum_object4
-        actual = test_object.parent_associations_all.all()
+        actual = test_object.all_parent_datums.all()
         self.assertEqual(4, actual.count())
 
-    def test_child_associations_all_m2m(self):
-        """Test DatumObject.child_associations_all
+    def test_all_child_datums_m2m(self):
+        """Test DatumObject.all_child_datums
         m2m to AssociationAll inclusive of datum
         """
         test_object = self.test.datum_object1
-        actual = test_object.child_associations_all.all()
+        actual = test_object.all_child_datums.all()
         self.assertEqual(7, actual.count())
 
     def test_get_adjacent_associated_datums_parent(self):

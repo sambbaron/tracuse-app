@@ -67,13 +67,13 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='datumobject',
-            name='parent_associations_adjacent',
-            field=models.ManyToManyField(to='datum.DatumObject', related_name='child_associations_adjacent', through='association.AssociationAdjacent'),
+            name='adjacent_parent_datums',
+            field=models.ManyToManyField(to='datum.DatumObject', related_name='adjacent_child_datums', through='association.AssociationAdjacent'),
         ),
         migrations.AddField(
             model_name='datumobject',
-            name='parent_associations_all',
-            field=models.ManyToManyField(to='datum.DatumObject', related_name='child_associations_all', through='association.AssociationAll'),
+            name='all_parent_datums',
+            field=models.ManyToManyField(to='datum.DatumObject', related_name='all_child_datums', through='association.AssociationAll'),
         ),
         migrations.AddField(
             model_name='datumobject',
