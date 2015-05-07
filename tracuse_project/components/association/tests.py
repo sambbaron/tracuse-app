@@ -5,6 +5,36 @@ from django.test import TestCase
 from fixtures.mock_test_data import TestDataAssociation
 
 
+class TestModelAssociationDirection(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataAssociation()
+
+    def test_parent(self):
+        """Test AssociationDirection.parent class method"""
+        from components.association.models import AssociationDirection
+
+        actual = AssociationDirection.parent()
+        self.assertEqual(-1, actual.pk)
+        self.assertEqual("parent", actual.entity_name)
+
+    def test_both(self):
+        """Test AssociationDirection.both class method"""
+        from components.association.models import AssociationDirection
+
+        actual = AssociationDirection.both()
+        self.assertEqual(0, actual.pk)
+        self.assertEqual("both", actual.entity_name)
+
+    def test_child(self):
+        """Test AssociationDirection.child class method"""
+        from components.association.models import AssociationDirection
+
+        actual = AssociationDirection.child()
+        self.assertEqual(1, actual.pk)
+        self.assertEqual("child", actual.entity_name)
+
+
 class TestModelAssociationAdjacent(TestCase):
     @classmethod
     def setUpTestData(cls):

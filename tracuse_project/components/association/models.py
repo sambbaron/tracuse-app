@@ -33,7 +33,19 @@ class AssociationDirection(EntityMixin):
         db_table = "association_direction"
         verbose_name = "Association Direction"
 
-    association_direction_id = models.AutoField(primary_key=True)
+    association_direction_id = models.IntegerField(primary_key=True)
+
+    @classmethod
+    def parent(cls):
+        return cls.objects.get(pk=-1)
+
+    @classmethod
+    def both(cls):
+        return cls.objects.get(pk=0)
+
+    @classmethod
+    def child(cls):
+        return cls.objects.get(pk=1)
 
 
 class AssociationMixin(BaseMixin):
@@ -161,7 +173,6 @@ class AssociationAdjacent(AssociationMixin):
 
         # Set association
         self.set_associations()
-
 
 
 class AssociationAll(AssociationMixin):

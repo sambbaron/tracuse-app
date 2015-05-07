@@ -187,6 +187,20 @@ class TestDataAssociation(object):
                                             entity_name="DefaultAssociationType"
                                             )
 
+        # Association Directions
+        self.association_direction1 = mommy.make("association.AssociationDirection",
+                                                 association_direction_id=-1,
+                                                 entity_name="parent"
+                                                 )
+        self.association_direction2 = mommy.make("association.AssociationDirection",
+                                                 association_direction_id=0,
+                                                 entity_name="both"
+                                                 )
+        self.association_direction3 = mommy.make("association.AssociationDirection",
+                                                 association_direction_id=1,
+                                                 entity_name="child"
+                                                 )
+
         # Adjacent Associations
         self.adjacent_association1 = mommy.make("association.AssociationAdjacent",
                                                 parent_datum=self.datum_object1,
