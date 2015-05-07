@@ -91,6 +91,13 @@ class AssociationAdjacent(AssociationMixin):
                                          null=False, blank=False
                                          )
 
+    def get_all_associations(self):
+        """Get all associations in AssociationAll"""
+        parent_expr = models.Q(parent_datum=self.parent_datum) | models.Q(parent_datum=self.child_datum)
+        child_expr = models.Q(child_datum=self.child_datum) | models.Q(child_datum=self.parent_datum)
+        filter_expr = parent_expr | child_expr
+        associations = AssociationAll.objects.filter(filter_expr).all()
+        return associations
 
     def _delete_associations(self):
         """Delete full path object associations from adjacent association"""

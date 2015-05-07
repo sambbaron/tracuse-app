@@ -19,20 +19,13 @@ class TestModelAssociationAdjacent(TestCase):
         expected = "Test Object1 -> Test Object2"
         self.assertEqual(expected, actual)
 
-    # def test_save_set_associations(self):
-    #     """Test AssociationAdjacent.save method
-    #     to test creation of adjacent association in AssociationAll
-    #     """
-    #     test_object = mommy.make("association.AssociationAdjacent",
-    #                              parent_datum=self.test.datum_object3,
-    #                              child_datum=self.test.datum_object5
-    #                              )
-    #     test_object.save()
-    #     actual = test_object.get_create_adjacent_association()
-    #     self.assertIsNotNone(actual)
-    #     self.assertEqual(test_object.parent_datum, actual.parent_datum)
-    #     self.assertEqual(test_object.child_datum, actual.child_datum)
-    #     self.assertEqual(1, actual.depth)
+    def test_get_all_associations(self):
+        """Test AssociationAdjacent.get_all_associations method
+        """
+        test_object = self.test.adjacent_association6
+        actual = test_object.get_all_associations()
+        expected_count = 5
+        self.assertEqual(expected_count, len(actual))
 
     def test_create_associations_1_adjacent(self):
         """Test AssociationAdjacent._create_associations method
@@ -59,6 +52,21 @@ class TestModelAssociationAdjacent(TestCase):
         test_object = self.test.adjacent_association1
         actual = test_object._create_associations()
         expected_count = 5
+        self.assertEqual(expected_count, len(actual))
+
+    def test_save_set_associations(self):
+        """Test AssociationAdjacent.save method
+        to test creation of associations in AssociationAll
+        """
+        new_datum1 = mommy.make("datum.DatumObject")
+        new_datum2 = mommy.make("datum.DatumObject")
+        test_object = mommy.make("association.AssociationAdjacent",
+                                 parent_datum=new_datum1,
+                                 child_datum=new_datum2
+                                 )
+        test_object.save()
+        actual = test_object.get_all_associations()
+        expected_count = 3
         self.assertEqual(expected_count, len(actual))
 
 
