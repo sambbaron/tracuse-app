@@ -106,7 +106,7 @@ class TestModelDatumObject(TestCase):
         actual = test_object.get_create_self_association()
         self.assertIsNotNone(actual)
         self.assertEqual(actual.parent_datum, actual.child_datum)
-        self.assertEqual(0, actual.depth)
+        self.assertEqual(0, actual.distance)
 
     def test_save_create_self_association(self):
         """Test DatumObject.save method
@@ -120,7 +120,7 @@ class TestModelDatumObject(TestCase):
         actual = test_object.get_create_self_association()
         self.assertIsNotNone(actual)
         self.assertEqual(actual.parent_datum, actual.child_datum)
-        self.assertEqual(0, actual.depth)
+        self.assertEqual(0, actual.distance)
 
     def test_save_with_elements(self):
         """Test DatumObject.save method

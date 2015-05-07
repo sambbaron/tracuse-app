@@ -205,7 +205,8 @@ class DatumObject(BaseMixin):
         """
         self_association = AssociationAll.get_create_association(
             parent_datum=self,
-            child_datum=self
+            child_datum=self,
+            distance=0
         )
         return self_association
 
