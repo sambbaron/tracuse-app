@@ -57,11 +57,13 @@ class TestModelAssociationAll(TestCase):
         """
         from components.association.models import AssociationAll
 
+        test_object1 = mommy.make("datum.DatumObject")
+        test_object2 = mommy.make("datum.DatumObject")
         actual = AssociationAll.get_create_association(
-            parent_datum=self.test.datum_object1,
-            child_datum=self.test.datum_object2,
+            parent_datum=test_object1,
+            child_datum=test_object2,
             depth=0
         )
         self.assertIsInstance(actual, AssociationAll)
-        self.assertEqual(self.test.datum_object1, actual.parent_datum)
-        self.assertEqual(self.test.datum_object2, actual.child_datum)
+        self.assertEqual(test_object1, actual.parent_datum)
+        self.assertEqual(test_object2, actual.child_datum)
