@@ -110,15 +110,15 @@ class DatumObject(BaseMixin):
                                            through="element_type.ElementTypeDatumObject",
                                            related_name="+"
                                            )
-    parent_associations_adjacent = \
+    child_associations_adjacent = \
         models.ManyToManyField("self",
-                               related_name="child_associations_adjacent",
+                               related_name="parent_associations_adjacent",
                                through="association.AssociationAdjacent",
                                symmetrical=False
                                )
-    parent_associations_all = \
+    child_associations_all = \
         models.ManyToManyField("self",
-                               related_name="child_associations_all",
+                               related_name="parent_associations_all",
                                through="association.AssociationAll",
                                symmetrical=False
                                )
@@ -238,6 +238,32 @@ class DatumObject(BaseMixin):
         # Set self association
         self.get_create_self_association()
 
+    def association_traverse(self, direction, distance=1):
+        """Return associated datums - traverse graph
+
+        Arguments:
+            distance (integer, default=1)
+            direction (AssociationDirection, default=both)
+
+        Returns:
+            List of Tuples:
+                0: DatumObject
+                1: distance (integer) from self
+                    negative if parent
+                    positive if child
+        """
+
+        # Set direction to both if none
+
+        # Lookup children if direction is forward or both
+        # Query AssociationAll with self as parent
+        # Return children
+        # Append to list and calculate positive distance from self
+
+        # Lookup parents if direction is backward or both
+        # Query AssociationAll with self as child
+        # Return parents
+        # Append to list and calculate negative distance from self
 
     ### UNUSED METHODS
     def element_values_dict(self, element_type_list=None):
