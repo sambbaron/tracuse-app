@@ -106,22 +106,19 @@ class TestDataAssociation(object):
     """Datum Objects for testing associations"""
 
     def __init__(self):
-        # Mock Datum Objects
-        self.datum_object1 = mommy.make("datum.DatumObject")
-        self.datum_object2 = mommy.make("datum.DatumObject")
-        self.datum_object3 = mommy.make("datum.DatumObject")
-        self.datum_object4 = mommy.make("datum.DatumObject")
-        self.datum_object5 = mommy.make("datum.DatumObject")
-        self.datum_object6 = mommy.make("datum.DatumObject")
 
-        self.datum_objects_all = [self.datum_object1,
-                                 self.datum_object2,
-                                 self.datum_object3,
-                                 self.datum_object4,
-                                 self.datum_object5,
-                                 self.datum_object6,
-                                 ]
-        self.datum_group_qs = QuerySetMock(DatumObject, *self.datum_objects_all)
+        # Mock Datum Type
+        self.datum_type1 = mommy.make("datum.DatumType",
+                                      entity_name="TestDatumType1",
+                                      repr_expression="{{name}}"
+                                      )
+        # Mock Datum Objects
+        self.datum_object1 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
+        self.datum_object2 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
+        self.datum_object3 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
+        self.datum_object4 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
+        self.datum_object5 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
+        self.datum_object6 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
 
         # Mock Element Type for Name Identification
         self.element_data_type1 = mommy.make("element_type.ElementDataType",

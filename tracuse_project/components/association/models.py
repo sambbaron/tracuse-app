@@ -62,6 +62,12 @@ class AssociationMixin(BaseMixin):
                                     null=False, blank=False
                                     )
 
+    def __str__(self):
+        return "{} -> {}".format(
+            self.parent_datum.__str__(),
+            self.child_datum.__str__()
+        )
+
 
 class AssociationAdjacent(AssociationMixin):
     """Direct relationships between Datums

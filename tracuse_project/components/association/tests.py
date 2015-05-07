@@ -1,6 +1,21 @@
-from django.test import TestCase
+from django.test import TestCase, mock
 
 from fixtures.mock_test_data import TestDataAssociation
+
+
+class TestModelAssociationAdjacent(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataAssociation()
+
+
+    def test_str(self):
+        """Test AssociationMixin.__str__
+        using AssociationAdjacent object
+        """
+        actual = self.test.adjacent_association1.__str__()
+        expected = "Test Object1 -> Test Object2"
+        self.assertEqual(expected, actual)
 
 
 class TestModelAssociationAll(TestCase):
@@ -13,6 +28,7 @@ class TestModelAssociationAll(TestCase):
         """Test AssociationAll.get_create_association static method
         """
         from components.association.models import AssociationAll
+
         actual = AssociationAll.get_create_association(
             parent_datum=self.test.datum_object1,
             child_datum=self.test.datum_object2,
