@@ -100,8 +100,7 @@ class TestModelDatumObject(TestCase):
         self.assertEqual(expected, actual)
 
     def test_get_create_self_association(self):
-        """Test DatumObject._self_association property
-        if exists
+        """Test DatumObject._self_association method
         """
         test_object = self.test.datum_object2
         actual = test_object.get_create_self_association()
