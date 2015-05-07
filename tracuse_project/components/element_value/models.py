@@ -1,7 +1,6 @@
 from django.db import models
 
 from utils.mixins import BaseMixin
-from utils.entity import camel_to_spaced_capital
 
 
 class ElementValueModel(object):
@@ -20,8 +19,8 @@ class ElementValueModel(object):
         value_model_name = "ElementValue" + data_type_name
         try:
             return globals()[value_model_name]
-        except KeyError as e:
-            print(e)
+        except KeyError:
+            raise NameError("{} model class does not exist".format(value_model_name))
 
 
 class ElementValueMixin(BaseMixin):

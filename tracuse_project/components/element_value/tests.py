@@ -22,9 +22,11 @@ class TestModelElementValueModel(TestCase):
         """Test ElementValueModel.__init__
         with data type name that does not correspond to model name
         """
-        actual = ElementValueModel(data_type_name="Other")
-        expected = None
-        self.assertEqual(expected, actual)
+        self.assertRaisesMessage(NameError,
+                                 "ElementValueOther model class does not exist",
+                                 ElementValueModel,
+                                 data_type_name="Other"
+                                 )
 
 
 class TestModelElementValueMixin(TestCase):
