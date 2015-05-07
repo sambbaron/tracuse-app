@@ -186,7 +186,10 @@ class TestDataAssociation(object):
                                                 child_datum=self.datum_object3
                                                 )
         self.adjacent_association3 = mommy.make("association.AssociationAdjacent",
-                                                parent_datum=self.datum_object1,
-                                                child_datum=self.datum_object3
+                                                parent_datum=self.datum_object3,
+                                                child_datum=self.datum_object4
                                                 )
-
+        self.adjacent_association4 = mommy.make("association.AssociationAdjacent",
+                                                parent_datum=self.datum_object1,
+                                                child_datum=self.datum_object5
+                                                )

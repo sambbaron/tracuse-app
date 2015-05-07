@@ -1,6 +1,6 @@
 from model_mommy import mommy
 
-from django.test import TestCase, mock
+from django.test import TestCase
 
 from fixtures.mock_test_data import TestDataAssociation
 
@@ -34,9 +34,9 @@ class TestModelAssociationAdjacent(TestCase):
         to test creation of adjacent association in AssociationAll
         """
         test_object = mommy.make("association.AssociationAdjacent",
-                               parent_datum=self.test.datum_object3,
-                               child_datum=self.test.datum_object5
-                               )
+                                 parent_datum=self.test.datum_object3,
+                                 child_datum=self.test.datum_object5
+                                 )
         test_object.save()
         actual = test_object.get_create_adjacent_association()
         self.assertIsNotNone(actual)
@@ -44,6 +44,13 @@ class TestModelAssociationAdjacent(TestCase):
         self.assertEqual(test_object.child_datum, actual.child_datum)
         self.assertEqual(1, actual.depth)
 
+    def test_create_associations(self):
+        """Test AssociationAdjacent._create_associations method
+        """
+        test_object = self.test.adjacent_association2
+        actual = test_object._create_associations()
+        expected_count = 4
+        self.assertEqual(expected_count, len(actual))
 
 
 class TestModelAssociationAll(TestCase):
