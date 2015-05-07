@@ -106,7 +106,6 @@ class TestDataAssociation(object):
     """Datum Objects for testing associations"""
 
     def __init__(self):
-
         # Mock Datum Type
         self.datum_type1 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType1",
@@ -119,6 +118,7 @@ class TestDataAssociation(object):
         self.datum_object4 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
         self.datum_object5 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
         self.datum_object6 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
+        self.datum_object7 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
 
         # Mock Element Type for Name Identification
         self.element_data_type1 = mommy.make("element_type.ElementDataType",
@@ -154,6 +154,10 @@ class TestDataAssociation(object):
                                                      datum_object=self.datum_object6,
                                                      element_type=self.element_type1
                                                      )
+        self.element_type_datum_object7 = mommy.make("element_type.ElementTypeDatumObject",
+                                                     datum_object=self.datum_object7,
+                                                     element_type=self.element_type1
+                                                     )
 
         # Mock Element Value objects
         self.element_value_string1 = mommy.make("element_value.ElementValueString",
@@ -174,6 +178,9 @@ class TestDataAssociation(object):
         self.element_value_string6 = mommy.make("element_value.ElementValueString",
                                                 element_type_datum_object=self.element_type_datum_object6,
                                                 element_value="Test Object6")
+        self.element_value_string7 = mommy.make("element_value.ElementValueString",
+                                                element_type_datum_object=self.element_type_datum_object7,
+                                                element_value="Test Object7")
 
 
         # Adjacent Associations
@@ -192,4 +199,12 @@ class TestDataAssociation(object):
         self.adjacent_association4 = mommy.make("association.AssociationAdjacent",
                                                 parent_datum=self.datum_object1,
                                                 child_datum=self.datum_object5
+                                                )
+        self.adjacent_association5 = mommy.make("association.AssociationAdjacent",
+                                                parent_datum=self.datum_object1,
+                                                child_datum=self.datum_object6
+                                                )
+        self.adjacent_association6 = mommy.make("association.AssociationAdjacent",
+                                                parent_datum=self.datum_object6,
+                                                child_datum=self.datum_object7
                                                 )

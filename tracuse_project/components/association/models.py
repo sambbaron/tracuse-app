@@ -92,19 +92,53 @@ class AssociationAdjacent(AssociationMixin):
                                          )
 
 
-    def get_create_adjacent_association(self):
-        """Add adjacent association to Association All
-        if it doesn't exist
+    def _delete_associations(self):
+        """Delete full path object associations from adjacent association"""
 
-        Return:
-            AssociationAll object
+    def _create_associations(self):
+        """Create full path object associations from adjacent association
+
+        Returns:
+            Association Set
         """
-        adjacent_association = AssociationAll.get_create_association(
-            parent_datum=self.parent_datum,
-            child_datum=self.child_datum,
-            depth=1
-        )
-        return adjacent_association
+
+        association_list = []
+
+        # Set self-referential association for both parent and child datum
+        parent_self_association = self.parent_datum.get_create_self_association()
+        child_self_association = self.child_datum.get_create_self_association()
+        association_list.extend([parent_self_association, child_self_association])
+
+        # Query related parent associations for adjacent child datum
+        parent_associations = AssociationAll.objects.filter(
+            child_datum=self.parent_datum)
+
+        # Create new parent associations against adjacent child datum
+        for parent_assoc in parent_associations:
+            new_assoc = AssociationAll.objects.get_or_create(
+                parent_datum=parent_assoc.parent_datum,
+                child_datum=self.child_datum
+            )
+            association_list.append(new_assoc[0])
+
+        # Query related child associations for adjacent parent datum
+        child_associations = AssociationAll.objects.filter(
+            parent_datum=self.child_datum)
+
+        # Create new child associations against adjacent parent datum
+        for child_assoc in child_associations:
+            new_assoc = AssociationAll.objects.get_or_create(
+                parent_datum=self.parent_datum,
+                child_datum=child_assoc.child_datum
+            )
+            association_list.append(new_assoc[0])
+
+        return set(association_list)
+
+    def set_associations(self):
+        """Delete existing and create full path object associations
+        for given adjacent association"""
+        self._create_associations()
 
     def save(self, *args, **kwargs):
         """Override save method
@@ -115,64 +149,8 @@ class AssociationAdjacent(AssociationMixin):
         super().save(*args, **kwargs)
 
         # Set association
-        self.get_create_adjacent_association()
+        self.set_associations()
 
-    def _delete_associations(self):
-        """Delete full path object associations from adjacent association"""
-
-    def _create_associations(self):
-        """Create full path object associations from adjacent association
-
-        Returns:
-            List of associations
-        """
-
-        association_list = []
-
-        # Set self-referential association for both parent and child datum
-        parent_self_association = self.parent_datum.get_create_self_association()
-        child_self_association = self.child_datum.get_create_self_association()
-        association_list.extend([parent_self_association, child_self_association])
-
-        # Set adjacent association (self)
-        adjacent_association = self.get_create_adjacent_association()
-        association_list.append(adjacent_association)
-
-        # Query related parent associations for adjacent child datum
-        parent_associations = AssociationAll.objects.filter(
-            child_datum=self.parent_datum,
-            depth__gt=0
-        ).exclude(child_datum=self.child_datum)  # Exclude adjacent association
-
-        # Create new parent associations against adjacent child datum
-        for parent_assoc in parent_associations:
-            new_assoc = AssociationAll.objects.get_or_create(
-                parent_datum=parent_assoc.parent_datum,
-                child_datum=self.child_datum,
-                depth=parent_assoc.depth + 1
-            )
-            association_list.append(new_assoc[0])
-
-        # Query related child associations for adjacent parent datum
-        child_associations = AssociationAll.objects.filter(
-            parent_datum=self.child_datum,
-            depth__gt=0
-        ).exclude(parent_datum=self.parent_datum)  # Exclude adjacent association
-
-        # Create new child associations against adjacent parent datum
-        for child_assoc in child_associations:
-            new_assoc = AssociationAll.objects.get_or_create(
-                parent_datum=self.parent_datum,
-                child_datum=child_assoc.child_datum,
-                depth=child_assoc.depth + 1
-            )
-            association_list.append(new_assoc[0])
-
-        return association_list
-
-    def set_associations(self):
-        """Delete existing and create full path object associations
-        for given adjacent association"""
 
 
 class AssociationAll(AssociationMixin):
