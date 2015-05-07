@@ -133,6 +133,7 @@ MODEL_GROUPS = {
          "element_type.ElementDataType",
          "element_type.ElementType",
          "element_type.ElementTypeDatumType",
-         "element_type.ElementOption"
+         "element_type.ElementOption",
+         "association.AssociationDirection"
          ]
 }
