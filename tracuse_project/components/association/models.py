@@ -92,6 +92,33 @@ class AssociationAdjacent(AssociationMixin):
                                          )
 
 
+    def get_create_adjacent_association(self):
+        """Add adjacent association to Association All
+        if it doesn't exist
+
+        Return:
+            AssociationAll object
+        """
+        adjacent_association = AssociationAll.get_create_association(
+            parent_datum=self.parent_datum,
+            child_datum=self.child_datum,
+            depth=1
+        )
+        return adjacent_association
+
+    def save(self, *args, **kwargs):
+        """Override save method
+
+        For all records:
+            Set association in AssociationAll
+        """
+        super().save(*args, **kwargs)
+
+        # Set association
+        self.get_create_adjacent_association()
+
+
+
 class AssociationAll(AssociationMixin):
     """All relationships between Datums
 
