@@ -4,7 +4,7 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-from utils.mixins import EntityMixin, BaseMixin
+from components.common.models import EntityMixin, BaseMixin
 from components.element_type.models import ElementType, ElementTypeDatumObject
 from components.association.models import AssociationAll
 

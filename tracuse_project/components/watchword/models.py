@@ -1,6 +1,6 @@
 from django.db import models
 
-from utils.mixins import BaseMixin
+from components.common.models import BaseMixin
 
 
 class WatchwordMixin(BaseMixin):

@@ -1,6 +1,8 @@
 from django.db import models
 
-from utils.entity import camel_to_underscore, camel_to_spaced_capital, sort_range_value
+from components.common.entity import (camel_to_underscore,
+                                     camel_to_spaced_capital,
+                                     sort_range_value)
 
 
 class BaseMixin(models.Model):

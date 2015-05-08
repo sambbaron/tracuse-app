@@ -1,6 +1,6 @@
 from django.db import models
 
-from utils.mixins import EntityMixin, BaseMixin
+from components.common.models import EntityMixin, BaseMixin
 
 from .managers import AssociationManager
 
