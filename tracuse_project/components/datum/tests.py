@@ -174,77 +174,40 @@ class TestModelDatumObjectAssociationProperties(TestCase):
         actual = test_object.all_child_datums.all()
         self.assertEqual(7, actual.count())
 
-    def test_get_adjacent_associated_datums_parent(self):
-        """Test DatumObject._get_adjacent_associated_datums
-        """
-        test_object = self.test.datum_object3
-        parent_direction = self.test.association_direction1
-        actual = test_object._get_adjacent_associated_datums(
-            direction=parent_direction
-        )
-        self.assertEqual(1, len(actual))
-        self.assertEqual(self.test.datum_object2,
-                         actual[0])
-
-    def test_get_adjacent_associated_datums_child(self):
-        """Test DatumObject._get_adjacent_associated_datums
-        """
-        test_object = self.test.datum_object1
-        child_direction = self.test.association_direction3
-        actual = test_object._get_adjacent_associated_datums(
-            direction=child_direction
-        )
-        self.assertEqual(3, len(actual))
-        self.assertEqual(self.test.datum_object2,
-                         actual[0])
-
-    def test_get_adjacent_associated_datums_both(self):
-        """Test DatumObject._get_adjacent_associated_datums
-        """
-        test_object = self.test.datum_object6
-        both_direction = self.test.association_direction2
-        actual = test_object._get_adjacent_associated_datums(
-            direction=both_direction
-        )
-        expected = [self.test.datum_object1,
-                    self.test.datum_object7
-                    ]
-        self.assertEqual(2, len(actual))
-        self.assertEqual(set(expected), set(actual))
-
-    def test_get_all_associated_datums_parent_with_distance(self):
-        """Test DatumObject._get_all_associated_datums
+    def test_get_associated_datums_parent_with_distance(self):
+        """Test DatumObject.get_associated_datums
         with distance limit
         """
         test_object = self.test.datum_object3
         parent_direction = self.test.association_direction1
-        actual = test_object._get_all_associated_datums(
+        actual = test_object.get_associated_datums(
             direction=parent_direction,
             distance_limit=2
         )
         expected = [self.test.datum_object1,
-                    self.test.datum_object2
+                    self.test.datum_object2,
+                    self.test.datum_object3
                     ]
-        self.assertEqual(2, len(actual))
+        self.assertEqual(3, len(actual))
         self.assertEqual(set(expected), set(actual))
 
-    def test_get_all_associated_datums_child_no_distance(self):
-        """Test DatumObject._get_all_associated_datums
+    def test_get_associated_datums_child_no_distance(self):
+        """Test DatumObject.get_associated_datums
         without distance limit
         """
         test_object = self.test.datum_object1
         child_direction = self.test.association_direction3
-        actual = test_object._get_all_associated_datums(
+        actual = test_object.get_associated_datums(
             direction=child_direction,
             distance_limit=None
         )
-        self.assertEqual(6, len(actual))
+        self.assertEqual(7, len(actual))
         self.assertEqual(self.test.datum_object2,
                          actual[0])
 
     def test_get_associated_datums_both_adjacent(self):
         """Test DatumObject.get_associated_datums
-        for adjacent association, distance_limit=1
+        distance_limit=1
         """
         test_object = self.test.datum_object6
         both_direction = self.test.association_direction2
@@ -253,23 +216,8 @@ class TestModelDatumObjectAssociationProperties(TestCase):
             distance_limit=1
         )
         expected = [self.test.datum_object1,
+                    self.test.datum_object6,
                     self.test.datum_object7
                     ]
-        self.assertEqual(2, len(actual))
-        self.assertEqual(set(expected), set(actual))
-
-    def test_get_associated_datums_parent_all(self):
-        """Test DatumObject.get_associated_datums
-        for all associations
-        """
-        test_object = self.test.datum_object4
-        parent_direction = self.test.association_direction1
-        actual = test_object.get_associated_datums(
-            direction=parent_direction,
-            distance_limit=2
-        )
-        expected = [self.test.datum_object2,
-                    self.test.datum_object3
-                    ]
-        self.assertEqual(2, len(actual))
+        self.assertEqual(3, len(actual))
         self.assertEqual(set(expected), set(actual))

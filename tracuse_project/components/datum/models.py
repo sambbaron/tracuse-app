@@ -210,55 +210,9 @@ class DatumObject(BaseMixin):
         )
         return self_association
 
-    def _get_adjacent_associations(self, direction):
-        """Return associations from AssociationAdjacent
-
-        Arguments:
-            direction (AssociationDirection):
-
-        Returns:
-            List of AssociationAdjacent objects
-        """
-        associations = []
-
-        direction_name = direction.entity_name
-
-        if direction_name is "parent" or direction_name is "both":
-            parent_associations = self.adjacent_parent_associations.all()
-            associations.extend(parent_associations)
-
-        if direction_name is "child" or direction_name is "both":
-            child_associations = self.adjacent_child_associations.all()
-            associations.extend(child_associations)
-
-        return associations
-
-    def _get_adjacent_associated_datums(self, direction):
-        """Return datums from AssociationAdjacent
-
-        Arguments:
-            direction (AssociationDirection):
-
-        Returns:
-            List of DatumObject objects
-        """
-        datums = []
-
-        direction_name = direction.entity_name
-
-        if direction_name is "parent" or direction_name is "both":
-            parent_datums = self.adjacent_parent_datums.all()
-            datums.extend(parent_datums)
-
-        if direction_name is "child" or direction_name is "both":
-            child_datums = self.adjacent_child_datums.all()
-            datums.extend(child_datums)
-
-        return datums
-
-    def _get_all_associations(self, direction, distance_limit=1):
+    def get_associations(self, direction, distance_limit=1):
         """Return associations from AssociationAll
-        Does not include self
+        Excludes self association
 
         Arguments:
             direction (AssociationDirection):
@@ -291,9 +245,9 @@ class DatumObject(BaseMixin):
 
         return associations
 
-    def _get_all_associated_datums(self, direction, distance_limit=1):
+    def get_associated_datums(self, direction, distance_limit=1):
         """Return associated datums from AssociationAll
-        Does not include self
+        Includes self
 
         Arguments:
             direction (AssociationDirection):
@@ -306,34 +260,25 @@ class DatumObject(BaseMixin):
 
         direction_name = direction.entity_name
 
-        associations = self._get_all_associations(
+        associations = self.get_associations(
             direction=direction,
             distance_limit=distance_limit
         )
+
         for association in associations:
-            if direction_name is "parent" or direction_name is "both":
+            if direction_name is "parent" or direction_name is "both" \
+                    and association.parent_datum is not self:
                 datums.append(association.parent_datum)
-            if direction_name is "child" or direction_name is "both":
+            if direction_name is "child" or direction_name is "both" \
+                    and association.child_datum is not self:
                 datums.append(association.child_datum)
 
+        # Both direction causes append to self datum twice
+        # Parent/Child direction does not append self
+        # So append self manually
+        datums.append(self)
+
         return datums
-
-    def get_associated_datums(self, direction, distance_limit=1):
-        """Return associated datums depending on distance limit
-        Use AssociationAdjacent if distance_limit = 1
-        Use AssociationAll if distance_limit > 1
-
-        Arguments:
-            direction (AssociationDirection):
-            distance_limit (integer, default=1):
-
-        Returns:
-            List of DatumObject objects
-        """
-        if distance_limit == 1:
-            return self._get_adjacent_associated_datums(direction)
-        else:
-            return self._get_all_associated_datums(direction, distance_limit)
 
     def save(self, *args, **kwargs):
         """Override save method
