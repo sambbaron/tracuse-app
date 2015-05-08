@@ -83,12 +83,12 @@ class AssociationAdjacent(AssociationMixin):
     association_adjacent_id = models.AutoField(primary_key=True)
     parent_datum = models.ForeignKey("datum.DatumObject",
                                      db_column="parent_datum_id",
-                                     related_name="adjacent_child_associations",
+                                     related_name="adjacent_parent_associations",
                                      null=False, blank=False
                                      )
     child_datum = models.ForeignKey("datum.DatumObject",
                                     db_column="child_datum_id",
-                                    related_name="adjacent_parent_associations",
+                                    related_name="adjacent_child_associations",
                                     null=False, blank=False
                                     )
     association_type = models.ForeignKey("AssociationType",
@@ -195,12 +195,12 @@ class AssociationAll(AssociationMixin):
     association_all_id = models.AutoField(primary_key=True)
     parent_datum = models.ForeignKey("datum.DatumObject",
                                      db_column="parent_datum_id",
-                                     related_name="all_child_associations",
+                                     related_name="all_parent_associations",
                                      null=False, blank=False
                                      )
     child_datum = models.ForeignKey("datum.DatumObject",
                                     db_column="child_datum_id",
-                                    related_name="all_parent_associations",
+                                    related_name="all_child_associations",
                                     null=False, blank=False
                                     )
     distance = models.IntegerField(default=0)
