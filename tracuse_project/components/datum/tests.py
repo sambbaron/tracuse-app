@@ -235,7 +235,8 @@ class TestModelDatumObjectAssociationProperties(TestCase):
         test_object = self.test.datum_object1
         child_direction = self.test.association_direction3
         actual = test_object._get_all_associated_datums(
-            direction=child_direction
+            direction=child_direction,
+            distance_limit=None
         )
         self.assertEqual(6, len(actual))
         self.assertEqual(self.test.datum_object2,

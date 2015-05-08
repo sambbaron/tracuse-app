@@ -233,7 +233,7 @@ class DatumObject(BaseMixin):
 
         return datums
 
-    def _get_all_associated_datums(self, direction, distance_limit=None):
+    def _get_all_associated_datums(self, direction, distance_limit=1):
         """Return associated datums from AssociationAll
         Does not include self
 
