@@ -87,7 +87,8 @@ class ElementValueString(ElementValueMixin):
 
     element_value_string_id = models.AutoField(primary_key=True)
     element_value = models.CharField(max_length=150,
-                                     null=True, blank=True
+                                     default="",
+                                     null=False, blank=True
                                      )
 
 
@@ -104,7 +105,8 @@ class ElementValueTextData(ElementValueMixin):
         default_related_name = "element_value_textdata"
 
     element_value_textdata_id = models.AutoField(primary_key=True)
-    element_value = models.TextField(null=True, blank=True
+    element_value = models.TextField(default="",
+                                     null=False, blank=True
                                      )
 
 

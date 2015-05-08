@@ -55,7 +55,8 @@ class ElementType(EntityMixin):
                                           null=False, blank=False
                                           )
     default_expression = models.CharField(max_length=255,
-                                          null=True, blank=True
+                                          default="",
+                                          null=False, blank=True
                                           )
     editable = models.BooleanField()
     datum_types = models.ManyToManyField("datum.DatumType",
