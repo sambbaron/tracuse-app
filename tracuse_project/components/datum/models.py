@@ -304,31 +304,6 @@ class DatumObject(BaseMixin):
         # Set self association
         self.get_create_self_association()
 
-    ### UNUSED METHODS
-    def element_values_dict(self, element_type_list=None):
-        """Retrieve Multiple Element Values Objects for Datum Object
-
-        Arguments:
-            element_type_list (ElementType objects list, optional):
-                Specific element types to return
-                Defaults to all element types in assigned element types
-
-        Return:
-            dict:
-                key: ElementType.element_type_id
-                value: ElementValue object
-        """
-        result_dict = {}
-
-        if not element_type_list:
-            element_type_list = self.assigned_element_types
-
-        for element_type in element_type_list:
-            element_value_object = self.element_value(element_type)
-            result_dict[element_type] = element_value_object
-
-        return result_dict
-
     @property
     def as_dict_all(self):
 
@@ -342,7 +317,7 @@ class DatumObject(BaseMixin):
             }
         }
 
-        for element_type in self.assigned_element_types:
+        for element_type in self.element_types.all():
             element_value_key = element_type.readable_name
             element_value_value = self.get_element_value(element_type)
             output[output_key][element_value_key] = element_value_value
