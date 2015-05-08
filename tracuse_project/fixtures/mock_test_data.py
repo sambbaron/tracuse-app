@@ -95,11 +95,19 @@ class TestDataDatumElement(object):
                                                      datum_object=self.datum_object2,
                                                      element_type=self.element_type1
                                                      )
+        self.element_type_datum_object3 = mommy.make("element_type.ElementTypeDatumObject",
+                                                     make_m2m=True,
+                                                     datum_object=self.datum_object1,
+                                                     element_type=self.element_type2
+                                                     )
 
         # Mock Element Value objects
         self.element_value_string1 = mommy.make("element_value.ElementValueString",
                                                 element_type_datum_object=self.element_type_datum_object1,
                                                 element_value="Test Object Name")
+        self.element_value_string2 = mommy.make("element_value.ElementValueString",
+                                                element_type_datum_object=self.element_type_datum_object3,
+                                                element_value="Test object description blah blah")
 
 
 class TestDataAssociation(object):
