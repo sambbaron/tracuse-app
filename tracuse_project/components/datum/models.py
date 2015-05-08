@@ -233,13 +233,13 @@ class DatumObject(BaseMixin):
 
         return datums
 
-    def _get_all_associated_datums(self, direction, distance_limit=1):
+    def _get_all_associated_datums(self, direction, distance_limit=None):
         """Return associated datums from AssociationAll
         Does not include self
 
         Arguments:
             direction (AssociationDirection):
-            distance_limit (integer, default=1):
+            distance_limit (integer):
 
         Returns:
             List of DatumObject objects
@@ -247,18 +247,33 @@ class DatumObject(BaseMixin):
         datums = []
 
         direction_name = direction.entity_name
+        exclude_self_association = models.Q(parent_datum=self, child_datum=self)
+        if distance_limit:
+            distance_filter = models.Q(distance__lte=distance_limit)
+        else:
+            distance_filter = models.Q()
 
+        # Return parent datums where self is child
         if direction_name is "parent" or direction_name is "both":
-            parent_datums = self.all_parent_datums \
-                .filter(distance__lte=distance_limit) \
+            parent_datums = self.all_child_associations \
+                .only("parent_datum") \
+                .filter(distance_filter) \
+                .exclude(exclude_self_association) \
+                .order_by("-distance") \
                 .all()
-            datums.extend(parent_datums)
+            for datum in parent_datums:
+                datums.append(datum.parent_datum)
 
+        # Return child datums where self is parent
         if direction_name is "child" or direction_name is "both":
-            child_datums = self.all_child_datums \
-                .filter(distance__lte=distance_limit) \
+            child_datums = self.all_parent_associations \
+                .only("child_datum") \
+                .filter(distance_filter) \
+                .exclude(exclude_self_association) \
+                .order_by("distance") \
                 .all()
-            datums.extend(child_datums)
+            for datum in child_datums:
+                datums.append(datum.child_datum)
 
         return datums
 
@@ -306,33 +321,6 @@ class DatumObject(BaseMixin):
 
         # Set self association
         self.get_create_self_association()
-
-    def association_traverse(self, direction, distance=1):
-        """Return associated datums - traverse graph
-
-        Arguments:
-            distance (integer, default=1)
-            direction (AssociationDirection, default=both)
-
-        Returns:
-            List of Tuples:
-                0: DatumObject
-                1: distance (integer) from self
-                    negative if parent
-                    positive if child
-        """
-
-        # Set direction to both if none
-
-        # Lookup children if direction is forward or both
-        # Query AssociationAll with self as parent
-        # Return children
-        # Append to list and calculate positive distance from self
-
-        # Lookup parents if direction is backward or both
-        # Query AssociationAll with self as child
-        # Return parents
-        # Append to list and calculate negative distance from self
 
     ### UNUSED METHODS
     def element_values_dict(self, element_type_list=None):
