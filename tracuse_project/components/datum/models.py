@@ -247,18 +247,13 @@ class DatumObject(BaseMixin):
         datums = []
 
         direction_name = direction.entity_name
-        exclude_self_association = models.Q(parent_datum=self, child_datum=self)
-        if distance_limit:
-            distance_filter = models.Q(distance__lte=distance_limit)
-        else:
-            distance_filter = models.Q()
 
         # Return parent datums where self is child
         if direction_name is "parent" or direction_name is "both":
             parent_datums = self.all_child_associations \
                 .only("parent_datum") \
-                .filter(distance_filter) \
-                .exclude(exclude_self_association) \
+                .filter_distance(distance_limit) \
+                .exclude_self(True) \
                 .order_by("-distance") \
                 .all()
             for datum in parent_datums:
@@ -268,8 +263,8 @@ class DatumObject(BaseMixin):
         if direction_name is "child" or direction_name is "both":
             child_datums = self.all_parent_associations \
                 .only("child_datum") \
-                .filter(distance_filter) \
-                .exclude(exclude_self_association) \
+                .filter_distance(distance_limit) \
+                .exclude_self(True) \
                 .order_by("distance") \
                 .all()
             for datum in child_datums:

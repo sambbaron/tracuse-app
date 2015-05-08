@@ -2,6 +2,8 @@ from django.db import models
 
 from utils.mixins import EntityMixin, BaseMixin
 
+from .managers import AssociationManager
+
 
 class AssociationType(EntityMixin):
     """Types of relationships/edges between Datums
@@ -62,8 +64,9 @@ class AssociationMixin(BaseMixin):
         unique_together = ("parent_datum", "child_datum")
         index_together = ("parent_datum", "child_datum")
 
-    # parent_datum and child_datum in child classes
-    # distinction is related name
+        # parent_datum and child_datum in child classes
+        # distinction is related name
+
 
 class AssociationAdjacent(AssociationMixin):
     """Direct relationships between Datums
@@ -212,6 +215,10 @@ class AssociationAll(AssociationMixin):
             self.child_datum.__str__(),
             self.distance
         )
+
+    # Custom queryset methods for
+    # filter_distance and exclude_self
+    objects = AssociationManager()
 
     @staticmethod
     def get_create_association(parent_datum, child_datum, distance):
