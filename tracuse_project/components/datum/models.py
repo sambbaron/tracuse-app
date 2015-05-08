@@ -225,20 +225,20 @@ class DatumObject(BaseMixin):
 
         # Return parent associations where self is child
         if direction.entity_name is "parent" or direction.entity_name is "both":
-            parent_associations = self.all_child_associations \
-                .filter_distance(distance_limit) \
-                .exclude_self(True) \
-                .order_by("-distance") \
-                .all()
+            query = self.all_child_associations
+            query = query.filter_distance(distance_limit)
+            query = query.exclude_self(True)
+            query = query.order_by("-distance")
+            parent_associations = query.all()
             associations.extend(parent_associations)
 
         # Return child associations where self is parent
         if direction.entity_name is "child" or direction.entity_name is "both":
-            child_associations = self.all_parent_associations \
-                .filter_distance(distance_limit) \
-                .exclude_self(True) \
-                .order_by("distance") \
-                .all()
+            query = self.all_parent_associations
+            query = query.filter_distance(distance_limit)
+            query = query.exclude_self(True)
+            query = query.order_by("distance")
+            child_associations = query.all()
             associations.extend(child_associations)
 
         return associations
