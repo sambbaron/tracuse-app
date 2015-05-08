@@ -273,8 +273,8 @@ class DatumObject(BaseMixin):
                     and association.child_datum is not self:
                 datums.append(association.child_datum)
 
-        # Both direction causes append to self datum twice
-        # Parent/Child direction does not append self
+        # 'Both' direction causes self append twice
+        # 'Parent' and 'Child' direction does not append self
         # So append self manually
         datums.append(self)
 
