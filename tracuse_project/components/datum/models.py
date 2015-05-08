@@ -223,10 +223,8 @@ class DatumObject(BaseMixin):
         """
         associations = []
 
-        direction_name = direction.entity_name
-
         # Return parent associations where self is child
-        if direction_name is "parent" or direction_name is "both":
+        if direction.entity_name is "parent" or direction.entity_name is "both":
             parent_associations = self.all_child_associations \
                 .filter_distance(distance_limit) \
                 .exclude_self(True) \
@@ -235,7 +233,7 @@ class DatumObject(BaseMixin):
             associations.extend(parent_associations)
 
         # Return child associations where self is parent
-        if direction_name is "child" or direction_name is "both":
+        if direction.entity_name is "child" or direction.entity_name is "both":
             child_associations = self.all_parent_associations \
                 .filter_distance(distance_limit) \
                 .exclude_self(True) \
@@ -258,18 +256,16 @@ class DatumObject(BaseMixin):
         """
         datums = []
 
-        direction_name = direction.entity_name
-
         associations = self.get_associations(
             direction=direction,
             distance_limit=distance_limit
         )
 
         for association in associations:
-            if direction_name is "parent" or direction_name is "both" \
+            if direction.entity_name is "parent" or direction.entity_name is "both" \
                     and association.parent_datum is not self:
                 datums.append(association.parent_datum)
-            if direction_name is "child" or direction_name is "both" \
+            if direction.entity_name is "child" or direction.entity_name is "both" \
                     and association.child_datum is not self:
                 datums.append(association.child_datum)
 
