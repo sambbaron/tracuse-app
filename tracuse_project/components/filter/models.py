@@ -80,7 +80,7 @@ class FilterRuleAssociation(FilterRuleMixin):
         datum_object_id (integer, fk, required): DatumObject
         association_direction_id (integer, fk, required): AssociationDirection
         association_type_id (integer, fk, required): AssociationType
-        depth (integer, required)
+        distance (integer, required): from datum object
     """
 
     class Meta(FilterRuleMixin.Meta):
@@ -103,9 +103,9 @@ class FilterRuleAssociation(FilterRuleMixin):
                                             related_name="filter_rule_associations",
                                             null=False, blank=False
                                             )
-    depth = models.IntegerField(default=1,
-                                null=False, blank=False
-                                )
+    distance = models.IntegerField(default=1,
+                                   null=False, blank=False
+                                   )
 
 
 class FilterRuleElement(FilterRuleMixin):
@@ -186,7 +186,7 @@ class FilterSetGroupRule(FilterSetRuleMixin):
 
     filter_set_group_rule_id = models.AutoField(primary_key=True)
     filter_rule_group_id = models.ForeignKey("FilterRuleGroup",
-                                             db_column = "filter_rule_group_id",
+                                             db_column="filter_rule_group_id",
                                              null=False, blank=False
                                              )
 
