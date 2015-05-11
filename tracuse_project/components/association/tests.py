@@ -2,7 +2,7 @@ from model_mommy import mommy
 
 from django.test import TestCase
 
-from fixtures.mock_test_data import TestDataAssociation
+from .test_data import TestDataAssociation
 
 
 class TestModelAssociationDirection(TestCase):

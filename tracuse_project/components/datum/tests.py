@@ -1,10 +1,9 @@
-from django.test import TestCase, mock
+from django.test import TestCase
 
 from model_mommy import mommy
 
 from .test_data import TestDataDatum
-
-from fixtures.mock_test_data import TestDataAssociation
+from components.association.test_data import TestDataAssociation
 
 
 class TestModelDatumObject(TestCase):
