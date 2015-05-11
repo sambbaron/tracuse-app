@@ -60,10 +60,12 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'config.urls'
 
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/templates/'],
+        'DIRS': [TEMPLATE_PATH],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,6 +119,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/assets/'
+STATIC_PATH = os.path.join(BASE_DIR, "assets")
+STATICFILES_DIRS = (STATIC_PATH,)
 
 # Custom data serializers
 SERIALIZATION_MODULES = {
