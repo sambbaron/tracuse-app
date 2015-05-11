@@ -1,19 +1,16 @@
 from model_mommy import mommy
-from mock_django.managers import QuerySetMock
-
-from components.datum.models import DatumGroup, DatumObject
 
 
 class TestDataDatumElement(object):
     """Simple mock datum and element objects for testing"""
 
     def __init__(self):
-        # Mock User
+        # Users
         self.user1 = mommy.make("auth.User",
                                 username="TestUser1"
                                 )
 
-        # Mock Datum Groups
+        # Datum Groups
         self.datum_group1 = mommy.make("datum.DatumGroup",
                                        entity_name="TestDatumGroup1",
                                        sort=10)
@@ -24,14 +21,7 @@ class TestDataDatumElement(object):
                                        entity_name="TestDatumGroup3",
                                        sort=30)
 
-        self.datum_groups_all = [self.datum_group1,
-                                 self.datum_group2,
-                                 self.datum_group3,
-                                 ]
-        self.datum_group_qs = QuerySetMock(DatumGroup, *self.datum_groups_all)
-
-
-        # Mock Datum Types
+        # Datum Types
         self.datum_type1 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType1",
                                       datum_group=self.datum_group1,
@@ -48,7 +38,7 @@ class TestDataDatumElement(object):
                                       datum_group=self.datum_group2,
                                       repr_expression="{{name}}")
 
-        # Mock Datum Objects
+        # Datum Objects
         # Has element_type and element_value
         self.datum_object1 = mommy.make("datum.DatumObject",
                                         datum_type=self.datum_type1)
@@ -59,7 +49,7 @@ class TestDataDatumElement(object):
         self.datum_object3 = mommy.make("datum.DatumObject",
                                         datum_type=self.datum_type1)
 
-        # Mock Element Types
+        # Element Data Type & Element Types
         self.element_data_type1 = mommy.make("element_type.ElementDataType",
                                              entity_name="String"
                                              )
@@ -72,7 +62,7 @@ class TestDataDatumElement(object):
                                         element_data_type=self.element_data_type1,
                                         sort=110)
 
-        # Mock Element Type - Datum Type
+        # Element Type - Datum Type
         self.element_type_datum_type1 = mommy.make("element_type.ElementTypeDatumType",
                                                    make_m2m=True,
                                                    datum_type=self.datum_type1,
@@ -84,7 +74,7 @@ class TestDataDatumElement(object):
                                                    element_type=self.element_type2
                                                    )
 
-        # Mock Element Type - Datum Object
+        # Element Type - Datum Object
         self.element_type_datum_object1 = mommy.make("element_type.ElementTypeDatumObject",
                                                      make_m2m=True,
                                                      datum_object=self.datum_object1,
@@ -101,7 +91,7 @@ class TestDataDatumElement(object):
                                                      element_type=self.element_type2
                                                      )
 
-        # Mock Element Value objects
+        # Element Value objects
         self.element_value_string1 = mommy.make("element_value.ElementValueString",
                                                 element_type_datum_object=self.element_type_datum_object1,
                                                 element_value="Test Object Name")
@@ -114,12 +104,12 @@ class TestDataAssociation(object):
     """Datum Objects for testing associations"""
 
     def __init__(self):
-        # Mock Datum Type
+        # Datum Type
         self.datum_type1 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType1",
                                       repr_expression="{{name}}"
                                       )
-        # Mock Datum Objects
+        # Datum Objects
         self.datum_object1 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
         self.datum_object2 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
         self.datum_object3 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
@@ -128,7 +118,7 @@ class TestDataAssociation(object):
         self.datum_object6 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
         self.datum_object7 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
 
-        # Mock Element Type for Name Identification
+        # Element Type for Name Identification
         self.element_data_type1 = mommy.make("element_type.ElementDataType",
                                              entity_name="String"
                                              )
@@ -137,7 +127,7 @@ class TestDataAssociation(object):
                                         element_data_type=self.element_data_type1
                                         )
 
-        # Assign Element Types to Datum Objects
+        # Element Types to Datum Objects
         self.element_type_datum_object1 = mommy.make("element_type.ElementTypeDatumObject",
                                                      datum_object=self.datum_object1,
                                                      element_type=self.element_type1
@@ -167,7 +157,7 @@ class TestDataAssociation(object):
                                                      element_type=self.element_type1
                                                      )
 
-        # Mock Element Value objects
+        # Element Value objects
         self.element_value_string1 = mommy.make("element_value.ElementValueString",
                                                 element_type_datum_object=self.element_type_datum_object1,
                                                 element_value="Test Object1")
