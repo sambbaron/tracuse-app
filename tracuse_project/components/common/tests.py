@@ -120,6 +120,8 @@ class TestModelBaseMixin(TestCase):
                                                           increment=1,
                                                           sort_prefix_parts=sort_parts
                                                           )
+        expected = 101010010
+        self.assertEqual(expected, actual)
 
     def test_calc_sort_no_base_sort(self):
         """Test BaseMixin._calc_sort_value method
