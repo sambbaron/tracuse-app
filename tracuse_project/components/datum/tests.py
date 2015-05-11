@@ -2,13 +2,15 @@ from django.test import TestCase, mock
 
 from model_mommy import mommy
 
-from fixtures.mock_test_data import TestDataDatumElement, TestDataAssociation
+from .test_data import TestDataDatum
+
+from fixtures.mock_test_data import TestDataAssociation
 
 
 class TestModelDatumObject(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDataDatumElement()
+        cls.test = TestDataDatum()
 
 
     def test_str_with_element_type(self):
