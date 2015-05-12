@@ -33,6 +33,7 @@ class ElementDatumObjectAdmin(BaseMixinAdmin):
 
     list_display = BaseMixinAdmin.list_display + ("datum_object", "element_type", "element_value")
     list_display_links = ("element_value",)
+    list_filter = ("datum_object", "element_type", )
 
     fields = BaseMixinAdmin.fields + (("datum_object", "element_type"),)
 
