@@ -136,13 +136,13 @@ MODEL_GROUPS = {
         "datum.DatumType",
         "element_type.ElementDataType",
         "element_type.ElementType",
-        "element_type.ElementTypeDatumType",
+        "element_type.ElementDatumType",
         "element_type.ElementOption",
         "association.AssociationDirection"
     ],
     "sample_data": [
         "datum.DatumObject",
-        "element_type.ElementTypeDatumObject",
+        "element_type.ElementDatumObject",
         "element_value.ElementValueString",
         "element_value.ElementValueTextData",
         "element_value.ElementValueBoolean",

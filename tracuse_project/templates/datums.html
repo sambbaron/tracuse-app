@@ -29,7 +29,7 @@
                         {% endfor %}
                     </select>
                     <br>
-                    {% for element in datum.element_types_datum_objects.all %}
+                    {% for element in datum.element_datum_objects.all %}
                         <label for="{{ element.pk }}">{{ element.element_type.readable_name }}</label>
                         <input id="{{ element.pk }}" name="{{ element.pk }}" type="{{ element.element_type.html_element }}" value="{{ element.get_element_value }}">
                         <br>

@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from app.common.models import EntityMixin, BaseMixin
-from app.element_type.models import ElementType, ElementTypeDatumObject
+from app.element_type.models import ElementType, ElementDatumObject
 from app.element_value.models import ElementValueModel
 from app.association.models import AssociationAll
 
@@ -42,7 +42,7 @@ class DatumType(EntityMixin):
             representation string referencing element types in {{}}
             --> {{name}} and {{description}}
         element_types (ElementType set):
-            related element types from ElementTypeDatumType
+            related element types from ElementDatumType
     """
 
     class Meta(EntityMixin.Meta):
@@ -60,7 +60,7 @@ class DatumType(EntityMixin):
                                        null=False, blank=False
                                        )
     element_types = models.ManyToManyField("element_type.ElementType",
-                                           through="element_type.ElementTypeDatumType",
+                                           through="element_type.ElementDatumType",
                                            related_name="+"
                                            )
     sort_base_length = 3
@@ -82,10 +82,10 @@ class DatumObject(BaseMixin):
         user_id (integer, fk, required): User
         datum_type_id (integer, fk, required): DatumType
         element_types (ElementType set):
-            related element types from ElementTypeDatumObject
+            related element types from ElementDatumObject
         datum_group (DatumGroup):
         default_element_types (list):
-            ElementTypes from ElementTypeDatumType
+            ElementTypes from ElementDatumType
             Return element values for multiple element types
     """
 
@@ -108,7 +108,7 @@ class DatumObject(BaseMixin):
                                    db_index=True
                                    )
     element_types = models.ManyToManyField("element_type.ElementType",
-                                           through="element_type.ElementTypeDatumObject",
+                                           through="element_type.ElementDatumObject",
                                            related_name="+"
                                            )
     adjacent_child_datums = \
@@ -136,7 +136,7 @@ class DatumObject(BaseMixin):
         output = ""
         expression = self.datum_type.repr_expression
         if expression:
-            for element_type in self.element_types_datum_objects.all():
+            for element_type in self.element_datum_objects.all():
                 if element_type.element_value:
                     element_test = element_type.element_type.entity_name.lower()
                     expression = expression.replace("{{" + element_test + "}}",
@@ -159,7 +159,7 @@ class DatumObject(BaseMixin):
     @property
     def default_element_types(self):
         element_types = []
-        for datum_type_element_type in self.datum_type.element_types_datum_types.all():
+        for datum_type_element_type in self.datum_type.element_datum_types.all():
             related_element_type = datum_type_element_type.element_type
             element_types.append(related_element_type)
         return element_types
@@ -177,14 +177,14 @@ class DatumObject(BaseMixin):
         if element_type_object not in self.element_types.all():
             return
 
-        # Lookup ElementTypeDatumType object for association
-        element_type_datum_object = self.element_types_datum_objects. \
+        # Lookup ElementDatumType object for association
+        element_datum_object = self.element_datum_objects. \
             get(element_type=element_type_object)
-        return element_type_datum_object.element_value
+        return element_datum_object.element_value
 
     def get_element_value(self, element_type_object):
         """Return value from ElementValue object
-        Uses get_element_value property of ElementTypeDatumObject object
+        Uses get_element_value property of ElementDatumObject object
 
         Arguments:
             element_type (ElementType object)
@@ -195,9 +195,9 @@ class DatumObject(BaseMixin):
         if element_type_object not in self.element_types.all():
             return
 
-        element_type_datum_object = self.element_types_datum_objects. \
+        element_datum_object = self.element_datum_objects. \
             get(element_type=element_type_object)
-        return element_type_datum_object.get_element_value
+        return element_datum_object.get_element_value
 
     def get_create_self_association(self):
         """Add datum association to itself if it doesn't exist
@@ -300,10 +300,9 @@ class DatumObject(BaseMixin):
         if create_elements == True:
 
             for element_type in self.default_element_types:
-
-                # Create ElementTypeDatumObject object
-                element_type_datum_object = \
-                    ElementTypeDatumObject. \
+                # Create ElementDatumObject object
+                element_datum_object = \
+                    ElementDatumObject. \
                         objects.create(datum_object=self,
                                        element_type=element_type
                                        )
@@ -311,8 +310,8 @@ class DatumObject(BaseMixin):
                 # Create ElementValue object
                 data_type_name = element_type.element_data_type.entity_name
                 ElementValueModel(data_type_name=data_type_name). \
-                    objects.create(element_type_datum_object=
-                                   element_type_datum_object)
+                    objects.create(element_datum_object=
+                                   element_datum_object)
 
         # Set self association
         self.get_create_self_association()

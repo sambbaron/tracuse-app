@@ -62,27 +62,27 @@ class TestDataDatum(object):
                                         sort=110)
 
         # Element Type - Datum Type
-        self.element_type_datum_type1 = mommy.make("element_type.ElementTypeDatumType",
-                                                   make_m2m=True,
-                                                   datum_type=self.datum_type1,
-                                                   element_type=self.element_type1
-                                                   )
-        self.element_type_datum_type2 = mommy.make("element_type.ElementTypeDatumType",
-                                                   make_m2m=True,
-                                                   datum_type=self.datum_type1,
-                                                   element_type=self.element_type2
-                                                   )
+        self.element_datum_type1 = mommy.make("element_type.ElementDatumType",
+                                              make_m2m=True,
+                                              datum_type=self.datum_type1,
+                                              element_type=self.element_type1
+                                              )
+        self.element_datum_type2 = mommy.make("element_type.ElementDatumType",
+                                              make_m2m=True,
+                                              datum_type=self.datum_type1,
+                                              element_type=self.element_type2
+                                              )
 
 
         # Element Type - Datum Object
-        self.element_type_datum_object1 = mommy.make("element_type.ElementTypeDatumObject",
-                                                     make_m2m=True,
-                                                     datum_object=self.datum_object1,
-                                                     element_type=self.element_type1
-                                                     )
+        self.element_datum_object1 = mommy.make("element_type.ElementDatumObject",
+                                                make_m2m=True,
+                                                datum_object=self.datum_object1,
+                                                element_type=self.element_type1
+                                                )
 
         # Element Value objects
         self.element_value_string1 = \
             mommy.make("element_value.ElementValueString",
-                       element_type_datum_object=self.element_type_datum_object1,
+                       element_datum_object=self.element_datum_object1,
                        element_value="Test Object Name")

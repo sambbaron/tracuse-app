@@ -39,9 +39,9 @@ class ElementType(EntityMixin):
         default_expression (string): Default expression
         editable (boolean): Whether value can be edited by user
         datum_types (DatumType set):
-            related datum types from ElementTypeDatumType
+            related datum types from ElementDatumType
         datum_objects (DatumObject set):
-            related datum objects from ElementTypeDatumObject
+            related datum objects from ElementDatumObject
     """
 
     class Meta(EntityMixin.Meta):
@@ -64,11 +64,11 @@ class ElementType(EntityMixin):
                                     null=False, blank=False
                                     )
     datum_types = models.ManyToManyField("datum.DatumType",
-                                         through="element_type.ElementTypeDatumType",
+                                         through="element_type.ElementDatumType",
                                          related_name="+"
                                          )
     datum_objects = models.ManyToManyField("datum.DatumObject",
-                                           through="element_type.ElementTypeDatumObject",
+                                           through="element_type.ElementDatumObject",
                                            related_name="+"
                                            )
 
@@ -104,7 +104,7 @@ class ElementOption(EntityMixin):
         return [self.element_type.sort]
 
 
-class ElementTypeDatumType(BaseMixin):
+class ElementDatumType(BaseMixin):
     """Default Element Types assigned to Datum Types
 
     Used at Datum creation - Added to element_value table
@@ -115,21 +115,21 @@ class ElementTypeDatumType(BaseMixin):
     """
 
     class Meta(BaseMixin.Meta):
-        db_table = "element_type_datum_type"
-        verbose_name = "Datum Type - Element Type"
+        db_table = "element_datum_type"
+        verbose_name = "Datum Type - Element"
         unique_together = ("datum_type", "element_type")
         index_together = ("datum_type", "element_type")
 
     # FIXME Django Limitation - composite primary keys
-    element_type_datum_type_id = models.AutoField(primary_key=True)
+    element_datum_type_id = models.AutoField(primary_key=True)
     datum_type = models.ForeignKey("datum.DatumType",
                                    db_column="datum_type_id",
-                                   related_name="element_types_datum_types",
+                                   related_name="element_datum_types",
                                    null=False, blank=False
                                    )
     element_type = models.ForeignKey("ElementType",
                                      db_column="element_type_id",
-                                     related_name="datum_types_element_types",
+                                     related_name="datum_element_types",
                                      null=False, blank=False
                                      )
 
@@ -144,7 +144,7 @@ class ElementTypeDatumType(BaseMixin):
         return "{} - {}".format(self.datum_type.readable_name, self.element_type.readable_name)
 
 
-class ElementTypeDatumObject(BaseMixin):
+class ElementDatumObject(BaseMixin):
     """Element Types assigned to Datum Objects
 
     One-To-One relationship with Element Values tables
@@ -159,21 +159,21 @@ class ElementTypeDatumObject(BaseMixin):
     """
 
     class Meta(BaseMixin.Meta):
-        db_table = "element_type_datum_object"
-        verbose_name = "Datum Object - Element Type"
+        db_table = "element_datum_object"
+        verbose_name = "Datum Object - Element"
         unique_together = ("datum_object", "element_type")
         index_together = ("datum_object", "element_type")
 
     # FIXME Django Limitation - composite primary keys
-    element_type_datum_object_id = models.AutoField(primary_key=True)
+    element_datum_object_id = models.AutoField(primary_key=True)
     datum_object = models.ForeignKey("datum.DatumObject",
                                      db_column="datum_object_id",
-                                     related_name="element_types_datum_objects",
+                                     related_name="element_datum_objects",
                                      null=False, blank=False
                                      )
     element_type = models.ForeignKey("ElementType",
                                      db_column="element_type_id",
-                                     related_name="datum_objects_element_types",
+                                     related_name="datum_object_elements",
                                      null=False, blank=False
                                      )
 
@@ -197,7 +197,7 @@ class ElementTypeDatumObject(BaseMixin):
 
     @property
     def element_value(self):
-        element_value_query = self.element_value_model.objects.filter(element_type_datum_object=self)
+        element_value_query = self.element_value_model.objects.filter(element_datum_object=self)
         if element_value_query.exists():
             return element_value_query[0]
 
@@ -210,5 +210,5 @@ class ElementTypeDatumObject(BaseMixin):
         super().save(*args, **kwargs)
         if not self.element_value:
             new_element_value = self.element_value_model()
-            new_element_value.element_type_datum_object_id = \
-                self.element_type_datum_object_id
+            new_element_value.element_datum_object_id = \
+                self.element_datum_object_id

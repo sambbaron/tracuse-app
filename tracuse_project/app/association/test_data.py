@@ -27,56 +27,56 @@ class TestDataAssociation(object):
                                         )
 
         # Element Types to Datum Objects
-        self.element_type_datum_object1 = mommy.make("element_type.ElementTypeDatumObject",
-                                                     datum_object=self.datum_object1,
-                                                     element_type=self.element_type1
-                                                     )
-        self.element_type_datum_object2 = mommy.make("element_type.ElementTypeDatumObject",
-                                                     datum_object=self.datum_object2,
-                                                     element_type=self.element_type1
-                                                     )
-        self.element_type_datum_object3 = mommy.make("element_type.ElementTypeDatumObject",
-                                                     datum_object=self.datum_object3,
-                                                     element_type=self.element_type1
-                                                     )
-        self.element_type_datum_object4 = mommy.make("element_type.ElementTypeDatumObject",
-                                                     datum_object=self.datum_object4,
-                                                     element_type=self.element_type1
-                                                     )
-        self.element_type_datum_object5 = mommy.make("element_type.ElementTypeDatumObject",
-                                                     datum_object=self.datum_object5,
-                                                     element_type=self.element_type1
-                                                     )
-        self.element_type_datum_object6 = mommy.make("element_type.ElementTypeDatumObject",
-                                                     datum_object=self.datum_object6,
-                                                     element_type=self.element_type1
-                                                     )
-        self.element_type_datum_object7 = mommy.make("element_type.ElementTypeDatumObject",
-                                                     datum_object=self.datum_object7,
-                                                     element_type=self.element_type1
-                                                     )
+        self.element_datum_object1 = mommy.make("element_type.ElementDatumObject",
+                                                datum_object=self.datum_object1,
+                                                element_type=self.element_type1
+                                                )
+        self.element_datum_object2 = mommy.make("element_type.ElementDatumObject",
+                                                datum_object=self.datum_object2,
+                                                element_type=self.element_type1
+                                                )
+        self.element_datum_object3 = mommy.make("element_type.ElementDatumObject",
+                                                datum_object=self.datum_object3,
+                                                element_type=self.element_type1
+                                                )
+        self.element_datum_object4 = mommy.make("element_type.ElementDatumObject",
+                                                datum_object=self.datum_object4,
+                                                element_type=self.element_type1
+                                                )
+        self.element_datum_object5 = mommy.make("element_type.ElementDatumObject",
+                                                datum_object=self.datum_object5,
+                                                element_type=self.element_type1
+                                                )
+        self.element_datum_object6 = mommy.make("element_type.ElementDatumObject",
+                                                datum_object=self.datum_object6,
+                                                element_type=self.element_type1
+                                                )
+        self.element_datum_object7 = mommy.make("element_type.ElementDatumObject",
+                                                datum_object=self.datum_object7,
+                                                element_type=self.element_type1
+                                                )
 
         # Element Value objects
         self.element_value_string1 = mommy.make("element_value.ElementValueString",
-                                                element_type_datum_object=self.element_type_datum_object1,
+                                                element_datum_object=self.element_datum_object1,
                                                 element_value="Test Object1")
         self.element_value_string2 = mommy.make("element_value.ElementValueString",
-                                                element_type_datum_object=self.element_type_datum_object2,
+                                                element_datum_object=self.element_datum_object2,
                                                 element_value="Test Object2")
         self.element_value_string3 = mommy.make("element_value.ElementValueString",
-                                                element_type_datum_object=self.element_type_datum_object3,
+                                                element_datum_object=self.element_datum_object3,
                                                 element_value="Test Object3")
         self.element_value_string4 = mommy.make("element_value.ElementValueString",
-                                                element_type_datum_object=self.element_type_datum_object4,
+                                                element_datum_object=self.element_datum_object4,
                                                 element_value="Test Object4")
         self.element_value_string5 = mommy.make("element_value.ElementValueString",
-                                                element_type_datum_object=self.element_type_datum_object5,
+                                                element_datum_object=self.element_datum_object5,
                                                 element_value="Test Object5")
         self.element_value_string6 = mommy.make("element_value.ElementValueString",
-                                                element_type_datum_object=self.element_type_datum_object6,
+                                                element_datum_object=self.element_datum_object6,
                                                 element_value="Test Object6")
         self.element_value_string7 = mommy.make("element_value.ElementValueString",
-                                                element_type_datum_object=self.element_type_datum_object7,
+                                                element_datum_object=self.element_datum_object7,
                                                 element_value="Test Object7")
 
         # Association Type

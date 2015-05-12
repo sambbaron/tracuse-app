@@ -1,24 +1,24 @@
 from django.contrib import admin
 
 from app.common.admin import BaseMixinAdmin, BaseMixinInline, EntityMixinAdmin
-from .models import ElementType, ElementTypeDatumType, ElementTypeDatumObject
+from .models import ElementType, ElementDatumType, ElementDatumObject
 from app.element_value.admin import ElementValuesInline
 
 
 class ElementTypeDatumTypeAdmin(BaseMixinInline):
-    model = ElementTypeDatumType
+    model = ElementDatumType
 
     fields = BaseMixinInline.fields + ("datum_type", "element_type")
 
 
 class ElementTypeDatumObjectInline(BaseMixinInline):
-    model = ElementTypeDatumObject
+    model = ElementDatumObject
 
     fields = BaseMixinInline.fields + ("datum_object", "element_type", "element_value")
     readonly_fields = BaseMixinInline.readonly_fields + ("element_value", )
 
 
-@admin.register(ElementTypeDatumObject)
+@admin.register(ElementDatumObject)
 class ElementTypeDatumObjectAdmin(BaseMixinAdmin):
 
     list_display = BaseMixinAdmin.list_display + ("datum_object", "element_type", "element_value")

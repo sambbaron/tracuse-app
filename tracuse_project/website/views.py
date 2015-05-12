@@ -3,7 +3,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from app.datum.models import (DatumGroup,
                                      DatumType,
                                      DatumObject)
-from app.element_type.models import ElementTypeDatumObject
+from app.element_type.models import ElementDatumObject
 
 
 def datums_get(request):
@@ -32,12 +32,12 @@ def datums_post(request, datum_pk):
 
         if dict_key != "csrfmiddlewaretoken":
 
-            element_type_datum_object = \
-                ElementTypeDatumObject.objects.filter(pk=int(dict_key)).all()
+            element_datum_object = \
+                ElementDatumObject.objects.filter(pk=int(dict_key)).all()
 
-            if element_type_datum_object:
-                element_type_datum_object = element_type_datum_object[0]
-                element_value_object = element_type_datum_object.element_value
+            if element_datum_object:
+                element_datum_object = element_datum_object[0]
+                element_value_object = element_datum_object.element_value
                 element_value_object.element_value = data[dict_key]
                 element_value_object.save()
 

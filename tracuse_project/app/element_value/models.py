@@ -32,8 +32,8 @@ class ElementValueMixin(BaseMixin):
     Attributes:
         See BaseMixin
         datum_object_id (integer, fk, required): DatumObject
-         element_type_datum_object (integer, fk, required):
-            ElementTypeDatumObject --> One-To-One
+         element_datum_object (integer, fk, required):
+            ElementDatumObject --> One-To-One
         element_option_id (integer, fk, optional): ElementOption
         datum_object (DatumObject):
         element_type (ElementType):
@@ -44,9 +44,9 @@ class ElementValueMixin(BaseMixin):
         abstract = True
         verbose_name = "Element Value"
 
-    element_type_datum_object = \
-        models.OneToOneField("element_type.ElementTypeDatumObject",
-                             db_column="element_type_datum_object_id",
+    element_datum_object = \
+        models.OneToOneField("element_type.ElementDatumObject",
+                             db_column="element_datum_object_id",
                              null=False, blank=False
                              )
     element_option = models.ForeignKey("element_type.ElementOption",
@@ -58,7 +58,7 @@ class ElementValueMixin(BaseMixin):
 
     @property
     def sort_parts(self):
-        return [self.element_type_datum_object.sort]
+        return [self.element_datum_object.sort]
 
 
     def __str__(self):
@@ -66,11 +66,11 @@ class ElementValueMixin(BaseMixin):
 
     @property
     def datum_object(self):
-        return self.element_type_datum_object.datum_object
+        return self.element_datum_object.datum_object
 
     @property
     def element_type(self):
-        return self.element_type_datum_object.element_type
+        return self.element_datum_object.element_type
 
 
 class ElementValueString(ElementValueMixin):

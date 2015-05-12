@@ -50,7 +50,7 @@
     "pk": 11
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 101001110,
@@ -60,7 +60,7 @@
     "pk": 1
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 101001120,
@@ -70,7 +70,7 @@
     "pk": 2
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 201701120,
@@ -80,7 +80,7 @@
     "pk": 14
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 201701310,
@@ -90,7 +90,7 @@
     "pk": 15
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 201701320,
@@ -100,7 +100,7 @@
     "pk": 16
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 101002110,
@@ -110,7 +110,7 @@
     "pk": 26
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 101002120,
@@ -120,7 +120,7 @@
     "pk": 27
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 101003110,
@@ -130,7 +130,7 @@
     "pk": 31
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 101003120,
@@ -140,7 +140,7 @@
     "pk": 32
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 402401110,
@@ -150,7 +150,7 @@
     "pk": 33
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 402401120,
@@ -160,7 +160,7 @@
     "pk": 34
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 402401430,
@@ -170,7 +170,7 @@
     "pk": 35
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 402401470,
@@ -180,7 +180,7 @@
     "pk": 36
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 402401480,
@@ -190,7 +190,7 @@
     "pk": 37
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 402401490,
@@ -200,7 +200,7 @@
     "pk": 38
   },
   {
-    "model": "element_type.elementtypedatumobject",
+    "model": "element_type.elementdatumobject",
     "fields": {
       "active": true,
       "sort": 402401500,
@@ -215,7 +215,7 @@
       "element_option": null,
       "active": true,
       "sort": 101001110,
-      "element_type_datum_object": 1,
+      "element_datum_object": 1,
       "element_value": "Home"
     },
     "pk": 1
@@ -226,7 +226,7 @@
       "element_option": null,
       "active": true,
       "sort": 101001120,
-      "element_type_datum_object": 2,
+      "element_datum_object": 2,
       "element_value": "Where the heart could be"
     },
     "pk": 2
@@ -237,7 +237,7 @@
       "element_option": null,
       "active": true,
       "sort": 201701120,
-      "element_type_datum_object": 14,
+      "element_datum_object": 14,
       "element_value": ""
     },
     "pk": 10
@@ -248,7 +248,7 @@
       "element_option": null,
       "active": true,
       "sort": 201701310,
-      "element_type_datum_object": 15,
+      "element_datum_object": 15,
       "element_value": ""
     },
     "pk": 11
@@ -259,7 +259,7 @@
       "element_option": null,
       "active": true,
       "sort": 201701320,
-      "element_type_datum_object": 16,
+      "element_datum_object": 16,
       "element_value": ""
     },
     "pk": 12
@@ -270,7 +270,7 @@
       "element_option": null,
       "active": true,
       "sort": 101002110,
-      "element_type_datum_object": 26,
+      "element_datum_object": 26,
       "element_value": "Hobby"
     },
     "pk": 22
@@ -281,7 +281,7 @@
       "element_option": null,
       "active": true,
       "sort": 101002120,
-      "element_type_datum_object": 27,
+      "element_datum_object": 27,
       "element_value": "Something I like to do"
     },
     "pk": 23
@@ -292,7 +292,7 @@
       "element_option": null,
       "active": true,
       "sort": 101003110,
-      "element_type_datum_object": 31,
+      "element_datum_object": 31,
       "element_value": ""
     },
     "pk": 27
@@ -303,7 +303,7 @@
       "element_option": null,
       "active": true,
       "sort": 101003120,
-      "element_type_datum_object": 32,
+      "element_datum_object": 32,
       "element_value": ""
     },
     "pk": 28
@@ -314,7 +314,7 @@
       "element_option": null,
       "active": true,
       "sort": 402401110,
-      "element_type_datum_object": 33,
+      "element_datum_object": 33,
       "element_value": ""
     },
     "pk": 29
@@ -325,7 +325,7 @@
       "element_option": null,
       "active": true,
       "sort": 402401120,
-      "element_type_datum_object": 34,
+      "element_datum_object": 34,
       "element_value": ""
     },
     "pk": 30
@@ -336,7 +336,7 @@
       "element_option": null,
       "active": true,
       "sort": 402401430,
-      "element_type_datum_object": 35,
+      "element_datum_object": 35,
       "element_value": ""
     },
     "pk": 31
@@ -347,7 +347,7 @@
       "element_option": null,
       "active": true,
       "sort": 402401470,
-      "element_type_datum_object": 36,
+      "element_datum_object": 36,
       "element_value": ""
     },
     "pk": 32
@@ -358,7 +358,7 @@
       "element_option": null,
       "active": true,
       "sort": 402401490,
-      "element_type_datum_object": 38,
+      "element_datum_object": 38,
       "element_value": null
     },
     "pk": 2
@@ -369,7 +369,7 @@
       "element_option": null,
       "active": true,
       "sort": 402401500,
-      "element_type_datum_object": 39,
+      "element_datum_object": 39,
       "element_value": null
     },
     "pk": 3
@@ -380,7 +380,7 @@
       "element_option": null,
       "active": true,
       "sort": 402401480,
-      "element_type_datum_object": 37,
+      "element_datum_object": 37,
       "element_value": null
     },
     "pk": 1
