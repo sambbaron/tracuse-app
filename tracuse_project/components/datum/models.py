@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 from components.common.models import EntityMixin, BaseMixin
 from components.element_type.models import ElementType, ElementTypeDatumObject
+from components.element_value.models import ElementValueModel
 from components.association.models import AssociationAll
 
 
@@ -296,10 +297,21 @@ class DatumObject(BaseMixin):
 
         # Create default elements
         if create_elements == True:
+
             for element_type in self.default_element_types:
-                ElementTypeDatumObject.objects.create(datum_object=self,
-                                                      element_type=element_type
-                                                      )
+
+                # Create ElementTypeDatumObject object
+                element_type_datum_object = \
+                    ElementTypeDatumObject. \
+                        objects.create(datum_object=self,
+                                       element_type=element_type
+                                       )
+
+                # Create ElementValue object
+                data_type_name = element_type.element_data_type.entity_name
+                ElementValueModel(data_type_name=data_type_name). \
+                    objects.create(element_type_datum_object=
+                                   element_type_datum_object)
 
         # Set self association
         self.get_create_self_association()

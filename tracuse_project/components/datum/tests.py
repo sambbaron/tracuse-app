@@ -123,9 +123,9 @@ class TestModelDatumObject(TestCase):
         self.assertEqual(actual.parent_datum, actual.child_datum)
         self.assertEqual(0, actual.distance)
 
-    def test_save_with_elements(self):
+    def test_save_with_element_types(self):
         """Test DatumObject.save method
-        to test creation of default elements
+        to test creation of default element types
         """
         test_object = mommy.make("datum.DatumObject",
                                  user=self.test.user1,
@@ -134,7 +134,23 @@ class TestModelDatumObject(TestCase):
         test_object.save()
 
         datum_element_count = test_object.element_types.count()
-        self.assertEqual(2, datum_element_count)
+        expected_count = 2
+        self.assertEqual(expected_count, datum_element_count)
+
+    def test_save_with_element_values(self):
+        """Test DatumObject.save method
+        to test creation of default element values
+        string value - default empty
+        """
+        test_object = mommy.make("datum.DatumObject",
+                                 user=self.test.user1,
+                                 datum_type=self.test.datum_type1
+                                 )
+        test_object.save()
+        datum_elements = test_object.element_types_datum_objects.all()
+        datum_element_value = datum_elements[0].get_element_value
+        expected_value = ""
+        self.assertEqual(expected_value, datum_element_value)
 
 
 class TestModelDatumObjectAssociationProperties(TestCase):
