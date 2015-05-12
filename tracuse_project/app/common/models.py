@@ -1,6 +1,6 @@
 from django.db import models
 
-from common.utils.entity import (camel_to_underscore,
+from app.common.utils.entity import (camel_to_underscore,
                                      camel_to_spaced_capital,
                                      sort_range_value)
 
