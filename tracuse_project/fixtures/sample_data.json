@@ -1,0 +1,388 @@
+[
+  {
+    "model": "datum.datumobject",
+    "fields": {
+      "active": true,
+      "sort": 101001,
+      "user": 1,
+      "datum_type": 1
+    },
+    "pk": 1
+  },
+  {
+    "model": "datum.datumobject",
+    "fields": {
+      "active": true,
+      "sort": 201701,
+      "user": 1,
+      "datum_type": 8
+    },
+    "pk": 6
+  },
+  {
+    "model": "datum.datumobject",
+    "fields": {
+      "active": true,
+      "sort": 101002,
+      "user": 1,
+      "datum_type": 1
+    },
+    "pk": 8
+  },
+  {
+    "model": "datum.datumobject",
+    "fields": {
+      "active": true,
+      "sort": 101003,
+      "user": 1,
+      "datum_type": 1
+    },
+    "pk": 10
+  },
+  {
+    "model": "datum.datumobject",
+    "fields": {
+      "active": true,
+      "sort": 402401,
+      "user": 1,
+      "datum_type": 15
+    },
+    "pk": 11
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 101001110,
+      "datum_object": 1,
+      "element_type": 1
+    },
+    "pk": 1
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 101001120,
+      "datum_object": 1,
+      "element_type": 2
+    },
+    "pk": 2
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 201701120,
+      "datum_object": 6,
+      "element_type": 2
+    },
+    "pk": 14
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 201701310,
+      "datum_object": 6,
+      "element_type": 21
+    },
+    "pk": 15
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 201701320,
+      "datum_object": 6,
+      "element_type": 22
+    },
+    "pk": 16
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 101002110,
+      "datum_object": 8,
+      "element_type": 1
+    },
+    "pk": 26
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 101002120,
+      "datum_object": 8,
+      "element_type": 2
+    },
+    "pk": 27
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 101003110,
+      "datum_object": 10,
+      "element_type": 1
+    },
+    "pk": 31
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 101003120,
+      "datum_object": 10,
+      "element_type": 2
+    },
+    "pk": 32
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 402401110,
+      "datum_object": 11,
+      "element_type": 1
+    },
+    "pk": 33
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 402401120,
+      "datum_object": 11,
+      "element_type": 2
+    },
+    "pk": 34
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 402401430,
+      "datum_object": 11,
+      "element_type": 33
+    },
+    "pk": 35
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 402401470,
+      "datum_object": 11,
+      "element_type": 37
+    },
+    "pk": 36
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 402401480,
+      "datum_object": 11,
+      "element_type": 38
+    },
+    "pk": 37
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 402401490,
+      "datum_object": 11,
+      "element_type": 39
+    },
+    "pk": 38
+  },
+  {
+    "model": "element_type.elementtypedatumobject",
+    "fields": {
+      "active": true,
+      "sort": 402401500,
+      "datum_object": 11,
+      "element_type": 40
+    },
+    "pk": 39
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 101001110,
+      "element_type_datum_object": 1,
+      "element_value": "Home"
+    },
+    "pk": 1
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 101001120,
+      "element_type_datum_object": 2,
+      "element_value": "Where the heart could be"
+    },
+    "pk": 2
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 201701120,
+      "element_type_datum_object": 14,
+      "element_value": ""
+    },
+    "pk": 10
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 201701310,
+      "element_type_datum_object": 15,
+      "element_value": ""
+    },
+    "pk": 11
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 201701320,
+      "element_type_datum_object": 16,
+      "element_value": ""
+    },
+    "pk": 12
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 101002110,
+      "element_type_datum_object": 26,
+      "element_value": "Hobby"
+    },
+    "pk": 22
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 101002120,
+      "element_type_datum_object": 27,
+      "element_value": "Something I like to do"
+    },
+    "pk": 23
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 101003110,
+      "element_type_datum_object": 31,
+      "element_value": ""
+    },
+    "pk": 27
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 101003120,
+      "element_type_datum_object": 32,
+      "element_value": ""
+    },
+    "pk": 28
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 402401110,
+      "element_type_datum_object": 33,
+      "element_value": ""
+    },
+    "pk": 29
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 402401120,
+      "element_type_datum_object": 34,
+      "element_value": ""
+    },
+    "pk": 30
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 402401430,
+      "element_type_datum_object": 35,
+      "element_value": ""
+    },
+    "pk": 31
+  },
+  {
+    "model": "element_value.elementvaluestring",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 402401470,
+      "element_type_datum_object": 36,
+      "element_value": ""
+    },
+    "pk": 32
+  },
+  {
+    "model": "element_value.elementvaluedatetime",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 402401490,
+      "element_type_datum_object": 38,
+      "element_value": null
+    },
+    "pk": 2
+  },
+  {
+    "model": "element_value.elementvaluedatetime",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 402401500,
+      "element_type_datum_object": 39,
+      "element_value": null
+    },
+    "pk": 3
+  },
+  {
+    "model": "element_value.elementvaluebinary",
+    "fields": {
+      "element_option": null,
+      "active": true,
+      "sort": 402401480,
+      "element_type_datum_object": 37,
+      "element_value": null
+    },
+    "pk": 1
+  }
+]
