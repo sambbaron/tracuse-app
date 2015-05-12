@@ -4,11 +4,12 @@ from django.contrib import admin
 class BaseMixinAdmin(admin.ModelAdmin):
     actions_on_top = True
     save_on_top = True
-    list_select_related = True
 
     list_display = ("__str__", "active", "sort")
     list_editable = ("active", "sort")
     list_display_links = ("__str__",)
+    list_per_page = 12
+    list_select_related = True
 
     fields = (("active", "sort"),)
 
@@ -16,6 +17,7 @@ class BaseMixinAdmin(admin.ModelAdmin):
 
 
 class BaseMixinInline(admin.TabularInline):
+
     fields = (("__str__", "active", "sort"),)
     readonly_fields = ("__str__", )
 
@@ -30,8 +32,6 @@ class EntityMixinAdmin(admin.ModelAdmin):
     actions_on_top = True
     save_on_top = True
 
-    list_select_related = True
-
     list_display = ("__str__", "active", "sort", "entity_name",
                     "short_definition", "long_definition",
                     "readable_name", "readable_plural_name", "schema_name")
@@ -39,6 +39,8 @@ class EntityMixinAdmin(admin.ModelAdmin):
                      "short_definition", "long_definition",
                      "readable_name", "readable_plural_name", "schema_name")
     list_display_links = ("__str__",)
+    list_per_page = 12
+    list_select_related = True
 
     fields = (("active", "sort", "entity_name"),
               ("short_definition", "long_definition"),
