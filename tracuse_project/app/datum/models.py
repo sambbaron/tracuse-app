@@ -164,41 +164,6 @@ class DatumObject(BaseMixin):
             element_types.append(related_element_type)
         return element_types
 
-    def element_value(self, element_type_object):
-        """Retrieve Single Element Value Object for Element Type
-
-        Arguments:
-            element_type (ElementType object)
-
-        Return:
-            ElementValue object instance from model based on data type
-        """
-
-        if element_type_object not in self.element_types.all():
-            return
-
-        # Lookup ElementDatumType object for association
-        element_datum_object = self.element_datum_objects. \
-            get(element_type=element_type_object)
-        return element_datum_object.element_value
-
-    def get_element_value(self, element_type_object):
-        """Return value from ElementValue object
-        Uses get_element_value property of ElementDatumObject object
-
-        Arguments:
-            element_type (ElementType object)
-
-        Return:
-            ElementValue value: Data type depends on element type
-        """
-        if element_type_object not in self.element_types.all():
-            return
-
-        element_datum_object = self.element_datum_objects. \
-            get(element_type=element_type_object)
-        return element_datum_object.get_element_value
-
     def get_create_self_association(self):
         """Add datum association to itself if it doesn't exist
 
@@ -315,25 +280,3 @@ class DatumObject(BaseMixin):
 
         # Set self association
         self.get_create_self_association()
-
-    @property
-    def as_dict_all(self):
-
-        output_key = self.datum_object_id
-
-        output = {
-            output_key: {
-                "group": self.datum_group.readable_name,
-                "type": self.datum_type.readable_name,
-                "headline": self.__str__()
-            }
-        }
-
-        for element_type in self.element_types.all():
-            element_value_key = element_type.readable_name
-            element_value_value = self.get_element_value(element_type)
-            output[output_key][element_value_key] = element_value_value
-
-        # PLACEHOLDER FOR FORMATTING
-
-        return output
