@@ -37,14 +37,14 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'components.common',
-    'components.tracuser',
-    'components.datum',
-    'components.element_type',
-    'components.element_value',
-    'components.association',
-    'components.filter',
-    'components.watchword'
+    'app.common',
+    'app.tracuser',
+    'app.datum',
+    'app.element_type',
+    'app.element_value',
+    'app.association',
+    'app.filter',
+    'app.watchword'
 )
 
 MIDDLEWARE_CLASSES = (

@@ -12,7 +12,7 @@ class TestModelAssociationDirection(TestCase):
 
     def test_parent(self):
         """Test AssociationDirection.parent class method"""
-        from components.association.models import AssociationDirection
+        from app.association.models import AssociationDirection
 
         actual = AssociationDirection.parent()
         self.assertEqual(-1, actual.pk)
@@ -20,7 +20,7 @@ class TestModelAssociationDirection(TestCase):
 
     def test_both(self):
         """Test AssociationDirection.both class method"""
-        from components.association.models import AssociationDirection
+        from app.association.models import AssociationDirection
 
         actual = AssociationDirection.both()
         self.assertEqual(0, actual.pk)
@@ -28,7 +28,7 @@ class TestModelAssociationDirection(TestCase):
 
     def test_child(self):
         """Test AssociationDirection.child class method"""
-        from components.association.models import AssociationDirection
+        from app.association.models import AssociationDirection
 
         actual = AssociationDirection.child()
         self.assertEqual(1, actual.pk)
@@ -120,7 +120,7 @@ class TestModelAssociationAll(TestCase):
     def test_get_create_associations(self):
         """Test AssociationAll.get_create_association static method
         """
-        from components.association.models import AssociationAll
+        from app.association.models import AssociationAll
 
         test_object1 = mommy.make("datum.DatumObject")
         test_object2 = mommy.make("datum.DatumObject")

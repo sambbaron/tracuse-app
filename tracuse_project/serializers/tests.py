@@ -7,7 +7,7 @@
 # from django.conf import settings
 # from django.core import serializers
 #
-# from components.datum.models import DatumType
+# from app.datum.models import DatumType
 #
 #
 # class TestSerializers(TestCase):

@@ -4,10 +4,10 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-from components.common.models import EntityMixin, BaseMixin
-from components.element_type.models import ElementType, ElementTypeDatumObject
-from components.element_value.models import ElementValueModel
-from components.association.models import AssociationAll
+from app.common.models import EntityMixin, BaseMixin
+from app.element_type.models import ElementType, ElementTypeDatumObject
+from app.element_value.models import ElementValueModel
+from app.association.models import AssociationAll
 
 
 class DatumGroup(EntityMixin):

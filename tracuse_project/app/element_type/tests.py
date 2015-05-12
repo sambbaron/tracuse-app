@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from components.datum.test_data import TestDataDatum
+from app.datum.test_data import TestDataDatum
 
 
 class TestModelElementTypeDatumType(TestCase):

@@ -183,7 +183,7 @@ class TestModelBaseMixin(TestCase):
 
     def test_reset_sort(self):
         """Test BaseMixin.reset_sort method"""
-        from components.datum.models import DatumGroup
+        from app.datum.models import DatumGroup
 
         DatumGroup.reset_sort()
         first_test_object = DatumGroup.objects.first()
@@ -196,7 +196,7 @@ class TestModelEntityMixin(TestCase):
     """Test Django ORM mixin classes used by all models"""
 
     def setUp(self):
-        from components.datum.models import DatumGroup
+        from app.datum.models import DatumGroup
 
         self.test_object = DatumGroup()
         self.test_object.entity_name = "ThisObject"

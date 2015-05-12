@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from components.common.admin import BaseMixinAdmin, BaseMixinInline, EntityMixinAdmin
+from app.common.admin import BaseMixinAdmin, BaseMixinInline, EntityMixinAdmin
 from .models import ElementType, ElementTypeDatumType, ElementTypeDatumObject
-from components.element_value.admin import ElementValuesInline
+from app.element_value.admin import ElementValuesInline
 
 
 class ElementTypeDatumTypeAdmin(BaseMixinInline):

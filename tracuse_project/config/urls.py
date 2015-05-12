@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'^datum/add/$', views.datums_add, name='datums_add'),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^app/', include('components.common.urls')),
+    url(r'^app/', include('app.common.urls')),
 ]

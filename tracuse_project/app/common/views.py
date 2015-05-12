@@ -2,7 +2,7 @@ import json
 
 from django.http import HttpResponse
 
-from components.datum.models import DatumObject
+from app.datum.models import DatumObject
 
 def index(request):
 

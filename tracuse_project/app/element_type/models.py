@@ -1,7 +1,7 @@
 from django.db import models
 
-from components.common.models import EntityMixin, BaseMixin
-from components.element_value.models import ElementValueModel
+from app.common.models import EntityMixin, BaseMixin
+from app.element_value.models import ElementValueModel
 
 
 class ElementDataType(EntityMixin):

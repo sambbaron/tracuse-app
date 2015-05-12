@@ -1,8 +1,8 @@
 from django.test import TestCase
 
-from components.datum.test_data import TestDataDatum
+from app.datum.test_data import TestDataDatum
 
-from components.element_value.models import ElementValueModel, ElementValueString
+from app.element_value.models import ElementValueModel, ElementValueString
 
 
 class TestModelElementValueModel(TestCase):

@@ -1,9 +1,9 @@
 from django.shortcuts import render, HttpResponseRedirect
 
-from components.datum.models import (DatumGroup,
+from app.datum.models import (DatumGroup,
                                      DatumType,
                                      DatumObject)
-from components.element_type.models import ElementTypeDatumObject
+from app.element_type.models import ElementTypeDatumObject
 
 
 def datums_get(request):
