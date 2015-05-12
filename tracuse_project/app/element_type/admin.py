@@ -43,8 +43,8 @@ class ElementDatumObjectAdmin(BaseMixinAdmin):
 @admin.register(ElementType)
 class ElementTypeAdmin(EntityMixinAdmin):
 
-    list_display = EntityMixinAdmin.list_display + ("element_data_type",)
-    list_editable = EntityMixinAdmin.list_editable + ("element_data_type",)
+    list_display = EntityMixinAdmin.list_display + ("element_data_type", "str_expression",)
+    list_editable = EntityMixinAdmin.list_editable + ("element_data_type", "str_expression",)
     fields = EntityMixinAdmin.fields + ("element_data_type",)
 
     inlines = [ElementDatumTypeInline, ]
