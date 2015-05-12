@@ -45,7 +45,7 @@ header img {
 
 .datum-title {
     position: relative;
-    z-index: 99;
+    z-index: 9;
     margin-bottom: 0.5em;
     text-align: center;
     font-size: 150%;
@@ -90,6 +90,7 @@ header img {
 .form-datum-delete input[type=submit] {
     display: block;
     position: absolute;
+    z-index: 99;
     top: 0.5em;
     right: 0.5em;
     height: 1.5em;
