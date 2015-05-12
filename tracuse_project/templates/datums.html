@@ -22,9 +22,26 @@
                       class="form-datum-update" method="post" action="datum/{{ datum.pk }}/update/">
                     {% csrf_token %}
 
+                    {# Elements in Datum #}
                     {% for element in datum.element_datum_objects.all %}
                         <label for="{{ element.pk }}">{{ element.element_type.readable_name }}</label>
-                        <input id="{{ element.pk }}" name="{{ element.pk }}" type="{{ element.element_type.html_element }}" value="{{ element.get_element_value }}">
+
+                        {# Test for Element Options #}
+                        {% if element.element_type.element_options.count > 0 %}
+                            <select id="{{ element.pk }}" name="{{ element.pk }}">
+                                {% for element_option in element.element_type.element_options.all reversed %}
+                                    <option value="{{ element_option.pk }}"
+                                            {% if element.get_element_value == element_option.readable_name %} selected {% endif %} >
+                                        {{ element_option.readable_name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        {% else %}
+                            <input id="{{ element.pk }}" name="{{ element.pk }}"
+                                   type="{{ element.element_type.html_element }}" value="{{ element.get_element_value }}">
+
+                        {% endif %}
+
                         <br>
                     {% endfor %}
 

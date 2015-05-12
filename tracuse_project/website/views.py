@@ -3,7 +3,8 @@ from django.shortcuts import render, HttpResponseRedirect
 from app.datum.models import (DatumGroup,
                                      DatumType,
                                      DatumObject)
-from app.element_type.models import ElementDatumObject
+from app.element_type.models import (ElementOption,
+                                     ElementDatumObject)
 
 
 def datums_get(request):
@@ -21,6 +22,9 @@ def datums_get(request):
 
     datum_objects = DatumObject.objects.all()
     response_dict["datum_objects"] = datum_objects
+
+    element_options = ElementOption.objects.all()
+    response_dict["element_options"] = element_options
 
     return render(request, "datums.html", response_dict)
 
