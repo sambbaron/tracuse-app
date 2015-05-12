@@ -36,7 +36,9 @@ class ElementType(EntityMixin):
         See EntityMixin (includes BaseMixin)
         data_type (integer, fk, required): DataType
             --> string, integer, datetime, etc.
-        default_expression (string): Default expression
+        calc_expression (string):
+            Expression in django template language
+            Used for defaults and updates
         editable (boolean): Whether value can be edited by user
         datum_types (DatumType set):
             related datum types from ElementDatumType
@@ -54,7 +56,7 @@ class ElementType(EntityMixin):
                                           related_name="element_types",
                                           null=False, blank=False
                                           )
-    default_expression = models.CharField(max_length=255,
+    calc_expression = models.CharField(max_length=255,
                                           default="",
                                           null=False, blank=True
                                           )
