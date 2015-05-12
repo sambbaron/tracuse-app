@@ -136,14 +136,16 @@ class DatumObject(BaseMixin):
 
     def __str__(self):
         """Use DatumType.str_expression with django template expression"""
-
+        output = ""
         expression = self.datum_type.str_expression
-        template = Template(expression)
-        element_dict = datum_object_element_expr(self)
-        context = Context(element_dict)
-        output = template.render(context)
 
-        if output == "" or output is None:
+        if expression:
+            template = Template(expression)
+            element_dict = datum_object_element_expr(self)
+            context = Context(element_dict)
+            output = template.render(context)
+
+        if not output or output is None:
             output = "Blank {}".format(self.datum_type)
 
         return output
