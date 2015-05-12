@@ -1,20 +1,6 @@
 from django.test import TestCase
 
-from . import entity, expression
-
-
-class TestUtilsExpression(TestCase):
-    """Test Expression Functions"""
-
-    def test_expr_django_template_success(self):
-        """Test expression.expr_django_template"""
-        expr_string = "Test Expression - {{TestValue}}"
-        data_dict = {"TestValue": "Here is the test value"}
-        actual = expression.expr_django_template(expr_string=expr_string,
-                                                 data_dict=data_dict
-                                                 )
-        expected = "Test Expression - Here is the test value"
-        self.assertEqual(expected, actual)
+from . import entity
 
 
 class TestUtilsEntity(TestCase):
