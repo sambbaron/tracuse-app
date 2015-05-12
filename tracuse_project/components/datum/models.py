@@ -140,13 +140,14 @@ class DatumObject(BaseMixin):
                 if element_type.element_value:
                     element_test = element_type.element_type.entity_name.lower()
                     expression = expression.replace("{{" + element_test + "}}",
-                                                    element_type.get_element_value)
+                                                    element_type.element_value.__str__())
 
         # Remove placeholders not replaced
         expression = re.sub(r"\{\{.*?\}\}", "", expression)
         if expression:
             output = expression
-        else:
+
+        if output == "" or output is None:
             output = "Blank {}".format(self.datum_type)
 
         return output
