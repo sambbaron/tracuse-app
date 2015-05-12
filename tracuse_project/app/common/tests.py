@@ -1,6 +1,6 @@
 from django.test import TestCase, mock
 
-from common import entity
+from common.utils import entity
 
 from .test_data import TestDataCommon
 
