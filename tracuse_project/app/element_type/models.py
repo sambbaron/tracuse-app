@@ -36,9 +36,6 @@ class ElementType(EntityMixin):
         See EntityMixin (includes BaseMixin)
         data_type (integer, fk, required): DataType
             --> string, integer, datetime, etc.
-        calc_expression (string):
-            Expression in django template language
-            Used for defaults and updates
         editable (boolean): Whether value can be edited by user
         datum_types (DatumType set):
             related datum types from ElementDatumType
@@ -55,10 +52,6 @@ class ElementType(EntityMixin):
                                           db_column="element_data_type_id",
                                           related_name="element_types",
                                           null=False, blank=False
-                                          )
-    calc_expression = models.CharField(max_length=255,
-                                          default="",
-                                          null=False, blank=True
                                           )
     editable = models.BooleanField()
     html_element = models.CharField(max_length=25,
@@ -114,6 +107,11 @@ class ElementDatumType(BaseMixin):
     Attributes:
         datum_type_id (integer, fk, pk): DatumType
         element_type_id (integer, fk, pk): ElementType
+        str_expression (string): Expression in django template language
+            that renders to string representation
+        calc_expression (string):
+            Expression in django template language
+            Used for defaults and updates
     """
 
     class Meta(BaseMixin.Meta):
@@ -134,6 +132,14 @@ class ElementDatumType(BaseMixin):
                                      related_name="datum_element_types",
                                      null=False, blank=False
                                      )
+    str_expression = models.CharField(max_length=255,
+                                      default="",
+                                      null=False, blank=True
+                                      )
+    calc_expression = models.CharField(max_length=255,
+                                       default="",
+                                       null=False, blank=True
+                                       )
 
     sort_base_length = -1
 

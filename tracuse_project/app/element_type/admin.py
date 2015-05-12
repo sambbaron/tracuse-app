@@ -21,9 +21,9 @@ class ElementDatumObjectInline(BaseMixinInline):
 @admin.register(ElementDatumType)
 class ElementDatumTypeAdmin(BaseMixinAdmin):
 
-    list_display = BaseMixinAdmin.list_display + ("datum_type", "element_type")
-    list_editable = BaseMixinAdmin.list_editable + ("datum_type", "element_type")
-    list_filter = ("datum_type", "element_type", )
+    list_display = BaseMixinAdmin.list_display + ("datum_type", "element_type", "calc_expression",)
+    list_editable = BaseMixinAdmin.list_editable + ("datum_type", "element_type", "calc_expression",)
+    list_filter = ("datum_type", "element_type", "calc_expression",)
 
     fields = BaseMixinAdmin.fields + ("datum_type", "element_type")
 
@@ -43,8 +43,8 @@ class ElementDatumObjectAdmin(BaseMixinAdmin):
 @admin.register(ElementType)
 class ElementTypeAdmin(EntityMixinAdmin):
 
-    list_display = EntityMixinAdmin.list_display + ("element_data_type", "calc_expression",)
-    list_editable = EntityMixinAdmin.list_editable + ("element_data_type", "calc_expression",)
-    fields = EntityMixinAdmin.fields + ("element_data_type", "calc_expression",)
+    list_display = EntityMixinAdmin.list_display + ("element_data_type",)
+    list_editable = EntityMixinAdmin.list_editable + ("element_data_type",)
+    fields = EntityMixinAdmin.fields + ("element_data_type",)
 
     inlines = [ElementDatumTypeInline, ]
