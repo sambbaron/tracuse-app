@@ -9,10 +9,8 @@ class TestUtilsExpression(TestCase):
     def test_expr_django_template_success(self):
         """Test expression.expr_django_template"""
         expr_string = "Test Expression - {{TestValue}}"
-        template_name = "common/expr.html"
         data_dict = {"TestValue": "Here is the test value"}
         actual = expression.expr_django_template(expr_string=expr_string,
-                                                 template_name=template_name,
                                                  data_dict=data_dict
                                                  )
         expected = "Test Expression - Here is the test value"
