@@ -14,7 +14,7 @@ class TestModelDatumObject(TestCase):
 
     def test_str_with_element_type(self):
         """Test DatumObject.__str__ property
-        with element type matching repr_expression in ElementDatumObject,
+        with element type matching str_expression in ElementDatumObject,
         """
         actual = self.test.datum_object1.__str__()
         expected = "Test Object Name"
@@ -22,7 +22,7 @@ class TestModelDatumObject(TestCase):
 
     def test_str_without_element_value(self):
         """Test DatumObject.__str__ property
-        with element type matching repr_expression in ElementDatumObject,
+        with element type matching str_expression in ElementDatumObject,
         but no element_value in ElementValueModel
         """
         actual = self.test.datum_object2.__str__()
@@ -31,7 +31,7 @@ class TestModelDatumObject(TestCase):
 
     def test_str_without_element_type(self):
         """Test DatumObject.__str__ property
-        without element type matching repr_expression in ElementDatumObject,
+        without element type matching str_expression in ElementDatumObject,
         """
         actual = self.test.datum_object3.__str__()
         expected = "Blank Test Datum Type1"

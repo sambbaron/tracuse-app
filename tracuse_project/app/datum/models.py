@@ -41,8 +41,8 @@ class DatumType(EntityMixin):
         See EntityMixin (includes BaseMixin)
             sort (integer): DatumGroup.sort + 3-digit number
         datum_group_id (integer, fk, required): DatumGroup
-        repr_expression (string): Expression that results in
-            representation string referencing element types in {{}}
+        str_expression (string): Expression in django template language
+            that renders to string representation
             --> {{name}} and {{description}}
         element_types (ElementType set):
             related element types from ElementDatumType
@@ -59,7 +59,7 @@ class DatumType(EntityMixin):
                                     null=False, blank=False,
                                     db_index=True
                                     )
-    repr_expression = models.CharField(max_length=255,
+    str_expression = models.CharField(max_length=255,
                                        null=False, blank=False
                                        )
     element_types = models.ManyToManyField("element_type.ElementType",
@@ -135,9 +135,9 @@ class DatumObject(BaseMixin):
 
 
     def __str__(self):
-        """Use DatumType.repr_expression with django template expression"""
+        """Use DatumType.str_expression with django template expression"""
 
-        expression = self.datum_type.repr_expression
+        expression = self.datum_type.str_expression
         template = Template(expression)
         element_dict = datum_object_element_expr(self)
         context = Context(element_dict)
