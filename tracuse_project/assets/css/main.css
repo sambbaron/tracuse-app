@@ -43,12 +43,26 @@ header img {
     background-color: #DBE0ED;
 }
 
-.datum h4 {
+.datum-title {
+    position: relative;
+    z-index: 99;
     margin-bottom: 0.5em;
     text-align: center;
     font-size: 150%;
     font-weight: bold;
     color: #35446A;
+}
+
+.datum-type {
+    position: absolute;
+    width: 100%;
+    top: 0.1em;
+    left: 0;
+    z-index: 1;
+    text-align: center;
+    font-size: 300%;
+    font-weight: lighter;
+    color: rgba(250,250,250,0.50);
 }
 
 .form-datum-update label {
@@ -90,6 +104,10 @@ header img {
 
 .datum-add {
     text-align: center;
+}
+
+.add-datum-type {
+    font-size: 150%;
 }
 
 .form-datum-add input[type=submit] {

@@ -3,8 +3,11 @@
 {% block body_block %}
     <ul class="datum-list">
         {% for datum in datum_objects %}
+            {# Datum Group for background color #}
             <li class="datum group-{{ datum.datum_group }}">
-                <h4>{{ datum }}</h4>
+                <h4 class="datum-title">{{ datum }}</h4>
+
+                <h5 class="datum-type">{{ datum.datum_type }}</h5>
 
                 {# Delete Button #}
                 <form id="datum-{{ datum.pk }}-delete" name="datum-{{ datum.pk }}-delete"
@@ -19,16 +22,17 @@
                       class="form-datum-update" method="post" action="datum/{{ datum.pk }}/update/">
                     {% csrf_token %}
 
-                    <label for="{{ datum.pk|add:"-datum_type" }}">Type</label>
-                    <select id="{{ datum.pk|add:"-datum_type" }}" name="{{ datum.pk_datum_type }}" class="datum-type">
-                        {% for datum_type in datum_types %}
-                            <option value="{{ datum_type.pk }}"
-                                    {% if datum_type.pk == datum.datum_type.pk %} selected {% endif %} >
-                                {{ datum_type.readable_name }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                    <br>
+{#                    <label for="{{ datum.pk|add:"-datum_type" }}">Type</label>#}
+{#                    <select id="{{ datum.pk|add:"-datum_type" }}" name="{{ datum.pk_datum_type }}" class="datum-type">#}
+{#                        {% for datum_type in datum_types %}#}
+{#                            <option value="{{ datum_type.pk }}"#}
+{#                                    {% if datum_type.pk == datum.datum_type.pk %} selected {% endif %} >#}
+{#                                {{ datum_type.readable_name }}#}
+{#                            </option>#}
+{#                        {% endfor %}#}
+{#                    </select>#}
+{#                    <br>#}
+
                     {% for element in datum.element_datum_objects.all %}
                         <label for="{{ element.pk }}">{{ element.element_type.readable_name }}</label>
                         <input id="{{ element.pk }}" name="{{ element.pk }}" type="{{ element.element_type.html_element }}" value="{{ element.get_element_value }}">
@@ -49,7 +53,7 @@
                 {% csrf_token %}
 
                 <label for="add-datum-type">Type</label>
-                <select id="add-datum-type" name="add-datum-type" class="datum-type">
+                <select id="add-datum-type" name="add-datum-type" class="add-datum-type">
                     {% for datum_type in datum_types %}
                         <option value="{{ datum_type.pk }}"
                                 {% if datum_type.pk == datum.datum_type.pk %} selected {% endif %} >
