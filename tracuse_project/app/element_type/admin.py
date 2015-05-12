@@ -5,7 +5,7 @@ from .models import ElementType, ElementDatumType, ElementDatumObject
 from app.element_value.admin import ElementValuesInline
 
 
-class ElementDatumTypeAdmin(BaseMixinInline):
+class ElementDatumTypeInline(BaseMixinInline):
     model = ElementDatumType
 
     fields = BaseMixinInline.fields + ("datum_type", "element_type")
@@ -16,6 +16,16 @@ class ElementDatumObjectInline(BaseMixinInline):
 
     fields = BaseMixinInline.fields + ("datum_object", "element_type", "element_value")
     readonly_fields = BaseMixinInline.readonly_fields + ("element_value", )
+
+
+@admin.register(ElementDatumType)
+class ElementDatumTypeAdmin(BaseMixinAdmin):
+
+    list_display = BaseMixinAdmin.list_display + ("datum_type", "element_type")
+    list_editable = BaseMixinAdmin.list_editable + ("datum_type", "element_type")
+    list_filter = ("datum_type", "element_type", )
+
+    fields = BaseMixinAdmin.fields + ("datum_type", "element_type")
 
 
 @admin.register(ElementDatumObject)
@@ -36,4 +46,4 @@ class ElementTypeAdmin(EntityMixinAdmin):
     list_editable = EntityMixinAdmin.list_editable + ("element_data_type", "calc_expression",)
     fields = EntityMixinAdmin.fields + ("element_data_type", "calc_expression",)
 
-    inlines = [ElementDatumTypeAdmin, ]
+    inlines = [ElementDatumTypeInline, ]

@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from app.common.admin import BaseMixinAdmin, BaseMixinInline, EntityMixinAdmin, EntityMixinInline
 from .models import DatumGroup, DatumType, DatumObject
-from app.element_type.admin import ElementDatumObjectInline
+from app.element_type.admin import ElementDatumObjectInline, ElementDatumTypeInline
 
 
 class DatumObjectInline(BaseMixinInline):
@@ -27,7 +27,7 @@ class DatumTypeAdmin(EntityMixinAdmin):
 
     fields = EntityMixinAdmin.fields + ("repr_expression", )
 
-    inlines = [DatumObjectInline, ]
+    inlines = [DatumObjectInline, ElementDatumTypeInline]
 
 
 class DatumTypeInline(EntityMixinInline):
