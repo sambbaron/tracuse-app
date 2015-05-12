@@ -5,13 +5,13 @@ from .models import ElementType, ElementDatumType, ElementDatumObject
 from app.element_value.admin import ElementValuesInline
 
 
-class ElementTypeDatumTypeAdmin(BaseMixinInline):
+class ElementDatumTypeAdmin(BaseMixinInline):
     model = ElementDatumType
 
     fields = BaseMixinInline.fields + ("datum_type", "element_type")
 
 
-class ElementTypeDatumObjectInline(BaseMixinInline):
+class ElementDatumObjectInline(BaseMixinInline):
     model = ElementDatumObject
 
     fields = BaseMixinInline.fields + ("datum_object", "element_type", "element_value")
@@ -19,7 +19,7 @@ class ElementTypeDatumObjectInline(BaseMixinInline):
 
 
 @admin.register(ElementDatumObject)
-class ElementTypeDatumObjectAdmin(BaseMixinAdmin):
+class ElementDatumObjectAdmin(BaseMixinAdmin):
 
     list_display = BaseMixinAdmin.list_display + ("datum_object", "element_type", "element_value")
     list_display_links = ("element_value",)
@@ -35,4 +35,4 @@ class ElementTypeAdmin(EntityMixinAdmin):
     list_display = EntityMixinAdmin.list_display + ("element_data_type",)
     fields = EntityMixinAdmin.fields + ("element_data_type",)
 
-    inlines = [ElementTypeDatumTypeAdmin, ]
+    inlines = [ElementDatumTypeAdmin, ]

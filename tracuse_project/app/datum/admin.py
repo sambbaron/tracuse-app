@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from app.common.admin import BaseMixinAdmin, BaseMixinInline, EntityMixinAdmin, EntityMixinInline
 from .models import DatumGroup, DatumType, DatumObject
-from app.element_type.admin import ElementTypeDatumObjectInline
+from app.element_type.admin import ElementDatumObjectInline
 
 
 class DatumObjectInline(BaseMixinInline):
@@ -17,7 +17,7 @@ class DatumObjectAdmin(BaseMixinAdmin):
     fields = BaseMixinAdmin.fields + ("user", "datum_type")
     readonly_fields = BaseMixinAdmin.readonly_fields + ("element_types",)
 
-    inlines = [ElementTypeDatumObjectInline, ]
+    inlines = [ElementDatumObjectInline, ]
 
 
 @admin.register(DatumType)
