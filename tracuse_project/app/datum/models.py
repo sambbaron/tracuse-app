@@ -1,6 +1,7 @@
 import re
 
 from django.db import models
+from django.template import Context, Template
 
 from django.contrib.auth.models import User
 
@@ -8,6 +9,8 @@ from app.common.models import EntityMixin, BaseMixin
 from app.element_type.models import ElementType, ElementDatumObject
 from app.element_value.models import ElementValueModel
 from app.association.models import AssociationAll
+
+from .serializers import datum_object_element_expr
 
 
 class DatumGroup(EntityMixin):
@@ -132,20 +135,13 @@ class DatumObject(BaseMixin):
 
 
     def __str__(self):
-        """Use DatumType.repr_expression with element type placeholders"""
-        output = ""
-        expression = self.datum_type.repr_expression
-        if expression:
-            for element_type in self.element_datum_objects.all():
-                if element_type.element_value:
-                    element_test = element_type.element_type.entity_name.lower()
-                    expression = expression.replace("{{" + element_test + "}}",
-                                                    element_type.element_value.__str__())
+        """Use DatumType.repr_expression with django template expression"""
 
-        # Remove placeholders not replaced
-        expression = re.sub(r"\{\{.*?\}\}", "", expression)
-        if expression:
-            output = expression
+        expression = self.datum_type.repr_expression
+        template = Template(expression)
+        element_dict = datum_object_element_expr(self)
+        context = Context(element_dict)
+        output = template.render(context)
 
         if output == "" or output is None:
             output = "Blank {}".format(self.datum_type)
