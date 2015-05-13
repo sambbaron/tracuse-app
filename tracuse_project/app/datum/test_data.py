@@ -62,6 +62,7 @@ class TestDataDatum(object):
                                         sort=110)
 
         # Element Type - Datum Type
+        # Test for entity name
         self.element_datum_type1 = mommy.make("element_type.ElementDatumType",
                                               make_m2m=True,
                                               datum_type=self.datum_type1,
@@ -70,7 +71,8 @@ class TestDataDatum(object):
         self.element_datum_type2 = mommy.make("element_type.ElementDatumType",
                                               make_m2m=True,
                                               datum_type=self.datum_type1,
-                                              element_type=self.element_type2
+                                              element_type=self.element_type2,
+                                              entity_name="TestType2Description"
                                               )
 
 

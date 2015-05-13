@@ -152,6 +152,21 @@ class ElementDatumType(EntityMixin):
     def __str__(self):
         return "{} - {}".format(self.datum_type.readable_name, self.element_type.readable_name)
 
+    def _get_entity_name(self):
+        return self.datum_type.entity_name + self.element_type.entity_name
+
+    def set_entity_name(self):
+        self.entity_name = self._get_entity_name()
+
+
+    def save(self, *args, **kwargs):
+        """Set entity names if empty"""
+
+        if self.entity_name is "":
+            self.set_entity_name()
+
+        super().save(*args, **kwargs)
+
 
 class ElementDatumObject(BaseMixin):
     """Element Types assigned to Datum Objects
