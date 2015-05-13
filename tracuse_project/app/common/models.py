@@ -162,6 +162,7 @@ class EntityMixin(BaseMixin):
         short_definition (string): Word or two about object
         long_definition (string): Long description of object
         usage (string): How this object benefits the user
+        example (string): Object examples
     """
 
     class Meta:
@@ -197,6 +198,9 @@ class EntityMixin(BaseMixin):
     usage = models.CharField(max_length=100,
                              null=True, blank=True
                              )
+    example = models.CharField(max_length=100,
+                               null=True, blank=True
+                               )
 
     def __str__(self):
         return self.readable_name
