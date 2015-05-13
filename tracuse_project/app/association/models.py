@@ -18,6 +18,8 @@ class AssociationType(EntityMixin):
 
     association_type_id = models.AutoField(primary_key=True)
 
+    sort_base_length = 3
+
 
 class AssociationDirection(EntityMixin):
     """Direction of Association from a particular Datum (node)
@@ -36,6 +38,8 @@ class AssociationDirection(EntityMixin):
         verbose_name = "Association Direction"
 
     association_direction_id = models.IntegerField(primary_key=True)
+
+    sort_base_length = 3
 
     @classmethod
     def parent(cls):
