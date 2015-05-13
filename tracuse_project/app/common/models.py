@@ -158,9 +158,10 @@ class EntityMixin(BaseMixin):
             Used for datum associations
         readable_plural_name (string, calculated):
             common name, pluralized --> item statuses
-        short_description (string): Word or two about object
-        long_description (string): Long description of object
         schema_name (string): Underscore/lower-case class name
+        short_definition (string): Word or two about object
+        long_definition (string): Long description of object
+        usage (string): How this object benefits the user
     """
 
     class Meta:
@@ -193,6 +194,9 @@ class EntityMixin(BaseMixin):
     long_definition = models.CharField(max_length=100,
                                        null=True, blank=True
                                        )
+    usage = models.CharField(max_length=100,
+                             null=True, blank=True
+                             )
 
     def __str__(self):
         return self.readable_name
