@@ -49,13 +49,6 @@ class TestModelElementValueMixin(TestCase):
         expected = self.test.element_type_name
         self.assertEqual(expected, actual)
 
-    def test_str(self):
-        """Test ElementValueMixin.__str__
-        """
-        actual = self.test.value_category_name.__str__()
-        expected = "Test Object Name"
-        self.assertEqual(expected, actual)
-
     def test_get_sort_value(self):
         """Test ElementValueMixin.sort value
         no after_object - add to end
@@ -63,4 +56,20 @@ class TestModelElementValueMixin(TestCase):
         test_object = self.test.value_category_name
         actual = test_object.get_sort_value()
         expected = 101001100
+        self.assertEqual(expected, actual)
+
+    def test_str_string(self):
+        """Test ElementValueMixin.__str__
+        with string value
+        """
+        actual = self.test.value_category_name.__str__()
+        expected = "Test Object Name"
+        self.assertEqual(expected, actual)
+
+    def test_str_date(self):
+        """Test ElementValueMixin.__str__
+        with datetime value
+        """
+        actual = self.test.value_event_endingdate.__str__()
+        expected = "Test datetime is May 12, 2015 4:30 PM"
         self.assertEqual(expected, actual)

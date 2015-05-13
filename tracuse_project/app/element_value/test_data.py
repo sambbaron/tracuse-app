@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from model_mommy import mommy
 
 
@@ -81,7 +83,8 @@ class TestDataElementValue(object):
         self.element_type_endingdate = mommy.make("element_type.ElementType",
                                                   entity_name="EndingDate",
                                                   element_data_type=self.data_type_datetime,
-                                                  str_expression=""
+                                                  str_expression=
+                                                  "Test datetime is {{ value|date:'F j, Y g:i A'}}"
                                                   )
 
         # Element Type - Datum Type
@@ -113,9 +116,18 @@ class TestDataElementValue(object):
                                                datum_object=self.datum_category,
                                                element_type=self.element_type_desc
                                                )
+        self.object_event_endingdate = mommy.make("element_type.ElementDatumObject",
+                                                  make_m2m=True,
+                                                  datum_object=self.datum_event,
+                                                  element_type=self.element_type_endingdate
+                                                  )
 
-        # Element Value objects
+        # Element Values
         self.value_category_name = \
             mommy.make("element_value.ElementValueString",
                        element_datum_object=self.object_category_name,
                        element_value="Test Object Name")
+        self.value_event_endingdate = \
+            mommy.make("element_value.ElementValueDatetime",
+                       element_datum_object=self.object_event_endingdate,
+                       element_value=datetime(2015, 5, 12, 16, 30))

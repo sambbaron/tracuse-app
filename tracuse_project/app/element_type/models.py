@@ -38,6 +38,7 @@ class ElementType(EntityMixin):
             --> string, integer, datetime, etc.
         str_expression (string): Expression in django template language
             that renders to string representation
+            use "value" as placeholder for element_value
         editable (boolean): Whether value can be edited by user
         datum_types (DatumType set):
             related datum types from ElementDatumType

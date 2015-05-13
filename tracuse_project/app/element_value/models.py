@@ -1,4 +1,5 @@
 from django.db import models
+from django.template import Context, Template
 
 from app.common.models import BaseMixin
 
@@ -62,7 +63,19 @@ class ElementValueMixin(BaseMixin):
 
 
     def __str__(self):
-        return str(self.element_value)
+        """Use ElementDatumType.str_expression with django template engine"""
+        output = ""
+        expression = self.element_type.str_expression
+
+        if expression:
+            template = Template(expression)
+            context = Context({"value": self.element_value})
+            output = template.render(context)
+
+        if not output or output is None:
+            output = str(self.element_value)
+
+        return output
 
     @property
     def datum_object(self):
