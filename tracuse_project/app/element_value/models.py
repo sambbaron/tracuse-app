@@ -136,7 +136,7 @@ class ElementValueBoolean(ElementValueMixin):
         default_related_name = "element_value_boolean"
 
     element_value_boolean_id = models.AutoField(primary_key=True)
-    element_value = models.BooleanField()
+    element_value = models.BooleanField(default=False)
 
 
 class ElementValueDatetime(ElementValueMixin):
