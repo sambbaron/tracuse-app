@@ -136,8 +136,9 @@ MODEL_GROUPS = {
         "datum.DatumType",
         "element_type.ElementDataType",
         "element_type.ElementType",
-        "element_type.ElementDatumType",
         "element_type.ElementOption",
+        "element_type.ElementDatumType",
+        "association.AssociationType",
         "association.AssociationDirection"
     ],
     "sample_data": [
