@@ -106,7 +106,7 @@ class ElementOption(EntityMixin):
         return [self.element_type.sort]
 
 
-class ElementDatumType(BaseMixin):
+class ElementDatumType(EntityMixin):
     """Default Element Types assigned to Datum Types
 
     Used at Datum creation - Added to element_value table

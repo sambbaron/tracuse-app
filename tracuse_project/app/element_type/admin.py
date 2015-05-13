@@ -1,14 +1,14 @@
 from django.contrib import admin
 
-from app.common.admin import BaseMixinAdmin, BaseMixinInline, EntityMixinAdmin
+from app.common.admin import BaseMixinAdmin, BaseMixinInline, EntityMixinAdmin, EntityMixinInline
 from .models import ElementType, ElementDatumType, ElementDatumObject
 from app.element_value.admin import ElementValuesInline
 
 
-class ElementDatumTypeInline(BaseMixinInline):
+class ElementDatumTypeInline(EntityMixinInline):
     model = ElementDatumType
 
-    fields = BaseMixinInline.fields + ("datum_type", "element_type")
+    fields = EntityMixinInline.fields + ("datum_type", "element_type")
 
 
 class ElementDatumObjectInline(BaseMixinInline):
@@ -19,13 +19,13 @@ class ElementDatumObjectInline(BaseMixinInline):
 
 
 @admin.register(ElementDatumType)
-class ElementDatumTypeAdmin(BaseMixinAdmin):
+class ElementDatumTypeAdmin(EntityMixinAdmin):
 
-    list_display = BaseMixinAdmin.list_display + ("datum_type", "element_type", "calc_expression",)
-    list_editable = BaseMixinAdmin.list_editable + ("datum_type", "element_type", "calc_expression",)
+    list_display = EntityMixinAdmin.list_display + ("datum_type", "element_type", "calc_expression",)
+    list_editable = EntityMixinAdmin.list_editable + ("datum_type", "element_type", "calc_expression",)
     list_filter = ("datum_type", "element_type", "calc_expression",)
 
-    fields = BaseMixinAdmin.fields + ("datum_type", "element_type")
+    fields = EntityMixinAdmin.fields + ("datum_type", "element_type")
 
 
 @admin.register(ElementDatumObject)
