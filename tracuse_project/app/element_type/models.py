@@ -150,10 +150,23 @@ class ElementDatumType(EntityMixin):
 
 
     def __str__(self):
-        return "{} - {}".format(self.datum_type.readable_name, self.element_type.readable_name)
+        return self.readable_name
 
     def _get_entity_name(self):
-        return self.datum_type.entity_name + self.element_type.entity_name
+        return self.datum_type.entity_name + \
+               self.element_type.entity_name
+
+    def _get_readable_name(self):
+        return self.datum_type.readable_name + " - " + \
+               self.element_type.readable_name
+
+    def _get_schema_name(self):
+        return self.datum_type.schema_name + "_" + \
+               self.element_type.schema_name
+
+    def _get_readable_plural_name(self):
+        return self.datum_type.readable_plural_name + " - " + \
+               self.element_type.readable_plural_name
 
     def set_entity_name(self):
         self.entity_name = self._get_entity_name()
