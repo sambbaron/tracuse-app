@@ -29,7 +29,7 @@ def datums_get(request):
     return render(request, "datums.html", response_dict)
 
 
-def datums_post(request, datum_pk):
+def datums_update(request, datum_pk):
     data = request.POST
 
     for dict_key in data.keys():
@@ -61,10 +61,10 @@ def datums_delete(request, datum_pk):
     return HttpResponseRedirect("/")
 
 
-def datums_add(request):
+def datums_create(request):
     data = request.POST
 
-    datum_type_pk = int(data["add-datum-type"])
+    datum_type_pk = int(data["create-datum-type"])
 
     datum = DatumObject.objects.create(user_id=1,
                                        datum_type_id=datum_type_pk

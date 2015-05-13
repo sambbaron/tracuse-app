@@ -103,15 +103,15 @@ header img {
     cursor: pointer;
 }
 
-.datum-add {
+.datum-create {
     text-align: center;
 }
 
-.add-datum-type {
+.create-datum-type {
     font-size: 150%;
 }
 
-.form-datum-add input[type=submit] {
+.form-datum-create input[type=submit] {
     display: block;
     height: 1.25em;
     width: 1.25em;

@@ -51,15 +51,15 @@
             </li>
         {% endfor %}
 
-        <li class="datum datum-add">
+        <li class="datum datum-create">
 
             {# Add Form #}
-            <form id="datum-{{ datum.pk }}-add" name="datum-{{ datum.pk }}-add"
-                  class="form-datum-add" method="post" action="datum/add/">
+            <form id="datum-{{ datum.pk }}-create" name="datum-{{ datum.pk }}-create"
+                  class="form-datum-create" method="post" action="datum/create/">
                 {% csrf_token %}
 
-                <label for="add-datum-type">Type</label>
-                <select id="add-datum-type" name="add-datum-type" class="add-datum-type">
+                <label for="create-datum-type">Type</label>
+                <select id="create-datum-type" name="create-datum-type" class="create-datum-type">
                     {% for datum_type in datum_types %}
                         <option value="{{ datum_type.pk }}"
                                 {% if datum_type.pk == datum.datum_type.pk %} selected {% endif %} >
