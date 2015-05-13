@@ -33,17 +33,17 @@ class EntityMixinAdmin(admin.ModelAdmin):
     save_on_top = True
 
     list_display = ("__str__", "active", "sort", "entity_name",
-                    "short_definition", "long_definition", "usage", "example",
+                    "short_definition", "long_definition", "example",
                     "readable_name", "readable_plural_name", "schema_name")
     list_editable = ("active", "sort", "entity_name",
-                     "short_definition", "long_definition", "usage", "example",
+                     "short_definition", "long_definition", "example",
                      "readable_name", "readable_plural_name", "schema_name")
     list_display_links = ("__str__",)
     list_per_page = 12
     list_select_related = True
 
     fields = (("active", "sort", "entity_name"),
-              ("short_definition", "long_definition", "usage", "example"),
+              ("short_definition", "long_definition", "example"),
               ("readable_name", "readable_plural_name", "schema_name"),)
 
     ordering = ["sort"]

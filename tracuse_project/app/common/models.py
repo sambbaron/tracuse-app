@@ -160,8 +160,8 @@ class EntityMixin(BaseMixin):
             common name, pluralized --> item statuses
         schema_name (string): Underscore/lower-case class name
         short_definition (string): Word or two about object
-        long_definition (string): Long description of object
-        usage (string): How this object benefits the user
+        long_definition (string):
+            Long description of object that includes user benefit
         example (string): Object examples
     """
 
@@ -195,9 +195,6 @@ class EntityMixin(BaseMixin):
     long_definition = models.CharField(max_length=100,
                                        null=True, blank=True
                                        )
-    usage = models.CharField(max_length=100,
-                             null=True, blank=True
-                             )
     example = models.CharField(max_length=100,
                                null=True, blank=True
                                )
