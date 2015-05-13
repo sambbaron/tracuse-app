@@ -3,6 +3,18 @@ from django.test import TestCase, mock
 from app.datum.test_data import TestDataDatum
 
 
+class TestModelElementOption(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataDatum()
+
+    def test_sort_parts(self):
+        """Test ElementOption.sort_parts property"""
+        actual = self.test.element_option1.sort_parts
+        expected = [self.test.element_type1.sort]
+        self.assertEqual(expected, actual)
+
+
 class TestModelElementDatumType(TestCase):
     @classmethod
     def setUpTestData(cls):

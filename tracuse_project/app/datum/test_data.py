@@ -61,6 +61,12 @@ class TestDataDatum(object):
                                         element_data_type=self.element_data_type1,
                                         sort=110)
 
+        # Element Options
+        self.element_option1 = mommy.make("element_type.ElementOption",
+                                          entity_name="Option1",
+                                          element_type=self.element_type1
+                                          )
+
         # Element Type - Datum Type
         # Test for entity name
         self.element_datum_type1 = mommy.make("element_type.ElementDatumType",
