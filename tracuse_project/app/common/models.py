@@ -169,22 +169,22 @@ class EntityMixin(BaseMixin):
         abstract = True
 
     # TODO problem with unique name and element option values
-    entity_name = models.CharField(max_length=25,
+    entity_name = models.CharField(max_length=40,
                                    default="",
                                    null=False, blank=False,
                                    unique=False, db_index=True
                                    )
-    readable_name = models.CharField(max_length=25,
-                                     default="",
-                                     null=False, blank=False,
-                                     unique=False, db_index=True
-                                     )
-    schema_name = models.CharField(max_length=25,
+    schema_name = models.CharField(max_length=40,
                                    default="",
                                    null=False, blank=False,
                                    unique=False
                                    )
-    readable_plural_name = models.CharField(max_length=25,
+    readable_name = models.CharField(max_length=40,
+                                     default="",
+                                     null=False, blank=False,
+                                     unique=False, db_index=True
+                                     )
+    readable_plural_name = models.CharField(max_length=40,
                                             default="",
                                             null=False, blank=False,
                                             unique=False
