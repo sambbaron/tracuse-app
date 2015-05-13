@@ -38,21 +38,21 @@ class TestModelElementValueMixin(TestCase):
     def test_datum_object(self):
         """Test ElementValueMixin.datum_object
         """
-        actual = self.test.element_value_string1.datum_object
-        expected = self.test.datum_object1
+        actual = self.test.value_category_name.datum_object
+        expected = self.test.datum_category
         self.assertEqual(expected, actual)
 
     def test_element_type(self):
         """Test ElementValueMixin.element_type
         """
-        actual = self.test.element_value_string1.element_type
-        expected = self.test.element_type1
+        actual = self.test.value_category_name.element_type
+        expected = self.test.element_type_name
         self.assertEqual(expected, actual)
 
     def test_str(self):
         """Test ElementValueMixin.__str__
         """
-        actual = self.test.element_value_string1.__str__()
+        actual = self.test.value_category_name.__str__()
         expected = "Test Object Name"
         self.assertEqual(expected, actual)
 
@@ -60,7 +60,7 @@ class TestModelElementValueMixin(TestCase):
         """Test ElementValueMixin.sort value
         no after_object - add to end
         """
-        test_object = self.test.element_value_string1
+        test_object = self.test.value_category_name
         actual = test_object.get_sort_value()
         expected = 101001100
         self.assertEqual(expected, actual)
