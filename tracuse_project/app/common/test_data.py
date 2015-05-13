@@ -27,11 +27,13 @@ class TestDataCommon(object):
                                       entity_name="TestDatumType2",
                                       datum_group=self.datum_group1,
                                       str_expression="{{name}}")
-        # Calculate sort in new group
+        # Calculate sort in new group/Inactive
         self.datum_type3 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType3",
                                       datum_group=self.datum_group2,
-                                      str_expression="{{name}}")
+                                      str_expression="{{name}}",
+                                      active=False
+                                      )
 
         # Datum Object
         self.datum_object1 = mommy.make("datum.DatumObject",

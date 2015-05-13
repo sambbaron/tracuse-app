@@ -1,8 +1,10 @@
 from django.db import models
 
-from app.common.utils.entity import (camel_to_underscore,
+from .utils.entity import (camel_to_underscore,
                                      camel_to_spaced_capital,
                                      sort_range_value)
+from .managers import (BaseMixinManagerActive,
+                       BaseMixinManagerInactive)
 
 
 class BaseMixin(models.Model):
@@ -38,6 +40,10 @@ class BaseMixin(models.Model):
     # created = models.DateTimeField(default=datetime.now)
     # modified = models.DateTimeField(auto_now=True)
 
+    # Custom model managers for active/inactive records
+    objects = models.Manager()
+    actives = BaseMixinManagerActive()
+    inactives = BaseMixinManagerInactive()
 
     def _last_sort_value(self, sort_start=0, sort_end=0):
         """Object with maximum sort value

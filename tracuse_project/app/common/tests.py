@@ -211,3 +211,24 @@ class TestModelEntityMixin(TestCase):
         actual = self.test_object.readable_plural_name
         expected = "custom plural names"
         self.assertEqual(expected, actual)
+
+class TestManagerBaseMixin(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataCommon()
+
+    def test_base_mixin_manager_active(self):
+        """Test BaseMixinManagerActive.get_queryset
+        """
+        from app.datum.models import DatumType
+        actual = DatumType.actives.all().count()
+        expected = 2
+        self.assertEqual(expected, actual)
+
+    def test_base_mixin_manager_inactive(self):
+        """Test BaseMixinManagerInactive.get_queryset
+        """
+        from app.datum.models import DatumType
+        actual = DatumType.inactives.all().count()
+        expected = 1
+        self.assertEqual(expected, actual)
