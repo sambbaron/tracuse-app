@@ -5,6 +5,74 @@ from django.test import TestCase
 from .test_data import TestDataAssociation
 
 
+class TestManagerAssociationManager(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataAssociation()
+
+
+    def test_filter_distance_with_limit(self):
+        """Test AssociationManager.filter_distance
+        with limit value
+        """
+        from app.association.models import AssociationAll
+
+        actual = AssociationAll.objects.filter_distance(2).all().count()
+        expected = 16
+        self.assertEqual(expected, actual)
+
+    def test_filter_distance_without_limit(self):
+        """Test AssociationManager.filter_distance
+        without limit value - default to 1
+        """
+        from app.association.models import AssociationAll
+
+        actual = AssociationAll.objects.filter_distance().all().count()
+        expected = 13
+        self.assertEqual(expected, actual)
+
+    def test_filter_distance_none_limit(self):
+        """Test AssociationManager.filter_distance
+        with none limit value - all associations
+        """
+        from app.association.models import AssociationAll
+
+        actual = AssociationAll.objects.filter_distance(None).all().count()
+        expected = 17
+        self.assertEqual(expected, actual)
+
+    def test_exclude_self_true(self):
+        """Test AssociationManager.exclude_self
+        with true
+        """
+        from app.association.models import AssociationAll
+
+        actual = AssociationAll.objects.exclude_self(True).all().count()
+        expected = 10
+        self.assertEqual(expected, actual)
+
+    def test_exclude_self_false(self):
+        """Test AssociationManager.exclude_self
+        with false - all associations
+        """
+        from app.association.models import AssociationAll
+
+        actual = AssociationAll.objects.exclude_self(False).all().count()
+        expected = 17
+        self.assertEqual(expected, actual)
+
+    def test_exclude_self_without_option(self):
+        """Test AssociationManager.exclude_self
+        without boolean option - default True
+        """
+        from app.association.models import AssociationAll
+
+        actual = AssociationAll.objects.exclude_self().all().count()
+        expected = 10
+        self.assertEqual(expected, actual)
+
+
+
 class TestModelAssociationDirection(TestCase):
     @classmethod
     def setUpTestData(cls):

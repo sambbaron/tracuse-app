@@ -129,3 +129,5 @@ class TestDataAssociation(object):
                                                 child_datum=self.datum_object7,
                                                 association_type=self.association_type1
                                                 )
+
+        # All Associations - 17 Total
