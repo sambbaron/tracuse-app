@@ -13,9 +13,6 @@ class ElementValueModel(object):
         data_type_name (string): ElementDataType.entity_name
     """
 
-    def __init__(self, data_type_name):
-        self.data_type_name = data_type_name
-
     def __new__(cls, data_type_name):
         value_model_name = "ElementValue" + data_type_name
         try:
