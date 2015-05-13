@@ -30,7 +30,7 @@ class ElementDataType(EntityMixin):
 class ElementType(EntityMixin):
     """Property types available to Datums
 
-    Has metadata
+    Used to define data presentation and formatting
 
     Attributes:
         See EntityMixin (includes BaseMixin)
@@ -109,6 +109,7 @@ class ElementOption(EntityMixin):
 class ElementDatumType(EntityMixin):
     """Default Element Types assigned to Datum Types
 
+    Used to define data function and logic
     Used at Datum creation - Added to element_value table
 
     Attributes:
