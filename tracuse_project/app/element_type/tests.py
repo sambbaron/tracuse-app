@@ -3,7 +3,7 @@ from django.test import TestCase
 from app.datum.test_data import TestDataDatum
 
 
-class TestModelElementTypeDatumType(TestCase):
+class TestModelElementDatumType(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.test = TestDataDatum()
@@ -15,7 +15,7 @@ class TestModelElementTypeDatumType(TestCase):
         self.assertEqual(expected, actual)
 
 
-class TestModelElementTypeDatumObject(TestCase):
+class TestModelElementDatumObject(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.test = TestDataDatum()
