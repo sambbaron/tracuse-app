@@ -45,6 +45,8 @@ class ElementTypeAdmin(EntityMixinAdmin):
 
     list_display = EntityMixinAdmin.list_display + ("element_data_type", "str_expression", "html_element")
     list_editable = EntityMixinAdmin.list_editable + ("element_data_type", "str_expression", "html_element")
+    list_filter = ("element_data_type", )
+
     fields = EntityMixinAdmin.fields + ("element_data_type",)
 
     inlines = [ElementDatumTypeInline, ]
