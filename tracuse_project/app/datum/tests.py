@@ -77,6 +77,16 @@ class TestModelDatumObject(TestCase):
         expected = None
         self.assertEqual(expected, actual)
 
+    def test_element_value_with_kwargs(self):
+        """Test DatumObject.element_value method
+        with element type not in datum
+        """
+        actual = self.test.datum_object1.element_value(
+            entity_name="Name"
+        )
+        expected = self.test.element_value_string1
+        self.assertEqual(expected, actual)
+
     def test_get_sort_value(self):
         """Test DatumObject.sort value
         no after_object - add to end
@@ -236,6 +246,7 @@ class TestSerializersDatum(TestCase):
         """Test datum_object_element_expr
         """
         from .serializers import datum_object_element_expr
+
         test_object = self.test.datum_object1
         actual = datum_object_element_expr(test_object)
         self.assertEqual("Test Object Name", actual["name"])

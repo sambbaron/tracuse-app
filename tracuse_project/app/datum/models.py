@@ -177,16 +177,27 @@ class DatumObject(BaseMixin):
         return self.element_datum_objects.all()
 
 
-    def element_value(self, element_type):
-        """Return element_value object for given element_type object"""
-        if element_type:
+    def element_value(self, element_type_object=None, **kwargs):
+        """Return element_value object for given element_type object
+
+        Arguments:
+            element_type_object (ElementType)
+            **kwargs: element type filter to lookup element type
+
+        Returns:
+            ElementValue(Model) object
+        """
+        if not element_type_object:
+            element_type_object = ElementType.objects.filter(**kwargs).first()
+
+        if element_type_object:
             try:
-                element_datum_object = self.elements.get(element_type=element_type)
+                element_datum_object = self.elements.get(element_type=element_type_object)
                 return element_datum_object.element_value
             except ObjectDoesNotExist as e:
                 print("{} does not have element {}".format(
                     self.__str__(),
-                    element_type.__str__()
+                    element_type_object.__str__()
                 ))
 
     def get_create_self_association(self):
