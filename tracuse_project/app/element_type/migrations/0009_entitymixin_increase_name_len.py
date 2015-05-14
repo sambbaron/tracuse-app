@@ -5,7 +5,6 @@ from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('element_type', '0008_elementdatumtype_entitymixin'),
     ]

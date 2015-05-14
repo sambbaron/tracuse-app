@@ -2,7 +2,6 @@ from django.db import models
 
 
 class AssociationQuerySet(models.QuerySet):
-
     def filter_distance(self, distance_limit):
         if distance_limit:
             distance_filter = models.Q(distance__lte=distance_limit)

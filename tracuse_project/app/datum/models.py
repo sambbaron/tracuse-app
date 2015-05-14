@@ -60,8 +60,8 @@ class DatumType(EntityMixin):
                                     db_index=True
                                     )
     str_expression = models.CharField(max_length=255,
-                                       null=False, blank=False
-                                       )
+                                      null=False, blank=False
+                                      )
     element_types = models.ManyToManyField("element_type.ElementType",
                                            through="element_type.ElementDatumType",
                                            related_name="+"
@@ -178,10 +178,11 @@ class DatumObject(BaseMixin):
 
 
     def element_value(self, element_type):
+        """Return element_value object for given element_type object"""
         if element_type:
             try:
-                element_type = self.elements.get(element_type=element_type)
-                return element_type.element_value
+                element_datum_object = self.elements.get(element_type=element_type)
+                return element_datum_object.element_value
             except ObjectDoesNotExist as e:
                 print("{} does not have element {}".format(
                     self.__str__(),

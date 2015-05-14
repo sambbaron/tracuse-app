@@ -129,10 +129,10 @@ class TestModelDatumObject(TestCase):
                                  datum_type=self.test.datum_type1
                                  )
         test_object.save()
-        datum_elements = test_object.element_datum_objects.all()
-        datum_element_value = datum_elements[0].get_element_value
+        first_element = test_object.elements.first()
+        element_value = first_element.get_elvalue
         expected_value = ""
-        self.assertEqual(expected_value, datum_element_value)
+        self.assertEqual(expected_value, element_value)
 
 
 class TestModelDatumObjectAssociationProperties(TestCase):
@@ -220,3 +220,18 @@ class TestModelDatumObjectAssociationProperties(TestCase):
                     ]
         self.assertEqual(3, len(actual))
         self.assertEqual(set(expected), set(actual))
+
+
+class TestSerializersDatum(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataDatum()
+
+
+    def test_datum_object_element_expr(self):
+        """Test datum_object_element_expr
+        """
+        from .serializers import datum_object_element_expr
+        test_object = self.test.datum_object1
+        actual = datum_object_element_expr(test_object)
+        self.assertEqual("Test Object Name", actual["name"])

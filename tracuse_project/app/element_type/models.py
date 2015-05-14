@@ -192,8 +192,8 @@ class ElementDatumObject(BaseMixin):
         element_type_id (integer, fk, pk): ElementType
         element_value (ElementValue object):
             ElementValue objects for ElementType
-        get_element_value (variable):
-            'element_value' column from ElementValue model record
+        get_elvalue (variable):
+            'elvalue' column from ElementValue model record
     """
 
     class Meta(BaseMixin.Meta):
@@ -235,13 +235,14 @@ class ElementDatumObject(BaseMixin):
 
     @property
     def element_value(self):
-        element_value_query = self.element_value_model.objects.filter(element_datum_object=self)
-        if element_value_query.exists():
-            return element_value_query[0]
+        element_value_object = \
+            self.element_value_model.objects.filter(element_datum_object=self).first()
+
+        return element_value_object
 
     @property
-    def get_element_value(self):
-        return self.element_value.element_value
+    def get_elvalue(self):
+        return self.element_value.elvalue
 
     def save(self, *args, **kwargs):
         """Create ElementValue record if it doesn't exist"""

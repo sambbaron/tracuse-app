@@ -4,8 +4,8 @@ from django.http import HttpResponse
 
 from app.datum.models import DatumObject
 
-def index(request):
 
+def index(request):
     datum = DatumObject.objects.first()
     datum_dict = datum.as_dict_all
     datum_json = json.dumps(datum_dict)

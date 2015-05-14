@@ -59,25 +59,25 @@ class TestDataAssociation(object):
         # Element Value objects
         self.element_value_string1 = mommy.make("element_value.ElementValueString",
                                                 element_datum_object=self.element_datum_object1,
-                                                element_value="Test Object1")
+                                                elvalue="Test Object1")
         self.element_value_string2 = mommy.make("element_value.ElementValueString",
                                                 element_datum_object=self.element_datum_object2,
-                                                element_value="Test Object2")
+                                                elvalue="Test Object2")
         self.element_value_string3 = mommy.make("element_value.ElementValueString",
                                                 element_datum_object=self.element_datum_object3,
-                                                element_value="Test Object3")
+                                                elvalue="Test Object3")
         self.element_value_string4 = mommy.make("element_value.ElementValueString",
                                                 element_datum_object=self.element_datum_object4,
-                                                element_value="Test Object4")
+                                                elvalue="Test Object4")
         self.element_value_string5 = mommy.make("element_value.ElementValueString",
                                                 element_datum_object=self.element_datum_object5,
-                                                element_value="Test Object5")
+                                                elvalue="Test Object5")
         self.element_value_string6 = mommy.make("element_value.ElementValueString",
                                                 element_datum_object=self.element_datum_object6,
-                                                element_value="Test Object6")
+                                                elvalue="Test Object6")
         self.element_value_string7 = mommy.make("element_value.ElementValueString",
                                                 element_datum_object=self.element_datum_object7,
-                                                element_value="Test Object7")
+                                                elvalue="Test Object7")
 
         # Association Type
         self.association_type1 = mommy.make("association.AssociationType",

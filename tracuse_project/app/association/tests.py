@@ -72,7 +72,6 @@ class TestManagerAssociationManager(TestCase):
         self.assertEqual(expected, actual)
 
 
-
 class TestModelAssociationDirection(TestCase):
     @classmethod
     def setUpTestData(cls):

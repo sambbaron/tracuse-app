@@ -12,6 +12,7 @@ class TestManagerBaseMixin(TestCase):
         """Test BaseMixinManagerActive.get_queryset
         """
         from app.datum.models import DatumType
+
         actual = DatumType.actives.all().count()
         expected = 2
         self.assertEqual(expected, actual)
@@ -20,6 +21,7 @@ class TestManagerBaseMixin(TestCase):
         """Test BaseMixinManagerInactive.get_queryset
         """
         from app.datum.models import DatumType
+
         actual = DatumType.inactives.all().count()
         expected = 1
         self.assertEqual(expected, actual)

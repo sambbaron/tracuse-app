@@ -2,6 +2,7 @@
 
 from .person import *
 
+
 class DatumObjectMethodFactory(object):
     """Factory for DatumObject method classes by datum type
 

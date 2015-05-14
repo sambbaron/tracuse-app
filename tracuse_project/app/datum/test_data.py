@@ -102,4 +102,8 @@ class TestDataDatum(object):
         self.element_value_string1 = \
             mommy.make("element_value.ElementValueString",
                        element_datum_object=self.element_datum_object1,
-                       element_value="Test Object Name")
+                       elvalue="Test Object Name")
+        self.element_value_string2 = \
+            mommy.make("element_value.ElementValueString",
+                       element_datum_object=self.element_datum_object2,
+                       elvalue="Test Object Description")

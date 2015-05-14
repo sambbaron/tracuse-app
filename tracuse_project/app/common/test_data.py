@@ -2,9 +2,7 @@ from model_mommy import mommy
 
 
 class TestDataCommon(object):
-
     def __init__(self):
-
         # Datum Groups
         self.datum_group1 = mommy.make("datum.DatumGroup",
                                        entity_name="TestDatumGroup1",

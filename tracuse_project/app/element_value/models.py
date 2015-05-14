@@ -66,11 +66,11 @@ class ElementValueMixin(BaseMixin):
 
         if expression:
             template = Template(expression)
-            context = Context({"value": self.element_value})
+            context = Context({"value": self.elvalue})
             output = template.render(context)
 
         if not output or output is None:
-            output = str(self.element_value)
+            output = str(self.elvalue)
 
         return output
 
@@ -88,7 +88,7 @@ class ElementValueString(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (string, optional)
+        elvalue (string, optional)
     """
 
     class Meta(ElementValueMixin.Meta):
@@ -96,10 +96,10 @@ class ElementValueString(ElementValueMixin):
         default_related_name = "element_value_string"
 
     element_value_string_id = models.AutoField(primary_key=True)
-    element_value = models.CharField(max_length=150,
-                                     default="",
-                                     null=False, blank=True
-                                     )
+    elvalue = models.CharField(max_length=150,
+                               default="",
+                               null=False, blank=True
+                               )
 
 
 class ElementValueTextData(ElementValueMixin):
@@ -107,7 +107,7 @@ class ElementValueTextData(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (text, optional)
+        elvalue (text, optional)
     """
 
     class Meta(ElementValueMixin.Meta):
@@ -115,9 +115,9 @@ class ElementValueTextData(ElementValueMixin):
         default_related_name = "element_value_textdata"
 
     element_value_textdata_id = models.AutoField(primary_key=True)
-    element_value = models.TextField(default="",
-                                     null=False, blank=True
-                                     )
+    elvalue = models.TextField(default="",
+                               null=False, blank=True
+                               )
 
 
 class ElementValueBoolean(ElementValueMixin):
@@ -125,7 +125,7 @@ class ElementValueBoolean(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (boolean)
+        elvalue (boolean)
     """
 
     class Meta(ElementValueMixin.Meta):
@@ -133,7 +133,7 @@ class ElementValueBoolean(ElementValueMixin):
         default_related_name = "element_value_boolean"
 
     element_value_boolean_id = models.AutoField(primary_key=True)
-    element_value = models.BooleanField(default=False)
+    elvalue = models.BooleanField(default=False)
 
 
 class ElementValueDatetime(ElementValueMixin):
@@ -141,7 +141,7 @@ class ElementValueDatetime(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (datetime, optional)
+        elvalue (datetime, optional)
     """
 
     class Meta(ElementValueMixin.Meta):
@@ -149,8 +149,8 @@ class ElementValueDatetime(ElementValueMixin):
         default_related_name = "element_value_datetime"
 
     element_value_datetime_id = models.AutoField(primary_key=True)
-    element_value = models.DateTimeField(null=True, blank=True
-                                         )
+    elvalue = models.DateTimeField(null=True, blank=True
+                                   )
 
 
 class ElementValueDecimal(ElementValueMixin):
@@ -158,7 +158,7 @@ class ElementValueDecimal(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (decimal, optional)
+        elvalue (decimal, optional)
     """
 
     class Meta(ElementValueMixin.Meta):
@@ -166,9 +166,9 @@ class ElementValueDecimal(ElementValueMixin):
         default_related_name = "element_value_decimal"
 
     element_value_decimal_id = models.AutoField(primary_key=True)
-    element_value = models.DecimalField(max_digits=10, decimal_places=2,
-                                        null=True, blank=True
-                                        )
+    elvalue = models.DecimalField(max_digits=10, decimal_places=2,
+                                  null=True, blank=True
+                                  )
 
 
 class ElementValueBinary(ElementValueMixin):
@@ -176,7 +176,7 @@ class ElementValueBinary(ElementValueMixin):
 
     Attributes:
         See ElementValueMixin (includes BaseMixin)
-        element_value (binary, optional)
+        elvalue (binary, optional)
     """
 
     class Meta(ElementValueMixin.Meta):
@@ -184,5 +184,5 @@ class ElementValueBinary(ElementValueMixin):
         default_related_name = "element_value_binary"
 
     element_value_binary_id = models.AutoField(primary_key=True)
-    element_value = models.BinaryField(null=True, blank=True
-                                       )
+    elvalue = models.BinaryField(null=True, blank=True
+                                 )

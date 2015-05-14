@@ -5,7 +5,6 @@ from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('element_type', '0004_str_expression_to_elementtype'),
     ]

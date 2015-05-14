@@ -114,7 +114,7 @@ class FilterRuleElement(FilterRuleMixin):
     Attributes:
         See FilterRuleMixin (includes BaseMixin)
         element_type_id (integer, fk, required): ElementType
-        element_value (string):  ***Must match value
+        elvalue (string):  ***Must match value
     """
 
     class Meta(FilterRuleMixin.Meta):
@@ -127,7 +127,7 @@ class FilterRuleElement(FilterRuleMixin):
                                      related_name="filter_rule_elements",
                                      null=False, blank=False
                                      )
-    element_value = models.CharField(max_length=255)
+    elvalue = models.CharField(max_length=255)
 
 
 class FilterSet(EntityMixin):

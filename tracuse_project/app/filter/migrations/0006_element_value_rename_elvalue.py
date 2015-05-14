@@ -6,13 +6,13 @@ from django.db import models, migrations
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('element_value', '0001_initial'),
+        ('filter', '0005_entitymixin_increase_name_len'),
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='elementvalueboolean',
-            name='element_value',
-            field=models.BooleanField(default=False),
+        migrations.RenameField(
+            model_name='filterruleelement',
+            old_name='element_value',
+            new_name='elvalue',
         ),
     ]

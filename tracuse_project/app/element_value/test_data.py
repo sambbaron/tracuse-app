@@ -13,20 +13,20 @@ class TestDataElementValue(object):
         # Datum Groups
         self.group_area = mommy.make("datum.DatumGroup",
                                      entity_name="Area",
-                                       sort=10)
+                                     sort=10)
         self.group_activity = mommy.make("datum.DatumGroup",
                                          entity_name="Activity",
-                                       sort=20)
+                                         sort=20)
         self.group_time = mommy.make("datum.DatumGroup",
                                      entity_name="Time",
-                                       sort=30)
+                                     sort=30)
 
         # Datum Types
         self.type_category = mommy.make("datum.DatumType",
                                         entity_name="Category",
                                         datum_group=self.group_area,
-                                      str_expression="{{name}}",
-                                      sort=10100)
+                                        str_expression="{{name}}",
+                                        sort=10100)
         self.type_person = mommy.make("datum.DatumType",
                                       entity_name="Person",
                                       datum_group=self.group_area,
@@ -53,23 +53,23 @@ class TestDataElementValue(object):
 
         # Element Data Types
         self.data_type_string = mommy.make("element_type.ElementDataType",
-                                             entity_name="String"
-                                             )
+                                           entity_name="String"
+                                           )
         self.data_type_datetime = mommy.make("element_type.ElementDataType",
                                              entity_name="Datetime"
                                              )
 
         # Element Types
         self.element_type_name = mommy.make("element_type.ElementType",
-                                        entity_name="Name",
-                                        element_data_type=self.data_type_string,
-                                        str_expression=""
-                                        )
+                                            entity_name="Name",
+                                            element_data_type=self.data_type_string,
+                                            str_expression=""
+                                            )
         self.element_type_desc = mommy.make("element_type.ElementType",
-                                        entity_name="Description",
-                                        element_data_type=self.data_type_string,
-                                        str_expression=""
-                                        )
+                                            entity_name="Description",
+                                            element_data_type=self.data_type_string,
+                                            str_expression=""
+                                            )
         self.element_type_firstname = mommy.make("element_type.ElementType",
                                                  entity_name="FirstName",
                                                  element_data_type=self.data_type_string,
@@ -89,15 +89,15 @@ class TestDataElementValue(object):
 
         # Element Type - Datum Type
         self.element_category_name = mommy.make("element_type.ElementDatumType",
-                                              make_m2m=True,
-                                              datum_type=self.type_category,
-                                              element_type=self.element_type_name
-                                              )
+                                                make_m2m=True,
+                                                datum_type=self.type_category,
+                                                element_type=self.element_type_name
+                                                )
         self.element_category_desc = mommy.make("element_type.ElementDatumType",
-                                              make_m2m=True,
-                                              datum_type=self.type_category,
-                                              element_type=self.element_type_desc
-                                              )
+                                                make_m2m=True,
+                                                datum_type=self.type_category,
+                                                element_type=self.element_type_desc
+                                                )
         self.element_event_endingdate = mommy.make("element_type.ElementDatumType",
                                                    make_m2m=True,
                                                    datum_type=self.type_event,
@@ -107,10 +107,10 @@ class TestDataElementValue(object):
 
         # Element Type - Datum Object
         self.object_category_name = mommy.make("element_type.ElementDatumObject",
-                                                make_m2m=True,
-                                                datum_object=self.datum_category,
-                                                element_type=self.element_type_name
-                                                )
+                                               make_m2m=True,
+                                               datum_object=self.datum_category,
+                                               element_type=self.element_type_name
+                                               )
         self.object_category_desc = mommy.make("element_type.ElementDatumObject",
                                                make_m2m=True,
                                                datum_object=self.datum_category,
@@ -126,8 +126,8 @@ class TestDataElementValue(object):
         self.value_category_name = \
             mommy.make("element_value.ElementValueString",
                        element_datum_object=self.object_category_name,
-                       element_value="Test Object Name")
+                       elvalue="Test Object Name")
         self.value_event_endingdate = \
             mommy.make("element_value.ElementValueDatetime",
                        element_datum_object=self.object_event_endingdate,
-                       element_value=datetime(2015, 5, 12, 16, 30))
+                       elvalue=datetime(2015, 5, 12, 16, 30))

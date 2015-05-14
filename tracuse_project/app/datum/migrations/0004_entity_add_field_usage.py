@@ -5,7 +5,6 @@ from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('datum', '0003_repr_expression_to_str_expression'),
     ]

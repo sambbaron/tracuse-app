@@ -17,7 +17,6 @@ class BaseMixinAdmin(admin.ModelAdmin):
 
 
 class BaseMixinInline(admin.TabularInline):
-
     fields = (("__str__", "active", "sort"),)
     readonly_fields = ("__str__", )
 

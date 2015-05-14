@@ -10,9 +10,9 @@ class DatumObjectPerson(object):
     def get_full_name(self):
         """Concatenate first name and last name"""
         element_type = ElementType.objects.get(entity_name="FirstName")
-        first_name = self.datum.element_value(element_type).element_value
+        first_name = self.datum.element_value(element_type).elvalue
         element_type = ElementType.objects.get(entity_name="LastName")
-        last_name = self.datum.element_value(element_type).element_value
+        last_name = self.datum.element_value(element_type).elvalue
         return first_name + " " + last_name
 
     def get_first_name(self, full_name):
