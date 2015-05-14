@@ -46,14 +46,18 @@ class TestModelDatumObject(TestCase):
     def test_default_element_types(self):
         """Test DatumObject.default_element_types property"""
         actual = self.test.datum_object1.default_element_types
-        expected = [self.test.element_type1, self.test.element_type2]
+        expected = [self.test.element_type1,
+                    self.test.element_type2,
+                    self.test.element_type3
+                    ]
         self.assertEqual(expected, actual)
 
     def test_elements(self):
         """Test DatumObject.elements property"""
         actual = self.test.datum_object1.elements
         expected = [self.test.element_datum_object1,
-                    self.test.element_datum_object2
+                    self.test.element_datum_object2,
+                    self.test.element_datum_object3
                     ]
         self.assertEqual(set(expected), set(actual))
 
@@ -116,7 +120,7 @@ class TestModelDatumObject(TestCase):
         test_object.save()
 
         datum_element_count = test_object.element_types.count()
-        expected_count = 2
+        expected_count = 3
         self.assertEqual(expected_count, datum_element_count)
 
     def test_save_with_element_values(self):

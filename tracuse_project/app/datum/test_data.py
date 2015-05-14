@@ -61,7 +61,7 @@ class TestDataDatum(object):
                                         element_data_type=self.element_data_type1,
                                         sort=110)
         self.element_type3 = mommy.make("element_type.ElementType",
-                                        entity_name="Description",
+                                        entity_name="FullDescription",
                                         element_data_type=self.element_data_type1
                                         )
 
@@ -84,6 +84,12 @@ class TestDataDatum(object):
                                               element_type=self.element_type2,
                                               entity_name="TestType2Description"
                                               )
+        self.element_datum_type3 = mommy.make("element_type.ElementDatumType",
+                                              make_m2m=True,
+                                              datum_type=self.datum_type1,
+                                              element_type=self.element_type3,
+                                              calc_expression="{{ name }}{% if description %}{{ ' '|add:description }}{% endif %}"
+                                              )
 
 
         # Element Type - Datum Object
@@ -96,6 +102,11 @@ class TestDataDatum(object):
                                                 make_m2m=True,
                                                 datum_object=self.datum_object1,
                                                 element_type=self.element_type2
+                                                )
+        self.element_datum_object3 = mommy.make("element_type.ElementDatumObject",
+                                                make_m2m=True,
+                                                datum_object=self.datum_object1,
+                                                element_type=self.element_type3
                                                 )
 
         # Element Value objects

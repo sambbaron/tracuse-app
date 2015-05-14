@@ -1,7 +1,9 @@
 from django.db import models
+from django.template import Context, Template
 
 from app.common.models import EntityMixin, BaseMixin
 from app.element_value.models import ElementValueModel
+from app.datum.serializers import datum_object_element_expr
 
 
 class ElementDataType(EntityMixin):
@@ -243,6 +245,28 @@ class ElementDatumObject(BaseMixin):
     @property
     def get_elvalue(self):
         return self.element_value.elvalue
+
+    def calculated_value(self):
+        """Use calc_expression and django template engine
+        to return calculated value
+        """
+        output = ""
+        element_datum_type = ElementDatumType.objects.filter(
+            element_type=self.element_type,
+            datum_type=self.datum_object.datum_type
+        ).first()
+        expression = element_datum_type.calc_expression
+
+        if expression:
+            template = Template(expression)
+            datum_dict = datum_object_element_expr(self.datum_object)
+            context = Context(datum_dict)
+            output = template.render(context)
+
+        # if not output or output is None:
+        #     output = "Blank {}".format(self.datum_type)
+
+        return output
 
     def save(self, *args, **kwargs):
         """Create ElementValue record if it doesn't exist"""
