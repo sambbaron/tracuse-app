@@ -1,5 +1,3 @@
-import re
-
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 from django.template import Context, Template
@@ -11,6 +9,7 @@ from app.element_type.models import ElementType, ElementDatumObject
 from app.element_value.models import ElementValueModel
 from app.association.models import AssociationAll
 
+from .datum_methods import DatumObjectMethodFactory
 from .serializers import datum_object_element_expr
 
 
@@ -132,6 +131,13 @@ class DatumObject(BaseMixin):
 
     sort_base_length = 1
 
+    def __init__(self, *args, **kwargs):
+        """Set method class for DatumType-specific methods"""
+        super().__init__(*args, **kwargs)
+        self.datum_methods = DatumObjectMethodFactory(
+            datum_object=self,
+            datum_type_name=self.datum_type.entity_name
+        )
 
     @property
     def sort_parts(self):
