@@ -37,10 +37,9 @@ def datums_update(request, datum_pk):
         if dict_key != "csrfmiddlewaretoken":
 
             element_datum_object = \
-                ElementDatumObject.objects.filter(pk=int(dict_key)).all()
+                ElementDatumObject.objects.filter(pk=int(dict_key)).first()
 
             if element_datum_object:
-                element_datum_object = element_datum_object[0]
                 element_value_object = element_datum_object.element_value
                 element_value_object.elvalue = data[dict_key]
                 element_value_object.save()
