@@ -60,6 +60,10 @@ class TestDataDatum(object):
                                         entity_name="Description",
                                         element_data_type=self.element_data_type1,
                                         sort=110)
+        self.element_type3 = mommy.make("element_type.ElementType",
+                                        entity_name="Description",
+                                        element_data_type=self.element_data_type1
+                                        )
 
         # Element Options
         self.element_option1 = mommy.make("element_type.ElementOption",
@@ -87,6 +91,11 @@ class TestDataDatum(object):
                                                 make_m2m=True,
                                                 datum_object=self.datum_object1,
                                                 element_type=self.element_type1
+                                                )
+        self.element_datum_object2 = mommy.make("element_type.ElementDatumObject",
+                                                make_m2m=True,
+                                                datum_object=self.datum_object1,
+                                                element_type=self.element_type2
                                                 )
 
         # Element Value objects

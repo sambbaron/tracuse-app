@@ -1,6 +1,7 @@
 import re
 
 from django.db import models
+from django.core.exceptions import ObjectDoesNotExist
 from django.template import Context, Template
 
 from django.contrib.auth.models import User
@@ -90,6 +91,8 @@ class DatumObject(BaseMixin):
         default_element_types (list):
             ElementTypes from ElementDatumType
             Return element values for multiple element types
+        elements (queryset):
+            ElementDatumObject objects
     """
 
     class Meta(BaseMixin.Meta):
@@ -129,6 +132,7 @@ class DatumObject(BaseMixin):
 
     sort_base_length = 1
 
+
     @property
     def sort_parts(self):
         return [self.datum_type.sort]
@@ -161,6 +165,22 @@ class DatumObject(BaseMixin):
             related_element_type = datum_type_element_type.element_type
             element_types.append(related_element_type)
         return element_types
+
+    @property
+    def elements(self):
+        return self.element_datum_objects.all()
+
+
+    def element_value(self, element_type):
+        if element_type:
+            try:
+                element_type = self.elements.get(element_type=element_type)
+                return element_type.element_value
+            except ObjectDoesNotExist as e:
+                print("{} does not have element {}".format(
+                    self.__str__(),
+                    element_type.__str__()
+                ))
 
     def get_create_self_association(self):
         """Add datum association to itself if it doesn't exist

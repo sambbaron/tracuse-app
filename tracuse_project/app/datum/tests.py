@@ -49,6 +49,30 @@ class TestModelDatumObject(TestCase):
         expected = [self.test.element_type1, self.test.element_type2]
         self.assertEqual(expected, actual)
 
+    def test_elements(self):
+        """Test DatumObject.elements property"""
+        actual = self.test.datum_object1.elements
+        expected = [self.test.element_datum_object1,
+                    self.test.element_datum_object2
+                    ]
+        self.assertEqual(set(expected), set(actual))
+
+    def test_element_value_with_good_element_type(self):
+        """Test DatumObject.element_value method
+        with element type in datum
+        """
+        actual = self.test.datum_object1.element_value(self.test.element_type1)
+        expected = self.test.element_value_string1
+        self.assertEqual(expected, actual)
+
+    def test_element_value_with_bad_element_type(self):
+        """Test DatumObject.element_value method
+        with element type not in datum
+        """
+        actual = self.test.datum_object1.element_value(self.test.element_type3)
+        expected = None
+        self.assertEqual(expected, actual)
+
     def test_get_sort_value(self):
         """Test DatumObject.sort value
         no after_object - add to end
