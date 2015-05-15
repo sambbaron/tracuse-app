@@ -41,7 +41,7 @@ class DatumType(EntityMixin):
         See EntityMixin (includes BaseMixin)
             sort (integer): DatumGroup.sort + 3-digit number
         datum_group_id (integer, fk, required): DatumGroup
-        str_expression (string): Expression in django template language
+        headline_expr (string): Expression in django template language
             that renders to string representation
             --> {{name}} and {{description}}
         element_types (ElementType set):
@@ -59,7 +59,7 @@ class DatumType(EntityMixin):
                                     null=False, blank=False,
                                     db_index=True
                                     )
-    str_expression = models.CharField(max_length=255,
+    headline_expr = models.CharField(max_length=255,
                                       null=False, blank=False
                                       )
     element_types = models.ManyToManyField("element_type.ElementType",
@@ -145,9 +145,9 @@ class DatumObject(BaseMixin):
 
     @property
     def headline(self):
-        """Use DatumType.str_expression with django template expression"""
+        """Use DatumType.headline_expr with django template expression"""
         output = ""
-        expression = self.datum_type.str_expression
+        expression = self.datum_type.headline_expr
 
         if expression:
             template = Template(expression)

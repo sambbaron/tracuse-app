@@ -23,18 +23,18 @@ class TestDataDatum(object):
         self.datum_type1 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType1",
                                       datum_group=self.datum_group1,
-                                      str_expression="{{name}}",
+                                      headline_expr="{{name}}",
                                       sort=10100)
         # Calculate sort
         self.datum_type2 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType2",
                                       datum_group=self.datum_group1,
-                                      str_expression="{{name}}")
+                                      headline_expr="{{name}}")
         # Calculate sort in new group
         self.datum_type3 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType3",
                                       datum_group=self.datum_group2,
-                                      str_expression="{{name}}")
+                                      headline_expr="{{name}}")
 
         # Datum Object
         # Has element_type and element_value

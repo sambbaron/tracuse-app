@@ -25,20 +25,20 @@ class TestDataElementValue(object):
         self.type_category = mommy.make("datum.DatumType",
                                         entity_name="Category",
                                         datum_group=self.group_area,
-                                        str_expression="{{name}}",
+                                        headline_expr="{{name}}",
                                         sort=10100)
         self.type_person = mommy.make("datum.DatumType",
                                       entity_name="Person",
                                       datum_group=self.group_area,
-                                      str_expression="{{name}}")
+                                      headline_expr="{{name}}")
         self.type_action = mommy.make("datum.DatumType",
                                       entity_name="Action",
                                       datum_group=self.group_activity,
-                                      str_expression="{{name}}")
+                                      headline_expr="{{name}}")
         self.type_event = mommy.make("datum.DatumType",
                                      entity_name="Event",
                                      datum_group=self.group_time,
-                                     str_expression="{{name}}")
+                                     headline_expr="{{name}}")
 
         # Datum Object
         self.datum_category = mommy.make("datum.DatumObject",

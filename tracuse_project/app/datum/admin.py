@@ -22,17 +22,17 @@ class DatumObjectAdmin(BaseMixinAdmin):
 
 @admin.register(DatumType)
 class DatumTypeAdmin(EntityMixinAdmin):
-    list_display = EntityMixinAdmin.list_display + ("str_expression", )
-    list_editable = EntityMixinAdmin.list_editable + ("str_expression", )
+    list_display = EntityMixinAdmin.list_display + ("headline_expr", )
+    list_editable = EntityMixinAdmin.list_editable + ("headline_expr", )
 
-    fields = EntityMixinAdmin.fields + ("str_expression", )
+    fields = EntityMixinAdmin.fields + ("headline_expr", )
 
     inlines = [DatumObjectInline, ElementDatumTypeInline]
 
 
 class DatumTypeInline(EntityMixinInline):
     model = DatumType
-    fields = EntityMixinAdmin.fields + ("str_expression", )
+    fields = EntityMixinAdmin.fields + ("headline_expr", )
 
 
 @admin.register(DatumGroup)

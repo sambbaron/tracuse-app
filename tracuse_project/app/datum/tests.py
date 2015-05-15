@@ -14,7 +14,7 @@ class TestModelDatumObject(TestCase):
 
     def test_headline_with_element_type(self):
         """Test DatumObject.headline property
-        with element type matching str_expression in ElementDatumObject,
+        with element type matching headline_expr in ElementDatumObject,
         """
         actual = self.test.datum_object1.headline
         expected = "Test Object Name"
@@ -22,7 +22,7 @@ class TestModelDatumObject(TestCase):
 
     def test_headline_without_element_value(self):
         """Test DatumObject.headline property
-        with element type matching str_expression in ElementDatumObject,
+        with element type matching headline_expr in ElementDatumObject,
         but no element_value in ElementValueModel
         """
         actual = self.test.datum_object2.headline
@@ -31,7 +31,7 @@ class TestModelDatumObject(TestCase):
 
     def test_headline_without_element_type(self):
         """Test DatumObject.headline property
-        without element type matching str_expression in ElementDatumObject,
+        without element type matching headline_expr in ElementDatumObject,
         """
         actual = self.test.datum_object3.headline
         expected = "Blank Test Datum Type1"

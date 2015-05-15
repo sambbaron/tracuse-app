@@ -6,7 +6,7 @@ class TestDataAssociation(object):
         # Datum Type
         self.datum_type1 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType1",
-                                      str_expression="{{name}}"
+                                      headline_expr="{{name}}"
                                       )
         # Datum Objects
         self.datum_object1 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
