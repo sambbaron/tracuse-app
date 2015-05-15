@@ -10,6 +10,8 @@ urlpatterns = [
 
     # New API
     url(r'^datum_groups/$', api.datum_groups_get),
+    url(r'^datum_types/$', api.datum_types_get),
+    url(r'^datum_objects/$', api.datum_objects_get),
 
     # Tester Page
     url(r'^tester/$', views.datums_get, name="tester_home"),
