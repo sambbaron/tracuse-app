@@ -143,8 +143,8 @@ class DatumObject(BaseMixin):
     def sort_parts(self):
         return [self.datum_type.sort]
 
-
-    def __str__(self):
+    @property
+    def headline(self):
         """Use DatumType.str_expression with django template expression"""
         output = ""
         expression = self.datum_type.str_expression
@@ -159,6 +159,10 @@ class DatumObject(BaseMixin):
             output = "Blank {}".format(self.datum_type)
 
         return output
+
+
+    def __str__(self):
+        return self.headline
 
     @property
     def datum_group(self):

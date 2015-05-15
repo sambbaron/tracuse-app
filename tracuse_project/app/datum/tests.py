@@ -12,28 +12,28 @@ class TestModelDatumObject(TestCase):
         cls.test = TestDataDatum()
 
 
-    def test_str_with_element_type(self):
-        """Test DatumObject.__str__ property
+    def test_headline_with_element_type(self):
+        """Test DatumObject.headline property
         with element type matching str_expression in ElementDatumObject,
         """
-        actual = self.test.datum_object1.__str__()
+        actual = self.test.datum_object1.headline
         expected = "Test Object Name"
         self.assertEqual(expected, actual)
 
-    def test_str_without_element_value(self):
-        """Test DatumObject.__str__ property
+    def test_headline_without_element_value(self):
+        """Test DatumObject.headline property
         with element type matching str_expression in ElementDatumObject,
         but no element_value in ElementValueModel
         """
-        actual = self.test.datum_object2.__str__()
+        actual = self.test.datum_object2.headline
         expected = "Blank Test Datum Type1"
         self.assertEqual(expected, actual)
 
-    def test_str_without_element_type(self):
-        """Test DatumObject.__str__ property
+    def test_headline_without_element_type(self):
+        """Test DatumObject.headline property
         without element type matching str_expression in ElementDatumObject,
         """
-        actual = self.test.datum_object3.__str__()
+        actual = self.test.datum_object3.headline
         expected = "Blank Test Datum Type1"
         self.assertEqual(expected, actual)
 
