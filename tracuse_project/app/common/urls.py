@@ -13,11 +13,5 @@ urlpatterns = [
     url(r'^datum_types/$', api.datum_types_get),
     url(r'^datum_objects/$', api.datum_objects_get),
 
-    # Tester Page
-    url(r'^tester/$', views.datums_get, name="tester_home"),
-    url(r'^tester/datum/(?P<datum_pk>[0-9]*)/update/$', views.datums_update, name='datums_update'),
-    url(r'^tester/datum/(?P<datum_pk>[0-9]*)/delete/$', views.datums_delete, name='datums_delete'),
-    url(r'^tester/datum/create/$', views.datums_create, name='datums_create'),
-
 ]
 
