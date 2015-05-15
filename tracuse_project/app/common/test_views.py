@@ -14,8 +14,8 @@ class TestApiCommon(TestCase):
 
     def test_datum_groups_get(self):
         """Test datum_groups_get api"""
-        from .api import datum_groups_get
-        request = self.factory.get('/app/datum_groups')
+        from .views import datum_groups_get
+        request = self.factory.get('/api/datum_groups')
         request.user = self.test.user1
         response = datum_groups_get(request)
         response_content = json.loads(response.content.decode())
@@ -26,8 +26,8 @@ class TestApiCommon(TestCase):
         
     def test_datum_types_get(self):
         """Test datum_types_get api"""
-        from .api import datum_types_get
-        request = self.factory.get('/app/datum_types')
+        from .views import datum_types_get
+        request = self.factory.get('/api/datum_types')
         request.user = self.test.user1
         response = datum_types_get(request)
         response_content = json.loads(response.content.decode())
@@ -38,8 +38,8 @@ class TestApiCommon(TestCase):
            
     def test_datum_objects_get(self):
         """Test datum_objects_get api"""
-        from .api import datum_objects_get
-        request = self.factory.get('/app/datum_objects')
+        from .views import datum_objects_get
+        request = self.factory.get('/api/datum_objects')
         request.user = self.test.user1
         response = datum_objects_get(request)
         response_content = json.loads(response.content.decode())

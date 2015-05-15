@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^logout/$', views.user_logout, name='user_logout'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^app/', include('app.common.urls')),
+    url(r'^api/', include('app.common.api')),
 
 
     # Tester Page
