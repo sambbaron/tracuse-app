@@ -1,72 +1,36 @@
-from django.shortcuts import render, HttpResponseRedirect
-
-from app.datum.models import (DatumGroup,
-                                     DatumType,
-                                     DatumObject)
-from app.element_type.models import (ElementOption,
-                                     ElementDatumObject)
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
-def datums_get(request):
-    """Basic view for testing
+def user_login(request):
 
-    Add/remove/filter datums
-    """
-    response_dict = {}
+    if request.user.is_authenticated():
+        return HttpResponseRedirect("/app")
 
-    datum_groups = DatumGroup.objects.all()
-    response_dict["datum_groups"] = datum_groups
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
 
-    datum_types = DatumType.objects.all()
-    response_dict["datum_types"] = datum_types
+        user = authenticate(username=username, password=password)
 
-    datum_objects = DatumObject.objects.all()
-    response_dict["datum_objects"] = datum_objects
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect("/app")
+            else:
+                return HttpResponse("Your account is disabled")
+        else:
+            print("Invalid login details: {0}, {1}".format(username, password))
+            return HttpResponse("Invalid login details supplied.")
 
-    element_options = ElementOption.objects.all()
-    response_dict["element_options"] = element_options
-
-    return render(request, "datums.html", response_dict)
-
-
-def datums_update(request, datum_pk):
-    data = request.POST
-
-    for dict_key in data.keys():
-
-        if dict_key != "csrfmiddlewaretoken":
-
-            element_datum_object = \
-                ElementDatumObject.objects.filter(pk=int(dict_key)).first()
-
-            if element_datum_object:
-                element_value_object = element_datum_object.element_value
-                element_value_object.elvalue = data[dict_key]
-                element_value_object.save()
-
-    return HttpResponseRedirect("/")
+    # GET request
+    else:
+        return render(request, 'website/login.html', {})
 
 
-def datums_delete(request, datum_pk):
-    data = request.POST
-
-    datum_pk = int(data["datum-pk"])
-
-    datum = DatumObject.objects.filter(pk=datum_pk).all()
-
-    if datum:
-        datum[0].delete()
-
-    return HttpResponseRedirect("/")
-
-
-def datums_create(request):
-    data = request.POST
-
-    datum_type_pk = int(data["create-datum-type"])
-
-    datum = DatumObject.objects.create(user_id=1,
-                                       datum_type_id=datum_type_pk
-                                       )
-
-    return HttpResponseRedirect("/")
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect('/login')

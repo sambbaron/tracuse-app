@@ -1,36 +1,24 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,600,600italic);
-
 body {
     background-color: #FAFAFA;
-    font-family: "Source Sans Pro", Helvetica, sans-serif;
 }
 
 header, footer {
-    position: fixed;
-    height: 4em;
-    width: 100%;
-    background-color: rgba(53, 68, 106, 1);
+    background-color: #d0d7e8;
 }
 
-header {
-    top: 0;
+header .nav-button {
+    background-color: rgba(169, 217, 99, 0.75);
+}
+
+header .nav-button:focus {
+    background-color: rgba(169, 217, 99, 1);
 }
 
 footer {
-    bottom: 0;
+    display: none;
 }
 
-main {
-    position: absolute;
-    top: 4em;
-    z-index: -1;
-}
 
-header img {
-    height: 65%;
-    margin-top: 0.65em;
-    margin-left: 2em;
-}
 
 .datum {
     display: inline-block;
@@ -45,7 +33,7 @@ header img {
 
 .datum-title {
     position: relative;
-    z-index: 9;
+    z-index: 2;
     margin-bottom: 0.5em;
     text-align: center;
     font-size: 150%;
@@ -62,19 +50,19 @@ header img {
     text-align: center;
     font-size: 300%;
     font-weight: lighter;
-    color: rgba(250,250,250,0.50);
+    color: rgba(250, 250, 250, 0.50);
 }
 
 .form-datum-update label {
     display: inline-block;
     width: 5em;
     font-size: 80%;
-    font-weight: bold;
 }
 
 .form-datum-update input, select {
     margin-bottom: 0.25em;
     padding: 0.25em;
+    font-size: 100%;
 }
 
 .form-datum-update input[type=submit] {
@@ -89,16 +77,19 @@ header img {
 
 .form-datum-delete input[type=submit] {
     display: block;
-    position: absolute;
-    z-index: 99;
-    top: 0.5em;
-    right: 0.5em;
     height: 1.5em;
     width: 1.5em;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    z-index: 9;
+    margin: 0;
     border-style: none;
     border-radius: 50%;
+    padding: 0.15em 0;
     background-color: #ad4d05;
     color: #fafafa;
+    font-size: 100%;
     font-weight: bold;
     cursor: pointer;
 }
@@ -116,6 +107,7 @@ header img {
     height: 1.25em;
     width: 1.25em;
     margin: 0.25em auto 0 auto;
+    padding: 0 0;
     border-style: none;
     border-radius: 50%;
     background-color: #35446A;

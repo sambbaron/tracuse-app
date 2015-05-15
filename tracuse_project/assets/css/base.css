@@ -1,0 +1,74 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,600,600italic);
+
+body {
+    background-color: #FAFAFA;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    color: #35446A;
+}
+
+header, footer {
+    height: 4em;
+    width: 100%;
+    position: fixed;
+    padding: 0.75em 0;
+    box-shadow: 0 2px 1px 0 rgba(100, 100, 100, 0.75)
+}
+
+header {
+    top: 0;
+    z-index: 99;
+}
+
+footer {
+    bottom: 0;
+}
+
+main {
+    position: relative;
+    top: 4em;
+}
+
+header img {
+    height: 65%;
+    position: absolute;
+    left: 10em;
+}
+
+header nav {
+    position: absolute;
+    right: 15em;
+}
+
+header .nav-button {
+    display: inline-block;
+    height: 2em;
+    margin-left: 0.5em;
+    border: solid 1px darkgray;
+    border-radius: 0.5em;
+    padding: 0.5em 0.5em;
+    text-align: center;
+    font-size: 135%;
+}
+
+header .nav-button:hover {
+    background-color: #ffffff;
+}
+
+input, select {
+    margin: 0.25em;
+    border: solid 1px lightgray;
+    padding: 0.25em;
+    background-color: rgba(250,250,250, 0.5);
+    font-size: 125%;
+    color: inherit;
+}
+
+input[type=submit] {
+    background-color: #A9D963;
+    border-radius: 10% / 20%;
+    border: none;
+    box-shadow: 2px 2px 1px rgba(150, 150, 150, 0.75);
+    color: #35446A;
+    text-align: center;
+    cursor: pointer;
+}
