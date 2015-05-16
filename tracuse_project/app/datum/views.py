@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import DatumObject
 from app.common.serializers import Serializer
-from .serializers import DatumObjectSerializer
+from .serializers import DatumObjectSerializer, DatumObjectDeserializer
 
 
 class DatumObjectAll(View):
@@ -33,8 +33,8 @@ class DatumObjectAll(View):
     def post(self, request):
         request_data = request.body.decode()
         serialized_data = json.loads(request_data)
-        post_data = post_datum_object(serialized_data)
-        if type(post_data) == DatumObject:
+        post_data = DatumObjectDeserializer.post_datum(serialized_data, user=request.user)
+        if type(post_data) == dict:
             response = JsonResponse(post_data, status=201)
         else:
             response = HttpResponse(post_data, status=400)

@@ -1,13 +1,19 @@
-
 from .models import DatumObject
 
-class DatumObjectSerializer(DatumObject):
 
+class DatumObjectSerializer(DatumObject):
     class Meta:
-        abstract=True
+        abstract = True
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+    def serial_basic(self):
+        output = {
+            "datum_object_id": self.datum_object_id,
+            "datum_type": self.datum_type.datum_type_id
+        }
+        return output
 
     def serial_element_name_value(self):
         """Return elements for expression evaluation
@@ -26,6 +32,7 @@ class DatumObjectSerializer(DatumObject):
                 output[element_name] = element_value.elvalue
 
         return output
+
     DatumObject.serial_element_name_value = serial_element_name_value
 
     def serial_datum_all(self):
@@ -42,4 +49,22 @@ class DatumObjectSerializer(DatumObject):
             "element": self.serial_element_name_value()
         }
         return output
+
     DatumObject.serial_element_name_value = serial_element_name_value
+
+class DatumObjectDeserializer(object):
+
+    @staticmethod
+    def post_datum(data, user, pk=None):
+        response = None
+
+        if pk is None:
+            new_obj = DatumObject.objects.create(
+                user=user,
+                datum_type_id=data["datum_type"]
+            )
+            response = DatumObjectSerializer.serial_basic(new_obj)
+        else:
+            pass
+
+        return response
