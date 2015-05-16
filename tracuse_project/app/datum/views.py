@@ -4,7 +4,6 @@ from django.http import HttpResponse, JsonResponse, Http404
 from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from django.core.serializers.json import DjangoJSONEncoder
 
 from .models import DatumObject
 from app.common.serializers import Serializer
@@ -32,7 +31,8 @@ class DatumObjectAll(View):
         return response
 
     def post(self, request):
-        serialized_data = json.loads(request.data, cls=DjangoJSONEncoder)
+        request_data = request.body.decode()
+        serialized_data = json.loads(request_data)
         post_data = post_datum_object(serialized_data)
         if type(post_data) == DatumObject:
             response = JsonResponse(post_data, status=201)
@@ -65,7 +65,8 @@ class DatumObjectOne(View):
         return response
 
     def put(self, request, pk):
-        serialized_data = json.loads(request.data, cls=DjangoJSONEncoder)
+        request_data = request.body.decode()
+        serialized_data = json.loads(request_data)
         post_data = post_datum_object(serialized_data)
         if type(post_data) == DatumObject:
             response = JsonResponse(post_data, status=200)
