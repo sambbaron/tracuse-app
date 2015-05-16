@@ -261,7 +261,7 @@ class ElementDatumObject(BaseMixin):
         if expression:
             template = Template(expression)
             datum_dict = Serializer(data=self.datum_object,
-                                      serializer="datum.DatumObjectSerializer.element_name_value"
+                                      serializer="datum.DatumObjectSerializer.serial_element_name_value"
                                       ).serialize()
             context = Context(datum_dict)
             output = template.render(context)

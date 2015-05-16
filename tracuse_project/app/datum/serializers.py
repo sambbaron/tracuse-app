@@ -6,7 +6,7 @@ class DatumObjectSerializer(DatumObject):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    def element_name_value(self):
+    def serial_element_name_value(self):
         """Return elements for expression evaluation
 
         Returns:
@@ -23,9 +23,9 @@ class DatumObjectSerializer(DatumObject):
                 output[element_name] = element_value.elvalue
 
         return output
-    DatumObject.element_name_value = element_name_value
+    DatumObject.serial_element_name_value = serial_element_name_value
 
-    def datum_all(self):
+    def serial_datum_all(self):
 
         parent_datums = [parent_datum.datum_object_id for parent_datum in self.all_parent_datums.all()]
         child_datums = [child_datum.datum_object_id for child_datum in self.all_child_datums.all()]
@@ -36,7 +36,7 @@ class DatumObjectSerializer(DatumObject):
             "datum_type": self.datum_type_id,
             "parent_datums": parent_datums,
             "child:datums": child_datums,
-            "element": self.element_name_value()
+            "element": self.serial_element_name_value()
         }
         return output
-    DatumObject.element_name_value = element_name_value
+    DatumObject.serial_element_name_value = serial_element_name_value

@@ -247,21 +247,21 @@ class TestSerializers(TestCase):
 
     def test_set_serializer_method(self):
         """Test _set_serialize_method
-        using DatumObjectSerializer.element_name_value
+        using DatumObjectSerializer.serial_element_name_value
         """
         from .serializers import Serializer
         from app.datum.serializers import DatumObjectSerializer
 
         test_serializer = Serializer(data={},
-                                     serializer="datum.DatumObjectSerializer.element_name_value"
+                                     serializer="datum.DatumObjectSerializer.serial_element_name_value"
                                      )
         actual = test_serializer._set_serializer_method()
-        expected = DatumObjectSerializer.element_name_value
+        expected = DatumObjectSerializer.serial_element_name_value
         self.assertEqual(expected, actual)
 
     def test_serialize_queryset(self):
         """Test serialize method
-        using DatumObjectSerializer.element_name_value
+        using DatumObjectSerializer.serial_element_name_value
         """
         from .serializers import Serializer
         from app.datum.models import DatumObject
@@ -269,7 +269,7 @@ class TestSerializers(TestCase):
 
         test_queryset = DatumObject.objects.all()
         test_data = Serializer(data=test_queryset,
-                               serializer=DatumObjectSerializer.element_name_value
+                               serializer=DatumObjectSerializer.serial_element_name_value
                                ).serialize()
 
         actual_count = len(test_data)
@@ -278,7 +278,7 @@ class TestSerializers(TestCase):
 
     def test_serialize_instance(self):
         """Test serialize method
-        using DatumObjectSerializer.element_name_value
+        using DatumObjectSerializer.serial_element_name_value
         """
         from .serializers import Serializer
         from app.datum.models import DatumObject
@@ -286,7 +286,7 @@ class TestSerializers(TestCase):
 
         test_object = DatumObject.objects.first()
         test_data = Serializer(data=test_object,
-                               serializer=DatumObjectSerializer.element_name_value
+                               serializer=DatumObjectSerializer.serial_element_name_value
                                ).serialize()
 
         actual = test_data["name"]
