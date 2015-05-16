@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.serializers.json import DjangoJSONEncoder
 
 from .models import DatumObject
+from app.common.serializers import Serializer
+from .serializers import DatumObjectSerializer
 
 
 class DatumObjectAll(View):
@@ -21,8 +23,10 @@ class DatumObjectAll(View):
         # if obj.user == request.user
 
     def get(self, request):
-        datum_objects = DatumObject.actives.all()
-        serialized_data = {datum_objects}
+        queryset = DatumObject.actives.all()
+        serialized_data = Serializer(data=queryset,
+                                     serializer=DatumObjectSerializer.serial_datum_all
+                                     ).serialize()
         response = JsonResponse(serialized_data, status=200)
         return response
 
@@ -53,8 +57,11 @@ class DatumObjectOne(View):
             raise Http404("Datum Object does not exist.")
 
     def get(self, request, pk):
-        datum_object = self.get_object(pk)
-        serialized_data = {datum_object}
+        object = self.get_object(pk)
+        queryset = DatumObject.actives.all()
+        serialized_data = Serializer(data=object,
+                                     serializer=DatumObjectSerializer.serial_datum_all
+                                     ).serialize()
         response = JsonResponse(serialized_data, status=200)
         return response
 
