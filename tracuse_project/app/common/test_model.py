@@ -235,3 +235,58 @@ class TestModelEntityMixin(TestCase):
         actual = self.test_object.readable_plural_name
         expected = "custom plural names"
         self.assertEqual(expected, actual)
+
+
+class TestSerializers(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataCommon()
+
+
+    def test_set_serializer_method(self):
+        """Test _set_serialize_method
+        using DatumObjectSerializer.element_name_value
+        """
+        from .serializers import Serializer
+        from app.datum.serializers import DatumObjectSerializer
+
+        test_serializer = Serializer(data={},
+                                     serializer="datum.DatumObjectSerializer.element_name_value"
+                                     )
+        actual = test_serializer._set_serializer_method()
+        expected = DatumObjectSerializer.element_name_value
+        self.assertEqual(expected, actual)
+
+    def test_serialize_orm_queryset(self):
+        """Test serialize_orm method
+        using DatumObjectSerializer.element_name_value
+        """
+        from .serializers import Serializer
+        from app.datum.models import DatumObject
+        from app.datum.serializers import DatumObjectSerializer
+
+        test_queryset = DatumObject.objects.all()
+        test_data = Serializer(data=test_queryset,
+                               serializer=DatumObjectSerializer.element_name_value
+                               ).serialize()
+
+        actual_count = len(test_data)
+        expected_count = 1
+        self.assertEqual(expected_count, actual_count)
+
+    def test_serialize_orm_instance(self):
+        """Test serialize_orm method
+        using DatumObjectSerializer.element_name_value
+        """
+        from .serializers import Serializer
+        from app.datum.models import DatumObject
+        from app.datum.serializers import DatumObjectSerializer
+
+        test_object = DatumObject.objects.first()
+        test_data = Serializer(data=test_object,
+                               serializer=DatumObjectSerializer.element_name_value
+                               ).serialize()
+
+        actual = test_data["name"]
+        expected = "Test Object Name"
+        self.assertEqual(expected, actual)

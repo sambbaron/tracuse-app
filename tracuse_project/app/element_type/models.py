@@ -3,7 +3,8 @@ from django.template import Context, Template
 
 from app.common.models import EntityMixin, BaseMixin
 from app.element_value.models import ElementValueModel
-from app.datum.serializers import datum_object_element_expr
+
+from app.common.serializers import Serializer
 
 
 class ElementDataType(EntityMixin):
@@ -259,12 +260,11 @@ class ElementDatumObject(BaseMixin):
 
         if expression:
             template = Template(expression)
-            datum_dict = datum_object_element_expr(self.datum_object)
+            datum_dict = Serializer(data=self.datum_object,
+                                      serializer="datum.DatumObjectSerializer.element_name_value"
+                                      ).serialize()
             context = Context(datum_dict)
             output = template.render(context)
-
-        # if not output or output is None:
-        #     output = "Blank {}".format(self.datum_type)
 
         return output
 

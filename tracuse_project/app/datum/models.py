@@ -10,7 +10,7 @@ from app.element_value.models import ElementValueModel
 from app.association.models import AssociationAll
 
 from .datum_methods import DatumObjectMethodFactory
-from .serializers import datum_object_element_expr
+from app.common.serializers import Serializer
 
 
 class DatumGroup(EntityMixin):
@@ -151,7 +151,9 @@ class DatumObject(BaseMixin):
 
         if expression:
             template = Template(expression)
-            element_dict = datum_object_element_expr(self)
+            element_dict = Serializer(data=self,
+                                      serializer="datum.DatumObjectSerializer.element_name_value"
+                                      ).serialize()
             context = Context(element_dict)
             output = template.render(context)
 

@@ -1,21 +1,25 @@
 
+from .models import DatumObject
 
-def datum_object_element_expr(datum_object):
-    """Return elements for expression evaluation
+class DatumObjectSerializer(DatumObject):
 
-    Returns:
-        Dictionary:
-            Key: element_type.schema_name
-            Value: element_value.elvalue
-    """
-    output = {}
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
-    for element in datum_object.elements:
-        element_name = element.element_type.schema_name
-        element_value = element.element_value
-        if element_value:
-            output[element_name] = element_value.elvalue
+    def element_name_value(self):
+        """Return elements for expression evaluation
 
-    return output
+        Returns:
+            Dictionary:
+                Key: element_type.schema_name
+                Value: element_value.elvalue
+        """
+        output = {}
 
+        for element in self.elements:
+            element_name = element.element_type.schema_name
+            element_value = element.element_value
+            if element_value:
+                output[element_name] = element_value.elvalue
 
+        return output
