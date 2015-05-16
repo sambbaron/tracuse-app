@@ -259,8 +259,8 @@ class TestSerializers(TestCase):
         expected = DatumObjectSerializer.element_name_value
         self.assertEqual(expected, actual)
 
-    def test_serialize_orm_queryset(self):
-        """Test serialize_orm method
+    def test_serialize_queryset(self):
+        """Test serialize method
         using DatumObjectSerializer.element_name_value
         """
         from .serializers import Serializer
@@ -276,8 +276,8 @@ class TestSerializers(TestCase):
         expected_count = 1
         self.assertEqual(expected_count, actual_count)
 
-    def test_serialize_orm_instance(self):
-        """Test serialize_orm method
+    def test_serialize_instance(self):
+        """Test serialize method
         using DatumObjectSerializer.element_name_value
         """
         from .serializers import Serializer
