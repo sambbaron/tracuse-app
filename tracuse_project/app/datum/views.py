@@ -19,7 +19,7 @@ class DatumObjectAll(View):
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-        super().dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
         # if obj.user == request.user
 
     def get(self, request):
@@ -48,8 +48,7 @@ class DatumObjectOne(View):
 
     @login_required
     def dispatch(self, request, *args, **kwargs):
-        super().dispatch(request, *args, **kwargs)
-        # if obj.user == request.user
+        return super().dispatch(request, *args, **kwargs)# if obj.user == request.user
 
     def get_object(self, pk):
         try:
