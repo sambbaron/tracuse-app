@@ -2,9 +2,20 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+
 from app.datum.models import (DatumGroup,
                               DatumType,
                               DatumObject)
+
+
+@api_view(('GET',))
+def api_root(request, format=None):
+    return Response({
+        'datum_objects': reverse('datum-objects-list', request=request, format=format)
+    })
 
 @login_required
 def app_index(request):

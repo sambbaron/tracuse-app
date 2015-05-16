@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^app/', include('app.common.urls')),
     url(r'^api/', include('app.common.api')),
+    url(r'^api/', include('rest_framework.urls',
+                          namespace='rest_framework')),
 
 
     # Tester Page

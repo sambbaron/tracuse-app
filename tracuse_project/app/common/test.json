@@ -1,0 +1,15 @@
+{
+  'datum_type_id': 6,
+  'datum_object_id': 22,
+  'child:datums': [22],
+  'parent_datums': [22],
+  'element': {
+    'description': '',
+    'city': '',
+    'country': '',
+    'zip': '',
+    'name': '',
+    'street_address': '',
+    'state': ''
+  }
+}

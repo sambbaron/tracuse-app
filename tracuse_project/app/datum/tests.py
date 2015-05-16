@@ -245,7 +245,7 @@ class TestSerializersDatum(TestCase):
     def test_datum_object_element_expr(self):
         """Test datum_object_element_expr
         """
-        from .serializers import datum_object_element_expr
+        from datum.serializers import datum_object_element_expr
 
         test_object = self.test.datum_object1
         actual = datum_object_element_expr(test_object)
