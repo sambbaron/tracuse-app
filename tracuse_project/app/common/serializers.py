@@ -1,7 +1,9 @@
 import importlib
+import json
 
 from django.apps import apps
 from django.db.models import QuerySet
+from django.core.serializers.json import DjangoJSONEncoder
 
 
 class Serializer(object):
@@ -12,15 +14,15 @@ class Serializer(object):
         serializer:
             Serializer object: class.method object OR
             Serializer string: 'app_name.serializer_class.serializer.method'
-        many: Whether data is single instance or multiple instances
+        format: Serialize output format
+            If none, return dictionary
 
     """
 
-    def __init__(self, data, serializer):
+    def __init__(self, data, serializer, format=None):
         self.data = data
         self.serializer = serializer
-        self.many = False
-
+        self.format = format
 
     def _set_serializer_method(self):
         """Convert serializer string to serializer method
@@ -46,6 +48,19 @@ class Serializer(object):
 
         return serializer_method
 
+    def _format_output(self, dict_output):
+        """Format serialized data into common type"""
+
+        formatted_output = dict_output
+
+        if self.format == "json":
+            formatted_output = json.dumps(dict_output,
+                                          cls=DjangoJSONEncoder,
+                                          indent=4
+                                          )
+
+        return formatted_output
+
     def serialize(self):
         """Output serialized data using app serializers
 
@@ -62,5 +77,7 @@ class Serializer(object):
                 output.append(serialized_obj)
         else:
             output = serializer(self.data)
+
+        output = self._format_output(output)
 
         return output

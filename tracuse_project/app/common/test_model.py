@@ -1,3 +1,5 @@
+import json
+
 from django.test import TestCase, mock
 
 from .test_data import TestDataCommon
@@ -290,3 +292,20 @@ class TestSerializers(TestCase):
         actual = test_data["name"]
         expected = "Test Object Name"
         self.assertEqual(expected, actual)
+
+    def test_format_serialize_json(self):
+        """Test _format_output method
+        with json
+        """
+        from .serializers import Serializer
+
+        test_data = {"test_string": "string", "test_number": 5}
+        test_serializer = Serializer(data=test_data,
+                                     serializer="",
+                                     format="json"
+                                     )
+        test_json = test_serializer._format_output(test_data)
+        actual = type(test_json)
+        expected = str
+        self.assertEqual(expected, actual)
+        json.loads(test_json)
