@@ -248,5 +248,19 @@ class TestDatumObjectSerializer(TestCase):
         from .serializers import DatumObjectSerializer
 
         test_object = self.test.datum_object1
-        actual = DatumObjectSerializer.element_name_value(test_object)
-        self.assertEqual("Test Object Name", actual["name"])
+        test_serialized = DatumObjectSerializer.element_name_value(test_object)
+        actual = test_serialized["name"]
+        expected = "Test Object Name"
+        self.assertEqual(expected, actual)
+
+
+    def test_datum_all(self):
+        """Test DatumObjectSerializer.datum_all
+        """
+        from .serializers import DatumObjectSerializer
+
+        test_object = self.test.datum_object1
+        test_serialized = DatumObjectSerializer.datum_all(test_object)
+        actual = test_serialized["datum_type"]
+        expected = self.test.datum_type1.datum_type_id
+        self.assertEqual(expected, actual)
