@@ -229,12 +229,12 @@ class ElementDatumObject(BaseModel):
         return "{} - {}".format(self.datum_object.__str__(), self.element_type.readable_name)
 
     @property
-    def data_type(self):
+    def data_type_name(self):
         return self.element_type.element_data_type.entity_name
 
     @property
     def element_value_model(self):
-        return ElementValueMeta(self.data_type)
+        return ElementValueMeta(self.data_type_name)
 
     @property
     def element_value(self):
