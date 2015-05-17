@@ -6,11 +6,7 @@ class ElementTypeSerializer(ElementType, Serializer):
         abstract = True
 
     def serial_basic(self):
-        """Element types with all properties
-
-        Returns:
-            Key: element_type_id
-            Value: Property Dictionary
+        """All properties
         """
         output = {}
         for field in ElementType._meta.fields:
@@ -20,6 +16,22 @@ class ElementTypeSerializer(ElementType, Serializer):
         return output
 
     ElementType.serial_basic = serial_basic
+
+class ElementDatumTypeSerializer(ElementDatumType, Serializer):
+    class Meta:
+        abstract = True
+
+    def serial_basic(self):
+        """All properties
+        """
+        output = {}
+        for field in ElementDatumType._meta.fields:
+            column_name = field.get_attname_column()[1]
+            output[column_name] = getattr(self, column_name)
+
+        return output
+
+    ElementDatumType.serial_basic = serial_basic
 
 
 class ElementDatumObjectSerializer(ElementDatumObject):

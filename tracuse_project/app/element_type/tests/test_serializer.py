@@ -3,6 +3,7 @@ from django.test import TestCase
 from app.datum.tests.test_data import TestDataDatum
 
 from ..serializers import (ElementTypeSerializer,
+                           ElementDatumTypeSerializer,
                            ElementDatumObjectSerializer)
 
 
@@ -19,6 +20,22 @@ class TestElementTypeSerializer(TestCase):
             serial_basic(test_object)
         actual = test_serialized["entity_name"]
         expected = "Name"
+        self.assertEqual(expected, actual)
+
+
+class TestElementDatumTypeSerializer(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataDatum()
+
+    def test_serial_basic(self):
+        """Test ElementDatumTypeSerializer.serial_basic
+        """
+        test_object = self.test.element_datum_type1
+        test_serialized = ElementDatumTypeSerializer. \
+            serial_basic(test_object)
+        actual = test_serialized["entity_name"]
+        expected = "TestDatumType1Name"
         self.assertEqual(expected, actual)
 
 
