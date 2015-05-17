@@ -1,6 +1,6 @@
 from django.test import TestCase, mock
 
-from datum.tests.test_data import TestDataDatum
+from app.datum.tests.test_data import TestDataDatum
 
 
 class TestModelElementOption(TestCase):
