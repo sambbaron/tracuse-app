@@ -1,4 +1,5 @@
 from .models import ElementType, ElementDatumType, ElementDatumObject
+
 from app.common.serializers import serialize_all
 
 

@@ -1,6 +1,32 @@
-from .models import DatumObject
+from .models import DatumGroup, DatumType, DatumObject
 
 from app.element_type.serializers import ElementDatumObjectSerializer
+
+from app.common.serializers import serialize_all
+
+
+class DatumGroupSerializer(DatumGroup):
+    class Meta:
+        abstract = True
+
+    def serial_basic(self):
+        """All properties"""
+        output = serialize_all(self.__class__, self)
+        return output
+
+    DatumGroup.serial_basic = serial_basic
+
+
+class DatumTypeSerializer(DatumType):
+    class Meta:
+        abstract = True
+
+    def serial_basic(self):
+        """All properties"""
+        output = serialize_all(self.__class__, self)
+        return output
+
+    DatumType.serial_basic = serial_basic
 
 
 class DatumObjectSerializer(DatumObject):
