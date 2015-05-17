@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 
-class BaseMixinAdmin(admin.ModelAdmin):
+class BaseModelAdmin(admin.ModelAdmin):
     actions_on_top = True
     save_on_top = True
 
@@ -16,7 +16,7 @@ class BaseMixinAdmin(admin.ModelAdmin):
     ordering = ["sort"]
 
 
-class BaseMixinInline(admin.TabularInline):
+class BaseModelInline(admin.TabularInline):
     fields = (("__str__", "active", "sort"),)
     readonly_fields = ("__str__", )
 
@@ -27,7 +27,7 @@ class BaseMixinInline(admin.TabularInline):
     ordering = ["sort"]
 
 
-class EntityMixinAdmin(admin.ModelAdmin):
+class EntityModelAdmin(admin.ModelAdmin):
     actions_on_top = True
     save_on_top = True
 
@@ -48,7 +48,7 @@ class EntityMixinAdmin(admin.ModelAdmin):
     ordering = ["sort"]
 
 
-class EntityMixinInline(admin.TabularInline):
+class EntityModelInline(admin.TabularInline):
     fields = ("__str__", "active", "sort", "entity_name",
               "short_definition", "long_definition",
               "readable_name", "readable_plural_name", "schema_name")

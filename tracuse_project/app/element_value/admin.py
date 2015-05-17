@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .models import ElementValueModel
+from .models import ElementValueMeta
 
 
 class ElementValuesInline(admin.TabularInline):
-    model = ElementValueModel("String")
+    model = ElementValueMeta("String")
 

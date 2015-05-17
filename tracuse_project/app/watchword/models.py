@@ -1,16 +1,16 @@
 from django.db import models
 
-from app.common.models import BaseMixin
+from app.common.models import BaseModel
 
 
-class WatchwordMixin(BaseMixin):
+class WatchwordModel(BaseModel):
     """Common columns for Watchword models
 
     Keywords used to trigger object filtering
         and automatic associations
 
     Attributes:
-        See BaseMixin
+        See BaseModel
         watchword (string, required):
             words or phrase to assign objects
         filter_test_scope (integer, fk, optional):
@@ -18,7 +18,7 @@ class WatchwordMixin(BaseMixin):
             If null, then watchword is tested against all objects
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         abstract = True
         default_related_name = "watchwords"
 
@@ -31,16 +31,16 @@ class WatchwordMixin(BaseMixin):
                                           )
 
 
-class WatchwordDatumType(WatchwordMixin):
+class WatchwordDatumType(WatchwordModel):
     """Datum Type Watchwords
 
     Attributes:
-        See WatchwordMixin (see BaseMixin)
+        See WatchwordModel (see BaseModel)
         datum_type_id (integer, fk, required):
             DatumType
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         db_table = "watchword_datum_type"
         verbose_name = "Datum Type Watchword"
 
@@ -51,16 +51,16 @@ class WatchwordDatumType(WatchwordMixin):
                                    )
 
 
-class WatchwordDatumObject(WatchwordMixin):
+class WatchwordDatumObject(WatchwordModel):
     """Datum Element Value Watchwords
 
     Attributes:
-        See WatchwordMixin (see BaseMixin)
+        See WatchwordModel (see BaseModel)
         datum_object_id (integer, fk, required):
             DatumObject
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         db_table = "watchword_datum_object"
         verbose_name = "Datum Object Watchword"
 
@@ -71,16 +71,16 @@ class WatchwordDatumObject(WatchwordMixin):
                                      )
 
 
-class WatchwordAssociationType(WatchwordMixin):
+class WatchwordAssociationType(WatchwordModel):
     """Association Type Watchwords
 
     Attributes:
-        See WatchwordMixin (see BaseMixin)
+        See WatchwordModel (see BaseModel)
         association_type_id (integer, fk, required):
             AssociationType
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         db_table = "watchword_association_type"
         verbose_name = "Association Type Watchword"
 

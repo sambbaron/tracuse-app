@@ -34,7 +34,7 @@ class TestModelBaseMixin(TestCase):
 
 
     def test_last_sort_value_no_sort_range(self):
-        """Test BaseMixin._last_sort_value
+        """Test BaseModel._last_sort_value
         without sort range - returns maximum sort value
             of all objects
         """
@@ -44,7 +44,7 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_last_sort_value_with_sort_range(self):
-        """Test BaseMixin._last_sort_value
+        """Test BaseModel._last_sort_value
         with sort range - returns maximum sort value
             of objects in sequence
         """
@@ -54,7 +54,7 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_calc_sort_with_after_object(self):
-        """Test BaseMixin._calc_sort_value method
+        """Test BaseModel._calc_sort_value method
         with object to sort after
         """
         test_object = self.test.datum_type2
@@ -67,7 +67,7 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_calc_sort_without_after_object(self):
-        """Test BaseMixin._calc_sort_value method
+        """Test BaseModel._calc_sort_value method
         without object to sort after
         """
         test_object = self.test.datum_type2
@@ -79,7 +79,7 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_calc_sort_multiple_parts(self):
-        """Test BaseMixin._calc_sort_value method
+        """Test BaseModel._calc_sort_value method
         with more than one parent prefix part
         with no after_object: add to end
         """
@@ -95,7 +95,7 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_calc_sort_no_base_sort(self):
-        """Test BaseMixin._calc_sort_value method
+        """Test BaseModel._calc_sort_value method
         with no zero fill: sort_base_length = -1
         with no after_object: add to end
         """
@@ -111,7 +111,7 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_calc_sort_prefix_reset(self):
-        """Test BaseMixin._calc_sort_value method
+        """Test BaseModel._calc_sort_value method
         with new prefix sort
         base value resets
         """
@@ -126,7 +126,7 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_get_sort_value_with_after_object(self):
-        """Test BaseMixin.get_sort_value method
+        """Test BaseModel.get_sort_value method
         with object to sort after
         """
         test_object = self.test.datum_type2
@@ -135,7 +135,7 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_get_sort_value_without_after_object(self):
-        """Test BaseMixin.get_sort_value method
+        """Test BaseModel.get_sort_value method
         with object to sort after
         """
         test_object = self.test.datum_type2
@@ -144,7 +144,7 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_save_sort_value(self):
-        """Test BaseMixin.save method"""
+        """Test BaseModel.save method"""
         test_object = self.test.datum_type2
         with mock.patch("django.db.models.base.Model.save"):
             test_object.save()
@@ -153,7 +153,7 @@ class TestModelBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_reset_sort(self):
-        """Test BaseMixin.reset_sort method"""
+        """Test BaseModel.reset_sort method"""
         from app.datum.models import DatumGroup
 
         DatumGroup.reset_sort()
@@ -177,7 +177,7 @@ class TestModelEntityMixin(TestCase):
 
 
     def test_entity_str(self):
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             self.test_object.save()
 
         actual = self.test_object.__str__()
@@ -186,7 +186,7 @@ class TestModelEntityMixin(TestCase):
 
     def test_readable_name_input(self):
         self.test_object.readable_name = "Custom Readable Name"
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             self.test_object.save()
 
         actual = self.test_object.readable_name
@@ -194,7 +194,7 @@ class TestModelEntityMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_schema_name_default(self):
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             self.test_object.save()
 
         actual = self.test_object.schema_name
@@ -203,7 +203,7 @@ class TestModelEntityMixin(TestCase):
 
     def test_schema_name_input(self):
         self.test_object.schema_name = "custom_schema_name"
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             self.test_object.save()
 
         actual = self.test_object.schema_name
@@ -211,7 +211,7 @@ class TestModelEntityMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_readable_plural_name_default_s(self):
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             self.test_object.save()
 
         actual = self.test_object.readable_plural_name
@@ -220,7 +220,7 @@ class TestModelEntityMixin(TestCase):
 
     def test_readable_plural_name_default_es(self):
         self.test_object.entity_name = "ThisStatus"
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             self.test_object.save()
 
         actual = self.test_object.readable_plural_name
@@ -229,7 +229,7 @@ class TestModelEntityMixin(TestCase):
 
     def test_readable_plural_name_input(self):
         self.test_object.readable_plural_name = "custom plural names"
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             self.test_object.save()
 
         actual = self.test_object.readable_plural_name

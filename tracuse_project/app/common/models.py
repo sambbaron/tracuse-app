@@ -7,7 +7,7 @@ from .managers import (BaseMixinManagerActive,
                        BaseMixinManagerInactive)
 
 
-class BaseMixin(models.Model):
+class BaseModel(models.Model):
     """Adds default column set
 
     Attributes:
@@ -148,11 +148,11 @@ class BaseMixin(models.Model):
             after_object = obj
 
 
-class EntityMixin(BaseMixin):
+class EntityModel(BaseModel):
     """Common properties for models that define an entity
 
     Attributes:
-        See BaseMixin
+        See BaseModel
         entity_name (string, required, unique, indexed):
             CamelCase entity name --> ItemStatus
             Used for class mapping

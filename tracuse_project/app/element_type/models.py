@@ -1,13 +1,13 @@
 from django.db import models
 from django.template import Context, Template
 
-from app.common.models import EntityMixin, BaseMixin
-from app.element_value.models import ElementValueModel
+from app.common.models import EntityModel, BaseModel
+from app.element_value.models import ElementValueMeta
 
 from app.common.serializers import Serializer
 
 
-class ElementDataType(EntityMixin):
+class ElementDataType(EntityModel):
     """Data types available to Elements
 
     Mapped to element value tables
@@ -21,7 +21,7 @@ class ElementDataType(EntityMixin):
             "Element" + data type schema name --> element_string
     """
 
-    class Meta(EntityMixin.Meta):
+    class Meta(EntityModel.Meta):
         db_table = "element_data_type"
         verbose_name = "Element Data Type"
 
@@ -30,13 +30,13 @@ class ElementDataType(EntityMixin):
     sort_base_length = 2
 
 
-class ElementType(EntityMixin):
+class ElementType(EntityModel):
     """Property types available to Datums
 
     Used to define data presentation and formatting
 
     Attributes:
-        See EntityMixin (includes BaseMixin)
+        See EntityModel (includes BaseModel)
         data_type (integer, fk, required): DataType
             --> string, integer, datetime, etc.
         str_expression (string): Expression in django template language
@@ -49,7 +49,7 @@ class ElementType(EntityMixin):
             related datum objects from ElementDatumObject
     """
 
-    class Meta(EntityMixin.Meta):
+    class Meta(EntityModel.Meta):
         db_table = "element_type"
 
     element_type_id = models.AutoField(primary_key=True)
@@ -80,7 +80,7 @@ class ElementType(EntityMixin):
     sort_base_length = 3
 
 
-class ElementOption(EntityMixin):
+class ElementOption(EntityModel):
     """Value options for elements
 
     Example:
@@ -91,7 +91,7 @@ class ElementOption(EntityMixin):
         element_type_id (integer, fk): ElementType
     """
 
-    class Meta(EntityMixin.Meta):
+    class Meta(EntityModel.Meta):
         db_table = "element_option"
         verbose_name = "Element Option"
 
@@ -109,7 +109,7 @@ class ElementOption(EntityMixin):
         return [self.element_type.sort]
 
 
-class ElementDatumType(EntityMixin):
+class ElementDatumType(EntityModel):
     """Default Element Types assigned to Datum Types
 
     Used to define data function and logic
@@ -123,7 +123,7 @@ class ElementDatumType(EntityMixin):
             Used for defaults and updates
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         db_table = "element_datum_type"
         verbose_name = "Datum Type - Element"
         unique_together = ("datum_type", "element_type")
@@ -185,7 +185,7 @@ class ElementDatumType(EntityMixin):
         super().save(*args, **kwargs)
 
 
-class ElementDatumObject(BaseMixin):
+class ElementDatumObject(BaseModel):
     """Element Types assigned to Datum Objects
 
     One-To-One relationship with Element Values tables
@@ -199,7 +199,7 @@ class ElementDatumObject(BaseMixin):
             'elvalue' column from ElementValue model record
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         db_table = "element_datum_object"
         verbose_name = "Datum Object - Element"
         unique_together = ("datum_object", "element_type")
@@ -234,7 +234,7 @@ class ElementDatumObject(BaseMixin):
 
     @property
     def element_value_model(self):
-        return ElementValueModel(self.data_type)
+        return ElementValueMeta(self.data_type)
 
     @property
     def element_value(self):

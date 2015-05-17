@@ -1,10 +1,10 @@
 from django.db import models
 from django.template import Context, Template
 
-from app.common.models import BaseMixin
+from app.common.models import BaseModel
 
 
-class ElementValueModel(object):
+class ElementValueMeta(object):
     """Factory class for ElementValue models
 
     Model Name = "ElementValue" + ElementDataType.entity_name
@@ -21,14 +21,14 @@ class ElementValueModel(object):
             raise NameError("{} model class does not exist".format(value_model_name))
 
 
-class ElementValueMixin(BaseMixin):
+class ElementValueModel(BaseModel):
     """Common columns for ElementValue models
 
     Type-specific tables
     Mapped to ElementDataType model
 
     Attributes:
-        See BaseMixin
+        See BaseModel
         datum_object_id (integer, fk, required): DatumObject
          element_datum_object (integer, fk, required):
             ElementDatumObject --> One-To-One
@@ -38,7 +38,7 @@ class ElementValueMixin(BaseMixin):
     """
 
     # FIXME Django Limitation - Can't create custom Meta property for db_table expression
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         abstract = True
         verbose_name = "Element Value"
 
@@ -83,15 +83,15 @@ class ElementValueMixin(BaseMixin):
         return self.element_datum_object.element_type
 
 
-class ElementValueString(ElementValueMixin):
+class ElementValueString(ElementValueModel):
     """String-Type Element Values
 
     Attributes:
-        See ElementValueMixin (includes BaseMixin)
+        See ElementValueModel (includes BaseModel)
         elvalue (string, optional)
     """
 
-    class Meta(ElementValueMixin.Meta):
+    class Meta(ElementValueModel.Meta):
         db_table = "element_value_string"
         default_related_name = "element_value_string"
 
@@ -102,15 +102,15 @@ class ElementValueString(ElementValueMixin):
                                )
 
 
-class ElementValueTextData(ElementValueMixin):
+class ElementValueTextData(ElementValueModel):
     """Long text data Element Values
 
     Attributes:
-        See ElementValueMixin (includes BaseMixin)
+        See ElementValueModel (includes BaseModel)
         elvalue (text, optional)
     """
 
-    class Meta(ElementValueMixin.Meta):
+    class Meta(ElementValueModel.Meta):
         db_table = "element_value_textdata"
         default_related_name = "element_value_textdata"
 
@@ -120,15 +120,15 @@ class ElementValueTextData(ElementValueMixin):
                                )
 
 
-class ElementValueBoolean(ElementValueMixin):
+class ElementValueBoolean(ElementValueModel):
     """Boolean-type Element Values
 
     Attributes:
-        See ElementValueMixin (includes BaseMixin)
+        See ElementValueModel (includes BaseModel)
         elvalue (boolean)
     """
 
-    class Meta(ElementValueMixin.Meta):
+    class Meta(ElementValueModel.Meta):
         db_table = "element_value_boolean"
         default_related_name = "element_value_boolean"
 
@@ -136,15 +136,15 @@ class ElementValueBoolean(ElementValueMixin):
     elvalue = models.BooleanField(default=False)
 
 
-class ElementValueDatetime(ElementValueMixin):
+class ElementValueDatetime(ElementValueModel):
     """Datetime-Type Element Values
 
     Attributes:
-        See ElementValueMixin (includes BaseMixin)
+        See ElementValueModel (includes BaseModel)
         elvalue (datetime, optional)
     """
 
-    class Meta(ElementValueMixin.Meta):
+    class Meta(ElementValueModel.Meta):
         db_table = "element_value_datetime"
         default_related_name = "element_value_datetime"
 
@@ -153,15 +153,15 @@ class ElementValueDatetime(ElementValueMixin):
                                    )
 
 
-class ElementValueDecimal(ElementValueMixin):
+class ElementValueDecimal(ElementValueModel):
     """Decimal-Type Element Values
 
     Attributes:
-        See ElementValueMixin (includes BaseMixin)
+        See ElementValueModel (includes BaseModel)
         elvalue (decimal, optional)
     """
 
-    class Meta(ElementValueMixin.Meta):
+    class Meta(ElementValueModel.Meta):
         db_table = "element_value_decimal"
         default_related_name = "element_value_decimal"
 
@@ -171,15 +171,15 @@ class ElementValueDecimal(ElementValueMixin):
                                   )
 
 
-class ElementValueBinary(ElementValueMixin):
+class ElementValueBinary(ElementValueModel):
     """Binary/Blob-Type Element Values
 
     Attributes:
-        See ElementValueMixin (includes BaseMixin)
+        See ElementValueModel (includes BaseModel)
         elvalue (binary, optional)
     """
 
-    class Meta(ElementValueMixin.Meta):
+    class Meta(ElementValueModel.Meta):
         db_table = "element_value_binary"
         default_related_name = "element_value_binary"
 

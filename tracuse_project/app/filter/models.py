@@ -2,19 +2,19 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-from app.common.models import EntityMixin, BaseMixin
+from app.common.models import EntityModel, BaseModel
 
 
-class FilterRuleMixin(BaseMixin):
+class FilterRuleModel(BaseModel):
     """Common properties for Filter Rules
 
     Attributes:
-        See BaseMixin
+        See BaseModel
         operator (string, required):  -> = <> => <=
         conditional (string, optional): And, Or
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         abstract = True
 
     CONDITIONAL_CHOICES = (
@@ -32,15 +32,15 @@ class FilterRuleMixin(BaseMixin):
                                    )
 
 
-class FilterRuleGroup(FilterRuleMixin):
+class FilterRuleGroup(FilterRuleModel):
     """Filter Rules by Datum Group
 
     Attributes:
-        See FilterRuleMixin (includes BaseMixin)
+        See FilterRuleModel (includes BaseModel)
         datum_group_id (integer, fk, required): DatumGroup
     """
 
-    class Meta(FilterRuleMixin.Meta):
+    class Meta(FilterRuleModel.Meta):
         db_table = "filter_rule_group"
         verbose_name = "Filter Rule - Group"
 
@@ -52,15 +52,15 @@ class FilterRuleGroup(FilterRuleMixin):
                                     )
 
 
-class FilterRuleType(FilterRuleMixin):
+class FilterRuleType(FilterRuleModel):
     """Filter Rules by Datum Type
 
     Attributes:
-        See FilterRuleMixin (includes BaseMixin)
+        See FilterRuleModel (includes BaseModel)
         datum_type_id (integer, fk, required): DatumType
     """
 
-    class Meta(FilterRuleMixin.Meta):
+    class Meta(FilterRuleModel.Meta):
         db_table = "filter_rule_type"
         verbose_name = "Filter Rule - Type"
 
@@ -72,18 +72,18 @@ class FilterRuleType(FilterRuleMixin):
                                    )
 
 
-class FilterRuleAssociation(FilterRuleMixin):
+class FilterRuleAssociation(FilterRuleModel):
     """Filter Rules by Datum Association
 
     Attributes:
-        See FilterRuleMixin (includes BaseMixin)
+        See FilterRuleModel (includes BaseModel)
         datum_object_id (integer, fk, required): DatumObject
         association_direction_id (integer, fk, required): AssociationDirection
         association_type_id (integer, fk, required): AssociationType
         distance (integer, required): from datum object
     """
 
-    class Meta(FilterRuleMixin.Meta):
+    class Meta(FilterRuleModel.Meta):
         db_table = "filter_rule_association"
         verbose_name = "Filter Rule - Association"
 
@@ -108,16 +108,16 @@ class FilterRuleAssociation(FilterRuleMixin):
                                    )
 
 
-class FilterRuleElement(FilterRuleMixin):
+class FilterRuleElement(FilterRuleModel):
     """Filter Rules by Element Value
 
     Attributes:
-        See FilterRuleMixin (includes BaseMixin)
+        See FilterRuleModel (includes BaseModel)
         element_type_id (integer, fk, required): ElementType
         elvalue (string):  ***Must match value
     """
 
-    class Meta(FilterRuleMixin.Meta):
+    class Meta(FilterRuleModel.Meta):
         db_table = "filter_rule_element"
         verbose_name = "Filter Rule - Element"
 
@@ -130,17 +130,17 @@ class FilterRuleElement(FilterRuleMixin):
     elvalue = models.CharField(max_length=255)
 
 
-class FilterSet(EntityMixin):
+class FilterSet(EntityModel):
     """Datum Filters with rules
 
     Multiple Uses: Views and Associations
 
     Attributes:
-        See EntityMixin (includes BaseMixin)
+        See EntityModel (includes BaseModel)
         user_id (integer, fk, optional): User
     """
 
-    class Meta(EntityMixin.Meta):
+    class Meta(EntityModel.Meta):
         db_table = "filter_set"
         verbose_name = "Filter Set"
 
@@ -153,17 +153,17 @@ class FilterSet(EntityMixin):
                                 )
 
 
-class FilterSetRuleMixin(BaseMixin):
+class FilterSetRuleModel(BaseModel):
     """Common properties for assigning Filter Rules to Filter Sets
 
     Includes rule ordering
 
     Attributes:
-        See BaseMixin
+        See BaseModel
         filter_set_id (integer, fk, required): FilterSet
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         abstract = True
 
     filter_set_id = models.ForeignKey("FilterSet",
@@ -172,15 +172,15 @@ class FilterSetRuleMixin(BaseMixin):
                                       )
 
 
-class FilterSetGroupRule(FilterSetRuleMixin):
+class FilterSetGroupRule(FilterSetRuleModel):
     """Assign Group Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleMixin (includes Base)
+        See FilterSetRuleModel (includes Base)
         filter_rule_group_id (integer, fk, required): FilterRuleGroup
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         db_table = "filter_set_group_rule"
         default_related_name = "filter_set_group_rules"
 
@@ -191,15 +191,15 @@ class FilterSetGroupRule(FilterSetRuleMixin):
                                              )
 
 
-class FilterSetTypeRule(FilterSetRuleMixin):
+class FilterSetTypeRule(FilterSetRuleModel):
     """Assign Type Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleMixin (includes Base)
+        See FilterSetRuleModel (includes Base)
         filter_rule_type_id (integer, fk, required): FilterRuleType
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         db_table = "filter_set_type_rule"
         default_related_name = "filter_set_type_rules"
 
@@ -210,15 +210,15 @@ class FilterSetTypeRule(FilterSetRuleMixin):
                                             )
 
 
-class FilterSetAssociationRule(FilterSetRuleMixin):
+class FilterSetAssociationRule(FilterSetRuleModel):
     """Assign Association Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleMixin (includes Base)
+        See FilterSetRuleModel (includes Base)
         filter_rule_association_id (integer, fk, required): FilterRuleAssociation
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         db_table = "filter_set_association_rule"
         default_related_name = "filter_set_association_rules"
 
@@ -229,15 +229,15 @@ class FilterSetAssociationRule(FilterSetRuleMixin):
                                                    )
 
 
-class FilterSetElementRule(FilterSetRuleMixin):
+class FilterSetElementRule(FilterSetRuleModel):
     """Assign Element Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleMixin (includes Base)
+        See FilterSetRuleModel (includes Base)
         filter_rule_element_id (integer, fk, required): FilterRuleElement
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         db_table = "filter_set_element_rule"
         default_related_name = "filter_set_element_rules"
 

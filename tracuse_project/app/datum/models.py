@@ -4,26 +4,26 @@ from django.template import Context, Template
 
 from django.contrib.auth.models import User
 
-from app.common.models import EntityMixin, BaseMixin
+from app.common.models import EntityModel, BaseModel
 from app.element_type.models import ElementType, ElementDatumObject
-from app.element_value.models import ElementValueModel
+from app.element_value.models import ElementValueMeta
 from app.association.models import AssociationAll
 
 from .datum_methods import DatumObjectMethodFactory
 from app.common.serializers import Serializer
 
 
-class DatumGroup(EntityMixin):
+class DatumGroup(EntityModel):
     """Collection of Datum Types
 
     Has common functional uses
 
     Attributes:
-        See EntityMixin (includes BaseMixin)
+        See EntityModel (includes BaseModel)
             sort (integer): 2-digit number
     """
 
-    class Meta(EntityMixin.Meta):
+    class Meta(EntityModel.Meta):
         db_table = "datum_group"
         verbose_name = "Datum Group"
 
@@ -32,13 +32,13 @@ class DatumGroup(EntityMixin):
     sort_base_length = 2
 
 
-class DatumType(EntityMixin):
+class DatumType(EntityModel):
     """Type of Datum Objects
 
     Has common functional use and properties (elements)
 
     Attributes:
-        See EntityMixin (includes BaseMixin)
+        See EntityModel (includes BaseModel)
             sort (integer): DatumGroup.sort + 3-digit number
         datum_group_id (integer, fk, required): DatumGroup
         headline_expr (string): Expression in django template language
@@ -48,7 +48,7 @@ class DatumType(EntityMixin):
             related element types from ElementDatumType
     """
 
-    class Meta(EntityMixin.Meta):
+    class Meta(EntityModel.Meta):
         db_table = "datum_type"
         verbose_name = "Datum Type"
 
@@ -73,14 +73,14 @@ class DatumType(EntityMixin):
         return [self.datum_group.sort]
 
 
-class DatumObject(BaseMixin):
+class DatumObject(BaseModel):
     """Primary personal information data object
 
     Node/Vertex in graph
     Has Datum Type which defines properties (elements)
 
     Attributes:
-        See BaseMixin
+        See BaseModel
             sort (integer): DatumType.sort + single increment
         user_id (integer, fk, required): User
         datum_type_id (integer, fk, required): DatumType
@@ -94,7 +94,7 @@ class DatumObject(BaseMixin):
             ElementDatumObject objects
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         db_table = "datum_object"
         verbose_name = "Datum"
 
@@ -316,7 +316,7 @@ class DatumObject(BaseMixin):
 
                 # Create ElementValue object
                 data_type_name = element_type.element_data_type.entity_name
-                ElementValueModel(data_type_name=data_type_name). \
+                ElementValueMeta(data_type_name=data_type_name). \
                     objects.create(element_datum_object=
                                    element_datum_object)
 

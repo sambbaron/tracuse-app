@@ -28,7 +28,7 @@ class TestModelElementDatumType(TestCase):
 
     def test_entity_name_default(self):
         test_object = self.test.element_datum_type1
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             test_object.save()
 
         actual = test_object.entity_name
@@ -38,7 +38,7 @@ class TestModelElementDatumType(TestCase):
     def test_entity_name_input(self):
         test_object = self.test.element_datum_type1
         test_object.entity_name = "custom_entity_name"
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             test_object.save()
 
         actual = test_object.entity_name
@@ -47,7 +47,7 @@ class TestModelElementDatumType(TestCase):
 
     def test_readable_name_default(self):
         test_object = self.test.element_datum_type1
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             test_object.save()
 
         actual = test_object.readable_name
@@ -57,7 +57,7 @@ class TestModelElementDatumType(TestCase):
     def test_readable_name_input(self):
         test_object = self.test.element_datum_type1
         test_object.readable_name = "Custom Readable Name"
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             test_object.save()
 
         actual = test_object.readable_name
@@ -66,7 +66,7 @@ class TestModelElementDatumType(TestCase):
 
     def test_readable_plural_name_default(self):
         test_object = self.test.element_datum_type1
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             test_object.save()
 
         actual = test_object.readable_plural_name
@@ -76,7 +76,7 @@ class TestModelElementDatumType(TestCase):
     def test_readable_plural_name_input(self):
         test_object = self.test.element_datum_type1
         test_object.readable_plural_name = "Custom Readable Plural Name"
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             test_object.save()
 
         actual = test_object.readable_plural_name
@@ -85,7 +85,7 @@ class TestModelElementDatumType(TestCase):
 
     def test_schema_name_default(self):
         test_object = self.test.element_datum_type1
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             test_object.save()
 
         actual = test_object.schema_name
@@ -95,7 +95,7 @@ class TestModelElementDatumType(TestCase):
     def test_schema_name_input(self):
         test_object = self.test.element_datum_type1
         test_object.schema_name = "custom_schema_name"
-        with mock.patch("common.models.BaseMixin.save"):
+        with mock.patch("common.models.BaseModel.save"):
             test_object.save()
 
         actual = test_object.schema_name

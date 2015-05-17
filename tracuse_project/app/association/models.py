@@ -1,18 +1,18 @@
 from django.db import models
 
-from app.common.models import EntityMixin, BaseMixin
+from app.common.models import EntityModel, BaseModel
 
 from .managers import AssociationManager
 
 
-class AssociationType(EntityMixin):
+class AssociationType(EntityModel):
     """Types of relationships/edges between Datums
 
     Attributes:
-        See EntityMixin (includes BaseMixin)
+        See EntityModel (includes BaseModel)
     """
 
-    class Meta(EntityMixin.Meta):
+    class Meta(EntityModel.Meta):
         db_table = "association_type"
         verbose_name = "Association Type"
 
@@ -21,7 +21,7 @@ class AssociationType(EntityMixin):
     sort_base_length = 3
 
 
-class AssociationDirection(EntityMixin):
+class AssociationDirection(EntityModel):
     """Direction of Association from a particular Datum (node)
 
     Used for filters
@@ -30,10 +30,10 @@ class AssociationDirection(EntityMixin):
         Parent (Backwards), Child (Forwards), Both
 
     Attributes:
-        See EntityMixin (includes BaseMixin)
+        See EntityModel (includes BaseModel)
     """
 
-    class Meta(EntityMixin.Meta):
+    class Meta(EntityModel.Meta):
         db_table = "association_direction"
         verbose_name = "Association Direction"
 
@@ -54,16 +54,16 @@ class AssociationDirection(EntityMixin):
         return cls.objects.get(pk=1)
 
 
-class AssociationMixin(BaseMixin):
+class AssociationModel(BaseModel):
     """Common columns for Association models
 
     Attributes:
-        See BaseMixin
+        See BaseModel
         parent_datum_id (integer, pk, fk): DatumObject
         child_datum_id (integer, pk, fk): DatumObject
     """
 
-    class Meta(BaseMixin.Meta):
+    class Meta(BaseModel.Meta):
         abstract = True
         unique_together = ("parent_datum", "child_datum")
         index_together = ("parent_datum", "child_datum")
@@ -72,17 +72,17 @@ class AssociationMixin(BaseMixin):
         # distinction is related name
 
 
-class AssociationAdjacent(AssociationMixin):
+class AssociationAdjacent(AssociationModel):
     """Direct relationships between Datums
 
     Edge/Link in graph
 
     Attributes:
-        See AssociationMixin (includes BaseMixin)
+        See AssociationModel (includes BaseModel)
         association_type_id (integer, fk, required): AssociationType
     """
 
-    class Meta(AssociationMixin.Meta):
+    class Meta(AssociationModel.Meta):
         db_table = "association_adjacent"
         verbose_name = "Association Adjacent"
         verbose_name_plural = "Associations Adjacent"
@@ -182,19 +182,19 @@ class AssociationAdjacent(AssociationMixin):
         self.set_associations()
 
 
-class AssociationAll(AssociationMixin):
+class AssociationAll(AssociationModel):
     """All relationships between Datums
 
     Closure table pattern
     Stores every path through tree
 
     Attributes:
-        See AssociationMixin (includes BaseMixin)
+        See AssociationModel (includes BaseModel)
         distance (integer, default=0):
             number of steps between association
     """
 
-    class Meta(AssociationMixin.Meta):
+    class Meta(AssociationModel.Meta):
         db_table = "association_all"
         verbose_name = "Association All"
         verbose_name_plural = "Associations All"
