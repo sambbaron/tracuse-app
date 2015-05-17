@@ -11,7 +11,7 @@ class TestDatumObjectSerializer(TestCase):
         cls.test = TestDataDatum()
 
 
-    def test_element_name_value(self):
+    def test_serial_element_name_value(self):
         """Test DatumObjectSerializer.serial_element_name_value
         """
         test_object = self.test.datum_object1
@@ -21,7 +21,7 @@ class TestDatumObjectSerializer(TestCase):
         self.assertEqual(expected, actual)
 
 
-    def test_datum_all(self):
+    def test_serial_datum_all(self):
         """Test DatumObjectSerializer.serial_datum_all
         """
         test_object = self.test.datum_object1
