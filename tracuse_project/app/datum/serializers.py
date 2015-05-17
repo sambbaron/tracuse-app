@@ -7,9 +7,6 @@ class DatumObjectSerializer(DatumObject):
     class Meta:
         abstract = True
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
     def serial_basic(self):
         output = {
             "datum_object_id": self.datum_object_id,

@@ -5,9 +5,6 @@ class ElementTypeSerializer(ElementType, Serializer):
     class Meta:
         abstract = True
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
     def serial_basic(self):
         """Element types with all properties
 
