@@ -193,8 +193,12 @@ class ElementDatumObject(BaseModel):
     Attributes:
         datum_object_id (integer, fk, pk): DatumObject
         element_type_id (integer, fk, pk): ElementType
+        element_datum_type (ElementDatumType object)
+        data_type_name (string): ElementDataType.entity_name
+        element_value_model (ElementValueMeta class):
+            uses data_type_name
         element_value (ElementValue object):
-            ElementValue objects for ElementType
+            ElementValue object for ElementType
         get_elvalue (variable):
             'elvalue' column from ElementValue model record
     """
@@ -229,6 +233,14 @@ class ElementDatumObject(BaseModel):
         return "{} - {}".format(self.datum_object.__str__(), self.element_type.readable_name)
 
     @property
+    def element_datum_type(self):
+        element_datum_type = ElementDatumType.objects.filter(
+            element_type=self.element_type,
+            datum_type=self.datum_object.datum_type
+        ).first()
+        return element_datum_type
+
+    @property
     def data_type_name(self):
         return self.element_type.element_data_type.entity_name
 
@@ -252,11 +264,7 @@ class ElementDatumObject(BaseModel):
         to return calculated value
         """
         output = ""
-        element_datum_type = ElementDatumType.objects.filter(
-            element_type=self.element_type,
-            datum_type=self.datum_object.datum_type
-        ).first()
-        expression = element_datum_type.calc_expression
+        expression = self.element_datum_type.calc_expression
 
         if expression:
             template = Template(expression)
