@@ -15,13 +15,15 @@ class ElementDatumObjectSerializer(ElementDatumObject):
             Key: datum_object_id
             Value: Property Dictionary
         """
-        output = {self.element_datum_object_id:
-            {
-                "element_datum_object_id": self.element_datum_object_id,
-                "element_datum_type_id": self.element_datum_type.element_datum_type_id,
-                "element_type_id": self.element_type.element_type_id,
-                "element_value": self.element_value.elvalue
-            }
+        element_value = ""
+        if self.element_value:
+            element_value = self.element_value.elvalue
+
+        output = {
+            "element_datum_object_id": self.element_datum_object_id,
+            "element_datum_type_id": self.element_datum_type.element_datum_type_id,
+            "element_type_id": self.element_type.element_type_id,
+            "element_value": element_value
         }
 
         return output

@@ -1,5 +1,7 @@
 from .models import DatumObject
 
+from app.element_type.serializers import ElementDatumObjectSerializer
+
 
 class DatumObjectSerializer(DatumObject):
     class Meta:
@@ -36,24 +38,37 @@ class DatumObjectSerializer(DatumObject):
     DatumObject.serial_element_name_value = serial_element_name_value
 
     def serial_datum_all(self):
+        """Datums with all properties
+
+        Returns:
+            Key: datum_object_id
+            Value: Property Dictionary
+        """
 
         parent_datums = [parent_datum.datum_object_id for parent_datum in self.all_parent_datums.all()]
         child_datums = [child_datum.datum_object_id for child_datum in self.all_child_datums.all()]
 
-        output = {
-            "datum_object_id": self.datum_object_id,
-            "datum_group": self.datum_group.datum_group_id,
-            "datum_type": self.datum_type_id,
-            "parent_datums": parent_datums,
-            "child:datums": child_datums,
-            "element": self.serial_element_name_value()
+        elements = {}
+        for element in self.elements:
+            elements[element.element_datum_object_id] = \
+                ElementDatumObjectSerializer.serial_ids_value(element)
+
+        output = {self.datum_object_id:
+            {
+                "datum_object_id": self.datum_object_id,
+                "datum_group": self.datum_group.datum_group_id,
+                "datum_type": self.datum_type_id,
+                "parent_datums": parent_datums,
+                "child_datums": child_datums,
+                "elements": elements
+            }
         }
         return output
 
-    DatumObject.serial_element_name_value = serial_element_name_value
+    DatumObject.serial_datum_all = serial_datum_all
+
 
 class DatumObjectDeserializer(object):
-
     @staticmethod
     def post_datum(data, user, pk=None):
         response = None

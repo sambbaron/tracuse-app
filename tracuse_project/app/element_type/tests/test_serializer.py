@@ -14,10 +14,8 @@ class TestElementDatumObjectSerializer(TestCase):
         """Test ElementDatumObjectSerializer.serial_ids_value
         """
         test_object = self.test.element_datum_object1
-        test_id = test_object.pk
         test_serialized = ElementDatumObjectSerializer. \
             serial_ids_value(test_object)
-        properties = test_serialized[test_id]
-        actual = properties["element_value"]
+        actual = test_serialized["element_value"]
         expected = "Test Object Name"
         self.assertEqual(expected, actual)
