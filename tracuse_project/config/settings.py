@@ -152,3 +152,5 @@ MODEL_GROUPS = {
         "element_value.ElementValueBinary"
     ]
 }
+
+LOGIN_URL = "user_login"
