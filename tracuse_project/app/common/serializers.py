@@ -6,6 +6,28 @@ from django.db.models import QuerySet
 from django.core.serializers.json import DjangoJSONEncoder
 
 
+def serialize_all(model, instance):
+    """Serialize all fields in model
+
+    Use db columns, not django fields
+
+    Attributes:
+        model (django model)
+        instance (model instance)
+
+    Returns:
+        Dictionary
+            Key: column name
+            Value: column value
+    """
+    output = {}
+    for field in model._meta.fields:
+        column_name = field.get_attname_column()[1]
+        output[column_name] = getattr(instance, column_name)
+
+    return output
+
+
 class Serializer(object):
     """Serialize object using classes/methods in app/serializers.py
 

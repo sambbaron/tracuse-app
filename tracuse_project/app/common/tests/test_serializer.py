@@ -5,11 +5,30 @@ from common.tests.test_data import TestDataCommon
 
 from ..serializers import Serializer
 
-class TestSerializers(TestCase):
+
+class TestSerializerMethods(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.test = TestDataCommon()
 
+    def test_serialize_all(self):
+        """Test serialize_all method
+        using DatumGroup
+        """
+        from ..serializers import serialize_all
+        from app.datum.models import DatumGroup
+
+        test_object = self.test.datum_group1
+        test_serializer = serialize_all(DatumGroup, test_object)
+        actual = test_serializer["entity_name"]
+        expected = "TestDatumGroup1"
+        self.assertEqual(expected, actual)
+
+
+class TestSerializerClass(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataCommon()
 
     def test_set_serializer_method(self):
         """Test _set_serialize_method
@@ -70,4 +89,3 @@ class TestSerializers(TestCase):
         expected = str
         self.assertEqual(expected, actual)
         json.loads(test_json)
-

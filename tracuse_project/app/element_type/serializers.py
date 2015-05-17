@@ -1,34 +1,26 @@
 from .models import ElementType, ElementDatumType, ElementDatumObject
-from app.common.serializers import Serializer
+from app.common.serializers import serialize_all
 
-class ElementTypeSerializer(ElementType, Serializer):
+
+class ElementTypeSerializer(ElementType):
     class Meta:
         abstract = True
 
     def serial_basic(self):
-        """All properties
-        """
-        output = {}
-        for field in ElementType._meta.fields:
-            column_name = field.get_attname_column()[1]
-            output[column_name] = getattr(self, column_name)
-
+        """All properties"""
+        output = serialize_all(self.__class__, self)
         return output
 
     ElementType.serial_basic = serial_basic
 
-class ElementDatumTypeSerializer(ElementDatumType, Serializer):
+
+class ElementDatumTypeSerializer(ElementDatumType):
     class Meta:
         abstract = True
 
     def serial_basic(self):
-        """All properties
-        """
-        output = {}
-        for field in ElementDatumType._meta.fields:
-            column_name = field.get_attname_column()[1]
-            output[column_name] = getattr(self, column_name)
-
+        """All properties"""
+        output = serialize_all(self.__class__, self)
         return output
 
     ElementDatumType.serial_basic = serial_basic
