@@ -1,4 +1,10 @@
 {% extends "app/base_app.html" %}
+{% load staticfiles %}
+
+{% block css_block %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app/base_app.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app/tester.css' %}">
+{% endblock %}
 
 {% block body_block %}
     <ul class="datum-list">
