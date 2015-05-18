@@ -31,9 +31,6 @@ class ElementDatumObjectSerializer(ElementDatumObject):
     class Meta:
         abstract = True
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
     def serial_ids_value(self):
         """Elements with all ids and value
 
