@@ -5,16 +5,52 @@ from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
-from .models import DatumObject
+from .models import DatumGroup, DatumType, DatumObject
+from .serializers import (DatumGroupSerializer,
+                          DatumTypeSerializer,
+                          DatumObjectSerializer,
+                          DatumObjectDeserializer)
 from app.common.serializers import Serializer
-from .serializers import DatumObjectSerializer, DatumObjectDeserializer
 
+
+class DatumGroupAll(View):
+    """Return all datum_groups"""
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        queryset = DatumGroup.actives.all()
+        serialized_data = Serializer(data=queryset,
+                                     serializer=DatumGroupSerializer.serial_basic,
+                                     add_pk_key=True
+                                     ).serialize()
+        response_data = {"datum_group": serialized_data}
+        response = JsonResponse(response_data, status=200)
+        return response
+
+
+class DatumTypeAll(View):
+    """Return all datum_types"""
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        queryset = DatumType.actives.all()
+        serialized_data = Serializer(data=queryset,
+                                     serializer=DatumTypeSerializer.serial_basic,
+                                     add_pk_key=True
+                                     ).serialize()
+        response_data = {"datum_type": serialized_data}
+        response = JsonResponse(response_data, status=200)
+        return response
 
 class DatumObjectAll(View):
+    """List all datum_objects, or create a new datum_object.
     """
-    List all datum_objects, or create a new datum_object.
-    """
-    # permission_classes = (IsAuthenticated, IsOwner,)
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -43,13 +79,12 @@ class DatumObjectAll(View):
 
 
 class DatumObjectOne(View):
-    """
-    Retrieve, update or delete a datum_object instance.
+    """Retrieve, update or delete a datum_object instance.
     """
 
     @login_required
     def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)# if obj.user == request.user
+        return super().dispatch(request, *args, **kwargs)
 
     def get_object(self, pk):
         try:
