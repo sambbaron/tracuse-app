@@ -32,47 +32,15 @@ class TestSerializerClass(TestCase):
 
     def test_set_serializer_method(self):
         """Test _set_serialize_method
-        using DatumObjectSerializer.serial_element_name_value
+        using DatumObjectSerializer.serial_basic
         """
         from app.datum.serializers import DatumObjectSerializer
 
         test_serializer = Serializer(data={},
-                                     serializer="datum.DatumObjectSerializer.serial_element_name_value"
+                                     serializer="datum.DatumObjectSerializer.serial_basic"
                                      )
         actual = test_serializer._set_serializer_method()
-        expected = DatumObjectSerializer.serial_element_name_value
-        self.assertEqual(expected, actual)
-
-    def test_serialize_queryset(self):
-        """Test serialize method
-        using DatumObjectSerializer.serial_element_name_value
-        """
-        from app.datum.models import DatumObject
-        from app.datum.serializers import DatumObjectSerializer
-
-        test_queryset = DatumObject.objects.all()
-        test_data = Serializer(data=test_queryset,
-                               serializer=DatumObjectSerializer.serial_element_name_value
-                               ).serialize()
-
-        actual_count = len(test_data)
-        expected_count = 1
-        self.assertEqual(expected_count, actual_count)
-
-    def test_serialize_instance(self):
-        """Test serialize method
-        using DatumObjectSerializer.serial_element_name_value
-        """
-        from app.datum.models import DatumObject
-        from app.datum.serializers import DatumObjectSerializer
-
-        test_object = DatumObject.objects.first()
-        test_data = Serializer(data=test_object,
-                               serializer=DatumObjectSerializer.serial_element_name_value
-                               ).serialize()
-
-        actual = test_data["name"]
-        expected = "Test Object Name"
+        expected = DatumObjectSerializer.serial_basic
         self.assertEqual(expected, actual)
 
     def test_format_serialize_json(self):
@@ -106,18 +74,52 @@ class TestSerializerClass(TestCase):
 
     def test_serialize_one(self):
         """Test _serialize_one method
-        using DatumObjectSerializer.serial_element_name_value
+        using DatumObjectSerializer.serial_basic
         """
         from app.datum.serializers import DatumObjectSerializer
 
+        serializer = DatumObjectSerializer.serial_basic
         test_object = self.test.datum_object1
         test_serializer = Serializer(data=test_object,
-                                     serializer=DatumObjectSerializer.serial_element_name_value,
+                                     serializer=serializer,
                                      add_pk_key=True
                                      )
         test_data = test_serializer._serialize_one(
             test_object,
-            DatumObjectSerializer.serial_element_name_value)
-        actual = test_data[self.test.datum_object1.datum_object_id]["name"]
-        expected = "Test Object Name"
+            serializer
+        )
+        actual = test_data[self.test.datum_object1.datum_object_id]["datum_type"]
+        expected = self.test.datum_type1.datum_type_id
+        self.assertEqual(expected, actual)
+
+    def test_serialize_queryset(self):
+        """Test serialize method
+        using DatumObjectSerializer.serial_basic
+        """
+        from app.datum.models import DatumObject
+        from app.datum.serializers import DatumObjectSerializer
+
+        test_queryset = DatumObject.objects.all()
+        test_data = Serializer(data=test_queryset,
+                               serializer=DatumObjectSerializer.serial_basic
+                               ).serialize()
+
+        actual_count = len(test_data)
+        expected_count = 1
+        self.assertEqual(expected_count, actual_count)
+
+    def test_serialize_instance(self):
+        """Test serialize method
+        using DatumObjectSerializer.serial_basic
+        """
+        from app.datum.models import DatumObject
+        from app.datum.serializers import DatumObjectSerializer
+
+        test_object = DatumObject.objects.first()
+        test_data = Serializer(data=test_object,
+                               serializer=DatumObjectSerializer.serial_basic
+                               ).serialize()
+
+        actual = test_data["datum_type"]
+        expected = self.test.datum_type1.datum_type_id
         self.assertEqual(expected, actual)
