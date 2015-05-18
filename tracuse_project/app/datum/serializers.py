@@ -93,14 +93,17 @@ class DatumObjectSerializer(DatumObject):
 class DatumObjectDeserializer(object):
     @staticmethod
     def post_datum(data, user, pk=None):
-        response = None
+        response = {"error":"unknown"}
 
         if pk is None:
-            new_obj = DatumObject.objects.create(
-                user=user,
-                datum_type_id=data["datum_type_id"]
-            )
-            response = DatumObjectSerializer.serial_basic(new_obj)
+            try:
+                new_obj = DatumObject.objects.create(
+                    user=user,
+                    datum_type_id=data["datum_type_id"]
+                )
+                response = DatumObjectSerializer.serial_basic(new_obj)
+            except KeyError:
+                response = {"error": "Data post error"}
         else:
             pass
 

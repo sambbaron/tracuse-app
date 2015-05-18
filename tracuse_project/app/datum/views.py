@@ -71,10 +71,10 @@ class DatumObjectAll(View):
         request_data = request.body.decode()
         serialized_data = json.loads(request_data)
         post_data = DatumObjectDeserializer.post_datum(serialized_data, user=request.user)
-        if type(post_data) == dict:
+        if "error" not in post_data:
             response = JsonResponse(post_data, status=201)
         else:
-            response = HttpResponse(post_data, status=400)
+            response = JsonResponse(post_data, status=400)
         return response
 
 
