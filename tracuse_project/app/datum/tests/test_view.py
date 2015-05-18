@@ -43,7 +43,7 @@ class TestDatumObjectAll(TestCase):
         response = view.dispatch(request=request)
 
         response_content = json.loads(response.content.decode())
-        actual_content = response_content["datum_type"]
+        actual_content = response_content["datum_type_id"]
         expected_content = self.test.datum_type1.datum_type_id
         self.assertEqual(response.status_code, 201)
         self.assertEqual(expected_content, actual_content)

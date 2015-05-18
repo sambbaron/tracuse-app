@@ -36,7 +36,7 @@ class DatumObjectSerializer(DatumObject):
     def serial_basic(self):
         output = {
             "datum_object_id": self.datum_object_id,
-            "datum_type": self.datum_type.datum_type_id
+            "datum_type_id": self.datum_type.datum_type_id
         }
         return output
 

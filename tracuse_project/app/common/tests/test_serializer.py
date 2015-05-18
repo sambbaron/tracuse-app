@@ -75,6 +75,7 @@ class TestSerializerClass(TestCase):
     def test_serialize_one(self):
         """Test _serialize_one method
         using DatumObjectSerializer.serial_basic
+        add_pk_key is true
         """
         from app.datum.serializers import DatumObjectSerializer
 
@@ -88,7 +89,7 @@ class TestSerializerClass(TestCase):
             test_object,
             serializer
         )
-        actual = test_data[self.test.datum_object1.datum_object_id]["datum_type"]
+        actual = test_data[self.test.datum_object1.datum_object_id]["datum_type_id"]
         expected = self.test.datum_type1.datum_type_id
         self.assertEqual(expected, actual)
 
@@ -120,6 +121,6 @@ class TestSerializerClass(TestCase):
                                serializer=DatumObjectSerializer.serial_basic
                                ).serialize()
 
-        actual = test_data["datum_type"]
+        actual = test_data["datum_type_id"]
         expected = self.test.datum_type1.datum_type_id
         self.assertEqual(expected, actual)
