@@ -24,7 +24,8 @@ class DatumObjectAll(View):
     def get(self, request):
         queryset = DatumObject.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=DatumObjectSerializer.serial_datum_all
+                                     serializer=DatumObjectSerializer.serial_datum_all,
+                                     add_pk_key=True
                                      ).serialize()
         response_data = {"datum_object": serialized_data}
         response = JsonResponse(response_data, status=200)

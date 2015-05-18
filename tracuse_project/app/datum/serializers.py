@@ -76,16 +76,15 @@ class DatumObjectSerializer(DatumObject):
             elements[element.element_datum_object_id] = \
                 ElementDatumObjectSerializer.serial_ids_value(element)
 
-        output = {self.datum_object_id:
-            {
-                "datum_object_id": self.datum_object_id,
-                "datum_group_id": self.datum_group.datum_group_id,
-                "datum_type_id": self.datum_type_id,
-                "parent_datums": parent_datums,
-                "child_datums": child_datums,
-                "elements": elements
-            }
+        output = {
+            "datum_object_id": self.datum_object_id,
+            "datum_group_id": self.datum_group.datum_group_id,
+            "datum_type_id": self.datum_type_id,
+            "parent_datums": parent_datums,
+            "child_datums": child_datums,
+            "elements": elements
         }
+
         return output
 
     DatumObject.serial_datum_all = serial_datum_all

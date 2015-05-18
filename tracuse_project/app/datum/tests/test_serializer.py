@@ -67,15 +67,13 @@ class TestDatumObjectSerializer(TestCase):
         """Test DatumObjectSerializer.serial_datum_all
         """
         test_object = self.test.datum_object1
-        test_id = test_object.pk
         test_serialized = DatumObjectSerializer.serial_datum_all(test_object)
-        properties = test_serialized[test_id]
 
-        actual_type = properties["datum_type_id"]
+        actual_type = test_serialized["datum_type_id"]
         expected_type = self.test.datum_type1.datum_type_id
         self.assertEqual(expected_type, actual_type)
 
         test_element_id = self.test.element_datum_object1.pk
-        actual_type = properties["elements"][test_element_id]["element_value"]
+        actual_type = test_serialized["elements"][test_element_id]["element_value"]
         expected_type = "Test Object Name"
         self.assertEqual(expected_type, actual_type)
