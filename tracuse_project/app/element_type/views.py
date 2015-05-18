@@ -1,3 +1,45 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.views.generic import View
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+from .models import ElementType, ElementDatumType
+from .serializers import (ElementTypeSerializer,
+                          ElementDatumTypeSerializer)
+from app.common.serializers import Serializer
+
+
+class ElementTypeAll(View):
+    """Return all element_types"""
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        queryset = ElementType.actives.all()
+        serialized_data = Serializer(data=queryset,
+                                     serializer=ElementTypeSerializer.serial_basic,
+                                     add_pk_key=True
+                                     ).serialize()
+        response_data = {"element_type": serialized_data}
+        response = JsonResponse(response_data, status=200)
+        return response
+
+
+class ElementDatumTypeAll(View):
+    """Return all element_types"""
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        queryset = ElementDatumType.actives.all()
+        serialized_data = Serializer(data=queryset,
+                                     serializer=ElementDatumTypeSerializer.serial_basic,
+                                     add_pk_key=True
+                                     ).serialize()
+        response_data = {"element_datum_type": serialized_data}
+        response = JsonResponse(response_data, status=200)
+        return response
