@@ -56,7 +56,7 @@ class DatumObjectAll(View):
         # if obj.user == request.user
 
     def get(self, request):
-        queryset = DatumObject.actives.all()
+        queryset = DatumObject.actives.filter(user=request.user).all()
         serialized_data = Serializer(data=queryset,
                                      serializer=DatumObjectSerializer.serial_datum_all,
                                      dict_with_pk=True

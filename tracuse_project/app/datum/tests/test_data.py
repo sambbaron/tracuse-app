@@ -39,13 +39,19 @@ class TestDataDatum(object):
         # Datum Object
         # Has element_type and element_value
         self.datum_object1 = mommy.make("datum.DatumObject",
-                                        datum_type=self.datum_type1)
+                                        datum_type=self.datum_type1,
+                                        user=self.user1
+                                        )
         # Has element_type, but no element_value
         self.datum_object2 = mommy.make("datum.DatumObject",
-                                        datum_type=self.datum_type1)
+                                        datum_type=self.datum_type1,
+                                        user=self.user1
+                                        )
         # Does not have element_type, or element_value
         self.datum_object3 = mommy.make("datum.DatumObject",
-                                        datum_type=self.datum_type1)
+                                        datum_type=self.datum_type1,
+                                        user=self.user1
+                                        )
 
 
         # Element Data Type & Element Types
