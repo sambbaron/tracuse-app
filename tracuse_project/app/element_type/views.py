@@ -20,10 +20,9 @@ class ElementTypeAll(View):
         queryset = ElementType.actives.all()
         serialized_data = Serializer(data=queryset,
                                      serializer=ElementTypeSerializer.serial_basic,
-                                     add_pk_key=True
+                                     dict_with_pk=True
                                      ).serialize()
-        response_data = {"element_type": serialized_data}
-        response = JsonResponse(response_data, status=200)
+        response = JsonResponse(serialized_data, status=200)
         return response
 
 
@@ -38,8 +37,7 @@ class ElementDatumTypeAll(View):
         queryset = ElementDatumType.actives.all()
         serialized_data = Serializer(data=queryset,
                                      serializer=ElementDatumTypeSerializer.serial_basic,
-                                     add_pk_key=True
+                                     dict_with_pk=True
                                      ).serialize()
-        response_data = {"element_datum_type": serialized_data}
-        response = JsonResponse(response_data, status=200)
+        response = JsonResponse(serialized_data, status=200)
         return response

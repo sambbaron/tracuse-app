@@ -38,16 +38,19 @@ class Serializer(object):
             Serializer string: 'app_name.serializer_class.serializer.method'
         format (string): Serialize output format
             If none, return dictionary
-        add_pk_key (boolean):
-            Wrap serialized data in dictionary
-            with primary key as dictionary key
+        dict_with_pk (boolean):
+            True:
+                Wrap serialized data in dictionary
+                with primary key as dictionary key
+            False:
+                Serialized data in list
     """
 
-    def __init__(self, data, serializer, add_pk_key=False, format=None):
+    def __init__(self, data, serializer, dict_with_pk=False, format=None):
         self.data = data
         self.serializer = serializer
         self.format = format
-        self.add_pk_key = add_pk_key
+        self.dict_with_pk = dict_with_pk
 
     def _set_serializer_method(self):
         """Convert serializer string to serializer method
@@ -86,38 +89,37 @@ class Serializer(object):
 
         return formatted_output
 
-    def _add_pk_key(self, obj, output):
-        """Add primary key to output"""
-        new_output = output
-
-        if self.add_pk_key:
-            new_output = {obj.pk: output}
-
-        return new_output
-
-    def _serialize_one(self, obj, serializer):
-        """Serialize one object instance and add primary key"""
-        output = serializer(obj)
-        if self.add_pk_key:
-            output = self._add_pk_key(obj, output)
-        return output
-
     def serialize(self):
         """Output serialized data using app serializers
 
-        Returns:
-            If QuerySet, list of serialized dictionaries
-            If individual instance, serialized dictionary
+        Serializes QuerySets and individual object instances
         """
+
+        # Set serializer object
         serializer = self._set_serializer_method()
 
-        if type(self.data) == QuerySet:
-            output = []
-            for obj in self.data:
-                serialized_obj = self._serialize_one(obj, serializer)
-                output.append(serialized_obj)
+        # Set output type
+        if self.dict_with_pk:
+            output = {}
         else:
-            output = self._serialize_one(self.data, serializer)
+            output = []
+
+        if type(self.data) == QuerySet:
+
+            for obj in self.data:
+                serialized_obj = serializer(obj)
+
+                if self.dict_with_pk:
+                    output[obj.pk] = serialized_obj
+                else:
+                    output.append(serialized_obj)
+
+        else:
+            serialized_obj = serializer(self.data)
+            if self.dict_with_pk:
+                output[self.data.pk] = serialized_obj
+            else:
+                output = serialized_obj
 
         output = self._format_output(output)
 

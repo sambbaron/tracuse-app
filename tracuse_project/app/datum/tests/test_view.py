@@ -23,7 +23,7 @@ class TestDatumGroupAll(TestCase):
         response = view.dispatch(request=request)
 
         response_content = json.loads(response.content.decode())
-        response_count = len(response_content["datum_group"])
+        response_count = len(response_content)
         expected_count = 3
         self.assertEqual(response.status_code, 200)
         self.assertEqual(expected_count, response_count)
@@ -48,7 +48,7 @@ class TestDatumTypeAll(TestCase):
         response = view.dispatch(request=request)
 
         response_content = json.loads(response.content.decode())
-        response_count = len(response_content["datum_type"])
+        response_count = len(response_content)
         expected_count = 3
         self.assertEqual(response.status_code, 200)
         self.assertEqual(expected_count, response_count)
@@ -71,7 +71,7 @@ class TestDatumObjectAll(TestCase):
         response = view.dispatch(request=request)
 
         response_content = json.loads(response.content.decode())
-        response_count = len(response_content["datum_object"])
+        response_count = len(response_content)
         expected_count = 3
         self.assertEqual(response.status_code, 200)
         self.assertEqual(expected_count, response_count)

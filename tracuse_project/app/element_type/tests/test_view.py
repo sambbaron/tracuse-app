@@ -23,7 +23,7 @@ class TestElementTypeAll(TestCase):
         response = view.dispatch(request=request)
 
         response_content = json.loads(response.content.decode())
-        response_count = len(response_content["element_type"])
+        response_count = len(response_content)
         expected_count = 3
         self.assertEqual(response.status_code, 200)
         self.assertEqual(expected_count, response_count)
@@ -46,7 +46,7 @@ class TestElementDatumTypeAll(TestCase):
         response = view.dispatch(request=request)
 
         response_content = json.loads(response.content.decode())
-        response_count = len(response_content["element_datum_type"])
+        response_count = len(response_content)
         expected_count = 3
         self.assertEqual(response.status_code, 200)
         self.assertEqual(expected_count, response_count)

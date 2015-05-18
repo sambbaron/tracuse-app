@@ -58,41 +58,6 @@ class TestSerializerClass(TestCase):
         self.assertEqual(expected, actual)
         json.loads(test_json)
 
-    def test_add_pk_key(self):
-        """Test _add_pk_key method
-        """
-        test_object = self.test.datum_group1
-        test_output = {"test_key": "test_value"}
-        test_serializer = Serializer(data=test_output,
-                                     serializer="",
-                                     add_pk_key=True
-                                     )
-        test_pk_key = test_serializer._add_pk_key(test_object, test_output)
-        actual = test_pk_key.keys()
-        expected = self.test.datum_group1.datum_group_id
-        self.assertIn(expected, actual)
-
-    def test_serialize_one(self):
-        """Test _serialize_one method
-        using DatumObjectSerializer.serial_basic
-        add_pk_key is true
-        """
-        from app.datum.serializers import DatumObjectSerializer
-
-        serializer = DatumObjectSerializer.serial_basic
-        test_object = self.test.datum_object1
-        test_serializer = Serializer(data=test_object,
-                                     serializer=serializer,
-                                     add_pk_key=True
-                                     )
-        test_data = test_serializer._serialize_one(
-            test_object,
-            serializer
-        )
-        actual = test_data[self.test.datum_object1.datum_object_id]["datum_type_id"]
-        expected = self.test.datum_type1.datum_type_id
-        self.assertEqual(expected, actual)
-
     def test_serialize_queryset(self):
         """Test serialize method
         using DatumObjectSerializer.serial_basic
