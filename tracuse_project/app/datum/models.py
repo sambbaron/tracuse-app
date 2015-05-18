@@ -60,8 +60,8 @@ class DatumType(EntityModel):
                                     db_index=True
                                     )
     headline_expr = models.CharField(max_length=255,
-                                      null=False, blank=False
-                                      )
+                                     null=False, blank=False
+                                     )
     element_types = models.ManyToManyField("element_type.ElementType",
                                            through="element_type.ElementDatumType",
                                            related_name="+"
@@ -162,7 +162,6 @@ class DatumObject(BaseModel):
 
         return output
 
-
     def __str__(self):
         return self.headline
 
@@ -181,7 +180,6 @@ class DatumObject(BaseModel):
     @property
     def elements(self):
         return self.element_datum_objects.all()
-
 
     def element_value(self, element_type_object=None, **kwargs):
         """Return element_value object for given element_type object

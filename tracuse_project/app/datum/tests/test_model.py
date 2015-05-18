@@ -11,7 +11,6 @@ class TestModelDatumObject(TestCase):
     def setUpTestData(cls):
         cls.test = TestDataDatum()
 
-
     def test_headline_with_element_type(self):
         """Test DatumObject.headline property
         with element type matching headline_expr in ElementDatumObject,
@@ -73,7 +72,9 @@ class TestModelDatumObject(TestCase):
         """Test DatumObject.element_value method
         with element type not in datum
         """
-        actual = self.test.datum_object1.element_value(self.test.element_type3)
+        from app.element_type.models import ElementType
+
+        actual = self.test.datum_object1.element_value(ElementType())
         expected = None
         self.assertEqual(expected, actual)
 
@@ -153,7 +154,6 @@ class TestModelDatumObjectAssociationProperties(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.test = TestDataAssociation()
-
 
     def test_adjacent_parent_datums_m2m(self):
         """Test DatumObject.adjacent_parent_datums
