@@ -31,7 +31,7 @@ class TestDatumObjectAll(TestCase):
     def test_post_success(self):
         """Test DatumObjectAll.post api"""
         new_datum = {
-                     "datum_type": self.test.datum_type1.datum_type_id
+                     "datum_type_id": self.test.datum_type1.datum_type_id
                      }
         request = self.factory.post('/api/datum_groups/',
                                     data=json.dumps(new_datum),

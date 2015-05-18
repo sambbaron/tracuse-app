@@ -71,7 +71,7 @@ class TestDatumObjectSerializer(TestCase):
         test_serialized = DatumObjectSerializer.serial_datum_all(test_object)
         properties = test_serialized[test_id]
 
-        actual_type = properties["datum_type"]
+        actual_type = properties["datum_type_id"]
         expected_type = self.test.datum_type1.datum_type_id
         self.assertEqual(expected_type, actual_type)
 

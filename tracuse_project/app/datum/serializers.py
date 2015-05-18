@@ -79,8 +79,8 @@ class DatumObjectSerializer(DatumObject):
         output = {self.datum_object_id:
             {
                 "datum_object_id": self.datum_object_id,
-                "datum_group": self.datum_group.datum_group_id,
-                "datum_type": self.datum_type_id,
+                "datum_group_id": self.datum_group.datum_group_id,
+                "datum_type_id": self.datum_type_id,
                 "parent_datums": parent_datums,
                 "child_datums": child_datums,
                 "elements": elements
@@ -99,7 +99,7 @@ class DatumObjectDeserializer(object):
         if pk is None:
             new_obj = DatumObject.objects.create(
                 user=user,
-                datum_type_id=data["datum_type"]
+                datum_type_id=data["datum_type_id"]
             )
             response = DatumObjectSerializer.serial_basic(new_obj)
         else:
