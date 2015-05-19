@@ -39,18 +39,20 @@ header nav {
     right: 15em;
 }
 
-header .nav-button {
+header .nav-button, button {
     display: inline-block;
     height: 2em;
     margin-left: 0.5em;
     border: solid 1px darkgray;
     border-radius: 0.5em;
-    padding: 0.5em 0.5em;
+    padding: 0.5em;
     text-align: center;
     font-size: 135%;
+    color: #35446A;
+    cursor: pointer;
 }
 
-header .nav-button:hover {
+header .nav-button:focus, button:focus {
     background-color: #ffffff;
 }
 
