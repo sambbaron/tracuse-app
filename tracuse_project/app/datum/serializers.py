@@ -80,6 +80,7 @@ class DatumObjectSerializer(DatumObject):
             "datum_object_id": self.datum_object_id,
             "datum_group_id": self.datum_group.datum_group_id,
             "datum_type_id": self.datum_type_id,
+            "datum_type_name": self.datum_type.readable_name,
             "headline": self.headline,
             "parent_datums": parent_datums,
             "child_datums": child_datums,
