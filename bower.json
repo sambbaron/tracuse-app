@@ -1,0 +1,21 @@
+{
+  "name": "tracuse",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sambbaron/tracuse-app",
+  "authors": [
+    "Sam Baron <sambaron@ownmail.net>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "directory": "~/tracuse-project/assets/bower_components"
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "mustache": "~2.0.0"
+  }
+}
