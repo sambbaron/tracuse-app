@@ -46,6 +46,7 @@ class ElementDatumObjectSerializer(ElementDatumObject):
             "element_datum_object_id": self.element_datum_object_id,
             "element_datum_type_id": self.element_datum_type.element_datum_type_id,
             "element_type_id": self.element_type.element_type_id,
+            "element_name": self.element_type.readable_name,
             "element_value": element_value
         }
 
