@@ -1,0 +1,10 @@
+{% extends "datum/datum.html" %}
+
+{% block template_name %}datum_medium{% endblock %}
+
+{% block datum_content %}
+   {% for pk, element in elements %}
+       <input class="element" value="{{ element.element_value }}">
+       <br>
+    {% endfor %}
+{% endblock %}

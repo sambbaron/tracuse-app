@@ -9,6 +9,11 @@
     {% static 'images/Tracuse-LogoName-Small-325x85.png' %}
 {% endblock %}
 
+{% block nav_block %}
+    <button id="render-page">Render Page</button>
+{% endblock %}
+
 {% block script_block %}
-    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/libraries/nunjucks.min.js' %}"></script>
+    <script src="{% static 'js/app/app.js' %}"></script>
 {% endblock %}

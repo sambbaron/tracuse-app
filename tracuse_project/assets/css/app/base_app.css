@@ -6,14 +6,81 @@ header, footer {
     background-color: #d0d7e8;
 }
 
-header .nav-button {
+header .nav-button, button {
     background-color: rgba(169, 217, 99, 0.75);
 }
 
-header .nav-button:focus {
+header .nav-button:focus, button:focus {
     background-color: rgba(169, 217, 99, 1);
 }
 
 footer {
     display: none;
+}
+
+.datum {
+    display: inline-block;
+    position: relative;
+    z-index: -9;
+    vertical-align: middle;
+    border: 1px solid #35446A;
+    border-radius: 0.5em;
+    margin: 1em;
+    padding: 0.15em;
+    background-color: #DBE0ED;
+}
+
+.datum_small {
+    height: 2em;
+    width: 4em;
+    text-align: center;
+}
+
+.datum_small .headline {
+    z-index: 0;
+    overflow:hidden;
+    font-size: 75%;
+}
+
+.datum_small .datum_type_name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    text-align: center;
+    font-size: 100%;
+    font-weight: lighter;
+    color: rgba(250, 250, 250, 0.50);
+}
+
+.datum_medium label {
+    display: inline-block;
+    width: 5em;
+    font-size: 80%;
+}
+
+.datum_medium input, select {
+    margin-bottom: 0.25em;
+    padding: 0.25em;
+    font-size: 100%;
+}
+
+/*Area*/
+.datum_group-1 {
+    background-color: rgba(176, 187, 215, 0.75);
+}
+
+/*Activity*/
+.datum_group-2 {
+    background-color: rgba(184, 210, 145, 0.75);
+}
+
+/*Time*/
+.datum_group-3 {
+    background-color: rgba(252, 192, 148, 0.75);
+}
+
+/*Item*/
+.datum_group-4 {
+    background-color: rgba(225, 204, 155, 0.75);
 }
