@@ -63,12 +63,7 @@ target/
 # PyCharm
 *.idea/
 
-# OrientDB/Graph files
-*/orientdb.py
-*orientdbutils/
+# Miscellaneous Items
 tracuse_project/app/common/management/commands/sandbox.py
 */sql.sql
 x_old_models/
-
-# Bower
-tracuse_project/assets/bower_components
