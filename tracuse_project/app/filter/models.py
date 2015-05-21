@@ -177,11 +177,11 @@ class FilterSet(EntityModel):
 
     filter_set_id = models.AutoField(primary_key=True)
     # Null user means filter set available to all users??
-    user_id = models.ForeignKey(User,
-                                db_column="user_id",
-                                related_name="filter_sets",
-                                null=True, blank=True
-                                )
+    user = models.ForeignKey(User,
+                             db_column="user_id",
+                             related_name="filter_sets",
+                             null=True, blank=True
+                             )
 
 
 class FilterSetRuleModel(BaseModel):
