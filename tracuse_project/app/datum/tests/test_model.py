@@ -187,6 +187,42 @@ class TestModelDatumObjectAssociationProperties(TestCase):
         actual = test_object.all_child_datums.all()
         self.assertEqual(7, actual.count())
 
+    def test_get_associations_parent_with_distance(self):
+        """Test DatumObject.get_associations
+        with distance limit
+        """
+        test_object = self.test.datum_object3
+        parent_direction = self.test.association_direction1
+        actual = test_object.get_associations(
+            direction=parent_direction,
+            distance_limit=2
+        )
+        self.assertEqual(2, len(actual))
+
+    def test_get_associations_child_no_distance(self):
+        """Test DatumObject.get_associations
+        without distance limit
+        """
+        test_object = self.test.datum_object1
+        child_direction = self.test.association_direction3
+        actual = test_object.get_associations(
+            direction=child_direction,
+            distance_limit=None
+        )
+        self.assertEqual(6, len(actual))
+
+    def test_get_associations_both_adjacent(self):
+        """Test DatumObject.get_associations
+        distance_limit=1
+        """
+        test_object = self.test.datum_object6
+        both_direction = self.test.association_direction2
+        actual = test_object.get_associations(
+            direction=both_direction,
+            distance_limit=1
+        )
+        self.assertEqual(2, len(actual))
+
     def test_get_associated_datums_parent_with_distance(self):
         """Test DatumObject.get_associated_datums
         with distance limit
