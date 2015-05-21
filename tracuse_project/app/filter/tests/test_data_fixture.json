@@ -1,0 +1,5133 @@
+[
+  {
+    "fields": {
+      "is_staff": true,
+      "last_name": "",
+      "email": "test@test.com",
+      "is_superuser": true,
+      "password": "pbkdf2_sha256$20000$KSGPM8dI4sjp$uzvKwlUpzWgfhzo38MONpOerrKedHWgYQ5GsNXaGSD4=",
+      "user_permissions": [],
+      "groups": [],
+      "last_login": "2015-05-18T16:42:18.724Z",
+      "first_name": "",
+      "username": "test",
+      "date_joined": "2015-05-11T04:35:19.994Z",
+      "is_active": true
+    },
+    "model": "auth.user",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Areas",
+      "entity_name": "Area",
+      "active": true,
+      "readable_name": "Area",
+      "sort": 10,
+      "schema_name": "area",
+      "long_definition": "The 'areas' of your life that are important to you.",
+      "short_definition": "Categories, Nouns",
+      "example": "Home, Hobby, Job"
+    },
+    "model": "datum.datumgroup",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Activities",
+      "entity_name": "Activity",
+      "active": true,
+      "readable_name": "Activity",
+      "sort": 20,
+      "schema_name": "activity",
+      "long_definition": "What you are doing, what you want to do, and what you did.",
+      "short_definition": "Tasks, Verbs",
+      "example": "Meet with Joe, Learn guitar"
+    },
+    "model": "datum.datumgroup",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Times",
+      "entity_name": "Time",
+      "active": true,
+      "readable_name": "Time",
+      "sort": 30,
+      "schema_name": "time",
+      "long_definition": "When you are doing. Time-based events and deadlines.",
+      "short_definition": "Events, Reminders",
+      "example": "Tomorrow between 1-2 PM"
+    },
+    "model": "datum.datumgroup",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Items",
+      "entity_name": "Item",
+      "active": true,
+      "readable_name": "Item",
+      "sort": 40,
+      "schema_name": "item",
+      "long_definition": "What you know - your information storage.",
+      "short_definition": "Reference, Files",
+      "example": "PDF document, Email from Joe, important note"
+    },
+    "model": "datum.datumgroup",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Categories",
+      "entity_name": "Category",
+      "active": true,
+      "readable_name": "Category",
+      "datum_group": 1,
+      "sort": 10100,
+      "headline_expr": "{{name}}",
+      "schema_name": "category",
+      "long_definition": "General container for anything of interest or importance.",
+      "short_definition": "Topics, Folders",
+      "example": "House, Family, Job, Marketing"
+    },
+    "model": "datum.datumtype",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Projects",
+      "entity_name": "Project",
+      "active": true,
+      "readable_name": "Project",
+      "datum_group": 1,
+      "sort": 10110,
+      "headline_expr": "{{name}}",
+      "schema_name": "project",
+      "long_definition": "A label for a particular goal or purpose so you can organize all your information.",
+      "short_definition": "Named Plan",
+      "example": "Tracuse App, Morning Checklist, Department Reorganization"
+    },
+    "model": "datum.datumtype",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Contexts",
+      "entity_name": "Context",
+      "active": true,
+      "readable_name": "Context",
+      "datum_group": 1,
+      "sort": 10120,
+      "headline_expr": "{{name}}",
+      "schema_name": "context",
+      "long_definition": "What you use or general location for an action.",
+      "short_definition": "Settings, Tools",
+      "example": "Call, Computer, Read, Errands"
+    },
+    "model": "datum.datumtype",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Persons",
+      "entity_name": "Person",
+      "active": true,
+      "readable_name": "Person",
+      "datum_group": 1,
+      "sort": 10130,
+      "headline_expr": "{{name}}",
+      "schema_name": "person",
+      "long_definition": "Who you commonly interact with.",
+      "short_definition": "An Individual",
+      "example": "Sally Sister, Carl Coworker"
+    },
+    "model": "datum.datumtype",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Entities",
+      "entity_name": "Entity",
+      "active": true,
+      "readable_name": "Entity",
+      "datum_group": 1,
+      "sort": 10140,
+      "headline_expr": "{{name}}",
+      "schema_name": "entity",
+      "long_definition": "Any group, such as a business, government agency, religious, or social organization.",
+      "short_definition": "Organizational Group",
+      "example": "Employer, Son's School, Softball League"
+    },
+    "model": "datum.datumtype",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Locations",
+      "entity_name": "Location",
+      "active": true,
+      "readable_name": "Location",
+      "datum_group": 1,
+      "sort": 10150,
+      "headline_expr": "{{name}}",
+      "schema_name": "location",
+      "long_definition": "A formal address/geolocation, or any informal point of interest.",
+      "short_definition": "A Place",
+      "example": "Office Address, School Address, The Garage"
+    },
+    "model": "datum.datumtype",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Contacts",
+      "entity_name": "Contact",
+      "active": true,
+      "readable_name": "Contact",
+      "datum_group": 1,
+      "sort": 10160,
+      "headline_expr": "{{name}}",
+      "schema_name": "contact",
+      "long_definition": "How to communicate with a Person or Entity, including phone, email, and social media.",
+      "short_definition": "Contact Info",
+      "example": "Carl's Work Contact, Carl's Home Contact, Main Office Contact"
+    },
+    "model": "datum.datumtype",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Actions",
+      "entity_name": "Action",
+      "active": true,
+      "readable_name": "Action",
+      "datum_group": 2,
+      "sort": 20100,
+      "headline_expr": "{{description}}",
+      "schema_name": "action",
+      "long_definition": "Any individual idea or thought about something you will do.",
+      "short_definition": "Task",
+      "example": "Call the auto mechanic, Review Q1 sales, Be a better husband"
+    },
+    "model": "datum.datumtype",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Principles",
+      "entity_name": "Principle",
+      "active": true,
+      "readable_name": "Principle",
+      "datum_group": 2,
+      "sort": 20110,
+      "headline_expr": "{{description}}",
+      "schema_name": "principle",
+      "long_definition": "Why you are doing what you are doing. Represents your values and vision.",
+      "short_definition": "Purpose, Mantra",
+      "example": "So we can take that vacation, So I will be healthy and happy"
+    },
+    "model": "datum.datumtype",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Journals",
+      "entity_name": "Journal",
+      "active": true,
+      "readable_name": "Journal",
+      "datum_group": 2,
+      "sort": 20120,
+      "headline_expr": "{{description}}",
+      "schema_name": "journal",
+      "long_definition": "A record of what happened that you can use for next time.",
+      "short_definition": "Diary, Log",
+      "example": "Okay rehearsal practice song more, Good meeting but next time have firm agenda"
+    },
+    "model": "datum.datumtype",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Schedules",
+      "entity_name": "Schedule",
+      "active": true,
+      "readable_name": "Schedule",
+      "datum_group": 3,
+      "sort": 30100,
+      "headline_expr": "{{description}}",
+      "schema_name": "schedule",
+      "long_definition": "Track multiple events for an object to compare what you planned to do versus what you did.",
+      "short_definition": "Collection of Events",
+      "example": "Actual Schedule, Planned Schedule 2, Project Schedule 5"
+    },
+    "model": "datum.datumtype",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Events",
+      "entity_name": "Event",
+      "active": true,
+      "readable_name": "Event",
+      "datum_group": 3,
+      "sort": 30110,
+      "headline_expr": "{{ending_event}}",
+      "schema_name": "event",
+      "long_definition": "A meeting, appointment, or any other time-based occurrence.",
+      "short_definition": "When Something Happens",
+      "example": "Next Thursday All Day, May 13 2-3 PM"
+    },
+    "model": "datum.datumtype",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Reminders",
+      "entity_name": "Reminder",
+      "active": true,
+      "readable_name": "Reminder",
+      "datum_group": 3,
+      "sort": 30120,
+      "headline_expr": "{{alert}}",
+      "schema_name": "reminder",
+      "long_definition": "Simple alerts that can be used for short-term alarm or long-term tickler.",
+      "short_definition": "Date/Time Alert",
+      "example": "Every Friday at Noon, July 4 9:30 AM"
+    },
+    "model": "datum.datumtype",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Notes",
+      "entity_name": "Note",
+      "active": true,
+      "readable_name": "Note",
+      "datum_group": 4,
+      "sort": 40100,
+      "headline_expr": "{{name}}",
+      "schema_name": "note",
+      "long_definition": "A fact or idea to remember.",
+      "short_definition": "Reference",
+      "example": "How to, Saved Quote, Pi = 3.14159"
+    },
+    "model": "datum.datumtype",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Files",
+      "entity_name": "File",
+      "active": true,
+      "readable_name": "File",
+      "datum_group": 4,
+      "sort": 40110,
+      "headline_expr": "{{name}}",
+      "schema_name": "file",
+      "long_definition": "An external attachment or hyperlink to a digitial document.",
+      "short_definition": "Document",
+      "example": "MS Excel Spreadsheet, Image, Movie"
+    },
+    "model": "datum.datumtype",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Directories",
+      "entity_name": "Directory",
+      "active": true,
+      "readable_name": "Directory",
+      "datum_group": 4,
+      "sort": 40120,
+      "headline_expr": "{{name}}",
+      "schema_name": "directory",
+      "long_definition": "Any container or folder of documents, can be in local or cloud storage.",
+      "short_definition": "Collection of Files",
+      "example": "Project Folder, My Harddrive"
+    },
+    "model": "datum.datumtype",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Webpages",
+      "entity_name": "Webpage",
+      "active": true,
+      "readable_name": "Webpage",
+      "datum_group": 4,
+      "sort": 40130,
+      "headline_expr": "{{name}}",
+      "schema_name": "webpage",
+      "long_definition": "A hyperlink to a favorite website. Can be to homepage or specific webpage within site.",
+      "short_definition": "Single Web Address",
+      "example": "www.cnn.com, www.example.com/section2/page3"
+    },
+    "model": "datum.datumtype",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Messages",
+      "entity_name": "Message",
+      "active": true,
+      "readable_name": "Message",
+      "datum_group": 4,
+      "sort": 40140,
+      "headline_expr": "{{name}}",
+      "schema_name": "message",
+      "long_definition": "Any electronic message, including emails, texts, and messages through social networking services.",
+      "short_definition": "Communication",
+      "example": "Email from Carl, Facebook Message from Mom"
+    },
+    "model": "datum.datumtype",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Posts",
+      "entity_name": "Post",
+      "active": true,
+      "readable_name": "Post",
+      "datum_group": 4,
+      "sort": 40150,
+      "headline_expr": "{{name}}",
+      "schema_name": "post",
+      "long_definition": "Content from a streaming service provider, such as a blog or social networking post.",
+      "short_definition": "Article",
+      "example": "Blog Post about Drum Technique, Facebook Post about Nephews"
+    },
+    "model": "datum.datumtype",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Strings",
+      "entity_name": "String",
+      "active": true,
+      "readable_name": "String",
+      "sort": 10,
+      "schema_name": "string",
+      "long_definition": "Used for all major text-based elements",
+      "short_definition": "VarChar(255)",
+      "example": null
+    },
+    "model": "element_type.elementdatatype",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Text Data",
+      "entity_name": "TextData",
+      "active": true,
+      "readable_name": "Text Data",
+      "sort": 20,
+      "schema_name": "text_data",
+      "long_definition": "Only used for string-based sub-data types, such as json or html",
+      "short_definition": "Text",
+      "example": null
+    },
+    "model": "element_type.elementdatatype",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Booleans",
+      "entity_name": "Boolean",
+      "active": true,
+      "readable_name": "Boolean",
+      "sort": 30,
+      "schema_name": "boolean",
+      "long_definition": null,
+      "short_definition": "Boolean",
+      "example": null
+    },
+    "model": "element_type.elementdatatype",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Datetimes",
+      "entity_name": "Datetime",
+      "active": true,
+      "readable_name": "Datetime",
+      "sort": 40,
+      "schema_name": "datetime",
+      "long_definition": null,
+      "short_definition": "Datetime with Timezone",
+      "example": null
+    },
+    "model": "element_type.elementdatatype",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Decimals",
+      "entity_name": "Decimal",
+      "active": true,
+      "readable_name": "Decimal",
+      "sort": 50,
+      "schema_name": "decimal",
+      "long_definition": "Use str_expression and UI to manage scale",
+      "short_definition": "Number",
+      "example": null
+    },
+    "model": "element_type.elementdatatype",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Binarys",
+      "entity_name": "Binary",
+      "active": true,
+      "readable_name": "Binary",
+      "sort": 60,
+      "schema_name": "binary",
+      "long_definition": "Used for any attachments and large data",
+      "short_definition": "Blob",
+      "example": null
+    },
+    "model": "element_type.elementdatatype",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Names",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "name",
+      "sort": 110,
+      "short_definition": null,
+      "entity_name": "Name",
+      "active": true,
+      "readable_name": "Name",
+      "long_definition": "Commonly used for string representation of object.",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Descriptions",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "description",
+      "sort": 120,
+      "short_definition": null,
+      "entity_name": "Description",
+      "active": true,
+      "readable_name": "Description",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "First Names",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "first_name",
+      "sort": 130,
+      "short_definition": null,
+      "entity_name": "FirstName",
+      "active": true,
+      "readable_name": "First Name",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Last Names",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "last_name",
+      "sort": 140,
+      "short_definition": null,
+      "entity_name": "LastName",
+      "active": true,
+      "readable_name": "Last Name",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Nicknames",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "nickname",
+      "sort": 150,
+      "short_definition": null,
+      "entity_name": "Nickname",
+      "active": true,
+      "readable_name": "Nickname",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "html_element": "datetime",
+      "readable_plural_name": "Birthdays",
+      "str_expression": "{{ value|date:'F j, Y' }}",
+      "element_data_type": 4,
+      "editable": true,
+      "schema_name": "birthday",
+      "sort": 160,
+      "short_definition": "",
+      "entity_name": "Birthday",
+      "active": true,
+      "readable_name": "Birthday",
+      "long_definition": "",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Entity Types",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "entity_type",
+      "sort": 170,
+      "short_definition": null,
+      "entity_name": "EntityType",
+      "active": true,
+      "readable_name": "Entity Type",
+      "long_definition": "Organization types, including business, government, social, etc.",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Street Addresses",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "street_address",
+      "sort": 180,
+      "short_definition": null,
+      "entity_name": "StreetAddress",
+      "active": true,
+      "readable_name": "Street Address",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Citys",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "city",
+      "sort": 190,
+      "short_definition": null,
+      "entity_name": "City",
+      "active": true,
+      "readable_name": "City",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "States",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "state",
+      "sort": 200,
+      "short_definition": null,
+      "entity_name": "State",
+      "active": true,
+      "readable_name": "State",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Zips",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "zip",
+      "sort": 210,
+      "short_definition": null,
+      "entity_name": "Zip",
+      "active": true,
+      "readable_name": "Zip",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Countries",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "country",
+      "sort": 220,
+      "short_definition": null,
+      "entity_name": "Country",
+      "active": true,
+      "readable_name": "Country",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Latitudes",
+      "str_expression": "{{ value|floatformat:6 }}",
+      "element_data_type": 5,
+      "editable": true,
+      "schema_name": "latitude",
+      "sort": 230,
+      "short_definition": null,
+      "entity_name": "Latitude",
+      "active": true,
+      "readable_name": "Latitude",
+      "long_definition": "In decimal degrees",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Longitudes",
+      "str_expression": "{{ value|floatformat:6 }}",
+      "element_data_type": 5,
+      "editable": true,
+      "schema_name": "longitude",
+      "sort": 240,
+      "short_definition": null,
+      "entity_name": "Longitude",
+      "active": true,
+      "readable_name": "Longitude",
+      "long_definition": "In decimal degrees",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Phones",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "phone",
+      "sort": 250,
+      "short_definition": null,
+      "entity_name": "Phone",
+      "active": true,
+      "readable_name": "Phone",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Emails",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "email",
+      "sort": 260,
+      "short_definition": null,
+      "entity_name": "Email",
+      "active": true,
+      "readable_name": "Email",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Websites",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "website",
+      "sort": 270,
+      "short_definition": null,
+      "entity_name": "Website",
+      "active": true,
+      "readable_name": "Website",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Facebook",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "facebook",
+      "sort": 280,
+      "short_definition": null,
+      "entity_name": "Facebook",
+      "active": true,
+      "readable_name": "Facebook",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "LinkedIn",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "linkedin",
+      "sort": 290,
+      "short_definition": null,
+      "entity_name": "LinkedIn",
+      "active": true,
+      "readable_name": "LinkedIn",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Twitter",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "twitter",
+      "sort": 300,
+      "short_definition": null,
+      "entity_name": "Twitter",
+      "active": true,
+      "readable_name": "Twitter",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Action Statuses",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "action_status",
+      "sort": 310,
+      "short_definition": "",
+      "entity_name": "ActionStatus",
+      "active": true,
+      "readable_name": "Action Status",
+      "long_definition": "",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Action Efforts",
+      "str_expression": "{{ value|floatformat:0 }}",
+      "element_data_type": 5,
+      "editable": true,
+      "schema_name": "action_effort",
+      "sort": 320,
+      "short_definition": null,
+      "entity_name": "ActionEffort",
+      "active": true,
+      "readable_name": "Action Effort",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Schedule Types",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "schedule_type",
+      "sort": 330,
+      "short_definition": null,
+      "entity_name": "ScheduleType",
+      "active": true,
+      "readable_name": "Schedule Type",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "html_element": "datetime",
+      "readable_plural_name": "Beginning Buffers",
+      "str_expression": "{{ value|date:'F j, Y g:i A'}}",
+      "element_data_type": 4,
+      "editable": true,
+      "schema_name": "beginning_buffer",
+      "sort": 340,
+      "short_definition": "",
+      "entity_name": "BeginningBuffer",
+      "active": true,
+      "readable_name": "Beginning Buffer",
+      "long_definition": "",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "html_element": "datetime",
+      "readable_plural_name": "Beginning Events",
+      "str_expression": "{{ value|date:'F j, Y g:i A'}}",
+      "element_data_type": 4,
+      "editable": true,
+      "schema_name": "beginning_event",
+      "sort": 350,
+      "short_definition": "",
+      "entity_name": "BeginningEvent",
+      "active": true,
+      "readable_name": "Beginning Event",
+      "long_definition": "",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "html_element": "datetime",
+      "readable_plural_name": "Ending Events",
+      "str_expression": "{{ value|date:'F j, Y g:i A'}}",
+      "element_data_type": 4,
+      "editable": true,
+      "schema_name": "ending_event",
+      "sort": 360,
+      "short_definition": "",
+      "entity_name": "EndingEvent",
+      "active": true,
+      "readable_name": "Ending Event",
+      "long_definition": "",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "html_element": "datetime",
+      "readable_plural_name": "Ending Buffers",
+      "str_expression": "{{ value|date:'F j, Y g:i A'}}",
+      "element_data_type": 4,
+      "editable": true,
+      "schema_name": "ending_buffer",
+      "sort": 370,
+      "short_definition": "",
+      "entity_name": "EndingBuffer",
+      "active": true,
+      "readable_name": "Ending Buffer",
+      "long_definition": "",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Event Times",
+      "str_expression": "{{ value|floatformat:2 }}",
+      "element_data_type": 5,
+      "editable": true,
+      "schema_name": "event_time",
+      "sort": 380,
+      "short_definition": "",
+      "entity_name": "EventTime",
+      "active": true,
+      "readable_name": "Event Time",
+      "long_definition": "",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Total Times",
+      "str_expression": "{{ value|floatformat:2 }}",
+      "element_data_type": 5,
+      "editable": true,
+      "schema_name": "total_time",
+      "sort": 390,
+      "short_definition": "",
+      "entity_name": "TotalTime",
+      "active": true,
+      "readable_name": "Total Time",
+      "long_definition": "",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Recurring Optionss",
+      "str_expression": "",
+      "element_data_type": 2,
+      "editable": true,
+      "schema_name": "recurring_options",
+      "sort": 400,
+      "short_definition": null,
+      "entity_name": "RecurringOptions",
+      "active": true,
+      "readable_name": "Recurring Options",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "html_element": "datetime",
+      "readable_plural_name": "Alerts",
+      "str_expression": "{{ value|date:'F j, Y g:i A'}}",
+      "element_data_type": 4,
+      "editable": true,
+      "schema_name": "alert",
+      "sort": 410,
+      "short_definition": "",
+      "entity_name": "Alert",
+      "active": true,
+      "readable_name": "Alert",
+      "long_definition": "",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "html_element": "checkbox",
+      "readable_plural_name": "Logged In",
+      "str_expression": "",
+      "element_data_type": 3,
+      "editable": true,
+      "schema_name": "logged_in",
+      "sort": 420,
+      "short_definition": "",
+      "entity_name": "LoggedIn",
+      "active": true,
+      "readable_name": "Logged In",
+      "long_definition": "",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 32
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Item Statuses",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "item_status",
+      "sort": 430,
+      "short_definition": null,
+      "entity_name": "ItemStatus",
+      "active": true,
+      "readable_name": "Item Status",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 33
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Item Contents",
+      "str_expression": "",
+      "element_data_type": 2,
+      "editable": true,
+      "schema_name": "item_content",
+      "sort": 440,
+      "short_definition": null,
+      "entity_name": "ItemContent",
+      "active": true,
+      "readable_name": "Item Content",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 34
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Froms",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "from",
+      "sort": 450,
+      "short_definition": null,
+      "entity_name": "From",
+      "active": true,
+      "readable_name": "From",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 35
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Tos",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "to",
+      "sort": 460,
+      "short_definition": null,
+      "entity_name": "To",
+      "active": true,
+      "readable_name": "To",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 36
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Links",
+      "str_expression": "",
+      "element_data_type": 1,
+      "editable": true,
+      "schema_name": "link",
+      "sort": 470,
+      "short_definition": "URL",
+      "entity_name": "Link",
+      "active": true,
+      "readable_name": "Link",
+      "long_definition": "Any local, network, or www address",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 37
+  },
+  {
+    "fields": {
+      "html_element": "text",
+      "readable_plural_name": "Attachments",
+      "str_expression": "",
+      "element_data_type": 6,
+      "editable": true,
+      "schema_name": "attachment",
+      "sort": 480,
+      "short_definition": null,
+      "entity_name": "Attachment",
+      "active": true,
+      "readable_name": "Attachment",
+      "long_definition": "File attachment",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 38
+  },
+  {
+    "fields": {
+      "html_element": "datetime",
+      "readable_plural_name": "Creation Dates",
+      "str_expression": "{{ value|date:'F j, Y g:i A'}}",
+      "element_data_type": 4,
+      "editable": true,
+      "schema_name": "creation_date",
+      "sort": 490,
+      "short_definition": "",
+      "entity_name": "CreationDate",
+      "active": true,
+      "readable_name": "Creation Date",
+      "long_definition": "SHOULD THIS BE ROLLED INTO EVENTS?",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 39
+  },
+  {
+    "fields": {
+      "html_element": "datetime",
+      "readable_plural_name": "Modification Dates",
+      "str_expression": "{{ value|date:'F j, Y g:i A'}}",
+      "element_data_type": 4,
+      "editable": true,
+      "schema_name": "modification_date",
+      "sort": 500,
+      "short_definition": "",
+      "entity_name": "ModificationDate",
+      "active": true,
+      "readable_name": "Modification Date",
+      "long_definition": "SHOULD THIS BE ROLLED INTO EVENTS?",
+      "example": null
+    },
+    "model": "element_type.elementtype",
+    "pk": 40
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Businesses",
+      "entity_name": "Business",
+      "active": true,
+      "readable_name": "Business",
+      "sort": 17010,
+      "element_type": 7,
+      "schema_name": "business",
+      "long_definition": null,
+      "short_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Non-Profits",
+      "entity_name": "Non-Profit",
+      "active": true,
+      "readable_name": "Non-Profit",
+      "sort": 17020,
+      "element_type": 7,
+      "schema_name": "non-profit",
+      "long_definition": null,
+      "short_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Education",
+      "entity_name": "Education",
+      "active": true,
+      "readable_name": "Education",
+      "sort": 17030,
+      "element_type": 7,
+      "schema_name": "education",
+      "long_definition": null,
+      "short_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Food",
+      "entity_name": "Food",
+      "active": true,
+      "readable_name": "Food",
+      "sort": 17040,
+      "element_type": 7,
+      "schema_name": "food",
+      "long_definition": null,
+      "short_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Services",
+      "entity_name": "Service",
+      "active": true,
+      "readable_name": "Service",
+      "sort": 17050,
+      "element_type": 7,
+      "schema_name": "service",
+      "long_definition": null,
+      "short_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Cultural",
+      "entity_name": "Cultural",
+      "active": true,
+      "readable_name": "Cultural",
+      "sort": 17060,
+      "element_type": 7,
+      "schema_name": "cultural",
+      "long_definition": null,
+      "short_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Religious",
+      "entity_name": "Religious",
+      "active": true,
+      "readable_name": "Religious",
+      "sort": 17070,
+      "element_type": 7,
+      "schema_name": "religious",
+      "long_definition": null,
+      "short_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Governments",
+      "entity_name": "Government",
+      "active": true,
+      "readable_name": "Government",
+      "sort": 17080,
+      "element_type": 7,
+      "schema_name": "government",
+      "long_definition": null,
+      "short_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Social",
+      "entity_name": "Social",
+      "active": true,
+      "readable_name": "Social",
+      "sort": 17090,
+      "element_type": 7,
+      "schema_name": "social",
+      "long_definition": null,
+      "short_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "readable_plural_name": "New",
+      "entity_name": "ActionNew",
+      "active": true,
+      "readable_name": "New",
+      "sort": 30010,
+      "element_type": 21,
+      "schema_name": "new",
+      "long_definition": "Action just added to Tracuse that need to be reviewed for reclassification.",
+      "short_definition": "Just Created",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Someday",
+      "entity_name": "ActionSomeday",
+      "active": true,
+      "readable_name": "Someday",
+      "sort": 30020,
+      "element_type": 21,
+      "schema_name": "someday",
+      "long_definition": "Action that may not complete for years, months, or ever.",
+      "short_definition": "Deferred Indefinitely",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Upcoming",
+      "entity_name": "ActionUpcoming",
+      "active": true,
+      "readable_name": "Upcoming",
+      "sort": 30030,
+      "element_type": 21,
+      "schema_name": "upcoming",
+      "long_definition": "Action that is coming up in the next month or so and needs some basic attention.",
+      "short_definition": "On the Horizon",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Current",
+      "entity_name": "ActionCurrent",
+      "active": true,
+      "readable_name": "Current",
+      "sort": 30040,
+      "element_type": 21,
+      "schema_name": "current",
+      "long_definition": "Action to be completed immediately.  Highly visible on your lists.",
+      "short_definition": "Active Now",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "readable_plural_name": "In Progress",
+      "entity_name": "ActionInProgress",
+      "active": true,
+      "readable_name": "In Progress",
+      "sort": 30050,
+      "element_type": 21,
+      "schema_name": "in_progress",
+      "long_definition": "Action that has paused after starting. Should be used rarely.",
+      "short_definition": "Being Done",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Complete",
+      "entity_name": "ActionComplete",
+      "active": true,
+      "readable_name": "Complete",
+      "sort": 30060,
+      "element_type": 21,
+      "schema_name": "complete",
+      "long_definition": "Action that has completed.  Way to go!",
+      "short_definition": "DONE",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "readable_plural_name": "WaitingFor",
+      "entity_name": "ActionWaitingFor",
+      "active": true,
+      "readable_name": "WaitingFor",
+      "sort": 30070,
+      "element_type": 21,
+      "schema_name": "waitingfor",
+      "long_definition": "Action that has been assigned to someone else, but you want to keep track of it.",
+      "short_definition": "For Someone Else",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "readable_plural_name": "1",
+      "entity_name": "1",
+      "active": true,
+      "readable_name": "1",
+      "sort": 32010,
+      "element_type": 22,
+      "schema_name": "1",
+      "long_definition": null,
+      "short_definition": "Very Easy",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "readable_plural_name": "2",
+      "entity_name": "2",
+      "active": true,
+      "readable_name": "2",
+      "sort": 32020,
+      "element_type": 22,
+      "schema_name": "2",
+      "long_definition": null,
+      "short_definition": "Easy",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "readable_plural_name": "3",
+      "entity_name": "3",
+      "active": true,
+      "readable_name": "3",
+      "sort": 32030,
+      "element_type": 22,
+      "schema_name": "3",
+      "long_definition": null,
+      "short_definition": "Neither Easy or Hard",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "readable_plural_name": "4",
+      "entity_name": "4",
+      "active": true,
+      "readable_name": "4",
+      "sort": 32040,
+      "element_type": 22,
+      "schema_name": "4",
+      "long_definition": null,
+      "short_definition": "Hard",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "readable_plural_name": "5",
+      "entity_name": "5",
+      "active": true,
+      "readable_name": "5",
+      "sort": 32050,
+      "element_type": 22,
+      "schema_name": "5",
+      "long_definition": null,
+      "short_definition": "Very Hard",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Actuals",
+      "entity_name": "Actual",
+      "active": true,
+      "readable_name": "Actual",
+      "sort": 32010,
+      "element_type": 23,
+      "schema_name": "actual",
+      "long_definition": "Use for any events that actually occur",
+      "short_definition": "Events Occurred",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Planneds",
+      "entity_name": "Planned",
+      "active": true,
+      "readable_name": "Planned",
+      "sort": 32020,
+      "element_type": 23,
+      "schema_name": "planned",
+      "long_definition": "Use for any expected events",
+      "short_definition": "Events Expected",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Placeholders",
+      "entity_name": "Placeholder",
+      "active": true,
+      "readable_name": "Placeholder",
+      "sort": 40010,
+      "element_type": 30,
+      "schema_name": "placeholder",
+      "long_definition": null,
+      "short_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "readable_plural_name": "New",
+      "entity_name": "ItemNew",
+      "active": true,
+      "readable_name": "New",
+      "sort": 42010,
+      "element_type": 33,
+      "schema_name": "new",
+      "long_definition": "Item just added to Tracuse that need to be reviewed for reclassification.",
+      "short_definition": "Just Created",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Start",
+      "entity_name": "ItemStart",
+      "active": true,
+      "readable_name": "Start",
+      "sort": 42020,
+      "element_type": 33,
+      "schema_name": "start",
+      "long_definition": "Item just begun, may include outlining, research, and other preparation.",
+      "short_definition": "Initial Review",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Working",
+      "entity_name": "ItemWorking",
+      "active": true,
+      "readable_name": "Working",
+      "sort": 42030,
+      "element_type": 33,
+      "schema_name": "working",
+      "long_definition": "Primary work on Item. Can be reading, writing, consuming, producing, etc.",
+      "short_definition": "Main Action",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Conclusion",
+      "entity_name": "ItemConclusion",
+      "active": true,
+      "readable_name": "Conclusion",
+      "sort": 42040,
+      "element_type": 33,
+      "schema_name": "conclusion",
+      "long_definition": "Item in final stages.  Can be final draft, editing, or other wrap-up actions.",
+      "short_definition": "Almost Complete",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Complete",
+      "entity_name": "ItemComplete",
+      "active": true,
+      "readable_name": "Complete",
+      "sort": 42050,
+      "element_type": 33,
+      "schema_name": "complete",
+      "long_definition": "Item that has completed.  Way to go!",
+      "short_definition": "DONE",
+      "example": null
+    },
+    "model": "element_type.elementoption",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Categories - Names",
+      "sort": 10100110,
+      "schema_name": "category_name",
+      "datum_type": 1,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "CategoryName",
+      "active": true,
+      "readable_name": "Category - Name",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Home"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Categories - Descriptions",
+      "sort": 10100120,
+      "schema_name": "category_description",
+      "datum_type": 1,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "CategoryDescription",
+      "active": true,
+      "readable_name": "Category - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Where the heart is"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Projects - Names",
+      "sort": 10110110,
+      "schema_name": "project_name",
+      "datum_type": 2,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "ProjectName",
+      "active": true,
+      "readable_name": "Project - Name",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Marketing Initiative"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Projects - Descriptions",
+      "sort": 10110120,
+      "schema_name": "project_description",
+      "datum_type": 2,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "ProjectDescription",
+      "active": true,
+      "readable_name": "Project - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Revamp marketing materials"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Contexts - Names",
+      "sort": 10120110,
+      "schema_name": "context_name",
+      "datum_type": 3,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "ContextName",
+      "active": true,
+      "readable_name": "Context - Name",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Call"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Contexts - Descriptions",
+      "sort": 10120120,
+      "schema_name": "context_description",
+      "datum_type": 3,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "ContextDescription",
+      "active": true,
+      "readable_name": "Context - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Speaking to someone over the phone"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Persons - Names",
+      "sort": 10130110,
+      "schema_name": "person_name",
+      "datum_type": 4,
+      "element_type": 1,
+      "short_definition": "",
+      "entity_name": "PersonName",
+      "active": true,
+      "readable_name": "Person - Name",
+      "calc_expression": "{{ first_name }}{% if last_name %}{{ ' '|add:last_name }}{% endif %}",
+      "long_definition": "Default = First Name + Last Name",
+      "example": "John Smith"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Persons - Descriptions",
+      "sort": 10130120,
+      "schema_name": "person_description",
+      "datum_type": 4,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "PersonDescription",
+      "active": true,
+      "readable_name": "Person - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "My pal John"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Persons - First Names",
+      "sort": 10130130,
+      "schema_name": "person_first_name",
+      "datum_type": 4,
+      "element_type": 3,
+      "short_definition": "",
+      "entity_name": "PersonFirstName",
+      "active": true,
+      "readable_name": "Person - First Name",
+      "calc_expression": "{{ name|truncatewords:1 }}",
+      "long_definition": "",
+      "example": "John"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Persons - Last Names",
+      "sort": 10130140,
+      "schema_name": "person_last_name",
+      "datum_type": 4,
+      "element_type": 4,
+      "short_definition": null,
+      "entity_name": "PersonLastName",
+      "active": true,
+      "readable_name": "Person - Last Name",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Smith"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Persons - Nicknames",
+      "sort": 10130150,
+      "schema_name": "person_nickname",
+      "datum_type": 4,
+      "element_type": 5,
+      "short_definition": null,
+      "entity_name": "PersonNickname",
+      "active": true,
+      "readable_name": "Person - Nickname",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Johnny Boy"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Persons - Birthdays",
+      "sort": 10130160,
+      "schema_name": "person_birthday",
+      "datum_type": 4,
+      "element_type": 6,
+      "short_definition": null,
+      "entity_name": "PersonBirthday",
+      "active": true,
+      "readable_name": "Person - Birthday",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "1/1/2001"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Entities - Names",
+      "sort": 10140110,
+      "schema_name": "entity_name",
+      "datum_type": 5,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "EntityName",
+      "active": true,
+      "readable_name": "Entity - Name",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Joe's Auto Shop"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Entities - Descriptions",
+      "sort": 10140120,
+      "schema_name": "entity_description",
+      "datum_type": 5,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "EntityDescription",
+      "active": true,
+      "readable_name": "Entity - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Where I take my car"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Entities - Entity Types",
+      "sort": 10140170,
+      "schema_name": "entity_entity_type",
+      "datum_type": 5,
+      "element_type": 7,
+      "short_definition": null,
+      "entity_name": "EntityEntityType",
+      "active": true,
+      "readable_name": "Entity - Entity Type",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Business"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Locations - Names",
+      "sort": 10150110,
+      "schema_name": "location_name",
+      "datum_type": 6,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "LocationName",
+      "active": true,
+      "readable_name": "Location - Name",
+      "calc_expression": "",
+      "long_definition": "Default = Person/Entity Name + *** + Location",
+      "example": "Joe's Auto Shop Main Address"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Locations - Descriptions",
+      "sort": 10150120,
+      "schema_name": "location_description",
+      "datum_type": 6,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "LocationDescription",
+      "active": true,
+      "readable_name": "Location - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Next to the convenience store"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Locations - Street Addresses",
+      "sort": 10150180,
+      "schema_name": "location_street_address",
+      "datum_type": 6,
+      "element_type": 8,
+      "short_definition": null,
+      "entity_name": "LocationStreetAddress",
+      "active": true,
+      "readable_name": "Location - Street Address",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "123 Main St"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Locations - Citys",
+      "sort": 10150190,
+      "schema_name": "location_city",
+      "datum_type": 6,
+      "element_type": 9,
+      "short_definition": null,
+      "entity_name": "LocationCity",
+      "active": true,
+      "readable_name": "Location - City",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Portland"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Locations - States",
+      "sort": 10150200,
+      "schema_name": "location_state",
+      "datum_type": 6,
+      "element_type": 10,
+      "short_definition": null,
+      "entity_name": "LocationState",
+      "active": true,
+      "readable_name": "Location - State",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "OR"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Locations - Zips",
+      "sort": 10150210,
+      "schema_name": "location_zip",
+      "datum_type": 6,
+      "element_type": 11,
+      "short_definition": null,
+      "entity_name": "LocationZip",
+      "active": true,
+      "readable_name": "Location - Zip",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "97209"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Locations - Countries",
+      "sort": 10150220,
+      "schema_name": "location_country",
+      "datum_type": 6,
+      "element_type": 12,
+      "short_definition": null,
+      "entity_name": "LocationCountry",
+      "active": true,
+      "readable_name": "Location - Country",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "USA"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Locations - Latitudes",
+      "sort": 10150230,
+      "schema_name": "location_latitude",
+      "datum_type": 6,
+      "element_type": 13,
+      "short_definition": null,
+      "entity_name": "LocationLatitude",
+      "active": true,
+      "readable_name": "Location - Latitude",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "45.515586"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Locations - Longitudes",
+      "sort": 10150240,
+      "schema_name": "location_longitude",
+      "datum_type": 6,
+      "element_type": 14,
+      "short_definition": null,
+      "entity_name": "LocationLongitude",
+      "active": true,
+      "readable_name": "Location - Longitude",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "-122.692291"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Contacts - Names",
+      "sort": 10160110,
+      "schema_name": "contact_name",
+      "datum_type": 7,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "ContactName",
+      "active": true,
+      "readable_name": "Contact - Name",
+      "calc_expression": "",
+      "long_definition": "Default = Person/Entity Name + *** + Contact",
+      "example": "Joe's Auto Shop Main Contact"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Contacts - Descriptions",
+      "sort": 10160120,
+      "schema_name": "contact_description",
+      "datum_type": 7,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "ContactDescription",
+      "active": true,
+      "readable_name": "Contact - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Contacts - Phones",
+      "sort": 10160250,
+      "schema_name": "contact_phone",
+      "datum_type": 7,
+      "element_type": 15,
+      "short_definition": null,
+      "entity_name": "ContactPhone",
+      "active": true,
+      "readable_name": "Contact - Phone",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "(503) 555-1234"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Contacts - Emails",
+      "sort": 10160260,
+      "schema_name": "contact_email",
+      "datum_type": 7,
+      "element_type": 16,
+      "short_definition": null,
+      "entity_name": "ContactEmail",
+      "active": true,
+      "readable_name": "Contact - Email",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "joe@joesautoshop.com"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Contacts - Websites",
+      "sort": 10160270,
+      "schema_name": "contact_website",
+      "datum_type": 7,
+      "element_type": 17,
+      "short_definition": null,
+      "entity_name": "ContactWebsite",
+      "active": true,
+      "readable_name": "Contact - Website",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "http://www.joesautoshop.com"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Contacts - Facebook",
+      "sort": 10160280,
+      "schema_name": "contact_facebook",
+      "datum_type": 7,
+      "element_type": 18,
+      "short_definition": null,
+      "entity_name": "ContactFacebook",
+      "active": true,
+      "readable_name": "Contact - Facebook",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "https://www.facebook.com/joesautoshop"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Contacts - LinkedIn",
+      "sort": 10160290,
+      "schema_name": "contact_linkedin",
+      "datum_type": 7,
+      "element_type": 19,
+      "short_definition": null,
+      "entity_name": "ContactLinkedIn",
+      "active": true,
+      "readable_name": "Contact - LinkedIn",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "https://www.linkedin.com/in/joesautoshop"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Contacts - Twitter",
+      "sort": 10160300,
+      "schema_name": "contact_twitter",
+      "datum_type": 7,
+      "element_type": 20,
+      "short_definition": null,
+      "entity_name": "ContactTwitter",
+      "active": true,
+      "readable_name": "Contact - Twitter",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "@joesautoshop"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 32
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Actions - Descriptions",
+      "sort": 20100120,
+      "schema_name": "action_description",
+      "datum_type": 8,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "ActionDescription",
+      "active": true,
+      "readable_name": "Action - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Go to the gym"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 33
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Actions - Action Statuses",
+      "sort": 20100310,
+      "schema_name": "action_action_status",
+      "datum_type": 8,
+      "element_type": 21,
+      "short_definition": null,
+      "entity_name": "ActionActionStatus",
+      "active": true,
+      "readable_name": "Action - Action Status",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Current"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 34
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Actions - Action Efforts",
+      "sort": 20100320,
+      "schema_name": "action_action_effort",
+      "datum_type": 8,
+      "element_type": 22,
+      "short_definition": null,
+      "entity_name": "ActionActionEffort",
+      "active": true,
+      "readable_name": "Action - Action Effort",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "5"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 35
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Principles - Descriptions",
+      "sort": 20110120,
+      "schema_name": "principle_description",
+      "datum_type": 9,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "PrincipleDescription",
+      "active": true,
+      "readable_name": "Principle - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "So I can be fit and healthy"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 36
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Journals - Descriptions",
+      "sort": 20120120,
+      "schema_name": "journal_description",
+      "datum_type": 10,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "JournalDescription",
+      "active": true,
+      "readable_name": "Journal - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Need to watch my bench press form"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 37
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Schedules - Names",
+      "sort": 30100110,
+      "schema_name": "schedule_name",
+      "datum_type": 11,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "ScheduleName",
+      "active": true,
+      "readable_name": "Schedule - Name",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Actual Schedule"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 38
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Schedules - Schedule Types",
+      "sort": 30100330,
+      "schema_name": "schedule_schedule_type",
+      "datum_type": 11,
+      "element_type": 23,
+      "short_definition": null,
+      "entity_name": "ScheduleScheduleType",
+      "active": true,
+      "readable_name": "Schedule - Schedule Type",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "Actual"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 39
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Events - Beginning Buffers",
+      "sort": 30110340,
+      "schema_name": "event_beginning_buffer",
+      "datum_type": 12,
+      "element_type": 24,
+      "short_definition": null,
+      "entity_name": "EventBeginningBuffer",
+      "active": true,
+      "readable_name": "Event - Beginning Buffer",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "3/4/2015 1:00:00 PM"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 40
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Events - Beginning Events",
+      "sort": 30110350,
+      "schema_name": "event_beginning_event",
+      "datum_type": 12,
+      "element_type": 25,
+      "short_definition": null,
+      "entity_name": "EventBeginningEvent",
+      "active": true,
+      "readable_name": "Event - Beginning Event",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "3/4/2015 1:30:00 PM"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 41
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Events - Ending Events",
+      "sort": 30110360,
+      "schema_name": "event_ending_event",
+      "datum_type": 12,
+      "element_type": 26,
+      "short_definition": null,
+      "entity_name": "EventEndingEvent",
+      "active": true,
+      "readable_name": "Event - Ending Event",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "3/4/2015 2:30:00 PM"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 42
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Events - Ending Buffers",
+      "sort": 30110370,
+      "schema_name": "event_ending_buffer",
+      "datum_type": 12,
+      "element_type": 27,
+      "short_definition": null,
+      "entity_name": "EventEndingBuffer",
+      "active": true,
+      "readable_name": "Event - Ending Buffer",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "3/4/2015 3:00:00 PM"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 43
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Events - Event Times",
+      "sort": 30110380,
+      "schema_name": "event_event_time",
+      "datum_type": 12,
+      "element_type": 28,
+      "short_definition": null,
+      "entity_name": "EventEventTime",
+      "active": true,
+      "readable_name": "Event - Event Time",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "2"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 44
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Events - Total Times",
+      "sort": 30110390,
+      "schema_name": "event_total_time",
+      "datum_type": 12,
+      "element_type": 29,
+      "short_definition": null,
+      "entity_name": "EventTotalTime",
+      "active": true,
+      "readable_name": "Event - Total Time",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "1"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 45
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Events - Recurring Optionss",
+      "sort": 30110400,
+      "schema_name": "event_recurring_options",
+      "datum_type": 12,
+      "element_type": 30,
+      "short_definition": null,
+      "entity_name": "EventRecurringOptions",
+      "active": true,
+      "readable_name": "Event - Recurring Options",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 46
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Reminders - Recurring Optionss",
+      "sort": 30120400,
+      "schema_name": "reminder_recurring_options",
+      "datum_type": 13,
+      "element_type": 30,
+      "short_definition": null,
+      "entity_name": "ReminderRecurringOptions",
+      "active": true,
+      "readable_name": "Reminder - Recurring Options",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 47
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Reminders - Alerts",
+      "sort": 30120410,
+      "schema_name": "reminder_alert",
+      "datum_type": 13,
+      "element_type": 31,
+      "short_definition": null,
+      "entity_name": "ReminderAlert",
+      "active": true,
+      "readable_name": "Reminder - Alert",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "5/13/2015 2:30:00 PM"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 48
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Reminders - Logged In",
+      "sort": 30120420,
+      "schema_name": "reminder_logged_in",
+      "datum_type": 13,
+      "element_type": 32,
+      "short_definition": null,
+      "entity_name": "ReminderLoggedIn",
+      "active": true,
+      "readable_name": "Reminder - Logged In",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "0"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 49
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Notes - Names",
+      "sort": 40100110,
+      "schema_name": "note_name",
+      "datum_type": 14,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "NoteName",
+      "active": true,
+      "readable_name": "Note - Name",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "How to fix a flat tire"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 50
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Notes - Item Statuses",
+      "sort": 40100430,
+      "schema_name": "note_item_status",
+      "datum_type": 14,
+      "element_type": 33,
+      "short_definition": null,
+      "entity_name": "NoteItemStatus",
+      "active": true,
+      "readable_name": "Note - Item Status",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "ItemComplete"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 51
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Notes - Item Contents",
+      "sort": 40100440,
+      "schema_name": "note_item_content",
+      "datum_type": 14,
+      "element_type": 34,
+      "short_definition": null,
+      "entity_name": "NoteItemContent",
+      "active": true,
+      "readable_name": "Note - Item Content",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "<h1>Fix a flat tire</h1><br><p>Step 1</p>"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 52
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Notes - Links",
+      "sort": 40100470,
+      "schema_name": "note_link",
+      "datum_type": 14,
+      "element_type": 37,
+      "short_definition": null,
+      "entity_name": "NoteLink",
+      "active": true,
+      "readable_name": "Note - Link",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 53
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Files - Names",
+      "sort": 40110110,
+      "schema_name": "file_name",
+      "datum_type": 15,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "FileName",
+      "active": true,
+      "readable_name": "File - Name",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 54
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Files - Descriptions",
+      "sort": 40110120,
+      "schema_name": "file_description",
+      "datum_type": 15,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "FileDescription",
+      "active": true,
+      "readable_name": "File - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 55
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Files - Item Statuses",
+      "sort": 40110430,
+      "schema_name": "file_item_status",
+      "datum_type": 15,
+      "element_type": 33,
+      "short_definition": null,
+      "entity_name": "FileItemStatus",
+      "active": true,
+      "readable_name": "File - Item Status",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "ItemStart"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 56
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Files - Links",
+      "sort": 40110470,
+      "schema_name": "file_link",
+      "datum_type": 15,
+      "element_type": 37,
+      "short_definition": null,
+      "entity_name": "FileLink",
+      "active": true,
+      "readable_name": "File - Link",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 57
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Files - Attachments",
+      "sort": 40110480,
+      "schema_name": "file_attachment",
+      "datum_type": 15,
+      "element_type": 38,
+      "short_definition": null,
+      "entity_name": "FileAttachment",
+      "active": true,
+      "readable_name": "File - Attachment",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 58
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Files - Creation Dates",
+      "sort": 40110490,
+      "schema_name": "file_creation_date",
+      "datum_type": 15,
+      "element_type": 39,
+      "short_definition": null,
+      "entity_name": "FileCreationDate",
+      "active": true,
+      "readable_name": "File - Creation Date",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 59
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Files - Modification Dates",
+      "sort": 40110500,
+      "schema_name": "file_modification_date",
+      "datum_type": 15,
+      "element_type": 40,
+      "short_definition": null,
+      "entity_name": "FileModificationDate",
+      "active": true,
+      "readable_name": "File - Modification Date",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 60
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Directories - Names",
+      "sort": 40120110,
+      "schema_name": "directory_name",
+      "datum_type": 16,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "DirectoryName",
+      "active": true,
+      "readable_name": "Directory - Name",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 61
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Directories - Descriptions",
+      "sort": 40120120,
+      "schema_name": "directory_description",
+      "datum_type": 16,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "DirectoryDescription",
+      "active": true,
+      "readable_name": "Directory - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 62
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Directories - Item Statuses",
+      "sort": 40120430,
+      "schema_name": "directory_item_status",
+      "datum_type": 16,
+      "element_type": 33,
+      "short_definition": null,
+      "entity_name": "DirectoryItemStatus",
+      "active": true,
+      "readable_name": "Directory - Item Status",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "ItemComplete"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 63
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Directories - Links",
+      "sort": 40120470,
+      "schema_name": "directory_link",
+      "datum_type": 16,
+      "element_type": 37,
+      "short_definition": null,
+      "entity_name": "DirectoryLink",
+      "active": true,
+      "readable_name": "Directory - Link",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 64
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Directories - Creation Dates",
+      "sort": 40120490,
+      "schema_name": "directory_creation_date",
+      "datum_type": 16,
+      "element_type": 39,
+      "short_definition": null,
+      "entity_name": "DirectoryCreationDate",
+      "active": true,
+      "readable_name": "Directory - Creation Date",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 65
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Directories - Modification Dates",
+      "sort": 40120500,
+      "schema_name": "directory_modification_date",
+      "datum_type": 16,
+      "element_type": 40,
+      "short_definition": null,
+      "entity_name": "DirectoryModificationDate",
+      "active": true,
+      "readable_name": "Directory - Modification Date",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 66
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Webpages - Names",
+      "sort": 40130110,
+      "schema_name": "webpage_name",
+      "datum_type": 17,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "WebpageName",
+      "active": true,
+      "readable_name": "Webpage - Name",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 67
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Webpages - Descriptions",
+      "sort": 40130120,
+      "schema_name": "webpage_description",
+      "datum_type": 17,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "WebpageDescription",
+      "active": true,
+      "readable_name": "Webpage - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 68
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Webpages - Item Statuses",
+      "sort": 40130430,
+      "schema_name": "webpage_item_status",
+      "datum_type": 17,
+      "element_type": 33,
+      "short_definition": null,
+      "entity_name": "WebpageItemStatus",
+      "active": true,
+      "readable_name": "Webpage - Item Status",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": "ItemNew"
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 69
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Webpages - Links",
+      "sort": 40130470,
+      "schema_name": "webpage_link",
+      "datum_type": 17,
+      "element_type": 37,
+      "short_definition": null,
+      "entity_name": "WebpageLink",
+      "active": true,
+      "readable_name": "Webpage - Link",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 70
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Messages - Names",
+      "sort": 40140110,
+      "schema_name": "message_name",
+      "datum_type": 18,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "MessageName",
+      "active": true,
+      "readable_name": "Message - Name",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 71
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Messages - Item Contents",
+      "sort": 40140440,
+      "schema_name": "message_item_content",
+      "datum_type": 18,
+      "element_type": 34,
+      "short_definition": null,
+      "entity_name": "MessageItemContent",
+      "active": true,
+      "readable_name": "Message - Item Content",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 72
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Messages - Froms",
+      "sort": 40140450,
+      "schema_name": "message_from",
+      "datum_type": 18,
+      "element_type": 35,
+      "short_definition": null,
+      "entity_name": "MessageFrom",
+      "active": true,
+      "readable_name": "Message - From",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 73
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Messages - Tos",
+      "sort": 40140460,
+      "schema_name": "message_to",
+      "datum_type": 18,
+      "element_type": 36,
+      "short_definition": null,
+      "entity_name": "MessageTo",
+      "active": true,
+      "readable_name": "Message - To",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 74
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Messages - Creation Dates",
+      "sort": 40140490,
+      "schema_name": "message_creation_date",
+      "datum_type": 18,
+      "element_type": 39,
+      "short_definition": null,
+      "entity_name": "MessageCreationDate",
+      "active": true,
+      "readable_name": "Message - Creation Date",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 75
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Posts - Names",
+      "sort": 40150110,
+      "schema_name": "post_name",
+      "datum_type": 19,
+      "element_type": 1,
+      "short_definition": null,
+      "entity_name": "PostName",
+      "active": true,
+      "readable_name": "Post - Name",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 76
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Posts - Descriptions",
+      "sort": 40150120,
+      "schema_name": "post_description",
+      "datum_type": 19,
+      "element_type": 2,
+      "short_definition": null,
+      "entity_name": "PostDescription",
+      "active": true,
+      "readable_name": "Post - Description",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 77
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Posts - Item Statuses",
+      "sort": 40150430,
+      "schema_name": "post_item_status",
+      "datum_type": 19,
+      "element_type": 33,
+      "short_definition": null,
+      "entity_name": "PostItemStatus",
+      "active": true,
+      "readable_name": "Post - Item Status",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 78
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Posts - Item Contents",
+      "sort": 40150440,
+      "schema_name": "post_item_content",
+      "datum_type": 19,
+      "element_type": 34,
+      "short_definition": null,
+      "entity_name": "PostItemContent",
+      "active": true,
+      "readable_name": "Post - Item Content",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 79
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Posts - Links",
+      "sort": 40150470,
+      "schema_name": "post_link",
+      "datum_type": 19,
+      "element_type": 37,
+      "short_definition": null,
+      "entity_name": "PostLink",
+      "active": true,
+      "readable_name": "Post - Link",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 80
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Posts - Creation Dates",
+      "sort": 40150490,
+      "schema_name": "post_creation_date",
+      "datum_type": 19,
+      "element_type": 39,
+      "short_definition": null,
+      "entity_name": "PostCreationDate",
+      "active": true,
+      "readable_name": "Post - Creation Date",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 81
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Messages - Item Statuses",
+      "sort": 40140430,
+      "schema_name": "message_item_status",
+      "datum_type": 18,
+      "element_type": 33,
+      "short_definition": null,
+      "entity_name": "MessageItemStatus",
+      "active": true,
+      "readable_name": "Message - Item Status",
+      "calc_expression": "",
+      "long_definition": null,
+      "example": null
+    },
+    "model": "element_type.elementdatumtype",
+    "pk": 83
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Defaults",
+      "entity_name": "Default",
+      "active": true,
+      "readable_name": "Default",
+      "sort": 100,
+      "schema_name": "default",
+      "long_definition": null,
+      "short_definition": "Default Association",
+      "example": null
+    },
+    "model": "association.associationtype",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Parents",
+      "entity_name": "Parent",
+      "active": true,
+      "readable_name": "Parent",
+      "sort": 100,
+      "schema_name": "parent",
+      "long_definition": null,
+      "short_definition": "Ancestors",
+      "example": null
+    },
+    "model": "association.associationdirection",
+    "pk": -1
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Boths",
+      "entity_name": "Both",
+      "active": true,
+      "readable_name": "Both",
+      "sort": 101,
+      "schema_name": "both",
+      "long_definition": null,
+      "short_definition": "Both Directions",
+      "example": null
+    },
+    "model": "association.associationdirection",
+    "pk": 0
+  },
+  {
+    "fields": {
+      "readable_plural_name": "Children",
+      "entity_name": "Child",
+      "active": true,
+      "readable_name": "Child",
+      "sort": 120,
+      "schema_name": "child",
+      "long_definition": null,
+      "short_definition": "Descendants",
+      "example": null
+    },
+    "model": "association.associationdirection",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101001,
+      "active": true,
+      "datum_type": 1
+    },
+    "model": "datum.datumobject",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101101,
+      "active": true,
+      "datum_type": 2
+    },
+    "model": "datum.datumobject",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101002,
+      "active": true,
+      "datum_type": 1
+    },
+    "model": "datum.datumobject",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101401,
+      "active": true,
+      "datum_type": 5
+    },
+    "model": "datum.datumobject",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101501,
+      "active": true,
+      "datum_type": 6
+    },
+    "model": "datum.datumobject",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101003,
+      "active": true,
+      "datum_type": 1
+    },
+    "model": "datum.datumobject",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101301,
+      "active": true,
+      "datum_type": 4
+    },
+    "model": "datum.datumobject",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101004,
+      "active": true,
+      "datum_type": 1
+    },
+    "model": "datum.datumobject",
+    "pk": 10
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101601,
+      "active": true,
+      "datum_type": 7
+    },
+    "model": "datum.datumobject",
+    "pk": 11
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 201001,
+      "active": true,
+      "datum_type": 8
+    },
+    "model": "datum.datumobject",
+    "pk": 12
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 201002,
+      "active": true,
+      "datum_type": 8
+    },
+    "model": "datum.datumobject",
+    "pk": 13
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 301101,
+      "active": true,
+      "datum_type": 12
+    },
+    "model": "datum.datumobject",
+    "pk": 14
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 201003,
+      "active": true,
+      "datum_type": 8
+    },
+    "model": "datum.datumobject",
+    "pk": 15
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101201,
+      "active": true,
+      "datum_type": 3
+    },
+    "model": "datum.datumobject",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101202,
+      "active": true,
+      "datum_type": 3
+    },
+    "model": "datum.datumobject",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101203,
+      "active": true,
+      "datum_type": 3
+    },
+    "model": "datum.datumobject",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 301001,
+      "active": true,
+      "datum_type": 11
+    },
+    "model": "datum.datumobject",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 401301,
+      "active": true,
+      "datum_type": 17
+    },
+    "model": "datum.datumobject",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101005,
+      "active": true,
+      "datum_type": 1
+    },
+    "model": "datum.datumobject",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 101006,
+      "active": true,
+      "datum_type": 1
+    },
+    "model": "datum.datumobject",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 401302,
+      "active": true,
+      "datum_type": 17
+    },
+    "model": "datum.datumobject",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "user": 1,
+      "sort": 401101,
+      "active": true,
+      "datum_type": 15
+    },
+    "model": "datum.datumobject",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "datum_object": 1,
+      "sort": 101001110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "datum_object": 1,
+      "sort": 101001120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "datum_object": 2,
+      "sort": 101101110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "datum_object": 2,
+      "sort": 101101120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "datum_object": 3,
+      "sort": 101002110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "datum_object": 3,
+      "sort": 101002120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "datum_object": 6,
+      "sort": 101401110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "datum_object": 6,
+      "sort": 101401120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "datum_object": 6,
+      "sort": 101401170,
+      "active": true,
+      "element_type": 7
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "datum_object": 7,
+      "sort": 101501110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "datum_object": 7,
+      "sort": 101501120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "datum_object": 7,
+      "sort": 101501180,
+      "active": true,
+      "element_type": 8
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "datum_object": 7,
+      "sort": 101501190,
+      "active": true,
+      "element_type": 9
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "datum_object": 7,
+      "sort": 101501200,
+      "active": true,
+      "element_type": 10
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "datum_object": 7,
+      "sort": 101501210,
+      "active": true,
+      "element_type": 11
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "datum_object": 7,
+      "sort": 101501220,
+      "active": true,
+      "element_type": 12
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "datum_object": 7,
+      "sort": 101501230,
+      "active": true,
+      "element_type": 13
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "datum_object": 7,
+      "sort": 101501240,
+      "active": true,
+      "element_type": 14
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "datum_object": 8,
+      "sort": 101003110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "datum_object": 8,
+      "sort": 101003120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "datum_object": 9,
+      "sort": 101301110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 32
+  },
+  {
+    "fields": {
+      "datum_object": 9,
+      "sort": 101301120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 33
+  },
+  {
+    "fields": {
+      "datum_object": 9,
+      "sort": 101301130,
+      "active": true,
+      "element_type": 3
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 34
+  },
+  {
+    "fields": {
+      "datum_object": 9,
+      "sort": 101301140,
+      "active": true,
+      "element_type": 4
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 35
+  },
+  {
+    "fields": {
+      "datum_object": 9,
+      "sort": 101301150,
+      "active": true,
+      "element_type": 5
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 36
+  },
+  {
+    "fields": {
+      "datum_object": 9,
+      "sort": 101301160,
+      "active": true,
+      "element_type": 6
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 37
+  },
+  {
+    "fields": {
+      "datum_object": 10,
+      "sort": 101004110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 38
+  },
+  {
+    "fields": {
+      "datum_object": 10,
+      "sort": 101004120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 39
+  },
+  {
+    "fields": {
+      "datum_object": 11,
+      "sort": 101601110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 40
+  },
+  {
+    "fields": {
+      "datum_object": 11,
+      "sort": 101601120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 41
+  },
+  {
+    "fields": {
+      "datum_object": 11,
+      "sort": 101601250,
+      "active": true,
+      "element_type": 15
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 42
+  },
+  {
+    "fields": {
+      "datum_object": 11,
+      "sort": 101601260,
+      "active": true,
+      "element_type": 16
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 43
+  },
+  {
+    "fields": {
+      "datum_object": 11,
+      "sort": 101601270,
+      "active": true,
+      "element_type": 17
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 44
+  },
+  {
+    "fields": {
+      "datum_object": 11,
+      "sort": 101601280,
+      "active": true,
+      "element_type": 18
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 45
+  },
+  {
+    "fields": {
+      "datum_object": 11,
+      "sort": 101601290,
+      "active": true,
+      "element_type": 19
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 46
+  },
+  {
+    "fields": {
+      "datum_object": 11,
+      "sort": 101601300,
+      "active": true,
+      "element_type": 20
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 47
+  },
+  {
+    "fields": {
+      "datum_object": 12,
+      "sort": 201001120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 48
+  },
+  {
+    "fields": {
+      "datum_object": 12,
+      "sort": 201001310,
+      "active": true,
+      "element_type": 21
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 49
+  },
+  {
+    "fields": {
+      "datum_object": 12,
+      "sort": 201001320,
+      "active": true,
+      "element_type": 22
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 50
+  },
+  {
+    "fields": {
+      "datum_object": 13,
+      "sort": 201002120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 51
+  },
+  {
+    "fields": {
+      "datum_object": 13,
+      "sort": 201002310,
+      "active": true,
+      "element_type": 21
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 52
+  },
+  {
+    "fields": {
+      "datum_object": 13,
+      "sort": 201002320,
+      "active": true,
+      "element_type": 22
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 53
+  },
+  {
+    "fields": {
+      "datum_object": 14,
+      "sort": 301101340,
+      "active": true,
+      "element_type": 24
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 54
+  },
+  {
+    "fields": {
+      "datum_object": 14,
+      "sort": 301101350,
+      "active": true,
+      "element_type": 25
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 55
+  },
+  {
+    "fields": {
+      "datum_object": 14,
+      "sort": 301101360,
+      "active": true,
+      "element_type": 26
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 56
+  },
+  {
+    "fields": {
+      "datum_object": 14,
+      "sort": 301101370,
+      "active": true,
+      "element_type": 27
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 57
+  },
+  {
+    "fields": {
+      "datum_object": 14,
+      "sort": 301101380,
+      "active": true,
+      "element_type": 28
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 58
+  },
+  {
+    "fields": {
+      "datum_object": 14,
+      "sort": 301101390,
+      "active": true,
+      "element_type": 29
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 59
+  },
+  {
+    "fields": {
+      "datum_object": 14,
+      "sort": 301101400,
+      "active": true,
+      "element_type": 30
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 60
+  },
+  {
+    "fields": {
+      "datum_object": 15,
+      "sort": 201003120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 61
+  },
+  {
+    "fields": {
+      "datum_object": 15,
+      "sort": 201003310,
+      "active": true,
+      "element_type": 21
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 62
+  },
+  {
+    "fields": {
+      "datum_object": 15,
+      "sort": 201003320,
+      "active": true,
+      "element_type": 22
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 63
+  },
+  {
+    "fields": {
+      "datum_object": 16,
+      "sort": 101201110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 64
+  },
+  {
+    "fields": {
+      "datum_object": 16,
+      "sort": 101201120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 65
+  },
+  {
+    "fields": {
+      "datum_object": 17,
+      "sort": 101202110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 66
+  },
+  {
+    "fields": {
+      "datum_object": 17,
+      "sort": 101202120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 67
+  },
+  {
+    "fields": {
+      "datum_object": 18,
+      "sort": 101203110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 68
+  },
+  {
+    "fields": {
+      "datum_object": 18,
+      "sort": 101203120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 69
+  },
+  {
+    "fields": {
+      "datum_object": 19,
+      "sort": 301001110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 70
+  },
+  {
+    "fields": {
+      "datum_object": 19,
+      "sort": 301001330,
+      "active": true,
+      "element_type": 23
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 71
+  },
+  {
+    "fields": {
+      "datum_object": 20,
+      "sort": 401301110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 72
+  },
+  {
+    "fields": {
+      "datum_object": 20,
+      "sort": 401301120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 73
+  },
+  {
+    "fields": {
+      "datum_object": 20,
+      "sort": 401301430,
+      "active": true,
+      "element_type": 33
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 74
+  },
+  {
+    "fields": {
+      "datum_object": 20,
+      "sort": 401301470,
+      "active": true,
+      "element_type": 37
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 75
+  },
+  {
+    "fields": {
+      "datum_object": 21,
+      "sort": 101005110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 76
+  },
+  {
+    "fields": {
+      "datum_object": 21,
+      "sort": 101005120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 77
+  },
+  {
+    "fields": {
+      "datum_object": 22,
+      "sort": 101006110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 78
+  },
+  {
+    "fields": {
+      "datum_object": 22,
+      "sort": 101006120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 79
+  },
+  {
+    "fields": {
+      "datum_object": 23,
+      "sort": 401302110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 80
+  },
+  {
+    "fields": {
+      "datum_object": 23,
+      "sort": 401302120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 81
+  },
+  {
+    "fields": {
+      "datum_object": 23,
+      "sort": 401302430,
+      "active": true,
+      "element_type": 33
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 82
+  },
+  {
+    "fields": {
+      "datum_object": 23,
+      "sort": 401302470,
+      "active": true,
+      "element_type": 37
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 83
+  },
+  {
+    "fields": {
+      "datum_object": 25,
+      "sort": 401101110,
+      "active": true,
+      "element_type": 1
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 91
+  },
+  {
+    "fields": {
+      "datum_object": 25,
+      "sort": 401101120,
+      "active": true,
+      "element_type": 2
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 92
+  },
+  {
+    "fields": {
+      "datum_object": 25,
+      "sort": 401101430,
+      "active": true,
+      "element_type": 33
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 93
+  },
+  {
+    "fields": {
+      "datum_object": 25,
+      "sort": 401101470,
+      "active": true,
+      "element_type": 37
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 94
+  },
+  {
+    "fields": {
+      "datum_object": 25,
+      "sort": 401101480,
+      "active": true,
+      "element_type": 38
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 95
+  },
+  {
+    "fields": {
+      "datum_object": 25,
+      "sort": 401101490,
+      "active": true,
+      "element_type": 39
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 96
+  },
+  {
+    "fields": {
+      "datum_object": 25,
+      "sort": 401101500,
+      "active": true,
+      "element_type": 40
+    },
+    "model": "element_type.elementdatumobject",
+    "pk": 97
+  },
+  {
+    "fields": {
+      "sort": 101001110,
+      "elvalue": "Software",
+      "active": true,
+      "element_datum_object": 1,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "sort": 101001120,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 2,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "sort": 101101110,
+      "elvalue": "Tracuse App",
+      "active": true,
+      "element_datum_object": 3,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "sort": 101101120,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 4,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "sort": 101002110,
+      "elvalue": "Python",
+      "active": true,
+      "element_datum_object": 5,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "sort": 101002120,
+      "elvalue": "Best language ever",
+      "active": true,
+      "element_datum_object": 6,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "sort": 101401110,
+      "elvalue": "PDX Code Guild",
+      "active": true,
+      "element_datum_object": 18,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 16
+  },
+  {
+    "fields": {
+      "sort": 101401120,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 19,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 17
+  },
+  {
+    "fields": {
+      "sort": 101401170,
+      "elvalue": "Education",
+      "active": true,
+      "element_datum_object": 20,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 18
+  },
+  {
+    "fields": {
+      "sort": 101501110,
+      "elvalue": "PDX Code Guild Main Location",
+      "active": true,
+      "element_datum_object": 21,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 19
+  },
+  {
+    "fields": {
+      "sort": 101501120,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 22,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 20
+  },
+  {
+    "fields": {
+      "sort": 101501180,
+      "elvalue": "2626 SW Corbett Ave",
+      "active": true,
+      "element_datum_object": 23,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 21
+  },
+  {
+    "fields": {
+      "sort": 101501190,
+      "elvalue": "Portland",
+      "active": true,
+      "element_datum_object": 24,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 22
+  },
+  {
+    "fields": {
+      "sort": 101501200,
+      "elvalue": "OR",
+      "active": true,
+      "element_datum_object": 25,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 23
+  },
+  {
+    "fields": {
+      "sort": 101501210,
+      "elvalue": "97201",
+      "active": true,
+      "element_datum_object": 26,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 24
+  },
+  {
+    "fields": {
+      "sort": 101501220,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 27,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 25
+  },
+  {
+    "fields": {
+      "sort": 101003110,
+      "elvalue": "Family",
+      "active": true,
+      "element_datum_object": 30,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 26
+  },
+  {
+    "fields": {
+      "sort": 101003120,
+      "elvalue": "Blood",
+      "active": true,
+      "element_datum_object": 31,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 27
+  },
+  {
+    "fields": {
+      "sort": 101301110,
+      "elvalue": "Madeline Baron",
+      "active": true,
+      "element_datum_object": 32,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 28
+  },
+  {
+    "fields": {
+      "sort": 101301120,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 33,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 29
+  },
+  {
+    "fields": {
+      "sort": 101301130,
+      "elvalue": "Madeline",
+      "active": true,
+      "element_datum_object": 34,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 30
+  },
+  {
+    "fields": {
+      "sort": 101301140,
+      "elvalue": "Baron",
+      "active": true,
+      "element_datum_object": 35,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 31
+  },
+  {
+    "fields": {
+      "sort": 101301150,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 36,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 32
+  },
+  {
+    "fields": {
+      "sort": 101004110,
+      "elvalue": "Home",
+      "active": true,
+      "element_datum_object": 38,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 33
+  },
+  {
+    "fields": {
+      "sort": 101004120,
+      "elvalue": "My castle",
+      "active": true,
+      "element_datum_object": 39,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 34
+  },
+  {
+    "fields": {
+      "sort": 101601110,
+      "elvalue": "PDX Code Guild Main Contact",
+      "active": true,
+      "element_datum_object": 40,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 35
+  },
+  {
+    "fields": {
+      "sort": 101601120,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 41,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 36
+  },
+  {
+    "fields": {
+      "sort": 101601250,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 42,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 37
+  },
+  {
+    "fields": {
+      "sort": 101601260,
+      "elvalue": "Sheri@PDXCodeGuild.com ",
+      "active": true,
+      "element_datum_object": 43,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 38
+  },
+  {
+    "fields": {
+      "sort": 101601270,
+      "elvalue": "https://pdxcodeguild.com/",
+      "active": true,
+      "element_datum_object": 44,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 39
+  },
+  {
+    "fields": {
+      "sort": 101601280,
+      "elvalue": "https://www.facebook.com/PDXCodeGuild",
+      "active": true,
+      "element_datum_object": 45,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 40
+  },
+  {
+    "fields": {
+      "sort": 101601290,
+      "elvalue": "https://www.linkedin.com/company/pdx-code-guild/",
+      "active": true,
+      "element_datum_object": 46,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 41
+  },
+  {
+    "fields": {
+      "sort": 101601300,
+      "elvalue": "https://twitter.com/pdxcodeguild",
+      "active": true,
+      "element_datum_object": 47,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 42
+  },
+  {
+    "fields": {
+      "sort": 201001120,
+      "elvalue": "Look for new apartment",
+      "active": true,
+      "element_datum_object": 48,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 43
+  },
+  {
+    "fields": {
+      "sort": 201001310,
+      "elvalue": "Upcoming",
+      "active": true,
+      "element_datum_object": 49,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 44
+  },
+  {
+    "fields": {
+      "sort": 201002120,
+      "elvalue": "Review craigslist ads",
+      "active": true,
+      "element_datum_object": 51,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 45
+  },
+  {
+    "fields": {
+      "sort": 201002310,
+      "elvalue": "Current",
+      "active": true,
+      "element_datum_object": 52,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 46
+  },
+  {
+    "fields": {
+      "sort": 201003120,
+      "elvalue": "Contact landlords",
+      "active": true,
+      "element_datum_object": 61,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 47
+  },
+  {
+    "fields": {
+      "sort": 201003310,
+      "elvalue": "Upcoming",
+      "active": true,
+      "element_datum_object": 62,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 48
+  },
+  {
+    "fields": {
+      "sort": 101201110,
+      "elvalue": "Call",
+      "active": true,
+      "element_datum_object": 64,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 49
+  },
+  {
+    "fields": {
+      "sort": 101201120,
+      "elvalue": "Speaking over the phone",
+      "active": true,
+      "element_datum_object": 65,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 50
+  },
+  {
+    "fields": {
+      "sort": 101202110,
+      "elvalue": "Online",
+      "active": true,
+      "element_datum_object": 66,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 51
+  },
+  {
+    "fields": {
+      "sort": 101202120,
+      "elvalue": "Something over the internet",
+      "active": true,
+      "element_datum_object": 67,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 52
+  },
+  {
+    "fields": {
+      "sort": 101203110,
+      "elvalue": "Email",
+      "active": true,
+      "element_datum_object": 68,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 53
+  },
+  {
+    "fields": {
+      "sort": 101203120,
+      "elvalue": "Sending message",
+      "active": true,
+      "element_datum_object": 69,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 54
+  },
+  {
+    "fields": {
+      "sort": 301001110,
+      "elvalue": "Actual Schedule",
+      "active": true,
+      "element_datum_object": 70,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 55
+  },
+  {
+    "fields": {
+      "sort": 301001330,
+      "elvalue": "Actual",
+      "active": true,
+      "element_datum_object": 71,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 56
+  },
+  {
+    "fields": {
+      "sort": 401301110,
+      "elvalue": "Django Docs",
+      "active": true,
+      "element_datum_object": 72,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 57
+  },
+  {
+    "fields": {
+      "sort": 401301120,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 73,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 58
+  },
+  {
+    "fields": {
+      "sort": 401301430,
+      "elvalue": "Complete",
+      "active": true,
+      "element_datum_object": 74,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 59
+  },
+  {
+    "fields": {
+      "sort": 401301470,
+      "elvalue": "https://docs.djangoproject.com/en/1.8/",
+      "active": true,
+      "element_datum_object": 75,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 60
+  },
+  {
+    "fields": {
+      "sort": 101005110,
+      "elvalue": "Django",
+      "active": true,
+      "element_datum_object": 76,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 61
+  },
+  {
+    "fields": {
+      "sort": 101005120,
+      "elvalue": "Web framework",
+      "active": true,
+      "element_datum_object": 77,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 62
+  },
+  {
+    "fields": {
+      "sort": 101006110,
+      "elvalue": "Deployment",
+      "active": true,
+      "element_datum_object": 78,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 63
+  },
+  {
+    "fields": {
+      "sort": 101006120,
+      "elvalue": "From development to production",
+      "active": true,
+      "element_datum_object": 79,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 64
+  },
+  {
+    "fields": {
+      "sort": 401302110,
+      "elvalue": "Deploying Django on AWS",
+      "active": true,
+      "element_datum_object": 80,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 65
+  },
+  {
+    "fields": {
+      "sort": 401302120,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 81,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 66
+  },
+  {
+    "fields": {
+      "sort": 401302430,
+      "elvalue": "Complete",
+      "active": true,
+      "element_datum_object": 82,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 67
+  },
+  {
+    "fields": {
+      "sort": 401302470,
+      "elvalue": "http://nickpolet.com/blog/1/",
+      "active": true,
+      "element_datum_object": 83,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 68
+  },
+  {
+    "fields": {
+      "sort": 401101110,
+      "elvalue": "Apartments Spreadsheet",
+      "active": true,
+      "element_datum_object": 91,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 73
+  },
+  {
+    "fields": {
+      "sort": 401101120,
+      "elvalue": "Track potential apartments",
+      "active": true,
+      "element_datum_object": 92,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 74
+  },
+  {
+    "fields": {
+      "sort": 401101430,
+      "elvalue": "Working",
+      "active": true,
+      "element_datum_object": 93,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 75
+  },
+  {
+    "fields": {
+      "sort": 401101470,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 94,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 76
+  },
+  {
+    "fields": {
+      "sort": 401101480,
+      "elvalue": "",
+      "active": true,
+      "element_datum_object": 95,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluestring",
+    "pk": 77
+  },
+  {
+    "fields": {
+      "sort": 301101400,
+      "elvalue": "Placeholder",
+      "active": true,
+      "element_datum_object": 60,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluetextdata",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "sort": 101301160,
+      "elvalue": "1987-06-07T07:00:00Z",
+      "active": true,
+      "element_datum_object": 37,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedatetime",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "sort": 301101340,
+      "elvalue": "2015-05-24T17:00:00Z",
+      "active": true,
+      "element_datum_object": 54,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedatetime",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "sort": 301101350,
+      "elvalue": "2015-05-24T17:00:00Z",
+      "active": true,
+      "element_datum_object": 55,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedatetime",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "sort": 301101360,
+      "elvalue": "2015-05-24T18:00:00Z",
+      "active": true,
+      "element_datum_object": 56,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedatetime",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "sort": 301101370,
+      "elvalue": "2015-05-24T18:00:00Z",
+      "active": true,
+      "element_datum_object": 57,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedatetime",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "sort": 401101490,
+      "elvalue": "2015-05-21T19:00:00Z",
+      "active": true,
+      "element_datum_object": 96,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedatetime",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "sort": 401101500,
+      "elvalue": "2015-05-21T19:00:00Z",
+      "active": true,
+      "element_datum_object": 97,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedatetime",
+    "pk": 9
+  },
+  {
+    "fields": {
+      "sort": 101501230,
+      "elvalue": "0.00",
+      "active": true,
+      "element_datum_object": 28,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedecimal",
+    "pk": 3
+  },
+  {
+    "fields": {
+      "sort": 101501240,
+      "elvalue": "0.00",
+      "active": true,
+      "element_datum_object": 29,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedecimal",
+    "pk": 4
+  },
+  {
+    "fields": {
+      "sort": 201001320,
+      "elvalue": "4.00",
+      "active": true,
+      "element_datum_object": 50,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedecimal",
+    "pk": 5
+  },
+  {
+    "fields": {
+      "sort": 201002320,
+      "elvalue": "3.00",
+      "active": true,
+      "element_datum_object": 53,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedecimal",
+    "pk": 6
+  },
+  {
+    "fields": {
+      "sort": 301101380,
+      "elvalue": "0.00",
+      "active": true,
+      "element_datum_object": 58,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedecimal",
+    "pk": 7
+  },
+  {
+    "fields": {
+      "sort": 301101390,
+      "elvalue": "0.00",
+      "active": true,
+      "element_datum_object": 59,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedecimal",
+    "pk": 8
+  },
+  {
+    "fields": {
+      "sort": 201003320,
+      "elvalue": "3.00",
+      "active": true,
+      "element_datum_object": 63,
+      "element_option": null
+    },
+    "model": "element_value.elementvaluedecimal",
+    "pk": 9
+  }
+]
+
