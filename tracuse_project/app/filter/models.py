@@ -10,21 +10,52 @@ class FilterRuleModel(BaseModel):
 
     Attributes:
         See BaseModel
-        operator (string, required):  -> = <> => <=
+        operator (string, required):
+            Converted to Django field lookup expression
         conditional (string, optional): And, Or
     """
 
     class Meta(BaseModel.Meta):
         abstract = True
 
+    OPERATOR_CHOICES = (
+        ("iexact", "equals"),
+
+        ("Text", (
+            ("contains", "contains"),
+            ("istartswith", "starts with"),
+            ("iendswith", "ends with"),
+        )
+         ),
+
+        ("Number", (
+            ("gt", "greater than"),
+            ("gte", "greater than or equal to"),
+            ("lt", "less than"),
+            ("lte", "less than or equal to"),
+        )
+         ),
+
+        ("Datetime", (
+            ("year", "year"),
+            ("month", "month"),
+            ("day", "day"),
+            ("week_day", "weekday"),
+            ("hour", "hour"),
+            ("minute", "minute"),
+        )
+         )
+    )
+
     CONDITIONAL_CHOICES = (
-        ('AND', 'AND'),
-        ('OR', 'OR'),
+        ("and", "and"),
+        ("or", "or"),
     )
 
     operator = models.CharField(max_length=5,
-                                default="=",
-                                null=False, blank=False
+                                default="iexact",
+                                null=False, blank=False,
+                                choices=OPERATOR_CHOICES
                                 )
     conditional = models.CharField(max_length=3,
                                    null=True, blank=True,
