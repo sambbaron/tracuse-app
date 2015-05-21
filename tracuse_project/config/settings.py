@@ -149,7 +149,9 @@ MODEL_GROUPS = {
         "element_value.ElementValueBoolean",
         "element_value.ElementValueDatetime",
         "element_value.ElementValueDecimal",
-        "element_value.ElementValueBinary"
+        "element_value.ElementValueBinary",
+        "association.AssociationAdjacent",
+        "association.AssociationAll"
     ]
 }
 
