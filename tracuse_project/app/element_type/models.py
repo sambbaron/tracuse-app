@@ -47,6 +47,9 @@ class ElementType(EntityModel):
             related datum types from ElementDatumType
         datum_objects (DatumObject set):
             related datum objects from ElementDatumObject
+        data_type_name (string): ElementDataType.entity_name
+        element_value_model (ElementValueMeta class):
+            uses data_type_name
     """
 
     class Meta(EntityModel.Meta):
@@ -78,6 +81,14 @@ class ElementType(EntityModel):
                                            )
 
     sort_base_length = 3
+
+    @property
+    def data_type_name(self):
+        return self.element_data_type.entity_name
+
+    @property
+    def element_value_model(self):
+        return ElementValueMeta(self.data_type_name)
 
 
 class ElementOption(EntityModel):
@@ -194,9 +205,6 @@ class ElementDatumObject(BaseModel):
         datum_object_id (integer, fk, pk): DatumObject
         element_type_id (integer, fk, pk): ElementType
         element_datum_type (ElementDatumType object)
-        data_type_name (string): ElementDataType.entity_name
-        element_value_model (ElementValueMeta class):
-            uses data_type_name
         element_value (ElementValue object):
             ElementValue object for ElementType
         get_elvalue (variable):
@@ -241,17 +249,14 @@ class ElementDatumObject(BaseModel):
         return element_datum_type
 
     @property
-    def data_type_name(self):
-        return self.element_type.element_data_type.entity_name
-
-    @property
     def element_value_model(self):
-        return ElementValueMeta(self.data_type_name)
+        return self.element_type.element_value_model
 
     @property
     def element_value(self):
         element_value_object = \
-            self.element_value_model.objects.filter(element_datum_object=self).first()
+            self.element_value_model \
+                .objects.filter(element_datum_object=self).first()
 
         return element_value_object
 
