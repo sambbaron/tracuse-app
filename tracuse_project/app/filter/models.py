@@ -12,7 +12,9 @@ class FilterRuleModel(BaseModel):
         See BaseModel
         operator (string, required):
             Converted to Django field lookup expression
-        conditional (string, optional): And, Or
+        conditional (string, optional, default="AND"):
+            Applied before filter rule
+            First rule does not need conditional
     """
 
     class Meta(BaseModel.Meta):
@@ -48,8 +50,8 @@ class FilterRuleModel(BaseModel):
     )
 
     CONDITIONAL_CHOICES = (
-        ("and", "and"),
-        ("or", "or"),
+        ("AND", "AND"),
+        ("OR", "OR"),
     )
 
     operator = models.CharField(max_length=5,
@@ -59,6 +61,7 @@ class FilterRuleModel(BaseModel):
                                 )
     conditional = models.CharField(max_length=3,
                                    null=True, blank=True,
+                                   default="AND",
                                    choices=CONDITIONAL_CHOICES
                                    )
 
