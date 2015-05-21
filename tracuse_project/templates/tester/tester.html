@@ -36,8 +36,8 @@
                         {% if element.element_type.element_options.count > 0 %}
                             <select id="{{ element.pk }}" name="{{ element.pk }}">
                                 {% for element_option in element.element_type.element_options.all %}
-                                    <option value="{{ element_option.pk }}"
-                                            {% if element.get_element_value == element_option.readable_name %} selected {% endif %} >
+                                    <option value="{{ element_option.readable_name }}"
+                                            {% if element.element_value|stringformat:"s" == element_option.readable_name|stringformat:"s" %}selected{% endif %}>
                                         {{ element_option.readable_name }}
                                     </option>
                                 {% endfor %}
