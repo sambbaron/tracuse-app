@@ -167,6 +167,7 @@ class ElementValueDecimal(ElementValueModel):
 
     element_value_decimal_id = models.AutoField(primary_key=True)
     elvalue = models.DecimalField(max_digits=10, decimal_places=2,
+                                  default=0,
                                   null=True, blank=True
                                   )
 
