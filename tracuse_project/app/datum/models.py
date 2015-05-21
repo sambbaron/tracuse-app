@@ -217,16 +217,18 @@ class DatumObject(BaseModel):
         )
         return self_association
 
-    def get_associations(self, direction, distance_limit=1):
+    def get_associations(self, direction, distance_limit=1, return_type=""):
         """Return associations from AssociationAll
         Excludes self association
 
         Arguments:
             direction (AssociationDirection):
             distance_limit (integer):
+            return_type (string): objects/values to return
 
         Returns:
-            List of AssociationAll objects
+            return_type="": List of AssociationAll objects
+            return_type="id": List of datum_object_ids
         """
         associations = []
 
@@ -235,8 +237,10 @@ class DatumObject(BaseModel):
             query = self.all_child_associations
             query = query.filter_distance(distance_limit)
             query = query.exclude_self(True)
-            query = query.order_by("-distance")
-            parent_associations = query.all()
+            if return_type == "id":
+                parent_associations = query.values_list("parent_datum_id", flat=True)
+            else:
+                parent_associations = query.all()
             associations.extend(parent_associations)
 
         # Return child associations where self is parent
@@ -244,8 +248,10 @@ class DatumObject(BaseModel):
             query = self.all_parent_associations
             query = query.filter_distance(distance_limit)
             query = query.exclude_self(True)
-            query = query.order_by("distance")
-            child_associations = query.all()
+            if return_type == "id":
+                child_associations = query.values_list("child_datum_id", flat=True)
+            else:
+                child_associations = query.all()
             associations.extend(child_associations)
 
         return associations

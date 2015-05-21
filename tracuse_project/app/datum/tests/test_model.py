@@ -190,14 +190,20 @@ class TestModelDatumObjectAssociationProperties(TestCase):
     def test_get_associations_parent_with_distance(self):
         """Test DatumObject.get_associations
         with distance limit
+        return datum_object_ids
         """
         test_object = self.test.datum_object3
         parent_direction = self.test.association_direction1
         actual = test_object.get_associations(
             direction=parent_direction,
-            distance_limit=2
+            distance_limit=2,
+            return_type="id"
         )
+        expected = [self.test.datum_object1.datum_object_id,
+                    self.test.datum_object2.datum_object_id
+                    ]
         self.assertEqual(2, len(actual))
+        self.assertEqual(set(expected), set(actual))
 
     def test_get_associations_child_no_distance(self):
         """Test DatumObject.get_associations
