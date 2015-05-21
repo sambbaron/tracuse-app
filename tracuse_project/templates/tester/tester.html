@@ -11,9 +11,11 @@
         {% for datum in datum_objects %}
             {# Datum Group for background color #}
             <li class="datum group-{{ datum.datum_group }}">
-                <h4 class="datum-title">{{ datum }}</h4>
+                <h3 class="datum-title">{{ datum }}</h3>
 
-                <h5 class="datum-type">{{ datum.datum_type }}</h5>
+                <h4 class="datum-type">{{ datum.datum_type }}</h4>
+
+                <h5 class="datum-object-id">{{ datum.pk }}</h5>
 
                 {# Delete Button #}
                 <form id="datum-{{ datum.pk }}-delete" name="datum-{{ datum.pk }}-delete"

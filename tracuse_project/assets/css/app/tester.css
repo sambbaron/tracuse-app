@@ -33,6 +33,13 @@
     color: rgba(250, 250, 250, 0.50);
 }
 
+.datum-object-id {
+    position:absolute;
+    top: 1em;
+    left: 1em;
+    color: #696969;
+}
+
 .form-datum-update label {
     display: inline-block;
     width: 5em;
