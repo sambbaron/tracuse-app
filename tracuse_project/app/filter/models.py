@@ -24,7 +24,7 @@ class FilterRuleModel(BaseModel):
         ("iexact", "equals"),
 
         ("Text", (
-            ("contains", "contains"),
+            ("icontains", "contains"),
             ("istartswith", "starts with"),
             ("iendswith", "ends with"),
         )
