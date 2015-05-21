@@ -231,7 +231,7 @@ class DatumObject(BaseModel):
         associations = []
 
         # Return parent associations where self is child
-        if direction.entity_name is "parent" or direction.entity_name is "both":
+        if direction.schema_name == "parent" or direction.schema_name == "both":
             query = self.all_child_associations
             query = query.filter_distance(distance_limit)
             query = query.exclude_self(True)
@@ -240,7 +240,7 @@ class DatumObject(BaseModel):
             associations.extend(parent_associations)
 
         # Return child associations where self is parent
-        if direction.entity_name is "child" or direction.entity_name is "both":
+        if direction.schema_name == "child" or direction.schema_name == "both":
             query = self.all_parent_associations
             query = query.filter_distance(distance_limit)
             query = query.exclude_self(True)
@@ -269,10 +269,10 @@ class DatumObject(BaseModel):
         )
 
         for association in associations:
-            if direction.entity_name is "parent" or direction.entity_name is "both" \
+            if direction.schema_name == "parent" or direction.schema_name == "both" \
                     and association.parent_datum is not self:
                 datums.append(association.parent_datum)
-            if direction.entity_name is "child" or direction.entity_name is "both" \
+            if direction.schema_name == "child" or direction.schema_name == "both" \
                     and association.child_datum is not self:
                 datums.append(association.child_datum)
 
