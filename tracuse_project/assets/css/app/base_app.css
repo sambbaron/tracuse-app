@@ -21,7 +21,7 @@ footer {
 .datum {
     display: inline-block;
     position: relative;
-    z-index: -9;
+    /*z-index: -9;*/
     vertical-align: middle;
     border: 1px solid #35446A;
     border-radius: 0.5em;

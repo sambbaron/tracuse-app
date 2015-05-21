@@ -27,7 +27,7 @@ footer {
 main {
     position: relative;
     top: 4em;
-    z-index: -98;
+    /*z-index: -98;*/
 }
 
 header img {
