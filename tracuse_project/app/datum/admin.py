@@ -14,8 +14,8 @@ class DatumObjectAdmin(BaseModelAdmin):
     list_display = BaseModelAdmin.list_display + ("user", "datum_type", "datum_group")
     list_editable = BaseModelAdmin.list_editable + ("user", "datum_type")
 
-    fields = BaseModelAdmin.fields + ("user", "datum_type")
-    readonly_fields = BaseModelAdmin.readonly_fields + ("element_types",)
+    fields = BaseModelAdmin.fields + ("datum_object_id", "user", "datum_type")
+    readonly_fields = BaseModelAdmin.readonly_fields + ("datum_object_id", "element_types",)
 
     inlines = [ElementDatumObjectInline, ]
 
