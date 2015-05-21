@@ -197,10 +197,8 @@ class FilterSetRuleModel(BaseModel):
     class Meta(BaseModel.Meta):
         abstract = True
 
-    filter_set_id = models.ForeignKey("FilterSet",
-                                      db_column="filter_set_id",
-                                      null=False, blank=False
-                                      )
+        # filter_set_id defined in each model due to
+        # foreign key related names not being inherited
 
 
 class FilterSetGroupRule(FilterSetRuleModel):
@@ -213,13 +211,18 @@ class FilterSetGroupRule(FilterSetRuleModel):
 
     class Meta(BaseModel.Meta):
         db_table = "filter_set_group_rule"
-        default_related_name = "filter_set_group_rules"
 
     filter_set_group_rule_id = models.AutoField(primary_key=True)
-    filter_rule_group_id = models.ForeignKey("FilterRuleGroup",
-                                             db_column="filter_rule_group_id",
-                                             null=False, blank=False
-                                             )
+    filter_set = models.ForeignKey("FilterSet",
+                                   db_column="filter_set_id",
+                                   related_name="filter_set_group_rules",
+                                   null=False, blank=False
+                                   )
+    filter_rule_group = models.ForeignKey("FilterRuleGroup",
+                                          db_column="filter_rule_group_id",
+                                          related_name="filter_set_group_rules",
+                                          null=False, blank=False
+                                          )
 
 
 class FilterSetTypeRule(FilterSetRuleModel):
@@ -232,13 +235,18 @@ class FilterSetTypeRule(FilterSetRuleModel):
 
     class Meta(BaseModel.Meta):
         db_table = "filter_set_type_rule"
-        default_related_name = "filter_set_type_rules"
 
     filter_set_type_rule_id = models.AutoField(primary_key=True)
-    filter_rule_type_id = models.ForeignKey("FilterRuleType",
-                                            db_column="filter_rule_type_id",
-                                            null=False, blank=False
-                                            )
+    filter_set = models.ForeignKey("FilterSet",
+                                   db_column="filter_set_id",
+                                   related_name="filter_set_type_rules",
+                                   null=False, blank=False
+                                   )
+    filter_rule_type = models.ForeignKey("FilterRuleType",
+                                         db_column="filter_rule_type_id",
+                                         related_name="filter_set_type_rules",
+                                         null=False, blank=False
+                                         )
 
 
 class FilterSetAssociationRule(FilterSetRuleModel):
@@ -251,13 +259,18 @@ class FilterSetAssociationRule(FilterSetRuleModel):
 
     class Meta(BaseModel.Meta):
         db_table = "filter_set_association_rule"
-        default_related_name = "filter_set_association_rules"
 
     filter_set_association_rule_id = models.AutoField(primary_key=True)
-    filter_rule_association_id = models.ForeignKey("FilterRuleAssociation",
-                                                   db_column="filter_rule_association_id",
-                                                   null=False, blank=False
-                                                   )
+    filter_set = models.ForeignKey("FilterSet",
+                                   db_column="filter_set_id",
+                                   related_name="filter_set_association_rules",
+                                   null=False, blank=False
+                                   )
+    filter_rule_association = models.ForeignKey("FilterRuleAssociation",
+                                                db_column="filter_rule_association_id",
+                                                related_name="filter_set_association_rules",
+                                                null=False, blank=False
+                                                )
 
 
 class FilterSetElementRule(FilterSetRuleModel):
@@ -270,10 +283,15 @@ class FilterSetElementRule(FilterSetRuleModel):
 
     class Meta(BaseModel.Meta):
         db_table = "filter_set_element_rule"
-        default_related_name = "filter_set_element_rules"
 
     filter_set_element_rule_id = models.AutoField(primary_key=True)
-    filter_rule_element_id = models.ForeignKey("FilterRuleElement",
-                                               db_column="filter_rule_element_id",
-                                               null=False, blank=False
-                                               )
+    filter_set = models.ForeignKey("FilterSet",
+                                   db_column="filter_set_id",
+                                   related_name="filter_set_element_rules",
+                                   null=False, blank=False
+                                   )
+    filter_rule_element = models.ForeignKey("FilterRuleElement",
+                                            db_column="filter_rule_element_id",
+                                            related_name="filter_set_element_rules",
+                                            null=False, blank=False
+                                            )
