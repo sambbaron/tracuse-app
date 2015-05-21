@@ -27,7 +27,7 @@ class DatumTypeAdmin(EntityModelAdmin):
 
     fields = EntityModelAdmin.fields + ("headline_expr", )
 
-    inlines = [DatumObjectInline, ElementDatumTypeInline]
+    inlines = [ElementDatumTypeInline, ]
 
 
 class DatumTypeInline(EntityModelInline):
