@@ -88,11 +88,11 @@ class FilterRuleQModel(FilterRuleModel):
 
     @property
     def lookup_field(self):
-        return ""
+        pass
 
     @property
     def lookup_value(self):
-        return None
+        pass
 
     def Q_object(self, lookup_prefix):
         """Return queryset Q object with lookup expression
