@@ -131,7 +131,7 @@ class FilterRuleModel(BaseModel):
                 first_set = False
             else:
                 output.add(rule_set_Q_filter, "AND")
-        print(str(output) + "\n")
+
         return output
 
 
@@ -417,33 +417,29 @@ class FilterSet(EntityModel):
         """
         output = set()
 
-        # Compile datum filter rules into dictionary
-        # (FilterRuleGroup, FilterRuleType)
+        # Compile filter rules that return Q object
+        # Return dictionary to be passed to filter rules that return datum sets
+        # (FilterRuleUser, FilterRuleGroup, FilterRuleType)
         datum_filter_rules = {}
         datum_filter_types = ["filter_set_user_rules", "filter_set_group_rules", "filter_set_type_rules"]
         for filter_type in datum_filter_types:
             if filter_type in kwargs:
                 datum_filter_rules[filter_type] = kwargs[filter_type]
 
-        # Compile association rules with conditionals and datum filters
-        # (FilterRuleAssociation)
-        association_set = ()
-        if "filter_set_association_rules" in kwargs:
-            association_set = self._compile_datum_set_rules(
-                filter_rules=kwargs["filter_set_association_rules"],
-                datum_filter_rules=datum_filter_rules
-            )
+        # Compile filter rules that return datum set
+        # Return list of datum sets
+        # (FilterRuleAssociation, FilterRuleElement)
+        datum_sets = []
+        set_filter_types = ["filter_set_association_rules", "filter_set_element_rules"]
+        for filter_type in set_filter_types:
+            if filter_type in kwargs:
+                datum_set = self._compile_datum_set_rules(
+                    filter_rules=kwargs[filter_type],
+                    datum_filter_rules=datum_filter_rules
+                )
+                datum_sets.append(datum_set)
 
-        # Compile element rules with conditionals and datum filters
-        # (FilterRuleElement)
-        element_set = ()
-        if "filter_set_element_rules" in kwargs:
-            element_set = self._compile_datum_set_rules(
-                filter_rules=kwargs["filter_set_association_rules"],
-                datum_filter_rules=datum_filter_rules
-            )
-
-        output = association_set & element_set
+        output = set.intersection(*datum_sets)
 
         return output
 
