@@ -258,6 +258,9 @@ class FilterRuleAssociation(FilterRuleSetModel):
 
     def get_datum_set(self, datum_filter_rules):
 
+        parent_result = []
+        child_result = []
+
         # Parent Associations
         if self.association_direction == AssociationDirection.parent() or \
                         self.association_direction == AssociationDirection.both():
@@ -288,7 +291,7 @@ class FilterRuleAssociation(FilterRuleSetModel):
                 return_kwargs={"flat": True}
             )
 
-        result = chain(parent_result, child_result)
+        result = chain(parent_result, child_result, [self.datum_object_id])
         return set(result)
 
 
