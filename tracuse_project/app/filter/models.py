@@ -8,7 +8,7 @@ from app.common.models import EntityModel, BaseModel
 from app.association.models import AssociationDirection
 from app.element_value.models import ElementValueMeta
 
-from .utils import compile_Q_objects, run_filter_from_dict
+from .utils import compile_Q_objects, run_filter_from_model
 
 
 class FilterRuleModel(BaseModel):
@@ -417,7 +417,7 @@ class FilterSet(EntityModel):
     def run_filter(self):
         """Run filter using stored FilterRule objects
         """
-        return run_filter_from_dict(**self.rules_dict)
+        return run_filter_from_model(**self.rules_dict)
 
 
 class FilterSetUserRule(BaseModel):

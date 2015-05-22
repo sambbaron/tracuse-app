@@ -112,13 +112,54 @@ class TestFilterSetsModel(object):
                 ),
             ],
         }
-        
+
         self.filter_set_data_type1 = {
-            "filter_set_data_type_rules": [
+            "FilterRuleDataType": [
                 filters.FilterRuleDataType(
                     element_data_type=ElementDataType.objects.get(entity_name="String"),
                     operator="icontains",
                     elvalue="apartment",
+                ),
+            ],
+        }
+
+        self.filter_set_dict1 = {
+
+            "FilterRuleType": [
+                dict(
+                    datum_type_id=DatumType.objects.get(entity_name="Action").pk,
+                ),
+                dict(
+                    conditional="OR",
+                    datum_type_id=DatumType.objects.get(entity_name="Event").pk,
+                ),
+            ],
+
+            "FilterRuleAssociation": [
+                dict(
+                    datum_object=DatumObject.objects.get(pk=10),
+                    association_direction=AssociationDirection.objects.get(entity_name="Both"),
+                    distance=None
+                ),
+            ],
+
+            "FilterRuleElement": [
+                dict(
+                    element_type=ElementType.objects.get(entity_name="ActionEffort"),
+                    operator="gte",
+                    elvalue="1",
+                ),
+                dict(
+                    conditional="AND",
+                    element_type=ElementType.objects.get(entity_name="ActionStatus"),
+                    operator="iexact",
+                    elvalue="Upcoming",
+                ),
+                dict(
+                    conditional="OR",
+                    element_type=ElementType.objects.get(entity_name="ActionStatus"),
+                    operator="iexact",
+                    elvalue="Current",
                 ),
             ],
         }

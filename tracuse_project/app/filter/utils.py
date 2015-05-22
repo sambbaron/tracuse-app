@@ -81,7 +81,7 @@ def compile_datum_set_rules(filter_rules, datum_filter_rules):
     return output
 
 
-def run_filter_from_dict(**rules):
+def run_filter_from_model(**rules):
     """Apply filter rules and return list of datum_object_ids
 
     Arguments:
@@ -120,5 +120,36 @@ def run_filter_from_dict(**rules):
         # If no filter datum set output, then apply datum_filter on all datums
         datum_filter = compile_Q_objects(datum_filter_rules)
         output = DatumObject.objects.filter(datum_filter).values_list("datum_object_id", flat=True)
+
+    return output
+
+
+def convert_rules_dict_model(rules_dict):
+    """Convert dictionary of rules to model objects"""
+
+    # from app.filter.models import *
+    from app.filter import models
+
+    rules_model = {}
+
+    for rule_group_name, rule_list in rules_dict.items():
+
+        rules_model[rule_group_name] = []
+
+        for rule in rule_list:
+            # Use FilterRule model name to instance object with properties from dictionary
+            new_rule = getattr(locals()["models"], rule_group_name)()
+
+            for property, value in rule.items():
+                setattr(new_rule, property, value)
+
+            rules_model[rule_group_name].append(new_rule)
+
+    return rules_model
+
+def run_filter_from_dict(**rules):
+
+    rules_model = convert_rules_dict_model(rules)
+    output = run_filter_from_model(**rules_model)
 
     return output
