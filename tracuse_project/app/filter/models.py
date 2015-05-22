@@ -394,7 +394,7 @@ class FilterSet(EntityModel):
         # Compile datum filter rules into dictionary
         # (FilterRuleGroup, FilterRuleType)
         datum_filter_rules = {}
-        datum_filter_types = ["group_rules", "type_rules"]
+        datum_filter_types = ["filter_set_group_rules", "filter_set_type_rules"]
         for filter_type in datum_filter_types:
             if filter_type in kwargs:
                 datum_filter_rules[filter_type] = kwargs[filter_type]
@@ -402,7 +402,7 @@ class FilterSet(EntityModel):
         # Compile association rules with conditionals and datum filters
         # (FilterRuleAssociation)
         association_set = ()
-        if "association_rules" in kwargs:
+        if "filter_set_association_rules" in kwargs:
             association_set = self._compile_datum_set_rules(
                 filter_rules=kwargs["association_rules"],
                 datum_filter_rules=datum_filter_rules
@@ -411,7 +411,7 @@ class FilterSet(EntityModel):
         # Compile element rules with conditionals and datum filters
         # (FilterRuleElement)
         element_set = ()
-        if "element_rules" in kwargs:
+        if "filter_set_element_rules" in kwargs:
             element_set = self._compile_datum_set_rules(
                 filter_rules=kwargs["element_rules"],
                 datum_filter_rules=datum_filter_rules

@@ -9,7 +9,7 @@ from .. import models as filters
 class TestFilterSets(object):
     def __init__(self):
         self.filter_set1 = {
-            "group_rules": [
+            "filter_set_group_rules": [
                 filters.FilterRuleGroup(
                     datum_group=DatumGroup.objects.get(entity_name="Area"),
                 ),
@@ -18,7 +18,7 @@ class TestFilterSets(object):
                     datum_group=DatumGroup.objects.get(entity_name="Activity"),
                 ),
             ],
-            "type_rules": [
+            "filter_set_type_rules": [
                 filters.FilterRuleType(
                     datum_type=DatumType.objects.get(entity_name="Category"),
                 ),
@@ -27,7 +27,7 @@ class TestFilterSets(object):
                     datum_type=DatumType.objects.get(entity_name="Action"),
                 ),
             ],
-            "association_rules": [
+            "filter_set_association_rules": [
                 filters.FilterRuleAssociation(
                     datum_object=DatumObject.objects.get(pk=3),
                     association_direction=AssociationDirection.both()
@@ -38,7 +38,7 @@ class TestFilterSets(object):
                     association_direction=AssociationDirection.both(),
                 ),
             ],
-            "element_rules": [
+            "filter_set_element_rules": [
                 filters.FilterRuleElement(
                     element_type=ElementType.objects.get(entity_name="Name"),
                     operator="icontains",
