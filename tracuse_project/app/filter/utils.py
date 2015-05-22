@@ -3,6 +3,14 @@ from django.db.models import Q
 
 from app.datum.models import DatumObject
 
+Q_FILTER_RULES = ["filter_set_user_rules",
+                  "filter_set_group_rules",
+                  "filter_set_type_rules"
+                  ]
+SET_FILTER_RULES = ["filter_set_association_rules",
+                    "filter_set_element_rules"
+                    ]
+
 
 def compile_Q_objects(datum_filter_rules, lookup_prefix=None):
     """Compile datum filter rules and sets of rules
@@ -89,8 +97,7 @@ def run_filter_from_dict(**rules):
     # Return dictionary to be passed to filter rules that return datum sets
     # (FilterRuleUser, FilterRuleGroup, FilterRuleType)
     datum_filter_rules = {}
-    Q_filter_rules = ["filter_set_user_rules", "filter_set_group_rules", "filter_set_type_rules"]
-    for filter_rule in Q_filter_rules:
+    for filter_rule in Q_FILTER_RULES:
         if filter_rule in rules:
             datum_filter_rules[filter_rule] = rules[filter_rule]
 
@@ -98,8 +105,7 @@ def run_filter_from_dict(**rules):
     # Return list of datum sets
     # (FilterRuleAssociation, FilterRuleElement)
     datum_sets = []
-    set_filter_rules = ["filter_set_association_rules", "filter_set_element_rules"]
-    for filter_rule in set_filter_rules:
+    for filter_rule in SET_FILTER_RULES:
         if filter_rule in rules:
             datum_set = compile_datum_set_rules(
                 filter_rules=rules[filter_rule],
