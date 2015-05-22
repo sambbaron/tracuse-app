@@ -128,10 +128,39 @@ class FilterRuleModel(BaseModel):
 
             if first_set:
                 output = rule_set_Q_filter
+                first_set = False
             else:
-                rule_set_Q_filter.add(rule_set_Q_filter, "AND")
-
+                output.add(rule_set_Q_filter, "AND")
+        print(str(output) + "\n")
         return output
+
+
+class FilterRuleUser(FilterRuleModel):
+    """Filter Rules by User
+
+    Attributes:
+        See FilterRuleModel (includes BaseModel)
+        user_id (integer, fk, required): User
+    """
+
+    class Meta(FilterRuleModel.Meta):
+        db_table = "filter_rule_user"
+        verbose_name = "Filter Rule - User"
+
+    filter_rule_user_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User,
+                             db_column="user_id",
+                             related_name="filter_rule_users",
+                             null=False, blank=False
+                             )
+
+    @property
+    def lookup_field(self):
+        return "user_id"
+
+    @property
+    def lookup_value(self):
+        return self.user_id
 
 
 class FilterRuleGroup(FilterRuleModel):
@@ -240,9 +269,8 @@ class FilterRuleAssociation(FilterRuleModel):
         # Parent Associations
         if self.association_direction == AssociationDirection.parent() or \
                         self.association_direction == AssociationDirection.both():
-
             # Set datum_filter_rules using parent_datum_id prefix
-            parent_datum_filter = self._compile_datum_rules(datum_filter_rules, "parent_datum_id")
+            parent_datum_filter = self._compile_datum_rules(datum_filter_rules, "parent_datum")
 
             parent_result = self.datum_object.association_queryset(
                 direction=AssociationDirection.parent(),
@@ -256,9 +284,8 @@ class FilterRuleAssociation(FilterRuleModel):
         # Child Associations
         if self.association_direction == AssociationDirection.child() or \
                         self.association_direction == AssociationDirection.both():
-
             # Set datum_filter_rules using child_datum_id prefix
-            child_datum_filter = self._compile_datum_rules(datum_filter_rules, "child_datum_id")
+            child_datum_filter = self._compile_datum_rules(datum_filter_rules, "child_datum")
 
             child_result = self.datum_object.association_queryset(
                 direction=AssociationDirection.child(),
@@ -312,7 +339,7 @@ class FilterRuleElement(FilterRuleModel):
         element_value_model = self.element_type.element_value_model
         value_lookup = "elvalue__" + self.operator
         value_query = (value_lookup, self.elvalue)
-        type_query = (element_type_prefix+ "__element_type_id", self.element_type.element_type_id)
+        type_query = (element_type_prefix + "__element_type_id", self.element_type.element_type_id)
         query = element_value_model.objects.filter(type_query, value_query)
 
         if datum_filter_rules:
@@ -346,7 +373,6 @@ class FilterSet(EntityModel):
                              related_name="filter_sets",
                              null=True, blank=True
                              )
-
 
     def _compile_datum_set_rules(self, filter_rules, datum_filter_rules):
         """Compile filter rules using datum set and conditionals
@@ -394,7 +420,7 @@ class FilterSet(EntityModel):
         # Compile datum filter rules into dictionary
         # (FilterRuleGroup, FilterRuleType)
         datum_filter_rules = {}
-        datum_filter_types = ["filter_set_group_rules", "filter_set_type_rules"]
+        datum_filter_types = ["filter_set_user_rules", "filter_set_group_rules", "filter_set_type_rules"]
         for filter_type in datum_filter_types:
             if filter_type in kwargs:
                 datum_filter_rules[filter_type] = kwargs[filter_type]
@@ -404,7 +430,7 @@ class FilterSet(EntityModel):
         association_set = ()
         if "filter_set_association_rules" in kwargs:
             association_set = self._compile_datum_set_rules(
-                filter_rules=kwargs["association_rules"],
+                filter_rules=kwargs["filter_set_association_rules"],
                 datum_filter_rules=datum_filter_rules
             )
 
@@ -413,7 +439,7 @@ class FilterSet(EntityModel):
         element_set = ()
         if "filter_set_element_rules" in kwargs:
             element_set = self._compile_datum_set_rules(
-                filter_rules=kwargs["element_rules"],
+                filter_rules=kwargs["filter_set_association_rules"],
                 datum_filter_rules=datum_filter_rules
             )
 
@@ -437,6 +463,30 @@ class FilterSetRuleModel(BaseModel):
 
         # filter_set_id defined in each model due to
         # foreign key related names not being inherited
+
+
+class FilterSetUserRule(FilterSetRuleModel):
+    """Assign User Filter Rules to Filter Sets
+
+    Attributes:
+        See FilterSetRuleModel (includes Base)
+        filter_rule_user_id (integer, fk, required): FilterRuleUser
+    """
+
+    class Meta(BaseModel.Meta):
+        db_table = "filter_set_user_rule"
+
+    filter_set_user_rule_id = models.AutoField(primary_key=True)
+    filter_set = models.ForeignKey("FilterSet",
+                                   db_column="filter_set_id",
+                                   related_name="filter_set_user_rules",
+                                   null=False, blank=False
+                                   )
+    filter_rule_user = models.ForeignKey("FilterRuleUser",
+                                          db_column="filter_rule_user_id",
+                                          related_name="filter_set_user_rules",
+                                          null=False, blank=False
+                                          )
 
 
 class FilterSetGroupRule(FilterSetRuleModel):

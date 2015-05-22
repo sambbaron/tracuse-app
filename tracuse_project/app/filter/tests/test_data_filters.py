@@ -1,5 +1,7 @@
 from model_mommy import mommy
 
+from django.contrib.auth.models import User
+
 from app.datum.models import DatumGroup, DatumType, DatumObject
 from app.association.models import AssociationDirection
 from app.element_type.models import ElementType
@@ -9,6 +11,11 @@ from .. import models as filters
 class TestFilterSets(object):
     def __init__(self):
         self.filter_set1 = {
+            "filter_set_user_rules": [
+                filters.FilterRuleUser(
+                    user=User.objects.get(pk=1),
+                ),
+            ],
             "filter_set_group_rules": [
                 filters.FilterRuleGroup(
                     datum_group=DatumGroup.objects.get(entity_name="Area"),
