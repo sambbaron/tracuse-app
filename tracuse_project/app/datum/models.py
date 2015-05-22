@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from app.common.models import EntityModel, BaseModel
 from app.element_type.models import ElementType, ElementDatumObject
 from app.element_value.models import ElementValueMeta
-from app.association.models import AssociationAll
+from app.association.models import AssociationAll, AssociationDirection
 
 from .datum_methods import DatumObjectMethodFactory
 from app.common.serializers import Serializer
@@ -238,7 +238,7 @@ class DatumObject(BaseModel):
         """
 
         # Start with all associations
-        if direction.schema_name == "parent":
+        if direction == AssociationDirection.parent():
             associations = self.all_child_associations
         else:
             associations = self.all_parent_associations
