@@ -69,6 +69,21 @@ class FilterRuleModel(BaseModel):
                                    choices=CONDITIONAL_CHOICES
                                    )
 
+
+class FilterRuleQModel(FilterRuleModel):
+    """Filter rule that outputs Q object
+
+    Used for datum property filters
+
+    Properties:
+        See FilterRuleModel (includes BaseModel)
+        lookup_field (string):
+        lookup_value (variable)
+    """
+
+    class Meta(FilterRuleModel.Meta):
+        abstract = True
+
     @property
     def lookup_field(self):
         return ""
@@ -96,8 +111,103 @@ class FilterRuleModel(BaseModel):
         query_object = (lookup_expression, self.lookup_value)
         return models.Q(query_object)
 
+
+class FilterRuleUser(FilterRuleQModel):
+    """Filter Rules by User
+
+    Attributes:
+        See FilterRuleQModel (includes FilterRuleModel, BaseModel)
+        user_id (integer, fk, required): User
+    """
+
+    class Meta(FilterRuleModel.Meta):
+        db_table = "filter_rule_user"
+        verbose_name = "Filter Rule - User"
+
+    filter_rule_user_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User,
+                             db_column="user_id",
+                             related_name="filter_rule_users",
+                             null=False, blank=False
+                             )
+
+    @property
+    def lookup_field(self):
+        return "user_id"
+
+    @property
+    def lookup_value(self):
+        return self.user_id
+
+
+class FilterRuleGroup(FilterRuleQModel):
+    """Filter Rules by Datum Group
+
+    Attributes:
+        See FilterRuleQModel (includes FilterRuleModel, BaseModel)
+        datum_group_id (integer, fk, required): DatumGroup
+    """
+
+    class Meta(FilterRuleModel.Meta):
+        db_table = "filter_rule_group"
+        verbose_name = "Filter Rule - Group"
+
+    filter_rule_group_id = models.AutoField(primary_key=True)
+    datum_group = models.ForeignKey("datum.DatumGroup",
+                                    db_column="datum_group_id",
+                                    related_name="filter_rule_groups",
+                                    null=False, blank=False
+                                    )
+
+    @property
+    def lookup_field(self):
+        return "datum_type__datum_group_id"
+
+    @property
+    def lookup_value(self):
+        return self.datum_group_id
+
+
+class FilterRuleType(FilterRuleQModel):
+    """Filter Rules by Datum Type
+
+    Attributes:
+        See FilterRuleQModel (includes FilterRuleModel, BaseModel)
+        datum_type_id (integer, fk, required): DatumType
+    """
+
+    class Meta(FilterRuleModel.Meta):
+        db_table = "filter_rule_type"
+        verbose_name = "Filter Rule - Type"
+
+    filter_rule_type_id = models.AutoField(primary_key=True)
+    datum_type = models.ForeignKey("datum.DatumType",
+                                   db_column="datum_type_id",
+                                   related_name="filter_rule_types",
+                                   null=False, blank=False
+                                   )
+
+    @property
+    def lookup_field(self):
+        return "datum_type_id"
+
+    @property
+    def lookup_value(self):
+        return self.datum_type_id
+
+
+class FilterRuleSetModel(FilterRuleModel):
+    """Filter rule that outputs datum set
+
+    Properties:
+        See FilterRuleModel (includes BaseModel)
+    """
+
+    class Meta(FilterRuleModel.Meta):
+        abstract = True
+
     @staticmethod
-    def _compile_datum_rules(datum_filter_rules, lookup_prefix):
+    def _compile_Q_objects(datum_filter_rules, lookup_prefix):
         """Compile datum filter rules and sets of rules
         using Q objects and conditionals
 
@@ -134,96 +244,24 @@ class FilterRuleModel(BaseModel):
 
         return output
 
+    def get_datum_set(self, datum_filter_rules):
+        """Return filter results
 
-class FilterRuleUser(FilterRuleModel):
-    """Filter Rules by User
+        Arguments:
+            datum_filter_rules: Collection of filter rule objects
+                dictionary of rule lists
+                (FilterRuleGroup & FilterRuleType)
 
-    Attributes:
-        See FilterRuleModel (includes BaseModel)
-        user_id (integer, fk, required): User
-    """
-
-    class Meta(FilterRuleModel.Meta):
-        db_table = "filter_rule_user"
-        verbose_name = "Filter Rule - User"
-
-    filter_rule_user_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User,
-                             db_column="user_id",
-                             related_name="filter_rule_users",
-                             null=False, blank=False
-                             )
-
-    @property
-    def lookup_field(self):
-        return "user_id"
-
-    @property
-    def lookup_value(self):
-        return self.user_id
+        Returns:
+            Set of datum_object_ids
+        """
 
 
-class FilterRuleGroup(FilterRuleModel):
-    """Filter Rules by Datum Group
-
-    Attributes:
-        See FilterRuleModel (includes BaseModel)
-        datum_group_id (integer, fk, required): DatumGroup
-    """
-
-    class Meta(FilterRuleModel.Meta):
-        db_table = "filter_rule_group"
-        verbose_name = "Filter Rule - Group"
-
-    filter_rule_group_id = models.AutoField(primary_key=True)
-    datum_group = models.ForeignKey("datum.DatumGroup",
-                                    db_column="datum_group_id",
-                                    related_name="filter_rule_groups",
-                                    null=False, blank=False
-                                    )
-
-    @property
-    def lookup_field(self):
-        return "datum_type__datum_group_id"
-
-    @property
-    def lookup_value(self):
-        return self.datum_group_id
-
-
-class FilterRuleType(FilterRuleModel):
-    """Filter Rules by Datum Type
-
-    Attributes:
-        See FilterRuleModel (includes BaseModel)
-        datum_type_id (integer, fk, required): DatumType
-    """
-
-    class Meta(FilterRuleModel.Meta):
-        db_table = "filter_rule_type"
-        verbose_name = "Filter Rule - Type"
-
-    filter_rule_type_id = models.AutoField(primary_key=True)
-    datum_type = models.ForeignKey("datum.DatumType",
-                                   db_column="datum_type_id",
-                                   related_name="filter_rule_types",
-                                   null=False, blank=False
-                                   )
-
-    @property
-    def lookup_field(self):
-        return "datum_type_id"
-
-    @property
-    def lookup_value(self):
-        return self.datum_type_id
-
-
-class FilterRuleAssociation(FilterRuleModel):
+class FilterRuleAssociation(FilterRuleSetModel):
     """Filter Rules by Datum Association
 
     Attributes:
-        See FilterRuleModel (includes BaseModel)
+        See FilterRuleSetModel (includes FilterRuleModel, BaseModel)
         datum_object_id (integer, fk, required): DatumObject
         association_direction_id (integer, fk, required): AssociationDirection
         association_type_id (integer, fk, required): AssociationType
@@ -255,22 +293,12 @@ class FilterRuleAssociation(FilterRuleModel):
                                    )
 
     def get_datum_set(self, datum_filter_rules):
-        """Return association filter results
-
-        Arguments:
-            datum_filter_rules: Collection of filter rule objects
-                dictionary of rule lists
-                (FilterRuleGroup & FilterRuleType)
-
-        Returns:
-            Set of datum_object_ids
-        """
 
         # Parent Associations
         if self.association_direction == AssociationDirection.parent() or \
                         self.association_direction == AssociationDirection.both():
             # Set datum_filter_rules using parent_datum_id prefix
-            parent_datum_filter = self._compile_datum_rules(datum_filter_rules, "parent_datum")
+            parent_datum_filter = self._compile_Q_objects(datum_filter_rules, "parent_datum")
 
             parent_result = self.datum_object.association_queryset(
                 direction=AssociationDirection.parent(),
@@ -285,7 +313,7 @@ class FilterRuleAssociation(FilterRuleModel):
         if self.association_direction == AssociationDirection.child() or \
                         self.association_direction == AssociationDirection.both():
             # Set datum_filter_rules using child_datum_id prefix
-            child_datum_filter = self._compile_datum_rules(datum_filter_rules, "child_datum")
+            child_datum_filter = self._compile_Q_objects(datum_filter_rules, "child_datum")
 
             child_result = self.datum_object.association_queryset(
                 direction=AssociationDirection.child(),
@@ -300,11 +328,11 @@ class FilterRuleAssociation(FilterRuleModel):
         return set(result)
 
 
-class FilterRuleElement(FilterRuleModel):
+class FilterRuleElement(FilterRuleSetModel):
     """Filter Rules by Element Value
 
     Attributes:
-        See FilterRuleModel (includes BaseModel)
+        See FilterRuleSetModel (includes FilterRuleModel, BaseModel)
         element_type_id (integer, fk, required): ElementType
         elvalue (string):  ***Must match value
     """
@@ -322,17 +350,6 @@ class FilterRuleElement(FilterRuleModel):
     elvalue = models.CharField(max_length=255)
 
     def get_datum_set(self, datum_filter_rules):
-        """Return element filter results
-
-        Arguments:
-            datum_filter_rules: Collection of filter rule objects
-                dictionary of rule lists
-                (FilterRuleGroup & FilterRuleType)
-
-        Returns:
-            Set of datum_object_ids
-        """
-
         datum_object_prefix = "element_datum_object__datum_object"
         element_type_prefix = "element_datum_object__element_type"
 
@@ -343,9 +360,9 @@ class FilterRuleElement(FilterRuleModel):
         query = element_value_model.objects.filter(type_query, value_query)
 
         if datum_filter_rules:
-            datum_filter = self._compile_datum_rules(datum_filter_rules,
-                                                     datum_object_prefix
-                                                     )
+            datum_filter = self._compile_Q_objects(datum_filter_rules,
+                                                   datum_object_prefix
+                                                   )
             query = query.filter(datum_filter)
 
         result = query.values_list(datum_object_prefix + "__datum_object_id", flat=True)
@@ -463,10 +480,10 @@ class FilterSetUserRule(BaseModel):
                                    null=False, blank=False
                                    )
     filter_rule_user = models.ForeignKey("FilterRuleUser",
-                                          db_column="filter_rule_user_id",
-                                          related_name="filter_set_user_rules",
-                                          null=False, blank=False
-                                          )
+                                         db_column="filter_rule_user_id",
+                                         related_name="filter_set_user_rules",
+                                         null=False, blank=False
+                                         )
 
 
 class FilterSetGroupRule(BaseModel):
