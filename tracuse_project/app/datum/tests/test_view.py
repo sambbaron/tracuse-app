@@ -29,8 +29,6 @@ class TestDatumGroupAll(TestCase):
         self.assertEqual(expected_count, response_count)
 
 
-
-
 class TestDatumTypeAll(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -81,8 +79,8 @@ class TestDatumObjectAll(TestCase):
         success
         """
         new_datum = {
-                     "datum_type_id": self.test.datum_type1.datum_type_id
-                     }
+            "datum_type_id": self.test.datum_type1.datum_type_id
+        }
         request = self.factory.post('/api/datum_objects/',
                                     data=json.dumps(new_datum),
                                     content_type="application/json"
@@ -103,8 +101,8 @@ class TestDatumObjectAll(TestCase):
         failure - bad request content format
         """
         new_datum = {
-                     "datum_tyXpe_id": self.test.datum_type1.datum_type_id
-                     }
+            "datum_tyXpe_id": self.test.datum_type1.datum_type_id
+        }
         request = self.factory.post('/api/datum_objects/',
                                     data=json.dumps(new_datum),
                                     content_type="application/json"
