@@ -444,28 +444,12 @@ class FilterSet(EntityModel):
         return output
 
 
-class FilterSetRuleModel(BaseModel):
-    """Common properties for assigning Filter Rules to Filter Sets
-
-    Includes rule ordering
-
-    Attributes:
-        See BaseModel
-        filter_set_id (integer, fk, required): FilterSet
-    """
-
-    class Meta(BaseModel.Meta):
-        abstract = True
-
-        # filter_set_id defined in each model due to
-        # foreign key related names not being inherited
-
-
-class FilterSetUserRule(FilterSetRuleModel):
+class FilterSetUserRule(BaseModel):
     """Assign User Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleModel (includes Base)
+        See BaseModel
+        filter_set (integer, fk, required): FilterSet
         filter_rule_user_id (integer, fk, required): FilterRuleUser
     """
 
@@ -485,11 +469,12 @@ class FilterSetUserRule(FilterSetRuleModel):
                                           )
 
 
-class FilterSetGroupRule(FilterSetRuleModel):
+class FilterSetGroupRule(BaseModel):
     """Assign Group Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleModel (includes Base)
+        See BaseModel
+        filter_set (integer, fk, required): FilterSet
         filter_rule_group_id (integer, fk, required): FilterRuleGroup
     """
 
@@ -509,11 +494,12 @@ class FilterSetGroupRule(FilterSetRuleModel):
                                           )
 
 
-class FilterSetTypeRule(FilterSetRuleModel):
+class FilterSetTypeRule(BaseModel):
     """Assign Type Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleModel (includes Base)
+        See BaseModel
+        filter_set (integer, fk, required): FilterSet
         filter_rule_type_id (integer, fk, required): FilterRuleType
     """
 
@@ -533,11 +519,12 @@ class FilterSetTypeRule(FilterSetRuleModel):
                                          )
 
 
-class FilterSetAssociationRule(FilterSetRuleModel):
+class FilterSetAssociationRule(BaseModel):
     """Assign Association Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleModel (includes Base)
+        See BaseModel
+        filter_set (integer, fk, required): FilterSet
         filter_rule_association_id (integer, fk, required): FilterRuleAssociation
     """
 
@@ -557,11 +544,12 @@ class FilterSetAssociationRule(FilterSetRuleModel):
                                                 )
 
 
-class FilterSetElementRule(FilterSetRuleModel):
+class FilterSetElementRule(BaseModel):
     """Assign Element Filter Rules to Filter Sets
 
     Attributes:
-        See FilterSetRuleModel (includes Base)
+        See BaseModel
+        filter_set (integer, fk, required): FilterSet
         filter_rule_element_id (integer, fk, required): FilterRuleElement
     """
 
