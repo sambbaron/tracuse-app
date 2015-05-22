@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from app.common.models import EntityModel, BaseModel
+from app.association.models import AssociationDirection
 
 
 class FilterRuleModel(BaseModel):
@@ -155,11 +156,30 @@ class FilterRuleAssociation(FilterRuleModel):
                                    )
 
     def get_datum_set(self, datum_property_query):
-        result = self.datum_object.get_associations(
-            direction=self.association_direction,
-            distance_limit=self.distance,
-            return_type="id"
-        )
+
+        from itertools import chain
+
+        if self.association_direction == AssociationDirection.parent() or \
+                        self.association_direction == AssociationDirection.both():
+            parent_result = self.datum_object.association_queryset(
+                direction=AssociationDirection.parent(),
+                distance_limit=self.distance,
+                return_method="values_list",
+                return_args=["parent_datum__datum_object_id"],
+                return_kwargs={"flat": True}
+            )
+
+        if self.association_direction == AssociationDirection.child() or \
+                        self.association_direction == AssociationDirection.both():
+            child_result = self.datum_object.association_queryset(
+                direction=AssociationDirection.child(),
+                distance_limit=self.distance,
+                return_method="values_list",
+                return_args=["child_datum__datum_object_id"],
+                return_kwargs={"flat": True}
+            )
+
+        result = chain(parent_result, child_result)
         return set(result)
 
 
