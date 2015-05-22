@@ -58,7 +58,7 @@ class FilterRuleModel(BaseModel):
         ("OR", "OR"),
     )
 
-    operator = models.CharField(max_length=5,
+    operator = models.CharField(max_length=25,
                                 default="exact",
                                 null=False, blank=False,
                                 choices=OPERATOR_CHOICES
