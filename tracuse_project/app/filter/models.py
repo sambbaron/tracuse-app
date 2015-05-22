@@ -21,9 +21,10 @@ class FilterRuleModel(BaseModel):
         abstract = True
 
     OPERATOR_CHOICES = (
-        ("iexact", "equals"),
+        ("exact", "equals"),
 
         ("Text", (
+            ("iexact", "text equals"),
             ("icontains", "contains"),
             ("istartswith", "starts with"),
             ("iendswith", "ends with"),
@@ -55,7 +56,7 @@ class FilterRuleModel(BaseModel):
     )
 
     operator = models.CharField(max_length=5,
-                                default="iexact",
+                                default="exact",
                                 null=False, blank=False,
                                 choices=OPERATOR_CHOICES
                                 )
