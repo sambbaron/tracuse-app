@@ -34,7 +34,7 @@ Tracuse.Model.prototype.loadData = function loadData() {
         }
     };
 
-    url = model.urls().get;
+    url = model.urls().all;
     request.open("GET", url, true);
     request.send();
 };
