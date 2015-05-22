@@ -1,8 +1,10 @@
 """Filter helper functions"""
 from django.db.models import Q
 
+from app.datum.models import DatumObject
 
-def compile_Q_objects(datum_filter_rules, lookup_prefix):
+
+def compile_Q_objects(datum_filter_rules, lookup_prefix=None):
     """Compile datum filter rules and sets of rules
     using Q objects and conditionals
 
@@ -105,6 +107,11 @@ def run_filter_from_dict(**rules):
             )
             datum_sets.append(datum_set)
 
-    output = set.intersection(*datum_sets)
+    if datum_sets:
+        output = set.intersection(*datum_sets)
+    else:
+        # If no filter datum set output, then apply datum_filter on all datums
+        datum_filter = compile_Q_objects(datum_filter_rules)
+        output = DatumObject.objects.filter(datum_filter).values_list("datum_object_id", flat=True)
 
     return output
