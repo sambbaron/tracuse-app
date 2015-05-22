@@ -75,7 +75,7 @@ class FilterRuleQModel(FilterRuleModel):
 
     Used for datum property filters
 
-    Properties:
+    Attributes:
         See FilterRuleModel (includes BaseModel)
         lookup_field (string):
         lookup_value (variable)
@@ -199,7 +199,7 @@ class FilterRuleType(FilterRuleQModel):
 class FilterRuleSetModel(FilterRuleModel):
     """Filter rule that outputs datum set
 
-    Properties:
+    Attributes:
         See FilterRuleModel (includes BaseModel)
     """
 
@@ -376,7 +376,10 @@ class FilterSet(EntityModel):
 
     Attributes:
         See EntityModel (includes BaseModel)
-        user_id (integer, fk, optional): User
+        user (integer, fk, optional): User
+        rules_dict (dict):
+            Lists of FilterRule objects
+            Use to run filter
     """
 
     class Meta(EntityModel.Meta):
@@ -390,6 +393,23 @@ class FilterSet(EntityModel):
                              related_name="filter_sets",
                              null=True, blank=True
                              )
+
+    @property
+    def rules_dict(self):
+        rules = {}
+        rules["filter_set_user_rules"] = self.filter_set_user_rules.all()
+        rules["filter_set_group_rules"] = self.filter_set_group_rules.all()
+        rules["filter_set_type_rules"] = self.filter_set_type_rules.all()
+        rules["filter_set_association_rules"] = self.filter_set_association_rules.all()
+        rules["filter_set_element_rules"] = self.filter_set_element_rules.all()
+        return rules
+
+    def run_filter(self):
+        """Run filter using stored FilterRule objects
+        """
+        from .utils import run_filter_from_dict
+
+        return run_filter_from_dict(**self.rules_dict)
 
 
 class FilterSetUserRule(BaseModel):
