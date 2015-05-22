@@ -17,6 +17,6 @@ class TestModelFilter(TestCase):
         """Test
         """
         test_filter_set = FilterSet()
-        actual = test_filter_set._run_filter_set(**self.test.filter_set1)
+        actual = test_filter_set.run_filter_from_dict(**self.test.filter_set1)
         expected = {12}
         self.assertEqual(expected, actual)

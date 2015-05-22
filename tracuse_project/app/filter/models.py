@@ -420,14 +420,13 @@ class FilterSet(EntityModel):
 
         return output
 
-    def _run_filter_set(self, **kwargs):
+    def run_filter_from_dict(self, **kwargs):
         """Apply filter rules and return list of datum_object_ids
 
         Arguments:
-            group_rules (list): FilterRuleGroup instances
-            type_rules (list): FilterRuleType instances
-            association_rules (list): FilterRuleAssociation instances
-            element_rules (list): FilterRuleElement instances
+            Key: filter rule group name
+                example: "filter_set_group_rules"
+            Value: list of FilterRule instances
 
         Returns:
             List of datum_object_ids
@@ -438,20 +437,20 @@ class FilterSet(EntityModel):
         # Return dictionary to be passed to filter rules that return datum sets
         # (FilterRuleUser, FilterRuleGroup, FilterRuleType)
         datum_filter_rules = {}
-        datum_filter_types = ["filter_set_user_rules", "filter_set_group_rules", "filter_set_type_rules"]
-        for filter_type in datum_filter_types:
-            if filter_type in kwargs:
-                datum_filter_rules[filter_type] = kwargs[filter_type]
+        Q_filter_rules = ["filter_set_user_rules", "filter_set_group_rules", "filter_set_type_rules"]
+        for filter_rule in Q_filter_rules:
+            if filter_rule in kwargs:
+                datum_filter_rules[filter_rule] = kwargs[filter_rule]
 
         # Compile filter rules that return datum set
         # Return list of datum sets
         # (FilterRuleAssociation, FilterRuleElement)
         datum_sets = []
-        set_filter_types = ["filter_set_association_rules", "filter_set_element_rules"]
-        for filter_type in set_filter_types:
-            if filter_type in kwargs:
+        set_filter_rules = ["filter_set_association_rules", "filter_set_element_rules"]
+        for filter_rule in set_filter_rules:
+            if filter_rule in kwargs:
                 datum_set = self._compile_datum_set_rules(
-                    filter_rules=kwargs[filter_type],
+                    filter_rules=kwargs[filter_rule],
                     datum_filter_rules=datum_filter_rules
                 )
                 datum_sets.append(datum_set)
