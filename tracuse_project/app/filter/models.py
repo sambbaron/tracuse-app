@@ -86,6 +86,12 @@ class FilterRuleGroup(FilterRuleModel):
                                     null=False, blank=False
                                     )
 
+    @property
+    def Q_object(self):
+        lookup_type = "element_datum_object__datum_object__datum_type__datum_group_id__" + self.operator
+        query_object = (lookup_type, self.datum_group_id)
+        return models.Q(query_object)
+
 
 class FilterRuleType(FilterRuleModel):
     """Filter Rules by Datum Type
@@ -105,6 +111,12 @@ class FilterRuleType(FilterRuleModel):
                                    related_name="filter_rule_types",
                                    null=False, blank=False
                                    )
+
+    @property
+    def Q_object(self):
+        lookup_type = "element_datum_object__datum_object__datum_type_id__" + self.operator
+        query_object = (lookup_type, self.datum_type_id)
+        return models.Q(query_object)
 
 
 class FilterRuleAssociation(FilterRuleModel):
@@ -142,6 +154,14 @@ class FilterRuleAssociation(FilterRuleModel):
                                    null=False, blank=False
                                    )
 
+    def get_datum_set(self, datum_property_query):
+        result = self.datum_object.get_associations(
+            direction=self.association_direction,
+            distance_limit=self.distance,
+            return_type="id"
+        )
+        return set(result)
+
 
 class FilterRuleElement(FilterRuleModel):
     """Filter Rules by Element Value
@@ -163,6 +183,19 @@ class FilterRuleElement(FilterRuleModel):
                                      null=False, blank=False
                                      )
     elvalue = models.CharField(max_length=255)
+
+    def get_datum_set(self, datum_property_query):
+        element_value_model = self.element_type.element_value_model
+        value_lookup = "elvalue__" + self.operator
+        value_query = (value_lookup, self.elvalue)
+        type_query = ("element_datum_object__element_type_id", self.element_type.element_type_id)
+        query = element_value_model.objects.filter(type_query, value_query)
+
+        if datum_property_query:
+            query = query.filter(datum_property_query)
+
+        result = query.values_list("element_datum_object__datum_object_id", flat=True)
+        return set(result)
 
 
 class FilterSet(EntityModel):
@@ -186,6 +219,105 @@ class FilterSet(EntityModel):
                              related_name="filter_sets",
                              null=True, blank=True
                              )
+
+    @classmethod
+    def _compile_Q_rules(cls, filter_rules):
+        """Compile filter rules using Q objects and conditionals
+
+        Arguments:
+            filter_rules: Filter rule objects that output query objects
+                (FilterRuleGroup & FilterRuleType)
+
+        Return:
+            Q object
+        """
+        output = models.Q()
+
+        first_rule = True
+        for filter_rule in filter_rules:
+            Q_object = filter_rule.Q_object
+            if first_rule:
+                output = Q_object
+                first_rule = False
+            else:
+                output.add(Q_object, filter_rule.conditional)
+
+        return output
+
+    def _compile_datum_set_rules(self, filter_rules, datum_property_query):
+        """Compile filter rules using datum set and conditionals
+
+        Arguments:
+            filter_rules: Filter rule objects that output datum sets
+                (FilterRuleAssociation & FilterRuleElement)
+            datum_property_query: filter on datum_object properties
+                (datum_group & datum_type)
+
+        Return:
+            Set of datum_object_ids
+        """
+        output = set()
+
+        first_rule = True
+        for filter_rule in filter_rules:
+            datum_set = filter_rule.get_datum_set(datum_property_query)
+            if first_rule:
+                output = datum_set
+                first_rule = False
+            else:
+                if filter_rule.conditional == "AND":
+                    output = output.intersection(datum_set)
+                else:
+                    output = output.union(datum_set)
+
+        return output
+
+    def _run_filter_set(self, **kwargs):
+        """Apply filter rules and return list of datum_object_ids
+
+        Arguments:
+            group_rules (list): FilterRuleGroup instances
+            type_rules (list): FilterRuleType instances
+            association_rules (list): FilterRuleAssociation instances
+            element_rules (list): FilterRuleElement instances
+
+        Returns:
+            List of datum_object_ids
+        """
+        output = set()
+
+        # Compile group rules with conditionals
+        group_Q = models.Q()
+        if "group_rules" in kwargs:
+            group_Q = self._compile_Q_rules(kwargs["group_rules"])
+
+        # Compile type rules with conditionals
+        type_Q = models.Q()
+        if "type_rules" in kwargs:
+            type_Q = self._compile_Q_rules(kwargs["type_rules"])
+
+        # Create datum_property_query to pass to association and element rules
+        datum_property_query = models.Q(group_Q & type_Q)
+
+        # Compile association rules with conditionals
+        association_set = ()
+        if "association_rules" in kwargs:
+            association_set = self._compile_datum_set_rules(
+                filter_rules=kwargs["association_rules"],
+                datum_property_query=datum_property_query
+            )
+
+        # Compile element rules with conditionals
+        element_set = ()
+        if "element_rules" in kwargs:
+            element_set = self._compile_datum_set_rules(
+                filter_rules=kwargs["element_rules"],
+                datum_property_query=datum_property_query
+            )
+
+        output = association_set & element_set
+
+        return output
 
 
 class FilterSetRuleModel(BaseModel):
