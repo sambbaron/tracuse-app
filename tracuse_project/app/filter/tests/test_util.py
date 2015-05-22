@@ -5,6 +5,7 @@ from model_mommy import mommy
 
 from .test_data_filters import TestFilterSets
 from ..models import FilterSet
+from .. import utils
 
 
 class TestModelFilter(TestCase):
@@ -13,10 +14,9 @@ class TestModelFilter(TestCase):
         call_command("loaddata", "app/filter/tests/test_data_fixture.json")
         cls.test = TestFilterSets()
 
-    def test_run_filter_set1(self):
+    def test_run_filter_from_dict1(self):
         """Test
         """
-        test_filter_set = FilterSet()
-        actual = test_filter_set.run_filter_from_dict(**self.test.filter_set1)
+        actual = utils.run_filter_from_dict(**self.test.filter_set1)
         expected = {12}
         self.assertEqual(expected, actual)
