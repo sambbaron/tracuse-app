@@ -8,12 +8,10 @@ from app.element_type.models import ElementType, ElementDataType
 from .. import models as filters
 
 
-class TestFilterSets(object):
-
+class TestFilterSetsModel(object):
     def __init__(self):
-
         self.filter_set_user1 = {
-            "filter_set_user_rules": [
+            "FilterRuleUser": [
                 filters.FilterRuleUser(
                     user=User.objects.get(pk=1),
                 ),
@@ -21,7 +19,7 @@ class TestFilterSets(object):
         }
 
         self.filter_set_group1 = {
-            "filter_set_group_rules": [
+            "FilterRuleGroup": [
                 filters.FilterRuleGroup(
                     datum_group=DatumGroup.objects.get(entity_name="Area"),
                 ),
@@ -29,7 +27,7 @@ class TestFilterSets(object):
         }
 
         self.filter_set_group2 = {
-            "filter_set_group_rules": [
+            "FilterRuleGroup": [
                 filters.FilterRuleGroup(
                     datum_group=DatumGroup.objects.get(entity_name="Activity"),
                 ),
@@ -41,15 +39,15 @@ class TestFilterSets(object):
         }
 
         self.filter_set_type1 = {
-            "filter_set_type_rules": [
+            "FilterRuleType": [
                 filters.FilterRuleType(
                     datum_type=DatumType.objects.get(entity_name="Context"),
                 ),
             ],
         }
-        
+
         self.filter_set_type2 = {
-            "filter_set_type_rules": [
+            "FilterRuleType": [
                 filters.FilterRuleType(
                     datum_type=DatumType.objects.get(entity_name="Category"),
                 ),
@@ -61,7 +59,7 @@ class TestFilterSets(object):
         }
 
         self.filter_set_association1 = {
-            "filter_set_association_rules": [
+            "FilterRuleAssociation": [
                 filters.FilterRuleAssociation(
                     datum_object=DatumObject.objects.get(pk=3),
                     association_direction=AssociationDirection.child(),
@@ -71,7 +69,7 @@ class TestFilterSets(object):
         }
 
         self.filter_set_association2 = {
-            "filter_set_association_rules": [
+            "FilterRuleAssociation": [
                 filters.FilterRuleAssociation(
                     datum_object=DatumObject.objects.get(pk=14),
                     association_direction=AssociationDirection.parent(),
@@ -81,7 +79,7 @@ class TestFilterSets(object):
         }
 
         self.filter_set_element1 = {
-            "filter_set_element_rules": [
+            "FilterRuleElement": [
                 filters.FilterRuleElement(
                     element_type=ElementType.objects.get(entity_name="Name"),
                     operator="icontains",
@@ -91,7 +89,7 @@ class TestFilterSets(object):
         }
 
         self.filter_set_element2 = {
-            "filter_set_element_rules": [
+            "FilterRuleElement": [
                 filters.FilterRuleElement(
                     element_type=ElementType.objects.get(entity_name="ActionEffort"),
                     operator="exact",
@@ -101,7 +99,7 @@ class TestFilterSets(object):
         }
 
         self.filter_set_element3 = {
-            "filter_set_element_rules": [
+            "FilterRuleElement": [
                 filters.FilterRuleElement(
                     element_type=ElementType.objects.get(entity_name="ActionEffort"),
                     operator="exact",

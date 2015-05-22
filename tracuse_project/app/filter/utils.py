@@ -3,13 +3,13 @@ from django.db.models import Q
 
 from app.datum.models import DatumObject
 
-Q_FILTER_RULES = ["filter_set_user_rules",
-                  "filter_set_group_rules",
-                  "filter_set_type_rules"
+Q_FILTER_RULES = ["FilterRuleUser",
+                  "FilterRuleGroup",
+                  "FilterRuleType"
                   ]
-SET_FILTER_RULES = ["filter_set_association_rules",
-                    "filter_set_element_rules",
-                    "filter_set_data_type_rules"
+SET_FILTER_RULES = ["FilterRuleAssociation",
+                    "FilterRuleElement",
+                    "FilterRuleDataType"
                     ]
 
 
