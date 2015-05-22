@@ -8,7 +8,8 @@ Q_FILTER_RULES = ["filter_set_user_rules",
                   "filter_set_type_rules"
                   ]
 SET_FILTER_RULES = ["filter_set_association_rules",
-                    "filter_set_element_rules"
+                    "filter_set_element_rules",
+                    "filter_set_data_type_rules"
                     ]
 
 

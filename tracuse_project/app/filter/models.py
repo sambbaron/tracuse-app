@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 from app.common.models import EntityModel, BaseModel
 from app.association.models import AssociationDirection
+from app.element_value.models import ElementValueMeta
 
 from .utils import compile_Q_objects, run_filter_from_dict
 
@@ -328,8 +329,50 @@ class FilterRuleElement(FilterRuleSetModel):
 
         if datum_filter_rules:
             datum_filter = compile_Q_objects(datum_filter_rules,
-                                                   datum_object_prefix
-                                                   )
+                                             datum_object_prefix
+                                             )
+            query = query.filter(datum_filter)
+
+        result = query.values_list(datum_object_prefix + "__datum_object_id", flat=True)
+        return set(result)
+
+
+class FilterRuleDataType(FilterRuleSetModel):
+    """Filter Rules by Data Type
+
+    Apply to entire ElementValue table
+
+    Attributes:
+        See FilterRuleSetModel (includes FilterRuleModel, BaseModel)
+        element_data_type_id (integer, fk, required): ElementDataType
+        elvalue (string):  ***Must match value
+    """
+
+    class Meta(FilterRuleModel.Meta):
+        db_table = "filter_rule_data_type"
+        verbose_name = "Filter Rule - Element Data Type"
+
+    filter_rule_data_type_id = models.AutoField(primary_key=True)
+    element_data_type = models.ForeignKey("element_type.ElementDataType",
+                                          db_column="element_data_type_id",
+                                          related_name="filter_rule_data_types",
+                                          null=False, blank=False
+                                          )
+    elvalue = models.CharField(max_length=255)
+
+    def get_datum_set(self, datum_filter_rules):
+        datum_object_prefix = "element_datum_object__datum_object"
+        element_type_prefix = "element_datum_object__element_type"
+
+        element_value_model = ElementValueMeta(self.element_data_type.entity_name)
+        value_lookup = "elvalue__" + self.operator
+        value_query = (value_lookup, self.elvalue)
+        query = element_value_model.objects.filter(value_query)
+
+        if datum_filter_rules:
+            datum_filter = compile_Q_objects(datum_filter_rules,
+                                             datum_object_prefix
+                                             )
             query = query.filter(datum_filter)
 
         result = query.values_list(datum_object_prefix + "__datum_object_id", flat=True)
@@ -500,3 +543,28 @@ class FilterSetElementRule(BaseModel):
                                             related_name="filter_set_element_rules",
                                             null=False, blank=False
                                             )
+
+
+class FilterSetDataTypeRule(BaseModel):
+    """Assign DataType Filter Rules to Filter Sets
+
+    Attributes:
+        See BaseModel
+        filter_set (integer, fk, required): FilterSet
+        filter_rule_data_type_id (integer, fk, required): FilterRuleDataType
+    """
+
+    class Meta(BaseModel.Meta):
+        db_table = "filter_set_data_type_rule"
+
+    filter_set_data_type_rule_id = models.AutoField(primary_key=True)
+    filter_set = models.ForeignKey("FilterSet",
+                                   db_column="filter_set_id",
+                                   related_name="filter_set_data_type_rules",
+                                   null=False, blank=False
+                                   )
+    filter_rule_data_type = models.ForeignKey("FilterRuleDataType",
+                                              db_column="filter_rule_data_type_id",
+                                              related_name="filter_set_data_type_rules",
+                                              null=False, blank=False
+                                              )

@@ -68,3 +68,10 @@ class TestFilterSet(TestCase):
         test_filter = utils.run_filter_from_dict(**self.test.filter_set_element3)
         self.assertEqual(1, len(test_filter))
         self.assertEqual({13}, test_filter)
+
+    def test_filter_set_data_type1(self):
+        """Test single data type rule for string"""
+        test_filter = utils.run_filter_from_dict(**self.test.filter_set_data_type1)
+        self.assertEqual(2, len(test_filter))
+        self.assertEqual({12, 25}, test_filter)
+ 

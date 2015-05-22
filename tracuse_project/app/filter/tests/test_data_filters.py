@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 from app.datum.models import DatumGroup, DatumType, DatumObject
 from app.association.models import AssociationDirection
-from app.element_type.models import ElementType
+from app.element_type.models import ElementType, ElementDataType
 from .. import models as filters
 
 
@@ -111,6 +111,16 @@ class TestFilterSets(object):
                     element_type=ElementType.objects.get(entity_name="Description"),
                     operator="icontains",
                     elvalue="craigs",
+                ),
+            ],
+        }
+        
+        self.filter_set_data_type1 = {
+            "filter_set_data_type_rules": [
+                filters.FilterRuleDataType(
+                    element_data_type=ElementDataType.objects.get(entity_name="String"),
+                    operator="icontains",
+                    elvalue="apartment",
                 ),
             ],
         }
