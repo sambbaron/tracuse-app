@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 from app.common.models import EntityModel, BaseModel
 from app.association.models import AssociationDirection
 
+from .utils import compile_Q_objects, run_filter_from_dict
+
 
 class FilterRuleModel(BaseModel):
     """Common properties for Filter Rules
@@ -206,44 +208,6 @@ class FilterRuleSetModel(FilterRuleModel):
     class Meta(FilterRuleModel.Meta):
         abstract = True
 
-    @staticmethod
-    def _compile_Q_objects(datum_filter_rules, lookup_prefix):
-        """Compile datum filter rules and sets of rules
-        using Q objects and conditionals
-
-        Arguments:
-            datum_filter_rules: Collection of filter rule objects
-                dictionary of rule lists
-                (FilterRuleGroup & FilterRuleType)
-            lookup_prefix (string):
-                lookup path to datum_object
-
-        Return:
-            Q object
-        """
-        output = models.Q()
-
-        first_set = True
-        for rule_set in datum_filter_rules.values():
-
-            rule_set_Q_filter = models.Q()
-            first_rule = True
-            for rule in rule_set:
-                Q_object = rule.Q_object(lookup_prefix)
-                if first_rule:
-                    rule_set_Q_filter = Q_object
-                    first_rule = False
-                else:
-                    rule_set_Q_filter.add(Q_object, rule.conditional)
-
-            if first_set:
-                output = rule_set_Q_filter
-                first_set = False
-            else:
-                output.add(rule_set_Q_filter, "AND")
-
-        return output
-
     def get_datum_set(self, datum_filter_rules):
         """Return filter results
 
@@ -298,7 +262,7 @@ class FilterRuleAssociation(FilterRuleSetModel):
         if self.association_direction == AssociationDirection.parent() or \
                         self.association_direction == AssociationDirection.both():
             # Set datum_filter_rules using parent_datum_id prefix
-            parent_datum_filter = self._compile_Q_objects(datum_filter_rules, "parent_datum")
+            parent_datum_filter = compile_Q_objects(datum_filter_rules, "parent_datum")
 
             parent_result = self.datum_object.association_queryset(
                 direction=AssociationDirection.parent(),
@@ -313,7 +277,7 @@ class FilterRuleAssociation(FilterRuleSetModel):
         if self.association_direction == AssociationDirection.child() or \
                         self.association_direction == AssociationDirection.both():
             # Set datum_filter_rules using child_datum_id prefix
-            child_datum_filter = self._compile_Q_objects(datum_filter_rules, "child_datum")
+            child_datum_filter = compile_Q_objects(datum_filter_rules, "child_datum")
 
             child_result = self.datum_object.association_queryset(
                 direction=AssociationDirection.child(),
@@ -360,7 +324,7 @@ class FilterRuleElement(FilterRuleSetModel):
         query = element_value_model.objects.filter(type_query, value_query)
 
         if datum_filter_rules:
-            datum_filter = self._compile_Q_objects(datum_filter_rules,
+            datum_filter = compile_Q_objects(datum_filter_rules,
                                                    datum_object_prefix
                                                    )
             query = query.filter(datum_filter)
@@ -407,8 +371,6 @@ class FilterSet(EntityModel):
     def run_filter(self):
         """Run filter using stored FilterRule objects
         """
-        from .utils import run_filter_from_dict
-
         return run_filter_from_dict(**self.rules_dict)
 
 

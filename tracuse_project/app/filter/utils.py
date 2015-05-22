@@ -1,4 +1,44 @@
 """Filter helper functions"""
+from django.db.models import Q
+
+
+def compile_Q_objects(datum_filter_rules, lookup_prefix):
+    """Compile datum filter rules and sets of rules
+    using Q objects and conditionals
+
+    Arguments:
+        datum_filter_rules: Collection of filter rule objects
+            dictionary of rule lists
+            (FilterRuleGroup & FilterRuleType)
+        lookup_prefix (string):
+            lookup path to datum_object
+
+    Return:
+        Q object
+    """
+    output = Q()
+
+    first_set = True
+    for rule_set in datum_filter_rules.values():
+
+        rule_set_Q_filter = Q()
+        first_rule = True
+        for rule in rule_set:
+            Q_object = rule.Q_object(lookup_prefix)
+            if first_rule:
+                rule_set_Q_filter = Q_object
+                first_rule = False
+            else:
+                rule_set_Q_filter.add(Q_object, rule.conditional)
+
+        if first_set:
+            output = rule_set_Q_filter
+            first_set = False
+        else:
+            output.add(rule_set_Q_filter, "AND")
+
+    return output
+
 
 def compile_datum_set_rules(filter_rules, datum_filter_rules):
     """Compile filter rules using datum set and conditionals
