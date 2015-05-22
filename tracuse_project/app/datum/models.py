@@ -217,6 +217,52 @@ class DatumObject(BaseModel):
         )
         return self_association
 
+    def association_queryset(self, direction, distance_limit=1,
+                             additional_filter=None, return_method=None, return_args=None, return_kwargs=None):
+        """Return base association queryset
+
+        Uses AssociationManager custom filters
+        Excludes self association
+
+        Arguments:
+            direction (AssociationDirection):
+            distance_limit (integer):
+            additional_filter (Q object):
+            return_method (string):
+                QuerySet method that executes query
+                all, values, or values_list
+            return_args (positional arguments):
+                for return method, typically fields as strings
+            return_kwargs (keyword arguments):
+                for return method, typically 'flat=true' for values_list
+        """
+
+        # Start with all associations
+        if direction.schema_name == "parent":
+            associations = self.all_child_associations
+        else:
+            associations = self.all_parent_associations
+
+        # Base query with distance limit and self exclusion
+        query = associations.filter_distance(distance_limit).exclude_self(True)
+
+        if additional_filter:
+            if type(additional_filter) != models.Q:
+                raise TypeError("Additional filter must be Q object.")
+            query = query.filter(additional_filter)
+
+        if return_method:
+            query = getattr(query, return_method)
+
+            if return_args and not return_kwargs:
+                query = query(*return_args)
+            elif return_args and return_kwargs:
+                query = query(*return_args, **return_kwargs)
+            else:
+                query = query()
+
+        return query
+
     def get_associations(self, direction, distance_limit=1, return_type=""):
         """Return associations from AssociationAll
         Excludes self association

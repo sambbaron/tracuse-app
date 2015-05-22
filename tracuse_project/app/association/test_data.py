@@ -8,14 +8,19 @@ class TestDataAssociation(object):
                                       entity_name="TestDatumType1",
                                       headline_expr="{{name}}"
                                       )
+        self.datum_type2 = mommy.make("datum.DatumType",
+                                      entity_name="TestDatumType2",
+                                      headline_expr="{{name}}"
+                                      )
+
         # Datum Objects
         self.datum_object1 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
         self.datum_object2 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
-        self.datum_object3 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
+        self.datum_object3 = mommy.make("datum.DatumObject", datum_type=self.datum_type2)
         self.datum_object4 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
-        self.datum_object5 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
+        self.datum_object5 = mommy.make("datum.DatumObject", datum_type=self.datum_type2)
         self.datum_object6 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
-        self.datum_object7 = mommy.make("datum.DatumObject", datum_type=self.datum_type1)
+        self.datum_object7 = mommy.make("datum.DatumObject", datum_type=self.datum_type2)
 
         # Element Type for Name Identification
         self.element_data_type1 = mommy.make("element_type.ElementDataType",

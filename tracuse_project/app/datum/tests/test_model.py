@@ -187,6 +187,184 @@ class TestModelDatumObjectAssociationProperties(TestCase):
         actual = test_object.all_child_datums.all()
         self.assertEqual(7, actual.count())
 
+    def test_association_queryset_parent(self):
+        """Test DatumObject.association_queryset
+        with parent direction and no other args
+        """
+        from app.association.managers import AssociationQuerySet
+
+        test_object = self.test.datum_object4
+        parent_direction = self.test.association_direction1
+        test_queryset = test_object.association_queryset(
+            direction=parent_direction,
+        )
+
+        self.assertEqual(1, len(test_queryset))
+
+        actual_type = type(test_queryset)
+        expected_type = AssociationQuerySet
+        self.assertEqual(expected_type, actual_type)
+
+        actual_datum = test_queryset[0].parent_datum
+        expected_datum = self.test.datum_object3
+        self.assertEqual(expected_datum, actual_datum)
+
+    def test_association_queryset_child(self):
+        """Test DatumObject.association_queryset
+        with child direction and no other args
+        """
+        from app.association.managers import AssociationQuerySet
+
+        test_object = self.test.datum_object3
+        child_direction = self.test.association_direction3
+        test_queryset = test_object.association_queryset(
+            direction=child_direction,
+        )
+
+        self.assertEqual(1, len(test_queryset))
+
+        actual_type = type(test_queryset)
+        expected_type = AssociationQuerySet
+        self.assertEqual(expected_type, actual_type)
+
+        actual_datum = test_queryset[0].child_datum
+        expected_datum = self.test.datum_object4
+        self.assertEqual(expected_datum, actual_datum)
+
+    def test_association_queryset_distance_value(self):
+        """Test DatumObject.association_queryset
+        using parent direction
+        with distance limit
+        """
+        test_object = self.test.datum_object4
+        parent_direction = self.test.association_direction1
+        test_queryset = test_object.association_queryset(
+            direction=parent_direction,
+            distance_limit=2
+        )
+
+        self.assertEqual(2, len(test_queryset))
+
+        actual_datum1 = test_queryset[0].parent_datum
+        expected_datum1 = self.test.datum_object3
+        self.assertEqual(expected_datum1, actual_datum1)
+
+        actual_datum2 = test_queryset[1].parent_datum
+        expected_datum2 = self.test.datum_object2
+        self.assertEqual(expected_datum2, actual_datum2)
+
+    def test_association_queryset_distance_none(self):
+        """Test DatumObject.association_queryset
+        using child direction
+        with no distance limit (all associations)
+        """
+        test_object = self.test.datum_object1
+        child_direction = self.test.association_direction3
+        test_queryset = test_object.association_queryset(
+            direction=child_direction,
+            distance_limit=None
+        )
+
+        self.assertEqual(6, len(test_queryset))
+
+    def test_association_queryset_additional_filter(self):
+        """Test DatumObject.association_queryset
+        using parent direction
+        with additional filter
+        """
+        from django.db.models import Q
+
+        test_object = self.test.datum_object4
+        parent_direction = self.test.association_direction1
+        additional_filter = Q(parent_datum_id__datum_type=self.test.datum_type2)
+        test_queryset = test_object.association_queryset(
+            direction=parent_direction,
+            distance_limit=None,
+            additional_filter=additional_filter
+        )
+
+        self.assertEqual(1, len(test_queryset))
+
+        actual_datum1 = test_queryset[0].parent_datum
+        expected_datum1 = self.test.datum_object3
+        self.assertEqual(expected_datum1, actual_datum1)
+
+    def test_association_queryset_additional_filter_bad(self):
+        """Test DatumObject.association_queryset
+        using parent direction
+        with additional filter incorrect object type
+        """
+        test_object = self.test.datum_object4
+        parent_direction = self.test.association_direction1
+        additional_filter = {"parent_datum_id__datum_type": self.test.datum_type2}
+        with self.assertRaisesMessage(TypeError, "Additional filter must be Q object."):
+            test_object.association_queryset(
+                direction=parent_direction,
+                distance_limit=None,
+                additional_filter=additional_filter
+            )
+
+    def test_association_queryset_return_method(self):
+        """Test DatumObject.association_queryset
+        using child direction
+        with return method
+        """
+        test_object = self.test.datum_object2
+        child_direction = self.test.association_direction3
+        test_queryset = test_object.association_queryset(
+            direction=child_direction,
+            return_method="values"
+        )
+
+        self.assertEqual(1, len(test_queryset))
+
+        actual_type = type(test_queryset[0])
+        expected_type = dict
+        self.assertEqual(expected_type, actual_type)
+
+    def test_association_queryset_return_method_with_args(self):
+        """Test DatumObject.association_queryset
+        using parent direction
+        with return method and return args
+        """
+        test_object = self.test.datum_object2
+        parent_direction = self.test.association_direction1
+        test_queryset = test_object.association_queryset(
+            direction=parent_direction,
+            return_method="values",
+            return_args=["parent_datum__datum_object_id"]
+        )
+
+        self.assertEqual(1, len(test_queryset))
+
+        actual_type = type(test_queryset[0])
+        expected_type = dict
+        self.assertEqual(expected_type, actual_type)
+
+    def test_association_queryset_return_method_with_args_and_kwargs(self):
+        """Test DatumObject.association_queryset
+        using parent direction
+        with return method and return args and kwargs
+        """
+        test_object = self.test.datum_object2
+        parent_direction = self.test.association_direction1
+        test_queryset = test_object.association_queryset(
+            direction=parent_direction,
+            return_method="values_list",
+            return_args=["parent_datum__datum_object_id"],
+            return_kwargs={"flat":True}
+        )
+
+        self.assertEqual(1, len(test_queryset))
+
+        actual_type = type(test_queryset[0])
+        expected_type = int
+        self.assertEqual(expected_type, actual_type)
+
+
+
+    #### OLD METHODS
+
     def test_get_associations_parent_with_distance(self):
         """Test DatumObject.get_associations
         with distance limit
