@@ -17,3 +17,18 @@ Tracuse.elements.DatumObject = function (pk) {
     };
     return new Tracuse.Element(options);
 };
+
+Tracuse.elements.datumElement = document.registerElement(
+    'x-datum-element',
+    {prototype: Object.create(HTMLInputElement.prototype)}
+);
+Tracuse.elements.DatumElement = function (pk, datumPK) {
+    "use strict";
+    var options = {
+        "pk": pk,
+        "element": new Tracuse.elements.datumElement(),
+        "model": Tracuse.models.element_datum_objects,
+        "data": Tracuse.models.datum_objects.data[datumPK].elements
+    };
+    return new Tracuse.Element(options);
+};

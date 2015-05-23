@@ -13,7 +13,8 @@ Tracuse.models.createModels = function createModels() {
         "datum_types": new Tracuse.Model("datum_types", {"load_on_init": true}),
         "datum_objects": new Tracuse.Model("datum_objects", {"load_on_init": true}),
         "element_types": new Tracuse.Model("element_types", {"load_on_init": true}),
-        "element_datum_types": new Tracuse.Model("element_datum_types", {"load_on_init": true})
+        "element_datum_types": new Tracuse.Model("element_datum_types", {"load_on_init": true}),
+        "element_datum_objects": new Tracuse.Model("element_datum_objects", {"load_on_init": false})
     };
 
     // Create Properties
@@ -26,6 +27,14 @@ Tracuse.models.createModels = function createModels() {
         new Tracuse.Model.Property("parent_datums", {"set_element_attribute": false}),
         new Tracuse.Model.Property("child_datums", {"set_element_attribute": false}),
         new Tracuse.Model.Property("elements", {"set_element_attribute": false})
+    ];
+
+    models.element_datum_objects.properties = [
+        new Tracuse.Model.Property("element_datum_object_id", {"set_element_attribute": true}),
+        new Tracuse.Model.Property("element_datum_type_id", {"set_element_attribute": true}),
+        new Tracuse.Model.Property("element_datum_object_id", {"set_element_attribute": true}),
+        new Tracuse.Model.Property("element_name", {"set_element_attribute": false}),
+        new Tracuse.Model.Property("element_value", {"set_element_attribute": false})
     ];
 
     // Register Model objects in "models" object
