@@ -31,13 +31,25 @@ Tracuse.Model.prototype.loadData = function loadData() {
             data = JSON.parse(request.responseText);
             var modelsObject = Tracuse.models[model.name] || {};
             modelsObject.data = data;
-            console.log("Load Model Data: " + model.name);
+            console.info("Load Model Data: " + model.name);
         }
     };
 
-    url = model.urls().all;
-    request.open("GET", url, true);
-    request.send();
+    try {
+        url = model.urls().all;
+    } catch (err) {
+        if (err instanceof TypeError) {
+            console.error(err + ": No url for " + model.name);
+        } else {
+            throw err;
+        }
+    }
+
+    if (url) {
+        request.open("GET", url, true);
+        request.send();
+    }
+
 };
 
 // Property Constructor
