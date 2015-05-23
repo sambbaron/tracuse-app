@@ -32,7 +32,7 @@ Tracuse.models.createModels = function createModels() {
     models.element_datum_objects.properties = [
         new Tracuse.Model.Property("element_datum_object_id", {"set_element_attribute": true}),
         new Tracuse.Model.Property("element_datum_type_id", {"set_element_attribute": true}),
-        new Tracuse.Model.Property("element_datum_object_id", {"set_element_attribute": true}),
+        new Tracuse.Model.Property("element_type_id", {"set_element_attribute": true}),
         new Tracuse.Model.Property("element_name", {"set_element_attribute": false}),
         new Tracuse.Model.Property("element_value", {"set_element_attribute": false})
     ];
