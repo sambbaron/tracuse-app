@@ -63,6 +63,10 @@ target/
 # PyCharm
 *.idea/
 
+# Bower Components
+.bowerrc
+*bower_components/
+
 # Miscellaneous Items
 tracuse_project/app/common/management/commands/sandbox.py
 */sql.sql
