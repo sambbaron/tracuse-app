@@ -20,7 +20,10 @@ Tracuse.elements.DatumObject = function (pk) {
 
 Tracuse.elements.datumElement = document.registerElement(
     'x-datum-element',
-    {prototype: Object.create(HTMLInputElement.prototype)}
+    {
+        prototype: Object.create(HTMLInputElement.prototype),
+        extends: 'input'
+    }
 );
 Tracuse.elements.DatumElement = function (pk, datumPK) {
     "use strict";
@@ -30,5 +33,15 @@ Tracuse.elements.DatumElement = function (pk, datumPK) {
         "model": Tracuse.models.element_datum_objects,
         "data": Tracuse.models.datum_objects.data[datumPK].elements
     };
-    return new Tracuse.Element(options);
+    var element = new Tracuse.Element(options);
+
+    // Add input value
+    element.setAttribute("value", element.element_value);
+
+    // Add input type
+    var elementTypeData = Tracuse.models.element_types.data;
+    var inputType = elementTypeData[element.element_type_id].html_element;
+    element.setAttribute("type", inputType);
+
+    return element;
 };
