@@ -8,7 +8,7 @@ Tracuse.Model = function Model(name, options) {
     this.name = name;
     this.load_on_init = options.load_on_init || false;
     this.data = options.data || {};
-    this.properties = [];
+    this.properties = options.properties || [];
 };
 Tracuse.Model.prototype.urls = function urls() {
     // Return urls object with model name
