@@ -4,7 +4,7 @@ var Tracuse = Tracuse || {};
 Tracuse.elements = Tracuse.elements || {};
 
 // Initialize Custom Elements
-Tracuse.elements.datum = document.registerElement(
+Tracuse.elements.datumObject = document.registerElement(
     'x-datum',
     {prototype: Object.create(HTMLElement.prototype)}
 );
@@ -12,7 +12,7 @@ Tracuse.elements.DatumObject = function (pk) {
     "use strict";
     var options = {
         "pk": pk,
-        "element": new Tracuse.elements.datum(),
+        "element": new Tracuse.elements.datumObject(),
         "model": Tracuse.models.datum_objects
     };
     return new Tracuse.Element(options);
