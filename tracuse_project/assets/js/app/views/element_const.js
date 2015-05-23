@@ -6,11 +6,12 @@ Tracuse.Element = function (options) {
     var element = options.element;
     var model = options.model;
     var pk = options.pk;
+    var data = options.data || model.data;
 
     for (var i = 0, max = model.properties.length; i < max; i++) {
         var property = model.properties[i];
         if (property.set_element_property) {
-            element[property.name] = model.data[pk][property.name];
+            element[property.name] = data[pk][property.name];
         }
         if (property.set_element_attribute) {
             element.setAttribute(property.name, element[property.name]);
