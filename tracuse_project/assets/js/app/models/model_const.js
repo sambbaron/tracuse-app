@@ -8,6 +8,7 @@ Tracuse.Model = function Model(name, options) {
     this.name = name;
     this.load_on_init = options.load_on_init || false;
     this.data = options.data || {};
+    this.properties = [];
 };
 Tracuse.Model.prototype.urls = function urls() {
     // Return urls object with model name
@@ -37,4 +38,12 @@ Tracuse.Model.prototype.loadData = function loadData() {
     url = model.urls().all;
     request.open("GET", url, true);
     request.send();
+};
+
+// Property Constructor
+Tracuse.Model.Property = function Property(name, options) {
+    "use strict";
+    this.name = name;
+    this.set_element_property = options.set_element_property || true;
+    this.set_element_attribute = options.set_element_attribute || false;
 };
