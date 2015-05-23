@@ -137,27 +137,27 @@ class TestFilterSetsModel(object):
 
             "FilterRuleAssociation": [
                 dict(
-                    datum_object=DatumObject.objects.get(pk=10),
-                    association_direction=AssociationDirection.objects.get(entity_name="Both"),
+                    datum_object_id=10,
+                    association_direction_id=AssociationDirection.both().pk,
                     distance=None
                 ),
             ],
 
             "FilterRuleElement": [
                 dict(
-                    element_type=ElementType.objects.get(entity_name="ActionEffort"),
+                    element_type_id=ElementType.objects.get(entity_name="ActionEffort").pk,
                     operator="gte",
                     elvalue="1",
                 ),
                 dict(
                     conditional="AND",
-                    element_type=ElementType.objects.get(entity_name="ActionStatus"),
+                    element_type_id=ElementType.objects.get(entity_name="ActionStatus").pk,
                     operator="iexact",
                     elvalue="Upcoming",
                 ),
                 dict(
                     conditional="OR",
-                    element_type=ElementType.objects.get(entity_name="ActionStatus"),
+                    element_type_id=ElementType.objects.get(entity_name="ActionStatus").pk,
                     operator="iexact",
                     elvalue="Current",
                 ),
