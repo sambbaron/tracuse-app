@@ -3,7 +3,7 @@ var lineno = null;
 var colno = null;
 var output = "";
 try {
-output += "<article class=\"datum\" template=\"";
+output += "<x-datum template=\"";
 context.getBlock("template_name")(env, context, frame, runtime, function(t_2,t_1) {
 if(t_2) { cb(t_2); return; }
 output += t_1;
@@ -17,7 +17,7 @@ output += "\">\r\n    ";
 context.getBlock("datum_content")(env, context, frame, runtime, function(t_4,t_3) {
 if(t_4) { cb(t_4); return; }
 output += t_3;
-output += "\r\n</article>";
+output += "\r\n</x-datum>";
 cb(null, output);
 })});
 } catch (e) {
@@ -217,7 +217,7 @@ var output = "";
 try {
 output += "<label>";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_name", env.opts.autoescape), env.opts.autoescape);
-output += "</label>\r\n<input class=\"element\"\r\n       element_datum_object_id=\"";
+output += "</label>\r\n<input is=\"x-element\"\r\n       element_datum_object_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_datum_object_id", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n       element_datum_type_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_datum_type_id", env.opts.autoescape), env.opts.autoescape);
@@ -244,7 +244,7 @@ var lineno = null;
 var colno = null;
 var output = "";
 try {
-output += "<section class=\"viewuse\">\r\n    ";
+output += "<x-viewuse template=\"viewuse_basic\">\r\n    ";
 frame = frame.push();
 var t_3 = runtime.contextOrFrameLookup(context, frame, "datums");
 if(t_3) {var t_2 = t_3.length;
@@ -277,7 +277,7 @@ output += "\r\n    ";
 }
 }
 frame = frame.pop();
-output += "\r\n</section>";
+output += "\r\n</x-viewuse>";
 cb(null, output);
 ;
 } catch (e) {

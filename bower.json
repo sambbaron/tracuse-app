@@ -15,7 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "webcomponentsjs": "~0.7.1",
-    "nunjucks": "~1.3.4"
+    "nunjucks": "~1.3.4",
+    "webcomponentsjs": "~0.7.1"
   }
 }
