@@ -17,14 +17,7 @@ Tracuse.init = function init() {
             Tracuse.models.datum_objects,
             datumIds
         );
-
-        var templateData = {
-            "datumTemplate": "datum_medium",
-            "datums": datumObjects
-        };
-
-        //var datumHtmlEl = Tracuse.views.datums(datumObjects);
-        var rendered = Tracuse.templates.render("viewuse/viewuse_basic.html", templateData);
+        var rendered = Tracuse.views.renderViewuse("viewuse_basic", "datum_medium", datumObjects);
         Tracuse.frame.innerHTML = rendered;
     });
 };
