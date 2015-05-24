@@ -15,17 +15,14 @@
 
 {% block body_block %}
     <section id="app"></section>
-    {% include "app/templates.html" %}
+{#    {% include "app/templates.html" %}#}
 {% endblock %}
 
 {% block script_block %}
-    <script src="{% static 'js/libraries/webcomponentsjs/webcomponents.js' %}"></script>
     <script src="{% static 'js/libraries/nunjucks.js' %}"></script>
     <script src="{% static 'js/app/controller/api.js' %}"></script>
     <script src="{% static 'js/app/models/model_const.js' %}"></script>
     <script src="{% static 'js/app/models/model_init.js' %}"></script>
-    <script src="{% static 'js/app/views/element_const.js' %}"></script>
-    <script src="{% static 'js/app/views/element_init.js' %}"></script>
     <script src="{% static 'js/app/views/template_init.js' %}"></script>
     <script src="{% static 'js/app/views/views.js' %}"></script>
     <script src="{% static 'js/app/init.js' %}"></script>
