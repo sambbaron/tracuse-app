@@ -18,7 +18,7 @@ footer {
     display: none;
 }
 
-.datum {
+.datum, x-datum{
     display: inline-block;
     position: relative;
     /*z-index: -9;*/
@@ -36,7 +36,7 @@ footer {
     text-align: center;
 }
 
-.datum_small .headline {
+.datum_small .headline, x-datum.headline {
     z-index: 0;
     overflow:hidden;
     font-size: 75%;
