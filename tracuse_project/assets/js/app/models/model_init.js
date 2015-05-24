@@ -9,12 +9,30 @@ Tracuse.models.createModels = function createModels() {
 
     // Create Models
     var models = {
-        "datum_groups": new Tracuse.Model("datum_groups", {"loadOnInit": true}),
-        "datum_types": new Tracuse.Model("datum_types", {"loadOnInit": true}),
-        "datum_objects": new Tracuse.Model("datum_objects", {"loadOnInit": true}),
-        "element_types": new Tracuse.Model("element_types", {"loadOnInit": true}),
-        "element_datum_types": new Tracuse.Model("element_datum_types", {"loadOnInit": true}),
-        "element_datum_objects": new Tracuse.Model("element_datum_objects", {"loadOnInit": false})
+        "datum_groups": new Tracuse.Model("datum_groups", {
+            "loadOnInit": true,
+            "idProperty": "datum_group_id"
+        }),
+        "datum_types": new Tracuse.Model("datum_types", {
+            "loadOnInit": true,
+            "idProperty": "datum_type_id"
+        }),
+        "datum_objects": new Tracuse.Model("datum_objects", {
+            "loadOnInit": true,
+            "idProperty": "datum_object_id"
+        }),
+        "element_types": new Tracuse.Model("element_types", {
+            "loadOnInit": true,
+            "idProperty": "element_type_id"
+        }),
+        "element_datum_types": new Tracuse.Model("element_datum_types", {
+            "loadOnInit": true,
+            "idProperty": "element_datum_type_id"
+        }),
+        "element_datum_objects": new Tracuse.Model("element_datum_objects", {
+            "loadOnInit": false,
+            "idProperty": "element_datum_object_id"
+        })
     };
 
     // Create Properties

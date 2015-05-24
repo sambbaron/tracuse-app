@@ -9,6 +9,7 @@ Tracuse.Model = function Model(name, options) {
     this.loadOnInit = options.loadOnInit || false;
     this.data = options.data || {};
     this.properties = options.properties || [];
+    this.idProperty = options.idProperty || "id";
 };
 Tracuse.Model.prototype.urls = function urls() {
     // Return urls object with model name
