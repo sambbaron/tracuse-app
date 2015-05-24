@@ -9,32 +9,32 @@ Tracuse.models.createModels = function createModels() {
 
     // Create Models
     var models = {
-        "datum_groups": new Tracuse.Model("datum_groups", {"load_on_init": true}),
-        "datum_types": new Tracuse.Model("datum_types", {"load_on_init": true}),
-        "datum_objects": new Tracuse.Model("datum_objects", {"load_on_init": true}),
-        "element_types": new Tracuse.Model("element_types", {"load_on_init": true}),
-        "element_datum_types": new Tracuse.Model("element_datum_types", {"load_on_init": true}),
-        "element_datum_objects": new Tracuse.Model("element_datum_objects", {"load_on_init": false})
+        "datum_groups": new Tracuse.Model("datum_groups", {"loadOnInit": true}),
+        "datum_types": new Tracuse.Model("datum_types", {"loadOnInit": true}),
+        "datum_objects": new Tracuse.Model("datum_objects", {"loadOnInit": true}),
+        "element_types": new Tracuse.Model("element_types", {"loadOnInit": true}),
+        "element_datum_types": new Tracuse.Model("element_datum_types", {"loadOnInit": true}),
+        "element_datum_objects": new Tracuse.Model("element_datum_objects", {"loadOnInit": false})
     };
 
     // Create Properties
     models.datum_objects.properties = [
-        new Tracuse.Model.Property("datum_object_id", {"set_element_attribute": true}),
-        new Tracuse.Model.Property("datum_group_id", {"set_element_attribute": true}),
-        new Tracuse.Model.Property("datum_type_id", {"set_element_attribute": true}),
-        new Tracuse.Model.Property("datum_type_name", {"set_element_attribute": false}),
-        new Tracuse.Model.Property("headline", {"set_element_attribute": false}),
-        new Tracuse.Model.Property("parent_datums", {"set_element_attribute": false}),
-        new Tracuse.Model.Property("child_datums", {"set_element_attribute": false}),
-        new Tracuse.Model.Property("elements", {"set_element_attribute": false})
+        new Tracuse.Model.Property("datum_object_id", {"setElementAttribute": true}),
+        new Tracuse.Model.Property("datum_group_id", {"setElementAttribute": true}),
+        new Tracuse.Model.Property("datum_type_id", {"setElementAttribute": true}),
+        new Tracuse.Model.Property("datum_type_name", {"setElementAttribute": false}),
+        new Tracuse.Model.Property("headline", {"setElementAttribute": false}),
+        new Tracuse.Model.Property("parent_datums", {"setElementAttribute": false}),
+        new Tracuse.Model.Property("child_datums", {"setElementAttribute": false}),
+        new Tracuse.Model.Property("elements", {"setElementAttribute": false})
     ];
 
     models.element_datum_objects.properties = [
-        new Tracuse.Model.Property("element_datum_object_id", {"set_element_attribute": true}),
-        new Tracuse.Model.Property("element_datum_type_id", {"set_element_attribute": true}),
-        new Tracuse.Model.Property("element_type_id", {"set_element_attribute": true}),
-        new Tracuse.Model.Property("element_name", {"set_element_attribute": false}),
-        new Tracuse.Model.Property("element_value", {"set_element_attribute": false})
+        new Tracuse.Model.Property("element_datum_object_id", {"setElementAttribute": true}),
+        new Tracuse.Model.Property("element_datum_type_id", {"setElementAttribute": true}),
+        new Tracuse.Model.Property("element_type_id", {"setElementAttribute": true}),
+        new Tracuse.Model.Property("element_name", {"setElementAttribute": false}),
+        new Tracuse.Model.Property("element_value", {"setElementAttribute": false})
     ];
 
     // Register Model objects in "models" object
@@ -52,20 +52,22 @@ Tracuse.models.loadInitData = function loadInitData() {
     for (var i in models) {
         model = models[i];
         if (model instanceof Tracuse.Model) {
-            if (model.load_on_init === true) {
+            if (model.loadOnInit === true) {
                 model.loadData();
             }
         }
     }
 };
 
-Tracuse.models.idsToObjects = function idsToObjects(model_id_array) {
+Tracuse.models.idsToObjects = function idsToObjects(model, id_array) {
     // Convert array of model ids to objects
     "use strict";
-    var model_objects = {};
-    for (var i = 0, max = model_id_array.length;  i < max; i++) {
-            var id = model_id_array[i];
-            model_objects[i] = Tracuse.models.datum_objects.data[id]
+    var model = Tracuse.models[model];
+    var model_objects = [];
+
+    for (var i = 0, max = id_array.length;  i < max; i++) {
+            var id = id_array[i];
+            model_objects.push(model.data[id])
         }
     return model_objects
 };

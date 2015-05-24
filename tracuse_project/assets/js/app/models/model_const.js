@@ -6,7 +6,7 @@ Tracuse.Model = Tracuse.Model || {};
 Tracuse.Model = function Model(name, options) {
     "use strict";
     this.name = name;
-    this.load_on_init = options.load_on_init || false;
+    this.loadOnInit = options.loadOnInit || false;
     this.data = options.data || {};
     this.properties = options.properties || [];
 };
@@ -56,6 +56,6 @@ Tracuse.Model.prototype.loadData = function loadData() {
 Tracuse.Model.Property = function Property(name, options) {
     "use strict";
     this.name = name;
-    this.set_element_property = options.set_element_property || true;
-    this.set_element_attribute = options.set_element_attribute || false;
+    this.setElementProperty = options.setElementProperty || true;
+    this.setElementAttribute = options.setElementAttribute || false;
 };
