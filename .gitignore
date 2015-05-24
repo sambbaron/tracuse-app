@@ -65,9 +65,13 @@ target/
 
 # Bower Components
 .bowerrc
-*bower_components/
+bower_components
+
+# Node
+node_modules
 
 # Miscellaneous Items
 tracuse_project/app/common/management/commands/sandbox.py
 */sql.sql
 x_old_models/
+*.sh
