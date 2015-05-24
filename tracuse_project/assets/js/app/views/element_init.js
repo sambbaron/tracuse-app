@@ -4,6 +4,21 @@ var Tracuse = Tracuse || {};
 Tracuse.elements = Tracuse.elements || {};
 
 // Initialize Custom Elements
+
+Tracuse.elements.viewuse = document.registerElement(
+    'x-viewuse',
+    {prototype: Object.create(HTMLElement.prototype)}
+);
+Tracuse.elements.Viewuse = function (pk) {
+    "use strict";
+    //var options = {
+    //    "pk": pk,
+    //    "element": new Tracuse.elements.datumObject(),
+    //    "model": Tracuse.models.datum_objects
+    //};
+    return new Tracuse.elements.viewuse();
+};
+
 Tracuse.elements.datumObject = document.registerElement(
     'x-datum',
     {prototype: Object.create(HTMLElement.prototype)}
