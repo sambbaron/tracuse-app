@@ -12,12 +12,30 @@ Tracuse.Model = function Model(name, options) {
     this.idProperty = options.idProperty || "id";
 };
 Tracuse.Model.prototype.urls = function urls() {
-    // Return urls object with model name
-    // to retrieve model urls
+    // Return urls library object for model name
     "use strict";
     var model = this;
     var urls = Tracuse.urls[this.name];
     return urls;
+};
+Tracuse.Model.prototype.getUrl = function getUrl(urlName) {
+    // Return specific url from library
+    "use strict";
+    var model = this;
+    var url;
+
+    try {
+        url = model.urls()[urlName];
+    } catch (err) {
+        if (err instanceof TypeError) {
+            console.error(err + ": " + urlName + " url does not exist for " + model.name);
+        } else {
+            throw err;
+        }
+        url = undefined;
+    }
+
+    return url;
 };
 Tracuse.Model.prototype.loadData = function loadData() {
     // Load Ajax data into model in models collection
@@ -36,21 +54,12 @@ Tracuse.Model.prototype.loadData = function loadData() {
         }
     };
 
-    try {
-        url = model.urls().all;
-    } catch (err) {
-        if (err instanceof TypeError) {
-            console.error(err + ": No url for " + model.name);
-        } else {
-            throw err;
-        }
-    }
+    url = model.getUrl("all");
 
     if (url) {
         request.open("GET", url, true);
         request.send();
     }
-
 };
 
 // Property Constructor
