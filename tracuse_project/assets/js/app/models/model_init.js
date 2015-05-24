@@ -59,3 +59,14 @@ Tracuse.models.loadInitData = function loadInitData() {
     }
 };
 
+Tracuse.models.idsToObjects = function idsToObjects(model_id_array) {
+    // Convert array of model ids to objects
+    "use strict";
+    var model_objects = {};
+    for (var i = 0, max = model_id_array.length;  i < max; i++) {
+            var id = model_id_array[i];
+            model_objects[i] = Tracuse.models.datum_objects.data[id]
+        }
+    return model_objects
+};
+
