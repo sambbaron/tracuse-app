@@ -16,6 +16,7 @@ urlpatterns = [
 
     url(r'^element_types/$', ElementViews.ElementTypeAll.as_view(), name="element-type-all"),
     url(r'^element_datum_types/$', ElementViews.ElementDatumTypeAll.as_view(), name="element-datum-type-all"),
+    url(r'^element_datum_object/(?P<pk>[0-9]+)/$', ElementViews.ElementDatumObjectOne.as_view(), name="element-datum-object-one"),
 
     url(r'^datum_objects/filter/manual/$', FilterViews.RunFilter.run_filter_manual, name="datum-objects-filter-manual"),
     # url(r'^datum_objects/filter/(?P<pk>[0-9]+)/$', FilterViews, name="datum-objects-filter-saved-set"),
