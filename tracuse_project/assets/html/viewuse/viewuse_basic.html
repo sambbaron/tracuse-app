@@ -1,0 +1,5 @@
+<section class="viewuse">
+    {% for datum in datums %}
+        {% set template = "datum/" + datumTemplate + ".html" %} {% include template %}
+    {% endfor %}
+</section>

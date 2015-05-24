@@ -1,3 +1,4 @@
-<article class="datum {% block template_name %}{% endblock %} datum_group-{{ datum_group_id }} datum_type-{{ datum_type_id }} datum_object-{{ datum_object_id }}">
-    {% block datum_content %}{% endblock %}
+<article class="datum" template="{% block template_name %}{% endblock %}"
+         datum_object_id="{{ datum.datum_object_id }}" datum_group_id="{{ datum.datum_group_id }}" datum_type_id="{{ datum.datum_type_id }}">
+    {% block datum_content %}{{ datum }}{% endblock %}
 </article>
