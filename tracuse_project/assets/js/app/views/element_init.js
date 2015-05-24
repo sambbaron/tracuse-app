@@ -9,10 +9,10 @@ Tracuse.elements.viewuse = document.registerElement(
     'x-viewuse',
     {prototype: Object.create(HTMLElement.prototype)}
 );
-Tracuse.elements.Viewuse = function (pk) {
+Tracuse.elements.Viewuse = function (id) {
     "use strict";
     //var options = {
-    //    "pk": pk,
+    //    "id": id,
     //    "element": new Tracuse.elements.datumObject(),
     //    "model": Tracuse.models.datum_objects
     //};
@@ -23,10 +23,10 @@ Tracuse.elements.datumObject = document.registerElement(
     'x-datum',
     {prototype: Object.create(HTMLElement.prototype)}
 );
-Tracuse.elements.DatumObject = function (pk) {
+Tracuse.elements.DatumObject = function (id) {
     "use strict";
     var options = {
-        "pk": pk,
+        "id": id,
         "element": new Tracuse.elements.datumObject(),
         "model": Tracuse.models.datum_objects
     };
@@ -40,10 +40,10 @@ Tracuse.elements.datumElement = document.registerElement(
         extends: 'input'
     }
 );
-Tracuse.elements.DatumElement = function (pk, datumPK) {
+Tracuse.elements.DatumElement = function (id, datumPK) {
     "use strict";
     var options = {
-        "pk": pk,
+        "id": id,
         "element": new Tracuse.elements.datumElement(),
         "model": Tracuse.models.element_datum_objects,
         "data": Tracuse.models.datum_objects.data[datumPK].elements
