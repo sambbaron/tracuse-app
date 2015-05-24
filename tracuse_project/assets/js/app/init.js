@@ -1,7 +1,7 @@
 // Primary app namespace
 var Tracuse = Tracuse || {};
 
-Tracuse.frame = document.querySelector("main");
+Tracuse.frame = document.querySelector("#app");
 
 Tracuse.init = function init() {
     "use strict";

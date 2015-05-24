@@ -13,6 +13,11 @@
     <button id="render-page">Render Page</button>
 {% endblock %}
 
+{% block body_block %}
+    <section id="app"></section>
+    {% include "app/templates.html" %}
+{% endblock %}
+
 {% block script_block %}
     <script src="{% static 'js/libraries/webcomponentsjs/webcomponents.js' %}"></script>
     <script src="{% static 'js/libraries/nunjucks.js' %}"></script>
