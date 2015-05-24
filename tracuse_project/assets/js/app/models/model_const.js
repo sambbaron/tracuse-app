@@ -11,11 +11,11 @@ Tracuse.Model = function Model(name, options) {
     this.properties = options.properties || [];
     this.idProperty = options.idProperty || "id";
 };
-Tracuse.Model.prototype.urls = function urls() {
+Tracuse.Model.prototype.urlsLibrary = function urls() {
     // Return urls library object for model name
     "use strict";
     var model = this;
-    var urls = Tracuse.urls[this.name];
+    var urls = Tracuse.urlsLibrary[this.name];
     return urls;
 };
 Tracuse.Model.prototype.getUrl = function getUrl(urlName) {
@@ -25,7 +25,7 @@ Tracuse.Model.prototype.getUrl = function getUrl(urlName) {
     var url;
 
     try {
-        url = model.urls()[urlName];
+        url = model.urlsLibrary()[urlName];
     } catch (err) {
         if (err instanceof TypeError) {
             console.error(err + ": " + urlName + " url does not exist for " + model.name);
