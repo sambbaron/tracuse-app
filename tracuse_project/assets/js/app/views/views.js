@@ -11,10 +11,23 @@ Tracuse.views.renderViewuse = function renderViewuse(viewuseTemplate, datumTempl
 
     for (var d = 0, dmax = datumObjects.length; d < dmax; d++) {
         var datumObject = datumObjects[d];
-        // Replace elements id list with object list
+
+        // Replace elements id list with element objects
         datumObject.elements = Tracuse.models.nestedIdsToObjects(
             datumObject.elements,
             Tracuse.models.element_datum_objects
+        );
+
+        // Replace parent datums id list with datum objects
+        datumObject.parent_datums = Tracuse.models.nestedIdsToObjects(
+            datumObject.parent_datums,
+            Tracuse.models.datum_objects
+        );
+
+        // Replace child datums id list with datum objects
+        datumObject.child_datums = Tracuse.models.nestedIdsToObjects(
+            datumObject.child_datums,
+            Tracuse.models.datum_objects
         );
     }
 
