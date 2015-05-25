@@ -2,6 +2,8 @@
 {% set template_name = "datum_small" %}
 
 {% block datum_content %}
-    <span class="headline">{{ datum.headline }}</span>
-    <span class="datum_type_name">{{ datum.datum_type_name }}</span>
+
+    <p class="datum_type_name">{{ datum.datum_type_name }}</p>
+    <p class="headline" style="font-size: {{ 100 - datum.headline|length }}%">{{ datum.headline }}</p>
+
 {% endblock %}
