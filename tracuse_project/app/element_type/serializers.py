@@ -33,10 +33,6 @@ class ElementDatumObjectSerializer(ElementDatumObject):
 
     def serial_ids_value(self):
         """Elements with all ids and value
-
-        Returns:
-            Key: datum_object_id
-            Value: Property Dictionary
         """
         element_value = ""
         if self.element_value:

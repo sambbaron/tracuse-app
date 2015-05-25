@@ -46,6 +46,23 @@ class ElementDatumTypeAll(View):
         return response
 
 
+class ElementDatumObjectAll(View):
+    """Return all element_datum_objects"""
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        queryset = ElementDatumObject.actives.all()
+        serialized_data = Serializer(data=queryset,
+                                     serializer=ElementDatumObjectSerializer.serial_ids_value,
+                                     dict_with_pk=True
+                                     ).serialize()
+        response = JsonResponse(serialized_data, status=200)
+        return response
+
+
 class ElementDatumObjectOne(View):
     """Return all element_types"""
 

@@ -52,6 +52,29 @@ class TestElementDatumTypeAll(TestCase):
         self.assertEqual(expected_count, response_count)
 
 
+class TestElementDatumObjectAll(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataDatum()
+
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_get(self):
+        """Test ElementDatumObjectAll.get api"""
+        request = self.factory.get('/api/element_datum_objects/')
+        request.user = self.test.user1
+
+        view = views.ElementDatumObjectAll(request=request)
+        response = view.dispatch(request=request)
+
+        response_content = json.loads(response.content.decode())
+        response_count = len(response_content)
+        expected_count = 3
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(expected_count, response_count)
+
+
 class TestElementDatumObjectOne(TestCase):
     @classmethod
     def setUpTestData(cls):
