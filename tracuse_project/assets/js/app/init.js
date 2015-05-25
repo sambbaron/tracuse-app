@@ -9,8 +9,10 @@ Tracuse.init = function init() {
     Tracuse.models.loadInitData();
     Tracuse.templates.loadEnvironment();
 
+
+
     var renderButton = document.querySelector("#render-page");
-    renderButton.addEventListener("click", function () {
+    renderButton.addEventListener("click", function (e) {
 
         var datumIds = [1, 3, 8, 13];
         var datumObjects = Tracuse.models.idsToObjects(
@@ -19,6 +21,9 @@ Tracuse.init = function init() {
         );
         var rendered = Tracuse.views.renderViewuse("viewuse_basic", "datum_medium", datumObjects);
         Tracuse.frame.innerHTML = rendered;
+
+        e.stopPropagation();
+
     });
 };
 
