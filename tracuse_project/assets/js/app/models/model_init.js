@@ -30,7 +30,7 @@ Tracuse.models.createModels = function createModels() {
             "idProperty": "element_datum_type_id"
         }),
         "element_datum_objects": new Tracuse.Model("element_datum_objects", {
-            "loadOnInit": false,
+            "loadOnInit": true,
             "idProperty": "element_datum_object_id"
         })
     };
