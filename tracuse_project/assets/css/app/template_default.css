@@ -1,0 +1,46 @@
+
+x-viewuse {
+    display: inline-block;
+    margin: 2em;
+    border: 1px solid #35446A;
+    padding: 1em;
+}
+
+x-viewuse h3 {
+    text-align: center;
+    font-size: 150%;
+}
+
+x-datum {
+    position: relative;
+    display: inline-block;
+    margin: 0.5em;
+    border: none;
+    border-radius: 2.5%;
+    padding: 0.5em;
+    box-shadow: 1px 1px 0.5px #a9a9a9;
+    background-color: #d0d7e8;
+}
+
+x-datum[template="datum_small"] {
+    height: 2.5em;
+    width: 4em;
+}
+
+x-datum[template="datum_small"] p {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+x-datum[template="datum_small"] p.datum_type_name {
+    font-size: 125%;
+    font-weight: bold;
+    color: rgba(250, 250, 250, 0.50);
+}
+
+x-datum[template="datum_small"] p.headline {
+}
