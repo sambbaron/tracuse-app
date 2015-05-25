@@ -1,4 +1,4 @@
-<x-datum template="{% block template_name %}{% endblock %}"
+<x-datum template="{{ template_name }}"
          datum_object_id="{{ datum.datum_object_id }}" datum_group_id="{{ datum.datum_group_id }}" datum_type_id="{{ datum.datum_type_id }}">
     {% block datum_content %}{{ datum }}{% endblock %}
 </x-datum>
