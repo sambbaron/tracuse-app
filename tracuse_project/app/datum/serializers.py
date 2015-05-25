@@ -62,10 +62,6 @@ class DatumObjectSerializer(DatumObject):
 
     def serial_datum_all(self):
         """Datums with all properties
-
-        Returns:
-            Key: datum_object_id
-            Value: Property Dictionary
         """
 
         parent_datums = [parent_datum.datum_object_id for parent_datum in self.all_parent_datums.all()]
