@@ -14,6 +14,7 @@
 {% endblock %}
 
 {% block body_block %}
+    {% csrf_token %}
     <section id="app"></section>
 {#    {% include "app/templates.html" %}#}
 {% endblock %}
@@ -28,5 +29,6 @@
     <script src="{% static 'js/app/views/template_init.js' %}"></script>
     <script src="{% static 'js/app/views/templates.js' %}"></script>
     <script src="{% static 'js/app/views/views.js' %}"></script>
+    <script src="{% static 'js/app/utils.js' %}"></script>
     <script src="{% static 'js/app/init.js' %}"></script>
 {% endblock %}
