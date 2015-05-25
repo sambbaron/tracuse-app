@@ -17,5 +17,8 @@ Tracuse.urlsLibrary = {
     },
     "element_datum_types": {
         "all": "/api/element_datum_types/"
+    },
+    "element_datum_objects": {
+        "one": "/api/element_datum_object/<pk>/"
     }
 };
