@@ -9,15 +9,13 @@ Tracuse.views.renderViewuse = function renderViewuse(viewuseTemplate, datumTempl
     // Render viewuse template
     var datumObjects = JSON.parse(JSON.stringify(datumObjects));
 
-    // Replace elements id list with object list
     for (var d = 0, dmax = datumObjects.length; d < dmax; d++) {
         var datumObject = datumObjects[d];
-        var datumElements = Tracuse.models.idsToObjects(
-            Tracuse.models.element_datum_objects,
+        // Replace elements id list with object list
+        datumObject.elements = Tracuse.models.nestedIdsToObjects(
             datumObject.elements,
-            false
+            Tracuse.models.element_datum_objects
         );
-        datumObject.elements = datumElements
     }
 
     var templateName = "viewuse/" + viewuseTemplate + ".html";

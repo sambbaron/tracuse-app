@@ -111,3 +111,18 @@ Tracuse.models.objectsToIds = function objectsToIds(object_array) {
     return model_ids
 };
 
+Tracuse.models.nestedIdsToObjects = function nestedIdsToObjects(nestedIdArray, nestedModel) {
+    // Within model object, replace nested array of ids with
+    // model objects
+    // Example: datum.elements = [1, 2, 3] -> datum.element = [object, object, object]
+    "use strict";
+    var nestedObjects = [];
+    var nestedObjects = Tracuse.models.idsToObjects(
+        nestedModel,
+        nestedIdArray,
+        false
+    );
+    return nestedObjects;
+
+};
+
