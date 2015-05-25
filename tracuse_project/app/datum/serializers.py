@@ -70,11 +70,7 @@ class DatumObjectSerializer(DatumObject):
 
         parent_datums = [parent_datum.datum_object_id for parent_datum in self.all_parent_datums.all()]
         child_datums = [child_datum.datum_object_id for child_datum in self.all_child_datums.all()]
-
-        elements = {}
-        for element in self.elements:
-            elements[element.element_datum_object_id] = \
-                ElementDatumObjectSerializer.serial_ids_value(element)
+        elements = [element.element_datum_object_id for element in self.element_datum_objects.all()]
 
         output = {
             "datum_object_id": self.datum_object_id,
