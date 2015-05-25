@@ -1,4 +1,4 @@
-(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["datum/datum.html"] = (function() {function root(env, context, frame, runtime, cb) {
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["datum/datum_base.html"] = (function() {function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
 var output = "";
@@ -59,7 +59,7 @@ var lineno = null;
 var colno = null;
 var output = "";
 try {
-env.getTemplate("datum/datum.html", true, "datum\\datum_medium.html", function(t_2,parentTemplate) {
+env.getTemplate("datum/datum_base.html", true, "datum\\datum_medium.html", function(t_2,parentTemplate) {
 if(t_2) { cb(t_2); return; }
 for(var t_1 in parentTemplate.blocks) {
 context.addBlock(t_1, parentTemplate.blocks[t_1]);
@@ -133,7 +133,7 @@ var lineno = null;
 var colno = null;
 var output = "";
 try {
-env.getTemplate("datum/datum.html", true, "datum\\datum_small.html", function(t_2,parentTemplate) {
+env.getTemplate("datum/datum_base.html", true, "datum\\datum_small.html", function(t_2,parentTemplate) {
 if(t_2) { cb(t_2); return; }
 for(var t_1 in parentTemplate.blocks) {
 context.addBlock(t_1, parentTemplate.blocks[t_1]);
