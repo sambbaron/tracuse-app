@@ -7,6 +7,7 @@ Tracuse.views = Tracuse.views || {};
 Tracuse.views.renderViewuse = function renderViewuse(viewuseTemplate, datumTemplate, datumObjects) {
     "use strict";
     // Render viewuse template
+    var datumObjects = JSON.parse(JSON.stringify(datumObjects));;
 
     // Append elements to datums
     for (var d = 0, dmax = datumObjects.length; d < dmax; d++) {
