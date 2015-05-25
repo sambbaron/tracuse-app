@@ -30,25 +30,20 @@ Tracuse.views.renderViewuse = function renderViewuse(viewuseTemplate, datumTempl
 Tracuse.views.saveElement = function saveElement(customEl) {
     "use strict";
     var model = customEl.model;
+    var object = customEl.modelObject;
 
     // Get url
     var modelUrl = model.getUrl("one");
 
     // Get pk
     var modelIdProperty = model.idProperty;
-    var elementId = customEl.getAttribute(modelIdProperty);
-
-    // Get parent datum
-    var parentEl = customEl.parentElement;
-    var datumObject = parentEl.modelObject;
-    var datumId = datumObject.datum_object_id;
-    var elementObject = Tracuse.models.datum_objects.data[datumId].elements[elementId];
+    var objectId = customEl.getAttribute(modelIdProperty);
 
     // Replace pk in url
-    var objectUrl = modelUrl.replace("<pk>", elementId);
+    var objectUrl = modelUrl.replace("<pk>", objectId);
 
     // Extract element value
-    var oldValue = elementObject.element_value;
+    var oldValue = object.element_value;
     var newValue = customEl.value;
 
     // Create request data
@@ -59,9 +54,9 @@ Tracuse.views.saveElement = function saveElement(customEl) {
     request.onreadystatechange = function () {
         if (request.readyState === 4) {
             if (request.status === 200) {
-                console.info("Update Element: " + elementId);
+                console.info("Update Element: " + objectId);
                 // Update model
-                Tracuse.models.datum_objects.data[datumId].elements[elementId] = JSON.parse(request.responseText);
+                model.data[objectId] = JSON.parse(request.responseText);
             } else {
                 customEl.value = oldValue;
             }
