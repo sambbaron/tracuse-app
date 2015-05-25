@@ -86,29 +86,29 @@ Tracuse.models.idsToObjects = function idsToObjects(model, idArray, nestedIds) {
     //          True: Wrap model with id object
     //          False: Object is flat
     "use strict";
-    var model_objects = [];
+    var modelObjects = [];
 
-    for (var i = 0, max = idArray.length;  i < max; i++) {
-            var id = idArray[i];
-            var modelObject = model.data[id];
-            if (nestedIds) {
-                model_objects.push({id: modelObject});
-            } else {
-                model_objects.push(modelObject)
-            }
+    for (var i = 0, max = idArray.length; i < max; i++) {
+        var id = idArray[i];
+        var modelObject = model.data[id];
+        if (nestedIds) {
+            modelObjects.push({id: modelObject});
+        } else {
+            modelObjects.push(modelObject)
         }
-    return model_objects
+    }
+    return modelObjects
 };
 
-Tracuse.models.objectsToIds = function objectsToIds(object_array) {
+Tracuse.models.objectsToIds = function objectsToIds(objectArray) {
     // Convert array of objects to model ids
     "use strict";
-    var model_ids = [];
+    var modelIds = [];
 
-    for (var i = 0, max = object_array.length;  i < max; i++) {
-            model_ids.push(object_array[i])
-        }
-    return model_ids
+    for (var i = 0, max = objectArray.length; i < max; i++) {
+        modelIds.push(objectArray[i])
+    }
+    return modelIds
 };
 
 Tracuse.models.nestedIdsToObjects = function nestedIdsToObjects(nestedIdArray, nestedModel) {
