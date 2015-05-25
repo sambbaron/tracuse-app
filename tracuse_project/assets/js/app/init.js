@@ -10,24 +10,24 @@ Tracuse.init = function init() {
     Tracuse.templates.loadEnvironment();
 
 
-
     var renderButton = document.querySelector("#render-page");
     renderButton.addEventListener("click", function (e) {
-
-        var datumIds = [1, 3, 8, 13];
-        var datumObjects = Tracuse.models.idsToObjects(
-            Tracuse.models.datum_objects,
-            datumIds
-        );
-        var rendered = Tracuse.views.renderViewuse("viewuse_basic", "datum_medium", datumObjects);
-        Tracuse.frame.innerHTML = rendered;
-
+        renderTest();
         e.stopPropagation();
-
     });
+
+    setTimeout(renderTest, 3000);
 };
 
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
     Tracuse.init();
 });
+
+var renderTest = function renderTest() {
+    "use strict";
+    var allDatums = Tracuse.models.datum_objects.data;
+    var datumObjects = Tracuse.models.objectsToArray(allDatums);
+    var rendered = Tracuse.views.renderViewuse("viewuse_base", "datum_small", datumObjects);
+    Tracuse.frame.innerHTML = rendered;
+};
