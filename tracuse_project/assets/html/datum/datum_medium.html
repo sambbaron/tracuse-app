@@ -3,7 +3,7 @@
 {% block template_name %}datum_medium{% endblock %}
 
 {% block datum_content %}
-    {% for pk, element in datum.elements %}
+    {% for element in datum.elements %}
         {% include "element/element.html" %}
     {% endfor %}
 {% endblock %}

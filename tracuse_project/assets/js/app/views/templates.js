@@ -92,14 +92,10 @@ try {
 output += "\r\n    ";
 frame = frame.push();
 var t_5 = runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "datum")),"elements", env.opts.autoescape);
-if(t_5) {var t_3;
-if(runtime.isArray(t_5)) {
-var t_4 = t_5.length;
-for(t_3=0; t_3 < t_5.length; t_3++) {
-var t_6 = t_5[t_3][0]
-frame.set("pk", t_5[t_3][0]);
-var t_7 = t_5[t_3][1]
-frame.set("element", t_5[t_3][1]);
+if(t_5) {var t_4 = t_5.length;
+for(var t_3=0; t_3 < t_5.length; t_3++) {
+var t_6 = t_5[t_3];
+frame.set("element", t_6);
 frame.set("loop.index", t_3 + 1);
 frame.set("loop.index0", t_3);
 frame.set("loop.revindex", t_4 - t_3);
@@ -108,38 +104,13 @@ frame.set("loop.first", t_3 === 0);
 frame.set("loop.last", t_3 === t_4 - 1);
 frame.set("loop.length", t_4);
 output += "\r\n        ";
-env.getTemplate("element/element.html", false, "datum\\datum_medium.html", function(t_10,t_8) {
+env.getTemplate("element/element.html", false, "datum\\datum_medium.html", function(t_9,t_7) {
+if(t_9) { cb(t_9); return; }
+t_7.render(context.getVariables(), frame.push(), function(t_10,t_8) {
 if(t_10) { cb(t_10); return; }
-t_8.render(context.getVariables(), frame.push(), function(t_11,t_9) {
-if(t_11) { cb(t_11); return; }
-output += t_9
+output += t_8
 output += "\r\n    ";
 })});
-}
-} else {
-t_3 = -1;
-var t_4 = runtime.keys(t_5).length;
-for(var t_12 in t_5) {
-t_3++;
-var t_13 = t_5[t_12];
-frame.set("pk", t_12);
-frame.set("element", t_13);
-frame.set("loop.index", t_3 + 1);
-frame.set("loop.index0", t_3);
-frame.set("loop.revindex", t_4 - t_3);
-frame.set("loop.revindex0", t_4 - t_3 - 1);
-frame.set("loop.first", t_3 === 0);
-frame.set("loop.last", t_3 === t_4 - 1);
-frame.set("loop.length", t_4);
-output += "\r\n        ";
-env.getTemplate("element/element.html", false, "datum\\datum_medium.html", function(t_16,t_14) {
-if(t_16) { cb(t_16); return; }
-t_14.render(context.getVariables(), frame.push(), function(t_17,t_15) {
-if(t_17) { cb(t_17); return; }
-output += t_15
-output += "\r\n    ";
-})});
-}
 }
 }
 frame = frame.pop();

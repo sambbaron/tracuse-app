@@ -8,6 +8,16 @@ Tracuse.views.renderViewuse = function renderViewuse(viewuseTemplate, datumTempl
     "use strict";
     // Render viewuse template
 
+    // Append elements to datums
+    for (var d = 0, dmax = datumObjects.length; d < dmax; d++) {
+        var datumObject = datumObjects[d];
+        var datumElements = datumObject.elements;
+        for (var e = 0, emax = datumElements.length; e < emax; e++) {
+            var elementId = datumElements[e];
+            datumElements[e] = Tracuse.models.element_datum_objects.data[elementId];
+        }
+    }
+
     var templateName = "viewuse/" + viewuseTemplate + ".html";
     var templateData = {
         "datumTemplate": datumTemplate,
