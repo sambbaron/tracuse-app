@@ -100,15 +100,14 @@ Tracuse.models.idsToObjects = function idsToObjects(model, idArray, nestedIds) {
     return modelObjects
 };
 
-Tracuse.models.objectsToIds = function objectsToIds(objectArray) {
+Tracuse.models.objectsToArray = function objectsToArray(objects) {
     // Convert array of objects to model ids
     "use strict";
-    var modelIds = [];
-
-    for (var i = 0, max = objectArray.length; i < max; i++) {
-        modelIds.push(objectArray[i])
+    var outputArray = [];
+    for (var object in objects) {
+        outputArray.push(objects[object])
     }
-    return modelIds
+    return outputArray
 };
 
 Tracuse.models.nestedIdsToObjects = function nestedIdsToObjects(nestedIdArray, nestedModel) {
