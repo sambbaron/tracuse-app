@@ -7,16 +7,17 @@ Tracuse.views = Tracuse.views || {};
 Tracuse.views.renderViewuse = function renderViewuse(viewuseTemplate, datumTemplate, datumObjects) {
     "use strict";
     // Render viewuse template
-    var datumObjects = JSON.parse(JSON.stringify(datumObjects));;
+    var datumObjects = JSON.parse(JSON.stringify(datumObjects));
 
-    // Append elements to datums
+    // Replace elements id list with object list
     for (var d = 0, dmax = datumObjects.length; d < dmax; d++) {
         var datumObject = datumObjects[d];
-        var datumElements = datumObject.elements;
-        for (var e = 0, emax = datumElements.length; e < emax; e++) {
-            var elementId = datumElements[e];
-            datumElements[e] = Tracuse.models.element_datum_objects.data[elementId];
-        }
+        var datumElements = Tracuse.models.idsToObjects(
+            Tracuse.models.element_datum_objects,
+            datumObject.elements,
+            false
+        );
+        datumObject.elements = datumElements
     }
 
     var templateName = "viewuse/" + viewuseTemplate + ".html";
