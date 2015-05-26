@@ -48,6 +48,6 @@ var renderTest = function renderTest() {
     "use strict";
     var allDatums = Tracuse.models.datum_objects.data;
     var datumObjects = Tracuse.models.objectsToArray(allDatums);
-    var rendered = Tracuse.views.renderViewuse("viewuse_tile", "datum_small", datumObjects);
+    var rendered = Tracuse.views.renderViewuse("viewuse_tile", "datum_medium", datumObjects);
     Tracuse.frame.innerHTML = rendered;
 };

@@ -172,7 +172,7 @@ output += "\"\r\n       element_type_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_type_id", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n       type=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"html_input_type", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n       value=\"";
+output += "\"\r\n       name=\"element_value\"\r\n       value=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_value", env.opts.autoescape), env.opts.autoescape);
 output += "\">";
 cb(null, output);

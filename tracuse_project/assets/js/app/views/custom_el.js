@@ -87,7 +87,7 @@ Tracuse.customEl.DatumElement = document.registerElement(
             createdCallback: {
                 value: function () {
                     this.addEventListener('change', function (e) {
-                        Tracuse.views.saveElement(e.target);
+                        Tracuse.models.updateDataOne(e.target);
                     });
                 }
             }

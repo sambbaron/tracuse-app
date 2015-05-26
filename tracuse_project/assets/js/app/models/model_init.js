@@ -125,3 +125,49 @@ Tracuse.models.nestedIdsToObjects = function nestedIdsToObjects(nestedIdArray, n
 
 };
 
+Tracuse.models.updateDataOne = function updateDataOne(inputEl) {
+    // Post Ajax data and save data in model for one object
+    // Use custom input element
+    "use strict";
+    var model = inputEl.model;
+    var object = inputEl.modelObject;
+    var property = inputEl.getAttribute("name");
+
+    // Get url
+    var modelUrl = model.getUrl("one");
+
+    // Get pk
+    var modelIdProperty = model.idProperty;
+    var objectId = inputEl.getAttribute(modelIdProperty);
+
+    // Replace pk in url
+    var objectUrl = modelUrl.replace("<pk>", objectId);
+
+    // Extract value
+    var oldValue = object[property];
+    var newValue = inputEl.value;
+
+    // Create request data
+    var request_data = {};
+    request_data[property] = newValue;
+    request_data = JSON.stringify(request_data);
+
+    // Send request
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                console.info("Update Element: " + objectId);
+                // Update model
+                model.data[objectId] = JSON.parse(request.responseText);
+            } else {
+                inputEl.value = oldValue;
+            }
+        }
+    };
+    request.open("PUT", objectUrl, true);
+    request = Tracuse.utils.csrfSafeRequest(request);
+    request.send(request_data);
+};
+
+
