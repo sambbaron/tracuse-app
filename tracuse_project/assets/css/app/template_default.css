@@ -1,19 +1,71 @@
 
 x-viewuse {
     display: inline-block;
+    position: relative;
+    height: 25em;
+    width: 50em;
     margin: 2em;
     border: 1px solid #35446A;
     padding: 1em;
     resize: both;
     overflow: scroll;
-    height: 60%;
-    width: 40%;
 }
 
 x-viewuse h3 {
     text-align: center;
     font-size: 150%;
 }
+
+x-viewuse[template="viewuse_base"] button {
+    position: absolute;
+    height: 4em;
+    width: 4em;
+    border: 1px solid #587e1f;
+    background-color: #ddf0bf;
+    text-align: center;
+
+}
+x-viewuse[template="viewuse_base"] button * {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    pointer-events: none;
+}
+x-viewuse[template="viewuse_base"] button i {
+    color: #cce8a2;
+    font-size: 400%;
+    line-height: 25%;
+    letter-spacing: -4px;
+}
+x-viewuse[template="viewuse_base"] button span {
+    color: #587e1f;
+}
+x-viewuse[template="viewuse_base"] button:hover {
+    color: #ddf0bf;
+    background-color: #587e1f;
+}
+x-viewuse[template="viewuse_base"] button[name="new-object"] {
+    top: 0;
+    left: 0;
+}
+x-viewuse[template="viewuse_base"] button[name="view-settings"] {
+    top: 0;
+    right: 0;
+}
+x-viewuse[template="viewuse_base"] button[name="close-view"] {
+    top: 4em;
+    right: 0;
+}
+x-viewuse[template="viewuse_base"] section.content {
+    width: 85%;
+    margin: 1em auto;
+}
+
+
+
+
 
 x-datum {
     position: relative;

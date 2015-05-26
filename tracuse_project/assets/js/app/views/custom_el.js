@@ -10,6 +10,43 @@ Tracuse.customEl.Viewuse = document.registerElement(
     {prototype: Object.create(HTMLElement.prototype)}
 );
 
+Tracuse.customEl.DatumElement = document.registerElement(
+    "x-viewuse-button",
+    {
+        extends: "button",
+        prototype: Object.create(HTMLElement.prototype, {
+            createdCallback: {
+                value: function () {
+                    this.addEventListener("mouseenter", function (e) {
+                        e.target.querySelector("span").style.display = "none";
+                    });
+                    this.addEventListener("mouseleave", function (e) {
+                        e.target.querySelector("span").style.display = "";
+                    });
+                    this.addEventListener("click", function (e) {
+                        var viewuseEl = e.target.parentNode;
+                        var viewuseParent = viewuseEl.parentNode;
+
+                        switch (e.target.getAttribute("name")) {
+                            case "new-object":
+                                window.alert("New Object Button");
+                                break;
+                            case "view-settings":
+                                window.alert("View Settings Button");
+                                break;
+                            case "close-view":
+                                viewuseParent.removeChild(viewuseEl);
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                }
+            }
+        })
+    }
+);
+
 Tracuse.customEl.DatumObject = document.registerElement(
     "x-datum",
     {
