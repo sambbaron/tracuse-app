@@ -191,40 +191,22 @@ var lineno = null;
 var colno = null;
 var output = "";
 try {
-output += "<x-viewuse template=\"viewuse_base\">\r\n    <h3>View Title</h3>\r\n    <div>\r\n        ";
-frame = frame.push();
-var t_3 = runtime.contextOrFrameLookup(context, frame, "datums");
-if(t_3) {var t_2 = t_3.length;
-for(var t_1=0; t_1 < t_3.length; t_1++) {
-var t_4 = t_3[t_1];
-frame.set("datum", t_4);
-frame.set("loop.index", t_1 + 1);
-frame.set("loop.index0", t_1);
-frame.set("loop.revindex", t_2 - t_1);
-frame.set("loop.revindex0", t_2 - t_1 - 1);
-frame.set("loop.first", t_1 === 0);
-frame.set("loop.last", t_1 === t_2 - 1);
-frame.set("loop.length", t_2);
-output += "\r\n            ";
-var t_5;
-t_5 = "datum/" + runtime.contextOrFrameLookup(context, frame, "datumTemplate") + ".html";
-frame.set("template", t_5, true);
-if(!frame.parent) {
-context.setVariable("template", t_5);
-context.addExport("template");
-}
-output += " ";
-env.getTemplate(runtime.contextOrFrameLookup(context, frame, "template"), false, "viewuse\\viewuse_base.html", function(t_8,t_6) {
-if(t_8) { cb(t_8); return; }
-t_6.render(context.getVariables(), frame.push(), function(t_9,t_7) {
-if(t_9) { cb(t_9); return; }
-output += t_7
-output += "\r\n        ";
-})});
+output += "<x-viewuse template=\"viewuse_base\">\r\n    <h3>View Title</h3>\r\n    ";
+context.getBlock("viewuse_content")(env, context, frame, runtime, function(t_2,t_1) {
+if(t_2) { cb(t_2); return; }
+output += t_1;
+output += "\r\n</x-viewuse>";
+cb(null, output);
+});
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
 }
 }
-frame = frame.pop();
-output += "\r\n    </div>\r\n</x-viewuse>";
+function b_viewuse_content(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
 cb(null, output);
 ;
 } catch (e) {
@@ -232,6 +214,83 @@ cb(null, output);
 }
 }
 return {
+b_viewuse_content: b_viewuse_content,
+root: root
+};
+})();
+})();
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/viewuse_tile.html"] = (function() {function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+env.getTemplate("viewuse/viewuse_base.html", true, "viewuse\\viewuse_tile.html", function(t_2,parentTemplate) {
+if(t_2) { cb(t_2); return; }
+for(var t_1 in parentTemplate.blocks) {
+context.addBlock(t_1, parentTemplate.blocks[t_1]);
+}
+output += "\r\n";
+var t_3;
+t_3 = "viewuse_tile";
+frame.set("template_name", t_3, true);
+if(!frame.parent) {
+context.setVariable("template_name", t_3);
+context.addExport("template_name");
+}
+output += "\r\n\r\n";
+parentTemplate.rootRenderFunc(env, context, frame, runtime, cb);
+});
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+function b_viewuse_content(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+output += "\r\n    ";
+frame = frame.push();
+var t_6 = runtime.contextOrFrameLookup(context, frame, "datums");
+if(t_6) {var t_5 = t_6.length;
+for(var t_4=0; t_4 < t_6.length; t_4++) {
+var t_7 = t_6[t_4];
+frame.set("datum", t_7);
+frame.set("loop.index", t_4 + 1);
+frame.set("loop.index0", t_4);
+frame.set("loop.revindex", t_5 - t_4);
+frame.set("loop.revindex0", t_5 - t_4 - 1);
+frame.set("loop.first", t_4 === 0);
+frame.set("loop.last", t_4 === t_5 - 1);
+frame.set("loop.length", t_5);
+output += "\r\n        ";
+var t_8;
+t_8 = "datum/" + runtime.contextOrFrameLookup(context, frame, "datumTemplate") + ".html";
+frame.set("template", t_8, true);
+if(!frame.parent) {
+context.setVariable("template", t_8);
+context.addExport("template");
+}
+output += " ";
+env.getTemplate(runtime.contextOrFrameLookup(context, frame, "template"), false, "viewuse\\viewuse_tile.html", function(t_11,t_9) {
+if(t_11) { cb(t_11); return; }
+t_9.render(context.getVariables(), frame.push(), function(t_12,t_10) {
+if(t_12) { cb(t_12); return; }
+output += t_10
+output += "\r\n    ";
+})});
+}
+}
+frame = frame.pop();
+output += "\r\n";
+cb(null, output);
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+b_viewuse_content: b_viewuse_content,
 root: root
 };
 })();

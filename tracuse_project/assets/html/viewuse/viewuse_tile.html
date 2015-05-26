@@ -1,0 +1,8 @@
+{% extends "viewuse/viewuse_base.html" %}
+{% set template_name = "viewuse_tile" %}
+
+{% block viewuse_content %}
+    {% for datum in datums %}
+        {% set template = "datum/" + datumTemplate + ".html" %} {% include template %}
+    {% endfor %}
+{% endblock %}

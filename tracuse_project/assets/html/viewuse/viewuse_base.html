@@ -1,8 +1,4 @@
 <x-viewuse template="viewuse_base">
     <h3>View Title</h3>
-    <div>
-        {% for datum in datums %}
-            {% set template = "datum/" + datumTemplate + ".html" %} {% include template %}
-        {% endfor %}
-    </div>
+    {% block viewuse_content %}{% endblock %}
 </x-viewuse>
