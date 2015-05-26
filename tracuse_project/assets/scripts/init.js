@@ -23,10 +23,10 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
 
         if (targetEl.tagName === "X-VIEWUSE" || targetEl === Tracuse.frame) {
             appendEl = targetEl;
-        }
-        if (targetEl.parentNode.tagName === "X-VIEWUSE") {
+        } else if (targetEl.parentNode.tagName === "X-VIEWUSE") {
             appendEl = targetEl.parentNode;
         }
+
         if (appendEl) {
             var newViewuseString = Tracuse.views.renderViewuse("viewuse_tile", "datum_small");
             var range = document.createRange();
