@@ -21,9 +21,9 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
         var targetEl = e.target;
         var appendEl;
 
-        if (targetEl.tagName === "X-VIEWUSE" || targetEl === Tracuse.frame) {
+        if (targetEl.tagName === "SECTION" || targetEl === Tracuse.frame) {
             appendEl = targetEl;
-        } else if (targetEl.parentNode.tagName === "X-VIEWUSE") {
+        } else if (targetEl.parentNode.tagName === "SECTION") {
             appendEl = targetEl.parentNode;
         }
 

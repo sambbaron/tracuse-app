@@ -1,9 +1,9 @@
-<x-viewuse template="{{ template_name }}">
+<section template="{{ template_name }}">
     <input name="title" value="View Title">
-    <button is="x-viewuse-button" name="new-object"><i>+</i><span>New Object</span></button>
-    <button is="x-viewuse-button" name="view-settings"><i>---------</i><span>View Settings</span></button>
-    <button is="x-viewuse-button" name="close-view"><i>X</i><span>Close View</span></button>
-    <section class="content">
+    <button name="new-object"><i>+</i><span>New Object</span></button>
+    <button name="view-settings"><i>---------</i><span>View Settings</span></button>
+    <button name="close-view"><i>X</i><span>Close View</span></button>
+    <div class="content">
         {% block viewuse_content %}{% endblock %}
-    </section>
-</x-viewuse>
+    </div>
+</section>
