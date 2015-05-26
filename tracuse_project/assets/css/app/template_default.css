@@ -11,7 +11,11 @@ x-viewuse {
     overflow: scroll;
 }
 
-x-viewuse h3 {
+x-viewuse input[name="title"] {
+    display: block;
+    margin: 0 auto;
+    border: none;
+    background: none;
     text-align: center;
     font-size: 150%;
 }
