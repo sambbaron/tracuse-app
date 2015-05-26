@@ -6,11 +6,11 @@ header, footer {
     background-color: #d0d7e8;
 }
 
-header .nav-button, button {
+header .nav-button {
     background-color: rgba(169, 217, 99, 0.75);
 }
 
-header .nav-button:focus, button:focus {
+header .nav-button:focus {
     background-color: rgba(169, 217, 99, 1);
 }
 

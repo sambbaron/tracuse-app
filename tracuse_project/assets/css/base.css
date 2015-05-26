@@ -41,7 +41,7 @@ header nav {
     right: 15em;
 }
 
-header .nav-button, button {
+header .nav-button {
     display: inline-block;
     height: 2em;
     margin-left: 0.5em;
@@ -54,7 +54,7 @@ header .nav-button, button {
     cursor: pointer;
 }
 
-header .nav-button:focus, button:focus {
+header .nav-button:focus {
     background-color: #ffffff;
 }
 
@@ -74,5 +74,9 @@ input[type=submit] {
     box-shadow: 2px 2px 1px rgba(150, 150, 150, 0.75);
     color: #35446A;
     text-align: center;
+    cursor: pointer;
+}
+
+button {
     cursor: pointer;
 }
