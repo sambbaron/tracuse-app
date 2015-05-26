@@ -16,14 +16,23 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
         e.stopPropagation();
     });
 
-    // Double-click anywhere to create a new view
-    Tracuse.frame.addEventListener("dblclick", function (e) {
+    // Double-click anywhere in a view to nest a new view
+    window.addEventListener("dblclick", function (e) {
         var targetEl = e.target;
-        var newViewuseString = Tracuse.views.renderViewuse("viewuse_tile", "datum_small");
+        var appendEl;
 
-        var range = document.createRange();
-        var newViewuseEl = range.createContextualFragment(newViewuseString);
-        targetEl.appendChild(newViewuseEl);
+        if (targetEl.tagName === "X-VIEWUSE" || targetEl === Tracuse.frame) {
+            appendEl = targetEl;
+        }
+        if (targetEl.parentNode.tagName === "X-VIEWUSE") {
+            appendEl = targetEl.parentNode;
+        }
+        if (appendEl) {
+            var newViewuseString = Tracuse.views.renderViewuse("viewuse_tile", "datum_small");
+            var range = document.createRange();
+            var newViewuseEl = range.createContextualFragment(newViewuseString);
+            appendEl.appendChild(newViewuseEl);
+        }
         e.stopPropagation();
     });
 
