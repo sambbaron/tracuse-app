@@ -22,6 +22,26 @@ x-datum {
     background-color: #d0d7e8;
 }
 
+/*Area*/
+x-datum[datum_group_id="1"] {
+    border-radius: 0;
+}
+
+/*Activity*/
+x-datum[datum_group_id="2"] {
+    border-radius: 50%;
+}
+
+/*Time*/
+x-datum[datum_group_id="3"] {
+    border-radius: 0 0 25% 25% / 0 0 40% 40%;
+}
+
+/*Item*/
+x-datum[datum_group_id="4"] {
+    border-radius: 25% 25% 0 0 / 40% 40% 0 0;
+}
+
 x-datum[template="datum_small"] {
     height: 2.5em;
     width: 4em;
