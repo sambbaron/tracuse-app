@@ -1,13 +1,20 @@
 // Primary app namespace
 var Tracuse = Tracuse || {};
 
+// Init functions
+Tracuse.init = Tracuse.init || {};
+
 Tracuse.frame = document.querySelector("#app");
 
-Tracuse.init = function init() {
+Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
     "use strict";
-    Tracuse.models.createModels();
-    Tracuse.models.loadInitData();
-    Tracuse.templates.loadEnvironment();
+
+    // Render button for testing
+    var renderButton = document.querySelector("#render-page");
+    renderButton.addEventListener("click", function (e) {
+        renderTest();
+        e.stopPropagation();
+    });
 
     // Double-click anywhere to create a new view
     Tracuse.frame.addEventListener("dblclick", function (e) {
@@ -20,18 +27,21 @@ Tracuse.init = function init() {
         e.stopPropagation();
     });
 
-    var renderButton = document.querySelector("#render-page");
-    renderButton.addEventListener("click", function (e) {
-        renderTest();
-        e.stopPropagation();
-    });
+};
+
+Tracuse.init.initApp = function initApp() {
+    "use strict";
+    Tracuse.models.createModels();
+    Tracuse.models.loadInitData();
+    Tracuse.templates.loadEnvironment();
+    Tracuse.init.attachGlobalEvents();
 
     setTimeout(renderTest, 3000);
 };
 
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
-    Tracuse.init();
+    Tracuse.init.initApp();
 });
 
 var renderTest = function renderTest() {
