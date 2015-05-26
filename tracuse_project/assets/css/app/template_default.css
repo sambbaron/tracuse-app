@@ -2,7 +2,8 @@
 x-viewuse {
     display: inline-block;
     position: relative;
-    min-width: 15em;
+    min-height: 8em;
+    min-width: 15em
     float: left;
     margin: 2em;
     border: 1px solid #35446A;
