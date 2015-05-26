@@ -10,7 +10,7 @@ Tracuse.customEl.Viewuse = document.registerElement(
     {prototype: Object.create(HTMLElement.prototype)}
 );
 
-Tracuse.customEl.DatumElement = document.registerElement(
+Tracuse.customEl.ViewuseButton = document.registerElement(
     "x-viewuse-button",
     {
         extends: "button",
