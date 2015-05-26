@@ -18,6 +18,11 @@ footer {
     display: none;
 }
 
+#app {
+    height: calc(100vh - 4em);
+    width: 100%;
+}
+
 /*.datum, x-datum{*/
     /*display: inline-block;*/
     /*position: relative;*/
