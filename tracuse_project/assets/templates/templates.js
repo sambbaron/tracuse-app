@@ -3,9 +3,9 @@ var lineno = null;
 var colno = null;
 var output = "";
 try {
-output += "<x-datum template=\"";
+output += "<article template=\"";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "template_name"), env.opts.autoescape);
-output += "\"\r\n         datum_object_id=\"";
+output += "\" model=\"datum_objects\"\r\n         datum_object_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "datum")),"datum_object_id", env.opts.autoescape), env.opts.autoescape);
 output += "\" datum_group_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "datum")),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
@@ -15,7 +15,7 @@ output += "\">\r\n    ";
 context.getBlock("datum_content")(env, context, frame, runtime, function(t_2,t_1) {
 if(t_2) { cb(t_2); return; }
 output += t_1;
-output += "\r\n</x-datum>";
+output += "\r\n</article>";
 cb(null, output);
 });
 } catch (e) {
