@@ -4,6 +4,10 @@ x-viewuse {
     margin: 2em;
     border: 1px solid #35446A;
     padding: 1em;
+    resize: both;
+    overflow: scroll;
+    height: 60%;
+    width: 40%;
 }
 
 x-viewuse h3 {
