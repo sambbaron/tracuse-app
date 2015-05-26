@@ -9,6 +9,16 @@ Tracuse.init = function init() {
     Tracuse.models.loadInitData();
     Tracuse.templates.loadEnvironment();
 
+    // Double-click anywhere to create a new view
+    Tracuse.frame.addEventListener("dblclick", function (e) {
+        var targetEl = e.target;
+        var newViewuseString = Tracuse.views.renderViewuse("viewuse_tile", "datum_small");
+
+        var range = document.createRange();
+        var newViewuseEl = range.createContextualFragment(newViewuseString);
+        targetEl.appendChild(newViewuseEl);
+        e.stopPropagation();
+    });
 
     var renderButton = document.querySelector("#render-page");
     renderButton.addEventListener("click", function (e) {
