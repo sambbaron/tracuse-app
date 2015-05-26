@@ -134,7 +134,7 @@ Tracuse.models.updateDataOne = function updateDataOne(inputEl) {
     var property = inputEl.getAttribute("name");
 
     // Get url
-    var modelUrl = model.getUrl("one");
+    var modelUrl = model.getRoute("one");
 
     // Get pk
     var modelIdProperty = model.idProperty;

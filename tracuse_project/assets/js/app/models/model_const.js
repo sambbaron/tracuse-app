@@ -11,21 +11,21 @@ Tracuse.Model = function Model(name, options) {
     this.properties = options.properties || [];
     this.idProperty = options.idProperty || "id";
 };
-Tracuse.Model.prototype.urlsLibrary = function urls() {
+Tracuse.Model.prototype.routes = function routes() {
     // Return urls library object for model name
     "use strict";
     var model = this;
-    var urls = Tracuse.urlsLibrary[this.name];
+    var urls = Tracuse.routes[this.name];
     return urls;
 };
-Tracuse.Model.prototype.getUrl = function getUrl(urlName) {
+Tracuse.Model.prototype.getRoute = function getUrl(urlName) {
     // Return specific url from library
     "use strict";
     var model = this;
     var url;
 
     try {
-        url = model.urlsLibrary()[urlName];
+        url = model.routes()[urlName];
     } catch (err) {
         if (err instanceof TypeError) {
             console.error(err + ": " + urlName + " url does not exist for " + model.name);
@@ -54,7 +54,7 @@ Tracuse.Model.prototype.loadData = function loadData() {
         }
     };
 
-    url = model.getUrl("all");
+    url = model.getRoute("all");
 
     if (url) {
         request.open("GET", url, true);

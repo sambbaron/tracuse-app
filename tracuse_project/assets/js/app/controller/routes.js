@@ -1,7 +1,7 @@
 var Tracuse = Tracuse || {};
 
 // Urls library
-Tracuse.urlsLibrary = {
+Tracuse.routes = {
     "datum_groups": {
         "all": "/api/datum_groups/"
     },
