@@ -191,9 +191,11 @@ var lineno = null;
 var colno = null;
 var output = "";
 try {
-output += "<section template=\"";
+output += "<section class=\"viewuse\" template=\"";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "template_name"), env.opts.autoescape);
-output += "\">\r\n    <input name=\"title\" value=\"View Title\">\r\n    <button name=\"new-object\"><i>+</i><span>New Object</span></button>\r\n    <button name=\"view-settings\"><i>---------</i><span>View Settings</span></button>\r\n    <button name=\"close-view\"><i>X</i><span>Close View</span></button>\r\n    <div class=\"content\">\r\n        ";
+output += "\" id=\"";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "id"), env.opts.autoescape);
+output += "\"\r\n         onmouseenter=\"Tracuse.ui.viewuse.mouseEnter(this, event)\"\r\n         onmouseleave=\"Tracuse.ui.viewuse.mouseLeave(this, event)\">\r\n    <input name=\"title\" value=\"View Title\">\r\n    <button name=\"new-object\" onclick=\"Tracuse.ui.viewuse.openObjectPanel(this, event)\"><i>+</i><span>New Object</span></button>\r\n    <button name=\"view-settings\" onclick=\"Tracuse.ui.viewuse.openViewPanel(this, event)\"><i>---------</i><span>View Settings</span></button>\r\n    <button name=\"close-view\" onclick=\"Tracuse.ui.viewuse.closeView(this, event)\"><i>X</i><span>Close View</span></button>\r\n    <div class=\"content\">\r\n        ";
 context.getBlock("viewuse_content")(env, context, frame, runtime, function(t_2,t_1) {
 if(t_2) { cb(t_2); return; }
 output += t_1;

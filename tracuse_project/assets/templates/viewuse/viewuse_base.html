@@ -1,8 +1,10 @@
-<section template="{{ template_name }}">
+<section class="viewuse" template="{{ template_name }}" id="{{ id }}"
+         onmouseenter="Tracuse.ui.viewuse.mouseEnter(this, event)"
+         onmouseleave="Tracuse.ui.viewuse.mouseLeave(this, event)">
     <input name="title" value="View Title">
-    <button name="new-object"><i>+</i><span>New Object</span></button>
-    <button name="view-settings"><i>---------</i><span>View Settings</span></button>
-    <button name="close-view"><i>X</i><span>Close View</span></button>
+    <button name="new-object" onclick="Tracuse.ui.viewuse.openObjectPanel(this, event)"><i>+</i><span>New Object</span></button>
+    <button name="view-settings" onclick="Tracuse.ui.viewuse.openViewPanel(this, event)"><i>---------</i><span>View Settings</span></button>
+    <button name="close-view" onclick="Tracuse.ui.viewuse.closeView(this, event)"><i>X</i><span>Close View</span></button>
     <div class="content">
         {% block viewuse_content %}{% endblock %}
     </div>

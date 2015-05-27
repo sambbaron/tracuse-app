@@ -9,12 +9,12 @@ Tracuse.views.renderViewuse = function renderViewuse(viewuseTemplate, datumTempl
     // Render viewuse template
     var templateData;
     var templateName = "viewuse/" + viewuseTemplate + ".html";
+    var datumObjectsClone;
 
     if (!datumObjects) {
-        templateData = undefined;
-
+        datumObjectsClone = undefined;
     } else {
-        var datumObjectsClone = JSON.parse(JSON.stringify(datumObjects));
+        datumObjectsClone = JSON.parse(JSON.stringify(datumObjects));
 
         for (var d = 0, dmax = datumObjectsClone.length; d < dmax; d++) {
             var datumObject = datumObjectsClone[d];
@@ -37,11 +37,12 @@ Tracuse.views.renderViewuse = function renderViewuse(viewuseTemplate, datumTempl
                 Tracuse.models.datum_objects
             );
         }
-
-        var templateData = {
-            "datumTemplate": datumTemplate,
-            "datums": datumObjectsClone
-        };
     }
+
+    var templateData = {
+        "datumTemplate": datumTemplate,
+        "datums": datumObjectsClone,
+        "id": Tracuse.ui.viewuse.nextId()
+    };
     return Tracuse.templates.render(templateName, templateData);
 };

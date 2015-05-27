@@ -3,13 +3,18 @@ section {
     display: inline-block;
     position: relative;
     min-height: 8em;
-    min-width: 15em
+    min-width: 15em;
     float: left;
     margin: 2em;
     border: 1px solid #35446A;
     padding: 1em;
     resize: both;
     overflow: scroll;
+    background-color: #fafafa;
+}
+
+section.active {
+    background-color: #e1e6f0;
 }
 
 section input[name="title"] {
@@ -22,6 +27,7 @@ section input[name="title"] {
 }
 
 section button {
+    display: none;
     position: absolute;
     height: 4em;
     width: 4em;
