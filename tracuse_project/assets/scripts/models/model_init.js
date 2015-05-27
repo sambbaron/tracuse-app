@@ -101,7 +101,7 @@ Tracuse.models.idsToObjects = function idsToObjects(model, idArray, nestedIds) {
 };
 
 Tracuse.models.objectsToArray = function objectsToArray(objects) {
-    // Convert array of objects to model ids
+    // Convert object of objects to array
     "use strict";
     var outputArray = [];
     for (var object in objects) {
