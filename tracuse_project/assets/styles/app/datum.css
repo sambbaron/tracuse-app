@@ -41,6 +41,7 @@ article[template="datum_small"] p {
     transform: translateY(-50%);
     left: 0;
     width: 100%;
+    padding: 0.25em;
     text-align: center;
 }
 

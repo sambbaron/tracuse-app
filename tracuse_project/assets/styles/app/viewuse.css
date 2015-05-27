@@ -63,7 +63,7 @@ section button[name="close-view"] {
     top: 4em;
     right: 0;
 }
-section section.content {
-    width: 85%;
+section div.content {
+    width: 90%;
     margin: 1em auto;
 }
