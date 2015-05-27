@@ -129,16 +129,16 @@ Tracuse.models.updateDataOne = function updateDataOne(inputEl) {
     // Post Ajax data and save data in model for one object
     // Use custom input element
     "use strict";
-    var model = inputEl.model;
-    var object = inputEl.modelObject;
+    var model = Tracuse.models[inputEl.getAttribute("model")];
     var property = inputEl.getAttribute("name");
 
     // Get url
     var modelUrl = model.getRoute("one");
 
-    // Get pk
+    // Get pk and object
     var modelIdProperty = model.idProperty;
     var objectId = inputEl.getAttribute(modelIdProperty);
+    var object = model.data[objectId];
 
     // Replace pk in url
     var objectUrl = modelUrl.replace("<pk>", objectId);

@@ -18,7 +18,7 @@ Tracuse.Model.prototype.routes = function routes() {
     var urls = Tracuse.routes[this.name];
     return urls;
 };
-Tracuse.Model.prototype.getRoute = function getUrl(urlName) {
+Tracuse.Model.prototype.getRoute = function getRoute(urlName) {
     // Return specific url from library
     "use strict";
     var model = this;

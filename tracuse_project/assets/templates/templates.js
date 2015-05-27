@@ -164,7 +164,7 @@ var output = "";
 try {
 output += "<label>";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_name", env.opts.autoescape), env.opts.autoescape);
-output += "</label>\r\n<input class=\"element\"\r\n       model=\"element_datum_object\"\r\n       element_datum_object_id=\"";
+output += "</label>\r\n<input class=\"element\"\r\n       model=\"element_datum_objects\"\r\n       element_datum_object_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_datum_object_id", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n       element_datum_type_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_datum_type_id", env.opts.autoescape), env.opts.autoescape);
