@@ -9,7 +9,7 @@ Tracuse.ui.viewuse.nextId = function nextId() {
     // Calculate next id value
     var newId;
     var idArray = [];
-    var viewuses = Tracuse.frame.querySelectorAll("section");
+    var viewuses = Tracuse.frame.querySelectorAll(".viewuse");
 
     for (var i = 0; i < viewuses.length; i++) {
         var viewuseId = viewuses[i].getAttribute("id");
@@ -48,7 +48,7 @@ Tracuse.ui.viewuse.setState = function setState(el, active) {
     }
 
     var parentEl = el.parentNode;
-    if (parentEl && parentEl.tagName === "SECTION") {
+    if (parentEl && parentEl.classList.contains("viewuse")) {
         Tracuse.ui.viewuse.setState(parentEl, !active)
     }
 };

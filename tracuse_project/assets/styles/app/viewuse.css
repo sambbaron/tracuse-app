@@ -1,5 +1,5 @@
 
-section {
+.viewuse {
     display: inline-block;
     position: relative;
     min-height: 8em;
@@ -13,11 +13,11 @@ section {
     background-color: #fafafa;
 }
 
-section.active {
+.viewuse.active {
     background-color: #e1e6f0;
 }
 
-section input[name="title"] {
+.viewuse input[name="title"] {
     display: block;
     margin: 0 auto;
     border: none;
@@ -26,7 +26,7 @@ section input[name="title"] {
     font-size: 150%;
 }
 
-section button {
+.viewuse button {
     display: none;
     position: absolute;
     height: 4em;
@@ -36,7 +36,7 @@ section button {
     text-align: center;
 
 }
-section button * {
+.viewuse button * {
     position: absolute;
     width: 100%;
     top: 50%;
@@ -44,32 +44,32 @@ section button * {
     left: 0;
     pointer-events: none;
 }
-section button i {
+.viewuse button i {
     color: #cce8a2;
     font-size: 400%;
     line-height: 25%;
     letter-spacing: -4px;
 }
-section button span {
+.viewuse button span {
     color: #587e1f;
 }
-section button:hover {
+.viewuse button:hover {
     color: #ddf0bf;
     background-color: #587e1f;
 }
-section button[name="new-object"] {
+.viewuse button[name="new-object"] {
     top: 0;
     left: 0;
 }
-section button[name="view-settings"] {
+.viewuse button[name="view-settings"] {
     top: 0;
     right: 0;
 }
-section button[name="close-view"] {
+.viewuse button[name="close-view"] {
     top: 4em;
     right: 0;
 }
-section div.content {
+.viewuse div.content {
     width: 90%;
     margin: 1em auto;
 }

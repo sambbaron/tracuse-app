@@ -1,5 +1,5 @@
 
-article {
+.datum {
     position: relative;
     display: inline-block;
     margin: 0.5em;
@@ -11,31 +11,31 @@ article {
 }
 
 /*Area*/
-article[datum_group_id="1"] {
+.datum[datum_group_id="1"] {
     border-radius: 0;
 }
 
 /*Activity*/
-article[datum_group_id="2"] {
+.datum[datum_group_id="2"] {
     border-radius: 50%;
 }
 
 /*Time*/
-article[datum_group_id="3"] {
+.datum[datum_group_id="3"] {
     border-radius: 0 0 25% 25% / 0 0 40% 40%;
 }
 
 /*Item*/
-article[datum_group_id="4"] {
+.datum[datum_group_id="4"] {
     border-radius: 25% 25% 0 0 / 40% 40% 0 0;
 }
 
-article[template="datum_small"] {
+.datum[template="datum_small"] {
     height: 2.5em;
     width: 4em;
 }
 
-article[template="datum_small"] p {
+.datum[template="datum_small"] p {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -45,11 +45,11 @@ article[template="datum_small"] p {
     text-align: center;
 }
 
-article[template="datum_small"] p.datum_type_name {
+.datum[template="datum_small"] p.datum_type_name {
     font-size: 125%;
     font-weight: bold;
     color: rgba(250, 250, 250, 0.50);
 }
 
-article[template="datum_small"] p.headline {
+.datum[template="datum_small"] p.headline {
 }
