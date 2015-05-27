@@ -1,0 +1,29 @@
+{
+  "name": "tracuse",
+  "version": "1.0.0",
+  "description": "Personal Information Management App",
+  "main": "index.js",
+  "dependencies": {
+    "nunjucks": "^1.3.4"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-nunjucks": "^0.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sambbaron/tracuse-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sambbaron/tracuse-app/issues"
+  },
+  "homepage": "https://github.com/sambbaron/tracuse-app",
+  "dirAssets": "tracuse_project/assets"
+}
