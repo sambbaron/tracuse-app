@@ -8,4 +8,51 @@
     <div class="content">
         {% block viewuse_content %}{% endblock %}
     </div>
+    <aside class="panel object-panel">
+        <h3 class="title">Object Settings</h3>
+
+        <div class="section datum-groups">
+            <h4 class="title">Groups</h4>
+            <fieldset class="input-group">
+                {% for datumGroup in datumGroups %}
+                    <fieldset class="input-set">
+                        <input name="datum_group" type="checkbox" value="{{ datumGroup.datum_group_id }}"
+                               onchange="Tracuse.ui.viewuse.showDatumType(this, event)">
+                        <label>{{ datumGroup.readable_name }}</label>
+                    </fieldset>
+                    {% if loop.index % 2 == 0 %}<br>{% endif %}
+                {% endfor %}
+            </fieldset>
+        </div>
+        <div class="section datum-types">
+            <h4 class="title">Types</h4>
+            <fieldset class="input-group">
+                {% for datumType in datumTypes %}
+                    <fieldset class="input-set">
+                        <input name="datum_type" type="checkbox" value="{{ datumType.datum_type_id }}"
+                               datum_group_id="{{ datumType.datum_group_id }}">
+                        <label>{{ datumType.readable_name }}</label>
+                    </fieldset>
+                {% endfor %}
+            </fieldset>
+        </div>
+        <div class="section associations">
+            <h4 class="title">Associations</h4>
+            <fieldset class="input-group">
+
+            </fieldset>
+        </div>
+        <div class="section elements">
+            <h4 class="title">Elements</h4>
+            <fieldset class="input-group">
+
+            </fieldset>
+        </div>
+
+
+    </aside>
+    <aside class="panel view-panel">
+        <h3 class="title">View Settings</h3>
+
+    </aside>
 </section>

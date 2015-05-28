@@ -4,6 +4,15 @@ var Tracuse = Tracuse || {};
 Tracuse.ui = Tracuse.ui || {};
 Tracuse.ui.viewuse = Tracuse.ui.viewuse || {};
 
+Tracuse.ui.viewuse.getParentViewuse = function getParentViewuse(el) {
+    "use strict";
+    var parentEl = el.parentNode;
+    while (!parentEl.classList.contains("viewuse")) {
+        parentEl = parentEl.parentNode;
+    }
+    return parentEl;
+};
+
 Tracuse.ui.viewuse.nextId = function nextId() {
     "use strict";
     // Calculate next id value
@@ -92,4 +101,27 @@ Tracuse.ui.viewuse.closeView = function closeView(el, ev) {
     if (ev) {
         ev.stopPropagation();
     }
+};
+
+Tracuse.ui.viewuse.showDatumType = function showDatumType(el, ev) {
+    "use strict";
+    var parentViewuse = Tracuse.ui.viewuse.getParentViewuse(el);
+    var datumGroups = parentViewuse.querySelectorAll("input[name='datum_group']:checked");
+    var datumTypes = parentViewuse.querySelectorAll("input[name='datum_type']");
+
+    var datumGroupArray = [];
+    for (var x = 0; x < datumGroups.length; x++) {
+        datumGroupArray.push(datumGroups[x].value);
+    }
+
+    for (var i = 0; i < datumTypes.length; i++) {
+        var datumType = datumTypes[i];
+        var datumGroupId = datumType.getAttribute("datum_group_id");
+        if (datumGroupArray.indexOf(datumGroupId) > -1) {
+            datumType.parentNode.style.display = "inline-block";
+        } else {
+            datumType.parentNode.style.display = "none";
+        }
+    }
+
 };

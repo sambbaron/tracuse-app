@@ -36,6 +36,7 @@
     text-align: center;
 
 }
+
 .viewuse button * {
     position: absolute;
     width: 100%;
@@ -44,32 +45,108 @@
     left: 0;
     pointer-events: none;
 }
+
 .viewuse button i {
     color: #cce8a2;
     font-size: 400%;
     line-height: 25%;
     letter-spacing: -4px;
 }
+
 .viewuse button span {
     color: #587e1f;
 }
+
 .viewuse button:hover {
     color: #ddf0bf;
     background-color: #587e1f;
 }
+
 .viewuse button[name="new-object"] {
     top: 0;
     left: 0;
 }
+
 .viewuse button[name="view-settings"] {
     top: 0;
     right: 0;
 }
+
 .viewuse button[name="close-view"] {
     top: 4em;
     right: 0;
 }
-.viewuse div.content {
+
+.viewuse > .panel * {
+    /*border: 1px solid white;*/
+}
+
+.viewuse > .panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 125vh;
+    width: 12em;
+    padding: 0.5em;
+    background-color: #1d3919;
+    color: #ffffff;
+}
+
+.viewuse > .panel > .title {
+    position: absolute;
+    top: 25%;
+    transform: translateX(-50%) rotate(-90deg);
+    width: 100%;
+    font-size: 125%;
+    text-align: right;
+}
+
+.viewuse > .panel > .section > .title {
+    padding: 0.25em 0;
+    text-align: center;
+    font-size: 100%;
+}
+
+.viewuse > .panel.object-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #1d3919, #587e1f);
+}
+
+.viewuse > .panel.object-panel > .title {
+    left: 10%;
+}
+
+.viewuse > .panel.view-panel > .title {
+    left: 90%;
+}
+
+.viewuse > .panel.object-panel > .section {
+    margin-left: 1.5em;
+}
+
+.viewuse > .panel > .section > .input-group {
+    display: inline-block;
+    margin-left: 1em;
+}
+
+.viewuse > .panel > .section .input-set {
+    display: inline-block;
+    font-size: 75%;
+}
+
+.viewuse > .panel.object-panel > .section.datum-types .input-set {
+    display: none;
+}
+
+.viewuse > .panel.view-panel {
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(to left, #1d3919, #587e1f);
+}
+
+.viewuse > .content {
     width: 90%;
     margin: 1em auto;
 }
