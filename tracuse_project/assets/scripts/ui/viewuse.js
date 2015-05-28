@@ -163,3 +163,26 @@ Tracuse.ui.viewuse.showHidePanel = function showHidePanel(el, ev) {
         ev.preventDefault();
     }
 };
+
+Tracuse.ui.viewuse.selectDatumGroup = function selectDatumGroup(el, ev) {
+    "use strict";
+    // Filter Datum Types
+    var parentContentEl = el.parentNode.parentNode;
+    var datumTypesEl = parentContentEl.querySelector(".datum_types");
+    var datumTypeOptions = datumTypesEl.querySelectorAll("option");
+
+    for (var i = 0; i < datumTypeOptions.length; i++) {
+        var datumTypeOption = datumTypeOptions[i];
+        var datumGroupId = datumTypeOption.getAttribute("datum_group_id");
+        if (datumGroupId === el.value) {
+            datumTypeOption.style.display = "";
+        } else {
+            datumTypeOption.style.display = "none";
+        }
+    }
+
+    if (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+    }
+};

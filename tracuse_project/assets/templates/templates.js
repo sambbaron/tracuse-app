@@ -254,7 +254,7 @@ output += "\r\n                        </fieldset>\r\n                    ";
 }
 }
 frame = frame.pop();
-output += "\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"section associations\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Associations</h4>\r\n\r\n                <div class=\"content\">\r\n                    <fieldset class=\"input-group datum_groups\">\r\n                        <select name=\"datum_group\" >\r\n                            <option></option>\r\n                            ";
+output += "\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"section associations\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Associations</h4>\r\n\r\n                <div class=\"content\">\r\n                    <fieldset class=\"input-group datum_groups\">\r\n                        <h5 class=\"title\">Groups</h5>\r\n                        <select name=\"datum_group\"\r\n                                onchange=\"Tracuse.ui.viewuse.selectDatumGroup(this, event)\">\r\n                            <option></option>\r\n                            ";
 frame = frame.push();
 var t_13 = runtime.contextOrFrameLookup(context, frame, "datum_groups");
 if(t_13) {var t_12 = t_13.length;
@@ -277,7 +277,7 @@ output += "\r\n                                </option>\r\n                    
 }
 }
 frame = frame.pop();
-output += "\r\n                        </select>\r\n                    </fieldset>\r\n                    <fieldset class=\"input-group datum_types\">\r\n                        <select name=\"datum_type\" >\r\n                            <option></option>\r\n                            ";
+output += "\r\n                        </select>\r\n                    </fieldset>\r\n                    <fieldset class=\"input-group datum_types\">\r\n                        <h5 class=\"title\">Types</h5>\r\n                        <select name=\"datum_type\">\r\n                            <option></option>\r\n                            ";
 frame = frame.push();
 var t_17 = runtime.contextOrFrameLookup(context, frame, "datum_types");
 if(t_17) {var t_16 = t_17.length;
@@ -293,6 +293,8 @@ frame.set("loop.last", t_15 === t_16 - 1);
 frame.set("loop.length", t_16);
 output += "\r\n                                <option value=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_18),"datum_type_id", env.opts.autoescape), env.opts.autoescape);
+output += "\"\r\n                                        datum_group_id=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_18),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
 output += "\">\r\n                                    ";
 output += runtime.suppressValue(runtime.memberLookup((t_18),"readable_name", env.opts.autoescape), env.opts.autoescape);
 output += "\r\n                                </option>\r\n                            ";
@@ -300,6 +302,11 @@ output += "\r\n                                </option>\r\n                    
 }
 }
 frame = frame.pop();
+output += "\r\n                        </select>\r\n                    </fieldset>\r\n                    <fieldset class=\"input-group datum_objects\">\r\n                        <h5 class=\"title\">Objects</h5>\r\n                        <select name=\"datum_object\">\r\n                            <option></option>\r\n";
+output += "\r\n";
+output += "\r\n";
+output += "\r\n";
+output += "\r\n";
 output += "\r\n                        </select>\r\n                    </fieldset>\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"section elements\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Elements</h4>\r\n                <fieldset class=\"input-group\">\r\n\r\n                </fieldset>\r\n            </div>\r\n        </div>\r\n\r\n    </aside>\r\n    <aside class=\"panel view-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            View Settings\r\n        </h3>\r\n\r\n    </aside>\r\n</section>";
 cb(null, output);
 });
