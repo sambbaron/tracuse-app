@@ -142,14 +142,12 @@ Tracuse.ui.viewuse.clickDatumType = function clickDatumType(el, ev) {
 Tracuse.ui.viewuse.showHidePanel = function showHidePanel(el, ev) {
     "use strict";
     // Triggered from panel title
-    var panelEl = el.parentNode;
+    var parentEl = el.parentNode;
+    var contentEl = parentEl.querySelector(".content");
 
-    panelEl.classList.toggle("visible");
+    parentEl.classList.toggle("visible");
+    contentEl.classList.toggle("visible");
 
-    var sections = panelEl.querySelectorAll(".section");
-    for (var i = 0; i < sections.length; i++) {
-        sections[i].classList.toggle("visible");
-    }
     if (ev) {
         ev.stopPropagation();
         ev.preventDefault();

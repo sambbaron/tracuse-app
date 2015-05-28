@@ -199,7 +199,7 @@ output += "\"\r\n         onmouseenter=\"Tracuse.ui.viewuse.mouseEnter(this, eve
 context.getBlock("viewuse_content")(env, context, frame, runtime, function(t_2,t_1) {
 if(t_2) { cb(t_2); return; }
 output += t_1;
-output += "\r\n    </div>\r\n    <aside class=\"panel object-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            Object Settings\r\n        </h3>\r\n\r\n        <div class=\"section datum-groups\">\r\n            <h4 class=\"title\">Groups/Types</h4>\r\n\r\n            <div class=\"content\">\r\n                ";
+output += "\r\n    </div>\r\n    <aside class=\"panel object-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            Object Settings\r\n        </h3>\r\n\r\n        <div class=\"content\">\r\n            <div class=\"section datum-groups\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Groups/Types</h4>\r\n\r\n                <div class=\"content\">\r\n                    ";
 frame = frame.push();
 var t_5 = runtime.contextOrFrameLookup(context, frame, "datumGroups");
 if(t_5) {var t_4 = t_5.length;
@@ -213,13 +213,13 @@ frame.set("loop.revindex0", t_4 - t_3 - 1);
 frame.set("loop.first", t_3 === 0);
 frame.set("loop.last", t_3 === t_4 - 1);
 frame.set("loop.length", t_4);
-output += "\r\n                    <fieldset class=\"input-group col-";
+output += "\r\n                        <fieldset class=\"input-group col-";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "loop")),"index", env.opts.autoescape), env.opts.autoescape);
-output += "\">\r\n                        <button name=\"datum_group\" value=\"";
+output += "\">\r\n                            <button name=\"datum_group\" value=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_6),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n                                onclick=\"Tracuse.ui.viewuse.clickDatumGroup(this, event)\">\r\n                            ";
+output += "\"\r\n                                    onclick=\"Tracuse.ui.viewuse.clickDatumGroup(this, event)\">\r\n                                ";
 output += runtime.suppressValue(runtime.memberLookup((t_6),"readable_name", env.opts.autoescape), env.opts.autoescape);
-output += "\r\n                        </button>\r\n\r\n                        ";
+output += "\r\n                            </button>\r\n\r\n                            ";
 frame = frame.push();
 var t_9 = runtime.contextOrFrameLookup(context, frame, "datumTypes");
 if(t_9) {var t_8 = t_9.length;
@@ -233,28 +233,28 @@ frame.set("loop.revindex0", t_8 - t_7 - 1);
 frame.set("loop.first", t_7 === 0);
 frame.set("loop.last", t_7 === t_8 - 1);
 frame.set("loop.length", t_8);
-output += "\r\n                            ";
+output += "\r\n                                ";
 if(runtime.memberLookup((t_10),"datum_group_id", env.opts.autoescape) == runtime.memberLookup((t_6),"datum_group_id", env.opts.autoescape)) {
-output += "\r\n                                <button name=\"datum_type\" value=\"";
+output += "\r\n                                    <button name=\"datum_type\" value=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_10),"datum_type_id", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n                                        datum_group_id=\"";
+output += "\"\r\n                                            datum_group_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_10),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n                                        onclick=\"Tracuse.ui.viewuse.clickDatumType(this, event)\">\r\n                                    ";
+output += "\"\r\n                                            onclick=\"Tracuse.ui.viewuse.clickDatumType(this, event)\">\r\n                                        ";
 output += runtime.suppressValue(runtime.memberLookup((t_10),"readable_name", env.opts.autoescape), env.opts.autoescape);
-output += "\r\n                                </button>\r\n                            ";
+output += "\r\n                                    </button>\r\n                                ";
 ;
 }
-output += "\r\n                        ";
-;
-}
-}
-frame = frame.pop();
-output += "\r\n                    </fieldset>\r\n                ";
+output += "\r\n                            ";
 ;
 }
 }
 frame = frame.pop();
-output += "\r\n            </div>\r\n        </div>\r\n        <div class=\"section associations\">\r\n            <h4 class=\"title\">Associations</h4>\r\n            <fieldset class=\"input-group\">\r\n\r\n            </fieldset>\r\n        </div>\r\n        <div class=\"section elements\">\r\n            <h4 class=\"title\">Elements</h4>\r\n            <fieldset class=\"input-group\">\r\n\r\n            </fieldset>\r\n        </div>\r\n\r\n\r\n    </aside>\r\n    <aside class=\"panel view-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            View Settings\r\n        </h3>\r\n\r\n    </aside>\r\n</section>";
+output += "\r\n                        </fieldset>\r\n                    ";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"section associations\">\r\n                <h4 class=\"title\">Associations</h4>\r\n                <fieldset class=\"input-group\">\r\n\r\n                </fieldset>\r\n            </div>\r\n            <div class=\"section elements\">\r\n                <h4 class=\"title\">Elements</h4>\r\n                <fieldset class=\"input-group\">\r\n\r\n                </fieldset>\r\n            </div>\r\n        </div>\r\n\r\n    </aside>\r\n    <aside class=\"panel view-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            View Settings\r\n        </h3>\r\n\r\n    </aside>\r\n</section>";
 cb(null, output);
 });
 } catch (e) {
