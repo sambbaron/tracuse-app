@@ -103,25 +103,38 @@ Tracuse.ui.viewuse.closeView = function closeView(el, ev) {
     }
 };
 
-Tracuse.ui.viewuse.showDatumType = function showDatumType(el, ev) {
+Tracuse.ui.viewuse.clickDatumGroup = function clickDatumGroup(el, ev) {
     "use strict";
     var parentViewuse = Tracuse.ui.viewuse.getParentViewuse(el);
-    var datumGroups = parentViewuse.querySelectorAll("input[name='datum_group']:checked");
-    var datumTypes = parentViewuse.querySelectorAll("input[name='datum_type']");
+    var datumGroup = el;
+    var datumGroupId = el.value;
+    var datumGroups = parentViewuse.querySelectorAll("button[name='datum_group']:checked");
+    var datumTypes = parentViewuse.querySelectorAll("button[name='datum_type']");
 
-    var datumGroupArray = [];
-    for (var x = 0; x < datumGroups.length; x++) {
-        datumGroupArray.push(datumGroups[x].value);
-    }
+    datumGroup.classList.toggle("active");
 
     for (var i = 0; i < datumTypes.length; i++) {
         var datumType = datumTypes[i];
-        var datumGroupId = datumType.getAttribute("datum_group_id");
-        if (datumGroupArray.indexOf(datumGroupId) > -1) {
-            datumType.parentNode.style.display = "inline-block";
-        } else {
-            datumType.parentNode.style.display = "none";
+        if (datumType.getAttribute("datum_group_id") == datumGroupId) {
+            if (datumGroup.classList.contains("active")) {
+                datumType.classList.add("active");
+            } else {
+                datumType.classList.remove("active");
+            }
         }
     }
 
+    if (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+    }
+};
+
+Tracuse.ui.viewuse.clickDatumType = function clickDatumType(el, ev) {
+    "use strict";
+    el.classList.toggle("active");
+    if (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+    }
 };
