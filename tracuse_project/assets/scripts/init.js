@@ -55,8 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 var renderTest = function renderTest() {
     "use strict";
-    var allDatums = Tracuse.models.datum_objects.dataObj;
-    var datumObjects = Tracuse.models.objectsToArray(allDatums);
+    var datumObjects = Tracuse.models.datum_objects.dataArr;
     var rendered = Tracuse.views.renderViewuse("viewuse_tile", "datum_small", datumObjects);
     Tracuse.frame.innerHTML = rendered;
 };
