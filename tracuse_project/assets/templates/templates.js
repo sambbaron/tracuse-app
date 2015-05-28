@@ -201,11 +201,11 @@ if(t_2) { cb(t_2); return; }
 output += t_1;
 output += "\r\n    </div>\r\n    <aside class=\"panel object-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            Object Filter\r\n        </h3>\r\n\r\n        <div class=\"content\">\r\n            <div class=\"section groups-types\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Groups/Types</h4>\r\n\r\n                <div class=\"content\">\r\n                    ";
 frame = frame.push();
-var t_5 = runtime.contextOrFrameLookup(context, frame, "datumGroups");
+var t_5 = runtime.contextOrFrameLookup(context, frame, "datum_groups");
 if(t_5) {var t_4 = t_5.length;
 for(var t_3=0; t_3 < t_5.length; t_3++) {
 var t_6 = t_5[t_3];
-frame.set("datumGroup", t_6);
+frame.set("datum_group", t_6);
 frame.set("loop.index", t_3 + 1);
 frame.set("loop.index0", t_3);
 frame.set("loop.revindex", t_4 - t_3);
@@ -221,11 +221,11 @@ output += "\"\r\n                                    onclick=\"Tracuse.ui.viewus
 output += runtime.suppressValue(runtime.memberLookup((t_6),"readable_name", env.opts.autoescape), env.opts.autoescape);
 output += "\r\n                            </button>\r\n\r\n                            ";
 frame = frame.push();
-var t_9 = runtime.contextOrFrameLookup(context, frame, "datumTypes");
+var t_9 = runtime.contextOrFrameLookup(context, frame, "datum_types");
 if(t_9) {var t_8 = t_9.length;
 for(var t_7=0; t_7 < t_9.length; t_7++) {
 var t_10 = t_9[t_7];
-frame.set("datumType", t_10);
+frame.set("datum_type", t_10);
 frame.set("loop.index", t_7 + 1);
 frame.set("loop.index0", t_7);
 frame.set("loop.revindex", t_8 - t_7);
@@ -256,11 +256,11 @@ output += "\r\n                        </fieldset>\r\n                    ";
 frame = frame.pop();
 output += "\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"section associations\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Associations</h4>\r\n\r\n                <div class=\"content\">\r\n                    <fieldset class=\"input-group datum_groups\">\r\n                        <select name=\"datum_group\" >\r\n                            <option></option>\r\n                            ";
 frame = frame.push();
-var t_13 = runtime.contextOrFrameLookup(context, frame, "datumGroups");
+var t_13 = runtime.contextOrFrameLookup(context, frame, "datum_groups");
 if(t_13) {var t_12 = t_13.length;
 for(var t_11=0; t_11 < t_13.length; t_11++) {
 var t_14 = t_13[t_11];
-frame.set("datumGroup", t_14);
+frame.set("datum_group", t_14);
 frame.set("loop.index", t_11 + 1);
 frame.set("loop.index0", t_11);
 frame.set("loop.revindex", t_12 - t_11);
@@ -279,11 +279,11 @@ output += "\r\n                                </option>\r\n                    
 frame = frame.pop();
 output += "\r\n                        </select>\r\n                    </fieldset>\r\n                    <fieldset class=\"input-group datum_types\">\r\n                        <select name=\"datum_type\" >\r\n                            <option></option>\r\n                            ";
 frame = frame.push();
-var t_17 = runtime.contextOrFrameLookup(context, frame, "datumTypes");
+var t_17 = runtime.contextOrFrameLookup(context, frame, "datum_types");
 if(t_17) {var t_16 = t_17.length;
 for(var t_15=0; t_15 < t_17.length; t_15++) {
 var t_18 = t_17[t_15];
-frame.set("datumType", t_18);
+frame.set("datum_type", t_18);
 frame.set("loop.index", t_15 + 1);
 frame.set("loop.index0", t_15);
 frame.set("loop.revindex", t_16 - t_15);
@@ -356,7 +356,7 @@ var output = "";
 try {
 output += "\r\n    ";
 frame = frame.push();
-var t_6 = runtime.contextOrFrameLookup(context, frame, "datums");
+var t_6 = runtime.contextOrFrameLookup(context, frame, "datum_objects");
 if(t_6) {var t_5 = t_6.length;
 for(var t_4=0; t_4 < t_6.length; t_4++) {
 var t_7 = t_6[t_4];
@@ -370,7 +370,7 @@ frame.set("loop.last", t_4 === t_5 - 1);
 frame.set("loop.length", t_5);
 output += "\r\n        ";
 var t_8;
-t_8 = "datum/" + runtime.contextOrFrameLookup(context, frame, "datumTemplate") + ".html";
+t_8 = "datum/" + runtime.contextOrFrameLookup(context, frame, "datum_template") + ".html";
 frame.set("template", t_8, true);
 if(!frame.parent) {
 context.setVariable("template", t_8);

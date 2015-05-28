@@ -18,19 +18,19 @@
                 <h4 class="title" onclick="Tracuse.ui.viewuse.showHidePanel(this, event)">Groups/Types</h4>
 
                 <div class="content">
-                    {% for datumGroup in datumGroups %}
+                    {% for datum_group in datum_groups %}
                         <fieldset class="input-group col-{{ loop.index }}">
-                            <button name="datum_group" value="{{ datumGroup.datum_group_id }}"
+                            <button name="datum_group" value="{{ datum_group.datum_group_id }}"
                                     onclick="Tracuse.ui.viewuse.clickDatumGroup(this, event)">
-                                {{ datumGroup.readable_name }}
+                                {{ datum_group.readable_name }}
                             </button>
 
-                            {% for datumType in datumTypes %}
-                                {% if datumType.datum_group_id == datumGroup.datum_group_id %}
-                                    <button name="datum_type" value="{{ datumType.datum_type_id }}"
-                                            datum_group_id="{{ datumType.datum_group_id }}"
+                            {% for datum_type in datum_types %}
+                                {% if datum_type.datum_group_id == datum_group.datum_group_id %}
+                                    <button name="datum_type" value="{{ datum_type.datum_type_id }}"
+                                            datum_group_id="{{ datum_type.datum_group_id }}"
                                             onclick="Tracuse.ui.viewuse.clickDatumType(this, event)">
-                                        {{ datumType.readable_name }}
+                                        {{ datum_type.readable_name }}
                                     </button>
                                 {% endif %}
                             {% endfor %}
@@ -46,9 +46,9 @@
                     <fieldset class="input-group datum_groups">
                         <select name="datum_group" >
                             <option></option>
-                            {% for datumGroup in datumGroups %}
-                                <option value="{{ datumGroup.datum_group_id }}">
-                                    {{ datumGroup.readable_name }}
+                            {% for datum_group in datum_groups %}
+                                <option value="{{ datum_group.datum_group_id }}">
+                                    {{ datum_group.readable_name }}
                                 </option>
                             {% endfor %}
                         </select>
@@ -56,9 +56,9 @@
                     <fieldset class="input-group datum_types">
                         <select name="datum_type" >
                             <option></option>
-                            {% for datumType in datumTypes %}
-                                <option value="{{ datumType.datum_type_id }}">
-                                    {{ datumType.readable_name }}
+                            {% for datum_type in datum_types %}
+                                <option value="{{ datum_type.datum_type_id }}">
+                                    {{ datum_type.readable_name }}
                                 </option>
                             {% endfor %}
                         </select>

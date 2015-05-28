@@ -2,7 +2,7 @@
 {% set template_name = "viewuse_tile" %}
 
 {% block viewuse_content %}
-    {% for datum in datums %}
-        {% set template = "datum/" + datumTemplate + ".html" %} {% include template %}
+    {% for datum in datum_objects %}
+        {% set template = "datum/" + datum_template + ".html" %} {% include template %}
     {% endfor %}
 {% endblock %}
