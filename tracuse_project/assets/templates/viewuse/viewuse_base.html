@@ -16,25 +16,26 @@
         <div class="section datum-groups">
             <h4 class="title">Groups/Types</h4>
 
-            {% for datumGroup in datumGroups %}
-                <fieldset class="input-group col-{{ loop.index }}">
-                    <button name="datum_group" value="{{ datumGroup.datum_group_id }}"
-                            onclick="Tracuse.ui.viewuse.clickDatumGroup(this, event)">
-                        {{ datumGroup.readable_name }}
-                    </button>
+            <div class="content">
+                {% for datumGroup in datumGroups %}
+                    <fieldset class="input-group col-{{ loop.index }}">
+                        <button name="datum_group" value="{{ datumGroup.datum_group_id }}"
+                                onclick="Tracuse.ui.viewuse.clickDatumGroup(this, event)">
+                            {{ datumGroup.readable_name }}
+                        </button>
 
-                    {% for datumType in datumTypes %}
-                        {% if datumType.datum_group_id == datumGroup.datum_group_id %}
-                            <button name="datum_type" value="{{ datumType.datum_type_id }}"
-                                    datum_group_id="{{ datumType.datum_group_id }}"
-                                    onclick="Tracuse.ui.viewuse.clickDatumType(this, event)">
-                                {{ datumType.readable_name }}
-                            </button>
-                        {% endif %}
-                    {% endfor %}
-                </fieldset>
-            {% endfor %}
-
+                        {% for datumType in datumTypes %}
+                            {% if datumType.datum_group_id == datumGroup.datum_group_id %}
+                                <button name="datum_type" value="{{ datumType.datum_type_id }}"
+                                        datum_group_id="{{ datumType.datum_group_id }}"
+                                        onclick="Tracuse.ui.viewuse.clickDatumType(this, event)">
+                                    {{ datumType.readable_name }}
+                                </button>
+                            {% endif %}
+                        {% endfor %}
+                    </fieldset>
+                {% endfor %}
+            </div>
         </div>
         <div class="section associations">
             <h4 class="title">Associations</h4>

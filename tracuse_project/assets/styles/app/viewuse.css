@@ -144,16 +144,16 @@
     clear: both;
 }
 
-.viewuse > .panel > .section > .input-group {
+.viewuse > .panel > .section > .content > .input-group {
     font-size: 75%;
     text-align: center;
 }
 
-.viewuse > .panel > .section.datum-groups > .input-group {
+.viewuse > .panel > .section.datum-groups > .content > .input-group {
     float: left;
 }
 
-.viewuse > .panel > .section.datum-groups > .input-group * {
+.viewuse > .panel > .section.datum-groups > .content > .input-group * {
     display: block;
     height: 1.25em;
     width: 5em;
@@ -162,12 +162,12 @@
     border-radius: 1em;
 }
 
-.viewuse > .panel > .section.datum-groups > .input-group [name="datum_group"] {
+.viewuse > .panel > .section.datum-groups > .content> .input-group [name="datum_group"] {
     margin-bottom: 0.25em;
     font-weight: bold;
 }
 
-.viewuse > .panel > .section.datum-groups > .input-group *.active {
+.viewuse > .panel > .section.datum-groups > .content> .input-group *.active {
     background-color: rgba(204, 232, 162, 0.75);
     color: #587e1f;
 }
