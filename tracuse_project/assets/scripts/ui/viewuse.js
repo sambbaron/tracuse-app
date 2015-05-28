@@ -168,7 +168,7 @@ Tracuse.ui.viewuse.selectDatumGroup = function selectDatumGroup(el, ev) {
     "use strict";
     // Filter Datum Types
     var parentContentEl = el.parentNode.parentNode;
-    var datumTypesEl = parentContentEl.querySelector(".datum_types");
+    var datumTypesEl = parentContentEl.querySelector("[name='datum_types']");
     var datumTypeOptions = datumTypesEl.querySelectorAll("option");
 
     for (var i = 0; i < datumTypeOptions.length; i++) {
@@ -181,8 +181,61 @@ Tracuse.ui.viewuse.selectDatumGroup = function selectDatumGroup(el, ev) {
         }
     }
 
+    // Update Datum Objects
+    var datumObjectsEl = parentContentEl.querySelector("[name='datum_objects']");
+    datumObjectsEl.innerHTML = "";
+
+    var optionFrag = document.createDocumentFragment();
+    var datumObjects = Tracuse.models.datum_objects.dataArr;
+    for (var d = 0, dmax = datumObjects.length; d < dmax; d++) {
+        var datum = datumObjects[d];
+        if (datum.datum_group_id == el.value) {
+            var optionEl = document.createElement("option");
+            optionEl.innerHTML = datum.headline;
+            optionEl.value = datum.datum_object_id;
+            optionFrag.appendChild(optionEl);
+        }
+    }
+    datumObjectsEl.appendChild(optionFrag);
+
     if (ev) {
         ev.stopPropagation();
         ev.preventDefault();
     }
 };
+
+Tracuse.ui.viewuse.selectDatumType = function selectDatumType(el, ev) {
+    "use strict";
+
+    // Update Datum Objects
+    var parentContentEl = el.parentNode.parentNode;
+    var datumObjectsEl = parentContentEl.querySelector("[name='datum_objects']");
+    datumObjectsEl.innerHTML = "";
+
+    var optionFrag = document.createDocumentFragment();
+    var datumObjects = Tracuse.models.datum_objects.dataArr;
+    for (var d = 0, dmax = datumObjects.length; d < dmax; d++) {
+        var datum = datumObjects[d];
+        if (datum.datum_type_id == el.value) {
+            var optionEl = document.createElement("option");
+            optionEl.innerHTML = datum.headline;
+            optionEl.value = datum.datum_object_id;
+            optionFrag.appendChild(optionEl);
+        }
+    }
+    datumObjectsEl.appendChild(optionFrag);
+
+    if (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+    }
+};
+
+Tracuse.ui.viewuse.selectDatumObjects = function selectDatumObjects(targetEl, options) {
+    "use strict";
+    // Filter Datum Objects based on Datum Type
+
+
+};
+
+

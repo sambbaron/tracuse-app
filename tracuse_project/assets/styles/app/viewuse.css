@@ -212,6 +212,16 @@
     display: inline-block;
 }
 
+.viewuse > .panel > .content > .section.associations > .content > .input-group [name="datum_groups"] {
+    width: 5em;
+}
+.viewuse > .panel > .content > .section.associations > .content > .input-group [name="datum_types"] {
+    width: 10em;
+}
+.viewuse > .panel > .content > .section.associations > .content > .input-group [name="datum_objects"] {
+    width: 16em;
+}
+
 .viewuse > .content {
     width: 90%;
     margin: 1em auto;

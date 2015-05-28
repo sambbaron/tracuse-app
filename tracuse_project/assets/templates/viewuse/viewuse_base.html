@@ -43,9 +43,9 @@
                 <h4 class="title" onclick="Tracuse.ui.viewuse.showHidePanel(this, event)">Associations</h4>
 
                 <div class="content">
-                    <fieldset class="input-group datum_groups">
+                    <fieldset class="input-group">
                         <h5 class="title">Groups</h5>
-                        <select name="datum_group"
+                        <select name="datum_groups"
                                 onchange="Tracuse.ui.viewuse.selectDatumGroup(this, event)">
                             <option></option>
                             {% for datum_group in datum_groups %}
@@ -55,9 +55,10 @@
                             {% endfor %}
                         </select>
                     </fieldset>
-                    <fieldset class="input-group datum_types">
+                    <fieldset class="input-group">
                         <h5 class="title">Types</h5>
-                        <select name="datum_type">
+                        <select name="datum_types"
+                                onchange="Tracuse.ui.viewuse.selectDatumType(this, event)">
                             <option></option>
                             {% for datum_type in datum_types %}
                                 <option value="{{ datum_type.datum_type_id }}"
@@ -67,15 +68,11 @@
                             {% endfor %}
                         </select>
                     </fieldset>
-                    <fieldset class="input-group datum_objects">
+                    <br>
+                    <fieldset class="input-group">
                         <h5 class="title">Objects</h5>
-                        <select name="datum_object">
+                        <select name="datum_objects">
                             <option></option>
-{#                            {% for datum_type in datum_types %}#}
-{#                                <option value="{{ datum_type.datum_type_id }}">#}
-{#                                    {{ datum_type.readable_name }}#}
-{#                                </option>#}
-{#                            {% endfor %}#}
                         </select>
                     </fieldset>
 
