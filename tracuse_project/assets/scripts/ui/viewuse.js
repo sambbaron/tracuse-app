@@ -138,3 +138,27 @@ Tracuse.ui.viewuse.clickDatumType = function clickDatumType(el, ev) {
         ev.preventDefault();
     }
 };
+
+Tracuse.ui.viewuse.showPanel = function showPanel(el, ev) {
+    "use strict";
+    var seconds = 1;
+
+    el.style.transition = "width " + seconds + "s";
+    el.style.width = "18em";
+    setInterval(function () {
+        var sections = el.querySelectorAll(".section");
+        for (var i = 0; i < sections.length; i++) {
+            //sections[i].style.transition = "visibility " + seconds * 10 + "s";
+            //sections[i].style.visibility = "visible";
+            sections[i].style.transition = "opacity " + seconds / 4 + "s";
+            sections[i].style.opacity = "1";
+
+            //sections[i].style.display = "inherit";
+        }
+    }, seconds * 1000);
+
+    if (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+    }
+};

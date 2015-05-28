@@ -8,7 +8,8 @@
     <div class="content">
         {% block viewuse_content %}{% endblock %}
     </div>
-    <aside class="panel object-panel">
+    <aside class="panel object-panel"
+            onclick="Tracuse.ui.viewuse.showPanel(this, event)">
         <h3 class="title">Object Settings</h3>
 
         <div class="section datum-groups">
@@ -60,7 +61,8 @@
 
 
     </aside>
-    <aside class="panel view-panel">
+    <aside class="panel view-panel"
+            onclick="Tracuse.ui.viewuse.showPanel(this, event)">
         <h3 class="title">View Settings</h3>
 
     </aside>

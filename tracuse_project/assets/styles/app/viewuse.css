@@ -82,19 +82,34 @@
     top: 0;
     bottom: 0;
     height: 100%;
-    width: 18em;
     padding: 0.5em;
     background-color: #1d3919;
     color: #ffffff;
+
+    width: 2em;
+    cursor: pointer;
 }
 
 .viewuse > .panel > .title {
     position: absolute;
-    top: 7em;
-    transform: translateX(-50%) rotate(-90deg);
-    width: 100%;
+    top: 3em;
+    transform: rotate(-90deg);
+    height: 1.5em;
+    width: 7em;
     font-size: 125%;
     text-align: right;
+}
+
+.viewuse > .panel.object-panel > .title {
+    left: -2.5em;
+}
+
+.viewuse > .panel.view-panel > .title {
+    right: -3em;
+}
+
+.viewuse > .panel > .section {
+    opacity: 0;
 }
 
 .viewuse > .panel > .section > .title {
@@ -107,14 +122,6 @@
     position: absolute;
     left: 0;
     background-image: linear-gradient(to right, #1d3919, #587e1f);
-}
-
-.viewuse > .panel.object-panel > .title {
-    left: 5%;
-}
-
-.viewuse > .panel.view-panel > .title {
-    left: 95%;
 }
 
 .viewuse > .panel.object-panel > .section {
