@@ -8,8 +8,9 @@ Tracuse.Model = function Model(name, options) {
     this.name = name;
     this.loadOnInit = options.loadOnInit || false;
     this.dataObj = options.dataObj || {};
-    this.properties = options.properties || [];
+    this.dataArr = options.dataArr || {};
     this.idProperty = options.idProperty || "id";
+    this.properties = options.properties || [];
 };
 Tracuse.Model.prototype.routes = function routes() {
     // Return urls library object for model name
@@ -37,6 +38,20 @@ Tracuse.Model.prototype.getRoute = function getRoute(urlName) {
 
     return url;
 };
+
+Tracuse.Model.prototype.dataObjToArray = function dataObjToArray() {
+    "use strict";
+    // Convert data in Object of Objects format to Array of Objects format
+    var model = this;
+    var dataArray = [];
+
+    for (var pk in model.dataObj) {
+        dataArray.push(model.dataObj[pk]);
+    }
+    model.dataArr = dataArray;
+    console.info("Convert Model Data to Array of Objects: " + model.name);
+};
+
 Tracuse.Model.prototype.loadData = function loadData() {
     // Load Ajax data into model in models collection
     "use strict";
@@ -50,6 +65,7 @@ Tracuse.Model.prototype.loadData = function loadData() {
             data = JSON.parse(request.responseText);
             var modelsObject = Tracuse.models[model.name] || {};
             modelsObject.dataObj = data;
+            modelsObject.dataObjToArray();
             console.info("Load Model Data as Object of Objects: " + model.name);
         }
     };
