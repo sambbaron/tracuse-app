@@ -197,7 +197,7 @@
 }
 
 .viewuse > .panel > .content > .section.groups-types > .content> .input-group [name="datum_group"] {
-    margin-bottom: 0.25em;
+    font-size: 110%;
     font-weight: bold;
 }
 
