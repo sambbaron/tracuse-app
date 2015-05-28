@@ -40,13 +40,34 @@
             </div>
 
             <div class="section associations">
-                <h4 class="title">Associations</h4>
-                <fieldset class="input-group">
+                <h4 class="title" onclick="Tracuse.ui.viewuse.showHidePanel(this, event)">Associations</h4>
 
-                </fieldset>
+                <div class="content">
+                    <fieldset class="input-group datum_groups">
+                        <select name="datum_group" >
+                            <option></option>
+                            {% for datumGroup in datumGroups %}
+                                <option value="{{ datumGroup.datum_group_id }}">
+                                    {{ datumGroup.readable_name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </fieldset>
+                    <fieldset class="input-group datum_types">
+                        <select name="datum_type" >
+                            <option></option>
+                            {% for datumType in datumTypes %}
+                                <option value="{{ datumType.datum_type_id }}">
+                                    {{ datumType.readable_name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </fieldset>
+
+                </div>
             </div>
             <div class="section elements">
-                <h4 class="title">Elements</h4>
+                <h4 class="title" onclick="Tracuse.ui.viewuse.showHidePanel(this, event)">Elements</h4>
                 <fieldset class="input-group">
 
                 </fieldset>

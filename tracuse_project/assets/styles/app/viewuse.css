@@ -127,6 +127,7 @@
     width: 0;
     opacity: 0;
     transition: none;
+    margin-left: 1.5em;
 }
 
 .viewuse > .panel > .content.visible {
@@ -136,9 +137,8 @@
     transition: opacity 100ms ease-in 300ms;
 }
 
-.viewuse > .panel > .content > .section  {
+.viewuse > .panel > .content > .section {
     position: relative;
-    margin-left: 1em;
 }
 
 .viewuse > .panel > .content > .section > .title {
@@ -162,8 +162,15 @@
 }
 
 .viewuse > .panel > .content > .section > .content > .input-group {
-    font-size: 75%;
     text-align: center;
+}
+
+.viewuse > .panel > .content > .section > .content > .input-group * {
+    display: block;
+    margin: 0.15em;
+    padding: 0.15em;
+    border-radius: 0.25em;
+    font-size: 90%;
 }
 
 .viewuse > .panel > .content > .section.groups-types > .content > .input-group {
@@ -172,7 +179,7 @@
 }
 
 .viewuse > .panel > .content > .section.groups-types > .content > .input-group.col-1 {
-    margin-left: 0%;
+    margin-left: 0;
 }
 
 .viewuse > .panel > .content > .section.groups-types > .content > .input-group.col-2 {
@@ -188,22 +195,21 @@
 }
 
 .viewuse > .panel > .content > .section.groups-types > .content > .input-group * {
-    display: block;
     height: 1.25em;
-    width: 5rem;
-    margin: 0.15em;
-    padding: 0.15em;
-    border-radius: 1em;
+    width: 3.5rem;
 }
 
-.viewuse > .panel > .content > .section.groups-types > .content> .input-group [name="datum_group"] {
-    font-size: 110%;
-    font-weight: bold;
+.viewuse > .panel > .content > .section.groups-types > .content > .input-group [name="datum_type"] {
+    font-size: 75%;
 }
 
-.viewuse > .panel > .content > .section.groups-types > .content> .input-group *.active {
+.viewuse > .panel > .content > .section.groups-types > .content > .input-group *.active {
     background-color: rgba(204, 232, 162, 0.75);
     color: #587e1f;
+}
+
+.viewuse > .panel > .content > .section.associations > .content > .input-group {
+    display: inline-block;
 }
 
 .viewuse > .content {
