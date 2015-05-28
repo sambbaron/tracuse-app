@@ -158,7 +158,7 @@
     height: 8em;
     width: auto;
     opacity: 1;
-    transition: opacity 100ms;
+    transition: opacity 300ms;
 }
 
 .viewuse > .panel > .content > .section > .content > .input-group {
