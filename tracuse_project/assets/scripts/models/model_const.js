@@ -7,7 +7,7 @@ Tracuse.Model = function Model(name, options) {
     "use strict";
     this.name = name;
     this.loadOnInit = options.loadOnInit || false;
-    this.data = options.data || {};
+    this.dataObj = options.dataObj || {};
     this.properties = options.properties || [];
     this.idProperty = options.idProperty || "id";
 };
@@ -49,8 +49,8 @@ Tracuse.Model.prototype.loadData = function loadData() {
         if ((request.readyState === 4) && (request.status === 200)) {
             data = JSON.parse(request.responseText);
             var modelsObject = Tracuse.models[model.name] || {};
-            modelsObject.data = data;
-            console.info("Load Model Data: " + model.name);
+            modelsObject.dataObj = data;
+            console.info("Load Model Data as Object of Objects: " + model.name);
         }
     };
 

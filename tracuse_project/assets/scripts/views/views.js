@@ -43,8 +43,8 @@ Tracuse.views.renderViewuse = function renderViewuse(viewuseTemplate, datumTempl
         "datum_template": datumTemplate,
         "datum_objects": datumObjectsClone,
         "id": Tracuse.ui.viewuse.nextId(),
-        "datum_groups": Tracuse.models.objectsToArray(Tracuse.models.datum_groups.data),
-        "datum_types": Tracuse.models.objectsToArray(Tracuse.models.datum_types.data)
+        "datum_groups": Tracuse.models.objectsToArray(Tracuse.models.datum_groups.dataObj),
+        "datum_types": Tracuse.models.objectsToArray(Tracuse.models.datum_types.dataObj)
     };
     return Tracuse.templates.render(templateName, templateData);
 };

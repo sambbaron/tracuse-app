@@ -90,7 +90,7 @@ Tracuse.models.idsToObjects = function idsToObjects(model, idArray, nestedIds) {
 
     for (var i = 0, max = idArray.length; i < max; i++) {
         var id = idArray[i];
-        var modelObject = model.data[id];
+        var modelObject = model.dataObj[id];
         if (nestedIds) {
             modelObjects.push({id: modelObject});
         } else {
@@ -138,7 +138,7 @@ Tracuse.models.updateDataOne = function updateDataOne(inputEl) {
     // Get pk and object
     var modelIdProperty = model.idProperty;
     var objectId = inputEl.getAttribute(modelIdProperty);
-    var object = model.data[objectId];
+    var object = model.dataObj[objectId];
 
     // Replace pk in url
     var objectUrl = modelUrl.replace("<pk>", objectId);
@@ -159,7 +159,7 @@ Tracuse.models.updateDataOne = function updateDataOne(inputEl) {
             if (request.status === 200) {
                 console.info("Update Element: " + objectId);
                 // Update model
-                model.data[objectId] = JSON.parse(request.responseText);
+                model.dataObj[objectId] = JSON.parse(request.responseText);
             } else {
                 inputEl.value = oldValue;
             }
