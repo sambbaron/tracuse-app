@@ -86,7 +86,7 @@
     padding: 0.5em;
     background-color: #1d3919;
     color: #ffffff;
-    transition: width 1s;
+    transition: width 500ms;
 }
 
 .viewuse > .panel.visible {
@@ -129,7 +129,7 @@
 
 .viewuse > .panel > .section.visible {
     opacity: 1;
-    transition: opacity 200ms linear 1s;
+    transition: opacity 100ms linear 450ms;
 }
 
 .viewuse > .panel > .section > .title {
