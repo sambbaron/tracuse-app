@@ -231,11 +231,29 @@ Tracuse.ui.viewuse.selectDatumType = function selectDatumType(el, ev) {
     }
 };
 
-Tracuse.ui.viewuse.selectDatumObjects = function selectDatumObjects(targetEl, options) {
+Tracuse.ui.viewuse.addAssociatedDatum = function addAssociatedDatum(el, ev) {
     "use strict";
-    // Filter Datum Objects based on Datum Type
+    // Add datum object to association filter list
+    // Create button element
 
+    var datumObject = el.parentNode.querySelector("[name='datum_objects']");
+    var datumId = datumObject.value;
 
+    if (datumId) {
+        var datumEl = document.createElement("button");
+        datumEl.name = "associated-datum";
+        datumEl.value = datumId;
+        datumEl.innerHTML = Tracuse.models.datum_objects.dataObj[datumId].headline;
+        datumEl.classList.add("active");
+        // Remove associated datum when clicked
+        datumEl.addEventListener("click", function() {
+            this.parentNode.removeChild(this);
+        });
+        el.parentNode.insertBefore(datumEl, el.nextSibling);
+    }
+
+    if (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+    }
 };
-
-

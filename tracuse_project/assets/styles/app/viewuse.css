@@ -81,7 +81,6 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    height: 100%;
     width: 2em;
     padding: 0.5em;
     background-color: #1d3919;
@@ -131,7 +130,7 @@
 }
 
 .viewuse > .panel > .content.visible {
-    height: auto;
+    height: inherit;
     width: auto;
     opacity: 1;
     transition: opacity 100ms ease-in 300ms;
@@ -139,6 +138,7 @@
 
 .viewuse > .panel > .content > .section {
     position: relative;
+    margin-bottom: 0.25em;
 }
 
 .viewuse > .panel > .content > .section > .title {
@@ -155,7 +155,7 @@
 }
 
 .viewuse > .panel > .content > .section > .content.visible {
-    height: 8em;
+    height: inherit;
     width: auto;
     opacity: 1;
     transition: opacity 300ms;
@@ -166,11 +166,14 @@
 }
 
 .viewuse > .panel > .content > .section > .content > .input-group * {
-    display: block;
     margin: 0.15em;
     padding: 0.1em;
     border-radius: 0.25em;
     font-size: 90%;
+}
+
+.viewuse > .panel > .content > .section.groups-types > .content.visible {
+    height: 9em;
 }
 
 .viewuse > .panel > .content > .section.groups-types > .content > .input-group {
@@ -205,7 +208,7 @@
 
 .viewuse > .panel > .content > .section.groups-types > .content > .input-group *.active {
     background-color: rgba(204, 232, 162, 0.75);
-    color: #587e1f;
+    color: yellow;
 }
 
 .viewuse > .panel > .content > .section.associations > .content > .input-group {
@@ -215,11 +218,23 @@
 .viewuse > .panel > .content > .section.associations > .content > .input-group [name="datum_groups"] {
     width: 5em;
 }
+
 .viewuse > .panel > .content > .section.associations > .content > .input-group [name="datum_types"] {
     width: 10em;
 }
+
 .viewuse > .panel > .content > .section.associations > .content > .input-group [name="datum_objects"] {
-    width: 16em;
+    width: 14em;
+}
+
+.viewuse > .panel > .content > .section.associations > .content > .input-group [name="add-association"] {
+    font-weight: bold;
+    font-size: 125%;
+}
+
+.viewuse > .panel > .content > .section.associations > .content > .input-group [name="associated-datum"] {
+    background-color: rgba(204, 232, 162, 0.75);
+    color: yellow;
 }
 
 .viewuse > .content {
