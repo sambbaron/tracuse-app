@@ -166,28 +166,28 @@
     text-align: center;
 }
 
-.viewuse > .panel > .content > .section.datum-groups > .content > .input-group {
+.viewuse > .panel > .content > .section.groups-types > .content > .input-group {
     position: absolute;
     width: 25%;
 }
 
-.viewuse > .panel > .content > .section.datum-groups > .content > .input-group.col-1 {
+.viewuse > .panel > .content > .section.groups-types > .content > .input-group.col-1 {
     margin-left: 0%;
 }
 
-.viewuse > .panel > .content > .section.datum-groups > .content > .input-group.col-2 {
+.viewuse > .panel > .content > .section.groups-types > .content > .input-group.col-2 {
     margin-left: 25%;
 }
 
-.viewuse > .panel > .content > .section.datum-groups > .content > .input-group.col-3 {
+.viewuse > .panel > .content > .section.groups-types > .content > .input-group.col-3 {
     margin-left: 50%;
 }
 
-.viewuse > .panel > .content > .section.datum-groups > .content > .input-group.col-4 {
+.viewuse > .panel > .content > .section.groups-types > .content > .input-group.col-4 {
     margin-left: 75%;
 }
 
-.viewuse > .panel > .content > .section.datum-groups > .content > .input-group * {
+.viewuse > .panel > .content > .section.groups-types > .content > .input-group * {
     display: block;
     height: 1.25em;
     width: 5em;
@@ -196,12 +196,12 @@
     border-radius: 1em;
 }
 
-.viewuse > .panel > .content > .section.datum-groups > .content> .input-group [name="datum_group"] {
+.viewuse > .panel > .content > .section.groups-types > .content> .input-group [name="datum_group"] {
     margin-bottom: 0.25em;
     font-weight: bold;
 }
 
-.viewuse > .panel > .content > .section.datum-groups > .content> .input-group *.active {
+.viewuse > .panel > .content > .section.groups-types > .content> .input-group *.active {
     background-color: rgba(204, 232, 162, 0.75);
     color: #587e1f;
 }

@@ -132,6 +132,9 @@ Tracuse.ui.viewuse.clickDatumGroup = function clickDatumGroup(el, ev) {
 
 Tracuse.ui.viewuse.clickDatumType = function clickDatumType(el, ev) {
     "use strict";
+    // Clear datum group
+
+
     el.classList.toggle("active");
     if (ev) {
         ev.stopPropagation();

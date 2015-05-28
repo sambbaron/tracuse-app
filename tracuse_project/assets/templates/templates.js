@@ -199,7 +199,7 @@ output += "\"\r\n         onmouseenter=\"Tracuse.ui.viewuse.mouseEnter(this, eve
 context.getBlock("viewuse_content")(env, context, frame, runtime, function(t_2,t_1) {
 if(t_2) { cb(t_2); return; }
 output += t_1;
-output += "\r\n    </div>\r\n    <aside class=\"panel object-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            Object Settings\r\n        </h3>\r\n\r\n        <div class=\"content\">\r\n            <div class=\"section datum-groups\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Groups/Types</h4>\r\n\r\n                <div class=\"content\">\r\n                    ";
+output += "\r\n    </div>\r\n    <aside class=\"panel object-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            Object Settings\r\n        </h3>\r\n\r\n        <div class=\"content\">\r\n            <div class=\"section groups-types\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Groups/Types</h4>\r\n\r\n                <div class=\"content\">\r\n                    ";
 frame = frame.push();
 var t_5 = runtime.contextOrFrameLookup(context, frame, "datumGroups");
 if(t_5) {var t_4 = t_5.length;
