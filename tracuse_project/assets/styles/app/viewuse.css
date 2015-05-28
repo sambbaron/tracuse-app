@@ -87,7 +87,6 @@
     background-color: #1d3919;
     color: #ffffff;
     transition: width 1s;
-    cursor: pointer;
 }
 
 .viewuse > .panel.visible {
@@ -112,6 +111,7 @@
     width: 7em;
     font-size: 125%;
     text-align: right;
+    cursor: pointer;
 }
 
 .viewuse > .panel.object-panel > .title {
