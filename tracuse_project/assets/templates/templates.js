@@ -215,7 +215,7 @@ frame.set("loop.last", t_3 === t_4 - 1);
 frame.set("loop.length", t_4);
 output += "\r\n                        <fieldset class=\"input-group col-";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "loop")),"index", env.opts.autoescape), env.opts.autoescape);
-output += "\">\r\n                            <button name=\"datum_group\" value=\"";
+output += "\">\r\n                            <button class=\"filter-input\" name=\"datum_group\" value=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_6),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n                                    onclick=\"Tracuse.ui.viewuse.clickDatumGroup(this, event)\">\r\n                                ";
 output += runtime.suppressValue(runtime.memberLookup((t_6),"readable_name", env.opts.autoescape), env.opts.autoescape);
@@ -235,7 +235,7 @@ frame.set("loop.last", t_7 === t_8 - 1);
 frame.set("loop.length", t_8);
 output += "\r\n                                ";
 if(runtime.memberLookup((t_10),"datum_group_id", env.opts.autoescape) == runtime.memberLookup((t_6),"datum_group_id", env.opts.autoescape)) {
-output += "\r\n                                    <button name=\"datum_type\" value=\"";
+output += "\r\n                                    <button class=\"filter-input\" name=\"datum_type\" value=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_10),"datum_type_id", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n                                            datum_group_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_10),"datum_group_id", env.opts.autoescape), env.opts.autoescape);

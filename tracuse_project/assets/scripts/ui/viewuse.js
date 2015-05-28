@@ -244,7 +244,7 @@ Tracuse.ui.viewuse.addAssociatedDatum = function addAssociatedDatum(el, ev) {
         datumEl.name = "associated-datum";
         datumEl.value = datumId;
         datumEl.innerHTML = Tracuse.models.datum_objects.dataObj[datumId].headline;
-        datumEl.classList.add("active");
+        datumEl.classList.add("filter-input", "active");
         // Remove associated datum when clicked
         datumEl.addEventListener("click", function() {
             this.parentNode.removeChild(this);
