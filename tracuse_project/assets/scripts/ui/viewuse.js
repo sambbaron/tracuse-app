@@ -108,14 +108,13 @@ Tracuse.ui.viewuse.clickDatumGroup = function clickDatumGroup(el, ev) {
     var parentViewuse = Tracuse.ui.viewuse.getParentViewuse(el);
     var datumGroup = el;
     var datumGroupId = el.value;
-    var datumGroups = parentViewuse.querySelectorAll("button[name='datum_group']:checked");
     var datumTypes = parentViewuse.querySelectorAll("button[name='datum_type']");
 
     datumGroup.classList.toggle("active");
 
     for (var i = 0; i < datumTypes.length; i++) {
         var datumType = datumTypes[i];
-        if (datumType.getAttribute("datum_group_id") == datumGroupId) {
+        if (datumType.getAttribute("datum_group_id") === datumGroupId) {
             if (datumGroup.classList.contains("active")) {
                 datumType.classList.add("active");
             } else {
@@ -133,7 +132,15 @@ Tracuse.ui.viewuse.clickDatumGroup = function clickDatumGroup(el, ev) {
 Tracuse.ui.viewuse.clickDatumType = function clickDatumType(el, ev) {
     "use strict";
     // Clear datum group
-
+    var parentViewuse = Tracuse.ui.viewuse.getParentViewuse(el);
+    var datumGroups = parentViewuse.querySelectorAll("button[name='datum_group']");
+    var datumGroupId = el.getAttribute("datum_group_id");
+    for (var i = 0; i < datumGroups.length; i++) {
+        var datumGroup = datumGroups[i];
+        if (datumGroup.value === datumGroupId) {
+            datumGroup.classList.remove("active");
+        }
+    }
 
     el.classList.toggle("active");
     if (ev) {
