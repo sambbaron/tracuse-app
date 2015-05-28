@@ -141,21 +141,12 @@ Tracuse.ui.viewuse.clickDatumType = function clickDatumType(el, ev) {
 
 Tracuse.ui.viewuse.showHidePanel = function showHidePanel(el, ev) {
     "use strict";
-
     el.classList.toggle("visible");
 
-    setInterval(function () {
-        var sections = el.querySelectorAll(".section");
-        for (var i = 0; i < sections.length; i++) {
-            //sections[i].style.transition = "visibility " + seconds * 10 + "s";
-            //sections[i].style.visibility = "visible";
-            sections[i].style.transition = "opacity " + seconds / 4 + "s";
-            sections[i].style.opacity = "1";
-
-            //sections[i].style.display = "inherit";
-        }
-    }, seconds * 1000);
-
+    var sections = el.querySelectorAll(".section");
+    for (var i = 0; i < sections.length; i++) {
+        sections[i].classList.toggle("visible");
+    }
     if (ev) {
         ev.stopPropagation();
         ev.preventDefault();

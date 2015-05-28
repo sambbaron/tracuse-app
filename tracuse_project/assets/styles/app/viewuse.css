@@ -124,6 +124,12 @@
 
 .viewuse > .panel > .section {
     opacity: 0;
+    transition: none;
+}
+
+.viewuse > .panel > .section.visible {
+    opacity: 1;
+    transition: opacity 200ms linear 1s;
 }
 
 .viewuse > .panel > .section > .title {
