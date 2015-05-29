@@ -54,10 +54,24 @@ class TestDataElement(object):
                                         )
 
 
-        # Element Data Type & Element Types
+        # Element Data Type
         self.element_data_type1 = mommy.make("element_type.ElementDataType",
                                              entity_name="String"
                                              )
+
+        # Element Operators
+        self.element_operator1 = mommy.make("element_type.ElementOperator",
+                                            element_data_type=self.element_data_type1,
+                                            entity_name="exact",
+                                            readable_name="equals"
+                                            )
+        self.element_operator2 = mommy.make("element_type.ElementOperator",
+                                            element_data_type=self.element_data_type1,
+                                            entity_name="gt",
+                                            readable_name="greater than"
+                                            )
+
+        # Element Types
         self.element_type1 = mommy.make("element_type.ElementType",
                                         entity_name="Name",
                                         element_data_type=self.element_data_type1,

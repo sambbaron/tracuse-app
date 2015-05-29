@@ -22,7 +22,7 @@ class ElementTypeAll(View):
     def get(self, request):
         queryset = ElementType.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=ElementTypeSerializer.serial_basic,
+                                     serializer=ElementTypeSerializer.serial_with_operators,
                                      dict_with_pk=True
                                      ).serialize()
         response = JsonResponse(serialized_data, status=200)
