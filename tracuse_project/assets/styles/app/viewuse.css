@@ -249,6 +249,11 @@
     width: 12em;
 }
 
+.viewuse > .panel > .content > .section.elements > .content > .input-group [name="element_value"] {
+    height: 1.75em;
+    width: 15em;
+}
+
 .viewuse > .content {
     width: 90%;
     margin: 1em auto;

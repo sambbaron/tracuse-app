@@ -325,7 +325,7 @@ output += "\r\n                                </option>\r\n                    
 }
 }
 frame = frame.pop();
-output += "\r\n                        </select>\r\n                        <br>\r\n                        <h5 class=\"title\">Operators</h5>\r\n                        <select name=\"element_operators\">\r\n                            <option></option>\r\n                        </select>\r\n                    </fieldset>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </aside>\r\n    <aside class=\"panel view-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            View Settings\r\n        </h3>\r\n\r\n    </aside>\r\n</section>";
+output += "\r\n                        </select>\r\n                        <br>\r\n                        <h5 class=\"title\">Operators</h5>\r\n                        <select name=\"element_operators\">\r\n                            <option></option>\r\n                        </select>\r\n                        <h5 class=\"title\">Filter Value</h5>\r\n                        <input name=\"element_value\">\r\n                    </fieldset>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </aside>\r\n    <aside class=\"panel view-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            View Settings\r\n        </h3>\r\n\r\n    </aside>\r\n</section>";
 cb(null, output);
 });
 } catch (e) {
