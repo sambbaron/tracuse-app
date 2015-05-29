@@ -1,4 +1,4 @@
-from .models import ElementType, ElementDatumType, ElementDatumObject
+from .models import ElementOperator, ElementType, ElementDatumType, ElementDatumObject
 
 from app.common.serializers import serialize_all
 
@@ -14,18 +14,17 @@ class ElementTypeSerializer(ElementType):
 
     ElementType.serial_basic = serial_basic
 
-    def serial_with_operators(self):
-        """All properties plus operators for filtering"""
 
-        operators = []
-        for operator in self.element_data_type.operators.all():
-            operators.append((operator.entity_name, operator.readable_name))
+class ElementOperatorSerializer(ElementOperator):
+    class Meta:
+        abstract = True
 
+    def serial_basic(self):
+        """All properties"""
         output = serialize_all(self.__class__, self)
-        output["operators"] = operators
         return output
 
-    ElementType.serial_with_operators = serial_with_operators
+    ElementOperator.serial_basic = serial_basic
 
 
 class ElementDatumTypeSerializer(ElementDatumType):

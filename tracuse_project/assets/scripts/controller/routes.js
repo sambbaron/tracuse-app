@@ -15,6 +15,9 @@ Tracuse.routes = {
     "element_types": {
         "all": "/api/element_types/"
     },
+    "element_operators": {
+        "all": "/api/element_operators/"
+    },
     "element_datum_types": {
         "all": "/api/element_datum_types/"
     },

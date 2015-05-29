@@ -25,6 +25,10 @@ Tracuse.models.createModels = function createModels() {
             "loadOnInit": true,
             "idProperty": "element_type_id"
         }),
+        "element_operators": new Tracuse.Model("element_operators", {
+            "loadOnInit": true,
+            "idProperty": "element_operator_id"
+        }),
         "element_datum_types": new Tracuse.Model("element_datum_types", {
             "loadOnInit": true,
             "idProperty": "element_datum_type_id"

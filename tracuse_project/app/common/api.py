@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^datum_object/(?P<pk>[0-9]+)/$', DatumViews.DatumObjectOne.as_view(), name="datum-object-one"),
 
     url(r'^element_types/$', ElementViews.ElementTypeAll.as_view(), name="element-type-all"),
+    url(r'^element_operators/$', ElementViews.ElementOperatorAll.as_view(), name="element-operator-all"),
     url(r'^element_datum_types/$', ElementViews.ElementDatumTypeAll.as_view(), name="element-datum-type-all"),
     url(r'^element_datum_objects/$', ElementViews.ElementDatumObjectAll.as_view(), name="element-datum-object-all"),
     url(r'^element_datum_object/(?P<pk>[0-9]+)/$', ElementViews.ElementDatumObjectOne.as_view(), name="element-datum-object-one"),

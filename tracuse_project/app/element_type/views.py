@@ -5,8 +5,9 @@ from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
-from .models import ElementType, ElementDatumType, ElementDatumObject
+from .models import ElementOperator, ElementType, ElementDatumType, ElementDatumObject
 from .serializers import (ElementTypeSerializer,
+                          ElementOperatorSerializer,
                           ElementDatumTypeSerializer,
                           ElementDatumObjectSerializer)
 from app.common.serializers import Serializer
@@ -22,7 +23,24 @@ class ElementTypeAll(View):
     def get(self, request):
         queryset = ElementType.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=ElementTypeSerializer.serial_with_operators,
+                                     serializer=ElementTypeSerializer.serial_basic,
+                                     dict_with_pk=True
+                                     ).serialize()
+        response = JsonResponse(serialized_data, status=200)
+        return response
+
+
+class ElementOperatorAll(View):
+    """Return all element_types"""
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        queryset = ElementOperator.actives.all()
+        serialized_data = Serializer(data=queryset,
+                                     serializer=ElementOperatorSerializer.serial_basic,
                                      dict_with_pk=True
                                      ).serialize()
         response = JsonResponse(serialized_data, status=200)
