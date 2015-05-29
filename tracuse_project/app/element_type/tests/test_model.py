@@ -1,12 +1,12 @@
 from django.test import TestCase, mock
 
-from app.datum.tests.test_data import TestDataDatum
+from .test_data import TestDataElement
 
 
 class TestModelElementOption(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDataDatum()
+        cls.test = TestDataElement()
 
     def test_sort_parts(self):
         """Test ElementOption.sort_parts property"""
@@ -18,7 +18,7 @@ class TestModelElementOption(TestCase):
 class TestModelElementDatumType(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDataDatum()
+        cls.test = TestDataElement()
 
     def test_str(self):
         """Test ElementDatumType.__str__ property"""
@@ -106,7 +106,7 @@ class TestModelElementDatumType(TestCase):
 class TestModelElementDatumObject(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDataDatum()
+        cls.test = TestDataElement()
 
     def test_str(self):
         """Test ElementDatumObject.__str__ property"""

@@ -2,14 +2,14 @@ import json
 
 from django.test import TestCase, RequestFactory
 
-from app.datum.tests.test_data import TestDataDatum
+from .test_data import TestDataElement
 from .. import views
 
 
 class TestElementTypeAll(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDataDatum()
+        cls.test = TestDataElement()
 
     def setUp(self):
         self.factory = RequestFactory()
@@ -32,7 +32,7 @@ class TestElementTypeAll(TestCase):
 class TestElementDatumTypeAll(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDataDatum()
+        cls.test = TestDataElement()
 
     def setUp(self):
         self.factory = RequestFactory()
@@ -55,7 +55,7 @@ class TestElementDatumTypeAll(TestCase):
 class TestElementDatumObjectAll(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDataDatum()
+        cls.test = TestDataElement()
 
     def setUp(self):
         self.factory = RequestFactory()
@@ -78,7 +78,7 @@ class TestElementDatumObjectAll(TestCase):
 class TestElementDatumObjectOne(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.test = TestDataDatum()
+        cls.test = TestDataElement()
 
     def setUp(self):
         self.factory = RequestFactory()
