@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from app.common.admin import BaseModelAdmin, BaseModelInline, EntityModelAdmin, EntityModelInline
-from .models import ElementType, ElementDatumType, ElementDatumObject
+from .models import ElementType, ElementDatumType, ElementDatumObject, ElementOperator
 from app.element_value.admin import ElementValuesInline
 
 
@@ -47,3 +47,11 @@ class ElementTypeAdmin(EntityModelAdmin):
     fields = EntityModelAdmin.fields + ("element_data_type",)
 
     inlines = [ElementDatumTypeInline, ]
+
+@admin.register(ElementOperator)
+class ElementOperator(EntityModelAdmin):
+    list_display = EntityModelAdmin.list_display + ("element_data_type", "default_operator", )
+    list_editable = EntityModelAdmin.list_editable + ("element_data_type", "default_operator", )
+    list_filter = ("element_data_type", )
+
+    fields = EntityModelAdmin.fields + ("element_data_type", "default_operator", )

@@ -15,6 +15,7 @@ class ElementDataType(EntityModel):
     FUTURE: Possible presentation formatting properties
 
     Attributes:
+        See EntityModel (includes BaseModel)
         element_class (string, calculated):
             "Element" + data type entity name --> ElementString
         element_table (string, calculated): Element value table name
@@ -30,6 +31,40 @@ class ElementDataType(EntityModel):
     sort_base_length = 2
 
 
+class ElementOperator(EntityModel):
+    """Operators assigned to data types
+
+    Used for filtering, correspond to Django queryset lookups
+
+    Attributes:
+        See EntityModel (includes BaseModel)
+        element_data_type (integer, fk, required): ElementDataType
+            --> string, integer, datetime, etc.
+        EntityModel.entity_name (string):
+            Django field lookup name
+        default_operator (boolean):
+            Used in ui
+    """
+
+    class Meta(EntityModel.Meta):
+        db_table = "element_operator"
+        verbose_name = "Element Data Type Operator"
+
+    element_operator_id = models.AutoField(primary_key=True)
+    element_data_type = models.ForeignKey("ElementDataType",
+                                          db_column="element_data_type_id",
+                                          related_name="operators",
+                                          null=False, blank=False
+                                          )
+    default_operator = models.BooleanField(default=False,
+                                           null=False, blank=False
+                                           )
+    sort_base_length = 2
+    @property
+    def sort_parts(self):
+        return [self.element_data_type.sort]
+
+
 class ElementType(EntityModel):
     """Property types available to Datums
 
@@ -37,7 +72,7 @@ class ElementType(EntityModel):
 
     Attributes:
         See EntityModel (includes BaseModel)
-        data_type (integer, fk, required): DataType
+        element_data_type (integer, fk, required): ElementDataType
             --> string, integer, datetime, etc.
         str_expression (string): Expression in django template language
             that renders to string representation
@@ -163,7 +198,6 @@ class ElementDatumType(EntityModel):
     def sort_parts(self):
         return [self.datum_type.sort, self.element_type.sort]
 
-
     def __str__(self):
         return self.readable_name
 
@@ -185,7 +219,6 @@ class ElementDatumType(EntityModel):
 
     def set_entity_name(self):
         self.entity_name = self._get_entity_name()
-
 
     def save(self, *args, **kwargs):
         """Set entity names if empty"""
@@ -236,7 +269,6 @@ class ElementDatumObject(BaseModel):
     def sort_parts(self):
         return [self.datum_object.sort, self.element_type.sort]
 
-
     def __str__(self):
         return "{} - {}".format(self.datum_object.__str__(), self.element_type.readable_name)
 
@@ -274,8 +306,8 @@ class ElementDatumObject(BaseModel):
         if expression:
             template = Template(expression)
             datum_dict = Serializer(data=self.datum_object,
-                                      serializer="datum.DatumObjectSerializer.serial_element_name_value"
-                                      ).serialize()
+                                    serializer="datum.DatumObjectSerializer.serial_element_name_value"
+                                    ).serialize()
             context = Context(datum_dict)
             output = template.render(context)
 
