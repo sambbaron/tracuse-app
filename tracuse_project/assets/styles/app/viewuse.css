@@ -242,16 +242,16 @@
 }
 
 .viewuse > .panel > .content > .section.elements > .content > .input-group [name="element_types"] {
-    width: 10em;
+    width: 9em;
 }
 
 .viewuse > .panel > .content > .section.elements > .content > .input-group [name="element_operators"] {
-    width: 12em;
+    width: 10em;
 }
 
 .viewuse > .panel > .content > .section.elements > .content > .input-group [name="element_value"] {
     height: 1.75em;
-    width: 15em;
+    width: 12em;
 }
 
 .viewuse > .content {
