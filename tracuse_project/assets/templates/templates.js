@@ -302,7 +302,30 @@ output += "\r\n                                </option>\r\n                    
 }
 }
 frame = frame.pop();
-output += "\r\n                        </select>\r\n                    </fieldset>\r\n                    <br>\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Objects</h5>\r\n                        <select name=\"datum_objects\">\r\n                            <option></option>\r\n                        </select>\r\n                        <button name=\"add-association\"\r\n                                onclick=\"Tracuse.ui.viewuse.addAssociatedDatum(this, event)\">\r\n                            +\r\n                        </button>\r\n                    </fieldset>\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"section elements\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Elements</h4>\r\n\r\n                <div class=\"content\">\r\n                    <fieldset class=\"input-group\">\r\n\r\n                    </fieldset>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </aside>\r\n    <aside class=\"panel view-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            View Settings\r\n        </h3>\r\n\r\n    </aside>\r\n</section>";
+output += "\r\n                        </select>\r\n                    </fieldset>\r\n                    <br>\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Objects</h5>\r\n                        <select name=\"datum_objects\">\r\n                            <option></option>\r\n                        </select>\r\n                        <button name=\"add-association\"\r\n                                onclick=\"Tracuse.ui.viewuse.addAssociatedDatum(this, event)\">\r\n                            +\r\n                        </button>\r\n                    </fieldset>\r\n\r\n                </div>\r\n            </div>\r\n            <div class=\"section elements\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Elements</h4>\r\n\r\n                <div class=\"content\">\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Types</h5>\r\n                        <select name=\"element_types\"\r\n                                onchange=\"Tracuse.ui.viewuse.selectElement(this, event)\">\r\n                            <option></option>\r\n                            ";
+frame = frame.push();
+var t_21 = runtime.contextOrFrameLookup(context, frame, "element_types");
+if(t_21) {var t_20 = t_21.length;
+for(var t_19=0; t_19 < t_21.length; t_19++) {
+var t_22 = t_21[t_19];
+frame.set("element_type", t_22);
+frame.set("loop.index", t_19 + 1);
+frame.set("loop.index0", t_19);
+frame.set("loop.revindex", t_20 - t_19);
+frame.set("loop.revindex0", t_20 - t_19 - 1);
+frame.set("loop.first", t_19 === 0);
+frame.set("loop.last", t_19 === t_20 - 1);
+frame.set("loop.length", t_20);
+output += "\r\n                                <option value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_22),"element_type_id", env.opts.autoescape), env.opts.autoescape);
+output += "\">\r\n                                    ";
+output += runtime.suppressValue(runtime.memberLookup((t_22),"readable_name", env.opts.autoescape), env.opts.autoescape);
+output += "\r\n                                </option>\r\n                            ";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n                        </select>\r\n                        <select name=\"element_operators\">\r\n                            <option></option>\r\n\r\n                        </select>\r\n                    </fieldset>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </aside>\r\n    <aside class=\"panel view-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            View Settings\r\n        </h3>\r\n\r\n    </aside>\r\n</section>";
 cb(null, output);
 });
 } catch (e) {

@@ -257,3 +257,32 @@ Tracuse.ui.viewuse.addAssociatedDatum = function addAssociatedDatum(el, ev) {
         ev.preventDefault();
     }
 };
+
+Tracuse.ui.viewuse.selectElement = function selectElement(el, ev) {
+    // Add element operators
+
+    var parentContentEl = el.parentNode.parentNode;
+    var elementOperatorsEl = parentContentEl.querySelector("[name='element_operators']");
+    elementOperatorsEl.innerHTML = "";
+
+    var elementDataTypeId = Tracuse.models.element_types.dataObj[el.value].element_data_type_id;
+
+    var optionFrag = document.createDocumentFragment();
+    var elementOperators = Tracuse.models.element_operators.dataArr;
+    for (var e = 0, emax = elementOperators.length; e < emax; e++) {
+        var operator = elementOperators[e];
+        if (operator.element_data_type_id == elementDataTypeId) {
+            var optionEl = document.createElement("option");
+            optionEl.innerHTML = operator.readable_name;
+            optionEl.value = operator.entity_name;
+            optionFrag.appendChild(optionEl);
+        }
+    }
+    elementOperatorsEl.appendChild(optionFrag);
+
+
+    if (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+    }
+};
