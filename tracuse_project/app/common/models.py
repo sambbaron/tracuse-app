@@ -174,7 +174,6 @@ class EntityModel(BaseModel):
     class Meta:
         abstract = True
 
-    # TODO problem with unique name and element option values
     entity_name = models.CharField(max_length=40,
                                    default="",
                                    null=False, blank=False,
