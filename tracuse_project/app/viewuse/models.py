@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.contrib.auth.models import User
+
 from app.common.models import BaseModel, EntityModel
 
 
@@ -8,6 +10,8 @@ class ViewuseObject(EntityModel):
 
     Attributes:
         See EntityModel
+        user_id (integer, fk, nullable): User
+            No user - global viewuse available to all users
         EntityModel.readable_name (string):
             Viewuse title
         viewuse_arrangement_id (integer, fk, required):
@@ -21,6 +25,12 @@ class ViewuseObject(EntityModel):
         verbose_name = "Viewuse Object"
 
     viewuse_object_id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User,
+                             db_column="user_id",
+                             related_name="viewuse_objects",
+                             null=True, blank=True,
+                             db_index=True
+                             )
     viewuse_arrangement = models.ForeignKey("viewuse.ViewuseArrangement",
                                             db_column="viewuse_arrangement_id",
                                             related_name="viewuse_objects",
@@ -92,10 +102,10 @@ class ViewuseFilter(EntityModel):
 
     viewuse_filter_id = models.AutoField(primary_key=True)
     viewuse_object = models.ForeignKey("viewuse.ViewuseObject",
-                                            db_column="viewuse_object_id",
-                                            related_name="viewuse_filters",
-                                            null=False, blank=False
-                                            )
+                                       db_column="viewuse_object_id",
+                                       related_name="viewuse_filters",
+                                       null=False, blank=False
+                                       )
     filter_json = models.CharField(max_length=255,
                                    default="",
                                    null=True, blank=True,
