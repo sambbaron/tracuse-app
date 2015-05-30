@@ -246,7 +246,7 @@ Tracuse.ui.viewuse.addAssociatedDatum = function addAssociatedDatum(el, ev) {
         datumEl.innerHTML = Tracuse.models.datum_objects.dataObj[datumId].headline;
         datumEl.classList.add("filter-input", "active");
         // Remove associated datum when clicked
-        datumEl.addEventListener("click", function() {
+        datumEl.addEventListener("click", function () {
             this.parentNode.removeChild(this);
         });
         el.parentNode.insertBefore(datumEl, el.nextSibling);
@@ -280,6 +280,37 @@ Tracuse.ui.viewuse.selectElement = function selectElement(el, ev) {
     }
     elementOperatorsEl.appendChild(optionFrag);
 
+
+    if (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+    }
+};
+
+
+Tracuse.ui.viewuse.addElementFilter = function addElementFilter(el, ev) {
+    "use strict";
+    // Add element filter
+    // Create button element
+
+    var elementType = el.parentNode.querySelector("[name='element_types']");
+    var elementOperator = el.parentNode.querySelector("[name='element_operators']");
+    var elementValue = el.parentNode.querySelector("[name='element_value']");
+
+    if (elementType && elementOperator && elementValue) {
+        var elementEl = document.createElement("button");
+        elementEl.name = "element-filter";
+        elementEl.value = elementType.value + ", " + elementOperator.value + ", " + elementValue.value;
+        elementEl.innerHTML = elementType.selectedOptions[0].innerHTML + " " +
+            elementOperator.selectedOptions[0].innerHTML + " " +
+            elementValue.value;
+        elementEl.classList.add("filter-input", "active");
+        // Remove element filter when clicked
+        elementEl.addEventListener("click", function () {
+            this.parentNode.removeChild(this);
+        });
+        el.parentNode.insertBefore(elementEl, el.nextSibling);
+    }
 
     if (ev) {
         ev.stopPropagation();

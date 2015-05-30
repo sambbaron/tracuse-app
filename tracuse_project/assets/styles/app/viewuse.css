@@ -175,6 +175,17 @@
     font-size: 85%;
 }
 
+.viewuse > .panel > .content > .section > .content > .input-group .add-filter {
+    font-weight: bold;
+    font-size: 150%;
+    color: yellow;
+}
+
+.viewuse > .panel > .content > .section > .content > .input-group *.active {
+    background-color: rgba(204, 232, 162, 0.75);
+    color: yellow;
+}
+
 .viewuse > .panel > .content > .section.groups-types > .content.visible {
     height: 9em;
 }
@@ -209,11 +220,6 @@
     font-size: 75%;
 }
 
-.viewuse > .panel > .content > .section.groups-types > .content > .input-group *.active {
-    background-color: rgba(204, 232, 162, 0.75);
-    color: yellow;
-}
-
 .viewuse > .panel > .content > .section.associations > .content > .input-group {
     display: inline-block;
 }
@@ -228,16 +234,6 @@
 
 .viewuse > .panel > .content > .section.associations > .content > .input-group [name="datum_objects"] {
     width: 14em;
-}
-
-.viewuse > .panel > .content > .section.associations > .content > .input-group [name="add-association"] {
-    font-weight: bold;
-    font-size: 125%;
-}
-
-.viewuse > .panel > .content > .section.associations > .content > .input-group [name="associated-datum"] {
-    background-color: rgba(204, 232, 162, 0.75);
-    color: yellow;
 }
 
 .viewuse > .panel > .content > .section.elements > .content > .input-group [name="element_types"] {

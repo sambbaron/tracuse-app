@@ -75,7 +75,7 @@
                         <select name="datum_objects">
                             <option></option>
                         </select>
-                        <button name="add-association"
+                        <button class="add-filter" name="add-association"
                                 onclick="Tracuse.ui.viewuse.addAssociatedDatum(this, event)">
                             +
                         </button>
@@ -106,6 +106,10 @@
                         <br>
                         <h5 class="title">Filter Value</h5>
                         <input name="element_value">
+                        <button class="add-filter" name="add-element-filter"
+                                onclick="Tracuse.ui.viewuse.addElementFilter(this, event)">
+                            +
+                        </button>
                     </fieldset>
                 </div>
             </div>
