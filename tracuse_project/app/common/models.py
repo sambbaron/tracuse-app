@@ -181,17 +181,17 @@ class EntityModel(BaseModel):
                                    )
     schema_name = models.CharField(max_length=40,
                                    default="",
-                                   null=False, blank=False,
+                                   null=True, blank=True,
                                    unique=False
                                    )
     readable_name = models.CharField(max_length=40,
                                      default="",
-                                     null=False, blank=False,
+                                     null=True, blank=True,
                                      unique=False, db_index=True
                                      )
     readable_plural_name = models.CharField(max_length=40,
                                             default="",
-                                            null=False, blank=False,
+                                            null=True, blank=True,
                                             unique=False
                                             )
     short_definition = models.CharField(max_length=25,
