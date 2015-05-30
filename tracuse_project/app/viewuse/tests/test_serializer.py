@@ -22,6 +22,16 @@ class TestViewuseObjectSerializer(TestCase):
         expected = "Viewuse1"
         self.assertEqual(expected, actual)
 
+    def test_serial_for_ui(self):
+        """Test ViewuseObjectSerializer.serial_for_ui
+        """
+        test_object = self.test.viewuse_object1
+        test_serialized = ViewuseObjectSerializer. \
+            serial_for_ui(test_object)
+        actual = test_serialized["arrangement_template"]
+        expected = "arrangement1"
+        self.assertEqual(expected, actual)
+
 class TestViewuseArrangementSerializer(TestCase):
     @classmethod
     def setUpTestData(cls):

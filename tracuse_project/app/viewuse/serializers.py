@@ -16,6 +16,15 @@ class ViewuseObjectSerializer(ViewuseObject):
 
     ViewuseObject.serial_basic = serial_basic
 
+    def serial_for_ui(self):
+        """Properties for rendering ui"""
+        output = serialize_all(self.__class__, self)
+        output["arrangement_template"] = self.viewuse_arrangement.schema_name
+        output["datum_template"] = self.viewuse_datum.schema_name
+        return output
+
+    ViewuseObject.serial_basic = serial_basic
+
 
 class ViewuseArrangementSerializer(ViewuseArrangement):
     class Meta:
