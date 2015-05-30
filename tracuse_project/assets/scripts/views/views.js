@@ -4,11 +4,13 @@ var Tracuse = Tracuse || {};
 Tracuse.views = Tracuse.views || {};
 
 
-Tracuse.views.renderViewuse = function renderViewuse(viewuseTemplate, datumTemplate, datumObjects) {
+Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arrangementTemplate,
+                                                                             datumTemplate,
+                                                                             datumObjects) {
     "use strict";
-    // Render viewuse template
-    var templateData;
-    var templateName = "viewuse/" + viewuseTemplate + ".html";
+    // Render viewuse from template names
+    var output = "";
+    var templateName = "viewuse/" + arrangementTemplate + ".html";
     var datumObjectsClone;
 
     if (!datumObjects) {
@@ -47,5 +49,22 @@ Tracuse.views.renderViewuse = function renderViewuse(viewuseTemplate, datumTempl
         "datum_types": Tracuse.models.datum_types.dataArr,
         "element_types": Tracuse.models.element_types.dataArr
     };
-    return Tracuse.templates.render(templateName, templateData);
+
+    output = Tracuse.templates.render(templateName, templateData);
+    return output;
+};
+
+Tracuse.views.renderViewuseFromObject = function renderViewuseFromObject(viewuseObject) {
+    "use strict";
+    // Render viewuse from model object
+    // Lookup template names
+    // Return filtered datums
+    var output = "";
+    var arrangementTemplate = viewuseObject.arrangement_template;
+    var datumTemplate = viewuseObject.datum_template;
+
+    var datumObjects = Tracuse.models.datum_objects.dataArr;
+
+    output = Tracuse.views.renderViewuseFromTemplate(arrangementTemplate, datumTemplate, datumObjects);
+    return output;
 };
