@@ -161,6 +161,7 @@
 }
 
 .viewuse > .panel > .content > .section > .content > .input-group {
+    display: inline-block;
     text-align: center;
 }
 
@@ -218,10 +219,6 @@
 
 .viewuse > .panel > .content > .section.groups-types > .content > .input-group [name="datum_type"] {
     font-size: 75%;
-}
-
-.viewuse > .panel > .content > .section.associations > .content > .input-group {
-    display: inline-block;
 }
 
 .viewuse > .panel > .content > .section.associations > .content > .input-group [name="datum_groups"] {
