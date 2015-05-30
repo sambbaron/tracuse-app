@@ -36,7 +36,19 @@ Tracuse.models.createModels = function createModels() {
         "element_datum_objects": new Tracuse.Model("element_datum_objects", {
             "loadOnInit": true,
             "idProperty": "element_datum_object_id"
-        })
+        }),
+        "viewuse_objects": new Tracuse.Model("viewuse_objects", {
+            "loadOnInit": true,
+            "idProperty": "viewuse_object_id"
+        }),
+        "viewuse_arrangements": new Tracuse.Model("viewuse_arrangements", {
+            "loadOnInit": true,
+            "idProperty": "viewuse_arrangement_id"
+        }),
+        "viewuse_datums": new Tracuse.Model("viewuse_datums", {
+            "loadOnInit": true,
+            "idProperty": "viewuse_datum_id"
+        })        
     };
 
     // Create Properties
