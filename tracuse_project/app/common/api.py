@@ -5,6 +5,7 @@ from django.conf.urls import url
 from app.datum import views as DatumViews
 from app.element_type import views as ElementViews
 from app.filter import views as FilterViews
+from app.viewuse import views as ViewuseViews
 
 urlpatterns = [
 
@@ -22,5 +23,9 @@ urlpatterns = [
 
     url(r'^datum_objects/filter/manual/$', FilterViews.RunFilter.run_filter_manual, name="datum-objects-filter-manual"),
     # url(r'^datum_objects/filter/(?P<pk>[0-9]+)/$', FilterViews, name="datum-objects-filter-saved-set"),
+    
+    url(r'^viewuse_objects/$', ViewuseViews.ViewuseObjectAll.as_view(), name="viewuse-object-all"),
+    url(r'^viewuse_arrangements/$', ViewuseViews.ViewuseArrangementAll.as_view(), name="viewuse-arrangement-all"),
+    url(r'^viewuse_datums/$', ViewuseViews.ViewuseDatumAll.as_view(), name="viewuse-datum-all"),
 
 ]
