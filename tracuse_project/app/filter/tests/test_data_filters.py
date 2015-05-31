@@ -123,6 +123,15 @@ class TestFilterSetsModel(object):
             ],
         }
 
+        self.filter_set1 = mommy.make("filter.FilterSet")
+        self.filter_rule_group1 = mommy.make("filter.FilterRuleGroup",
+                                             datum_group=DatumGroup.objects.get(entity_name="Area")
+                                             )
+        self.filter_set_group_rule1 = mommy.make("filter.FilterSetGroupRule",
+                                                 filter_set=self.filter_set1,
+                                                 filter_rule_group=self.filter_rule_group1
+                                                 )
+
         self.filter_set_dict1 = {
 
             "FilterRuleType": [
