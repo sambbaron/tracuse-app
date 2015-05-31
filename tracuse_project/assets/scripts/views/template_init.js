@@ -10,7 +10,7 @@ Tracuse.templates.loadEnvironment = function loadEnvironment() {
     "use strict";
     var templateRoot = Tracuse.templates.root_url;
     var webLoader = new nunjucks.WebLoader(templateRoot);
-    Tracuse.templates = new nunjucks.Environment(webLoader);
+    Tracuse.templates.env = new nunjucks.Environment(webLoader);
     console.info("Load Nunjucks Template Environment: " + templateRoot);
 };
 

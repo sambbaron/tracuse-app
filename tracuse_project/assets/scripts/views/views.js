@@ -19,7 +19,7 @@ Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arr
         "element_types": Tracuse.models.element_types.dataArr
     };
 
-    output = Tracuse.templates.render(templateName, templateData);
+    output = Tracuse.templates.env.render(templateName, templateData);
     return output;
 };
 
