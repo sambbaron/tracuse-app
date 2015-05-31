@@ -18,7 +18,7 @@ Tracuse.models.createModels = function createModels() {
             "idProperty": "datum_type_id"
         }),
         "datum_objects": new Tracuse.Model("datum_objects", {
-            "loadOnInit": true,
+            "loadOnInit": false,
             "idProperty": "datum_object_id"
         }),
         "element_types": new Tracuse.Model("element_types", {
@@ -93,17 +93,33 @@ Tracuse.models.loadInitData = function loadInitData() {
     }
 };
 
-Tracuse.models.fetchDataOne = function fetchDataOne(id, model) {
+Tracuse.models.fetchDataOne = function fetchDataOne(id, model, callback) {
     "use strict";
     // Retrieve one object by id
+    // Add to dataObj and dataArr
     var modelUrl = model.getRoute("one");
     var objectUrl = modelUrl.replace("<pk>", id);
     var request = new XMLHttpRequest();
-    if ((request.readyState === 4) && (request.status === 200)) {
-        return JSON.parse(request.responseText);
-    }
+    request.onreadystatechange = function () {
+        if ((request.readyState === 4) && (request.status === 200)) {
+            var response = JSON.parse(request.responseText);
+            Tracuse.models.loadDataOne(id, response, model);
+            callback(response);
+        }
+    };
     request.open("GET", objectUrl, true);
     request.send();
+};
+
+Tracuse.models.loadDataOne = function loadDataOne(id, object, model) {
+    "use strict";
+    // Load object into dataObj
+    model.dataObj[id] = object;
+    // Load object into dataArr
+    if (model.dataArr.indexOf(object) === -1) {
+        model.dataArr.push(object);
+    }
+    return object;
 };
 
 Tracuse.models.updateDataOne = function updateDataOne(inputEl) {
@@ -151,22 +167,31 @@ Tracuse.models.updateDataOne = function updateDataOne(inputEl) {
     request.send(request_data);
 };
 
-Tracuse.models.idsToObjects = function idsToObjects(idArray, model) {
+Tracuse.models.idsToObjects = function idsToObjects(idArray, model, callback) {
     // Convert array of model ids to model of objects
     // If object not in models, fetch object
     "use strict";
     var objectsArray = [];
-    var id = 0;
-    var object;
 
     for (var i = 0, imax = idArray.length; i < imax; i++) {
-        id = idArray[i];
-        object = model.dataObj[id];
+        var id = idArray[i];
+        var object = model.dataObj[id];
         if (!object) {
-            object = Tracuse.models.fetchDataOne(id, model);
+            Tracuse.models.fetchDataOne(id, model, function (ajaxResult) {
+                object = ajaxResult;
+                objectsArray.push(object);
+            });
+        } else {
+            objectsArray.push(object);
         }
-        objectsArray.push(object);
     }
 
-    return objectsArray;
+    var c = 0;
+    var checkObject = setInterval(function () {
+        if (idArray.length === objectsArray.length || c > 50) {
+            clearInterval(checkObject);
+            callback(objectsArray);
+        }
+        c++;
+    }, 100);
 };

@@ -36,39 +36,9 @@ Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arr
     // Render viewuse from template names
     var output = "";
     var templateName = "viewuse/" + arrangementTemplate + ".html";
-    var datumObjectsClone;
-
-    if (!datumObjects) {
-        datumObjectsClone = undefined;
-    } else {
-        datumObjectsClone = JSON.parse(JSON.stringify(datumObjects));
-
-        for (var d = 0, dmax = datumObjectsClone.length; d < dmax; d++) {
-            var datumObject = datumObjectsClone[d];
-
-            // Replace elements id list with element objects
-            datumObject.elements = Tracuse.models.idsToObjects(
-                datumObject.elements,
-                Tracuse.models.element_datum_objects
-            );
-
-            // Replace parent datums id list with datum objects
-            datumObject.parent_datums = Tracuse.models.idsToObjects(
-                datumObject.parent_datums,
-                Tracuse.models.datum_objects
-            );
-
-            // Replace child datums id list with datum objects
-            datumObject.child_datums = Tracuse.models.idsToObjects(
-                datumObject.child_datums,
-                Tracuse.models.datum_objects
-            );
-        }
-    }
-
     var templateData = {
         "datum_template": datumTemplate,
-        "datum_objects": datumObjectsClone,
+        "datum_objects": datumObjects,
         "id": Tracuse.ui.viewuse.nextId(),
         "datum_groups": Tracuse.models.datum_groups.dataArr,
         "datum_types": Tracuse.models.datum_types.dataArr,
@@ -91,10 +61,10 @@ Tracuse.views.renderViewuseFromObject = function renderViewuseFromObject(viewuse
     // Return filtered datums
     var filter = viewuseObject.filters[0];
     Tracuse.views.getFilteredDatums(filter, function (datumArray) {
-        var datumList = datumArray;
         var datumModel = Tracuse.models.datum_objects;
-        var datumObjects = Tracuse.models.idsToObjects(datumList, datumModel);
-        output = Tracuse.views.renderViewuseFromTemplate(arrangementTemplate, datumTemplate, datumObjects);
-        callback(output);
+        Tracuse.models.idsToObjects(datumArray, datumModel, function (objectsArray) {
+            output = Tracuse.views.renderViewuseFromTemplate(arrangementTemplate, datumTemplate, objectsArray);
+            callback(output);
+        });
     });
 };
