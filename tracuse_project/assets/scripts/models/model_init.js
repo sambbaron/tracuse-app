@@ -93,25 +93,6 @@ Tracuse.models.loadInitData = function loadInitData() {
     }
 };
 
-Tracuse.models.idsToObjects = function idsToObjects(idArray, model) {
-    // Convert array of model ids to model of objects
-    // If object not in models, fetch object
-    "use strict";
-    var objectsArray = [];
-    var id = 0;
-    var object;
-
-    for (var i = 0, imax = idArray.length; i < imax; i++) {
-        id = idArray[i];
-        object = model.dataObj[id];
-        if (!object) {
-            object = Tracuse.models.fetchDataOne(id, model);
-        }
-        objectsArray.push(object);
-    }
-
-    return objectsArray;
-};
 
 Tracuse.models.fetchDataOne = function fetchDataOne(id, model) {
     "use strict";
@@ -119,9 +100,9 @@ Tracuse.models.fetchDataOne = function fetchDataOne(id, model) {
     var modelUrl = model.getRoute("one");
     var objectUrl = modelUrl.replace("<pk>", id);
     var request = new XMLHttpRequest();
-     if ((request.readyState === 4) && (request.status === 200)) {
-         return request.responseText;
-     }
+    if ((request.readyState === 4) && (request.status === 200)) {
+        return request.responseText;
+    }
     request.open("GET", objectUrl, true);
     request.send();
 };
@@ -171,4 +152,22 @@ Tracuse.models.updateDataOne = function updateDataOne(inputEl) {
     request.send(request_data);
 };
 
+Tracuse.models.idsToObjects = function idsToObjects(idArray, model) {
+    // Convert array of model ids to model of objects
+    // If object not in models, fetch object
+    "use strict";
+    var objectsArray = [];
+    var id = 0;
+    var object;
 
+    for (var i = 0, imax = idArray.length; i < imax; i++) {
+        id = idArray[i];
+        object = model.dataObj[id];
+        if (!object) {
+            object = Tracuse.models.fetchDataOne(id, model);
+        }
+        objectsArray.push(object);
+    }
+
+    return objectsArray;
+};
