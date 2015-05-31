@@ -195,11 +195,11 @@ output += "<section class=\"viewuse\" template=\"";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "template_name"), env.opts.autoescape);
 output += "\" id=\"";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "id"), env.opts.autoescape);
-output += "\"\r\n         onmouseenter=\"Tracuse.ui.viewuse.mouseEnter(this, event)\"\r\n         onmouseleave=\"Tracuse.ui.viewuse.mouseLeave(this, event)\">\r\n    <input name=\"title\" value=\"View Title\">\r\n    <button name=\"new-object\" onclick=\"Tracuse.ui.viewuse.openObjectPanel(this, event)\"><i>+</i><span>New Object</span></button>\r\n    <button name=\"view-settings\" onclick=\"Tracuse.ui.viewuse.openViewPanel(this, event)\"><i>---------</i><span>View Settings</span></button>\r\n    <button name=\"close-view\" onclick=\"Tracuse.ui.viewuse.closeView(this, event)\"><i>X</i><span>Close View</span></button>\r\n    <div class=\"content\">\r\n        ";
+output += "\"\r\n         onmouseenter=\"Tracuse.app.viewuse.mouseEnter(this, event)\"\r\n         onmouseleave=\"Tracuse.app.viewuse.mouseLeave(this, event)\">\r\n    <input name=\"title\" value=\"View Title\">\r\n    <button name=\"new-object\" onclick=\"Tracuse.app.viewuse.openObjectPanel(this, event)\"><i>+</i><span>New Object</span></button>\r\n    <button name=\"view-settings\" onclick=\"Tracuse.app.viewuse.openViewPanel(this, event)\"><i>---------</i><span>View Settings</span></button>\r\n    <button name=\"close-view\" onclick=\"Tracuse.app.viewuse.closeView(this, event)\"><i>X</i><span>Close View</span></button>\r\n    <div class=\"content\">\r\n        ";
 context.getBlock("viewuse_content")(env, context, frame, runtime, function(t_2,t_1) {
 if(t_2) { cb(t_2); return; }
 output += t_1;
-output += "\r\n    </div>\r\n    <aside class=\"panel object-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            Object Filter\r\n        </h3>\r\n\r\n        <div class=\"content\">\r\n            <hr>\r\n            <div class=\"section groups-types\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Groups/Types</h4>\r\n\r\n                <div class=\"content\">\r\n                    ";
+output += "\r\n    </div>\r\n    <aside class=\"panel object-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.app.viewuse.showHidePanel(this, event)\">\r\n            Object Filter\r\n        </h3>\r\n\r\n        <div class=\"content\">\r\n            <hr>\r\n            <div class=\"section groups-types\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.app.viewuse.showHidePanel(this, event)\">Groups/Types</h4>\r\n\r\n                <div class=\"content\">\r\n                    ";
 frame = frame.push();
 var t_5 = runtime.contextOrFrameLookup(context, frame, "datum_groups");
 if(t_5) {var t_4 = t_5.length;
@@ -217,7 +217,7 @@ output += "\r\n                        <fieldset class=\"input-group col-";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "loop")),"index", env.opts.autoescape), env.opts.autoescape);
 output += "\">\r\n                            <button class=\"filter-input\" name=\"datum_group\" value=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_6),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n                                    onclick=\"Tracuse.ui.viewuse.clickDatumGroup(this, event)\">\r\n                                ";
+output += "\"\r\n                                    onclick=\"Tracuse.app.viewuse.clickDatumGroup(this, event)\">\r\n                                ";
 output += runtime.suppressValue(runtime.memberLookup((t_6),"readable_name", env.opts.autoescape), env.opts.autoescape);
 output += "\r\n                            </button>\r\n\r\n                            ";
 frame = frame.push();
@@ -239,7 +239,7 @@ output += "\r\n                                    <button class=\"filter-input\
 output += runtime.suppressValue(runtime.memberLookup((t_10),"datum_type_id", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n                                            datum_group_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_10),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n                                            onclick=\"Tracuse.ui.viewuse.clickDatumType(this, event)\">\r\n                                        ";
+output += "\"\r\n                                            onclick=\"Tracuse.app.viewuse.clickDatumType(this, event)\">\r\n                                        ";
 output += runtime.suppressValue(runtime.memberLookup((t_10),"readable_name", env.opts.autoescape), env.opts.autoescape);
 output += "\r\n                                    </button>\r\n                                ";
 ;
@@ -254,7 +254,7 @@ output += "\r\n                        </fieldset>\r\n                    ";
 }
 }
 frame = frame.pop();
-output += "\r\n                </div>\r\n            </div>\r\n            <hr>\r\n            <div class=\"section associations\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Associations</h4>\r\n\r\n                <div class=\"content\">\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Groups</h5>\r\n                        <select name=\"datum_groups\"\r\n                                onchange=\"Tracuse.ui.viewuse.selectDatumGroup(this, event)\">\r\n                            <option></option>\r\n                            ";
+output += "\r\n                </div>\r\n            </div>\r\n            <hr>\r\n            <div class=\"section associations\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.app.viewuse.showHidePanel(this, event)\">Associations</h4>\r\n\r\n                <div class=\"content\">\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Groups</h5>\r\n                        <select name=\"datum_groups\"\r\n                                onchange=\"Tracuse.app.viewuse.selectDatumGroup(this, event)\">\r\n                            <option></option>\r\n                            ";
 frame = frame.push();
 var t_13 = runtime.contextOrFrameLookup(context, frame, "datum_groups");
 if(t_13) {var t_12 = t_13.length;
@@ -277,7 +277,7 @@ output += "\r\n                                </option>\r\n                    
 }
 }
 frame = frame.pop();
-output += "\r\n                        </select>\r\n                    </fieldset>\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Types</h5>\r\n                        <select name=\"datum_types\"\r\n                                onchange=\"Tracuse.ui.viewuse.selectDatumType(this, event)\">\r\n                            <option></option>\r\n                            ";
+output += "\r\n                        </select>\r\n                    </fieldset>\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Types</h5>\r\n                        <select name=\"datum_types\"\r\n                                onchange=\"Tracuse.app.viewuse.selectDatumType(this, event)\">\r\n                            <option></option>\r\n                            ";
 frame = frame.push();
 var t_17 = runtime.contextOrFrameLookup(context, frame, "datum_types");
 if(t_17) {var t_16 = t_17.length;
@@ -302,7 +302,7 @@ output += "\r\n                                </option>\r\n                    
 }
 }
 frame = frame.pop();
-output += "\r\n                        </select>\r\n                    </fieldset>\r\n                    <br>\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Objects</h5>\r\n                        <select name=\"datum_objects\">\r\n                            <option></option>\r\n                        </select>\r\n                        <button class=\"add-filter\" name=\"add-association\"\r\n                                onclick=\"Tracuse.ui.viewuse.addAssociatedDatum(this, event)\">\r\n                            +\r\n                        </button>\r\n                    </fieldset>\r\n\r\n                </div>\r\n            </div>\r\n            <hr>\r\n            <div class=\"section elements\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">Elements</h4>\r\n\r\n                <div class=\"content\">\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Types</h5>\r\n                        <select name=\"element_types\"\r\n                                onchange=\"Tracuse.ui.viewuse.selectElement(this, event)\">\r\n                            <option></option>\r\n                            ";
+output += "\r\n                        </select>\r\n                    </fieldset>\r\n                    <br>\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Objects</h5>\r\n                        <select name=\"datum_objects\">\r\n                            <option></option>\r\n                        </select>\r\n                        <button class=\"add-filter\" name=\"add-association\"\r\n                                onclick=\"Tracuse.app.viewuse.addAssociatedDatum(this, event)\">\r\n                            +\r\n                        </button>\r\n                    </fieldset>\r\n\r\n                </div>\r\n            </div>\r\n            <hr>\r\n            <div class=\"section elements\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.app.viewuse.showHidePanel(this, event)\">Elements</h4>\r\n\r\n                <div class=\"content\">\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Types</h5>\r\n                        <select name=\"element_types\"\r\n                                onchange=\"Tracuse.app.viewuse.selectElement(this, event)\">\r\n                            <option></option>\r\n                            ";
 frame = frame.push();
 var t_21 = runtime.contextOrFrameLookup(context, frame, "element_types");
 if(t_21) {var t_20 = t_21.length;
@@ -325,7 +325,7 @@ output += "\r\n                                </option>\r\n                    
 }
 }
 frame = frame.pop();
-output += "\r\n                        </select>\r\n                        <h5 class=\"title\">Operators</h5>\r\n                        <select name=\"element_operators\">\r\n                            <option></option>\r\n                        </select>\r\n                        <br>\r\n                        <h5 class=\"title\">Filter Value</h5>\r\n                        <input name=\"element_value\">\r\n                        <button class=\"add-filter\" name=\"add-element-filter\"\r\n                                onclick=\"Tracuse.ui.viewuse.addElementFilter(this, event)\">\r\n                            +\r\n                        </button>\r\n                    </fieldset>\r\n                </div>\r\n            </div>\r\n            <hr>\r\n        </div>\r\n\r\n    </aside>\r\n    <aside class=\"panel view-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.ui.viewuse.showHidePanel(this, event)\">\r\n            View Settings\r\n        </h3>\r\n\r\n    </aside>\r\n</section>";
+output += "\r\n                        </select>\r\n                        <h5 class=\"title\">Operators</h5>\r\n                        <select name=\"element_operators\">\r\n                            <option></option>\r\n                        </select>\r\n                        <br>\r\n                        <h5 class=\"title\">Filter Value</h5>\r\n                        <input name=\"element_value\">\r\n                        <button class=\"add-filter\" name=\"add-element-filter\"\r\n                                onclick=\"Tracuse.app.viewuse.addElementFilter(this, event)\">\r\n                            +\r\n                        </button>\r\n                    </fieldset>\r\n                </div>\r\n            </div>\r\n            <hr>\r\n        </div>\r\n\r\n    </aside>\r\n    <aside class=\"panel view-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.app.viewuse.showHidePanel(this, event)\">\r\n            View Settings\r\n        </h3>\r\n\r\n    </aside>\r\n</section>";
 cb(null, output);
 });
 } catch (e) {

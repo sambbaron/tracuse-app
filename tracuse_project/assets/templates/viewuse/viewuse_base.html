@@ -1,28 +1,28 @@
 <section class="viewuse" template="{{ template_name }}" id="{{ id }}"
-         onmouseenter="Tracuse.ui.viewuse.mouseEnter(this, event)"
-         onmouseleave="Tracuse.ui.viewuse.mouseLeave(this, event)">
+         onmouseenter="Tracuse.app.viewuse.mouseEnter(this, event)"
+         onmouseleave="Tracuse.app.viewuse.mouseLeave(this, event)">
     <input name="title" value="View Title">
-    <button name="new-object" onclick="Tracuse.ui.viewuse.openObjectPanel(this, event)"><i>+</i><span>New Object</span></button>
-    <button name="view-settings" onclick="Tracuse.ui.viewuse.openViewPanel(this, event)"><i>---------</i><span>View Settings</span></button>
-    <button name="close-view" onclick="Tracuse.ui.viewuse.closeView(this, event)"><i>X</i><span>Close View</span></button>
+    <button name="new-object" onclick="Tracuse.app.viewuse.openObjectPanel(this, event)"><i>+</i><span>New Object</span></button>
+    <button name="view-settings" onclick="Tracuse.app.viewuse.openViewPanel(this, event)"><i>---------</i><span>View Settings</span></button>
+    <button name="close-view" onclick="Tracuse.app.viewuse.closeView(this, event)"><i>X</i><span>Close View</span></button>
     <div class="content">
         {% block viewuse_content %}{% endblock %}
     </div>
     <aside class="panel object-panel">
-        <h3 class="title" onclick="Tracuse.ui.viewuse.showHidePanel(this, event)">
+        <h3 class="title" onclick="Tracuse.app.viewuse.showHidePanel(this, event)">
             Object Filter
         </h3>
 
         <div class="content">
             <hr>
             <div class="section groups-types">
-                <h4 class="title" onclick="Tracuse.ui.viewuse.showHidePanel(this, event)">Groups/Types</h4>
+                <h4 class="title" onclick="Tracuse.app.viewuse.showHidePanel(this, event)">Groups/Types</h4>
 
                 <div class="content">
                     {% for datum_group in datum_groups %}
                         <fieldset class="input-group col-{{ loop.index }}">
                             <button class="filter-input" name="datum_group" value="{{ datum_group.datum_group_id }}"
-                                    onclick="Tracuse.ui.viewuse.clickDatumGroup(this, event)">
+                                    onclick="Tracuse.app.viewuse.clickDatumGroup(this, event)">
                                 {{ datum_group.readable_name }}
                             </button>
 
@@ -30,7 +30,7 @@
                                 {% if datum_type.datum_group_id == datum_group.datum_group_id %}
                                     <button class="filter-input" name="datum_type" value="{{ datum_type.datum_type_id }}"
                                             datum_group_id="{{ datum_type.datum_group_id }}"
-                                            onclick="Tracuse.ui.viewuse.clickDatumType(this, event)">
+                                            onclick="Tracuse.app.viewuse.clickDatumType(this, event)">
                                         {{ datum_type.readable_name }}
                                     </button>
                                 {% endif %}
@@ -41,13 +41,13 @@
             </div>
             <hr>
             <div class="section associations">
-                <h4 class="title" onclick="Tracuse.ui.viewuse.showHidePanel(this, event)">Associations</h4>
+                <h4 class="title" onclick="Tracuse.app.viewuse.showHidePanel(this, event)">Associations</h4>
 
                 <div class="content">
                     <fieldset class="input-group">
                         <h5 class="title">Groups</h5>
                         <select name="datum_groups"
-                                onchange="Tracuse.ui.viewuse.selectDatumGroup(this, event)">
+                                onchange="Tracuse.app.viewuse.selectDatumGroup(this, event)">
                             <option></option>
                             {% for datum_group in datum_groups %}
                                 <option value="{{ datum_group.datum_group_id }}">
@@ -59,7 +59,7 @@
                     <fieldset class="input-group">
                         <h5 class="title">Types</h5>
                         <select name="datum_types"
-                                onchange="Tracuse.ui.viewuse.selectDatumType(this, event)">
+                                onchange="Tracuse.app.viewuse.selectDatumType(this, event)">
                             <option></option>
                             {% for datum_type in datum_types %}
                                 <option value="{{ datum_type.datum_type_id }}"
@@ -76,7 +76,7 @@
                             <option></option>
                         </select>
                         <button class="add-filter" name="add-association"
-                                onclick="Tracuse.ui.viewuse.addAssociatedDatum(this, event)">
+                                onclick="Tracuse.app.viewuse.addAssociatedDatum(this, event)">
                             +
                         </button>
                     </fieldset>
@@ -85,13 +85,13 @@
             </div>
             <hr>
             <div class="section elements">
-                <h4 class="title" onclick="Tracuse.ui.viewuse.showHidePanel(this, event)">Elements</h4>
+                <h4 class="title" onclick="Tracuse.app.viewuse.showHidePanel(this, event)">Elements</h4>
 
                 <div class="content">
                     <fieldset class="input-group">
                         <h5 class="title">Types</h5>
                         <select name="element_types"
-                                onchange="Tracuse.ui.viewuse.selectElement(this, event)">
+                                onchange="Tracuse.app.viewuse.selectElement(this, event)">
                             <option></option>
                             {% for element_type in element_types %}
                                 <option value="{{ element_type.element_type_id }}">
@@ -107,7 +107,7 @@
                         <h5 class="title">Filter Value</h5>
                         <input name="element_value">
                         <button class="add-filter" name="add-element-filter"
-                                onclick="Tracuse.ui.viewuse.addElementFilter(this, event)">
+                                onclick="Tracuse.app.viewuse.addElementFilter(this, event)">
                             +
                         </button>
                     </fieldset>
@@ -118,7 +118,7 @@
 
     </aside>
     <aside class="panel view-panel">
-        <h3 class="title" onclick="Tracuse.ui.viewuse.showHidePanel(this, event)">
+        <h3 class="title" onclick="Tracuse.app.viewuse.showHidePanel(this, event)">
             View Settings
         </h3>
 
