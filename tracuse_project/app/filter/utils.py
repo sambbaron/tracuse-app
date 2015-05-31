@@ -96,10 +96,10 @@ def run_filter_from_model(**rules):
 
     # Compile filter rules that return Q object
     # Return dictionary to be passed to filter rules that return datum sets
-    # (FilterRuleUser, FilterRuleGroup, FilterRuleType)
+    # (FilterRuleUser, FilterRuleGroup, FilterRuleType, FilterRuleDataType)
     datum_filter_rules = {}
     for filter_rule in Q_FILTER_RULES:
-        if filter_rule in rules:
+        if filter_rule in rules and rules[filter_rule] != []:
             datum_filter_rules[filter_rule] = rules[filter_rule]
 
     # Compile filter rules that return datum set
@@ -107,7 +107,7 @@ def run_filter_from_model(**rules):
     # (FilterRuleAssociation, FilterRuleElement)
     datum_sets = []
     for filter_rule in SET_FILTER_RULES:
-        if filter_rule in rules:
+        if filter_rule in rules and rules[filter_rule] != []:
             datum_set = compile_datum_set_rules(
                 filter_rules=rules[filter_rule],
                 datum_filter_rules=datum_filter_rules
