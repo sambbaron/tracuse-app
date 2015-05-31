@@ -403,15 +403,46 @@ class FilterSet(EntityModel):
                              related_name="filter_sets",
                              null=True, blank=True
                              )
+    filter_rules_user = models.ManyToManyField("filter.FilterRuleUser",
+                                                through="filter.FilterSetUserRule",
+                                                related_name="+"
+                                                )
+    filter_rules_group = models.ManyToManyField("filter.FilterRuleGroup",
+                                                through="filter.FilterSetGroupRule",
+                                                related_name="+"
+                                                )
+    filter_rules_type = models.ManyToManyField("filter.FilterRuleType",
+                                                through="filter.FilterSetTypeRule",
+                                                related_name="+"
+                                                )
+    filter_rules_association = models.ManyToManyField("filter.FilterRuleAssociation",
+                                                through="filter.FilterSetAssociationRule",
+                                                related_name="+"
+                                                )
+    filter_rules_element = models.ManyToManyField("filter.FilterRuleElement",
+                                                through="filter.FilterSetElementRule",
+                                                related_name="+"
+                                                )
+    filter_rules_data_type = models.ManyToManyField("filter.FilterRuleDataType",
+                                                through="filter.FilterSetDataTypeRule",
+                                                related_name="+"
+                                                )
 
     @property
     def rules_dict(self):
         rules = {}
-        rules["filter_set_user_rules"] = self.filter_set_user_rules.all()
-        rules["filter_set_group_rules"] = self.filter_set_group_rules.all()
-        rules["filter_set_type_rules"] = self.filter_set_type_rules.all()
-        rules["filter_set_association_rules"] = self.filter_set_association_rules.all()
-        rules["filter_set_element_rules"] = self.filter_set_element_rules.all()
+        if self.filter_rules_user.exists():
+            rules["FilterRuleUser"] = self.filter_rules_user.all()
+        if self.filter_rules_group.exists():
+            rules["FilterRuleGroup"] = self.filter_rules_group.all()
+        if self.filter_rules_type.exists():
+            rules["FilterRuleType"] = self.filter_rules_type.all()
+        if self.filter_rules_association.exists():
+            rules["FilterRuleAssociation"] = self.filter_rules_association.all()
+        if self.filter_rules_element.exists():
+            rules["FilterRuleElement"] = self.filter_rules_element.all()
+        if self.filter_rules_data_type.exists():
+            rules["FilterRuleDataType"] = self.filter_rules_data_type.all()
         return rules
 
     def run_filter(self):
