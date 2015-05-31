@@ -18,9 +18,13 @@ class ViewuseObjectSerializer(ViewuseObject):
 
     def serial_for_ui(self):
         """Properties for rendering ui"""
+        filter_list = []
+        for filter in self.viewuse_filters.all():
+            filter_list.append(filter.filter_json)
         output = serialize_all(self.__class__, self)
         output["arrangement_template"] = self.viewuse_arrangement.schema_name
         output["datum_template"] = self.viewuse_datum.schema_name
+        output["filters"] = filter_list
         return output
 
     ViewuseObject.serial_basic = serial_basic
