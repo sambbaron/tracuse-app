@@ -93,37 +93,24 @@ Tracuse.models.loadInitData = function loadInitData() {
     }
 };
 
-Tracuse.models.idsToObjects = function idsToObjects(model, idArray, nestedIds) {
-    // Convert array of model ids to objects
-    // Arguments:
-    //      model (Model): Tracuse.models.*
-    //      idArray (array/int): Array of model ids
-    //      nestedIds (boolean):
-    //          True: Wrap model with id object
-    //          False: Object is flat
+Tracuse.models.idsToObjects = function idsToObjects(idArray, model) {
+    // Convert array of model ids to model of objects
+    // If object not in models, fetch object
     "use strict";
-    var modelObjects = [];
+    var objectsArray = [];
+    var id = 0;
+    var object;
 
-    for (var i = 0, max = idArray.length; i < max; i++) {
-        var id = idArray[i];
-        var modelObject = model.dataObj[id];
-        if (nestedIds) {
-            modelObjects.push({id: modelObject});
-        } else {
-            modelObjects.push(modelObject)
+    for (var i = 0, imax = idArray.length; i < imax; i++) {
+        id = idArray[i];
+        object = model.dataObj[id];
+        if (!object) {
+            object = Tracuse.models.fetchDataOne(id, model);
         }
+        objectsArray.push(object);
     }
-    return modelObjects
-};
 
-Tracuse.models.objectsToArray = function objectsToArray(objects) {
-    // Convert object of objects to array
-    "use strict";
-    var outputArray = [];
-    for (var object in objects) {
-        outputArray.push(objects[object])
-    }
-    return outputArray
+    return objectsArray;
 };
 
 Tracuse.models.nestedIdsToObjects = function nestedIdsToObjects(nestedIdArray, nestedModel) {
