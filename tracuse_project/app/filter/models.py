@@ -388,7 +388,7 @@ class FilterSet(EntityModel):
         See EntityModel (includes BaseModel)
         user (integer, fk, optional): User
         rules_dict (dict):
-            Lists of FilterRule objects
+            Lists of FilterSetRule objects related to FilterSet
             Use to run filter
     """
 
