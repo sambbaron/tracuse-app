@@ -33,5 +33,9 @@ Tracuse.routes = {
     },
     "viewuse_datums": {
         "all": "/api/viewuse_datums/"
+    },
+    "filter": {
+        "json": "/api/filter/json/",
+        "id": "/api/filter/<pk>/"
     }
 };
