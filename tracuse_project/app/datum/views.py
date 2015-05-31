@@ -79,7 +79,7 @@ class DatumObjectOne(View):
     """Retrieve, update or delete a datum_object instance.
     """
 
-    @login_required
+    @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
