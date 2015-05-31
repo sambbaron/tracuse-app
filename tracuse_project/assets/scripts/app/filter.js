@@ -1,6 +1,6 @@
 var Tracuse = Tracuse || {};
 
-// Viewuse Functions
+// Filter Functions
 Tracuse.app = Tracuse.app || {};
 Tracuse.app.filter = Tracuse.app.filter || {};
 
