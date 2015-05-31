@@ -16,7 +16,7 @@ class TestElementTypeAll(TestCase):
 
     def test_get(self):
         """Test ElementTypeAll.get api"""
-        request = self.factory.get('/api/element_types/')
+        request = self.factory.get("/api/element_types/")
         request.user = self.test.user1
 
         view = views.ElementTypeAll(request=request)
@@ -39,7 +39,7 @@ class TestElementOperatorAll(TestCase):
 
     def test_get(self):
         """Test ElementOperatorAll.get api"""
-        request = self.factory.get('/api/element_operators/')
+        request = self.factory.get("/api/element_operators/")
         request.user = self.test.user1
 
         view = views.ElementOperatorAll(request=request)
@@ -62,7 +62,7 @@ class TestElementDatumTypeAll(TestCase):
 
     def test_get(self):
         """Test ElementDatumTypeAll.get api"""
-        request = self.factory.get('/api/element_datum_types/')
+        request = self.factory.get("/api/element_datum_types/")
         request.user = self.test.user1
 
         view = views.ElementDatumTypeAll(request=request)
@@ -85,7 +85,7 @@ class TestElementDatumObjectAll(TestCase):
 
     def test_get(self):
         """Test ElementDatumObjectAll.get api"""
-        request = self.factory.get('/api/element_datum_objects/')
+        request = self.factory.get("/api/element_datum_objects/")
         request.user = self.test.user1
 
         view = views.ElementDatumObjectAll(request=request)
@@ -105,6 +105,22 @@ class TestElementDatumObjectOne(TestCase):
 
     def setUp(self):
         self.factory = RequestFactory()
+
+    def test_get(self):
+        """Test ElementDatumObjectOne.get api"""
+        request_id = self.test.element_datum_object1.element_datum_object_id
+        request_path = "/api/element_datum_objects/{}/".format(request_id)
+        request = self.factory.get(request_path)
+        request.user = self.test.user1
+
+        view = views.ElementDatumObjectAll(request=request)
+        response = view.dispatch(request=request)
+
+        response_content = json.loads(response.content.decode())
+        response_actual = response_content[str(request_id)]["element_name"]
+        expected_actual = "Name"
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(expected_actual, response_actual)
 
     def test_put(self):
         """Test ElementDatumObjectOne.put api"""

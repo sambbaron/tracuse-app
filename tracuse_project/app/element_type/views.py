@@ -94,6 +94,14 @@ class ElementDatumObjectOne(View):
         except ElementDatumObject.DoesNotExist:
             raise Http404("Element does not exist.")
 
+    def get(self, request, pk):
+        object = self.get_object(pk)
+        serialized_data = Serializer(data=object,
+                                     serializer=ElementDatumObjectSerializer.serial_ids_value
+                                     ).serialize()
+        response = JsonResponse(serialized_data, status=200)
+        return response
+
     def put(self, request, pk):
         object = self.get_object(pk)
         request_data = request.body.decode()
