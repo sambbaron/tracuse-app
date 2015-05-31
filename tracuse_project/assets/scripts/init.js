@@ -56,6 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
 var renderTest = function renderTest() {
     "use strict";
     var viewuse = Tracuse.models.viewuse_objects.dataArr[0];
-    var rendered = Tracuse.views.renderViewuseFromObject(viewuse);
-    Tracuse.frame.innerHTML = rendered;
+    Tracuse.views.renderViewuseFromObject(viewuse, function (renderedOutput) {
+        Tracuse.frame.innerHTML = renderedOutput;
+    });
+
 };
