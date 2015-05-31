@@ -1,6 +1,6 @@
 var Tracuse = Tracuse || {};
 
-// Viewuse UI Functions
+// Viewuse Functions
 Tracuse.app = Tracuse.app || {};
 Tracuse.app.viewuse = Tracuse.app.viewuse || {};
 
