@@ -117,3 +117,28 @@ class TestDatumObjectAll(TestCase):
         expected_content = "Data post error"
         self.assertEqual(response.status_code, 400)
         self.assertEqual(expected_content, actual_content)
+
+
+class TestDatumObjectOne(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataDatum()
+
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_get(self):
+        """Test DatumObjectOne.get api"""
+        request_id = self.test.datum_object1.datum_object_id
+        request_path = "/api/datum_object/{}/".format(request_id)
+        request = self.factory.get(request_path)
+        request.user = self.test.user1
+
+        view = views.DatumObjectAll(request=request)
+        response = view.dispatch(request=request)
+
+        response_content = json.loads(response.content.decode())
+        response_actual = response_content[str(request_id)]["headline"]
+        expected_actual = "Test Object Name"
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(expected_actual, response_actual)
