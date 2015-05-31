@@ -39,7 +39,7 @@ Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arr
     var templateData = {
         "datum_template": datumTemplate,
         "datum_objects": datumObjects,
-        "id": Tracuse.ui.viewuse.nextId(),
+        "id": Tracuse.app.viewuse.nextId(),
         "datum_groups": Tracuse.models.datum_groups.dataArr,
         "datum_types": Tracuse.models.datum_types.dataArr,
         "element_types": Tracuse.models.element_types.dataArr
