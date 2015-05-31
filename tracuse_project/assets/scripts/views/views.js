@@ -4,6 +4,33 @@ var Tracuse = Tracuse || {};
 Tracuse.views = Tracuse.views || {};
 
 
+Tracuse.views.getFilteredDatums = function getFilteredDatums(filter) {
+    "use strict";
+    // Send either filter json object or filter set id
+    // Return array of datum ids
+    var request = new XMLHttpRequest();
+    var filterUrl = "";
+
+    //request.onreadystatechange = function () {
+    //    if ((request.readyState === 4) && (request.status === 200)) {
+    //        return JSON.parse(request.responseText);
+    //    }
+    //};
+
+    if (typeof filter === "number") {
+        filterUrl = Tracuse.routes.filter.id.replace("<pk>", filter);
+        request.open("GET", filterUrl, false);
+        request.send();
+    } else if (typeof filter === "string") {
+        filterUrl = Tracuse.routes.filter.json;
+        request.open("POST", filterUrl, false);
+        request = Tracuse.utils.csrfSafeRequest(request);
+        request.send(filter);
+    }
+
+    return JSON.parse(request.responseText);
+};
+
 Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arrangementTemplate,
                                                                              datumTemplate,
                                                                              datumObjects) {
@@ -22,19 +49,19 @@ Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arr
             var datumObject = datumObjectsClone[d];
 
             // Replace elements id list with element objects
-            datumObject.elements = Tracuse.models.nestedIdsToObjects(
+            datumObject.elements = Tracuse.models.idsToObjects(
                 datumObject.elements,
                 Tracuse.models.element_datum_objects
             );
 
             // Replace parent datums id list with datum objects
-            datumObject.parent_datums = Tracuse.models.nestedIdsToObjects(
+            datumObject.parent_datums = Tracuse.models.idsToObjects(
                 datumObject.parent_datums,
                 Tracuse.models.datum_objects
             );
 
             // Replace child datums id list with datum objects
-            datumObject.child_datums = Tracuse.models.nestedIdsToObjects(
+            datumObject.child_datums = Tracuse.models.idsToObjects(
                 datumObject.child_datums,
                 Tracuse.models.datum_objects
             );
@@ -57,14 +84,18 @@ Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arr
 Tracuse.views.renderViewuseFromObject = function renderViewuseFromObject(viewuseObject) {
     "use strict";
     // Render viewuse from model object
+
     // Lookup template names
-    // Return filtered datums
     var output = "";
     var arrangementTemplate = viewuseObject.arrangement_template;
     var datumTemplate = viewuseObject.datum_template;
 
-    var datumObjects = Tracuse.models.datum_objects.dataArr;
-
+    // Return filtered datums
+    var filter = viewuseObject.filters[0];
+    var datumList = Tracuse.views.getFilteredDatums(filter);
+    var datumModel = Tracuse.models.datum_objects;
+    var datumObjects = Tracuse.models.idsToObjects(datumList, datumModel);
     output = Tracuse.views.renderViewuseFromTemplate(arrangementTemplate, datumTemplate, datumObjects);
     return output;
+
 };
