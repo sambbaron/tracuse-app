@@ -8,7 +8,7 @@ Tracuse.Model = function Model(name, options) {
     this.name = name;
     this.loadOnInit = options.loadOnInit || false;
     this.dataObj = options.dataObj || {};
-    this.dataArr = options.dataArr || {};
+    this.dataArr = options.dataArr || [];
     this.idProperty = options.idProperty || "id";
     this.properties = options.properties || [];
 };
