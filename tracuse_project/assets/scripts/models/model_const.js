@@ -82,6 +82,5 @@ Tracuse.Model.prototype.loadData = function loadData() {
 Tracuse.Model.Property = function Property(name, options) {
     "use strict";
     this.name = name;
-    this.setElementProperty = options.setElementProperty || true;
-    this.setElementAttribute = options.setElementAttribute || false;
+    this.nestedModel = options.nestedModel || true;
 };

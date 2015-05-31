@@ -53,22 +53,22 @@ Tracuse.models.createModels = function createModels() {
 
     // Create Properties
     models.datum_objects.properties = [
-        new Tracuse.Model.Property("datum_object_id", {"setElementAttribute": true}),
-        new Tracuse.Model.Property("datum_group_id", {"setElementAttribute": true}),
-        new Tracuse.Model.Property("datum_type_id", {"setElementAttribute": true}),
-        new Tracuse.Model.Property("datum_type_name", {"setElementAttribute": false}),
-        new Tracuse.Model.Property("headline", {"setElementAttribute": false}),
-        new Tracuse.Model.Property("parent_datums", {"setElementAttribute": false}),
-        new Tracuse.Model.Property("child_datums", {"setElementAttribute": false}),
-        new Tracuse.Model.Property("elements", {"setElementAttribute": false})
+        new Tracuse.Model.Property("datum_object_id", {}),
+        new Tracuse.Model.Property("datum_group_id", {}),
+        new Tracuse.Model.Property("datum_type_id", {}),
+        new Tracuse.Model.Property("datum_type_name", {}),
+        new Tracuse.Model.Property("headline", {}),
+        new Tracuse.Model.Property("parent_datums", {"nestedModel": "element_datum_objects"}),
+        new Tracuse.Model.Property("child_datums", {"nestedModel": "datum_objects"}),
+        new Tracuse.Model.Property("elements", {"nestedModel": "datum_objects"})
     ];
 
     models.element_datum_objects.properties = [
-        new Tracuse.Model.Property("element_datum_object_id", {"setElementAttribute": true}),
-        new Tracuse.Model.Property("element_datum_type_id", {"setElementAttribute": true}),
-        new Tracuse.Model.Property("element_type_id", {"setElementAttribute": true}),
-        new Tracuse.Model.Property("element_name", {"setElementAttribute": false}),
-        new Tracuse.Model.Property("element_value", {"setElementAttribute": false})
+        new Tracuse.Model.Property("element_datum_object_id", {}),
+        new Tracuse.Model.Property("element_datum_type_id", {}),
+        new Tracuse.Model.Property("element_type_id", {}),
+        new Tracuse.Model.Property("element_name", {}),
+        new Tracuse.Model.Property("element_value", {})
     ];
 
     // Register Model objects in "models" object
