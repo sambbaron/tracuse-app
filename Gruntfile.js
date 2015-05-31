@@ -6,7 +6,7 @@ module.exports = function (grunt) {
             precompile: {
                 baseDir: "<%= pkg.dirAssets %>/templates/",
                 src: "<%= pkg.dirAssets %>/templates/*/*",
-                dest: "<%= pkg.dirAssets %>/templates/templates.js"
+                dest: "<%= pkg.dirAssets %>/templates/compiled_templates.js"
             }
         },
         watch: {
