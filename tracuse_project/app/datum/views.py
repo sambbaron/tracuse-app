@@ -97,17 +97,17 @@ class DatumObjectOne(View):
         response = JsonResponse(serialized_data, status=200)
         return response
 
-    def put(self, request, pk):
-        request_data = request.body.decode()
-        serialized_data = json.loads(request_data)
-        post_data = post_datum_object(serialized_data)
-        if type(post_data) == DatumObject:
-            response = JsonResponse(post_data, status=200)
-        else:
-            response = HttpResponse(post_data, status=400)
-        return response
-
-    def delete(self, request, pk):
-        datum_object = self.get_object(pk)
-        datum_object.delete()
-        return HttpResponse(status=204)
+    # def put(self, request, pk):
+    #     request_data = request.body.decode()
+    #     serialized_data = json.loads(request_data)
+    #     post_data = post_datum_object(serialized_data)
+    #     if type(post_data) == DatumObject:
+    #         response = JsonResponse(post_data, status=200)
+    #     else:
+    #         response = HttpResponse(post_data, status=400)
+    #     return response
+    #
+    # def delete(self, request, pk):
+    #     datum_object = self.get_object(pk)
+    #     datum_object.delete()
+    #     return HttpResponse(status=204)
