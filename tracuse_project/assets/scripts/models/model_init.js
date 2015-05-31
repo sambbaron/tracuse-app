@@ -48,7 +48,7 @@ Tracuse.models.createModels = function createModels() {
         "viewuse_datums": new Tracuse.Model("viewuse_datums", {
             "loadOnInit": true,
             "idProperty": "viewuse_datum_id"
-        })        
+        })
     };
 
     // Create Properties
@@ -113,19 +113,17 @@ Tracuse.models.idsToObjects = function idsToObjects(idArray, model) {
     return objectsArray;
 };
 
-Tracuse.models.nestedIdsToObjects = function nestedIdsToObjects(nestedIdArray, nestedModel) {
-    // Within model object, replace nested array of ids with
-    // model objects
-    // Example: datum.elements = [1, 2, 3] -> datum.element = [object, object, object]
+Tracuse.models.fetchDataOne = function fetchDataOne(id, model) {
     "use strict";
-    var nestedObjects = [];
-    var nestedObjects = Tracuse.models.idsToObjects(
-        nestedModel,
-        nestedIdArray,
-        false
-    );
-    return nestedObjects;
-
+    // Retrieve one object by id
+    var modelUrl = model.getRoute("one");
+    var objectUrl = modelUrl.replace("<pk>", id);
+    var request = new XMLHttpRequest();
+     if ((request.readyState === 4) && (request.status === 200)) {
+         return request.responseText;
+     }
+    request.open("GET", objectUrl, true);
+    request.send();
 };
 
 Tracuse.models.updateDataOne = function updateDataOne(inputEl) {
