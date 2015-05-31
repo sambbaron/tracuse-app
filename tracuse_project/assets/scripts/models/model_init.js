@@ -93,7 +93,6 @@ Tracuse.models.loadInitData = function loadInitData() {
     }
 };
 
-
 Tracuse.models.fetchDataOne = function fetchDataOne(id, model) {
     "use strict";
     // Retrieve one object by id
@@ -101,7 +100,7 @@ Tracuse.models.fetchDataOne = function fetchDataOne(id, model) {
     var objectUrl = modelUrl.replace("<pk>", id);
     var request = new XMLHttpRequest();
     if ((request.readyState === 4) && (request.status === 200)) {
-        return request.responseText;
+        return JSON.parse(request.responseText);
     }
     request.open("GET", objectUrl, true);
     request.send();
