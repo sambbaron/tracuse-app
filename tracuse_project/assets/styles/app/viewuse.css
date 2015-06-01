@@ -6,7 +6,8 @@
     min-width: 15em;
     float: left;
     margin: 2em;
-    border: 1px solid #35446A;
+    border: 1px solid #6E8BD9;
+    border-radius: 0.5em;
     padding: 1em;
     resize: both;
     overflow: auto;
@@ -14,7 +15,7 @@
 }
 
 .viewuse.active {
-    background-color: #e1e6f0;
+    background-color: #f5f5f5;
 }
 
 .viewuse > input[name="title"] {
@@ -26,227 +27,183 @@
     font-size: 150%;
 }
 
-.viewuse > button {
+.viewuse > .content {
+    width: 90%;
+    margin: 1em auto;
+}
+
+.viewuse-controls {
     display: none;
     position: absolute;
-    height: 4em;
+    top: 0;
+    left: 0;
+}
+
+.viewuse-controls button {
     width: 4em;
-    border: 1px solid #587e1f;
-    background-color: #ddf0bf;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    padding: 0.25em;
+    background-color: #ebf0fa;
     text-align: center;
-
-}
-
-.viewuse > button * {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    pointer-events: none;
-}
-
-.viewuse > button i {
-    color: #cce8a2;
-    font-size: 400%;
-    line-height: 25%;
-    letter-spacing: -4px;
-}
-
-.viewuse > button span {
-    color: #587e1f;
-}
-
-.viewuse > button:hover {
-    color: #ddf0bf;
-    background-color: #587e1f;
-}
-
-.viewuse > button[name="new-object"] {
-    top: 0;
-    left: 0;
-}
-
-.viewuse > button[name="view-settings"] {
-    top: 0;
-    right: 0;
-}
-
-.viewuse > button[name="close-view"] {
-    top: 4em;
-    right: 0;
-}
-
-.viewuse > .panel {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2em;
-    padding: 0.5em;
-    background-color: #1d3919;
-    color: #ffffff;
-    transition: width 500ms;
-}
-
-.viewuse > .panel.visible {
-    width: 18em;
-}
-
-.viewuse > .panel.object-panel {
-    left: 0;
-    background-image: linear-gradient(to right, #1d3919, #587e1f);
-}
-
-.viewuse > .panel.view-panel {
-    right: 0;
-    background-image: linear-gradient(to left, #1d3919, #587e1f);
-}
-
-.viewuse > .panel > .title {
-    position: absolute;
-    top: 3em;
-    transform: rotate(-90deg);
-    height: 1.5em;
-    width: 7em;
-    font-size: 125%;
-    text-align: right;
     cursor: pointer;
+
 }
 
-.viewuse > .panel.object-panel > .title {
-    left: -2.5em;
+.viewuse-controls button:hover {
+    background-color: #6E8BD9;
+    color: #fafafa;
 }
 
-.viewuse > .panel.view-panel > .title {
-    right: -3em;
+.viewuse-panel {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 15em;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0.5em 0;
+    background-color: #475A8D;
+    color: #fafafa;
+    text-align: center;
 }
 
-.viewuse > .panel > .content {
-    height: 0;
-    width: 0;
-    opacity: 0;
-    transition: none;
-    margin-left: 1.5em;
+.viewuse-panel button {
+    border-radius: 0.5em;
+    background-color: #fafafa;
+    color: #475A8D;
 }
 
-.viewuse > .panel > .content.visible {
-    height: inherit;
-    width: auto;
-    opacity: 1;
-    transition: opacity 100ms ease-in 300ms;
+.viewuse-panel button:hover {
+    background-color: #6E8BD9;
+    color: yellow;
 }
 
-.viewuse > .panel > .content > .section {
-    position: relative;
+.viewuse-panel > button {
+    position: absolute;
+    padding: 0.15em;
+    font-weight: bold;
+}
+
+.viewuse-panel > button[name="apply-view"] {
+    top: 0.25em;
+    left: 0.25em;
+}
+
+.viewuse-panel > button[name="close-panel"] {
+    top: 0.25em;
+    right: 0.25em;
+    border-radius: 50%;
+}
+
+.viewuse-panel > .section > .title {
+    margin-top: 0.75em;
     margin-bottom: 0.25em;
-}
-
-.viewuse > .panel > .content > .section > .title {
-    text-align: center;
-    font-size: 100%;
+    text-shadow: 1px 1px black;
+    font-weight: bold;
+    font-size: 90%;
     cursor: pointer;
 }
 
-.viewuse > .panel > .content > .section > .content {
-    height: 0;
-    width: 0;
-    opacity: 0;
+.viewuse-panel > .section > .title:hover {
+    color: yellow;
 }
 
-.viewuse > .panel > .content > .section > .content.visible {
-    height: inherit;
-    width: auto;
-    opacity: 1;
-    transition: opacity 300ms;
+.viewuse-panel > .section > .content {
+    display: none;
 }
 
-.viewuse > .panel > .content > .section > .content > .input-group {
-    display: inline-block;
-    text-align: center;
-}
-
-.viewuse > .panel > .content > .section > .content > .input-group * {
-    margin: 0.15em;
-    padding: 0.1em;
+.viewuse-panel > .section > .content * {
+    margin: 0.25em;
+    padding: 0.10em;
     border-radius: 0.25em;
     font-size: 90%;
 }
 
-.viewuse > .panel > .content > .section > .content > .input-group > .title {
+.viewuse-options > .section.viewuse-select > .content {
+    display: block;
+}
+
+.viewuse-options > .section.viewuse-select > .content > select[name="viewuse_object"] {
+    width: 10em;
+    margin-top: 2em;
+}
+
+.datum-filter > .section > .content > .input-group {
+    display: inline-block;
+}
+
+.datum-filter > .section > .content > .input-group > .title {
     font-size: 85%;
 }
 
-.viewuse > .panel > .content > .section > .content > .input-group .add-filter {
+.datum-filter > .section > .content > .input-group .add-filter {
     font-weight: bold;
     font-size: 150%;
-    color: yellow;
 }
 
-.viewuse > .panel > .content > .section > .content > .input-group *.active {
+.datum-filter > .section > .content > .input-group *.active {
     background-color: rgba(204, 232, 162, 0.75);
     color: yellow;
 }
 
-.viewuse > .panel > .content > .section.groups-types > .content.visible {
+.datum-filter > .section.groups-types > .content {
     height: 9em;
 }
 
-.viewuse > .panel > .content > .section.groups-types > .content > .input-group {
+.datum-filter > .section.groups-types > .content > .input-group {
+    display: block;
     position: absolute;
     width: 25%;
 }
 
-.viewuse > .panel > .content > .section.groups-types > .content > .input-group.col-1 {
+.datum-filter > .section.groups-types > .content > .input-group.col-1 {
     margin-left: 0;
 }
 
-.viewuse > .panel > .content > .section.groups-types > .content > .input-group.col-2 {
+.datum-filter > .section.groups-types > .content > .input-group.col-2 {
     margin-left: 25%;
 }
 
-.viewuse > .panel > .content > .section.groups-types > .content > .input-group.col-3 {
+.datum-filter > .section.groups-types > .content > .input-group.col-3 {
     margin-left: 50%;
 }
 
-.viewuse > .panel > .content > .section.groups-types > .content > .input-group.col-4 {
+.datum-filter > .section.groups-types > .content > .input-group.col-4 {
     margin-left: 75%;
 }
 
-.viewuse > .panel > .content > .section.groups-types > .content > .input-group * {
-    height: 1.25em;
-    width: 3.5rem;
+.datum-filter > .section.groups-types > .content > .input-group * {
+    width: 3rem;
 }
 
-.viewuse > .panel > .content > .section.groups-types > .content > .input-group [name="datum_type"] {
+.datum-filter > .section.groups-types > .content > .input-group [name="datum_type"] {
     font-size: 75%;
 }
 
-.viewuse > .panel > .content > .section.associations > .content > .input-group [name="datum_groups"] {
+.datum-filter > .section.associations > .content > .input-group [name="datum_groups"] {
     width: 5em;
 }
 
-.viewuse > .panel > .content > .section.associations > .content > .input-group [name="datum_types"] {
+.datum-filter > .section.associations > .content > .input-group [name="datum_types"] {
     width: 10em;
 }
 
-.viewuse > .panel > .content > .section.associations > .content > .input-group [name="datum_objects"] {
+.datum-filter > .section.associations > .content > .input-group [name="datum_objects"] {
     width: 14em;
 }
 
-.viewuse > .panel > .content > .section.elements > .content > .input-group [name="element_types"] {
+.datum-filter > .section.elements > .content > .input-group [name="element_types"] {
     width: 9em;
 }
 
-.viewuse > .panel > .content > .section.elements > .content > .input-group [name="element_operators"] {
+.datum-filter > .section.elements > .content > .input-group [name="element_operators"] {
     width: 10em;
 }
 
-.viewuse > .panel > .content > .section.elements > .content > .input-group [name="element_value"] {
+.datum-filter > .section.elements > .content > .input-group [name="element_value"] {
     height: 1.75em;
     width: 12em;
-}
-
-.viewuse > .content {
-    width: 90%;
-    margin: 1em auto;
 }

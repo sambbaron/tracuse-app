@@ -35,25 +35,34 @@ Tracuse.app.viewuse.nextId = function nextId() {
     return newId;
 };
 
+Tracuse.app.viewuse.viewuseActive = function viewuseActive(el, ev) {
+    "use strict";
+    Tracuse.app.viewuse.setState(el, true);
+    if (ev) {
+        ev.stopPropagation();
+    }
+};
+
+Tracuse.app.viewuse.viewuseInactive = function viewuseInactive(el, ev) {
+    "use strict";
+    Tracuse.app.viewuse.setState(el, false);
+    if (ev) {
+        ev.stopPropagation();
+    }
+};
+
 Tracuse.app.viewuse.setState = function setState(el, active) {
     "use strict";
     // Set active viewuse - show buttons and set 'active' class
     var active = active || false;
-
-    // Show/Hide Buttons
-    var elements = el.querySelectorAll("#" + el.getAttribute("id") + " > button");
-    for (var i = 0; i < elements.length; i++) {
-        if (active) {
-            elements[i].style.display = "initial";
-        } else {
-            elements[i].style.display = "none";
-        }
-    }
+    var controls = el.querySelector(".viewuse-controls");
 
     if (active) {
         el.classList.add("active");
+        $(controls).show();
     } else {
         el.classList.remove("active");
+        $(controls).hide();
     }
 
     var parentEl = el.parentNode;
@@ -62,44 +71,37 @@ Tracuse.app.viewuse.setState = function setState(el, active) {
     }
 };
 
-
-Tracuse.app.viewuse.mouseEnter = function mouseEnter(el, ev) {
-    "use strict";
-    Tracuse.app.viewuse.setState(el, true);
-    if (ev) {
-        ev.stopPropagation();
-    }
-};
-
-Tracuse.app.viewuse.mouseLeave = function mouseLeave(el, ev) {
-    "use strict";
-    Tracuse.app.viewuse.setState(el, false);
-    if (ev) {
-        ev.stopPropagation();
-    }
-};
-
-Tracuse.app.viewuse.openObjectPanel = function openObjectPanel(el, ev) {
-    "use strict";
-    window.alert("Open Object Panel");
-    if (ev) {
-        ev.stopPropagation();
-    }
-};
-
-Tracuse.app.viewuse.openViewPanel = function openViewPanel(el, ev) {
-    "use strict";
-    window.alert("Open View Panel");
-    if (ev) {
-        ev.stopPropagation();
-    }
-};
-
 Tracuse.app.viewuse.closeView = function closeView(el, ev) {
     "use strict";
     el.parentNode.parentNode.removeChild(el.parentNode);
     if (ev) {
         ev.stopPropagation();
+    }
+};
+
+Tracuse.app.viewuse.showHidePanel = function showHidePanel(panelClassName, el, ev) {
+    "use strict";
+    // Trigger from viewuse button
+    var parentViewuse = Tracuse.app.viewuse.getParentViewuse(el);
+    var panelEl = parentViewuse.querySelector("." + panelClassName);
+    var controls = parentViewuse.querySelector(".viewuse-controls");
+    $(panelEl).toggle("slide", {direction: "left"}, 300);
+    $(controls).toggle();
+    if (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+    }
+};
+
+Tracuse.app.viewuse.showHideContent = function showHideContent(el, ev) {
+    "use strict";
+    // Trigger from section title
+    // Uses 'content' class of sibiling element
+    var sectionEl = el.parentNode.querySelector(".content");
+    $(sectionEl).slideToggle("medium");
+    if (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
     }
 };
 
@@ -143,21 +145,6 @@ Tracuse.app.viewuse.clickDatumType = function clickDatumType(el, ev) {
     }
 
     el.classList.toggle("active");
-    if (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
-    }
-};
-
-Tracuse.app.viewuse.showHidePanel = function showHidePanel(el, ev) {
-    "use strict";
-    // Triggered from panel title
-    var parentEl = el.parentNode;
-    var contentEl = parentEl.querySelector(".content");
-
-    parentEl.classList.toggle("visible");
-    contentEl.classList.toggle("visible");
-
     if (ev) {
         ev.stopPropagation();
         ev.preventDefault();

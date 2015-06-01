@@ -1,0 +1,117 @@
+<aside class="viewuse-panel datum-filter">
+    <h3 class="title">Object Filter</h3>
+
+    <button name="close-panel" onclick="Tracuse.app.viewuse.showHidePanel('datum-filter', this, event)">X</button>
+
+    <div class="section groups-types">
+        <h4 class="title"
+            onclick="Tracuse.app.viewuse.showHideContent(this, event)"
+            onkeypress="Tracuse.app.viewuse.showHideContent(this, event)">
+            Groups/Types
+        </h4>
+
+        <div class="content">
+            {% for datum_group in datum_groups %}
+                <fieldset class="input-group col-{{ loop.index }}">
+                    <button class="filter-input" name="datum_group" value="{{ datum_group.datum_group_id }}"
+                            onclick="Tracuse.app.viewuse.clickDatumGroup(this, event)">
+                        {{ datum_group.readable_name }}
+                    </button>
+
+                    {% for datum_type in datum_types %}
+                        {% if datum_type.datum_group_id == datum_group.datum_group_id %}
+                            <button class="filter-input" name="datum_type" value="{{ datum_type.datum_type_id }}"
+                                    datum_group_id="{{ datum_type.datum_group_id }}"
+                                    onclick="Tracuse.app.viewuse.clickDatumType(this, event)">
+                                {{ datum_type.readable_name }}
+                            </button>
+                        {% endif %}
+                    {% endfor %}
+                </fieldset>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="section associations">
+        <h4 class="title"
+            onclick="Tracuse.app.viewuse.showHideContent(this, event)"
+            onkeypress="Tracuse.app.viewuse.showHideContent(this, event)">
+            Associations
+        </h4>
+
+        <div class="content">
+            <fieldset class="input-group">
+                <h5 class="title">Groups</h5>
+                <select name="datum_groups"
+                        onchange="Tracuse.app.viewuse.selectDatumGroup(this, event)">
+                    <option></option>
+                    {% for datum_group in datum_groups %}
+                        <option value="{{ datum_group.datum_group_id }}">
+                            {{ datum_group.readable_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </fieldset>
+            <fieldset class="input-group">
+                <h5 class="title">Types</h5>
+                <select name="datum_types"
+                        onchange="Tracuse.app.viewuse.selectDatumType(this, event)">
+                    <option></option>
+                    {% for datum_type in datum_types %}
+                        <option value="{{ datum_type.datum_type_id }}"
+                                datum_group_id="{{ datum_type.datum_group_id }}">
+                            {{ datum_type.readable_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </fieldset>
+            <br>
+            <fieldset class="input-group">
+                <h5 class="title">Objects</h5>
+                <select name="datum_objects">
+                    <option></option>
+                </select>
+                <button class="add-filter" name="add-association"
+                        onclick="Tracuse.app.viewuse.addAssociatedDatum(this, event)">
+                    +
+                </button>
+            </fieldset>
+
+        </div>
+    </div>
+
+    <div class="section elements">
+        <h4 class="title"
+            onclick="Tracuse.app.viewuse.showHideContent(this, event)"
+            onkeypress="Tracuse.app.viewuse.showHideContent(this, event)">
+            Elements
+        </h4>
+
+        <div class="content">
+            <fieldset class="input-group">
+                <h5 class="title">Types</h5>
+                <select name="element_types"
+                        onchange="Tracuse.app.viewuse.selectElement(this, event)">
+                    <option></option>
+                    {% for element_type in element_types %}
+                        <option value="{{ element_type.element_type_id }}">
+                            {{ element_type.readable_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+                <h5 class="title">Operators</h5>
+                <select name="element_operators">
+                    <option></option>
+                </select>
+                <br>
+                <h5 class="title">Filter Value</h5>
+                <input name="element_value">
+                <button class="add-filter" name="add-element-filter"
+                        onclick="Tracuse.app.viewuse.addElementFilter(this, event)">
+                    +
+                </button>
+            </fieldset>
+        </div>
+    </div>
+
+</aside>

@@ -1,0 +1,89 @@
+<aside class="viewuse-panel viewuse-options">
+    <h3 class="title">View Options</h3>
+
+    <button name="apply-view" onclick="">Apply<br>View</button>
+    <button name="close-panel" onclick="Tracuse.app.viewuse.showHidePanel('viewuse-options', this, event)">X</button>
+
+    <div class="section viewuse-select">
+{#        <h4 class="title"#}
+{#            onclick="Tracuse.app.viewuse.showHideContent(this, event)"#}
+{#            onkeypress="Tracuse.app.viewuse.showHideContent(this, event)">#}
+{#            Select View#}
+{#        </h4>#}
+{##}
+        <div class="content">
+            <select name="viewuse_object">
+                {% for viewuse_object in viewuse_objects %}
+                    <option value="{{ viewuse_object.viewuse_object_id }}"
+                            {{ " selected" if this_viewuse.viewuse_object_id == viewuse_object.viewuse_object_id }}>
+                        {{ viewuse_object.readable_name }}
+                    </option>
+                {% endfor %}
+            </select>
+            <br>
+            <button name="save-viewuse">Save View</button>
+            <button name="rename-viewuse">Rename View</button>
+        </div>
+    </div>
+
+    <div class="section viewuse-filter">
+        <h4 class="title"
+            onclick="Tracuse.app.viewuse.showHidePanel('datum-filter', this, event)"
+            onkeypress="Tracuse.app.viewuse.showHidePanel('datum-filter', this, event)">
+            Object Filter
+        </h4>
+
+        {% include "viewuse/datum_filter.html" %}
+    </div>
+
+    <div class="section viewuse-arrangement">
+        <h4 class="title"
+            onclick="Tracuse.app.viewuse.showHideContent(this, event)"
+            onkeypress="Tracuse.app.viewuse.showHideContent(this, event)">
+            Arrangement
+        </h4>
+
+        <div class="content">
+            <select name="viewuse_arrangement">
+                <option></option>
+                {% for viewuse_arrangement in viewuse_arrangements %}
+                    <option value="{{ viewuse_arrangement.viewuse_arrangement_id }}"
+                            {{ " selected" if this_viewuse.viewuse_arrangement_id == viewuse_arrangement.viewuse_arrangement_id }}>
+                        {{ viewuse_arrangement.readable_name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="section viewuse-datum">
+        <h4 class="title"
+            onclick="Tracuse.app.viewuse.showHideContent(this, event)"
+            onkeypress="Tracuse.app.viewuse.showHideContent(this, event)">
+            Object Format
+        </h4>
+
+        <div class="content">
+            <select name="viewuse_datum">
+                <option></option>
+                {% for viewuse_datum in viewuse_datums %}
+                    <option value="{{ viewuse_datum.viewuse_datum_id }}"
+                            {{ " selected" if this_viewuse.viewuse_datum_id == viewuse_datum.viewuse_datum_id }}>
+                        {{ viewuse_datum.readable_name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="section viewuse-format">
+        <h4 class="title"
+            onclick="Tracuse.app.viewuse.showHideContent(this, event)"
+            onkeypress="Tracuse.app.viewuse.showHideContent(this, event)">
+            View Format
+        </h4>
+
+        <div class="content">
+        </div>
+    </div>
+</aside>

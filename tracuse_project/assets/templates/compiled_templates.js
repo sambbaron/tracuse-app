@@ -186,6 +186,149 @@ root: root
 };
 })();
 })();
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/datum_filter.html"] = (function() {function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+output += "<aside class=\"viewuse-panel datum-filter\">\r\n    <h3 class=\"title\">Object Filter</h3>\r\n\r\n    <button name=\"close-panel\" onclick=\"Tracuse.app.viewuse.showHidePanel('datum-filter', this, event)\">X</button>\r\n\r\n    <div class=\"section groups-types\">\r\n        <h4 class=\"title\"\r\n            onclick=\"Tracuse.app.viewuse.showHideContent(this, event)\"\r\n            onkeypress=\"Tracuse.app.viewuse.showHideContent(this, event)\">\r\n            Groups/Types\r\n        </h4>\r\n\r\n        <div class=\"content\">\r\n            ";
+frame = frame.push();
+var t_3 = runtime.contextOrFrameLookup(context, frame, "datum_groups");
+if(t_3) {var t_2 = t_3.length;
+for(var t_1=0; t_1 < t_3.length; t_1++) {
+var t_4 = t_3[t_1];
+frame.set("datum_group", t_4);
+frame.set("loop.index", t_1 + 1);
+frame.set("loop.index0", t_1);
+frame.set("loop.revindex", t_2 - t_1);
+frame.set("loop.revindex0", t_2 - t_1 - 1);
+frame.set("loop.first", t_1 === 0);
+frame.set("loop.last", t_1 === t_2 - 1);
+frame.set("loop.length", t_2);
+output += "\r\n                <fieldset class=\"input-group col-";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "loop")),"index", env.opts.autoescape), env.opts.autoescape);
+output += "\">\r\n                    <button class=\"filter-input\" name=\"datum_group\" value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
+output += "\"\r\n                            onclick=\"Tracuse.app.viewuse.clickDatumGroup(this, event)\">\r\n                        ";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"readable_name", env.opts.autoescape), env.opts.autoescape);
+output += "\r\n                    </button>\r\n\r\n                    ";
+frame = frame.push();
+var t_7 = runtime.contextOrFrameLookup(context, frame, "datum_types");
+if(t_7) {var t_6 = t_7.length;
+for(var t_5=0; t_5 < t_7.length; t_5++) {
+var t_8 = t_7[t_5];
+frame.set("datum_type", t_8);
+frame.set("loop.index", t_5 + 1);
+frame.set("loop.index0", t_5);
+frame.set("loop.revindex", t_6 - t_5);
+frame.set("loop.revindex0", t_6 - t_5 - 1);
+frame.set("loop.first", t_5 === 0);
+frame.set("loop.last", t_5 === t_6 - 1);
+frame.set("loop.length", t_6);
+output += "\r\n                        ";
+if(runtime.memberLookup((t_8),"datum_group_id", env.opts.autoescape) == runtime.memberLookup((t_4),"datum_group_id", env.opts.autoescape)) {
+output += "\r\n                            <button class=\"filter-input\" name=\"datum_type\" value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"datum_type_id", env.opts.autoescape), env.opts.autoescape);
+output += "\"\r\n                                    datum_group_id=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
+output += "\"\r\n                                    onclick=\"Tracuse.app.viewuse.clickDatumType(this, event)\">\r\n                                ";
+output += runtime.suppressValue(runtime.memberLookup((t_8),"readable_name", env.opts.autoescape), env.opts.autoescape);
+output += "\r\n                            </button>\r\n                        ";
+;
+}
+output += "\r\n                    ";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n                </fieldset>\r\n            ";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"section associations\">\r\n        <h4 class=\"title\"\r\n            onclick=\"Tracuse.app.viewuse.showHideContent(this, event)\"\r\n            onkeypress=\"Tracuse.app.viewuse.showHideContent(this, event)\">\r\n            Associations\r\n        </h4>\r\n\r\n        <div class=\"content\">\r\n            <fieldset class=\"input-group\">\r\n                <h5 class=\"title\">Groups</h5>\r\n                <select name=\"datum_groups\"\r\n                        onchange=\"Tracuse.app.viewuse.selectDatumGroup(this, event)\">\r\n                    <option></option>\r\n                    ";
+frame = frame.push();
+var t_11 = runtime.contextOrFrameLookup(context, frame, "datum_groups");
+if(t_11) {var t_10 = t_11.length;
+for(var t_9=0; t_9 < t_11.length; t_9++) {
+var t_12 = t_11[t_9];
+frame.set("datum_group", t_12);
+frame.set("loop.index", t_9 + 1);
+frame.set("loop.index0", t_9);
+frame.set("loop.revindex", t_10 - t_9);
+frame.set("loop.revindex0", t_10 - t_9 - 1);
+frame.set("loop.first", t_9 === 0);
+frame.set("loop.last", t_9 === t_10 - 1);
+frame.set("loop.length", t_10);
+output += "\r\n                        <option value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_12),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
+output += "\">\r\n                            ";
+output += runtime.suppressValue(runtime.memberLookup((t_12),"readable_name", env.opts.autoescape), env.opts.autoescape);
+output += "\r\n                        </option>\r\n                    ";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n                </select>\r\n            </fieldset>\r\n            <fieldset class=\"input-group\">\r\n                <h5 class=\"title\">Types</h5>\r\n                <select name=\"datum_types\"\r\n                        onchange=\"Tracuse.app.viewuse.selectDatumType(this, event)\">\r\n                    <option></option>\r\n                    ";
+frame = frame.push();
+var t_15 = runtime.contextOrFrameLookup(context, frame, "datum_types");
+if(t_15) {var t_14 = t_15.length;
+for(var t_13=0; t_13 < t_15.length; t_13++) {
+var t_16 = t_15[t_13];
+frame.set("datum_type", t_16);
+frame.set("loop.index", t_13 + 1);
+frame.set("loop.index0", t_13);
+frame.set("loop.revindex", t_14 - t_13);
+frame.set("loop.revindex0", t_14 - t_13 - 1);
+frame.set("loop.first", t_13 === 0);
+frame.set("loop.last", t_13 === t_14 - 1);
+frame.set("loop.length", t_14);
+output += "\r\n                        <option value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_16),"datum_type_id", env.opts.autoescape), env.opts.autoescape);
+output += "\"\r\n                                datum_group_id=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_16),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
+output += "\">\r\n                            ";
+output += runtime.suppressValue(runtime.memberLookup((t_16),"readable_name", env.opts.autoescape), env.opts.autoescape);
+output += "\r\n                        </option>\r\n                    ";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n                </select>\r\n            </fieldset>\r\n            <br>\r\n            <fieldset class=\"input-group\">\r\n                <h5 class=\"title\">Objects</h5>\r\n                <select name=\"datum_objects\">\r\n                    <option></option>\r\n                </select>\r\n                <button class=\"add-filter\" name=\"add-association\"\r\n                        onclick=\"Tracuse.app.viewuse.addAssociatedDatum(this, event)\">\r\n                    +\r\n                </button>\r\n            </fieldset>\r\n\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"section elements\">\r\n        <h4 class=\"title\"\r\n            onclick=\"Tracuse.app.viewuse.showHideContent(this, event)\"\r\n            onkeypress=\"Tracuse.app.viewuse.showHideContent(this, event)\">\r\n            Elements\r\n        </h4>\r\n\r\n        <div class=\"content\">\r\n            <fieldset class=\"input-group\">\r\n                <h5 class=\"title\">Types</h5>\r\n                <select name=\"element_types\"\r\n                        onchange=\"Tracuse.app.viewuse.selectElement(this, event)\">\r\n                    <option></option>\r\n                    ";
+frame = frame.push();
+var t_19 = runtime.contextOrFrameLookup(context, frame, "element_types");
+if(t_19) {var t_18 = t_19.length;
+for(var t_17=0; t_17 < t_19.length; t_17++) {
+var t_20 = t_19[t_17];
+frame.set("element_type", t_20);
+frame.set("loop.index", t_17 + 1);
+frame.set("loop.index0", t_17);
+frame.set("loop.revindex", t_18 - t_17);
+frame.set("loop.revindex0", t_18 - t_17 - 1);
+frame.set("loop.first", t_17 === 0);
+frame.set("loop.last", t_17 === t_18 - 1);
+frame.set("loop.length", t_18);
+output += "\r\n                        <option value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_20),"element_type_id", env.opts.autoescape), env.opts.autoescape);
+output += "\">\r\n                            ";
+output += runtime.suppressValue(runtime.memberLookup((t_20),"readable_name", env.opts.autoescape), env.opts.autoescape);
+output += "\r\n                        </option>\r\n                    ";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n                </select>\r\n                <h5 class=\"title\">Operators</h5>\r\n                <select name=\"element_operators\">\r\n                    <option></option>\r\n                </select>\r\n                <br>\r\n                <h5 class=\"title\">Filter Value</h5>\r\n                <input name=\"element_value\">\r\n                <button class=\"add-filter\" name=\"add-element-filter\"\r\n                        onclick=\"Tracuse.app.viewuse.addElementFilter(this, event)\">\r\n                    +\r\n                </button>\r\n            </fieldset>\r\n        </div>\r\n    </div>\r\n\r\n</aside>";
+cb(null, output);
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+})();
+})();
 (function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/viewuse_base.html"] = (function() {function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
@@ -195,139 +338,19 @@ output += "<section class=\"viewuse\" template=\"";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "template_name"), env.opts.autoescape);
 output += "\" id=\"";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "id"), env.opts.autoescape);
-output += "\"\r\n         onmouseenter=\"Tracuse.app.viewuse.mouseEnter(this, event)\"\r\n         onmouseleave=\"Tracuse.app.viewuse.mouseLeave(this, event)\">\r\n    <input name=\"title\" value=\"View Title\">\r\n    <button name=\"new-object\" onclick=\"Tracuse.app.viewuse.openObjectPanel(this, event)\"><i>+</i><span>New Object</span></button>\r\n    <button name=\"view-settings\" onclick=\"Tracuse.app.viewuse.openViewPanel(this, event)\"><i>---------</i><span>View Settings</span></button>\r\n    <button name=\"close-view\" onclick=\"Tracuse.app.viewuse.closeView(this, event)\"><i>X</i><span>Close View</span></button>\r\n    <div class=\"content\">\r\n        ";
+output += "\"\r\n         onmouseenter=\"Tracuse.app.viewuse.viewuseActive(this, event)\"\r\n         onfocus=\"Tracuse.app.viewuse.viewuseActive(this, event)\"\r\n         onmouseleave=\"Tracuse.app.viewuse.viewuseInactive(this, event)\">\r\n    <input name=\"title\" value=\"View Title\">\r\n\r\n    <div class=\"content\">\r\n        ";
 context.getBlock("viewuse_content")(env, context, frame, runtime, function(t_2,t_1) {
 if(t_2) { cb(t_2); return; }
 output += t_1;
-output += "\r\n    </div>\r\n    <aside class=\"panel object-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.app.viewuse.showHidePanel(this, event)\">\r\n            Object Filter\r\n        </h3>\r\n\r\n        <div class=\"content\">\r\n            <hr>\r\n            <div class=\"section groups-types\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.app.viewuse.showHidePanel(this, event)\">Groups/Types</h4>\r\n\r\n                <div class=\"content\">\r\n                    ";
-frame = frame.push();
-var t_5 = runtime.contextOrFrameLookup(context, frame, "datum_groups");
-if(t_5) {var t_4 = t_5.length;
-for(var t_3=0; t_3 < t_5.length; t_3++) {
-var t_6 = t_5[t_3];
-frame.set("datum_group", t_6);
-frame.set("loop.index", t_3 + 1);
-frame.set("loop.index0", t_3);
-frame.set("loop.revindex", t_4 - t_3);
-frame.set("loop.revindex0", t_4 - t_3 - 1);
-frame.set("loop.first", t_3 === 0);
-frame.set("loop.last", t_3 === t_4 - 1);
-frame.set("loop.length", t_4);
-output += "\r\n                        <fieldset class=\"input-group col-";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "loop")),"index", env.opts.autoescape), env.opts.autoescape);
-output += "\">\r\n                            <button class=\"filter-input\" name=\"datum_group\" value=\"";
-output += runtime.suppressValue(runtime.memberLookup((t_6),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n                                    onclick=\"Tracuse.app.viewuse.clickDatumGroup(this, event)\">\r\n                                ";
-output += runtime.suppressValue(runtime.memberLookup((t_6),"readable_name", env.opts.autoescape), env.opts.autoescape);
-output += "\r\n                            </button>\r\n\r\n                            ";
-frame = frame.push();
-var t_9 = runtime.contextOrFrameLookup(context, frame, "datum_types");
-if(t_9) {var t_8 = t_9.length;
-for(var t_7=0; t_7 < t_9.length; t_7++) {
-var t_10 = t_9[t_7];
-frame.set("datum_type", t_10);
-frame.set("loop.index", t_7 + 1);
-frame.set("loop.index0", t_7);
-frame.set("loop.revindex", t_8 - t_7);
-frame.set("loop.revindex0", t_8 - t_7 - 1);
-frame.set("loop.first", t_7 === 0);
-frame.set("loop.last", t_7 === t_8 - 1);
-frame.set("loop.length", t_8);
-output += "\r\n                                ";
-if(runtime.memberLookup((t_10),"datum_group_id", env.opts.autoescape) == runtime.memberLookup((t_6),"datum_group_id", env.opts.autoescape)) {
-output += "\r\n                                    <button class=\"filter-input\" name=\"datum_type\" value=\"";
-output += runtime.suppressValue(runtime.memberLookup((t_10),"datum_type_id", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n                                            datum_group_id=\"";
-output += runtime.suppressValue(runtime.memberLookup((t_10),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n                                            onclick=\"Tracuse.app.viewuse.clickDatumType(this, event)\">\r\n                                        ";
-output += runtime.suppressValue(runtime.memberLookup((t_10),"readable_name", env.opts.autoescape), env.opts.autoescape);
-output += "\r\n                                    </button>\r\n                                ";
-;
-}
-output += "\r\n                            ";
-;
-}
-}
-frame = frame.pop();
-output += "\r\n                        </fieldset>\r\n                    ";
-;
-}
-}
-frame = frame.pop();
-output += "\r\n                </div>\r\n            </div>\r\n            <hr>\r\n            <div class=\"section associations\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.app.viewuse.showHidePanel(this, event)\">Associations</h4>\r\n\r\n                <div class=\"content\">\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Groups</h5>\r\n                        <select name=\"datum_groups\"\r\n                                onchange=\"Tracuse.app.viewuse.selectDatumGroup(this, event)\">\r\n                            <option></option>\r\n                            ";
-frame = frame.push();
-var t_13 = runtime.contextOrFrameLookup(context, frame, "datum_groups");
-if(t_13) {var t_12 = t_13.length;
-for(var t_11=0; t_11 < t_13.length; t_11++) {
-var t_14 = t_13[t_11];
-frame.set("datum_group", t_14);
-frame.set("loop.index", t_11 + 1);
-frame.set("loop.index0", t_11);
-frame.set("loop.revindex", t_12 - t_11);
-frame.set("loop.revindex0", t_12 - t_11 - 1);
-frame.set("loop.first", t_11 === 0);
-frame.set("loop.last", t_11 === t_12 - 1);
-frame.set("loop.length", t_12);
-output += "\r\n                                <option value=\"";
-output += runtime.suppressValue(runtime.memberLookup((t_14),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
-output += "\">\r\n                                    ";
-output += runtime.suppressValue(runtime.memberLookup((t_14),"readable_name", env.opts.autoescape), env.opts.autoescape);
-output += "\r\n                                </option>\r\n                            ";
-;
-}
-}
-frame = frame.pop();
-output += "\r\n                        </select>\r\n                    </fieldset>\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Types</h5>\r\n                        <select name=\"datum_types\"\r\n                                onchange=\"Tracuse.app.viewuse.selectDatumType(this, event)\">\r\n                            <option></option>\r\n                            ";
-frame = frame.push();
-var t_17 = runtime.contextOrFrameLookup(context, frame, "datum_types");
-if(t_17) {var t_16 = t_17.length;
-for(var t_15=0; t_15 < t_17.length; t_15++) {
-var t_18 = t_17[t_15];
-frame.set("datum_type", t_18);
-frame.set("loop.index", t_15 + 1);
-frame.set("loop.index0", t_15);
-frame.set("loop.revindex", t_16 - t_15);
-frame.set("loop.revindex0", t_16 - t_15 - 1);
-frame.set("loop.first", t_15 === 0);
-frame.set("loop.last", t_15 === t_16 - 1);
-frame.set("loop.length", t_16);
-output += "\r\n                                <option value=\"";
-output += runtime.suppressValue(runtime.memberLookup((t_18),"datum_type_id", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n                                        datum_group_id=\"";
-output += runtime.suppressValue(runtime.memberLookup((t_18),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
-output += "\">\r\n                                    ";
-output += runtime.suppressValue(runtime.memberLookup((t_18),"readable_name", env.opts.autoescape), env.opts.autoescape);
-output += "\r\n                                </option>\r\n                            ";
-;
-}
-}
-frame = frame.pop();
-output += "\r\n                        </select>\r\n                    </fieldset>\r\n                    <br>\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Objects</h5>\r\n                        <select name=\"datum_objects\">\r\n                            <option></option>\r\n                        </select>\r\n                        <button class=\"add-filter\" name=\"add-association\"\r\n                                onclick=\"Tracuse.app.viewuse.addAssociatedDatum(this, event)\">\r\n                            +\r\n                        </button>\r\n                    </fieldset>\r\n\r\n                </div>\r\n            </div>\r\n            <hr>\r\n            <div class=\"section elements\">\r\n                <h4 class=\"title\" onclick=\"Tracuse.app.viewuse.showHidePanel(this, event)\">Elements</h4>\r\n\r\n                <div class=\"content\">\r\n                    <fieldset class=\"input-group\">\r\n                        <h5 class=\"title\">Types</h5>\r\n                        <select name=\"element_types\"\r\n                                onchange=\"Tracuse.app.viewuse.selectElement(this, event)\">\r\n                            <option></option>\r\n                            ";
-frame = frame.push();
-var t_21 = runtime.contextOrFrameLookup(context, frame, "element_types");
-if(t_21) {var t_20 = t_21.length;
-for(var t_19=0; t_19 < t_21.length; t_19++) {
-var t_22 = t_21[t_19];
-frame.set("element_type", t_22);
-frame.set("loop.index", t_19 + 1);
-frame.set("loop.index0", t_19);
-frame.set("loop.revindex", t_20 - t_19);
-frame.set("loop.revindex0", t_20 - t_19 - 1);
-frame.set("loop.first", t_19 === 0);
-frame.set("loop.last", t_19 === t_20 - 1);
-frame.set("loop.length", t_20);
-output += "\r\n                                <option value=\"";
-output += runtime.suppressValue(runtime.memberLookup((t_22),"element_type_id", env.opts.autoescape), env.opts.autoescape);
-output += "\">\r\n                                    ";
-output += runtime.suppressValue(runtime.memberLookup((t_22),"readable_name", env.opts.autoescape), env.opts.autoescape);
-output += "\r\n                                </option>\r\n                            ";
-;
-}
-}
-frame = frame.pop();
-output += "\r\n                        </select>\r\n                        <h5 class=\"title\">Operators</h5>\r\n                        <select name=\"element_operators\">\r\n                            <option></option>\r\n                        </select>\r\n                        <br>\r\n                        <h5 class=\"title\">Filter Value</h5>\r\n                        <input name=\"element_value\">\r\n                        <button class=\"add-filter\" name=\"add-element-filter\"\r\n                                onclick=\"Tracuse.app.viewuse.addElementFilter(this, event)\">\r\n                            +\r\n                        </button>\r\n                    </fieldset>\r\n                </div>\r\n            </div>\r\n            <hr>\r\n        </div>\r\n\r\n    </aside>\r\n    <aside class=\"panel view-panel\">\r\n        <h3 class=\"title\" onclick=\"Tracuse.app.viewuse.showHidePanel(this, event)\">\r\n            View Settings\r\n        </h3>\r\n\r\n    </aside>\r\n</section>";
+output += "\r\n    </div>\r\n\r\n    <nav class=\"viewuse-controls\">\r\n        <button name=\"viewuse-options\" onclick=\"Tracuse.app.viewuse.showHidePanel('viewuse-options', this, event)\">View<br>Options</button>\r\n        <br>\r\n        <button name=\"new-object\" onclick=\"Tracuse.app.viewuse.openObjectPanel(this, event)\">New<br>Object</button>\r\n        <br>\r\n    </nav>\r\n\r\n    ";
+env.getTemplate("viewuse/viewuse_options.html", false, "viewuse/viewuse_base.html", function(t_5,t_3) {
+if(t_5) { cb(t_5); return; }
+t_3.render(context.getVariables(), frame.push(), function(t_6,t_4) {
+if(t_6) { cb(t_6); return; }
+output += t_4
+output += "\r\n</section>\r\n";
 cb(null, output);
-});
+})})});
 } catch (e) {
   cb(runtime.handleError(e, lineno, colno));
 }
@@ -345,6 +368,110 @@ cb(null, output);
 }
 return {
 b_viewuse_content: b_viewuse_content,
+root: root
+};
+})();
+})();
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/viewuse_options.html"] = (function() {function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+output += "<aside class=\"viewuse-panel viewuse-options\">\r\n    <h3 class=\"title\">View Options</h3>\r\n\r\n    <button name=\"apply-view\" onclick=\"\">Apply<br>View</button>\r\n    <button name=\"close-panel\" onclick=\"Tracuse.app.viewuse.showHidePanel('viewuse-options', this, event)\">X</button>\r\n\r\n    <div class=\"section viewuse-select\">\r\n";
+output += "\r\n";
+output += "\r\n";
+output += "\r\n";
+output += "\r\n";
+output += "\r\n";
+output += "\r\n        <div class=\"content\">\r\n            <select name=\"viewuse_object\">\r\n                ";
+frame = frame.push();
+var t_3 = runtime.contextOrFrameLookup(context, frame, "viewuse_objects");
+if(t_3) {var t_2 = t_3.length;
+for(var t_1=0; t_1 < t_3.length; t_1++) {
+var t_4 = t_3[t_1];
+frame.set("viewuse_object", t_4);
+frame.set("loop.index", t_1 + 1);
+frame.set("loop.index0", t_1);
+frame.set("loop.revindex", t_2 - t_1);
+frame.set("loop.revindex0", t_2 - t_1 - 1);
+frame.set("loop.first", t_1 === 0);
+frame.set("loop.last", t_1 === t_2 - 1);
+frame.set("loop.length", t_2);
+output += "\r\n                    <option value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"viewuse_object_id", env.opts.autoescape), env.opts.autoescape);
+output += "\"\r\n                            ";
+output += runtime.suppressValue((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_object_id", env.opts.autoescape) == runtime.memberLookup((t_4),"viewuse_object_id", env.opts.autoescape)?" selected":""), env.opts.autoescape);
+output += ">\r\n                        ";
+output += runtime.suppressValue(runtime.memberLookup((t_4),"readable_name", env.opts.autoescape), env.opts.autoescape);
+output += "\r\n                    </option>\r\n                ";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n            </select>\r\n            <br>\r\n            <button name=\"save-viewuse\">Save View</button>\r\n            <button name=\"rename-viewuse\">Rename View</button>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"section viewuse-filter\">\r\n        <h4 class=\"title\"\r\n            onclick=\"Tracuse.app.viewuse.showHidePanel('datum-filter', this, event)\"\r\n            onkeypress=\"Tracuse.app.viewuse.showHidePanel('datum-filter', this, event)\">\r\n            Object Filter\r\n        </h4>\r\n\r\n        ";
+env.getTemplate("viewuse/datum_filter.html", false, "viewuse/viewuse_options.html", function(t_7,t_5) {
+if(t_7) { cb(t_7); return; }
+t_5.render(context.getVariables(), frame.push(), function(t_8,t_6) {
+if(t_8) { cb(t_8); return; }
+output += t_6
+output += "\r\n    </div>\r\n\r\n    <div class=\"section viewuse-arrangement\">\r\n        <h4 class=\"title\"\r\n            onclick=\"Tracuse.app.viewuse.showHideContent(this, event)\"\r\n            onkeypress=\"Tracuse.app.viewuse.showHideContent(this, event)\">\r\n            Arrangement\r\n        </h4>\r\n\r\n        <div class=\"content\">\r\n            <select name=\"viewuse_arrangement\">\r\n                <option></option>\r\n                ";
+frame = frame.push();
+var t_11 = runtime.contextOrFrameLookup(context, frame, "viewuse_arrangements");
+if(t_11) {var t_10 = t_11.length;
+for(var t_9=0; t_9 < t_11.length; t_9++) {
+var t_12 = t_11[t_9];
+frame.set("viewuse_arrangement", t_12);
+frame.set("loop.index", t_9 + 1);
+frame.set("loop.index0", t_9);
+frame.set("loop.revindex", t_10 - t_9);
+frame.set("loop.revindex0", t_10 - t_9 - 1);
+frame.set("loop.first", t_9 === 0);
+frame.set("loop.last", t_9 === t_10 - 1);
+frame.set("loop.length", t_10);
+output += "\r\n                    <option value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_12),"viewuse_arrangement_id", env.opts.autoescape), env.opts.autoescape);
+output += "\"\r\n                            ";
+output += runtime.suppressValue((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_arrangement_id", env.opts.autoescape) == runtime.memberLookup((t_12),"viewuse_arrangement_id", env.opts.autoescape)?" selected":""), env.opts.autoescape);
+output += ">\r\n                        ";
+output += runtime.suppressValue(runtime.memberLookup((t_12),"readable_name", env.opts.autoescape), env.opts.autoescape);
+output += "\r\n                    </option>\r\n                ";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n            </select>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"section viewuse-datum\">\r\n        <h4 class=\"title\"\r\n            onclick=\"Tracuse.app.viewuse.showHideContent(this, event)\"\r\n            onkeypress=\"Tracuse.app.viewuse.showHideContent(this, event)\">\r\n            Object Format\r\n        </h4>\r\n\r\n        <div class=\"content\">\r\n            <select name=\"viewuse_datum\">\r\n                <option></option>\r\n                ";
+frame = frame.push();
+var t_15 = runtime.contextOrFrameLookup(context, frame, "viewuse_datums");
+if(t_15) {var t_14 = t_15.length;
+for(var t_13=0; t_13 < t_15.length; t_13++) {
+var t_16 = t_15[t_13];
+frame.set("viewuse_datum", t_16);
+frame.set("loop.index", t_13 + 1);
+frame.set("loop.index0", t_13);
+frame.set("loop.revindex", t_14 - t_13);
+frame.set("loop.revindex0", t_14 - t_13 - 1);
+frame.set("loop.first", t_13 === 0);
+frame.set("loop.last", t_13 === t_14 - 1);
+frame.set("loop.length", t_14);
+output += "\r\n                    <option value=\"";
+output += runtime.suppressValue(runtime.memberLookup((t_16),"viewuse_datum_id", env.opts.autoescape), env.opts.autoescape);
+output += "\"\r\n                            ";
+output += runtime.suppressValue((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_datum_id", env.opts.autoescape) == runtime.memberLookup((t_16),"viewuse_datum_id", env.opts.autoescape)?" selected":""), env.opts.autoescape);
+output += ">\r\n                        ";
+output += runtime.suppressValue(runtime.memberLookup((t_16),"readable_name", env.opts.autoescape), env.opts.autoescape);
+output += "\r\n                    </option>\r\n                ";
+;
+}
+}
+frame = frame.pop();
+output += "\r\n            </select>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"section viewuse-format\">\r\n        <h4 class=\"title\"\r\n            onclick=\"Tracuse.app.viewuse.showHideContent(this, event)\"\r\n            onkeypress=\"Tracuse.app.viewuse.showHideContent(this, event)\">\r\n            View Format\r\n        </h4>\r\n\r\n        <div class=\"content\">\r\n        </div>\r\n    </div>\r\n</aside>";
+cb(null, output);
+})});
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
 root: root
 };
 })();
