@@ -21,7 +21,10 @@ Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arr
             "id": Tracuse.app.viewuse.nextId(),
             "datum_groups": Tracuse.models.datum_groups.dataArr,
             "datum_types": Tracuse.models.datum_types.dataArr,
-            "element_types": Tracuse.models.element_types.dataArr
+            "element_types": Tracuse.models.element_types.dataArr,
+            "viewuse_objects": Tracuse.models.viewuse_objects.dataArr,
+            "viewuse_arrangements": Tracuse.models.viewuse_arrangements.dataArr,
+            "viewuse_datums": Tracuse.models.viewuse_datums.dataArr
         };
 
         output = Tracuse.templates.env.render(templateName, templateData);
