@@ -6,7 +6,8 @@ Tracuse.views = Tracuse.views || {};
 Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arrangementTemplate,
                                                                              datumTemplate,
                                                                              datumObjects,
-                                                                             callback) {
+                                                                             callback,
+                                                                             viewuseObject) {
     "use strict";
     // Render viewuse from template names
     var output = "";
@@ -22,6 +23,7 @@ Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arr
             "datum_groups": Tracuse.models.datum_groups.dataArr,
             "datum_types": Tracuse.models.datum_types.dataArr,
             "element_types": Tracuse.models.element_types.dataArr,
+            "this_viewuse": viewuseObject,
             "viewuse_objects": Tracuse.models.viewuse_objects.dataArr,
             "viewuse_arrangements": Tracuse.models.viewuse_arrangements.dataArr,
             "viewuse_datums": Tracuse.models.viewuse_datums.dataArr
@@ -50,10 +52,15 @@ Tracuse.views.renderViewuseFromObject = function renderViewuseFromObject(viewuse
         Tracuse.models.idsToObjects(datumArray, datumModel, function (objectsArray) {
 
             // Render template
-            Tracuse.views.renderViewuseFromTemplate(arrangementTemplate, datumTemplate, objectsArray,
+            Tracuse.views.renderViewuseFromTemplate(
+                arrangementTemplate,
+                datumTemplate,
+                objectsArray,
                 function (templateString) {
                     callback(templateString);
-                });
+                },
+                viewuseObject
+            );
         });
     });
 };

@@ -28,10 +28,11 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
         }
 
         if (appendEl) {
-            var newViewuseString = Tracuse.views.renderViewuseFromTemplate("viewuse_tile", "datum_small");
-            var range = document.createRange();
-            var newViewuseEl = range.createContextualFragment(newViewuseString);
-            appendEl.appendChild(newViewuseEl);
+            Tracuse.views.renderViewuseFromTemplate("viewuse_tile", "datum_small", null, function (renderedOutput) {
+                var range = document.createRange();
+                var newViewuseEl = range.createContextualFragment(renderedOutput);
+                appendEl.appendChild(newViewuseEl);
+            });
         }
         e.stopPropagation();
     });
