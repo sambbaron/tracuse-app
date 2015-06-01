@@ -27,7 +27,6 @@ footer {
 main {
     position: relative;
     top: 4em;
-    /*z-index: -98;*/
 }
 
 header img {
@@ -59,22 +58,9 @@ header .nav-button:focus {
 }
 
 input, select {
-    margin: 0.25em;
     border: solid 1px lightgray;
-    padding: 0.25em;
+    padding: 0.15em;
     background-color: rgba(250,250,250, 0.5);
-    font-size: 125%;
-    color: inherit;
-}
-
-input[type=submit] {
-    background-color: #A9D963;
-    border-radius: 10% / 20%;
-    border: none;
-    box-shadow: 2px 2px 1px rgba(150, 150, 150, 0.75);
-    color: #35446A;
-    text-align: center;
-    cursor: pointer;
 }
 
 button {
