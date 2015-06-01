@@ -18,7 +18,7 @@ Tracuse.models.createModels = function createModels() {
             "idProperty": "datum_type_id"
         }),
         "datum_objects": new Tracuse.Model("datum_objects", {
-            "loadOnInit": false,
+            "loadOnInit": true,
             "idProperty": "datum_object_id"
         }),
         "element_types": new Tracuse.Model("element_types", {
@@ -58,9 +58,9 @@ Tracuse.models.createModels = function createModels() {
         new Tracuse.Model.Property("datum_type_id", {}),
         new Tracuse.Model.Property("datum_type_name", {}),
         new Tracuse.Model.Property("headline", {}),
-        new Tracuse.Model.Property("parent_datums", {"nestedModel": "element_datum_objects"}),
+        new Tracuse.Model.Property("parent_datums", {"nestedModel": "datum_objects"}),
         new Tracuse.Model.Property("child_datums", {"nestedModel": "datum_objects"}),
-        new Tracuse.Model.Property("elements", {"nestedModel": "datum_objects"})
+        new Tracuse.Model.Property("elements", {"nestedModel": "element_datum_objects"})
     ];
 
     models.element_datum_objects.properties = [
@@ -168,7 +168,7 @@ Tracuse.models.updateDataOne = function updateDataOne(inputEl) {
 };
 
 Tracuse.models.idsToObjects = function idsToObjects(idArray, model, callback) {
-    // Convert array of model ids to model of objects
+    // Convert array of model ids to array of objects
     // If object not in models, fetch object
     "use strict";
     var objectsArray = [];
@@ -194,4 +194,22 @@ Tracuse.models.idsToObjects = function idsToObjects(idArray, model, callback) {
         }
         c++;
     }, 100);
+};
+
+Tracuse.models.extendObject = function extendObject(object, property, callback) {
+    "use strict";
+    // Convert id arrays to model objects
+    // using property attribute 'nestedModel'
+
+    var idArray = object[property.name];
+
+    if (idArray[0] instanceof Object) {
+        callback(object);
+    } else {
+        var extendedModel = Tracuse.models[property.nestedModel];
+        Tracuse.models.idsToObjects(idArray, extendedModel, function (objectArray) {
+            object[property.name] = objectArray;
+            callback(object);
+        });
+    }
 };
