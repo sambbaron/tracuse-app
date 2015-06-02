@@ -1,4 +1,5 @@
-<section class="viewuse" template="{{ template_name }}" id="{{ id }}"
+<section class="viewuse" template="{{ template_name }}" id="{{ this_viewuse.eid }}"
+         viewuse_object_id = "{{ this_viewuse.viewuse_object_id }}"
          onmouseenter="Tracuse.app.viewuse.viewuseActive(this, event)"
          onfocus="Tracuse.app.viewuse.viewuseActive(this, event)"
          onmouseleave="Tracuse.app.viewuse.viewuseInactive(this, event)">

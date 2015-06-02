@@ -4,14 +4,8 @@ var colno = null;
 var output = "";
 try {
 output += "<div id=\"viewuses\">\r\n\r\n</div>\r\n";
-env.getTemplate("viewuse/viewuse_options.html", false, "app.html", function(t_3,t_1) {
-if(t_3) { cb(t_3); return; }
-t_1.render(context.getVariables(), frame.push(), function(t_4,t_2) {
-if(t_4) { cb(t_4); return; }
-output += t_2
-output += "\r\n";
 cb(null, output);
-})});
+;
 } catch (e) {
   cb(runtime.handleError(e, lineno, colno));
 }
@@ -360,14 +354,22 @@ try {
 output += "<section class=\"viewuse\" template=\"";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "template_name"), env.opts.autoescape);
 output += "\" id=\"";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "id"), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"eid", env.opts.autoescape), env.opts.autoescape);
+output += "\"\r\n         viewuse_object_id = \"";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_object_id", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n         onmouseenter=\"Tracuse.app.viewuse.viewuseActive(this, event)\"\r\n         onfocus=\"Tracuse.app.viewuse.viewuseActive(this, event)\"\r\n         onmouseleave=\"Tracuse.app.viewuse.viewuseInactive(this, event)\">\r\n    <input name=\"title\" value=\"View Title\">\r\n\r\n    <div class=\"content\">\r\n        ";
 context.getBlock("viewuse_content")(env, context, frame, runtime, function(t_2,t_1) {
 if(t_2) { cb(t_2); return; }
 output += t_1;
-output += "\r\n    </div>\r\n\r\n    <nav class=\"viewuse-controls\">\r\n        <button name=\"viewuse-options\" onclick=\"Tracuse.app.viewuse.showHidePopout('viewuse-options', this, event)\">View<br>Options</button>\r\n        <br>\r\n        <button name=\"new-object\" onclick=\"Tracuse.app.viewuse.openObjectPanel(this, event)\">New<br>Object</button>\r\n        <br>\r\n    </nav>\r\n\r\n</section>";
+output += "\r\n    </div>\r\n\r\n    <nav class=\"viewuse-controls\">\r\n        <button name=\"viewuse-options\" onclick=\"Tracuse.app.viewuse.showHidePanel('viewuse-options', this, event)\">View<br>Options</button>\r\n        <br>\r\n        <button name=\"new-object\" onclick=\"Tracuse.app.viewuse.openObjectPanel(this, event)\">New<br>Object</button>\r\n        <br>\r\n    </nav>\r\n\r\n    ";
+env.getTemplate("viewuse/viewuse_options.html", false, "viewuse/viewuse_base.html", function(t_5,t_3) {
+if(t_5) { cb(t_5); return; }
+t_3.render(context.getVariables(), frame.push(), function(t_6,t_4) {
+if(t_6) { cb(t_6); return; }
+output += t_4
+output += "\r\n</section>\r\n";
 cb(null, output);
-});
+})})});
 } catch (e) {
   cb(runtime.handleError(e, lineno, colno));
 }
@@ -394,7 +396,11 @@ var lineno = null;
 var colno = null;
 var output = "";
 try {
-output += "<aside class=\"viewuse-panel popout viewuse-options\">\r\n    <h3 class=\"title\">View Options</h3>\r\n\r\n    <div class=\"section viewuse-select col-1\">\r\n        <h4 class=\"title\">Select View</h4>\r\n\r\n        <div class=\"content\">\r\n\r\n            <div class=\"input-group viewuse-open\">\r\n                <div class=\"content\">\r\n                    <select name=\"viewuse_object\">\r\n                        ";
+output += "<aside class=\"viewuse-panel popout viewuse-options\"\r\n        viewuse_object_id=\"";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_object_id", env.opts.autoescape), env.opts.autoescape);
+output += "\"\r\n        eid = \"";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"eid", env.opts.autoescape), env.opts.autoescape);
+output += "\">\r\n    <h3 class=\"title\">View Options</h3>\r\n\r\n    <div class=\"section viewuse-select col-1\">\r\n        <h4 class=\"title\">Select View</h4>\r\n\r\n        <div class=\"content\">\r\n\r\n            <div class=\"input-group viewuse-open\">\r\n                <div class=\"content\">\r\n                    <select name=\"viewuse_object\">\r\n                        ";
 frame = frame.push();
 var t_3 = runtime.contextOrFrameLookup(context, frame, "viewuse_objects");
 if(t_3) {var t_2 = t_3.length;
@@ -475,7 +481,7 @@ if(t_15) { cb(t_15); return; }
 t_13.render(context.getVariables(), frame.push(), function(t_16,t_14) {
 if(t_16) { cb(t_16); return; }
 output += t_14
-output += "\r\n    </div>\r\n\r\n    <div class=\"section viewuse-format col-3\">\r\n        <h4 class=\"title\">View Format</h4>\r\n\r\n        <div class=\"content\">\r\n        </div>\r\n    </div>\r\n\r\n    <button name=\"apply-view\" onclick=\"\">Apply<br>View</button>\r\n    <button name=\"close-panel\" onclick=\"Tracuse.app.viewuse.showHidePopout('viewuse-options', this, event)\">X</button>\r\n</aside>";
+output += "\r\n    </div>\r\n\r\n    <div class=\"section viewuse-format col-3\">\r\n        <h4 class=\"title\">View Format</h4>\r\n\r\n        <div class=\"content\">\r\n        </div>\r\n    </div>\r\n\r\n    <button name=\"apply-view\" onclick=\"\">Apply<br>View</button>\r\n    <button name=\"close-panel\" onclick=\"Tracuse.app.viewuse.showHidePanel('viewuse-options', this, event)\">X</button>\r\n</aside>";
 cb(null, output);
 })});
 } catch (e) {
