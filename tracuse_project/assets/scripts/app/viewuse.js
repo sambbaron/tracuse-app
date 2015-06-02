@@ -18,7 +18,7 @@ Tracuse.app.viewuse.nextId = function nextId() {
     // Calculate next id value
     var newId;
     var idArray = [];
-    var viewuses = Tracuse.frame.querySelectorAll(".viewuse");
+    var viewuses = Tracuse.el.viewuses.querySelectorAll(".viewuse");
 
     for (var i = 0; i < viewuses.length; i++) {
         var viewuseId = viewuses[i].getAttribute("id");
