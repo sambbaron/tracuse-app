@@ -107,10 +107,10 @@ Tracuse.app.viewuse.showHideContent = function showHideContent(el, ev) {
 
 Tracuse.app.viewuse.clickDatumGroup = function clickDatumGroup(el, ev) {
     "use strict";
-    var parentViewuse = Tracuse.app.viewuse.getParentViewuse(el);
+    var parentEl = el.parentNode;
     var datumGroup = el;
     var datumGroupId = el.value;
-    var datumTypes = parentViewuse.querySelectorAll("button[name='datum_type']");
+    var datumTypes = parentEl.querySelectorAll("button[name='datum_type']");
 
     datumGroup.classList.toggle("active");
 
@@ -134,8 +134,8 @@ Tracuse.app.viewuse.clickDatumGroup = function clickDatumGroup(el, ev) {
 Tracuse.app.viewuse.clickDatumType = function clickDatumType(el, ev) {
     "use strict";
     // Clear datum group
-    var parentViewuse = Tracuse.app.viewuse.getParentViewuse(el);
-    var datumGroups = parentViewuse.querySelectorAll("button[name='datum_group']");
+    var parentEl = el.parentNode;
+    var datumGroups = parentEl.querySelectorAll("button[name='datum_group']");
     var datumGroupId = el.getAttribute("datum_group_id");
     for (var i = 0; i < datumGroups.length; i++) {
         var datumGroup = datumGroups[i];
@@ -154,8 +154,8 @@ Tracuse.app.viewuse.clickDatumType = function clickDatumType(el, ev) {
 Tracuse.app.viewuse.selectDatumGroup = function selectDatumGroup(el, ev) {
     "use strict";
     // Filter Datum Types
-    var parentContentEl = el.parentNode.parentNode;
-    var datumTypesEl = parentContentEl.querySelector("[name='datum_types']");
+    var parentEl = el.parentNode.parentNode;
+    var datumTypesEl = parentEl.querySelector("[name='datum_types']");
     var datumTypeOptions = datumTypesEl.querySelectorAll("option");
 
     for (var i = 0; i < datumTypeOptions.length; i++) {
@@ -169,7 +169,7 @@ Tracuse.app.viewuse.selectDatumGroup = function selectDatumGroup(el, ev) {
     }
 
     // Update Datum Objects
-    var datumObjectsEl = parentContentEl.querySelector("[name='datum_objects']");
+    var datumObjectsEl = parentEl.querySelector("[name='datum_objects']");
     datumObjectsEl.innerHTML = "";
 
     var optionFrag = document.createDocumentFragment();
@@ -195,8 +195,8 @@ Tracuse.app.viewuse.selectDatumType = function selectDatumType(el, ev) {
     "use strict";
 
     // Update Datum Objects
-    var parentContentEl = el.parentNode.parentNode;
-    var datumObjectsEl = parentContentEl.querySelector("[name='datum_objects']");
+    var parentEl = el.parentNode.parentNode;
+    var datumObjectsEl = parentEl.querySelector("[name='datum_objects']");
     datumObjectsEl.innerHTML = "";
 
     var optionFrag = document.createDocumentFragment();
@@ -248,8 +248,8 @@ Tracuse.app.viewuse.addAssociatedDatum = function addAssociatedDatum(el, ev) {
 Tracuse.app.viewuse.selectElement = function selectElement(el, ev) {
     // Add element operators
 
-    var parentContentEl = el.parentNode.parentNode;
-    var elementOperatorsEl = parentContentEl.querySelector("[name='element_operators']");
+    var parentEl = el.parentNode.parentNode;
+    var elementOperatorsEl = parentEl.querySelector("[name='element_operators']");
     elementOperatorsEl.innerHTML = "";
 
     var elementDataTypeId = Tracuse.models.element_types.dataObj[el.value].element_data_type_id;
@@ -280,9 +280,10 @@ Tracuse.app.viewuse.addElementFilter = function addElementFilter(el, ev) {
     // Add element filter
     // Create button element
 
-    var elementType = el.parentNode.querySelector("[name='element_types']");
-    var elementOperator = el.parentNode.querySelector("[name='element_operators']");
-    var elementValue = el.parentNode.querySelector("[name='element_value']");
+    var parentEl = el.parentNode.parentNode;
+    var elementType = parentEl.querySelector("[name='element_types']");
+    var elementOperator = parentEl.querySelector("[name='element_operators']");
+    var elementValue = parentEl.querySelector("[name='element_value']");
 
     if (elementType && elementOperator && elementValue) {
         var elementEl = document.createElement("button");
