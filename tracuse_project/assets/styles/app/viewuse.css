@@ -111,6 +111,7 @@
 
 .viewuse-panel > .section > .title {
     margin-top: 0.75em;
+    padding: 0.25em;
     text-shadow: 1px 1px black;
     font-weight: bold;
     font-size: 100%;
@@ -129,25 +130,13 @@
 }
 
 .viewuse-options > .section {
-    display: block;
-    position: absolute;
+    display: inline-block;
     min-height: 14em;
-    border-right: 1px solid #fafafa;
+    border-left: 1px solid #fafafa;
+    vertical-align: top;
 }
 
-.viewuse-options > .section.col-1 {
-    width: 15em;
-    margin-left: 0;
-}
-
-.viewuse-options > .section.col-2 {
-    width: 48em;
-    margin-left: 15em;
-}
-
-.viewuse-options > .section.col-3 {
-    width: 10em;
-    margin-left: 63em;
+.viewuse-options > div:first-child {
     border: none;
 }
 
@@ -155,8 +144,18 @@
     font-size: 95%;
 }
 
-.viewuse-options > .section > .content > .section > .content > .input-group > .title {
+.viewuse-options > .section > .content > .input-group > .title {
     font-size: 90%;
+}
+
+.viewuse-options > .section > .content > .input-group {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.viewuse-options > .section.viewuse-select > .content > .input-group {
+    display: block;
+    vertical-align: inherit;
 }
 
 .viewuse-options > .section.viewuse-select > .content > select[name="viewuse_object"] {
@@ -164,92 +163,60 @@
     margin-top: 2em;
 }
 
-.viewuse-options > .section.datum-filter > .content > .section {
-    display: block;
-    position: absolute;
-}
-
-.viewuse-options > .section.datum-filter > .content > .section.col-1 {
-    width: 16em;
-    margin-left: 0;
-}
-
-.viewuse-options > .section.datum-filter > .content > .section.col-2 {
-    width: 17em;
-    margin-left: 16em;
-}
-
-.viewuse-options > .section.datum-filter > .content > .section.col-3 {
-    width: 20em;
-    margin-left: 31em;
-}
-
-.viewuse-options > .section.datum-filter > .content > .section > .content > .input-group {
-    display: inline-block;
-}
-
-.viewuse-options > .section.datum-filter > .content > .section > .content > .input-group .add-filter {
+.viewuse-options > .section > .content > .input-group .add-filter {
     font-weight: bold;
     font-size: 150%;
 }
 
-.viewuse-options > .section.datum-filter > .content > .section > .content > .input-group *.active {
+.viewuse-options > .section > .content > .input-group *.active {
     background-color: rgba(204, 232, 162, 0.75);
     color: yellow;
 }
 
-.viewuse-options > .section.datum-filter > .content > .section.groups-types > .content > .input-group {
-    display: block;
-    position: absolute;
-    width: 25%;
+.viewuse-options > .section.filter-groups-types > .content > .input-group {
+    display: inline-block;
+    width: 4.5em;
+    vertical-align: top;
 }
 
-.viewuse-options > .section.datum-filter > .content > .section.groups-types > .content > .input-group.col-1 {
-    margin-left: 0;
-}
-
-.viewuse-options > .section.datum-filter > .content > .section.groups-types > .content > .input-group.col-2 {
-    margin-left: 25%;
-}
-
-.viewuse-options > .section.datum-filter > .content > .section.groups-types > .content > .input-group.col-3 {
-    margin-left: 50%;
-}
-
-.viewuse-options > .section.datum-filter > .content > .section.groups-types > .content > .input-group.col-4 {
-    margin-left: 75%;
-}
-
-.viewuse-options > .section.datum-filter > .content > .section.groups-types > .content > .input-group * {
+.viewuse-options > .section.filter-groups-types > .content > .input-group * {
     width: 3.5rem;
     margin: 0.25em;
 }
 
-.viewuse-options > .section.datum-filter > .content > .section.groups-types > .content > .input-group [name="datum_type"] {
+.viewuse-options > .section.filter-groups-types > .content > .input-group [name="datum_type"] {
     font-size: 75%;
 }
 
-.viewuse-options > .section.datum-filter > .content > .section.associations > .content > .input-group [name="datum_groups"] {
+.viewuse-options > .section.filter-associations {
+    width: 18em;
+}
+
+.viewuse-options > .section.filter-associations > .content > .input-group [name="datum_groups"] {
     width: 5em;
 }
 
-.viewuse-options > .section.datum-filter > .content > .section.associations > .content > .input-group [name="datum_types"] {
+.viewuse-options > .section.filter-associations > .content > .input-group [name="datum_types"] {
     width: 10em;
 }
 
-.viewuse-options > .section.datum-filter > .content > .section.associations > .content > .input-group [name="datum_objects"] {
+.viewuse-options > .section.filter-associations > .content > .input-group [name="datum_objects"] {
     width: 14em;
 }
 
-.viewuse-options > .section.datum-filter > .content > .section.elements > .content > .input-group [name="element_types"] {
+.viewuse-options > .section.filter-elements {
+    width: 20em;
+}
+
+.viewuse-options > .section.filter-elements > .content > .input-group [name="element_types"] {
     width: 9em;
 }
 
-.viewuse-options > .section.datum-filter > .content > .section.elements > .content > .input-group [name="element_operators"] {
+.viewuse-options > .section.filter-elements > .content > .input-group [name="element_operators"] {
     width: 10em;
 }
 
-.viewuse-options > .section.datum-filter > .content > .section.elements > .content > .input-group [name="element_value"] {
+.viewuse-options > .section.filter-elements > .content > .input-group [name="element_value"] {
     height: 1.75em;
     width: 12em;
 }

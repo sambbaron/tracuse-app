@@ -271,7 +271,7 @@ Tracuse.app.viewuse.addAssociatedDatum = function addAssociatedDatum(el, ev) {
         datumEl.addEventListener("click", function () {
             this.parentNode.removeChild(this);
         });
-        el.parentNode.insertBefore(datumEl, el.nextSibling);
+        el.parentNode.appendChild(datumEl);
     }
 
     if (ev) {
@@ -332,7 +332,7 @@ Tracuse.app.viewuse.addElementFilter = function addElementFilter(el, ev) {
         elementEl.addEventListener("click", function () {
             this.parentNode.removeChild(this);
         });
-        el.parentNode.insertBefore(elementEl, el.nextSibling);
+        el.parentNode.appendChild(elementEl);
     }
 
     if (ev) {

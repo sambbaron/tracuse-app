@@ -3,7 +3,7 @@
         eid = "{{ this_viewuse.eid }}">
 {#    <h3 class="title">View Options</h3>#}
 
-    <div class="section viewuse-select col-1">
+    <div class="section viewuse-select">
         <h4 class="title">Select View</h4>
 
         <div class="content">
@@ -44,7 +44,7 @@
                 <h4 class="title">Object Format</h4>
 
                 <div class="content">
-                    <select name="viewuse_datum col-1">
+                    <select name="viewuse_datum">
                         <option></option>
                         {% for viewuse_datum in viewuse_datums %}
                             <option value="{{ viewuse_datum.viewuse_datum_id }}"
@@ -58,11 +58,9 @@
         </div>
     </div>
 
-    <div class="section datum-filter col-2">
-        {% include "viewuse/datum_filter.html" %}
-    </div>
+    {% include "viewuse/datum_filter.html" %}
 
-    <div class="section viewuse-format col-3">
+    <div class="section viewuse-format">
         <h4 class="title">View Format</h4>
 
         <div class="content">
