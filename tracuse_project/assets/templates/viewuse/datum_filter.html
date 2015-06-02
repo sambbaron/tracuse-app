@@ -1,14 +1,9 @@
-<aside class="viewuse-panel datum-filter">
-    <h3 class="title">Object Filter</h3>
+<h3 class="title">Object Filter</h3>
 
-    <button name="close-panel" onclick="Tracuse.app.viewuse.showHidePanel('datum-filter', this, event)">X</button>
+<div class="content">
 
-    <div class="section groups-types">
-        <h4 class="title"
-            onclick="Tracuse.app.viewuse.showHideContent(this, event)"
-            onkeypress="Tracuse.app.viewuse.showHideContent(this, event)">
-            Groups/Types
-        </h4>
+    <div class="section groups-types col-1">
+        <h4 class="title">Groups/Types</h4>
 
         <div class="content">
             {% for datum_group in datum_groups %}
@@ -32,12 +27,8 @@
         </div>
     </div>
 
-    <div class="section associations">
-        <h4 class="title"
-            onclick="Tracuse.app.viewuse.showHideContent(this, event)"
-            onkeypress="Tracuse.app.viewuse.showHideContent(this, event)">
-            Associations
-        </h4>
+    <div class="section associations col-2">
+        <h4 class="title">Associations</h4>
 
         <div class="content">
             <fieldset class="input-group">
@@ -80,12 +71,8 @@
         </div>
     </div>
 
-    <div class="section elements">
-        <h4 class="title"
-            onclick="Tracuse.app.viewuse.showHideContent(this, event)"
-            onkeypress="Tracuse.app.viewuse.showHideContent(this, event)">
-            Elements
-        </h4>
+    <div class="section elements col-3">
+        <h4 class="title">Elements</h4>
 
         <div class="content">
             <fieldset class="input-group">
@@ -99,11 +86,15 @@
                         </option>
                     {% endfor %}
                 </select>
+            </fieldset>
+            <fieldset class="input-group">
                 <h5 class="title">Operators</h5>
                 <select name="element_operators">
                     <option></option>
                 </select>
-                <br>
+            </fieldset>
+            <br>
+            <fieldset class="input-group">
                 <h5 class="title">Filter Value</h5>
                 <input name="element_value">
                 <button class="add-filter" name="add-element-filter"
@@ -113,5 +104,4 @@
             </fieldset>
         </div>
     </div>
-
-</aside>
+</div>
