@@ -11,7 +11,7 @@ module.exports = function (grunt) {
         },
         watch: {
             nunjucks: {
-                files: "<%= pkg.dirAssets %>/templates/*/*",
+                files: ["<%= pkg.dirAssets %>/templates/*.html", "<%= pkg.dirAssets %>/templates/*/*.html"],
                 tasks: ['nunjucks']
             }
         }

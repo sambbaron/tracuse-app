@@ -4,7 +4,8 @@ var Tracuse = Tracuse || {};
 // Init functions
 Tracuse.init = Tracuse.init || {};
 
-Tracuse.init.element = document.querySelector("#client-container");
+// Saved elements
+Tracuse.el = Tracuse.el || {};
 
 Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
     "use strict";
@@ -12,7 +13,7 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
     // Render button for testing
     var renderButton = document.querySelector("#render-page");
     renderButton.addEventListener("click", function (e) {
-        renderTest();
+        Tracuse.init.firstViewuse();
         e.stopPropagation();
     });
 
@@ -21,7 +22,7 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
         var targetEl = e.target;
         var appendEl;
 
-        if (targetEl.tagName === "SECTION" || targetEl === Tracuse.frame) {
+        if (targetEl.classList.contains("viewuse") || targetEl === Tracuse.el.viewuses) {
             appendEl = targetEl;
         } else if (targetEl.parentNode.tagName === "SECTION") {
             appendEl = targetEl.parentNode;
@@ -43,8 +44,18 @@ Tracuse.init.loadAppTemplate = function loadAppTemplate() {
     "use strict";
     var appTemplate = Tracuse.templates.app;
     var output = Tracuse.templates.env.render(appTemplate);
-    Tracuse.init.element.innerHTML = output;
-    Tracuse.frame = document.querySelector("#app");
+    Tracuse.el.app = document.querySelector("#app");
+    Tracuse.el.app.innerHTML = output;
+    Tracuse.el.viewuses = document.querySelector("#viewuses");
+};
+
+Tracuse.init.firstViewuse = function firstViewuse() {
+    "use strict";
+    var viewuse = Tracuse.models.viewuse_objects.dataArr[0];
+    Tracuse.views.renderViewuseFromObject(viewuse, function (renderedOutput) {
+        Tracuse.el.viewuses.innerHTML = renderedOutput;
+    });
+
 };
 
 Tracuse.init.initApp = function initApp() {
@@ -54,20 +65,10 @@ Tracuse.init.initApp = function initApp() {
     Tracuse.templates.loadEnvironment();
     Tracuse.init.attachGlobalEvents();
     Tracuse.init.loadAppTemplate();
-
-    setTimeout(renderTest, 3000);
+    setTimeout(Tracuse.init.firstViewuse, 3000);
 };
 
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
     Tracuse.init.initApp();
 });
-
-var renderTest = function renderTest() {
-    "use strict";
-    var viewuse = Tracuse.models.viewuse_objects.dataArr[0];
-    Tracuse.views.renderViewuseFromObject(viewuse, function (renderedOutput) {
-        Tracuse.frame.innerHTML = renderedOutput;
-    });
-
-};
