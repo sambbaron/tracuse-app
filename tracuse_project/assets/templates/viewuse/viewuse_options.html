@@ -1,7 +1,7 @@
 <aside class="viewuse-panel popout viewuse-options"
         viewuse_object_id="{{ this_viewuse.viewuse_object_id }}"
         eid = "{{ this_viewuse.eid }}">
-    <h3 class="title">View Options</h3>
+{#    <h3 class="title">View Options</h3>#}
 
     <div class="section viewuse-select col-1">
         <h4 class="title">Select View</h4>
@@ -70,5 +70,5 @@
     </div>
 
     <button name="apply-view" onclick="">Apply<br>View</button>
-    <button name="close-panel" onclick="Tracuse.app.viewuse.showHidePanel('viewuse-options', this, event)">X</button>
+    <button name="close-panel" onclick="Tracuse.app.viewuse.hidePanel(this, event)">X</button>
 </aside>

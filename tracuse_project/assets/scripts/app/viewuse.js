@@ -4,15 +4,6 @@ var Tracuse = Tracuse || {};
 Tracuse.app = Tracuse.app || {};
 Tracuse.app.viewuse = Tracuse.app.viewuse || {};
 
-Tracuse.app.viewuse.getParentViewuse = function getParentViewuse(el) {
-    "use strict";
-    var parentEl = el.parentNode;
-    while (!parentEl.classList.contains("viewuse")) {
-        parentEl = parentEl.parentNode;
-    }
-    return parentEl;
-};
-
 Tracuse.app.viewuse.nextId = function nextId() {
     "use strict";
     // Calculate next id value
@@ -33,6 +24,23 @@ Tracuse.app.viewuse.nextId = function nextId() {
     newId = "v" + newId;
 
     return newId;
+};
+
+Tracuse.app.viewuse.getParentViewuse = function getParentViewuse(el) {
+    "use strict";
+    // Return viewuse element associated with provided element
+    var viewuseEl;
+    var parentEl;
+
+    parentEl = el;
+    while (parentEl !== document.body) {
+        if (parentEl.hasAttribute("eid")) {
+            var elementId = parentEl.getAttribute("eid");
+            viewuseEl = document.getElementById(elementId);
+            return viewuseEl;
+        }
+        parentEl = parentEl.parentNode;
+    }
 };
 
 Tracuse.app.viewuse.viewuseActive = function viewuseActive(el, ev) {
@@ -79,19 +87,46 @@ Tracuse.app.viewuse.closeView = function closeView(el, ev) {
     }
 };
 
-Tracuse.app.viewuse.showHidePanel = function showHidePanel(panelClassName, el, ev) {
+Tracuse.app.viewuse.showPanel = function showPanel(panelClassName, el, ev) {
     "use strict";
     // Trigger from viewuse button
     var parentViewuse = Tracuse.app.viewuse.getParentViewuse(el);
     var panelEl = parentViewuse.querySelector("." + panelClassName);
-    var controls = parentViewuse.querySelector(".viewuse-controls");
-    $(panelEl).toggle("slide", {direction: "left"}, 300);
-    $(controls).toggle();
+
+    // If has 'popout' class, move node to app container
+    if (panelEl.classList.contains("popout")) {
+        panelEl = panelEl.cloneNode(true);
+        Tracuse.el.app.insertBefore(panelEl, Tracuse.el.viewuses.nextSibling);
+        $(panelEl).fadeIn("fast");
+    } else {
+        $(panelEl).show("slide", {direction: "left"}, 300);
+    }
+
     if (ev) {
         ev.stopPropagation();
         ev.preventDefault();
     }
 };
+
+Tracuse.app.viewuse.hidePanel = function hidePanel(el, ev) {
+    "use strict";
+    // Trigger from close button
+    var panelEl = el.parentNode;
+
+    // If has 'popout' class, move node to app container
+    if (panelEl.classList.contains("popout")) {
+        $(panelEl).fadeOut("fast");
+    } else {
+        $(panelEl).hide("slide", {direction: "left"}, 300);
+    }
+
+    if (ev) {
+        ev.stopPropagation();
+        ev.preventDefault();
+    }
+};
+
+
 
 Tracuse.app.viewuse.showHideContent = function showHideContent(el, ev) {
     "use strict";

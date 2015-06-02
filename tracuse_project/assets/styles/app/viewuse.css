@@ -56,17 +56,29 @@
 }
 
 .viewuse-panel {
-    /*display: none;*/
+    display: none;
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
     overflow: auto;
     padding: 0.5em 0;
     background-color: #475A8D;
     color: #fafafa;
     text-align: center;
+}
+
+.viewuse-panel.embed {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.viewuse-panel.popout {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    resize: both;
+    overflow: auto;
+    border-radius: 0.5em;
 }
 
 .viewuse-panel button {
@@ -111,10 +123,15 @@
     font-size: 95%;
 }
 
+.viewuse-options.popout {
+    height: 65%;
+    width: 90%;
+}
+
 .viewuse-options > .section {
     display: block;
     position: absolute;
-    height: 100%;
+    min-height: 14em;
     border-right: 1px solid #fafafa;
 }
 
@@ -179,10 +196,6 @@
 .viewuse-options > .section.datum-filter > .content > .section > .content > .input-group *.active {
     background-color: rgba(204, 232, 162, 0.75);
     color: yellow;
-}
-
-.viewuse-options > .section.datum-filter > .content > .section.groups-types > .content {
-    height: 9em;
 }
 
 .viewuse-options > .section.datum-filter > .content > .section.groups-types > .content > .input-group {
