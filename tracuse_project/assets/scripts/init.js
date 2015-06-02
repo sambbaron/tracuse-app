@@ -4,7 +4,7 @@ var Tracuse = Tracuse || {};
 // Init functions
 Tracuse.init = Tracuse.init || {};
 
-Tracuse.frame = document.querySelector("#app");
+Tracuse.init.element = document.querySelector("#client-container");
 
 Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
     "use strict";
@@ -39,12 +39,21 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
 
 };
 
+Tracuse.init.loadAppTemplate = function loadAppTemplate() {
+    "use strict";
+    var appTemplate = Tracuse.templates.app;
+    var output = Tracuse.templates.env.render(appTemplate);
+    Tracuse.init.element.innerHTML = output;
+    Tracuse.frame = document.querySelector("#app");
+};
+
 Tracuse.init.initApp = function initApp() {
     "use strict";
     Tracuse.models.createModels();
     Tracuse.models.loadInitData();
     Tracuse.templates.loadEnvironment();
     Tracuse.init.attachGlobalEvents();
+    Tracuse.init.loadAppTemplate();
 
     setTimeout(renderTest, 3000);
 };

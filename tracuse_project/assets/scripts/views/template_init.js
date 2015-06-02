@@ -5,6 +5,8 @@ Tracuse.templates = Tracuse.templates || {};
 
 Tracuse.templates.root_url = "/assets/templates";
 
+Tracuse.templates.app = "app.html";
+
 Tracuse.templates.loadEnvironment = function loadEnvironment() {
     // Load nunjucks template environment
     "use strict";
