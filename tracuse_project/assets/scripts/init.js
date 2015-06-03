@@ -9,6 +9,7 @@ Tracuse.el = Tracuse.el || {};
 
 Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
     "use strict";
+    // Attach all global event handlers
 
     // Render button for testing
     var renderButton = document.querySelector("#render-page");
@@ -49,6 +50,7 @@ Tracuse.init.attachDynamicEvents = function attachDynamicEvents() {
 Tracuse.init.loadAppTemplate = function loadAppTemplate() {
     "use strict";
     // Insert client side base app template to server side template
+    // Set saved elements variables
     var appTemplate = Tracuse.templates.app;
     var output = Tracuse.templates.env.render(appTemplate);
     Tracuse.el.app = document.querySelector("#app");
