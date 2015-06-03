@@ -1,10 +1,7 @@
 <section class="viewuse" template="{{ template_name }}"
          id="{{ this_viewuse.eid }}"
          eid="{{ this_viewuse.eid }}"
-         viewuse_object_id = "{{ this_viewuse.viewuse_object_id }}"
-         onmouseenter="Tracuse.app.viewuse.viewuseActive(this, event)"
-         onfocus="Tracuse.app.viewuse.viewuseActive(this, event)"
-         onmouseleave="Tracuse.app.viewuse.viewuseInactive(this, event)">
+         viewuse_object_id = "{{ this_viewuse.viewuse_object_id }}">
     <input name="title" value="View Title">
 
     <div class="content">
@@ -12,9 +9,9 @@
     </div>
 
     <nav class="viewuse-controls">
-        <button name="viewuse-options" onclick="Tracuse.app.viewuse.showPanel('viewuse-options', this, event)">View<br>Options</button>
+        <button name="viewuse-options">View<br>Options</button>
         <br>
-        <button name="new-object" onclick="Tracuse.app.viewuse.openObjectPanel(this, event)">New<br>Object</button>
+        <button name="new-object">New<br>Object</button>
         <br>
     </nav>
 

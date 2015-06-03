@@ -40,8 +40,15 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
 
 };
 
+Tracuse.init.attachDynamicEvents = function attachDynamicEvents() {
+    "use strict";
+    // Attach all dynamic event handlers associated with app components
+    Tracuse.app.viewuse.events();
+};
+
 Tracuse.init.loadAppTemplate = function loadAppTemplate() {
     "use strict";
+    // Insert client side base app template to server side template
     var appTemplate = Tracuse.templates.app;
     var output = Tracuse.templates.env.render(appTemplate);
     Tracuse.el.app = document.querySelector("#app");
@@ -51,6 +58,9 @@ Tracuse.init.loadAppTemplate = function loadAppTemplate() {
 
 Tracuse.init.firstViewuse = function firstViewuse() {
     "use strict";
+    // Render initial viewuse at startup
+    // ***Currently use first viewuse object
+    // ***Change to user saved prior session
     var viewuse = Tracuse.models.viewuse_objects.dataArr[0];
     Tracuse.views.renderViewuseFromObject(viewuse, function (renderedOutput) {
         Tracuse.el.viewuses.innerHTML = renderedOutput;
@@ -63,8 +73,9 @@ Tracuse.init.initApp = function initApp() {
     Tracuse.models.createModels();
     Tracuse.models.loadInitData();
     Tracuse.templates.loadEnvironment();
-    Tracuse.init.attachGlobalEvents();
     Tracuse.init.loadAppTemplate();
+    Tracuse.init.attachGlobalEvents();
+    Tracuse.init.attachDynamicEvents();
     setTimeout(Tracuse.init.firstViewuse, 3000);
 };
 

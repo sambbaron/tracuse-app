@@ -4,16 +4,14 @@
     <div class="content">
         {% for datum_group in datum_groups %}
             <fieldset class="input-group">
-                <button class="filter-input" name="datum_group" value="{{ datum_group.datum_group_id }}"
-                        onclick="Tracuse.app.viewuse.clickDatumGroup(this, event)">
+                <button class="filter-input" name="datum_group" value="{{ datum_group.datum_group_id }}">
                     {{ datum_group.readable_name }}
                 </button>
 
                 {% for datum_type in datum_types %}
                     {% if datum_type.datum_group_id == datum_group.datum_group_id %}
                         <button class="filter-input" name="datum_type" value="{{ datum_type.datum_type_id }}"
-                                datum_group_id="{{ datum_type.datum_group_id }}"
-                                onclick="Tracuse.app.viewuse.clickDatumType(this, event)">
+                                datum_group_id="{{ datum_type.datum_group_id }}">
                             {{ datum_type.readable_name }}
                         </button>
                     {% endif %}
@@ -29,8 +27,7 @@
     <div class="content">
         <fieldset class="input-group">
             <h5 class="title">Groups</h5>
-            <select name="datum_groups"
-                    onchange="Tracuse.app.viewuse.selectDatumGroup(this, event)">
+            <select name="datum_groups">
                 <option></option>
                 {% for datum_group in datum_groups %}
                     <option value="{{ datum_group.datum_group_id }}">
@@ -41,8 +38,7 @@
         </fieldset>
         <fieldset class="input-group">
             <h5 class="title">Types</h5>
-            <select name="datum_types"
-                    onchange="Tracuse.app.viewuse.selectDatumType(this, event)">
+            <select name="datum_types">
                 <option></option>
                 {% for datum_type in datum_types %}
                     <option value="{{ datum_type.datum_type_id }}"
@@ -58,8 +54,7 @@
             <select name="datum_objects">
                 <option></option>
             </select>
-            <button class="add-filter" name="add-association"
-                    onclick="Tracuse.app.viewuse.addAssociatedDatum(this, event)">
+            <button class="add-filter" name="add-association">
                 +
             </button>
             <br>
@@ -74,8 +69,7 @@
     <div class="content">
         <fieldset class="input-group">
             <h5 class="title">Types</h5>
-            <select name="element_types"
-                    onchange="Tracuse.app.viewuse.selectElement(this, event)">
+            <select name="element_types">
                 <option></option>
                 {% for element_type in element_types %}
                     <option value="{{ element_type.element_type_id }}">
@@ -94,8 +88,7 @@
         <fieldset class="input-group">
             <h5 class="title">Filter Value</h5>
             <input name="element_value">
-            <button class="add-filter" name="add-element-filter"
-                    onclick="Tracuse.app.viewuse.addElementFilter(this, event)">
+            <button class="add-filter" name="add-element-filter">
                 +
             </button>
             <br>

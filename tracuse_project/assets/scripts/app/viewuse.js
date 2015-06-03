@@ -4,6 +4,44 @@ var Tracuse = Tracuse || {};
 Tracuse.app = Tracuse.app || {};
 Tracuse.app.viewuse = Tracuse.app.viewuse || {};
 
+
+Tracuse.app.viewuse.events = function () {
+    var appEl = $(Tracuse.el.app);
+    appEl.on("mouseenter focus", ".viewuse", function (ev) {
+        Tracuse.app.viewuse.setState(ev.target, true);
+    });
+    appEl.on("mouseleave", ".viewuse", function (ev) {
+        Tracuse.app.viewuse.setState(ev.target, false);
+    });
+    appEl.on("click", "button[name='viewuse-options']", function (ev) {
+        Tracuse.app.viewuse.showPanel('viewuse-options', ev.target);
+    });
+    appEl.on("click", "button[name='close-panel']", function (ev) {
+        Tracuse.app.viewuse.hidePanel(ev.target);
+    });
+    appEl.on("click", ".filter-groups-types button[name='datum_group']", function (ev) {
+        Tracuse.app.viewuse.clickDatumGroup(ev.target);
+    });
+    appEl.on("click", ".filter-groups-types button[name='datum_type']", function (ev) {
+        Tracuse.app.viewuse.clickDatumType(ev.target);
+    });
+    appEl.on("change", ".filter-associations select[name='datum_groups']", function (ev) {
+        Tracuse.app.viewuse.selectDatumGroup(ev.target);
+    });
+    appEl.on("change", ".filter-associations select[name='datum_types']", function (ev) {
+        Tracuse.app.viewuse.selectDatumType(ev.target);
+    });
+    appEl.on("click", ".filter-associations button[name='add-association']", function (ev) {
+        Tracuse.app.viewuse.addAssociatedDatum(ev.target);
+    });
+    appEl.on("change", ".filter-elements select[name='element_types']", function (ev) {
+        Tracuse.app.viewuse.selectElement(ev.target);
+    });
+    appEl.on("click", ".filter-elements button[name='add-element-filter']", function (ev) {
+        Tracuse.app.viewuse.addElementFilter(ev.target);
+    });
+};
+
 Tracuse.app.viewuse.nextId = function nextId() {
     "use strict";
     // Calculate next id value
@@ -43,22 +81,6 @@ Tracuse.app.viewuse.getParentViewuse = function getParentViewuse(el) {
     }
 };
 
-Tracuse.app.viewuse.viewuseActive = function viewuseActive(el, ev) {
-    "use strict";
-    Tracuse.app.viewuse.setState(el, true);
-    if (ev) {
-        ev.stopPropagation();
-    }
-};
-
-Tracuse.app.viewuse.viewuseInactive = function viewuseInactive(el, ev) {
-    "use strict";
-    Tracuse.app.viewuse.setState(el, false);
-    if (ev) {
-        ev.stopPropagation();
-    }
-};
-
 Tracuse.app.viewuse.setState = function setState(el, active) {
     "use strict";
     // Set active viewuse - show buttons and set 'active' class
@@ -87,7 +109,7 @@ Tracuse.app.viewuse.closeView = function closeView(el, ev) {
     }
 };
 
-Tracuse.app.viewuse.showPanel = function showPanel(panelClassName, el, ev) {
+Tracuse.app.viewuse.showPanel = function showPanel(panelClassName, el) {
     "use strict";
     // Trigger from viewuse button
     var parentViewuse = Tracuse.app.viewuse.getParentViewuse(el);
@@ -100,11 +122,6 @@ Tracuse.app.viewuse.showPanel = function showPanel(panelClassName, el, ev) {
         $(panelEl).fadeIn("fast");
     } else {
         $(panelEl).show("slide", {direction: "left"}, 300);
-    }
-
-    if (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
     }
 };
 
@@ -119,28 +136,9 @@ Tracuse.app.viewuse.hidePanel = function hidePanel(el, ev) {
     } else {
         $(panelEl).hide("slide", {direction: "left"}, 300);
     }
-
-    if (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
-    }
 };
 
-
-
-Tracuse.app.viewuse.showHideContent = function showHideContent(el, ev) {
-    "use strict";
-    // Trigger from section title
-    // Uses 'content' class of sibiling element
-    var sectionEl = el.parentNode.querySelector(".content");
-    $(sectionEl).slideToggle("medium");
-    if (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
-    }
-};
-
-Tracuse.app.viewuse.clickDatumGroup = function clickDatumGroup(el, ev) {
+Tracuse.app.viewuse.clickDatumGroup = function clickDatumGroup(el) {
     "use strict";
     var parentEl = el.parentNode;
     var datumGroup = el;
@@ -159,14 +157,9 @@ Tracuse.app.viewuse.clickDatumGroup = function clickDatumGroup(el, ev) {
             }
         }
     }
-
-    if (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
-    }
 };
 
-Tracuse.app.viewuse.clickDatumType = function clickDatumType(el, ev) {
+Tracuse.app.viewuse.clickDatumType = function clickDatumType(el) {
     "use strict";
     // Clear datum group
     var parentEl = el.parentNode;
@@ -180,13 +173,9 @@ Tracuse.app.viewuse.clickDatumType = function clickDatumType(el, ev) {
     }
 
     el.classList.toggle("active");
-    if (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
-    }
 };
 
-Tracuse.app.viewuse.selectDatumGroup = function selectDatumGroup(el, ev) {
+Tracuse.app.viewuse.selectDatumGroup = function selectDatumGroup(el) {
     "use strict";
     // Filter Datum Types
     var parentEl = el.parentNode.parentNode;
@@ -219,14 +208,9 @@ Tracuse.app.viewuse.selectDatumGroup = function selectDatumGroup(el, ev) {
         }
     }
     datumObjectsEl.appendChild(optionFrag);
-
-    if (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
-    }
 };
 
-Tracuse.app.viewuse.selectDatumType = function selectDatumType(el, ev) {
+Tracuse.app.viewuse.selectDatumType = function selectDatumType(el) {
     "use strict";
 
     // Update Datum Objects
@@ -246,14 +230,9 @@ Tracuse.app.viewuse.selectDatumType = function selectDatumType(el, ev) {
         }
     }
     datumObjectsEl.appendChild(optionFrag);
-
-    if (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
-    }
 };
 
-Tracuse.app.viewuse.addAssociatedDatum = function addAssociatedDatum(el, ev) {
+Tracuse.app.viewuse.addAssociatedDatum = function addAssociatedDatum(el) {
     "use strict";
     // Add datum object to association filter list
     // Create button element
@@ -273,14 +252,9 @@ Tracuse.app.viewuse.addAssociatedDatum = function addAssociatedDatum(el, ev) {
         });
         el.parentNode.appendChild(datumEl);
     }
-
-    if (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
-    }
 };
 
-Tracuse.app.viewuse.selectElement = function selectElement(el, ev) {
+Tracuse.app.viewuse.selectElement = function selectElement(el) {
     // Add element operators
 
     var parentEl = el.parentNode.parentNode;
@@ -301,16 +275,10 @@ Tracuse.app.viewuse.selectElement = function selectElement(el, ev) {
         }
     }
     elementOperatorsEl.appendChild(optionFrag);
-
-
-    if (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
-    }
 };
 
 
-Tracuse.app.viewuse.addElementFilter = function addElementFilter(el, ev) {
+Tracuse.app.viewuse.addElementFilter = function addElementFilter(el) {
     "use strict";
     // Add element filter
     // Create button element
@@ -333,10 +301,5 @@ Tracuse.app.viewuse.addElementFilter = function addElementFilter(el, ev) {
             this.parentNode.removeChild(this);
         });
         el.parentNode.appendChild(elementEl);
-    }
-
-    if (ev) {
-        ev.stopPropagation();
-        ev.preventDefault();
     }
 };
