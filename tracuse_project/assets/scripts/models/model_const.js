@@ -43,12 +43,13 @@ Tracuse.Model.prototype.dataObjToArray = function dataObjToArray() {
     "use strict";
     // Convert data in Object of Objects format to Array of Objects format
     var model = this;
-    var dataArray = [];
 
     for (var pk in model.dataObj) {
-        dataArray.push(model.dataObj[pk]);
+        var object = model.dataObj[pk];
+        if (model.dataArr.indexOf(object) === -1) {
+            model.dataArr.push(object);
+        }
     }
-    model.dataArr = dataArray;
     console.info("Convert Model Data to Array of Objects: " + model.name);
 };
 
