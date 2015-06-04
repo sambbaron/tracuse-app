@@ -95,9 +95,20 @@ Tracuse.app.viewuse.setState = function setState(el, active) {
         $(controls).hide();
     }
 
-    var parentEl = el.parentNode;
-    if (parentEl && parentEl.classList.contains("viewuse")) {
-        Tracuse.app.viewuse.setState(parentEl, !active)
+    // Change state if coming in/out of parent viewuse
+    var parentViewuse = el.parentNode;
+    if (parentViewuse && parentViewuse.classList.contains("viewuse")) {
+        parentViewuse.classList.toggle("active");
+        var parentControls = parentViewuse.querySelector(".viewuse-controls");
+        $(parentControls).toggle();
+    }
+
+    // Change state if coming in/out of child viewuse
+    var childViewuse = el.querySelector(".viewuse");
+    if (childViewuse) {
+        childViewuse.classList.toggle("active");
+        var childControls = childViewuse.querySelector(".viewuse-controls");
+        $(childControls).toggle();
     }
 };
 
