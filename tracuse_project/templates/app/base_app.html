@@ -24,6 +24,10 @@
     <script src="{% static 'scripts/libraries/underscore-min.js' %}"></script>
     <script src="{% static 'scripts/libraries/backbone-min.js' %}"></script>
     <script src="{% static 'scripts/libraries/nunjucks-slim.min.js' %}"></script>
+
+    <script src="{% static 'scripts/utils.js' %}"></script>
+    <script src="{% static 'scripts/models.js' %}"></script>
+
     <script src="{% static 'scripts/controller/routes.js' %}"></script>
     <script src="{% static 'scripts/models/model_const.js' %}"></script>
     <script src="{% static 'scripts/models/model_init.js' %}"></script>
@@ -33,6 +37,9 @@
     <script src="{% static 'scripts/views/template_init.js' %}"></script>
     <script src="{% static 'templates/compiled_templates.js' %}"></script>
     <script src="{% static 'scripts/views/views.js' %}"></script>
-    <script src="{% static 'scripts/utils.js' %}"></script>
     <script src="{% static 'scripts/init.js' %}"></script>
+
+    <script>
+        Tracuse.init.bootstrapData({{ bootstrap_data|safe }})
+    </script>
 {% endblock %}

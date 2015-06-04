@@ -73,13 +73,28 @@ Tracuse.init.firstViewuse = function firstViewuse() {
 
 Tracuse.init.initApp = function initApp() {
     "use strict";
-    Tracuse.models.createModels();
-    Tracuse.models.loadInitData();
+    //Tracuse.models.createModels();
+    //Tracuse.models.loadInitData();
     Tracuse.templates.loadEnvironment();
     Tracuse.init.loadAppTemplate();
     Tracuse.init.attachGlobalEvents();
     Tracuse.init.attachDynamicEvents();
-    Tracuse.init.firstViewuse();
+    //Tracuse.init.firstViewuse();
+};
+
+Tracuse.init.bootstrapData = function bootstrapData(data) {
+    "use strict";
+    // Load bootstrap data from template into Backbone 'all' collections
+    // Object keys should match model names
+
+    for (var modelName in data) {
+        var model = Tracuse.models[modelName];
+        if (model) {
+            var modelData = JSON.parse(data[modelName]);
+            model.all.reset(modelData);
+            console.info("Load Bootstrap Model Data: " + modelName);
+        }
+    }
 };
 
 document.addEventListener("DOMContentLoaded", function () {
