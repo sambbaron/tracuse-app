@@ -63,7 +63,7 @@ Tracuse.init.firstViewuse = function firstViewuse() {
     // Render initial viewuse at startup
     // ***Currently use first viewuse object
     // ***Change to user saved prior session
-    Tracuse.models.fetchDataOne(1, Tracuse.models.viewuse_objects, function (viewuse) {
+    Tracuse.models.getDataOne(1, Tracuse.models.viewuse_objects, function (viewuse) {
         Tracuse.views.renderViewuseFromObject(viewuse, function (renderedOutput) {
             Tracuse.el.viewuses.innerHTML = renderedOutput;
         });

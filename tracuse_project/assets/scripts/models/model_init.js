@@ -122,6 +122,19 @@ Tracuse.models.loadDataOne = function loadDataOne(id, object, model) {
     return object;
 };
 
+Tracuse.models.getDataOne = function getDataOne(id, model, callback) {
+    "use strict";
+    // Retrieves object and fetches if doesn't exist
+    var object = model.dataObj[id];
+    if (!object) {
+        Tracuse.models.fetchDataOne(id, model, function (ajaxResult) {
+            callback(ajaxResult);
+        });
+    } else {
+        callback(object);
+    }
+};
+
 Tracuse.models.updateDataOne = function updateDataOne(inputEl) {
     // Post Ajax data and save data in model for one object
     // Use custom input element
@@ -175,15 +188,9 @@ Tracuse.models.idsToObjects = function idsToObjects(idArray, model, callback) {
 
     for (var i = 0, imax = idArray.length; i < imax; i++) {
         var id = idArray[i];
-        var object = model.dataObj[id];
-        if (!object) {
-            Tracuse.models.fetchDataOne(id, model, function (ajaxResult) {
-                object = ajaxResult;
-                objectsArray.push(object);
-            });
-        } else {
+        Tracuse.models.getDataOne(id, model, function(object){
             objectsArray.push(object);
-        }
+        });
     }
 
     var c = 0;
