@@ -32,6 +32,29 @@ class ViewuseObjectAll(View):
         return response
 
 
+class ViewuseObjectOne(View):
+    """Retrieve, update or delete a viewuse_object instance.
+    """
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_object(self, pk):
+        try:
+            return ViewuseObject.objects.get(pk=pk)
+        except ViewuseObject.DoesNotExist:
+            raise Http404("Viewuse Object does not exist.")
+
+    def get(self, request, pk):
+        object = self.get_object(pk)
+        serialized_data = Serializer(data=object,
+                                     serializer=ViewuseObjectSerializer.serial_for_ui
+                                     ).serialize()
+        response = JsonResponse(serialized_data, status=200)
+        return response
+
+
 class ViewuseArrangementAll(View):
     """Return all viewuse_arrangements"""
 
