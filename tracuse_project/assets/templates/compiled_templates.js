@@ -417,7 +417,7 @@ frame.set("loop.revindex0", t_2 - t_1 - 1);
 frame.set("loop.first", t_1 === 0);
 frame.set("loop.last", t_1 === t_2 - 1);
 frame.set("loop.length", t_2);
-output += "\r\n                            <option value=\"";
+output += "\r\n                            <option></option>\r\n                            <option value=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"viewuse_object_id", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n                                    ";
 output += runtime.suppressValue((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_object_id", env.opts.autoescape) == runtime.memberLookup((t_4),"viewuse_object_id", env.opts.autoescape)?" selected":""), env.opts.autoescape);
