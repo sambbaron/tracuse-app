@@ -14,7 +14,7 @@ from app.common.serializers import Serializer
 
 
 class ElementTypeAll(View):
-    model_name = "element_type"
+    model_name = "ElementType"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -30,7 +30,7 @@ class ElementTypeAll(View):
 
 
 class ElementOperatorAll(View):
-    model_name = "element_operator"
+    model_name = "ElementOperator"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -46,7 +46,7 @@ class ElementOperatorAll(View):
 
 
 class ElementDatumTypeAll(View):
-    model_name = "element_datum_type"
+    model_name = "ElementDatumType"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -62,7 +62,7 @@ class ElementDatumTypeAll(View):
 
 
 class ElementDatumObjectAll(View):
-    model_name = "element_datum_object"
+    model_name = "ElementDatumObject"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -78,7 +78,7 @@ class ElementDatumObjectAll(View):
 
 
 class ElementDatumObjectOne(View):
-    model_name = "element_datum_object"
+    model_name = "ElementDatumObject"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):

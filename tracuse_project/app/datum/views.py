@@ -14,7 +14,7 @@ from app.common.serializers import Serializer
 
 
 class DatumGroupAll(View):
-    model_name = "datum_group"
+    model_name = "DatumGroup"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -30,7 +30,7 @@ class DatumGroupAll(View):
 
 
 class DatumTypeAll(View):
-    model_name = "datum_type"
+    model_name = "DatumType"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -46,7 +46,7 @@ class DatumTypeAll(View):
 
 
 class DatumObjectAll(View):
-    model_name = "datum_object"
+    model_name = "DatumObject"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -72,7 +72,7 @@ class DatumObjectAll(View):
 
 
 class DatumObjectOne(View):
-    model_name = "datum_object"
+    model_name = "DatumObject"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):

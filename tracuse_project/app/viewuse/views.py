@@ -16,7 +16,7 @@ from app.common.serializers import Serializer
 
 
 class ViewuseObjectAll(View):
-    model_name = "viewuse_object"
+    model_name = "ViewuseObject"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -32,7 +32,7 @@ class ViewuseObjectAll(View):
 
 
 class ViewuseObjectOne(View):
-    model_name = "viewuse_object"
+    model_name = "ViewuseObject"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -54,7 +54,7 @@ class ViewuseObjectOne(View):
 
 
 class ViewuseArrangementAll(View):
-    model_name = "viewuse_arrangement"
+    model_name = "ViewuseArrangement"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -70,7 +70,7 @@ class ViewuseArrangementAll(View):
 
 
 class ViewuseDatumAll(View):
-    model_name = "viewuse_datum"
+    model_name = "ViewuseDatum"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
