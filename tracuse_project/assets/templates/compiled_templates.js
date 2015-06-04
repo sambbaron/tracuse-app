@@ -403,7 +403,7 @@ output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLook
 output += "\"\r\n        eid = \"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"eid", env.opts.autoescape), env.opts.autoescape);
 output += "\">\r\n";
-output += "\r\n\r\n    <div class=\"section viewuse-select\">\r\n        <h4 class=\"title\">Select View</h4>\r\n\r\n        <div class=\"content\">\r\n\r\n            <div class=\"input-group viewuse-open\">\r\n                <div class=\"content\">\r\n                    <select name=\"viewuse_object\">\r\n                        ";
+output += "\r\n\r\n    <div class=\"section viewuse-select\">\r\n        <h4 class=\"title\">Select View</h4>\r\n\r\n        <div class=\"content\">\r\n\r\n            <div class=\"input-group viewuse-open\">\r\n                <div class=\"content\">\r\n                    <select name=\"viewuse_object\">\r\n                        <option></option>\r\n                        ";
 frame = frame.push();
 var t_3 = runtime.contextOrFrameLookup(context, frame, "viewuse_objects");
 if(t_3) {var t_2 = t_3.length;
@@ -417,7 +417,7 @@ frame.set("loop.revindex0", t_2 - t_1 - 1);
 frame.set("loop.first", t_1 === 0);
 frame.set("loop.last", t_1 === t_2 - 1);
 frame.set("loop.length", t_2);
-output += "\r\n                            <option></option>\r\n                            <option value=\"";
+output += "\r\n                            <option value=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"viewuse_object_id", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n                                    ";
 output += runtime.suppressValue((runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_object_id", env.opts.autoescape) == runtime.memberLookup((t_4),"viewuse_object_id", env.opts.autoescape)?" selected":""), env.opts.autoescape);

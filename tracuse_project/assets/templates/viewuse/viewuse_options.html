@@ -11,8 +11,8 @@
             <div class="input-group viewuse-open">
                 <div class="content">
                     <select name="viewuse_object">
+                        <option></option>
                         {% for viewuse_object in viewuse_objects %}
-                            <option></option>
                             <option value="{{ viewuse_object.viewuse_object_id }}"
                                     {{ " selected" if this_viewuse.viewuse_object_id == viewuse_object.viewuse_object_id }}>
                                 {{ viewuse_object.readable_name }}
