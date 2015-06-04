@@ -23,10 +23,9 @@ class DatumGroupAll(View):
     def get(self, request):
         queryset = DatumGroup.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=DatumGroupSerializer.serial_basic,
-                                     dict_with_pk=True
+                                     serializer=DatumGroupSerializer.serial_basic
                                      ).serialize()
-        response = JsonResponse(serialized_data, status=200)
+        response = JsonResponse(serialized_data, status=200, safe=False)
         return response
 
 
@@ -40,10 +39,9 @@ class DatumTypeAll(View):
     def get(self, request):
         queryset = DatumType.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=DatumTypeSerializer.serial_basic,
-                                     dict_with_pk=True
+                                     serializer=DatumTypeSerializer.serial_basic
                                      ).serialize()
-        response = JsonResponse(serialized_data, status=200)
+        response = JsonResponse(serialized_data, status=200, safe=False)
         return response
 
 class DatumObjectAll(View):
@@ -58,10 +56,9 @@ class DatumObjectAll(View):
     def get(self, request):
         queryset = DatumObject.actives.filter(user=request.user).all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=DatumObjectSerializer.serial_datum_all,
-                                     dict_with_pk=True
+                                     serializer=DatumObjectSerializer.serial_datum_all
                                      ).serialize()
-        response = JsonResponse(serialized_data, status=200)
+        response = JsonResponse(serialized_data, status=200, safe=False)
         return response
 
     def post(self, request):

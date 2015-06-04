@@ -134,11 +134,11 @@ class TestDatumObjectOne(TestCase):
         request = self.factory.get(request_path)
         request.user = self.test.user1
 
-        view = views.DatumObjectAll(request=request)
-        response = view.dispatch(request=request)
+        view = views.DatumObjectOne(request=request)
+        response = view.dispatch(request=request, pk=request_id)
 
         response_content = json.loads(response.content.decode())
-        response_actual = response_content[str(request_id)]["headline"]
+        response_actual = response_content["headline"]
         expected_actual = "Test Object Name"
         self.assertEqual(response.status_code, 200)
         self.assertEqual(expected_actual, response_actual)

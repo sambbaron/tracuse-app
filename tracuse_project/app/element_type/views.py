@@ -23,10 +23,9 @@ class ElementTypeAll(View):
     def get(self, request):
         queryset = ElementType.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=ElementTypeSerializer.serial_basic,
-                                     dict_with_pk=True
+                                     serializer=ElementTypeSerializer.serial_basic
                                      ).serialize()
-        response = JsonResponse(serialized_data, status=200)
+        response = JsonResponse(serialized_data, status=200, safe=False)
         return response
 
 
@@ -40,10 +39,9 @@ class ElementOperatorAll(View):
     def get(self, request):
         queryset = ElementOperator.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=ElementOperatorSerializer.serial_basic,
-                                     dict_with_pk=True
+                                     serializer=ElementOperatorSerializer.serial_basic
                                      ).serialize()
-        response = JsonResponse(serialized_data, status=200)
+        response = JsonResponse(serialized_data, status=200, safe=False)
         return response
 
 
@@ -57,10 +55,9 @@ class ElementDatumTypeAll(View):
     def get(self, request):
         queryset = ElementDatumType.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=ElementDatumTypeSerializer.serial_basic,
-                                     dict_with_pk=True
+                                     serializer=ElementDatumTypeSerializer.serial_basic
                                      ).serialize()
-        response = JsonResponse(serialized_data, status=200)
+        response = JsonResponse(serialized_data, status=200, safe=False)
         return response
 
 
@@ -74,10 +71,9 @@ class ElementDatumObjectAll(View):
     def get(self, request):
         queryset = ElementDatumObject.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=ElementDatumObjectSerializer.serial_ids_value,
-                                     dict_with_pk=True
+                                     serializer=ElementDatumObjectSerializer.serial_ids_value
                                      ).serialize()
-        response = JsonResponse(serialized_data, status=200)
+        response = JsonResponse(serialized_data, status=200, safe=False)
         return response
 
 

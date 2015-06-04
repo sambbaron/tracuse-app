@@ -44,11 +44,11 @@ class TestViewuseObjectOne(TestCase):
         request = self.factory.get(request_path)
         request.user = self.test.user1
 
-        view = views.ViewuseObjectAll(request=request)
-        response = view.dispatch(request=request)
+        view = views.ViewuseObjectOne(request=request)
+        response = view.dispatch(request=request, pk=request_id)
 
         response_content = json.loads(response.content.decode())
-        response_actual = response_content[str(request_id)]["entity_name"]
+        response_actual = response_content["entity_name"]
         expected_actual = "Viewuse1"
         self.assertEqual(response.status_code, 200)
         self.assertEqual(expected_actual, response_actual)
