@@ -7,10 +7,10 @@ Tracuse.app.viewuse = Tracuse.app.viewuse || {};
 
 Tracuse.app.viewuse.events = function () {
     var appEl = $(Tracuse.el.app);
-    appEl.on("mouseenter focus", ".viewuse", function (ev) {
+    appEl.on("mouseenter focusin", ".viewuse", function (ev) {
         Tracuse.app.viewuse.setState(ev.target, true);
     });
-    appEl.on("mouseleave", ".viewuse", function (ev) {
+    appEl.on("mouseleave focusout", ".viewuse", function (ev) {
         Tracuse.app.viewuse.setState(ev.target, false);
     });
     appEl.on("click", "button[name='viewuse-options']", function (ev) {
