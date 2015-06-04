@@ -2,7 +2,7 @@
          id="{{ this_viewuse.eid }}"
          eid="{{ this_viewuse.eid }}"
          viewuse_object_id = "{{ this_viewuse.viewuse_object_id }}">
-    <input name="title" value="View Title">
+    <input name="title" value="{{ this_viewuse.readable_name|default('Empty View') }}">
 
     <div class="content">
         {% block viewuse_content %}{% endblock %}

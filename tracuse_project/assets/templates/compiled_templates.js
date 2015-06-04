@@ -357,7 +357,9 @@ output += "\"\r\n         eid=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"eid", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n         viewuse_object_id = \"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_object_id", env.opts.autoescape), env.opts.autoescape);
-output += "\">\r\n    <input name=\"title\" value=\"View Title\">\r\n\r\n    <div class=\"content\">\r\n        ";
+output += "\">\r\n    <input name=\"title\" value=\"";
+output += runtime.suppressValue(env.getFilter("default").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"readable_name", env.opts.autoescape),"Empty View"), env.opts.autoescape);
+output += "\">\r\n\r\n    <div class=\"content\">\r\n        ";
 context.getBlock("viewuse_content")(env, context, frame, runtime, function(t_2,t_1) {
 if(t_2) { cb(t_2); return; }
 output += t_1;
