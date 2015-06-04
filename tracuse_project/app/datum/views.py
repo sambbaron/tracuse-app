@@ -16,6 +16,8 @@ from app.common.serializers import Serializer
 class DatumGroupAll(View):
     """Return all datum_groups"""
 
+    model_name = "datum_groups"
+
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
@@ -32,6 +34,8 @@ class DatumGroupAll(View):
 class DatumTypeAll(View):
     """Return all datum_types"""
 
+    model_name = "datum_types"
+
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
@@ -44,14 +48,16 @@ class DatumTypeAll(View):
         response = JsonResponse(serialized_data, status=200, safe=False)
         return response
 
+
 class DatumObjectAll(View):
     """List all datum_objects, or create a new datum_object.
     """
 
+    model_name = "datum_objects"
+
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
-        # if obj.user == request.user
 
     def get(self, request):
         queryset = DatumObject.actives.filter(user=request.user).all()
@@ -76,6 +82,8 @@ class DatumObjectOne(View):
     """Retrieve, update or delete a datum_object instance.
     """
 
+    model_name = "datum_object"
+
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
@@ -93,18 +101,3 @@ class DatumObjectOne(View):
                                      ).serialize()
         response = JsonResponse(serialized_data, status=200)
         return response
-
-    # def put(self, request, pk):
-    #     request_data = request.body.decode()
-    #     serialized_data = json.loads(request_data)
-    #     post_data = post_datum_object(serialized_data)
-    #     if type(post_data) == DatumObject:
-    #         response = JsonResponse(post_data, status=200)
-    #     else:
-    #         response = HttpResponse(post_data, status=400)
-    #     return response
-    #
-    # def delete(self, request, pk):
-    #     datum_object = self.get_object(pk)
-    #     datum_object.delete()
-    #     return HttpResponse(status=204)
