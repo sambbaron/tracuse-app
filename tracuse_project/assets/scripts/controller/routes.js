@@ -26,7 +26,8 @@ Tracuse.routes = {
         "one": "/api/element_datum_object/<pk>/"
     },
     "viewuse_objects": {
-        "all": "/api/viewuse_objects/"
+        "all": "/api/viewuse_objects/",
+        "one": "/api/viewuse_object/<pk>/"
     },
     "viewuse_arrangements": {
         "all": "/api/viewuse_arrangements/"
