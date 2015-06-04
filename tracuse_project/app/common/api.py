@@ -10,21 +10,21 @@ from app.viewuse import views as ViewuseViews
 urlpatterns = [
 
     # API Endpoints
-    url(r'^datum_group/', DatumViews.DatumGroupAll.as_view(), name="datum-group-all"),
-    url(r'^datum_type/', DatumViews.DatumTypeAll.as_view(), name="datum-type-all"),
-    url(r'^datum_object/', DatumViews.DatumObjectAll.as_view(), name="datum-object-all"),
+    url(r'^datum_group/$', DatumViews.DatumGroupAll.as_view(), name="datum-group-all"),
+    url(r'^datum_type/$', DatumViews.DatumTypeAll.as_view(), name="datum-type-all"),
     url(r'^datum_object/(?P<pk>[0-9]+)/$', DatumViews.DatumObjectOne.as_view(), name="datum-object-one"),
+    url(r'^datum_object/$', DatumViews.DatumObjectAll.as_view(), name="datum-object-all"),
 
-    url(r'^element_type/', ElementViews.ElementTypeAll.as_view(), name="element-type-all"),
-    url(r'^element_operator/', ElementViews.ElementOperatorAll.as_view(), name="element-operator-all"),
-    url(r'^element_datum_type/', ElementViews.ElementDatumTypeAll.as_view(), name="element-datum-type-all"),
-    url(r'^element_datum_object/', ElementViews.ElementDatumObjectAll.as_view(), name="element-datum-object-all"),
+    url(r'^element_type/$', ElementViews.ElementTypeAll.as_view(), name="element-type-all"),
+    url(r'^element_operator/$', ElementViews.ElementOperatorAll.as_view(), name="element-operator-all"),
+    url(r'^element_datum_type/$', ElementViews.ElementDatumTypeAll.as_view(), name="element-datum-type-all"),
     url(r'^element_datum_object/(?P<pk>[0-9]+)/$', ElementViews.ElementDatumObjectOne.as_view(), name="element-datum-object-one"),
+    url(r'^element_datum_object/$', ElementViews.ElementDatumObjectAll.as_view(), name="element-datum-object-all"),
 
-    url(r'^viewuse_object/', ViewuseViews.ViewuseObjectAll.as_view(), name="viewuse-object-all"),
     url(r'^viewuse_object/(?P<pk>[0-9]+)/$', ViewuseViews.ViewuseObjectOne.as_view(), name="viewuse-object-one"),
-    url(r'^viewuse_arrangement/', ViewuseViews.ViewuseArrangementAll.as_view(), name="viewuse-arrangement-all"),
-    url(r'^viewuse_datum/', ViewuseViews.ViewuseDatumAll.as_view(), name="viewuse-datum-all"),
+    url(r'^viewuse_object/$', ViewuseViews.ViewuseObjectAll.as_view(), name="viewuse-object-all"),
+    url(r'^viewuse_arrangement/$', ViewuseViews.ViewuseArrangementAll.as_view(), name="viewuse-arrangement-all"),
+    url(r'^viewuse_datum/$', ViewuseViews.ViewuseDatumAll.as_view(), name="viewuse-datum-all"),
 
     url(r'^filter/json/$', FilterViews.RunFilter.filter_from_json, name="filter-from-json"),
     url(r'^filter/(?P<pk>[0-9]+)/$', FilterViews.RunFilter.filter_from_set, name="filter-from-set"),
