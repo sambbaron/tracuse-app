@@ -15,9 +15,6 @@ Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arr
 
     // Get viewuse element id and add to viewuse object
     var viewuseEid = Tracuse.app.viewuse.nextId();
-    if (viewuseObject) {
-        viewuseObject.eid = viewuseEid;
-    }
 
     // Extend datum objects with elements
     Tracuse.app.datum.extendElements(datumObjects, function (extendedObjects) {
@@ -29,6 +26,7 @@ Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arr
             "datum_types": Tracuse.models.datum_types.dataArr,
             "element_types": Tracuse.models.element_types.dataArr,
             "this_viewuse": viewuseObject,
+            "viewuse_eid": viewuseEid,
             "viewuse_objects": Tracuse.models.viewuse_objects.dataArr,
             "viewuse_arrangements": Tracuse.models.viewuse_arrangements.dataArr,
             "viewuse_datums": Tracuse.models.viewuse_datums.dataArr

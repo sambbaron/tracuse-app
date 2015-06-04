@@ -352,9 +352,9 @@ try {
 output += "<section class=\"viewuse\" template=\"";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "template_name"), env.opts.autoescape);
 output += "\"\r\n         id=\"";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"eid", env.opts.autoescape), env.opts.autoescape);
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "viewuse_eid"), env.opts.autoescape);
 output += "\"\r\n         eid=\"";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"eid", env.opts.autoescape), env.opts.autoescape);
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "viewuse_eid"), env.opts.autoescape);
 output += "\"\r\n         viewuse_object_id = \"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_object_id", env.opts.autoescape), env.opts.autoescape);
 output += "\">\r\n    <input name=\"title\" value=\"";
