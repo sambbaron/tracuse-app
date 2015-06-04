@@ -40,3 +40,40 @@ Tracuse.utils.ModelFactory = function ModelFactory(modelName, idAttribute) {
 
     return model;
 };
+
+Backbone.Collection.prototype.getFetchOne = function getFetchOne(id) {
+    "use strict";
+    // For model id or object, attempt get in 'all' collection
+    // If not exists, then add
+    var object;
+    var collection = this;
+    var model = collection.model;
+    var idAttribute = model.prototype.idAttribute;
+    var modelOptions = {};
+
+    // Object in collection
+    object = collection.get(id);
+    if (object) return object;
+
+    // Object not in collection, fetch object
+    modelOptions[idAttribute] = id;
+    var result = new model(modelOptions);
+    result.fetch();
+    collection.set(result);
+    if (result) return result;
+};
+
+Backbone.Collection.prototype.idsToObjects = function idsToObjects(idArray) {
+    //Convert array of model ids to array of model objects
+    "use strict";
+    var collection = this;
+    var model = collection.model;
+    var objectsArray = [];
+
+    for (var i = 0, imax = idArray.length; i < imax; i++) {
+        var id = idArray[i];
+        var object = collection.getFetchOne(id);
+        objectsArray.push(object);
+    }
+    return objectsArray;
+};
