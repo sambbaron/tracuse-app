@@ -14,9 +14,7 @@ from app.common.serializers import Serializer
 
 
 class ElementTypeAll(View):
-    """Return all element_types"""
-
-    model_name = "element_types"
+    model_name = "element_type"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -32,9 +30,7 @@ class ElementTypeAll(View):
 
 
 class ElementOperatorAll(View):
-    """Return all element_types"""
-
-    model_name = "element_operators"
+    model_name = "element_operator"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -50,9 +46,7 @@ class ElementOperatorAll(View):
 
 
 class ElementDatumTypeAll(View):
-    """Return all element_types"""
-
-    model_name = "element_datum_types"
+    model_name = "element_datum_type"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -68,9 +62,7 @@ class ElementDatumTypeAll(View):
 
 
 class ElementDatumObjectAll(View):
-    """Return all element_datum_objects"""
-
-    model_name = "element_datum_objects"
+    model_name = "element_datum_object"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -86,7 +78,7 @@ class ElementDatumObjectAll(View):
 
 
 class ElementDatumObjectOne(View):
-    """Return all element_types"""
+    model_name = "element_datum_object"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):

@@ -14,9 +14,7 @@ from app.common.serializers import Serializer
 
 
 class DatumGroupAll(View):
-    """Return all datum_groups"""
-
-    model_name = "datum_groups"
+    model_name = "datum_group"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -32,9 +30,7 @@ class DatumGroupAll(View):
 
 
 class DatumTypeAll(View):
-    """Return all datum_types"""
-
-    model_name = "datum_types"
+    model_name = "datum_type"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -50,10 +46,7 @@ class DatumTypeAll(View):
 
 
 class DatumObjectAll(View):
-    """List all datum_objects, or create a new datum_object.
-    """
-
-    model_name = "datum_objects"
+    model_name = "datum_object"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -79,9 +72,6 @@ class DatumObjectAll(View):
 
 
 class DatumObjectOne(View):
-    """Retrieve, update or delete a datum_object instance.
-    """
-
     model_name = "datum_object"
 
     @method_decorator(login_required)

@@ -16,9 +16,7 @@ from app.common.serializers import Serializer
 
 
 class ViewuseObjectAll(View):
-    """Return all viewuse_objects"""
-
-    model_name = "viewuse_objects"
+    model_name = "viewuse_object"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -34,9 +32,6 @@ class ViewuseObjectAll(View):
 
 
 class ViewuseObjectOne(View):
-    """Retrieve, update or delete a viewuse_object instance.
-    """
-
     model_name = "viewuse_object"
 
     @method_decorator(login_required)
@@ -59,9 +54,7 @@ class ViewuseObjectOne(View):
 
 
 class ViewuseArrangementAll(View):
-    """Return all viewuse_arrangements"""
-
-    model_name = "viewuse_arrangements"
+    model_name = "viewuse_arrangement"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -77,9 +70,7 @@ class ViewuseArrangementAll(View):
 
 
 class ViewuseDatumAll(View):
-    """Return all viewuse_datums"""
-
-    model_name = "viewuse_datums"
+    model_name = "viewuse_datum"
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
