@@ -16,7 +16,7 @@ class TestDatumGroupAll(TestCase):
 
     def test_get(self):
         """Test DatumGroupAll.get api"""
-        request = self.factory.get('/api/datum_groups/')
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.DatumGroupAll(request=request)
@@ -39,7 +39,7 @@ class TestDatumTypeAll(TestCase):
 
     def test_get(self):
         """Test DatumTypeAll.get api"""
-        request = self.factory.get('/api/datum_types/')
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.DatumTypeAll(request=request)
@@ -62,7 +62,7 @@ class TestDatumObjectAll(TestCase):
 
     def test_get(self):
         """Test DatumObjectAll.get api"""
-        request = self.factory.get('/api/datum_objects/')
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.DatumObjectAll(request=request)
@@ -81,7 +81,7 @@ class TestDatumObjectAll(TestCase):
         new_datum = {
             "datum_type_id": self.test.datum_type1.datum_type_id
         }
-        request = self.factory.post('/api/datum_objects/',
+        request = self.factory.post("",
                                     data=json.dumps(new_datum),
                                     content_type="application/json"
                                     )
@@ -103,7 +103,7 @@ class TestDatumObjectAll(TestCase):
         new_datum = {
             "datum_tyXpe_id": self.test.datum_type1.datum_type_id
         }
-        request = self.factory.post('/api/datum_objects/',
+        request = self.factory.post("",
                                     data=json.dumps(new_datum),
                                     content_type="application/json"
                                     )
@@ -130,8 +130,7 @@ class TestDatumObjectOne(TestCase):
     def test_get(self):
         """Test DatumObjectOne.get api"""
         request_id = self.test.datum_object1.datum_object_id
-        request_path = "/api/datum_object/{}/".format(request_id)
-        request = self.factory.get(request_path)
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.DatumObjectOne(request=request)

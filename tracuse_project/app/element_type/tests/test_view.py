@@ -16,7 +16,7 @@ class TestElementTypeAll(TestCase):
 
     def test_get(self):
         """Test ElementTypeAll.get api"""
-        request = self.factory.get("/api/element_types/")
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.ElementTypeAll(request=request)
@@ -39,7 +39,7 @@ class TestElementOperatorAll(TestCase):
 
     def test_get(self):
         """Test ElementOperatorAll.get api"""
-        request = self.factory.get("/api/element_operators/")
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.ElementOperatorAll(request=request)
@@ -62,7 +62,7 @@ class TestElementDatumTypeAll(TestCase):
 
     def test_get(self):
         """Test ElementDatumTypeAll.get api"""
-        request = self.factory.get("/api/element_datum_types/")
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.ElementDatumTypeAll(request=request)
@@ -85,7 +85,7 @@ class TestElementDatumObjectAll(TestCase):
 
     def test_get(self):
         """Test ElementDatumObjectAll.get api"""
-        request = self.factory.get("/api/element_datum_objects/")
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.ElementDatumObjectAll(request=request)
@@ -109,8 +109,7 @@ class TestElementDatumObjectOne(TestCase):
     def test_get(self):
         """Test ElementDatumObjectOne.get api"""
         request_id = self.test.element_datum_object1.element_datum_object_id
-        request_path = "/api/element_datum_objects/{}/".format(request_id)
-        request = self.factory.get(request_path)
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.ElementDatumObjectOne(request=request)
@@ -127,10 +126,9 @@ class TestElementDatumObjectOne(TestCase):
         test_object = self.test.element_datum_object1
         test_pk = test_object.pk
         test_data = json.dumps({"element_value": "Change Name"})
-        test_path = "/api/element_datum_object/{}/".format(test_pk)
 
         request = self.factory.put(
-            test_path,
+            "",
             test_data,
             "application/json"
         )

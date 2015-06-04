@@ -16,7 +16,7 @@ class TestViewuseObjectAll(TestCase):
 
     def test_get(self):
         """Test ViewuseObjectAll.get api"""
-        request = self.factory.get('/api/viewuse_objects/')
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.ViewuseObjectAll(request=request)
@@ -40,8 +40,7 @@ class TestViewuseObjectOne(TestCase):
     def test_get(self):
         """Test ViewuseObjectOne.get api"""
         request_id = self.test.viewuse_object1.viewuse_object_id
-        request_path = "/api/viewuse_object/{}/".format(request_id)
-        request = self.factory.get(request_path)
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.ViewuseObjectOne(request=request)
@@ -64,7 +63,7 @@ class TestViewuseArrangementAll(TestCase):
 
     def test_get(self):
         """Test ViewuseArrangementAll.get api"""
-        request = self.factory.get('/api/viewuse_arrangements/')
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.ViewuseArrangementAll(request=request)
@@ -87,7 +86,7 @@ class TestViewuseDatumAll(TestCase):
 
     def test_get(self):
         """Test ViewuseDatumAll.get api"""
-        request = self.factory.get('/api/viewuse_datums/')
+        request = self.factory.get("")
         request.user = self.test.user1
 
         view = views.ViewuseDatumAll(request=request)
