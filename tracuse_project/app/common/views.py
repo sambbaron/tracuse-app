@@ -25,4 +25,4 @@ def app_index(request):
         view_data = view().get(bootstrap_request).content.decode()
         bootstrap_data[view_key] = view_data
 
-    return render(request, "app/base_app.html", bootstrap_data)
+    return render(request, "app/base_app.html", {"bootstrap_data": bootstrap_data})
