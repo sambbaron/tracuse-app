@@ -30,10 +30,11 @@ Tracuse.utils.ModelFactory = function ModelFactory(modelName, idAttribute) {
     var model = Backbone.Model.extend({
         modelName: modelName,
         idAttribute: idAttribute,
-        urlRoot: "/api/" + modelName
+        urlRoot: "/api/" + modelName + "/"
     });
     model.collBase = Backbone.Collection.extend({
-        model: model
+        model: model,
+        url: "/api/" + modelName + "/"
     });
     model.all = new model.collBase();
 
