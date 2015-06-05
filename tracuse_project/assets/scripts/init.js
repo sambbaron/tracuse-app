@@ -77,6 +77,7 @@ Tracuse.init.initApp = function initApp() {
     "use strict";
     //Tracuse.models.createModels();
     //Tracuse.models.loadInitData();
+    Tracuse.init.fetchData();
     Tracuse.templates.loadEnvironment();
     Tracuse.init.loadAppTemplate();
     Tracuse.init.attachGlobalEvents();
@@ -98,6 +99,13 @@ Tracuse.init.bootstrapData = function bootstrapData(data) {
             console.info("Load Bootstrap Model Data: " + modelName);
         }
     }
+};
+
+Tracuse.init.fetchData = function fetchData() {
+    "use strict";
+    /* Fetch initial models */
+    Tracuse.models.DatumObject.all.fetch();
+    Tracuse.models.ElementDatumObject.all.fetch();
 };
 
 document.addEventListener("DOMContentLoaded", function () {
