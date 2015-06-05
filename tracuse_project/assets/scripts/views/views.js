@@ -1,6 +1,6 @@
 var Tracuse = Tracuse || {};
 
-// Views collection
+/* Views collection */
 Tracuse.views = Tracuse.views || {};
 
 Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arrangementTemplate,
@@ -9,7 +9,7 @@ Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arr
                                                                              callback,
                                                                              viewuseObject) {
     "use strict";
-    // Render viewuse from template names
+    /* Render viewuse from template names*/
     var output = "";
     var templateName = "viewuse/" + arrangementTemplate + ".html";
 
@@ -35,7 +35,7 @@ Tracuse.views.renderViewuseFromTemplate = function renderViewuseFromTemplate(arr
 
 Tracuse.views.renderViewuseFromObject = function renderViewuseFromObject(viewuseObject, callback) {
     "use strict";
-    // Render viewuse from model object
+    /* Render viewuse from model object*/
     var output = "";
 
     // Lookup template names

@@ -1,6 +1,6 @@
 var Tracuse = Tracuse || {};
 
-// Viewuse Functions
+/* Viewuse Functions */
 Tracuse.app = Tracuse.app || {};
 Tracuse.app.viewuse = Tracuse.app.viewuse || {};
 
@@ -44,7 +44,7 @@ Tracuse.app.viewuse.events = function () {
 
 Tracuse.app.viewuse.nextId = function nextId() {
     "use strict";
-    // Calculate next id value
+    /* Calculate next id value*/
     var newId;
     var idArray = [];
     var viewuses = Tracuse.el.viewuses.querySelectorAll(".viewuse");
@@ -66,7 +66,7 @@ Tracuse.app.viewuse.nextId = function nextId() {
 
 Tracuse.app.viewuse.getParentViewuse = function getParentViewuse(el) {
     "use strict";
-    // Return viewuse element associated with provided element
+    /* Return viewuse element associated with provided element*/
     var viewuseEl;
     var parentEl;
 
@@ -83,7 +83,7 @@ Tracuse.app.viewuse.getParentViewuse = function getParentViewuse(el) {
 
 Tracuse.app.viewuse.setState = function setState(el, active) {
     "use strict";
-    // Set active viewuse - show buttons and set 'active' class
+    /* Set active viewuse - show buttons and set 'active' class*/
     var active = active || false;
     var controls = el.querySelector(".viewuse-controls");
 
@@ -122,7 +122,7 @@ Tracuse.app.viewuse.closeView = function closeView(el, ev) {
 
 Tracuse.app.viewuse.showPanel = function showPanel(panelClassName, el) {
     "use strict";
-    // Trigger from viewuse button
+    /* Trigger from viewuse button*/
     var parentViewuse = Tracuse.app.viewuse.getParentViewuse(el);
     var panelEl = parentViewuse.querySelector("." + panelClassName);
 
@@ -138,7 +138,7 @@ Tracuse.app.viewuse.showPanel = function showPanel(panelClassName, el) {
 
 Tracuse.app.viewuse.hidePanel = function hidePanel(el, ev) {
     "use strict";
-    // Trigger from close button
+    /* Trigger from close button*/
     var panelEl = el.parentNode;
 
     // If has 'popout' class, move node to app container
@@ -172,7 +172,7 @@ Tracuse.app.viewuse.clickDatumGroup = function clickDatumGroup(el) {
 
 Tracuse.app.viewuse.clickDatumType = function clickDatumType(el) {
     "use strict";
-    // Clear datum group
+    /* Clear datum group*/
     var parentEl = el.parentNode;
     var datumGroups = parentEl.querySelectorAll("button[name='datum_group']");
     var datumGroupId = el.getAttribute("datum_group_id");
@@ -188,7 +188,7 @@ Tracuse.app.viewuse.clickDatumType = function clickDatumType(el) {
 
 Tracuse.app.viewuse.selectDatumGroup = function selectDatumGroup(el) {
     "use strict";
-    // Filter Datum Types
+    /* Filter Datum Types*/
     var parentEl = el.parentNode.parentNode;
     var datumTypesEl = parentEl.querySelector("[name='datum_types']");
     var datumTypeOptions = datumTypesEl.querySelectorAll("option");
@@ -224,7 +224,7 @@ Tracuse.app.viewuse.selectDatumGroup = function selectDatumGroup(el) {
 Tracuse.app.viewuse.selectDatumType = function selectDatumType(el) {
     "use strict";
 
-    // Update Datum Objects
+    /* Update Datum Objects*/
     var parentEl = el.parentNode.parentNode;
     var datumObjectsEl = parentEl.querySelector("[name='datum_objects']");
     datumObjectsEl.innerHTML = "";
@@ -291,9 +291,9 @@ Tracuse.app.viewuse.selectElement = function selectElement(el) {
 
 Tracuse.app.viewuse.addElementFilter = function addElementFilter(el) {
     "use strict";
-    // Add element filter
-    // Create button element
-
+    /* Add element filter
+     Create button element
+     */
     var parentEl = el.parentNode.parentNode;
     var elementType = parentEl.querySelector("[name='element_types']");
     var elementOperator = parentEl.querySelector("[name='element_operators']");

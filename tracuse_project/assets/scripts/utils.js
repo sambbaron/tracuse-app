@@ -1,7 +1,7 @@
 var Tracuse = Tracuse || {};
 
 
-// Miscellaneous Utilities
+/* Miscellaneous Utilities */
 Tracuse.utils = Tracuse.utils || {};
 
 Tracuse.utils.getCookie = function getCookie(cookieName) {
@@ -26,7 +26,7 @@ Tracuse.utils.csrfSafeRequest = function csrfSafeRequest(request) {
 
 Tracuse.utils.ModelFactory = function ModelFactory(modelName, idAttribute) {
     "use strict";
-    // Create basic Backbone api-driven model with "all" collection
+    /* Create basic Backbone api-driven model with "all" collection*/
 
     // Default url
     var url = Tracuse.routes.api[modelName] ||
@@ -48,8 +48,9 @@ Tracuse.utils.ModelFactory = function ModelFactory(modelName, idAttribute) {
 
 Backbone.Collection.prototype.getFetchOne = function getFetchOne(id, callback) {
     "use strict";
-    // For model id or object, attempt get in 'all' collection
-    // If not exists, then add
+    /* For model id or object, attempt get in 'all' collection
+     If not exists, then add
+     */
     var modelObject;
     var allCollection = this;
     var model = allCollection.model;

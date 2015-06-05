@@ -7,8 +7,9 @@ Tracuse.app.filter = Tracuse.app.filter || {};
 
 Tracuse.app.filter.getFilteredDatums = function getFilteredDatums(filter, callback) {
     "use strict";
-    // Send either filter json object or filter set id
-    // Return array of datum ids
+     /* Send either filter json object or filter set id
+     Return array of datum ids
+     */
     var request = new XMLHttpRequest();
     var filterUrl = "";
 

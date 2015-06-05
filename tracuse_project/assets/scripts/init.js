@@ -1,15 +1,15 @@
-// Primary app namespace
+/* Primary app namespace */
 var Tracuse = Tracuse || {};
 
-// Init functions
+/* Init functions */
 Tracuse.init = Tracuse.init || {};
 
-// Saved elements
+/* Saved elements */
 Tracuse.el = Tracuse.el || {};
 
 Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
     "use strict";
-    // Attach all global event handlers
+    /* Attach all global event handlers*/
 
     // Render button for testing
     var renderButton = document.querySelector("#render-page");
@@ -43,14 +43,15 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
 
 Tracuse.init.attachDynamicEvents = function attachDynamicEvents() {
     "use strict";
-    // Attach all dynamic event handlers associated with app components
+    /* Attach all dynamic event handlers associated with app components*/
     Tracuse.app.viewuse.events();
 };
 
 Tracuse.init.loadAppTemplate = function loadAppTemplate() {
     "use strict";
-    // Insert client side base app template to server side template
-    // Set saved elements variables
+    /* Insert client side base app template to server side template
+     Set saved elements variables
+     */
     var appTemplate = Tracuse.templates.app;
     var output = Tracuse.templates.env.render(appTemplate);
     Tracuse.el.app = document.querySelector("#app");
@@ -60,9 +61,10 @@ Tracuse.init.loadAppTemplate = function loadAppTemplate() {
 
 Tracuse.init.firstViewuse = function firstViewuse() {
     "use strict";
-    // Render initial viewuse at startup
-    // ***Currently use first viewuse object
-    // ***Change to user saved prior session
+    /*Render initial viewuse at startup
+     ***Currently use first viewuse object
+     ***Change to user saved prior session
+     */
 
     var viewuseObject = Tracuse.models.ViewuseObject.all.first();
     Tracuse.views.renderViewuseFromObject(viewuseObject, function (renderedOutput) {
@@ -84,8 +86,9 @@ Tracuse.init.initApp = function initApp() {
 
 Tracuse.init.bootstrapData = function bootstrapData(data) {
     "use strict";
-    // Load bootstrap data from template into Backbone 'all' collections
-    // Object keys should match model names
+    /* Load bootstrap data from template into Backbone 'all' collections
+     Object keys should match model names
+     */
 
     for (var modelName in data) {
         var model = Tracuse.models[modelName];

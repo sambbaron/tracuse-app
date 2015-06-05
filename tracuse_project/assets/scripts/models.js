@@ -1,4 +1,6 @@
 var Tracuse = Tracuse || {};
+
+/* Backbone Models */
 Tracuse.models = Tracuse.models || {};
 
 Tracuse.models.DatumGroup =
