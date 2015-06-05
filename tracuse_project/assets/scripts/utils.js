@@ -27,14 +27,19 @@ Tracuse.utils.csrfSafeRequest = function csrfSafeRequest(request) {
 Tracuse.utils.ModelFactory = function ModelFactory(modelName, idAttribute) {
     "use strict";
     // Create basic Backbone api-driven model with "all" collection
+
+    // Default url
+    var url = Tracuse.routes.api[modelName] ||
+        Tracuse.routes.baseUrl + modelName + "/";
+
     var model = Backbone.Model.extend({
         modelName: modelName,
         idAttribute: idAttribute,
-        urlRoot: "/api/" + modelName + "/"
+        urlRoot: url
     });
     model.collBase = Backbone.Collection.extend({
         model: model,
-        url: "/api/" + modelName + "/"
+        url: url
     });
     model.all = new model.collBase();
 
