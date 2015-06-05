@@ -63,10 +63,10 @@ Tracuse.init.firstViewuse = function firstViewuse() {
     // Render initial viewuse at startup
     // ***Currently use first viewuse object
     // ***Change to user saved prior session
-    Tracuse.models.getDataOne(1, Tracuse.models.viewuse_objects, function (viewuse) {
-        Tracuse.views.renderViewuseFromObject(viewuse, function (renderedOutput) {
-            Tracuse.el.viewuses.innerHTML = renderedOutput;
-        });
+
+    var viewuseObject = Tracuse.models.ViewuseObject.all.first();
+    Tracuse.views.renderViewuseFromObject(viewuseObject, function (renderedOutput) {
+        Tracuse.el.viewuses.innerHTML = renderedOutput;
     });
 
 };
@@ -79,7 +79,7 @@ Tracuse.init.initApp = function initApp() {
     Tracuse.init.loadAppTemplate();
     Tracuse.init.attachGlobalEvents();
     Tracuse.init.attachDynamicEvents();
-    //Tracuse.init.firstViewuse();
+    Tracuse.init.firstViewuse();
 };
 
 Tracuse.init.bootstrapData = function bootstrapData(data) {
