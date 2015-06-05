@@ -46,39 +46,55 @@ Tracuse.utils.ModelFactory = function ModelFactory(modelName, idAttribute) {
     return model;
 };
 
-Backbone.Collection.prototype.getFetchOne = function getFetchOne(id) {
+Backbone.Collection.prototype.getFetchOne = function getFetchOne(id, callback) {
     "use strict";
     // For model id or object, attempt get in 'all' collection
     // If not exists, then add
-    var object;
-    var collection = this;
-    var model = collection.model;
+    var modelObject;
+    var allCollection = this;
+    var model = allCollection.model;
     var idAttribute = model.prototype.idAttribute;
     var modelOptions = {};
 
     // Object in collection
-    object = collection.get(id);
-    if (object) return object;
+    modelObject = allCollection.get(id);
+    if (modelObject) callback(modelObject);
 
     // Object not in collection, fetch object
     modelOptions[idAttribute] = id;
-    var result = new model(modelOptions);
-    result.fetch();
-    collection.set(result, {remove: false});
-    if (result) return result;
+    var newObject = new model(modelOptions);
+    newObject.fetch({
+        success: function (model, response) {
+            allCollection.set(newObject, {remove: false});
+            callback(newObject);
+        },
+        error: function () {
+            callback();
+        }
+    });
+
 };
 
-Backbone.Collection.prototype.idsToObjects = function idsToObjects(idArray) {
-    //Convert array of model ids to array of model objects
+Backbone.Collection.prototype.idsToObjects = function idsToObjects(idArray, callback) {
+    //Convert array of model ids to new Collection of model objects
     "use strict";
-    var collection = this;
-    var model = collection.model;
-    var objectsArray = [];
+    var allCollection = this;
+    var model = allCollection.model;
+    var newCollection = new model.collBase();
 
     for (var i = 0, imax = idArray.length; i < imax; i++) {
         var id = idArray[i];
-        var object = collection.getFetchOne(id);
-        objectsArray.push(object);
+        allCollection.getFetchOne(id, function (modelObject) {
+            newCollection.add(modelObject);
+        });
     }
-    return objectsArray;
+
+    var c = 0;
+    var checkObject = setInterval(function () {
+        if (idArray.length === newCollection.length || c > 50) {
+            clearInterval(checkObject);
+            callback(newCollection);
+        }
+        c++;
+    }, 100);
 };
