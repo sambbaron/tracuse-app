@@ -64,7 +64,7 @@ Backbone.Collection.prototype.getFetchOne = function getFetchOne(id) {
     modelOptions[idAttribute] = id;
     var result = new model(modelOptions);
     result.fetch();
-    collection.set(result);
+    collection.set(result, {remove: false});
     if (result) return result;
 };
 
