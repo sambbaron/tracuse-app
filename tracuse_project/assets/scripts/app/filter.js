@@ -19,11 +19,11 @@ Tracuse.app.filter.getFilteredDatums = function getFilteredDatums(filter, callba
     };
 
     if (typeof filter === "number") {
-        filterUrl = Tracuse.routes.filter.id.replace("<pk>", filter);
+        filterUrl = Tracuse.routes.api.filter.id.replace("<pk>", filter);
         request.open("GET", filterUrl, true);
         request.send();
     } else if (typeof filter === "string") {
-        filterUrl = Tracuse.routes.filter.json;
+        filterUrl = Tracuse.routes.api.filter.json;
         request.open("POST", filterUrl, true);
         request = Tracuse.utils.csrfSafeRequest(request);
         request.send(filter);
