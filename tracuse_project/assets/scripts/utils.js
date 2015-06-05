@@ -32,7 +32,7 @@ Tracuse.utils.ModelFactory = function ModelFactory(modelName, idAttribute) {
     var url = Tracuse.routes.api[modelName] ||
         Tracuse.routes.baseUrl + modelName + "/";
 
-    var model = Backbone.Model.extend({
+    var model = Backbone.RelationalModel.extend({
         modelName: modelName,
         idAttribute: idAttribute,
         urlRoot: url
@@ -49,7 +49,7 @@ Tracuse.utils.ModelFactory = function ModelFactory(modelName, idAttribute) {
 Backbone.Collection.prototype.getFetchOne = function getFetchOne(id, callback) {
     "use strict";
     /* For model id or object, attempt get in 'all' collection
-     If not exists, then add
+     * If not exists, then add
      */
     var modelObject;
     var allCollection = this;
@@ -59,25 +59,28 @@ Backbone.Collection.prototype.getFetchOne = function getFetchOne(id, callback) {
 
     // Object in collection
     modelObject = allCollection.get(id);
-    if (modelObject) callback(modelObject);
+    if (modelObject) {
+        callback(modelObject);
 
-    // Object not in collection, fetch object
-    modelOptions[idAttribute] = id;
-    var newObject = new model(modelOptions);
-    newObject.fetch({
-        success: function (model, response) {
-            allCollection.set(newObject, {remove: false});
-            callback(newObject);
-        },
-        error: function () {
-            callback();
-        }
-    });
-
+    } else {
+        // Object not in collection, fetch object
+        modelOptions[idAttribute] = id;
+        var newObject = new model(modelOptions);
+        newObject.fetch({
+            success: function (model, response) {
+                allCollection.set(newObject, {remove: false});
+                callback(newObject);
+            },
+            error: function () {
+                callback();
+            }
+        });
+    }
 };
 
 Backbone.Collection.prototype.idsToObjects = function idsToObjects(idArray, callback) {
-    //Convert array of model ids to new Collection of model objects
+    /*Convert array of model ids to new Collection of model objects
+     * */
     "use strict";
     var allCollection = this;
     var model = allCollection.model;
