@@ -8,9 +8,53 @@ Tracuse.models.DatumGroup =
 
 Tracuse.models.DatumType =
     Tracuse.utils.ModelFactory("datum_type", "datum_type_id");
+Tracuse.models.DatumType.prototype.relations = [
+    {
+        type: Backbone.HasOne,
+        key: "datum_group_id",
+        relatedModel: "Tracuse.models.DatumGroup",
+        includeInJSON: false,
+        reverseRelation: {
+            key: "datum_types"
+        }
+    },
+    {
+        type: Backbone.HasMany,
+        key: "datum_objects",
+        relatedModel: "Tracuse.models.DatumObject",
+        collectionType: "Tracuse.models.DatumObject.collBase",
+        includeInJSON: false,
+        reverseRelation: {
+            key: "datum_type_id"
+        }
+    }
+];
 
 Tracuse.models.DatumObject =
     Tracuse.utils.ModelFactory("datum_object", "datum_object_id");
+Tracuse.models.DatumObject.prototype.relations = [
+    {
+        type: Backbone.HasMany,
+        key: "elements",
+        relatedModel: "Tracuse.models.ElementDatumObject",
+        collectionType: "Tracuse.models.ElementDatumObject.collBase",
+        reverseRelation: {
+            key: "datum_object_id"
+        }
+    },
+    {
+        type: Backbone.HasMany,
+        key: "parent_datums",
+        relatedModel: "Tracuse.models.DatumObject",
+        collectionType: "Tracuse.models.DatumObject.collBase"
+    },
+    {
+        type: Backbone.HasMany,
+        key: "child_datums",
+        relatedModel: "Tracuse.models.DatumObject",
+        collectionType: "Tracuse.models.DatumObject.collBase"
+    }
+];
 
 
 Tracuse.models.ElementType =

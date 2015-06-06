@@ -77,6 +77,7 @@ Tracuse.init.initApp = function initApp() {
     "use strict";
     //Tracuse.models.createModels();
     //Tracuse.models.loadInitData();
+
     Tracuse.init.fetchData();
     Tracuse.templates.loadEnvironment();
     Tracuse.init.loadAppTemplate();
