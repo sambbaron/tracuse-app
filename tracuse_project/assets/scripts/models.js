@@ -17,16 +17,6 @@ Tracuse.models.DatumType.prototype.relations = [
         reverseRelation: {
             key: "datum_types"
         }
-    },
-    {
-        type: Backbone.HasMany,
-        key: "datum_objects",
-        relatedModel: "Tracuse.models.DatumObject",
-        collectionType: "Tracuse.models.DatumObject.collBase",
-        includeInJSON: false,
-        reverseRelation: {
-            key: "datum_type_id"
-        }
     }
 ];
 
@@ -37,10 +27,7 @@ Tracuse.models.DatumObject.prototype.relations = [
         type: Backbone.HasMany,
         key: "elements",
         relatedModel: "Tracuse.models.ElementDatumObject",
-        collectionType: "Tracuse.models.ElementDatumObject.collBase",
-        reverseRelation: {
-            key: "datum_object_id"
-        }
+        collectionType: "Tracuse.models.ElementDatumObject.collBase"
     },
     {
         type: Backbone.HasMany,
