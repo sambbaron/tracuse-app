@@ -22,6 +22,16 @@ class TestDatumGroupSerializer(TestCase):
         expected = "TestDatumGroup1"
         self.assertEqual(expected, actual)
 
+    def test_serial_datum_types_list(self):
+        """Test DatumGroupSerializer.serial_datum_types_list
+        """
+        test_object = self.test.datum_group1
+        test_serialized = DatumGroupSerializer. \
+            serial_datum_types_list(test_object)
+        actual = test_serialized["entity_name"]
+        expected = "TestDatumGroup1"
+        self.assertEqual(expected, actual)
+
 
 class TestDatumTypeSerializer(TestCase):
     @classmethod

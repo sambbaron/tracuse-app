@@ -23,7 +23,7 @@ class DatumGroupAll(View):
     def get(self, request):
         queryset = DatumGroup.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=DatumGroupSerializer.serial_basic
+                                     serializer=DatumGroupSerializer.serial_datum_types_list
                                      ).serialize()
         response = JsonResponse(serialized_data, status=200, safe=False)
         return response
