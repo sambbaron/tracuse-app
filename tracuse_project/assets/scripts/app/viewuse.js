@@ -42,28 +42,6 @@ Tracuse.app.viewuse.events = function () {
     });
 };
 
-Tracuse.app.viewuse.nextId = function nextId() {
-    "use strict";
-    /* Calculate next id value*/
-    var newId;
-    var idArray = [];
-    var viewuses = Tracuse.el.viewuses.querySelectorAll(".viewuse");
-
-    for (var i = 0; i < viewuses.length; i++) {
-        var viewuseId = viewuses[i].getAttribute("id");
-        viewuseId = viewuseId.substring(1);
-        idArray.push(viewuseId);
-    }
-    if (idArray.length === 0) {
-        newId = 1;
-    } else {
-        newId = Math.max.apply(Math, idArray) + 1;
-    }
-    newId = "v" + newId;
-
-    return newId;
-};
-
 Tracuse.app.viewuse.getParentViewuse = function getParentViewuse(el) {
     "use strict";
     /* Return viewuse element associated with provided element*/

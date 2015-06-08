@@ -30,11 +30,15 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
         }
 
         if (appendEl) {
-            Tracuse.views.renderViewuseFromTemplate("viewuse_tile", "datum_small", null, function (renderedOutput) {
-                var range = document.createRange();
-                var newViewuseEl = range.createContextualFragment(renderedOutput);
-                appendEl.appendChild(newViewuseEl);
+            var viewuseObject = new Tracuse.models.ViewuseObject({
+                arrangement_template: "viewuse_tile",
+                datum_template: "datum_small",
+                filters: [null]
             });
+            var viewuseView = new Tracuse.views.Viewuse(
+                {model: viewuseObject},
+                appendEl
+            );
         }
         e.stopPropagation();
     });
@@ -44,7 +48,7 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
 Tracuse.init.attachDynamicEvents = function attachDynamicEvents() {
     "use strict";
     /* Attach all dynamic event handlers associated with app components*/
-    Tracuse.app.viewuse.events();
+    //Tracuse.app.viewuse.events();
 };
 
 Tracuse.init.loadAppTemplate = function loadAppTemplate() {
@@ -67,9 +71,7 @@ Tracuse.init.firstViewuse = function firstViewuse() {
      */
 
     var viewuseObject = Tracuse.models.ViewuseObject.all.first();
-    Tracuse.views.renderViewuseFromObject(viewuseObject, function (renderedOutput) {
-        Tracuse.el.viewuses.innerHTML = renderedOutput;
-    });
+    var viewuseView = new Tracuse.views.Viewuse({model: viewuseObject});
 
 };
 
