@@ -49,6 +49,22 @@ Tracuse.utils.ModelFactory = function ModelFactory(modelName, idAttribute) {
     return model;
 };
 
+Tracuse.utils.bootstrapData = function bootstrapData(data) {
+    "use strict";
+    /* Load bootstrap data from template into Backbone 'all' collections
+     Object keys should match model names
+     */
+
+    for (var modelName in data) {
+        var model = Tracuse.models[modelName];
+        if (model) {
+            var modelData = JSON.parse(data[modelName]);
+            model.all.reset(modelData);
+            console.info("Load Bootstrap Model Data: " + modelName);
+        }
+    }
+};
+
 Backbone.Collection.prototype.getFetchOne = function getFetchOne(id, callback) {
     "use strict";
     /* For model id or object, attempt get in 'all' collection

@@ -86,22 +86,6 @@ Tracuse.init.initApp = function initApp() {
     Tracuse.init.firstViewuse();
 };
 
-Tracuse.init.bootstrapData = function bootstrapData(data) {
-    "use strict";
-    /* Load bootstrap data from template into Backbone 'all' collections
-     Object keys should match model names
-     */
-
-    for (var modelName in data) {
-        var model = Tracuse.models[modelName];
-        if (model) {
-            var modelData = JSON.parse(data[modelName]);
-            model.all.reset(modelData);
-            console.info("Load Bootstrap Model Data: " + modelName);
-        }
-    }
-};
-
 Tracuse.init.fetchData = function fetchData() {
     "use strict";
     /* Fetch initial models */
