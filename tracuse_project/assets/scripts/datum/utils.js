@@ -6,15 +6,18 @@ Tracuse.utils = Tracuse.utils || {};
 
 Tracuse.utils.getFilteredDatums = function getFilteredDatums(filter, callback) {
     "use strict";
-     /* Send either filter json object or filter set id
-     Return array of datum ids
+    /* Send either filter json object or filter set id
+     Return array of datum datum objects
      */
     var request = new XMLHttpRequest();
     var filterUrl = "";
 
     request.onreadystatechange = function () {
         if ((request.readyState === 4) && (request.status === 200)) {
-            callback(JSON.parse(request.responseText));
+            Tracuse.models.DatumObject.all.idsToObjects(JSON.parse(request.responseText),
+                function (datumObjects) {
+                    callback(datumObjects);
+                });
         }
     };
 
