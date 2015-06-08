@@ -56,6 +56,7 @@ class DatumType(EntityModel):
 
     datum_group = models.ForeignKey("DatumGroup",
                                     db_column="datum_group_id",
+                                    related_name="datum_types",
                                     null=False, blank=False,
                                     db_index=True
                                     )
