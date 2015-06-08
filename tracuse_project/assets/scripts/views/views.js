@@ -44,7 +44,7 @@ Tracuse.views.renderViewuseFromObject = function renderViewuseFromObject(viewuse
 
     // Return filtered datums
     var filter = viewuseObject.get("filters")[0];
-    Tracuse.app.filter.getFilteredDatums(filter, function (datumArray) {
+    Tracuse.utils.getFilteredDatums(filter, function (datumArray) {
 
         // Convert array of datum ids to collection of objects
         var datumCollection = Tracuse.models.DatumObject.all;

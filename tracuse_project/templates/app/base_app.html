@@ -26,15 +26,18 @@
     <script src="{% static 'scripts/libraries/backbone-relational.js' %}"></script>
     <script src="{% static 'scripts/libraries/nunjucks-slim.min.js' %}"></script>
 
-    <script src="{% static 'scripts/utils.js' %}"></script>
-    <script src="{% static 'scripts/routes.js' %}"></script>
-    <script src="{% static 'scripts/models.js' %}"></script>
-    <script>Tracuse.utils.bootstrapData({{ bootstrap_data|safe }})</script>
+    <script src="{% static 'scripts/common/utils.js' %}"></script>
+    <script src="{% static 'scripts/common/routes.js' %}"></script>
+    <script src="{% static 'scripts/common/models.js' %}"></script>
+    <script src="{% static 'scripts/datum/models.js' %}"></script>
+    <script src="{% static 'scripts/datum/utils.js' %}"></script>
+    <script src="{% static 'scripts/element/models.js' %}"></script>
+    <script src="{% static 'scripts/viewuse/models.js' %}"></script>
+    <script>Tracuse.models.bootstrapData({{ bootstrap_data|safe }})</script>
 
     <script src="{% static 'templates/template_init.js' %}"></script>
     <script src="{% static 'templates/compiled_templates.js' %}"></script>
 
-    <script src="{% static 'scripts/app/filter.js' %}"></script>
     <script src="{% static 'scripts/app/viewuse.js' %}"></script>
     <script src="{% static 'scripts/views/views.js' %}"></script>
 
