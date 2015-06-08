@@ -10,13 +10,9 @@ Tracuse.models.DatumType =
     Tracuse.utils.ModelFactory("datum_type", "datum_type_id");
 Tracuse.models.DatumType.prototype.relations = [
     {
-        type: Backbone.HasOne,
+        type: Backbone.One,
         key: "datum_group_id",
-        relatedModel: "Tracuse.models.DatumGroup",
-        includeInJSON: false,
-        reverseRelation: {
-            key: "datum_types"
-        }
+        relatedModel: "Tracuse.models.DatumGroup"
     }
 ];
 
@@ -24,19 +20,19 @@ Tracuse.models.DatumObject =
     Tracuse.utils.ModelFactory("datum_object", "datum_object_id");
 Tracuse.models.DatumObject.prototype.relations = [
     {
-        type: Backbone.HasMany,
+        type: Backbone.Many,
         key: "elements",
         relatedModel: "Tracuse.models.ElementDatumObject",
         collectionType: "Tracuse.models.ElementDatumObject.collBase"
     },
     {
-        type: Backbone.HasMany,
+        type: Backbone.Many,
         key: "parent_datums",
         relatedModel: "Tracuse.models.DatumObject",
         collectionType: "Tracuse.models.DatumObject.collBase"
     },
     {
-        type: Backbone.HasMany,
+        type: Backbone.Many,
         key: "child_datums",
         relatedModel: "Tracuse.models.DatumObject",
         collectionType: "Tracuse.models.DatumObject.collBase"
