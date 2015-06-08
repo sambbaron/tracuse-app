@@ -32,7 +32,7 @@ Tracuse.utils.ModelFactory = function ModelFactory(modelName, idAttribute) {
     var url = Tracuse.routes.api[modelName] ||
         Tracuse.routes.baseUrl + modelName + "/";
 
-    var model = Backbone.AssociatedModel.extend({
+    var model = Backbone.RelationalModel.extend({
         modelName: modelName,
         idAttribute: idAttribute,
         url: function () {
