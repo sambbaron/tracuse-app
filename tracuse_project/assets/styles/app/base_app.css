@@ -23,6 +23,10 @@ footer {
     width: 100%;
 }
 
+#viewuses {
+    display: inline-block;
+}
+
 /*.datum, x-datum{*/
     /*display: inline-block;*/
     /*position: relative;*/
