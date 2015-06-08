@@ -27,5 +27,7 @@ Tracuse.utils.getFilteredDatums = function getFilteredDatums(filter, callback) {
         request.open("POST", filterUrl, true);
         request = Tracuse.utils.csrfSafeRequest(request);
         request.send(filter);
+    } else {
+        callback(null);
     }
 };
