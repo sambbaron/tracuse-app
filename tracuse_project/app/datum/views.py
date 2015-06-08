@@ -87,7 +87,7 @@ class DatumObjectOne(View):
     def get(self, request, pk):
         object = self.get_object(pk)
         serialized_data = Serializer(data=object,
-                                     serializer=DatumObjectSerializer.serial_datum_elements_list
+                                     serializer=DatumObjectSerializer.serial_datum_elements_objects
                                      ).serialize()
         response = JsonResponse(serialized_data, status=200)
         return response
