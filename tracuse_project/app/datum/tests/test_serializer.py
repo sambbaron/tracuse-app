@@ -64,10 +64,10 @@ class TestDatumObjectSerializer(TestCase):
         self.assertEqual(expected, actual)
 
     def test_serial_datum_all(self):
-        """Test DatumObjectSerializer.serial_datum_all
+        """Test DatumObjectSerializer.serial_datum_elements_list
         """
         test_object = self.test.datum_object1
-        test_serialized = DatumObjectSerializer.serial_datum_all(test_object)
+        test_serialized = DatumObjectSerializer.serial_datum_elements_list(test_object)
 
         actual_type = test_serialized["datum_type_id"]
         expected_type = self.test.datum_type1.datum_type_id

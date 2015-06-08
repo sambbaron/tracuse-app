@@ -60,7 +60,7 @@ class DatumObjectSerializer(DatumObject):
 
     DatumObject.serial_element_name_value = serial_element_name_value
 
-    def serial_datum_all(self):
+    def serial_datum_elements_list(self):
         """Datums with all properties
         """
 
@@ -81,7 +81,7 @@ class DatumObjectSerializer(DatumObject):
 
         return output
 
-    DatumObject.serial_datum_all = serial_datum_all
+    DatumObject.serial_datum_all = serial_datum_elements_list
 
 
 class DatumObjectDeserializer(object):
