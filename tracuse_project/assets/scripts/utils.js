@@ -37,41 +37,7 @@ Tracuse.utils.ModelFactory = function ModelFactory(modelName, idAttribute) {
         idAttribute: idAttribute,
         url: function () {
             return url + this.get(this.idAttribute) + "/";
-        },
-
-        extendManyRelation: function (relationKey, callback) {
-            /* Update model using single relation
-             * Also update 'all' collection for related model
-             * */
-            var relation = this.getRelation(relationKey);
-            var relatedModel = eval(relation.relatedModel);
-            this.getAsync(relation.key).done(function (collection) {
-                relatedModel.all.add(collection.models);
-                callback(this);
-            });
-        },
-
-        extendManyRelations: function (relationKeys, callback) {
-            /* Updated related models using selected relations
-             * If no relations provided, run all relations
-             * */
-            var i = 0, a = 0;
-            for (i = 0; i < relationKeys.length; i++) {
-                var relation = relationKeys[i];
-                this.extendManyRelation(relation, function () {
-                    a++
-                });
-            }
-            var c = 0;
-            var checkObject = setInterval(function () {
-                if (relationKeys.length === a || c > 50) {
-                    clearInterval(checkObject);
-                    callback(this);
-                }
-                c++;
-            }, 100);
         }
-
     });
 
     model.collBase = Backbone.Collection.extend({
@@ -82,12 +48,6 @@ Tracuse.utils.ModelFactory = function ModelFactory(modelName, idAttribute) {
 
     return model;
 };
-//
-//Backbone.RelationalModel.getModelRelation = function getModelRelation(keyName) {
-//    "use strict";
-//    var result = _.where(this.prototype.relations, {key: keyName});
-//    return result;
-//};
 
 Backbone.Collection.prototype.getFetchOne = function getFetchOne(id, callback) {
     "use strict";
@@ -120,19 +80,6 @@ Backbone.Collection.prototype.getFetchOne = function getFetchOne(id, callback) {
             }
         });
     }
-};
-
-Backbone.Collection.prototype.getFetchExtend = function getFetchExtend(id, relationKeys, callback) {
-    "use strict";
-    /* Update related HasMany models to object
-     * model: can be ID or object
-     * */
-    var thisCollection = this;
-    thisCollection.getFetchOne(id, function (modelObject) {
-        modelObject.extendManyRelations(relationKeys, function () {
-            callback(modelObject);
-        });
-    });
 };
 
 Backbone.Collection.prototype.idsToObjects = function idsToObjects(idArray, callback) {
