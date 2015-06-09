@@ -36,7 +36,10 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
                 filters: [null]
             });
             var viewuseView = new Tracuse.views.Viewuse(
-                {model: viewuseObject},
+                {
+                    model: viewuseObject,
+                    id: Tracuse.views.Viewuse.prototype.nextId()
+                },
                 appendEl
             );
         }
@@ -48,7 +51,7 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
 Tracuse.init.attachDynamicEvents = function attachDynamicEvents() {
     "use strict";
     /* Attach all dynamic event handlers associated with app components*/
-    Tracuse.events.Viewuse.attach();
+    //Tracuse.events.Viewuse.attach();
 };
 
 Tracuse.init.loadAppTemplate = function loadAppTemplate() {

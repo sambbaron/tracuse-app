@@ -8,6 +8,18 @@ Tracuse.views.Viewuse = Backbone.View.extend({
     tagName: "section",
     className: "viewuse",
 
+    events: {
+        "mouseenter": function (ev) {
+            this.setState(ev.target, true);
+        },
+        "mouseleave": function (ev) {
+            this.setState(ev.target, false);
+        },
+        "click button[name='viewuse-options']": function (ev) {
+            this.showPanel(ev.target, "viewuse-options");
+        }
+    },
+
     initialize: function initialize(model, appendViewuse) {
         "use strict";
         var view = this;
@@ -18,6 +30,7 @@ Tracuse.views.Viewuse = Backbone.View.extend({
             var range = document.createRange();
             var newView = range.createContextualFragment(renderedOutput);
             appendViewuse.appendChild(newView);
+            view.setElement(document.getElementById(view.id));
         });
     },
 
@@ -98,10 +111,9 @@ Tracuse.views.Viewuse = Backbone.View.extend({
         return newId;
     },
 
-    setState: function setState(event, active) {
+    setState: function setState(el, active) {
         "use strict";
         /* Set active viewuse - show buttons and set 'active' class*/
-        var el = event.target;
         var active = active || false;
         var controls = el.querySelector(".viewuse-controls");
 
@@ -127,6 +139,22 @@ Tracuse.views.Viewuse = Backbone.View.extend({
             childViewuse.classList.toggle("active");
             var childControls = childViewuse.querySelector(".viewuse-controls");
             $(childControls).toggle();
+        }
+    },
+
+    showPanel: function showPanel(el, panelClassName) {
+        "use strict";
+        /* Trigger from viewuse button*/
+        var viewuse = this.el;
+        var panelEl = viewuse.querySelector("." + panelClassName);
+
+        // If has 'popout' class, move node to app container
+        if (panelEl.classList.contains("popout")) {
+            panelEl = panelEl.cloneNode(true);
+            Tracuse.el.app.insertBefore(panelEl, Tracuse.el.viewuses.nextSibling);
+            $(panelEl).fadeIn("fast");
+        } else {
+            $(panelEl).show("slide", {direction: "left"}, 300);
         }
     }
 
