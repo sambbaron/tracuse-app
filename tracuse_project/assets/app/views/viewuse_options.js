@@ -213,18 +213,16 @@ Tracuse.views.ViewuseOptions = Backbone.View.extend({
         var elementOperatorsEl = parentEl.querySelector("[name='element_operators']");
         elementOperatorsEl.innerHTML = "";
 
-        var elementDataTypeId = Tracuse.models.ElementType.all.get(el.value).get("element_data_type_id");
+        var elementType = Tracuse.models.ElementType.all.get(el.value);
+        var elementOperators = elementType.get("element_operators").models;
 
         var optionFrag = document.createDocumentFragment();
-        var elementOperators = Tracuse.models.ElementOperator.all.models;
         for (var e = 0, emax = elementOperators.length; e < emax; e++) {
             var operator = elementOperators[e];
-            if (operator.get("element_data_type_id") == elementDataTypeId) {
-                var optionEl = document.createElement("option");
-                optionEl.innerHTML = operator.get("readable_name");
-                optionEl.value = operator.get("entity_name");
-                optionFrag.appendChild(optionEl);
-            }
+            var optionEl = document.createElement("option");
+            optionEl.innerHTML = operator.get("readable_name");
+            optionEl.value = operator.get("entity_name");
+            optionFrag.appendChild(optionEl);
         }
         elementOperatorsEl.appendChild(optionFrag);
     },
