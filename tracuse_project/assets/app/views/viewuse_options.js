@@ -10,6 +10,11 @@ Tracuse.views.ViewuseOptions = Backbone.View.extend({
 
     events: {
         "click button[name='close-panel']": "hidePanel",
+        "click button[name='apply-view']": function () {
+            "use strict";
+            console.warn(this.getFilterSelections());
+        },
+
         "click .filter-groups-types button[name='datum_group']": function (ev) {
             this.clickDatumGroup(ev.target);
         },
@@ -251,6 +256,42 @@ Tracuse.views.ViewuseOptions = Backbone.View.extend({
             });
             el.parentNode.appendChild(elementEl);
         }
+    },
+
+    getFilterSelections: function () {
+        "use strict";
+        /* Collect filter options in each category
+        * Compile into object with json filter rule format
+        * */
+        var output = {};
+        var parentEl = this.el;
+
+        var groupsEl = parentEl.querySelectorAll(".filter-groups-types .content button[name='datum_group'].active");
+        var groupsList = _.map(groupsEl, function (el) {
+            return {datum_group_id: parseInt(el.value)};
+        });
+        output.FilterRuleGroup = groupsList;
+
+        var typesEl = parentEl.querySelectorAll(".filter-groups-types .content button[name='datum_type'].active");
+        var typesList = _.map(typesEl, function (el) {
+            return {datum_type_id: parseInt(el.value)};
+        });
+        output.FilterRuleType = typesList;
+
+        var associationsEl = parentEl.querySelectorAll(".filter-associations .content button.active");
+        var associationsList = _.map(associationsEl, function (el) {
+            return {datum_object_id: parseInt(el.value)};
+        });
+        output.FilterRuleAssociation = associationsList;
+
+        var elementsEl = parentEl.querySelectorAll(".filter-elements .content button.active");
+        var elementsList = _.map(elementsEl, function (el) {
+            var elementFilter = el.value.split(",");
+            return {element_type_id: parseInt(elementFilter[0]), operator: elementFilter[1], elvalue: elementFilter[2]};
+        });
+        output.FilterRuleElement = elementsList;
+
+        return output;
     }
 
 
