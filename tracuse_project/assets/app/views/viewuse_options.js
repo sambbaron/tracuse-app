@@ -95,19 +95,13 @@ Tracuse.views.ViewuseOptions = Backbone.View.extend({
         var parentEl = this.el;
         var datumGroup = el;
         var datumGroupId = el.value;
-        var datumTypes = parentEl.querySelectorAll("button[name='datum_type']");
+        var datumTypes = el.parentNode.querySelectorAll("button[name='datum_type']");
 
         datumGroup.classList.toggle("active");
 
         for (var i = 0; i < datumTypes.length; i++) {
             var datumType = datumTypes[i];
-            if (datumType.getAttribute("datum_group_id") === datumGroupId) {
-                if (datumGroup.classList.contains("active")) {
-                    datumType.classList.add("active");
-                } else {
-                    datumType.classList.remove("active");
-                }
-            }
+            datumType.classList.toggle("active");
         }
     },
 
@@ -261,8 +255,8 @@ Tracuse.views.ViewuseOptions = Backbone.View.extend({
     getFilterSelections: function () {
         "use strict";
         /* Collect filter options in each category
-        * Compile into object with json filter rule format
-        * */
+         * Compile into object with json filter rule format
+         * */
         var output = {};
         var parentEl = this.el;
 
