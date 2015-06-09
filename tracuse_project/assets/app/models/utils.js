@@ -22,7 +22,8 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute) {
 
     model.collBase = Backbone.Collection.extend({
         model: model,
-        url: url
+        url: url,
+        comparator: "sort"
     });
     model.all = new model.collBase();
 
