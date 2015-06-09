@@ -5,24 +5,20 @@ Tracuse.views = Tracuse.views || {};
 
 Tracuse.views.Viewuse = Backbone.View.extend({
 
-    el: "#viewuses",
-
-    //events: {
-    //    "mouseenter .viewuse": Tracuse.app.viewuse.setState(ev.target, true)
-    //},
+    tagName: "section",
+    className: "viewuse",
 
     initialize: function initialize(model, appendViewuse) {
         "use strict";
         var view = this;
-        if (!appendViewuse) appendViewuse = view.el;
-        view.render(function (renderedOutput) {
-            var range = document.createRange();
-            var newViewuseEl = range.createContextualFragment(renderedOutput);
-            appendViewuse.appendChild(newViewuseEl);
-            return view;
-        });
 
-        //this.listenTo(this.model, "change", this.render);
+        //if (!appendViewuse) appendViewuse = view.el;
+        if (!appendViewuse) appendViewuse = document.querySelector("#viewuses");
+        view.render(function (view, renderedOutput) {
+            var range = document.createRange();
+            var newView = range.createContextualFragment(renderedOutput);
+            appendViewuse.appendChild(newView);
+        });
     },
 
     outputTemplate: function outputTemplate(arrangementTemplate,
@@ -74,7 +70,7 @@ Tracuse.views.Viewuse = Backbone.View.extend({
                 datumTemplate,
                 datumObjects,
                 function (templateString) {
-                    callback(templateString);
+                    callback(view, templateString);
                 }
             );
         });
@@ -100,7 +96,38 @@ Tracuse.views.Viewuse = Backbone.View.extend({
         newId = "v" + newId;
 
         return newId;
+    },
+
+    setState: function setState(event, active) {
+        "use strict";
+        /* Set active viewuse - show buttons and set 'active' class*/
+        var el = event.target;
+        var active = active || false;
+        var controls = el.querySelector(".viewuse-controls");
+
+        if (active) {
+            el.classList.add("active");
+            $(controls).show();
+        } else {
+            el.classList.remove("active");
+            $(controls).hide();
+        }
+
+        // Change state if coming in/out of parent viewuse
+        var parentViewuse = el.parentNode;
+        if (parentViewuse && parentViewuse.classList.contains("viewuse")) {
+            parentViewuse.classList.toggle("active");
+            var parentControls = parentViewuse.querySelector(".viewuse-controls");
+            $(parentControls).toggle();
+        }
+
+        // Change state if coming in/out of child viewuse
+        var childViewuse = el.querySelector(".viewuse");
+        if (childViewuse) {
+            childViewuse.classList.toggle("active");
+            var childControls = childViewuse.querySelector(".viewuse-controls");
+            $(childControls).toggle();
+        }
     }
 
-})
-;
+});

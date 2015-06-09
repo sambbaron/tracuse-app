@@ -48,7 +48,7 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
 Tracuse.init.attachDynamicEvents = function attachDynamicEvents() {
     "use strict";
     /* Attach all dynamic event handlers associated with app components*/
-    //Tracuse.app.viewuse.events();
+    Tracuse.events.Viewuse.attach();
 };
 
 Tracuse.init.loadAppTemplate = function loadAppTemplate() {
@@ -71,7 +71,10 @@ Tracuse.init.firstViewuse = function firstViewuse() {
      */
 
     var viewuseObject = Tracuse.models.ViewuseObject.all.first();
-    var viewuseView = new Tracuse.views.Viewuse({model: viewuseObject});
+    var viewuseView = new Tracuse.views.Viewuse({
+        model: viewuseObject,
+        id: Tracuse.views.Viewuse.prototype.nextId()
+    });
 
 };
 

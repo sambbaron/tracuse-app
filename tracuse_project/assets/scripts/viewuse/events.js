@@ -1,48 +1,48 @@
 var Tracuse = Tracuse || {};
 
-/* Viewuse Functions */
-Tracuse.app = Tracuse.app || {};
-Tracuse.app.viewuse = Tracuse.app.viewuse || {};
+/* Viewuse Events */
+Tracuse.events = Tracuse.events || {};
+Tracuse.events.Viewuse = Tracuse.events.Viewuse || {};
 
 
-Tracuse.app.viewuse.events = function () {
+Tracuse.events.Viewuse.attach = function () {
     var appEl = $(Tracuse.el.app);
     appEl.on("mouseenter focusin", ".viewuse", function (ev) {
-        Tracuse.app.viewuse.setState(ev.target, true);
+        Tracuse.events.Viewuse.setState(ev.target, true);
     });
     appEl.on("mouseleave focusout", ".viewuse", function (ev) {
-        Tracuse.app.viewuse.setState(ev.target, false);
+        Tracuse.events.Viewuse.setState(ev.target, false);
     });
     appEl.on("click", "button[name='viewuse-options']", function (ev) {
-        Tracuse.app.viewuse.showPanel('viewuse-options', ev.target);
+        Tracuse.events.Viewuse.showPanel('viewuse-options', ev.target);
     });
     appEl.on("click", "button[name='close-panel']", function (ev) {
-        Tracuse.app.viewuse.hidePanel(ev.target);
+        Tracuse.events.Viewuse.hidePanel(ev.target);
     });
     appEl.on("click", ".filter-groups-types button[name='datum_group']", function (ev) {
-        Tracuse.app.viewuse.clickDatumGroup(ev.target);
+        Tracuse.events.Viewuse.clickDatumGroup(ev.target);
     });
     appEl.on("click", ".filter-groups-types button[name='datum_type']", function (ev) {
-        Tracuse.app.viewuse.clickDatumType(ev.target);
+        Tracuse.events.Viewuse.clickDatumType(ev.target);
     });
     appEl.on("change", ".filter-associations select[name='datum_groups']", function (ev) {
-        Tracuse.app.viewuse.selectDatumGroup(ev.target);
+        Tracuse.events.Viewuse.selectDatumGroup(ev.target);
     });
     appEl.on("change", ".filter-associations select[name='datum_types']", function (ev) {
-        Tracuse.app.viewuse.selectDatumType(ev.target);
+        Tracuse.events.Viewuse.selectDatumType(ev.target);
     });
     appEl.on("click", ".filter-associations button[name='add-association']", function (ev) {
-        Tracuse.app.viewuse.addAssociatedDatum(ev.target);
+        Tracuse.events.Viewuse.addAssociatedDatum(ev.target);
     });
     appEl.on("change", ".filter-elements select[name='element_types']", function (ev) {
-        Tracuse.app.viewuse.selectElement(ev.target);
+        Tracuse.events.Viewuse.selectElement(ev.target);
     });
     appEl.on("click", ".filter-elements button[name='add-element-filter']", function (ev) {
-        Tracuse.app.viewuse.addElementFilter(ev.target);
+        Tracuse.events.Viewuse.addElementFilter(ev.target);
     });
 };
 
-Tracuse.app.viewuse.getParentViewuse = function getParentViewuse(el) {
+Tracuse.events.Viewuse.getParentViewuse = function getParentViewuse(el) {
     "use strict";
     /* Return viewuse element associated with provided element*/
     var viewuseEl;
@@ -59,7 +59,7 @@ Tracuse.app.viewuse.getParentViewuse = function getParentViewuse(el) {
     }
 };
 
-Tracuse.app.viewuse.setState = function setState(el, active) {
+Tracuse.events.Viewuse.setState = function setState(el, active) {
     "use strict";
     /* Set active viewuse - show buttons and set 'active' class*/
     var active = active || false;
@@ -90,7 +90,7 @@ Tracuse.app.viewuse.setState = function setState(el, active) {
     }
 };
 
-Tracuse.app.viewuse.closeView = function closeView(el, ev) {
+Tracuse.events.Viewuse.closeView = function closeView(el, ev) {
     "use strict";
     el.parentNode.parentNode.removeChild(el.parentNode);
     if (ev) {
@@ -98,10 +98,10 @@ Tracuse.app.viewuse.closeView = function closeView(el, ev) {
     }
 };
 
-Tracuse.app.viewuse.showPanel = function showPanel(panelClassName, el) {
+Tracuse.events.Viewuse.showPanel = function showPanel(panelClassName, el) {
     "use strict";
     /* Trigger from viewuse button*/
-    var parentViewuse = Tracuse.app.viewuse.getParentViewuse(el);
+    var parentViewuse = Tracuse.events.Viewuse.getParentViewuse(el);
     var panelEl = parentViewuse.querySelector("." + panelClassName);
 
     // If has 'popout' class, move node to app container
@@ -114,7 +114,7 @@ Tracuse.app.viewuse.showPanel = function showPanel(panelClassName, el) {
     }
 };
 
-Tracuse.app.viewuse.hidePanel = function hidePanel(el, ev) {
+Tracuse.events.Viewuse.hidePanel = function hidePanel(el, ev) {
     "use strict";
     /* Trigger from close button*/
     var panelEl = el.parentNode;
@@ -127,7 +127,7 @@ Tracuse.app.viewuse.hidePanel = function hidePanel(el, ev) {
     }
 };
 
-Tracuse.app.viewuse.clickDatumGroup = function clickDatumGroup(el) {
+Tracuse.events.Viewuse.clickDatumGroup = function clickDatumGroup(el) {
     "use strict";
     var parentEl = el.parentNode;
     var datumGroup = el;
@@ -148,7 +148,7 @@ Tracuse.app.viewuse.clickDatumGroup = function clickDatumGroup(el) {
     }
 };
 
-Tracuse.app.viewuse.clickDatumType = function clickDatumType(el) {
+Tracuse.events.Viewuse.clickDatumType = function clickDatumType(el) {
     "use strict";
     /* Clear datum group*/
     var parentEl = el.parentNode;
@@ -164,7 +164,7 @@ Tracuse.app.viewuse.clickDatumType = function clickDatumType(el) {
     el.classList.toggle("active");
 };
 
-Tracuse.app.viewuse.selectDatumGroup = function selectDatumGroup(el) {
+Tracuse.events.Viewuse.selectDatumGroup = function selectDatumGroup(el) {
     "use strict";
     /* Filter Datum Types*/
     var parentEl = el.parentNode.parentNode;
@@ -199,7 +199,7 @@ Tracuse.app.viewuse.selectDatumGroup = function selectDatumGroup(el) {
     datumObjectsEl.appendChild(optionFrag);
 };
 
-Tracuse.app.viewuse.selectDatumType = function selectDatumType(el) {
+Tracuse.events.Viewuse.selectDatumType = function selectDatumType(el) {
     "use strict";
 
     /* Update Datum Objects*/
@@ -221,7 +221,7 @@ Tracuse.app.viewuse.selectDatumType = function selectDatumType(el) {
     datumObjectsEl.appendChild(optionFrag);
 };
 
-Tracuse.app.viewuse.addAssociatedDatum = function addAssociatedDatum(el) {
+Tracuse.events.Viewuse.addAssociatedDatum = function addAssociatedDatum(el) {
     "use strict";
     // Add datum object to association filter list
     // Create button element
@@ -243,7 +243,7 @@ Tracuse.app.viewuse.addAssociatedDatum = function addAssociatedDatum(el) {
     }
 };
 
-Tracuse.app.viewuse.selectElement = function selectElement(el) {
+Tracuse.events.Viewuse.selectElement = function selectElement(el) {
     // Add element operators
 
     var parentEl = el.parentNode.parentNode;
@@ -267,7 +267,7 @@ Tracuse.app.viewuse.selectElement = function selectElement(el) {
 };
 
 
-Tracuse.app.viewuse.addElementFilter = function addElementFilter(el) {
+Tracuse.events.Viewuse.addElementFilter = function addElementFilter(el) {
     "use strict";
     /* Add element filter
      Create button element
