@@ -53,14 +53,8 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var templateData = {
             "datum_template": datumTemplate,
             "datum_objects": datumObjects,
-            "datum_groups": Tracuse.models.DatumGroup.all.toJSON(),
-            "datum_types": Tracuse.models.DatumType.all.toJSON(),
-            "element_types": Tracuse.models.ElementType.all.toJSON(),
             "this_viewuse": this.model.toJSON(),
-            "viewuse_eid": this.nextId(),
-            "viewuse_objects": Tracuse.models.ViewuseObject.all.toJSON(),
-            "viewuse_arrangements": Tracuse.models.ViewuseArrangement.all.toJSON(),
-            "viewuse_datums": Tracuse.models.ViewuseDatum.all.toJSON()
+            "viewuse_eid": this.nextId()
         };
 
         output = Tracuse.templates.env.render(templateName, templateData);

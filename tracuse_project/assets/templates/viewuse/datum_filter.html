@@ -8,13 +8,11 @@
                     {{ datum_group.readable_name }}
                 </button>
 
-                {% for datum_type in datum_types %}
-                    {% if datum_type.datum_group_id == datum_group.datum_group_id %}
-                        <button class="filter-input" name="datum_type" value="{{ datum_type.datum_type_id }}"
-                                datum_group_id="{{ datum_type.datum_group_id }}">
-                            {{ datum_type.readable_name }}
-                        </button>
-                    {% endif %}
+                {% for datum_type in datum_group.datum_types %}
+                    <button class="filter-input" name="datum_type" value="{{ datum_type.datum_type_id }}"
+                            datum_group_id="{{ datum_type.datum_group_id }}">
+                        {{ datum_type.readable_name }}
+                    </button>
                 {% endfor %}
             </fieldset>
         {% endfor %}

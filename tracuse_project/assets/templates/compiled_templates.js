@@ -228,7 +228,7 @@ output += "\">\r\n                    ";
 output += runtime.suppressValue(runtime.memberLookup((t_4),"readable_name", env.opts.autoescape), env.opts.autoescape);
 output += "\r\n                </button>\r\n\r\n                ";
 frame = frame.push();
-var t_7 = runtime.contextOrFrameLookup(context, frame, "datum_types");
+var t_7 = runtime.memberLookup((t_4),"datum_types", env.opts.autoescape);
 if(t_7) {var t_6 = t_7.length;
 for(var t_5=0; t_5 < t_7.length; t_5++) {
 var t_8 = t_7[t_5];
@@ -240,18 +240,13 @@ frame.set("loop.revindex0", t_6 - t_5 - 1);
 frame.set("loop.first", t_5 === 0);
 frame.set("loop.last", t_5 === t_6 - 1);
 frame.set("loop.length", t_6);
-output += "\r\n                    ";
-if(runtime.memberLookup((t_8),"datum_group_id", env.opts.autoescape) == runtime.memberLookup((t_4),"datum_group_id", env.opts.autoescape)) {
-output += "\r\n                        <button class=\"filter-input\" name=\"datum_type\" value=\"";
+output += "\r\n                    <button class=\"filter-input\" name=\"datum_type\" value=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"datum_type_id", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n                                datum_group_id=\"";
+output += "\"\r\n                            datum_group_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"datum_group_id", env.opts.autoescape), env.opts.autoescape);
-output += "\">\r\n                            ";
+output += "\">\r\n                        ";
 output += runtime.suppressValue(runtime.memberLookup((t_8),"readable_name", env.opts.autoescape), env.opts.autoescape);
-output += "\r\n                        </button>\r\n                    ";
-;
-}
-output += "\r\n                ";
+output += "\r\n                    </button>\r\n                ";
 ;
 }
 }
