@@ -22,9 +22,10 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
     initialize: function initialize(model, appendViewuse) {
         "use strict";
+        /* Append new viewuse
+        * If no viewuse provided, append to viewuse container
+        * */
         var view = this;
-
-        //if (!appendViewuse) appendViewuse = view.el;
         if (!appendViewuse) appendViewuse = document.querySelector("#viewuses");
         view.render(function (view, renderedOutput) {
             var range = document.createRange();
@@ -91,7 +92,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
     nextId: function nextId() {
         "use strict";
-        /* Calculate next id value*/
+        /* Calculate next viewuse id value*/
         var newId;
         var idArray = [];
         var viewuses = Tracuse.el.viewuses.querySelectorAll(".viewuse");
@@ -113,7 +114,8 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
     setState: function setState(el, active) {
         "use strict";
-        /* Set active viewuse - show buttons and set 'active' class*/
+        /* Set active viewuse - show buttons and set 'active' class
+        * */
         var active = active || false;
         var controls = el.querySelector(".viewuse-controls");
 
