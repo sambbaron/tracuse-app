@@ -35,10 +35,10 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
                 datum_template: "datum_small",
                 filters: [null]
             });
-            var viewuseView = new Tracuse.views.Viewuse(
+            var viewuseView = new Tracuse.views.ViewuseBase(
                 {
                     model: viewuseObject,
-                    id: Tracuse.views.Viewuse.prototype.nextId()
+                    id: Tracuse.views.ViewuseBase.prototype.nextId()
                 },
                 appendEl
             );
@@ -74,9 +74,9 @@ Tracuse.init.firstViewuse = function firstViewuse() {
      */
 
     var viewuseObject = Tracuse.models.ViewuseObject.all.first();
-    var viewuseView = new Tracuse.views.Viewuse({
+    var viewuseView = new Tracuse.views.ViewuseBase({
         model: viewuseObject,
-        id: Tracuse.views.Viewuse.prototype.nextId()
+        id: Tracuse.views.ViewuseBase.prototype.nextId()
     });
 
 };

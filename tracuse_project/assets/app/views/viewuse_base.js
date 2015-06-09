@@ -3,7 +3,7 @@ var Tracuse = Tracuse || {};
 /* Views collection */
 Tracuse.views = Tracuse.views || {};
 
-Tracuse.views.Viewuse = Backbone.View.extend({
+Tracuse.views.ViewuseBase = Backbone.View.extend({
 
     tagName: "section",
     className: "viewuse",
