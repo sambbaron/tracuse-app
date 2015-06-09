@@ -13,6 +13,17 @@ class ElementTypeSerializer(ElementType):
         return output
 
     ElementType.serial_basic = serial_basic
+    
+    def serial_related_list(self):
+        """All properties
+        With related data lists
+        """
+        element_operators = [element_operator.element_operator_id for element_operator in self.element_operators.all()]
+        output = self.serial_basic()
+        output["element_operators"] = element_operators
+        return output
+
+    ElementType.serial_related_list = serial_related_list
 
 
 class ElementOperatorSerializer(ElementOperator):

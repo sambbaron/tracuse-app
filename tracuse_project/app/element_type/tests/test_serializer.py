@@ -23,6 +23,18 @@ class TestElementTypeSerializer(TestCase):
         expected = "Name"
         self.assertEqual(expected, actual)
 
+    def test_serial_related_list(self):
+        """Test ElementTypeSerializer.serial_related_list
+        """
+        test_object = self.test.element_type1
+        test_serialized = ElementTypeSerializer. \
+            serial_related_list(test_object)
+        actual = test_serialized["element_operators"]
+        expected = [self.test.element_operator1.element_operator_id,
+                    self.test.element_operator2.element_operator_id
+                    ]
+        self.assertEqual(set(expected), set(actual))
+
 
 class TestElementOperatorSerializer(TestCase):
     @classmethod

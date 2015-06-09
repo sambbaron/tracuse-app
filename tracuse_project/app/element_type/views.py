@@ -23,7 +23,7 @@ class ElementTypeAll(View):
     def get(self, request):
         queryset = ElementType.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=ElementTypeSerializer.serial_basic
+                                     serializer=ElementTypeSerializer.serial_related_list
                                      ).serialize()
         response = JsonResponse(serialized_data, status=200, safe=False)
         return response
