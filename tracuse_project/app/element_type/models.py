@@ -125,6 +125,10 @@ class ElementType(EntityModel):
     def element_value_model(self):
         return ElementValueMeta(self.data_type_name)
 
+    @property
+    def element_operators(self):
+        return self.element_data_type.operators
+
 
 class ElementOption(EntityModel):
     """Value options for elements
