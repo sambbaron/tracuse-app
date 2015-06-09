@@ -240,7 +240,7 @@ Tracuse.views.ViewuseOptions = Backbone.View.extend({
         if (elementType && elementOperator && elementValue) {
             var elementEl = document.createElement("button");
             elementEl.name = "element-filter";
-            elementEl.value = elementType.value + ", " + elementOperator.value + ", " + elementValue.value;
+            elementEl.value = elementType.value + "," + elementOperator.value + "," + elementValue.value;
             elementEl.innerHTML = elementType.selectedOptions[0].innerHTML + " " +
                 elementOperator.selectedOptions[0].innerHTML + " " +
                 elementValue.value;
