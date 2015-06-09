@@ -21,26 +21,27 @@
 {% endblock %}
 
 {% block script_block %}
-    <script src="{% static 'scripts/libraries/underscore-min.js' %}"></script>
-    <script src="{% static 'scripts/libraries/backbone-min.js' %}"></script>
-    <script src="{% static 'scripts/libraries/backbone-relational.js' %}"></script>
-    <script src="{% static 'scripts/libraries/nunjucks-slim.min.js' %}"></script>
+    <script src="{% static 'libraries/underscore-min.js' %}"></script>
+    <script src="{% static 'libraries/backbone-min.js' %}"></script>
+    <script src="{% static 'libraries/backbone-relational.js' %}"></script>
+    <script src="{% static 'libraries/nunjucks-slim.min.js' %}"></script>
 
-    <script src="{% static 'scripts/common/utils.js' %}"></script>
-    <script src="{% static 'scripts/common/routes.js' %}"></script>
-    <script src="{% static 'scripts/common/models.js' %}"></script>
-    <script src="{% static 'scripts/datum/models.js' %}"></script>
-    <script src="{% static 'scripts/datum/utils.js' %}"></script>
-    <script src="{% static 'scripts/element/models.js' %}"></script>
-    <script src="{% static 'scripts/viewuse/models.js' %}"></script>
-    <script src="{% static 'scripts/viewuse/views.js' %}"></script>
-{#    <script src="{% static 'scripts/viewuse/events.js' %}"></script>#}
+    <script src="{% static 'app/controller/routes.js' %}"></script>
+    <script src="{% static 'app/controller/utils.js' %}"></script>
+    <script src="{% static 'app/controller/filter.js' %}"></script>
 
+    <script src="{% static 'app/models/utils.js' %}"></script>
+    <script src="{% static 'app/models/element.js' %}"></script>
+    <script src="{% static 'app/models/datum.js' %}"></script>
+    <script src="{% static 'app/models/viewuse.js' %}"></script>
     <script>Tracuse.models.bootstrapData({{ bootstrap_data|safe }})</script>
+
+    <script src="{% static 'app/views/viewuse.js' %}"></script>
+{#    <script src="{% static 'scripts/viewuse/events.js' %}"></script>#}
 
     <script src="{% static 'templates/template_init.js' %}"></script>
     <script src="{% static 'templates/compiled_templates.js' %}"></script>
 
-    <script src="{% static 'scripts/init.js' %}"></script>
+    <script src="{% static 'app/init.js' %}"></script>
 
 {% endblock %}
