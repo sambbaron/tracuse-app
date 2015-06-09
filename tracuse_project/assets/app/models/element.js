@@ -6,6 +6,14 @@ Tracuse.models = Tracuse.models || {};
 
 Tracuse.models.ElementType =
     Tracuse.models.ModelFactory("element_type", "element_type_id");
+Tracuse.models.ElementType.prototype.relations = [
+    {
+        type: Backbone.HasMany,
+        key: "element_operators",
+        relatedModel: "Tracuse.models.ElementOperator",
+        collectionType: "Tracuse.models.ElementOperator.collBase"
+    }
+];
 
 Tracuse.models.ElementOperator =
     Tracuse.models.ModelFactory("element_operator", "element_operator_id");
