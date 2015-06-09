@@ -14,16 +14,18 @@ class DatumGroupSerializer(DatumGroup):
         output = serialize_all(self.__class__, self)
         return output
 
-    def serial_datum_types_list(self):
+    DatumGroup.serial_basic = serial_basic
+
+    def serial_related_list(self):
         """All properties
         With datum types list
         """
         datum_types = [datum_type.datum_type_id for datum_type in self.datum_types.all()]
-        output = serialize_all(self.__class__, self)
+        output = self.serial_basic()
         output["datum_types"] = datum_types
         return output
 
-    DatumGroup.serial_basic = serial_basic
+    DatumGroup.serial_related_list = serial_related_list
 
 
 class DatumTypeSerializer(DatumType):
