@@ -363,15 +363,9 @@ output += "\">\r\n\r\n    <div class=\"content\">\r\n        ";
 context.getBlock("viewuse_content")(env, context, frame, runtime, function(t_2,t_1) {
 if(t_2) { cb(t_2); return; }
 output += t_1;
-output += "\r\n    </div>\r\n\r\n    <nav class=\"viewuse-controls\">\r\n        <button name=\"viewuse-options\">View<br>Options</button>\r\n        <br>\r\n        <button name=\"new-object\">New<br>Object</button>\r\n        <br>\r\n    </nav>\r\n\r\n    ";
-env.getTemplate("viewuse/viewuse_options.html", false, "viewuse/viewuse_base.html", function(t_5,t_3) {
-if(t_5) { cb(t_5); return; }
-t_3.render(context.getVariables(), frame.push(), function(t_6,t_4) {
-if(t_6) { cb(t_6); return; }
-output += t_4
-output += "\r\n</section>\r\n";
+output += "\r\n    </div>\r\n\r\n    <nav class=\"viewuse-controls\">\r\n        <button name=\"viewuse-options\">View<br>Options</button>\r\n        <br>\r\n        <button name=\"new-object\">New<br>Object</button>\r\n        <br>\r\n    </nav>\r\n\r\n</section>\r\n";
 cb(null, output);
-})})});
+});
 } catch (e) {
   cb(runtime.handleError(e, lineno, colno));
 }
@@ -400,8 +394,10 @@ var output = "";
 try {
 output += "<aside class=\"viewuse-panel popout viewuse-options\"\r\n        viewuse_object_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_object_id", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n        eid = \"";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"eid", env.opts.autoescape), env.opts.autoescape);
+output += "\"\r\n        id = \"";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "id"), env.opts.autoescape);
+output += "\"\r\n        pid = \"";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "pid"), env.opts.autoescape);
 output += "\">\r\n";
 output += "\r\n\r\n    <div class=\"section viewuse-select\">\r\n        <h4 class=\"title\">Select View</h4>\r\n\r\n        <div class=\"content\">\r\n\r\n            <div class=\"input-group viewuse-open\">\r\n                <div class=\"content\">\r\n                    <select name=\"viewuse_object\">\r\n                        <option></option>\r\n                        ";
 frame = frame.push();

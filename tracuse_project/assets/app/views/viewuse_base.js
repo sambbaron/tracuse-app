@@ -16,15 +16,16 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             this.setState(ev.target, false);
         },
         "click button[name='viewuse-options']": function (ev) {
-            this.showPanel(ev.target, "viewuse-options");
+            this.showPanel(ev.target, Tracuse.views.ViewuseOptions);
+            //var view = new Tracuse.views.ViewuseOptions(this);
         }
     },
 
     initialize: function initialize(model, appendViewuse) {
         "use strict";
         /* Append new viewuse
-        * If no viewuse provided, append to viewuse container
-        * */
+         * If no viewuse provided, append to viewuse container
+         * */
         var view = this;
         if (!appendViewuse) appendViewuse = document.querySelector("#viewuses");
         view.render(function (view, renderedOutput) {
@@ -115,7 +116,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
     setState: function setState(el, active) {
         "use strict";
         /* Set active viewuse - show buttons and set 'active' class
-        * */
+         * */
         var active = active || false;
         var controls = el.querySelector(".viewuse-controls");
 
@@ -144,20 +145,11 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         }
     },
 
-    showPanel: function showPanel(el, panelClassName) {
+    showPanel: function showPanel(el, panelView) {
         "use strict";
         /* Trigger from viewuse button*/
-        var viewuse = this.el;
-        var panelEl = viewuse.querySelector("." + panelClassName);
-
-        // If has 'popout' class, move node to app container
-        if (panelEl.classList.contains("popout")) {
-            panelEl = panelEl.cloneNode(true);
-            Tracuse.el.app.insertBefore(panelEl, Tracuse.el.viewuses.nextSibling);
-            $(panelEl).fadeIn("fast");
-        } else {
-            $(panelEl).show("slide", {direction: "left"}, 300);
-        }
+        var viewuse = this;
+        new panelView({viewuse: viewuse});
     }
 
 });
