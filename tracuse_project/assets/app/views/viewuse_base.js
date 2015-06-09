@@ -21,12 +21,13 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         }
     },
 
-    initialize: function initialize(model, appendViewuse) {
+    initialize: function initialize(options) {
         "use strict";
         /* Append new viewuse
          * If no viewuse provided, append to viewuse container
          * */
         var view = this;
+        var appendViewuse = options.appendEl;
         if (!appendViewuse) appendViewuse = document.querySelector("#viewuses");
         view.render(function (view, renderedOutput) {
             var range = document.createRange();
