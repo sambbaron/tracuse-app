@@ -84,7 +84,6 @@ Tracuse.init.firstViewuse = function firstViewuse() {
 Tracuse.init.initApp = function initApp() {
     "use strict";
     Tracuse.init.fetchData();
-    Tracuse.templates.loadEnvironment();
     Tracuse.init.loadAppTemplate();
     Tracuse.init.attachGlobalEvents();
     Tracuse.init.attachDynamicEvents();
