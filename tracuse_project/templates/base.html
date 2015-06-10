@@ -12,14 +12,14 @@
     <link rel="stylesheet" type="text/css" href="{% static 'styles/reset.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'styles/base.css' %}">
     {% block css_block %}{% endblock %}
-
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'libraries/jquery-ui.min.css' %}">
-    <script src={% static "libraries/jquery.min.js" %}></script>
-    <script src={% static "libraries/jquery-ui.min.js" %}></script>
+
 </head>
 <body>
 
 <header>
+    <button name="menu"><i id="menu-icon" class="fa fa-bars"></i><span> MENU</span></button>
     <a href="/"><img src="{% block logo_source %}{% endblock %}" alt="Tracuse Logo"></a>
     <nav>
         <a href="{% url 'tester_home' %}"><div class="nav-button">Tester Page</div></a>

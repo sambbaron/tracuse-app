@@ -29,15 +29,26 @@ main {
     top: 4em;
 }
 
-header img {
-    height: 65%;
+header button[name='menu'] {
     position: absolute;
-    left: 10em;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1em;
+    font-size: 175%;
+    opacity: 0.75;
+}
+
+header img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 65%;
 }
 
 header nav {
+    display: inline-block;
     position: absolute;
-    right: 15em;
+    right: 5em;
 }
 
 header .nav-button {
@@ -59,9 +70,5 @@ header .nav-button:focus {
 
 input, select {
     border: solid 1px lightgray;
-    background-color: rgba(250,250,250, 0.5);
-}
-
-button {
-    cursor: pointer;
+    background-color: rgba(250, 250, 250, 0.5);
 }
