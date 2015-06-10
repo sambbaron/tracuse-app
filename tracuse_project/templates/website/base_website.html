@@ -9,8 +9,25 @@
     {% static 'images/Tracuse-LogoName-Small-325x85.png' %}
 {% endblock %}
 
+{% block menu %}
+    <nav class="menu main-menu">
+        <ul>
+            <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="/more"><i class="fa fa-plus-circle"></i> Learn More</a></li>
+            <li><a href="#"><i class="fa fa-pencil-square-o"></i> Sign Up</a></li>
+            <li><a href="#"><i class="fa fa-info-circle"></i> About</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
 {% block body_block %}
 
+    <section id="hero">
+        <h2>Truly <strong>Personal</strong> Information Management</h2>
+    </section>
 
+{% endblock %}
 
+{% block script_block %}
+    <script src={% static "website/website.js" %}></script>
 {% endblock %}

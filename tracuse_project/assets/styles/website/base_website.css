@@ -6,6 +6,14 @@ header, footer {
     background-color: #d0d7e8;
 }
 
+header button[name='menu'] {
+    color: inherit;
+}
+
+header button[name='menu'].active {
+    color: rgb(88, 126, 31);
+}
+
 header .nav-button {
     background-color: rgba(169, 217, 99, 0.75);
 }
@@ -25,3 +33,68 @@ header .nav-button:hover {
     padding: 1em;
     text-align: center;
 }
+
+.menu ul li a {
+    display: block;
+    width: 100%;
+}
+
+.main-menu {
+    display: none;
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    padding: 0.5em;
+    background-color: rgba(88, 126, 31, 0.85);
+    color: rgb(250, 250, 250);
+}
+
+.main-menu ul li a {
+    padding: 0.5em;
+    font-size: 200%;
+}
+
+.main-menu ul li a:hover {
+    color: yellow;
+}
+
+.more-content {
+    position: absolute;
+    left: 13rem;
+}
+
+.more-content article {
+    height: 100vh;
+    /*padding-top: 4rem;*/
+    padding: 1em;
+}
+
+.more-content article::before {
+    display: block;
+    content: " ";
+    height: 4rem;
+    visibility: hidden;
+}
+
+.more-menu {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(169, 217, 99, 0.75);
+    color: rgb(250, 250, 250);
+}
+
+.more-menu ul li a {
+    margin-right: 1em;
+    padding: 0.75em 0.75em;
+    border-top: 1px solid rgb(250, 250, 250);
+    font-size: 150%;
+}
+
+.more-menu ul li a.active {
+    background-color: rgb(250, 250, 250);
+    color: rgba(169, 217, 99, 1);
+}
+
