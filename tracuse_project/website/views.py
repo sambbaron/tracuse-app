@@ -4,10 +4,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 
-def index(request):
-
-    return render(request, 'website/base_website.html', {})
-
 def user_login(request):
 
     if request.user.is_authenticated():
