@@ -4,6 +4,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 
+def index(request):
+
+    return render(request, 'website/base_website.html', {})
+
 def user_login(request):
 
     if request.user.is_authenticated():
@@ -25,7 +29,6 @@ def user_login(request):
             print("Invalid login details: {0}, {1}".format(username, password))
             return HttpResponse("Invalid login details supplied.")
 
-    # GET request
     else:
         return render(request, 'website/login.html', {})
 
