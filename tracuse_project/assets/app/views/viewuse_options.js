@@ -38,6 +38,23 @@ Tracuse.views.ViewuseOptions = Backbone.View.extend({
 
     },
 
+    render: function render() {
+        "use strict";
+        var templateName = "viewuse/viewuse_options.html";
+        var templateData = {
+            id: this.id,
+            pid: this.viewuse.id,
+            this_viewuse: this.viewuse.model.toJSON(),
+            datum_groups: Tracuse.models.DatumGroup.all.toJSON(),
+            datum_types: Tracuse.models.DatumType.all.toJSON(),
+            element_types: Tracuse.models.ElementType.all.toJSON(),
+            viewuse_objects: Tracuse.models.ViewuseObject.all.toJSON(),
+            viewuse_arrangements: Tracuse.models.ViewuseArrangement.all.toJSON(),
+            viewuse_datums: Tracuse.models.ViewuseDatum.all.toJSON()
+        };
+        return Tracuse.templates.env.render(templateName, templateData);
+    },
+
     initialize: function initialize(options) {
         "use strict";
         var panel = this;
@@ -59,23 +76,6 @@ Tracuse.views.ViewuseOptions = Backbone.View.extend({
         } else {
             $(panelEl).show();
         }
-    },
-
-    render: function render() {
-        "use strict";
-        var templateName = "viewuse/viewuse_options.html";
-        var templateData = {
-            id: this.id,
-            pid: this.viewuse.id,
-            this_viewuse: this.viewuse.model.toJSON(),
-            datum_groups: Tracuse.models.DatumGroup.all.toJSON(),
-            datum_types: Tracuse.models.DatumType.all.toJSON(),
-            element_types: Tracuse.models.ElementType.all.toJSON(),
-            viewuse_objects: Tracuse.models.ViewuseObject.all.toJSON(),
-            viewuse_arrangements: Tracuse.models.ViewuseArrangement.all.toJSON(),
-            viewuse_datums: Tracuse.models.ViewuseDatum.all.toJSON()
-        };
-        return Tracuse.templates.env.render(templateName, templateData);
     },
 
     hidePanel: function hidePanel() {

@@ -20,22 +20,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         }
     },
 
-    initialize: function initialize(options) {
-        "use strict";
-        /* Append new viewuse
-         * If no viewuse provided, append to viewuse container
-         * */
-        var view = this;
-        var appendViewuse = options.appendEl;
-        if (!appendViewuse) appendViewuse = document.querySelector("#viewuses");
-        view.render(function (view, renderedOutput) {
-            var range = document.createRange();
-            var newView = range.createContextualFragment(renderedOutput);
-            appendViewuse.appendChild(newView);
-            view.setElement(document.getElementById(view.id));
-        });
-    },
-
     outputTemplate: function outputTemplate(arrangementTemplate,
                                             datumTemplate,
                                             datumObjects,
@@ -82,6 +66,22 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
                     callback(view, templateString);
                 }
             );
+        });
+    },
+
+    initialize: function initialize(options) {
+        "use strict";
+        /* Append new viewuse
+         * If no viewuse provided, append to viewuse container
+         * */
+        var view = this;
+        var appendViewuse = options.appendEl;
+        if (!appendViewuse) appendViewuse = document.querySelector("#viewuses");
+        view.render(function (view, renderedOutput) {
+            var range = document.createRange();
+            var newView = range.createContextualFragment(renderedOutput);
+            appendViewuse.appendChild(newView);
+            view.setElement(document.getElementById(view.id));
         });
     },
 
