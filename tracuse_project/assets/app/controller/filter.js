@@ -25,11 +25,11 @@ Tracuse.utils.getFilteredDatums = function getFilteredDatums(filter, callback) {
         filterUrl = Tracuse.routes.api.filter.id.replace("<pk>", filter);
         request.open("GET", filterUrl, true);
         request.send();
-    } else if (typeof filter === "string") {
+    } else if (typeof filter === "object") {
         filterUrl = Tracuse.routes.api.filter.json;
         request.open("POST", filterUrl, true);
         request = Tracuse.utils.csrfSafeRequest(request);
-        request.send(filter);
+        request.send(JSON.stringify(filter));
     } else {
         callback(null);
     }
