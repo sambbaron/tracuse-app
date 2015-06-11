@@ -35,8 +35,12 @@ Tracuse.views.ViewuseFilter = Backbone.View.extend({
     render: function render() {
         "use strict";
         var templateName = "viewuse/viewuse_filter.html";
+        var filterModel;
+        if (this.model) {
+            filterModel = this.model.toJSON();
+        }
         var templateData = {
-            this_filter: this.model.toJSON(),
+            this_filter: filterModel,
             datum_groups: Tracuse.models.DatumGroup.all.toJSON(),
             datum_types: Tracuse.models.DatumType.all.toJSON(),
             element_types: Tracuse.models.ElementType.all.toJSON()
