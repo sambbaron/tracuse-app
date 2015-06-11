@@ -7,20 +7,18 @@ body {
 }
 
 header, footer {
-    height: 4rem;
     width: 100%;
-    position: fixed;
-    padding: 0.75em 0;
 }
 
 header {
+    position: fixed;
+    height: 4rem;
     top: 0;
-    box-shadow: 0 2px 1px 0 rgba(100, 100, 100, 0.75);
+    padding: 0.75em 0;
 }
 
 footer {
     bottom: 0;
-    border-top: 2px solid rgba(100, 100, 100, 0.75);
 }
 
 main {

@@ -1,9 +1,7 @@
-body {
-    background-color: #FAFAFA;
-}
 
-header, footer {
-    background-color: #d0d7e8;
+header {
+    background-color: rgba(221, 228, 245, 0.25);
+    background-image: linear-gradient(rgba(221, 228, 245, 0.25), #fafafa);
 }
 
 header button[name='menu'] {
@@ -71,7 +69,7 @@ header .nav-button:hover {
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgb(250, 250, 250) url("/assets/images/hero-background.jpg") no-repeat center;
+    background: rgb(250, 250, 250) url("/assets/images/hero-background.jpg") no-repeat top center;
     background-size: cover;
     opacity: 0.5;
     z-index: -1;
