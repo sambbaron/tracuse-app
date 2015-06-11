@@ -94,14 +94,15 @@ header .nav-button:hover {
     width: 5em;
     margin: 0.5em 1em;
     border: 1px solid darkgrey;
-    border-radius: 0.5em;
+    border-radius: 0.25em;
     padding: 0.25em;
-    background-color: rgba(169, 217, 99, 1);
+    background-color: rgb(157, 205, 106);
     font-size: 250%;
+    color: #fafafa;
 }
 
 #hero a:hover {
-    background-color: rgb(156, 205, 101);
+    background-color: rgba(169, 217, 99, 1);
 }
 
 .learn-content {
@@ -133,7 +134,6 @@ header .nav-button:hover {
 
 .learn-content section {
     height: 100vh;
-    /*padding-top: 4rem;*/
     padding: 1em;
 }
 
@@ -142,4 +142,18 @@ header .nav-button:hover {
     content: " ";
     height: 4rem;
     visibility: hidden;
+}
+
+.learn-content section .text {
+    margin: 3em 1em 0 2em;
+    float: left;
+    font-size: 200%;
+}
+
+.learn-content section p {
+    padding-bottom: 1em;
+}
+
+.learn-content section img {
+    height: 65%;
 }
