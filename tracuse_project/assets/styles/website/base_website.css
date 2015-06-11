@@ -21,15 +21,37 @@ header .nav-button:hover {
 }
 
 #login-form {
-    /*display: inline-block;*/
-    /*height: 10em;*/
-    /*width: 10em;*/
     position: absolute;
-    margin-top: 5em;
-    margin-left: 5em;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 3em auto;
     border: solid 1px darkgray;
+    border-radius: 0.25em;
     padding: 1em;
+    background-color: #35446a;
+    box-shadow: 2px 2px 1px #ddd;
+    font-size: 200%;
+    color: #fafafa;
     text-align: center;
+}
+
+#login-form * {
+    margin: 0.25em;
+    padding: 0.25em;
+}
+
+#login-form label {
+    display: block;
+    width: 100%;
+}
+
+#login-form input {
+    width: 10em;
+    border-radius: 0.25em;
+}
+
+#login-form input[type="submit"] {
+    width: auto;
 }
 
 .menu ul li a {
