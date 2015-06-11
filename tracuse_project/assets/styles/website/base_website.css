@@ -167,9 +167,11 @@ header .nav-button:hover {
 }
 
 .learn-content section .text {
-    margin: 3em 1em 0 2em;
+    width: 9em;
+    margin: 1em;
     float: left;
-    font-size: 200%;
+    font-size: 300%;
+    /*text-shadow: 1px 1px 0 #ddd;*/
 }
 
 .learn-content section p {
