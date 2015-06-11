@@ -37,12 +37,10 @@
             var topPosition = $(this).offset().top;
             if (topPosition - 25 < currentScroll) {
                 currentSection = $(this);
+                var currentId = currentSection.attr('id');
+                learnOptions.removeClass('active');
+                $("[href=#" + currentId + "]").addClass('active');
             }
-
-            // This is the bit of code that uses the currentSection as its source of ID
-            var currentId = currentSection.attr('id');
-            learnOptions.removeClass('active');
-            $("[href=#" + currentId + "]").addClass('active');
 
         });
 
