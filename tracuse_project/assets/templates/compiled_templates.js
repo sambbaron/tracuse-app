@@ -203,7 +203,50 @@ root: root
 };
 })();
 })();
-(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/datum_filter.html"] = (function() {function root(env, context, frame, runtime, cb) {
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/viewuse_base.html"] = (function() {function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+output += "<section class=\"viewuse\" template=\"";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "template_name"), env.opts.autoescape);
+output += "\"\r\n         id=\"";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "viewuse_eid"), env.opts.autoescape);
+output += "\"\r\n         eid=\"";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "viewuse_eid"), env.opts.autoescape);
+output += "\"\r\n         viewuse_object_id = \"";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_object_id", env.opts.autoescape), env.opts.autoescape);
+output += "\">\r\n    <input name=\"title\" value=\"";
+output += runtime.suppressValue(env.getFilter("default").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"readable_name", env.opts.autoescape),"Empty View"), env.opts.autoescape);
+output += "\">\r\n\r\n    <div class=\"content\">\r\n        ";
+context.getBlock("viewuse_content")(env, context, frame, runtime, function(t_2,t_1) {
+if(t_2) { cb(t_2); return; }
+output += t_1;
+output += "\r\n    </div>\r\n\r\n    <nav class=\"viewuse-controls\">\r\n        <button name=\"viewuse-options\">View<br>Options</button>\r\n        <br>\r\n        <button name=\"new-object\">New<br>Object</button>\r\n        <br>\r\n    </nav>\r\n\r\n</section>\r\n";
+cb(null, output);
+});
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+function b_viewuse_content(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+cb(null, output);
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+b_viewuse_content: b_viewuse_content,
+root: root
+};
+})();
+})();
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/viewuse_filter.html"] = (function() {function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
 var output = "";
@@ -339,49 +382,6 @@ root: root
 };
 })();
 })();
-(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/viewuse_base.html"] = (function() {function root(env, context, frame, runtime, cb) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-output += "<section class=\"viewuse\" template=\"";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "template_name"), env.opts.autoescape);
-output += "\"\r\n         id=\"";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "viewuse_eid"), env.opts.autoescape);
-output += "\"\r\n         eid=\"";
-output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "viewuse_eid"), env.opts.autoescape);
-output += "\"\r\n         viewuse_object_id = \"";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_object_id", env.opts.autoescape), env.opts.autoescape);
-output += "\">\r\n    <input name=\"title\" value=\"";
-output += runtime.suppressValue(env.getFilter("default").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"readable_name", env.opts.autoescape),"Empty View"), env.opts.autoescape);
-output += "\">\r\n\r\n    <div class=\"content\">\r\n        ";
-context.getBlock("viewuse_content")(env, context, frame, runtime, function(t_2,t_1) {
-if(t_2) { cb(t_2); return; }
-output += t_1;
-output += "\r\n    </div>\r\n\r\n    <nav class=\"viewuse-controls\">\r\n        <button name=\"viewuse-options\">View<br>Options</button>\r\n        <br>\r\n        <button name=\"new-object\">New<br>Object</button>\r\n        <br>\r\n    </nav>\r\n\r\n</section>\r\n";
-cb(null, output);
-});
-} catch (e) {
-  cb(runtime.handleError(e, lineno, colno));
-}
-}
-function b_viewuse_content(env, context, frame, runtime, cb) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-cb(null, output);
-;
-} catch (e) {
-  cb(runtime.handleError(e, lineno, colno));
-}
-}
-return {
-b_viewuse_content: b_viewuse_content,
-root: root
-};
-})();
-})();
 (function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/viewuse_options.html"] = (function() {function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
@@ -470,7 +470,7 @@ output += "\r\n                            </option>\r\n                        
 }
 frame = frame.pop();
 output += "\r\n                    </select>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    ";
-env.getTemplate("viewuse/datum_filter.html", false, "viewuse/viewuse_options.html", function(t_15,t_13) {
+env.getTemplate("viewuse/viewuse_filter.html", false, "viewuse/viewuse_options.html", function(t_15,t_13) {
 if(t_15) { cb(t_15); return; }
 t_13.render(context.getVariables(), frame.push(), function(t_16,t_14) {
 if(t_16) { cb(t_16); return; }
