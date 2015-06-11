@@ -63,13 +63,13 @@ header .nav-button:hover {
     left: 13rem;
 }
 
-.more-content article {
+.more-content section {
     height: 100vh;
     /*padding-top: 4rem;*/
     padding: 1em;
 }
 
-.more-content article::before {
+.more-content section::before {
     display: block;
     content: " ";
     height: 4rem;
