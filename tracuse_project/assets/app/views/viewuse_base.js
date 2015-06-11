@@ -54,7 +54,10 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var datumTemplate = view.model.get("datum_template");
 
         // Return filtered datums
-        var filter = view.model.get("filters").first().attributes;
+        var filter;
+        if (view.model.get("filters").length > 0) {
+            filter = view.model.get("filters").first().attributes;
+        }
         Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
 
             // Render template
