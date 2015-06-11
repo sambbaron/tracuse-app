@@ -27,4 +27,25 @@
         e.stopPropagation();
     });
 
+    // Highlight appropriate menu item on scroll
+    var sections = $('.more-content section');
+    $(window).scroll(function () {
+        var currentScroll = $(this).scrollTop();
+        var currentSection;
+
+        sections.each(function () {
+            var topPosition = $(this).offset().top;
+            if (topPosition - 25 < currentScroll) {
+                currentSection = $(this);
+            }
+
+            // This is the bit of code that uses the currentSection as its source of ID
+            var currentId = currentSection.attr('id');
+            moreMenuOptions.removeClass('active');
+            $("[href=#" + currentId + "]").addClass('active');
+
+        });
+
+    });
+
 }());
