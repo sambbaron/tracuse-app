@@ -143,7 +143,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         "use strict";
         /* Trigger from viewuse button*/
         var viewuse = this;
-        new panelView({viewuse: viewuse});
+        new panelView({viewuseView: viewuse});
     }
 
 });

@@ -387,13 +387,13 @@ var lineno = null;
 var colno = null;
 var output = "";
 try {
-output += "<aside class=\"viewuse-panel popout viewuse-options\"\r\n        viewuse_object_id=\"";
+output += "<aside class=\"viewuse-panel popout viewuse-options\"\r\n       viewuse_object_id=\"";
 output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"viewuse_object_id", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n        id = \"";
+output += "\"\r\n       id=\"";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "id"), env.opts.autoescape);
-output += "\"\r\n        pid = \"";
+output += "\"\r\n       pid=\"";
 output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "pid"), env.opts.autoescape);
-output += "\">\r\n";
+output += "\">\r\n    ";
 output += "\r\n\r\n    <div class=\"section viewuse-select\">\r\n        <h4 class=\"title\">Select View</h4>\r\n\r\n        <div class=\"content\">\r\n\r\n            <div class=\"input-group viewuse-open\">\r\n                <div class=\"content\">\r\n                    <select name=\"viewuse_object\">\r\n                        <option></option>\r\n                        ";
 frame = frame.push();
 var t_3 = runtime.contextOrFrameLookup(context, frame, "viewuse_objects");
@@ -469,15 +469,9 @@ output += "\r\n                            </option>\r\n                        
 }
 }
 frame = frame.pop();
-output += "\r\n                    </select>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    ";
-env.getTemplate("viewuse/viewuse_filter.html", false, "viewuse/viewuse_options.html", function(t_15,t_13) {
-if(t_15) { cb(t_15); return; }
-t_13.render(context.getVariables(), frame.push(), function(t_16,t_14) {
-if(t_16) { cb(t_16); return; }
-output += t_14
-output += "\r\n\r\n    <div class=\"section viewuse-format\">\r\n        <h4 class=\"title\">View Format</h4>\r\n\r\n        <div class=\"content\">\r\n        </div>\r\n    </div>\r\n\r\n    <button name=\"apply-view\">Apply<br>View</button>\r\n    <button name=\"close-panel\">X</button>\r\n</aside>";
+output += "\r\n                    </select>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n    <div class=\"section viewuse-filter\">\r\n\r\n    </div>\r\n\r\n    <div class=\"section viewuse-format\">\r\n        <h4 class=\"title\">View Format</h4>\r\n\r\n        <div class=\"content\">\r\n        </div>\r\n    </div>\r\n\r\n    <button name=\"apply-view\">Apply<br>View</button>\r\n    <button name=\"close-panel\">X</button>\r\n</aside>";
 cb(null, output);
-})});
+;
 } catch (e) {
   cb(runtime.handleError(e, lineno, colno));
 }
