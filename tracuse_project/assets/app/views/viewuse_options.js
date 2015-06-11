@@ -1,6 +1,5 @@
 var Tracuse = Tracuse || {};
 
-/* Views collection */
 Tracuse.views = Tracuse.views || {};
 
 Tracuse.views.ViewuseOptions = Backbone.View.extend({
