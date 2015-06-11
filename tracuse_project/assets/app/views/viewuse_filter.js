@@ -10,24 +10,31 @@ Tracuse.views.ViewuseFilter = Backbone.View.extend({
     events: {
         "click .filter-groups-types button[name='datum_group']": function (ev) {
             this.clickDatumGroup(ev.target);
+            ev.stopPropagation();
         },
         "click .filter-groups-types button[name='datum_type']": function (ev) {
             this.clickDatumType(ev.target);
+            ev.stopPropagation();
         },
         "change .filter-associations select[name='datum_groups']": function (ev) {
             this.selectDatumGroup(ev.target);
+            ev.stopPropagation();
         },
         "change .filter-associations select[name='datum_types']": function (ev) {
             this.selectDatumType(ev.target);
+            ev.stopPropagation();
         },
         "click .filter-associations button[name='add-association']": function (ev) {
             this.addAssociatedDatum(ev.target);
+            ev.stopPropagation();
         },
         "change .filter-elements select[name='element_types']": function (ev) {
             this.selectElement(ev.target);
+            ev.stopPropagation();
         },
         "click .filter-elements button[name='add-element-filter']": function (ev) {
             this.addElementFilter(ev.target);
+            ev.stopPropagation();
         }
     },
 

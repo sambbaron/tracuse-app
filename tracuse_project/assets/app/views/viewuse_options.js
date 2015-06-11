@@ -8,10 +8,15 @@ Tracuse.views.ViewuseOptions = Backbone.View.extend({
     className: "viewuse-options",
 
     events: {
-        "click button[name='close-panel']": "hidePanel",
-        "click button[name='apply-view']": function () {
+        "click button[name='close-panel']": function (ev) {
+            "use strict";
+            this.hidePanel();
+            ev.stopPropagation();
+        },
+        "click button[name='apply-view']": function (ev) {
             "use strict";
             console.warn(this.getFilterSelections());
+            ev.stopPropagation();
         }
     },
 
