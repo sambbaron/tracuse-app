@@ -17,18 +17,18 @@
         e.stopPropagation();
     });
 
-    //More Menu/Options
-    var moreMenuOptions = $(".more-menu ul li a");
-    moreMenuOptions.on("click", function (e) {
+    //Learn Menu/Options
+    var learnOptions = $(".learn-menu ul li a");
+    learnOptions.on("click", function (e) {
         "use strict";
         var option = e.target;
-        moreMenuOptions.removeClass("active");
+        learnOptions.removeClass("active");
         $(option).addClass("active", 200);
         e.stopPropagation();
     });
 
     // Highlight appropriate menu item on scroll
-    var sections = $('.more-content section');
+    var sections = $('.learn-content section');
     $(window).scroll(function () {
         var currentScroll = $(this).scrollTop();
         var currentSection;
@@ -41,7 +41,7 @@
 
             // This is the bit of code that uses the currentSection as its source of ID
             var currentId = currentSection.attr('id');
-            moreMenuOptions.removeClass('active');
+            learnOptions.removeClass('active');
             $("[href=#" + currentId + "]").addClass('active');
 
         });

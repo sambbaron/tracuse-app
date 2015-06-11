@@ -58,25 +58,25 @@ header .nav-button:hover {
     color: yellow;
 }
 
-.more-content {
+.learn-content {
     position: absolute;
     left: 13rem;
 }
 
-.more-content section {
+.learn-content section {
     height: 100vh;
     /*padding-top: 4rem;*/
     padding: 1em;
 }
 
-.more-content section::before {
+.learn-content section::before {
     display: block;
     content: " ";
     height: 4rem;
     visibility: hidden;
 }
 
-.more-menu {
+.learn-menu {
     position: fixed;
     top: 4rem;
     left: 0;
@@ -86,14 +86,14 @@ header .nav-button:hover {
     color: rgb(250, 250, 250);
 }
 
-.more-menu ul li a {
+.learn-menu ul li a {
     margin-right: 1em;
     padding: 0.75em 0.75em;
     border-top: 1px solid rgb(250, 250, 250);
     font-size: 150%;
 }
 
-.more-menu ul li a.active {
+.learn-menu ul li a.active {
     background-color: rgb(250, 250, 250);
     color: rgba(169, 217, 99, 1);
 }
