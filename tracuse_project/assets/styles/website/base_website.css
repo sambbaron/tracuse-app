@@ -1,7 +1,7 @@
 
 header {
     background-color: rgba(221, 228, 245, 0.25);
-    background-image: linear-gradient(rgba(221, 228, 245, 0.25), #fafafa);
+    background-image: linear-gradient(rgba(221, 228, 245, 1), #fafafa);
 }
 
 header button[name='menu'] {
@@ -109,19 +109,6 @@ header .nav-button:hover {
     left: 13rem;
 }
 
-.learn-content section {
-    height: 100vh;
-    /*padding-top: 4rem;*/
-    padding: 1em;
-}
-
-.learn-content section::before {
-    display: block;
-    content: " ";
-    height: 4rem;
-    visibility: hidden;
-}
-
 .learn-menu {
     position: fixed;
     top: 4rem;
@@ -144,3 +131,15 @@ header .nav-button:hover {
     color: rgba(169, 217, 99, 1);
 }
 
+.learn-content section {
+    height: 100vh;
+    /*padding-top: 4rem;*/
+    padding: 1em;
+}
+
+.learn-content section::before {
+    display: block;
+    content: " ";
+    height: 4rem;
+    visibility: hidden;
+}
