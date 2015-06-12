@@ -11,7 +11,7 @@ module.exports = function (grunt) {
                 dest: "<%= pkg.dir.app %>models.js"
             },
             views: {
-                src: ["<%= pkg.dir.app %>views/utils.js", "<%= pkg.dir.app %>/views/*"],
+                src: ["<%= pkg.dir.app %>views/utils.js", "<%= pkg.dir.app %>/views/**/*"],
                 dest: "<%= pkg.dir.app %>views.js"
             },
             controller: {
@@ -42,7 +42,7 @@ module.exports = function (grunt) {
                 tasks: ["concat:models"]
             },
             concat_views: {
-                files: ["<%= pkg.dir.app %>/views/*"],
+                files: ["<%= pkg.dir.app %>/views/**/*"],
                 tasks: ["concat:views"]
             },
             concat_controller: {
