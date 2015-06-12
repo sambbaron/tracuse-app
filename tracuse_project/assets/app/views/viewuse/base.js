@@ -149,3 +149,20 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
     }
 
 });
+
+Tracuse.views.initializeViewuse = function initializeViewuse(viewuseObject, appendEl) {
+    "use strict";
+    // Initialize Viewuse View
+    // Test for append element
+    // Call Arrangement sub-view
+
+    if (!appendEl) appendEl = Tracuse.el.viewuses;
+
+    var arrangementViewName = viewuseObject.get("viewuse_arrangement_id").get("entity_name");
+    var viewuseView = Tracuse.views[arrangementViewName];
+    new viewuseView({
+        model: viewuseObject,
+        id: Tracuse.views.ViewuseBase.prototype.nextId(),
+        appendEl: appendEl
+    });
+};

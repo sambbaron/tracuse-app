@@ -22,18 +22,8 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
             appendEl = targetEl.parentNode;
         }
 
-        if (appendEl) {
-            var viewuseObject = new Tracuse.models.ViewuseObject({
-                arrangement_template: "viewuse_tile",
-                datum_template: "datum_small",
-                filters: [null]
-            });
-            new Tracuse.views.ViewuseBase({
-                model: viewuseObject,
-                id: Tracuse.views.ViewuseBase.prototype.nextId(),
-                appendEl: appendEl
-            });
-        }
+        var viewuseObject = new Tracuse.models.ViewuseObject();
+        Tracuse.views.initializeViewuse(viewuseObject, appendEl);
         e.stopPropagation();
     });
 
@@ -65,10 +55,7 @@ Tracuse.init.firstViewuse = function firstViewuse() {
      */
 
     var viewuseObject = Tracuse.models.ViewuseObject.all.first();
-    new Tracuse.views.ViewuseBase({
-        model: viewuseObject,
-        id: Tracuse.views.ViewuseBase.prototype.nextId()
-    });
+    Tracuse.views.initializeViewuse(viewuseObject);
 
 };
 
