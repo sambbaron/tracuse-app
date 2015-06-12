@@ -1,16 +1,23 @@
 loadTracuse();
 
+Tracuse.views.DatumBase = Backbone.View.extend({
+
+    tagName: "article",
+    className: "datum"
+
+});
 /**
  * Created by Sam Baron on 6/12/2015.
  */
 
-/**
- * Created by Sam Baron on 6/12/2015.
- */
+Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
 
-/**
- * Created by Sam Baron on 6/12/2015.
- */
+    render: function () {
+        "use strict";
+        var datumView = this;
+    }
+
+});
 
 /**
  * Created by Sam Baron on 6/12/2015.
@@ -66,13 +73,15 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
     render: function render() {
         "use strict";
         /* Add viewuse to DOM */
+        var viewuseView = this;
+        
         var templateName = "viewuse/viewuse_base.html";
         var templateData = {
-            this_viewuse: this.model.toJSON()
+            this_viewuse: viewuseView.model.toJSON()
         };
         var rendered = Tracuse.templates.env.render(templateName, templateData);
-        this.el.innerHTML = rendered;
-        this.appendEl.appendChild(this.el);
+        viewuseView.el.innerHTML = rendered;
+        viewuseView.appendEl.appendChild(viewuseView.el);
     },
 
     initialize: function initialize(options) {
@@ -172,17 +181,18 @@ Tracuse.views.ViewuseTile = Tracuse.views.ViewuseBase.extend({
 
     render: function () {
         "use strict";
-        var view = this;
-        Tracuse.views.ViewuseBase.prototype.render.apply(this, arguments);
+        var viewuseView = this;
+
+        Tracuse.views.ViewuseBase.prototype.render.apply(viewuseView, arguments);
 
         // Add class for arrangement
-        var arrangementName = view.model.get("viewuse_arrangement_id").get("schema_name");
-        view.el.classList.add(arrangementName);
+        var arrangementName = viewuseView.model.get("viewuse_arrangement_id").get("schema_name");
+        viewuseView.el.classList.add(arrangementName);
 
-        var datumView = view.model.get("viewuse_datum_id").get("entity_name");
+        var datumView = viewuseView.model.get("viewuse_datum_id").get("entity_name");
 
         // Return filtered datums
-        var filter = view.model.get("filters").first().attributes;
+        var filter = viewuseView.model.get("filters").first().attributes;
         Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
 
             for (var i = 0, imax = datumObjects.length; i < imax; i++) {

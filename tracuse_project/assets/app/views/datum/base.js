@@ -1,3 +1,6 @@
-/**
- * Created by Sam Baron on 6/12/2015.
- */
+Tracuse.views.DatumBase = Backbone.View.extend({
+
+    tagName: "article",
+    className: "datum"
+
+});

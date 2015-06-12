@@ -1,3 +1,8 @@
-/**
- * Created by Sam Baron on 6/12/2015.
- */
+Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
+
+    render: function () {
+        "use strict";
+        var datumView = this;
+    }
+
+});
