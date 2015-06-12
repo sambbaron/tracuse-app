@@ -50,7 +50,7 @@ module.exports = function (grunt) {
                 tasks: ["concat:controller"]
             },
             concat_templates: {
-                files: ["<%= pkg.dir.app %>/templates/*"],
+                files: ["<%= pkg.dir.templates %>*.js"],
                 tasks: ["concat:templates"]
             }
         }
