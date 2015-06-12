@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'styles/base.css' %}">
     {% block css_block %}{% endblock %}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'libraries/jquery-ui.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'libraries/jquery/jquery-ui.min.css' %}">
 
 </head>
 <body>
@@ -44,8 +44,8 @@
 
 {#<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>#}
 {#<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>#}
-<script src={% static "libraries/jquery.min.js" %}></script>
-<script src={% static "libraries/jquery-ui.min.js" %}></script>
+<script src={% static "libraries/jquery/jquery.min.js" %}></script>
+<script src={% static "libraries/jquery/jquery-ui.min.js" %}></script>
 {% block script_block %}{% endblock %}
 
 </body>
