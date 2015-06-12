@@ -21,13 +21,15 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
     render: function render() {
         "use strict";
         /* Add viewuse to DOM */
+        var viewuseView = this;
+        
         var templateName = "viewuse/viewuse_base.html";
         var templateData = {
-            this_viewuse: this.model.toJSON()
+            this_viewuse: viewuseView.model.toJSON()
         };
         var rendered = Tracuse.templates.env.render(templateName, templateData);
-        this.el.innerHTML = rendered;
-        this.appendEl.appendChild(this.el);
+        viewuseView.el.innerHTML = rendered;
+        viewuseView.appendEl.appendChild(viewuseView.el);
     },
 
     initialize: function initialize(options) {
