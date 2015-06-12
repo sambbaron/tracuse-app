@@ -43,7 +43,6 @@ loadTracuse();
  */
 
 
-
 Tracuse.views.ViewuseBase = Backbone.View.extend({
 
     tagName: "section",
@@ -88,48 +87,16 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         callback(output);
     },
 
-    render: function render(callback) {
+    render: function render() {
         "use strict";
-        /* Render viewuse from model object*/
-        var view = this;
-
-        // Lookup template names
-        var arrangementTemplate = view.model.get("arrangement_template");
-        var datumTemplate = view.model.get("datum_template");
-
-        // Return filtered datums
-        var filter;
-        if (view.model.get("filters").length > 0) {
-            filter = view.model.get("filters").first().attributes;
-        }
-        Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
-
-            // Render template
-            view.outputTemplate(
-                arrangementTemplate,
-                datumTemplate,
-                datumObjects,
-                function (templateString) {
-                    callback(view, templateString);
-                }
-            );
-        });
+        /* Add viewuse to DOM */
+        this.appendEl.appendChild(this.el);
     },
 
     initialize: function initialize(options) {
         "use strict";
-        /* Append new viewuse
-         * If no viewuse provided, append to viewuse container
-         * */
-        var view = this;
-        var appendViewuse = options.appendEl;
-        if (!appendViewuse) appendViewuse = document.querySelector("#viewuses");
-        view.render(function (view, renderedOutput) {
-            var range = document.createRange();
-            var newView = range.createContextualFragment(renderedOutput);
-            appendViewuse.appendChild(newView);
-            view.setElement(document.getElementById(view.id));
-        });
+        this.appendEl = options.appendEl;
+        this.render();
     },
 
     nextId: function nextId() {
@@ -194,6 +161,23 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
     }
 
 });
+
+Tracuse.views.initializeViewuse = function initializeViewuse(viewuseObject, appendEl) {
+    "use strict";
+    // Initialize Viewuse View
+    // Test for append element
+    // Call Arrangement sub-view
+
+    if (!appendEl) appendEl = Tracuse.el.viewuses;
+
+    var arrangementViewName = viewuseObject.get("viewuse_arrangement_id").get("entity_name");
+    var viewuseView = Tracuse.views[arrangementViewName];
+    new viewuseView({
+        model: viewuseObject,
+        id: Tracuse.views.ViewuseBase.prototype.nextId(),
+        appendEl: appendEl
+    });
+};
 /**
  * Created by Sam Baron on 6/12/2015.
  */
@@ -202,9 +186,38 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
  * Created by Sam Baron on 6/12/2015.
  */
 
-/**
- * Created by Sam Baron on 6/12/2015.
- */
+Tracuse.views.ViewuseTile = Tracuse.views.ViewuseBase.extend({
+
+    render: function () {
+        "use strict";
+        var view = this;
+        Tracuse.views.ViewuseBase.prototype.render.apply(this, arguments);
+
+        // Add class for arrangement
+        var arrangementName = view.model.get("viewuse_arrangement_id").get("schema_name");
+        view.el.classList.add(arrangementName);
+
+        var datumView = view.model.get("viewuse_datum_id").get("entity_name");
+
+        // Return filtered datums
+        var filter;
+        if (view.model.get("filters").length > 0) {
+            filter = view.model.get("filters").first().attributes;
+        }
+        Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
+
+            for (var i = 0, imax = datumObjects.length; i < imax; i++) {
+                var datumObject = datumObjects[i];
+            }
+
+        });
+    }
+
+    //initialize: function (options) {
+    //    "use strict";
+    //    Tracuse.views.ViewuseBase.prototype.initialize.call(this, options);
+    //}
+});
 
 
 Tracuse.views.ViewuseFilter = Backbone.View.extend({

@@ -1,4 +1,3 @@
-
 Tracuse.views.ViewuseBase = Backbone.View.extend({
 
     tagName: "section",
@@ -43,48 +42,16 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         callback(output);
     },
 
-    render: function render(callback) {
+    render: function render() {
         "use strict";
-        /* Render viewuse from model object*/
-        var view = this;
-
-        // Lookup template names
-        var arrangementTemplate = view.model.get("arrangement_template");
-        var datumTemplate = view.model.get("datum_template");
-
-        // Return filtered datums
-        var filter;
-        if (view.model.get("filters").length > 0) {
-            filter = view.model.get("filters").first().attributes;
-        }
-        Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
-
-            // Render template
-            view.outputTemplate(
-                arrangementTemplate,
-                datumTemplate,
-                datumObjects,
-                function (templateString) {
-                    callback(view, templateString);
-                }
-            );
-        });
+        /* Add viewuse to DOM */
+        this.appendEl.appendChild(this.el);
     },
 
     initialize: function initialize(options) {
         "use strict";
-        /* Append new viewuse
-         * If no viewuse provided, append to viewuse container
-         * */
-        var view = this;
-        var appendViewuse = options.appendEl;
-        if (!appendViewuse) appendViewuse = document.querySelector("#viewuses");
-        view.render(function (view, renderedOutput) {
-            var range = document.createRange();
-            var newView = range.createContextualFragment(renderedOutput);
-            appendViewuse.appendChild(newView);
-            view.setElement(document.getElementById(view.id));
-        });
+        this.appendEl = options.appendEl;
+        this.render();
     },
 
     nextId: function nextId() {
