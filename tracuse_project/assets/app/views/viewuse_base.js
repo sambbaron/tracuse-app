@@ -119,12 +119,12 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var active = active || false;
         var controls = el.querySelector(".viewuse-controls");
 
+        $(".viewuse").removeClass("active");
+        $(".viewuse-controls").hide();
+
         if (active) {
             el.classList.add("active");
             $(controls).show();
-        } else {
-            el.classList.remove("active");
-            $(controls).hide();
         }
 
         // Change state if coming in/out of parent viewuse
