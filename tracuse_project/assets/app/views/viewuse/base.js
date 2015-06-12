@@ -18,30 +18,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         }
     },
 
-    outputTemplate: function outputTemplate(arrangementTemplate,
-                                            datumTemplate,
-                                            datumObjects,
-                                            callback) {
-        "use strict";
-        /* Helper function to output template
-         * using viewuse and datum objects
-         * */
-        var output = "";
-        var templateName = "viewuse/" + arrangementTemplate + ".html";
-
-        if (datumObjects) datumObjects = datumObjects.toJSON();
-
-        var templateData = {
-            "datum_template": datumTemplate,
-            "datum_objects": datumObjects,
-            "this_viewuse": this.model.toJSON(),
-            "viewuse_eid": this.nextId()
-        };
-
-        output = Tracuse.templates.env.render(templateName, templateData);
-        callback(output);
-    },
-
     render: function render() {
         "use strict";
         /* Add viewuse to DOM */
