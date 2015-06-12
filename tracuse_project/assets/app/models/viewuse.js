@@ -5,7 +5,8 @@ Tracuse.models.ViewuseObject.prototype.defaults = function() {
     "use strict";
     return {
         viewuse_arrangement_id: Tracuse.models.ViewuseArrangement.all.first(),
-        viewuse_datum_id: Tracuse.models.ViewuseDatum.all.first()
+        viewuse_datum_id: Tracuse.models.ViewuseDatum.all.first(),
+        filters: [new Tracuse.models.ViewuseFilter()]
     };
 };
 Tracuse.models.ViewuseObject.prototype.relations = [

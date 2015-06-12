@@ -12,10 +12,7 @@ Tracuse.views.ViewuseTile = Tracuse.views.ViewuseBase.extend({
         var datumView = view.model.get("viewuse_datum_id").get("entity_name");
 
         // Return filtered datums
-        var filter;
-        if (view.model.get("filters").length > 0) {
-            filter = view.model.get("filters").first().attributes;
-        }
+        var filter = view.model.get("filters").first().attributes;
         Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
 
             for (var i = 0, imax = datumObjects.length; i < imax; i++) {
