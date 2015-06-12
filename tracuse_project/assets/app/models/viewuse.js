@@ -1,6 +1,13 @@
 
 Tracuse.models.ViewuseObject =
     Tracuse.models.ModelFactory("viewuse_object", "viewuse_object_id");
+Tracuse.models.ViewuseObject.prototype.defaults = function() {
+    "use strict";
+    return {
+        viewuse_arrangement_id: Tracuse.models.ViewuseArrangement.all.first(),
+        viewuse_datum_id: Tracuse.models.ViewuseDatum.all.first()
+    };
+};
 Tracuse.models.ViewuseObject.prototype.relations = [
     {
         type: Backbone.HasOne,
