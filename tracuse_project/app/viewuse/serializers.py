@@ -18,6 +18,19 @@ class ViewuseObjectSerializer(ViewuseObject):
 
     ViewuseObject.serial_basic = serial_basic
 
+    def serial_related_list(self):
+        """All properties
+        With related data lists
+        """
+        filters = []
+        for filter in self.viewuse_filters.all():
+            filters.append(json.loads(filter.filter_json))
+        output = self.serial_basic()
+        output["filters"] = filters
+        return output
+
+    ViewuseObject.serial_related_list = serial_related_list
+
     def serial_for_ui(self):
         """Properties for rendering ui"""
         filter_list = []
