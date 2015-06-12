@@ -6,9 +6,9 @@ Tracuse.views.ViewuseTile = Tracuse.views.ViewuseBase.extend({
 
         Tracuse.views.ViewuseBase.prototype.render.apply(viewuseView, arguments);
 
-        // Add class for arrangement
-        var arrangementName = viewuseView.model.get("viewuse_arrangement_id").get("schema_name");
-        viewuseView.el.classList.add(arrangementName);
+        // Add class for arrangement view name
+        var viewName = viewuseView.model.get("viewuse_arrangement_id").get("schema_name");
+        viewuseView.el.classList.add(viewName);
 
         var datumView = viewuseView.model.get("viewuse_datum_id").get("entity_name");
 
