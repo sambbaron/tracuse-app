@@ -1,18 +1,13 @@
-<section class="viewuse" template="{{ template_name }}"
-         id="{{ viewuse_eid }}"
-         eid="{{ viewuse_eid }}"
-         viewuse_object_id = "{{ this_viewuse.viewuse_object_id }}">
-    <input name="title" value="{{ this_viewuse.readable_name|default('Empty View') }}">
+<input name="title" value="{{ this_viewuse.readable_name|default('Empty View') }}">
 
-    <div class="content">
-        {% block viewuse_content %}{% endblock %}
-    </div>
+<div class="content">
+    {% block viewuse_content %}{% endblock %}
+</div>
 
-    <nav class="viewuse-controls">
-        <button name="viewuse-options">View<br>Options</button>
-        <br>
-        <button name="new-object">New<br>Object</button>
-        <br>
-    </nav>
+<nav class="viewuse-controls">
+    <button name="viewuse-options">View<br>Options</button>
+    <br>
+    <button name="new-object">New<br>Object</button>
+    <br>
+</nav>
 
-</section>
