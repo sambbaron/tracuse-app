@@ -1,7 +1,3 @@
-var Tracuse = Tracuse || {};
-
-// Templates Environment
-Tracuse.templates = Tracuse.templates || {};
 
 Tracuse.templates.root_url = "/assets/templates";
 

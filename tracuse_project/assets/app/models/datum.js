@@ -1,7 +1,3 @@
-var Tracuse = Tracuse || {};
-
-/* Backbone Models */
-Tracuse.models = Tracuse.models || {};
 
 Tracuse.models.DatumGroup =
     Tracuse.models.ModelFactory("datum_group", "datum_group_id");

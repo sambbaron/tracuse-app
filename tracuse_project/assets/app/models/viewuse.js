@@ -1,8 +1,3 @@
-var Tracuse = Tracuse || {};
-
-/* Backbone Models */
-Tracuse.models = Tracuse.models || {};
-
 
 Tracuse.models.ViewuseObject =
     Tracuse.models.ModelFactory("viewuse_object", "viewuse_object_id");

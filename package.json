@@ -30,5 +30,10 @@
     "url": "https://github.com/sambbaron/tracuse-app/issues"
   },
   "homepage": "https://github.com/sambbaron/tracuse-app",
-  "dirAssets": "tracuse_project/assets"
+  "dir": {
+    "assets": "tracuse_project/assets/",
+    "app": "tracuse_project/assets/app/",
+    "templates": "tracuse_project/assets/templates/"
+  },
+  "loadAppScript": "loadTracuse();"
 }

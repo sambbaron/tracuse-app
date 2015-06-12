@@ -1,8 +1,3 @@
-var Tracuse = Tracuse || {};
-
-/* Backbone Models */
-Tracuse.models = Tracuse.models || {};
-
 
 Tracuse.models.ElementType =
     Tracuse.models.ModelFactory("element_type", "element_type_id");

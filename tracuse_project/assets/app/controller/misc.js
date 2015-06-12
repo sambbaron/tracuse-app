@@ -1,8 +1,3 @@
-var Tracuse = Tracuse || {};
-
-
-/* Miscellaneous Utilities */
-Tracuse.utils = Tracuse.utils || {};
 
 Tracuse.utils.getCookie = function getCookie(cookieName) {
     var name = cookieName + "=";

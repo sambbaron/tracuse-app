@@ -26,23 +26,12 @@
     <script src="{% static 'libraries/backbone/backbone-relational.js' %}"></script>
     <script src="{% static 'libraries/nunjucks/nunjucks-slim.min.js' %}"></script>
 
-    <script src="{% static 'app/controller/routes.js' %}"></script>
-    <script src="{% static 'app/controller/utils.js' %}"></script>
-    <script src="{% static 'app/controller/filter.js' %}"></script>
-
-    <script src="{% static 'app/models/utils.js' %}"></script>
-    <script src="{% static 'app/models/element.js' %}"></script>
-    <script src="{% static 'app/models/datum.js' %}"></script>
-    <script src="{% static 'app/models/viewuse.js' %}"></script>
+    <script src="{% static 'app/main.js' %}"></script>
+    <script src="{% static 'app/controller.js' %}"></script>
+    <script src="{% static 'app/models.js' %}"></script>
     <script>Tracuse.models.bootstrapData({{ bootstrap_data|safe }})</script>
-
-    <script src="{% static 'app/views/viewuse_base.js' %}"></script>
-    <script src="{% static 'app/views/viewuse_options.js' %}"></script>
-    <script src="{% static 'app/views/viewuse_filter.js' %}"></script>
-
-    <script src="{% static 'templates/compiled_templates.js' %}"></script>
-    <script src="{% static 'templates/template_init.js' %}"></script>
-
+    <script src="{% static 'app/views.js' %}"></script>
+    <script src="{% static 'app/templates.js' %}"></script>
     <script src="{% static 'app/init.js' %}"></script>
 
 {% endblock %}

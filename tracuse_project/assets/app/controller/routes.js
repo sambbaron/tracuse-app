@@ -1,6 +1,3 @@
-var Tracuse = Tracuse || {};
-
-Tracuse.routes = Tracuse.routes || {};
 
 Tracuse.routes.baseUrl = "/api/";
 

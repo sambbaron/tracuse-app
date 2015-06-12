@@ -1,11 +1,4 @@
-/* Primary app namespace */
-var Tracuse = Tracuse || {};
-
-/* Init functions */
-Tracuse.init = Tracuse.init || {};
-
-/* Saved elements */
-Tracuse.el = Tracuse.el || {};
+loadTracuse();
 
 Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
     "use strict";

@@ -1,6 +1,3 @@
-var Tracuse = Tracuse || {};
-
-Tracuse.views = Tracuse.views || {};
 
 Tracuse.views.ViewuseFilter = Backbone.View.extend({
 
