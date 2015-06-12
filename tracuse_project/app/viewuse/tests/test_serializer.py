@@ -28,7 +28,7 @@ class TestViewuseObjectSerializer(TestCase):
         test_object = self.test.viewuse_object1
         test_serialized = ViewuseObjectSerializer. \
             serial_for_ui(test_object)
-        actual = test_serialized["arrangement_template"]
+        actual = test_serialized["arrangement"]
         expected = "arrangement1"
         self.assertEqual(expected, actual)
 

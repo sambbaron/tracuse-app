@@ -37,5 +37,5 @@ class TestDataViewuse(object):
         # Viewuse Filters
         self.viewuse_filter1 = mommy.make("viewuse.ViewuseFilter",
                                           viewuse_object=self.viewuse_object1,
-                                          filter_json="TestFilter"
+                                          filter_json='{"TestFilter": "TestFilter"}'
                                           )

@@ -24,8 +24,8 @@ class ViewuseObjectSerializer(ViewuseObject):
         for filter in self.viewuse_filters.all():
             filter_list.append(json.loads(filter.filter_json))
         output = serialize_all(self.__class__, self)
-        output["arrangement_template"] = self.viewuse_arrangement.schema_name
-        output["datum_template"] = self.viewuse_datum.schema_name
+        output["arrangement"] = self.viewuse_arrangement.schema_name
+        output["datum"] = self.viewuse_datum.schema_name
         output["filters"] = filter_list
         return output
 

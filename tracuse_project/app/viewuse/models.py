@@ -15,9 +15,9 @@ class ViewuseObject(EntityModel):
         EntityModel.readable_name (string):
             Viewuse title
         viewuse_arrangement_id (integer, fk, required):
-            ViewuseArrangement - Datum Placement Template
+            ViewuseArrangement - Datum Placement View/Template
         viewuse_datum_id (integer, fk, required):
-            ViewuseDatum - Datum Format Template
+            ViewuseDatum - Datum Format View/Template
     """
 
     class Meta(EntityModel.Meta):
@@ -46,17 +46,17 @@ class ViewuseObject(EntityModel):
 class ViewuseArrangement(EntityModel):
     """Placement of Datums within Viewuse
 
-    Tie to client side viewuse templates
+    Tie to client side viewuse view/template
 
     Attributes:
         See EntityModel
         EntityModel.entity_name (string):
-            Template name
+            View/Template name
     """
 
     class Meta(EntityModel.Meta):
         db_table = "viewuse_arrangement"
-        verbose_name = "Viewuse Arrangement Template"
+        verbose_name = "Viewuse Arrangement"
 
     viewuse_arrangement_id = models.AutoField(primary_key=True)
 
@@ -64,17 +64,17 @@ class ViewuseArrangement(EntityModel):
 class ViewuseDatum(EntityModel):
     """Format of Datums within Viewuse
 
-    Tie to client side datum templates
+    Tie to client side datum view/template
 
     Attributes:
         See EntityModel
         EntityModel.entity_name (string):
-            Template name
+            View/Template name
     """
 
     class Meta(EntityModel.Meta):
         db_table = "viewuse_datum"
-        verbose_name = "Viewuse Datum Template"
+        verbose_name = "Viewuse Datum"
 
     viewuse_datum_id = models.AutoField(primary_key=True)
 
