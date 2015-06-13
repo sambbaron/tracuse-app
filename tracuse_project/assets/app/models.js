@@ -171,8 +171,7 @@ Tracuse.models.ViewuseObject.prototype.defaults = function() {
     "use strict";
     return {
         viewuse_arrangement_id: Tracuse.models.ViewuseArrangement.all.first(),
-        viewuse_datum_id: Tracuse.models.ViewuseDatum.all.first(),
-        filters: [new Tracuse.models.ViewuseFilter()]
+        viewuse_datum_id: Tracuse.models.ViewuseDatum.all.first()
     };
 };
 Tracuse.models.ViewuseObject.prototype.relations = [
@@ -187,12 +186,6 @@ Tracuse.models.ViewuseObject.prototype.relations = [
         key: "viewuse_datum_id",
         relatedModel: "Tracuse.models.ViewuseDatum",
         collectionType: "Tracuse.models.ViewuseDatum.collBase"
-    },
-    {
-        type: Backbone.HasMany,
-        key: "filters",
-        relatedModel: "Tracuse.models.ViewuseFilter",
-        collectionType: "Tracuse.models.ViewuseFilter.collBase"
     }
 ];
 
@@ -201,6 +194,3 @@ Tracuse.models.ViewuseArrangement =
 
 Tracuse.models.ViewuseDatum =
     Tracuse.models.ModelFactory("viewuse_datum", "viewuse_datum_id");
-
-Tracuse.models.ViewuseFilter =
-    Tracuse.models.ModelFactory("viewuse_filter", "viewuse_filter_id");
