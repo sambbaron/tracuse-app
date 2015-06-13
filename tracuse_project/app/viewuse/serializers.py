@@ -18,32 +18,6 @@ class ViewuseObjectSerializer(ViewuseObject):
 
     ViewuseObject.serial_basic = serial_basic
 
-    def serial_related_list(self):
-        """All properties
-        With related data lists
-        """
-        filters = []
-        for filter in self.viewuse_filters.all():
-            filters.append(json.loads(filter.filter_json))
-        output = self.serial_basic()
-        output["filters"] = filters
-        return output
-
-    ViewuseObject.serial_related_list = serial_related_list
-
-    def serial_for_ui(self):
-        """Properties for rendering ui"""
-        filter_list = []
-        for filter in self.viewuse_filters.all():
-            filter_list.append(json.loads(filter.filter_json))
-        output = serialize_all(self.__class__, self)
-        output["arrangement"] = self.viewuse_arrangement.schema_name
-        output["datum"] = self.viewuse_datum.schema_name
-        output["filters"] = filter_list
-        return output
-
-    ViewuseObject.serial_basic = serial_basic
-
 
 class ViewuseArrangementSerializer(ViewuseArrangement):
     class Meta:

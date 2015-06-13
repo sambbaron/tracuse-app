@@ -25,7 +25,7 @@ class ViewuseObjectAll(View):
     def get(self, request):
         queryset = ViewuseObject.actives.filter(Q(user=request.user) | Q(user=None)).all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=ViewuseObjectSerializer.serial_related_list
+                                     serializer=ViewuseObjectSerializer.serial_basic
                                      ).serialize()
         response = JsonResponse(serialized_data, status=200, safe=False)
         return response
@@ -47,7 +47,7 @@ class ViewuseObjectOne(View):
     def get(self, request, pk):
         object = self.get_object(pk)
         serialized_data = Serializer(data=object,
-                                     serializer=ViewuseObjectSerializer.serial_for_ui
+                                     serializer=ViewuseObjectSerializer.serial_basic
                                      ).serialize()
         response = JsonResponse(serialized_data, status=200)
         return response

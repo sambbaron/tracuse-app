@@ -26,16 +26,12 @@ class TestDataViewuse(object):
                                           entity_name="Viewuse1",
                                           viewuse_arrangement=self.viewuse_arrangement1,
                                           viewuse_datum=self.viewuse_datum2,
+                                          filter_json='{"TestFilter1": "TestFilter1"}',
                                           user=self.user1
                                           )
         self.viewuse_object2 = mommy.make("viewuse.ViewuseObject",
                                           entity_name="Viewuse2",
                                           viewuse_arrangement=self.viewuse_arrangement1,
                                           viewuse_datum=self.viewuse_datum1,
-                                          )
-
-        # Viewuse Filters
-        self.viewuse_filter1 = mommy.make("viewuse.ViewuseFilter",
-                                          viewuse_object=self.viewuse_object1,
-                                          filter_json='{"TestFilter": "TestFilter"}'
+                                          filter_json='{"TestFilter2": "TestFilter2"}',
                                           )
