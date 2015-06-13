@@ -1,21 +1,7 @@
 from django.contrib import admin
 
-from app.common.admin import BaseModelAdmin, BaseModelInline, EntityModelAdmin, EntityModelInline
-from .models import ViewuseObject, ViewuseArrangement, ViewuseDatum, ViewuseFilter
-
-
-class ViewuseFilterInline(BaseModelInline):
-    model = ViewuseFilter
-
-    fields = BaseModelInline.fields + ("viewuse_object", "filter_json", "filter_set",)
-
-
-@admin.register(ViewuseFilter)
-class ViewuseFilterAdmin(BaseModelAdmin):
-    list_display = BaseModelAdmin.list_display + ("viewuse_object", "filter_json", "filter_set",)
-    list_editable = BaseModelAdmin.list_editable + ("viewuse_object", "filter_json", "filter_set",)
-
-    fields = BaseModelAdmin.fields + ("viewuse_object", "filter_json", "filter_set",)
+from app.common.admin import EntityModelAdmin, EntityModelInline
+from .models import ViewuseObject, ViewuseArrangement, ViewuseDatum
 
 
 class ViewuseArrangementInline(EntityModelInline):
@@ -54,9 +40,7 @@ class ViewuseObjectInline(EntityModelInline):
 
 @admin.register(ViewuseObject)
 class ViewuseObjectAdmin(EntityModelAdmin):
-    list_display = EntityModelAdmin.list_display + ("viewuse_arrangement", "viewuse_datum",)
-    list_editable = EntityModelAdmin.list_editable + ("viewuse_arrangement", "viewuse_datum",)
+    list_display = EntityModelAdmin.list_display + ("viewuse_arrangement", "viewuse_datum", "filter_json", "filter_set",)
+    list_editable = EntityModelAdmin.list_editable + ("viewuse_arrangement", "viewuse_datum", "filter_json", "filter_set",)
 
-    fields = EntityModelAdmin.fields + ("viewuse_arrangement", "viewuse_datum",)
-
-    inlines = [ViewuseFilterInline, ]
+    fields = EntityModelAdmin.fields + ("viewuse_arrangement", "viewuse_datum", "filter_json", "filter_set",)
