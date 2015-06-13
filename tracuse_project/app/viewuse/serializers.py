@@ -14,6 +14,7 @@ class ViewuseObjectSerializer(ViewuseObject):
     def serial_basic(self):
         """All properties"""
         output = serialize_all(self.__class__, self)
+        output["filter_json"] = json.loads(output["filter_json"])
         return output
 
     ViewuseObject.serial_basic = serial_basic
