@@ -1,3 +1,27 @@
-/**
- * Created by Sam Baron on 6/12/2015.
- */
+Tracuse.views.ElementBase = Backbone.View.extend({
+
+    tagName: "p",
+    className: "element",
+
+    render: function render() {
+        "use strict";
+        /* Add viewuse to DOM */
+        var elementView = this;
+
+        var templateName = "element/element_base.html";
+        var templateData = {
+            id: elementView.cid,
+            this_element: elementView.model.toJSON()
+        };
+        var rendered = Tracuse.templates.env.render(templateName, templateData);
+        elementView.el.innerHTML = rendered;
+        elementView.appendEl.appendChild(elementView.el);
+    },
+
+    initialize: function initialize(options) {
+        "use strict";
+        this.appendEl = options.appendEl;
+        this.render();
+    }
+
+});

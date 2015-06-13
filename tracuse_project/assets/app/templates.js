@@ -175,24 +175,28 @@ root: root
 };
 })();
 })();
-(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["element/element.html"] = (function() {function root(env, context, frame, runtime, cb) {
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["element/element_base.html"] = (function() {function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
 var output = "";
 try {
-output += "<label>";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_name", env.opts.autoescape), env.opts.autoescape);
-output += "</label>\r\n<input class=\"element\"\r\n       model=\"element_datum_objects\"\r\n       element_datum_object_id=\"";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_datum_object_id", env.opts.autoescape), env.opts.autoescape);
+output += "<label class=\"element-label\" for=\"";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "id"), env.opts.autoescape);
+output += "\">\r\n    ";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_element")),"element_name", env.opts.autoescape), env.opts.autoescape);
+output += "\r\n</label>\r\n<input class=\"element-input\"\r\n       model=\"element_datum_objects\"\r\n       id=\"";
+output += runtime.suppressValue(runtime.contextOrFrameLookup(context, frame, "id"), env.opts.autoescape);
+output += "\"\r\n       element_datum_object_id=\"";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_element")),"element_datum_object_id", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n       element_datum_type_id=\"";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_datum_type_id", env.opts.autoescape), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_element")),"element_datum_type_id", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n       element_type_id=\"";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_type_id", env.opts.autoescape), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_element")),"element_type_id", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n       type=\"";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"html_input_type", env.opts.autoescape), env.opts.autoescape);
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_element")),"html_input_type", env.opts.autoescape), env.opts.autoescape);
 output += "\"\r\n       name=\"element_value\"\r\n       value=\"";
-output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "element")),"element_value", env.opts.autoescape), env.opts.autoescape);
-output += "\"\r\n       onchange=\"Tracuse.models.updateDataOne(this)\">";
+output += runtime.suppressValue(runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_element")),"element_value", env.opts.autoescape), env.opts.autoescape);
+output += "\">";
 cb(null, output);
 ;
 } catch (e) {

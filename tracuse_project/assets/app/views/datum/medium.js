@@ -10,6 +10,14 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
         datumView.el.classList.add("datum_medium");
 
         // Render elements
+        var elementObjects = datumView.model.get("elements");
+        for (var i = 0, imax = elementObjects.length; i < imax; i++) {
+            var elementObject = elementObjects.models[i];
+            new Tracuse.views.ElementBase({
+                model: elementObject,
+                appendEl: datumView.el
+            });
+        }
     }
 
 });

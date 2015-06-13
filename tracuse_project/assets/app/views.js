@@ -5,6 +5,12 @@ Tracuse.views.DatumBase = Backbone.View.extend({
     tagName: "article",
     className: "datum",
 
+    render: function () {
+        "use strict";
+        var datumView = this;
+        datumView.appendEl.appendChild(datumView.el);
+    },
+
     initialize: function initialize(options) {
         "use strict";
         this.appendEl = options.appendEl;
@@ -22,10 +28,20 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
         "use strict";
         var datumView = this;
 
+        Tracuse.views.DatumBase.prototype.render.apply(datumView, arguments);
+
         // Add class for arrangement view name
         datumView.el.classList.add("datum_medium");
 
-        datumView.appendEl.appendChild(datumView.el);
+        // Render elements
+        var elementObjects = datumView.model.get("elements");
+        for (var i = 0, imax = elementObjects.length; i < imax; i++) {
+            var elementObject = elementObjects.models[i];
+            new Tracuse.views.ElementBase({
+                model: elementObject,
+                appendEl: datumView.el
+            });
+        }
     }
 
 });
@@ -39,10 +55,33 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
  */
 
 
-/**
- * Created by Sam Baron on 6/12/2015.
- */
+Tracuse.views.ElementBase = Backbone.View.extend({
 
+    tagName: "p",
+    className: "element",
+
+    render: function render() {
+        "use strict";
+        /* Add viewuse to DOM */
+        var elementView = this;
+
+        var templateName = "element/element_base.html";
+        var templateData = {
+            id: elementView.cid,
+            this_element: elementView.model.toJSON()
+        };
+        var rendered = Tracuse.templates.env.render(templateName, templateData);
+        elementView.el.innerHTML = rendered;
+        elementView.appendEl.appendChild(elementView.el);
+    },
+
+    initialize: function initialize(options) {
+        "use strict";
+        this.appendEl = options.appendEl;
+        this.render();
+    }
+
+});
 /**
  * Created by Sam Baron on 6/12/2015.
  */
@@ -203,9 +242,9 @@ Tracuse.views.ViewuseTile = Tracuse.views.ViewuseBase.extend({
         var datumViewName = viewuseView.model.get("viewuse_datum_id").get("entity_name");
 
         // Set element to append datums
-        var appendEl = viewuseView.el.querySelector(".content");
+        var appendEl = viewuseView.el.querySelector(".datums");
 
-        // Return filtered datums
+        // Render filtered datums
         var filter = viewuseView.model.get("filters").first().attributes;
         Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
 
