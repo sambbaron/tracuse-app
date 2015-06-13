@@ -51,6 +51,10 @@ Tracuse.utils.csrfSafeRequest = function csrfSafeRequest(request) {
     return request
 };
 
+Tracuse.utils.csrfSafeMethod = function csrfSafeMethod(method) {
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+};
+
 Tracuse.routes.baseUrl = "/api/";
 
 /* Urls not associated with model names */
