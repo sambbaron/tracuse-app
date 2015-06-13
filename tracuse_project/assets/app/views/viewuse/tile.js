@@ -15,7 +15,7 @@ Tracuse.views.ViewuseTile = Tracuse.views.ViewuseBase.extend({
         // Set element to append datums
         var appendEl = viewuseView.el.querySelector(".datums");
 
-        // Return filtered datums
+        // Render filtered datums
         var filter = viewuseView.model.get("filters").first().attributes;
         Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
 
