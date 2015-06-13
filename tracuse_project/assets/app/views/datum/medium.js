@@ -4,10 +4,12 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
         "use strict";
         var datumView = this;
 
+        Tracuse.views.DatumBase.prototype.render.apply(datumView, arguments);
+
         // Add class for arrangement view name
         datumView.el.classList.add("datum_medium");
 
-        datumView.appendEl.appendChild(datumView.el);
+        // Render elements
     }
 
 });
