@@ -47,6 +47,18 @@ Tracuse.init.loadAppTemplate = function loadAppTemplate() {
     Tracuse.el.viewuses = document.querySelector("#viewuses");
 };
 
+Tracuse.init.ajaxSetup = function ajaxSetup() {
+    "use strict";
+    var csrftoken = Tracuse.utils.getCookie("csrftoken");
+    $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+            if (!Tracuse.utils.csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+};
+
 Tracuse.init.firstViewuse = function firstViewuse() {
     "use strict";
     /*Render initial viewuse at startup
@@ -65,6 +77,7 @@ Tracuse.init.initApp = function initApp() {
     Tracuse.init.loadAppTemplate();
     Tracuse.init.attachGlobalEvents();
     Tracuse.init.attachDynamicEvents();
+    Tracuse.init.ajaxSetup();
     Tracuse.init.firstViewuse();
 };
 
