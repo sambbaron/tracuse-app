@@ -5,16 +5,36 @@ Tracuse.views.DatumBase = Backbone.View.extend({
     tagName: "article",
     className: "datum",
 
+    template: function () {
+        "use strict";
+        var templateOutput = "";
+        return templateOutput;
+    },
+
     render: function () {
         "use strict";
         var datumView = this;
-        datumView.appendEl.appendChild(datumView.el);
+        datumView.el.innerHTML = datumView.template();
+        return datumView;
+
     },
 
     initialize: function initialize(options) {
         "use strict";
-        this.appendEl = options.appendEl;
-        this.render();
+        var datumView = this;
+
+        // Set element collection and views
+        datumView.elementViews = [];
+        var elementViewName = options.elementViewName;
+        var ElementView = Tracuse.views[elementViewName];
+
+        datumView.collection = datumView.model.get("elements");
+        datumView.collection.each(function (model) {
+            datumView.elementViews.push(new ElementView({
+                model: model
+            }));
+        });
+
     }
 
 });
@@ -34,14 +54,13 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
         datumView.el.classList.add("datum_medium");
 
         // Render elements
-        var elementObjects = datumView.model.get("elements");
-        for (var i = 0, imax = elementObjects.length; i < imax; i++) {
-            var elementObject = elementObjects.models[i];
-            new Tracuse.views.ElementBase({
-                model: elementObject,
-                appendEl: datumView.el
-            });
-        }
+        var fragment = document.createDocumentFragment();
+        _.each(datumView.elementViews, function (elementView) {
+            fragment.appendChild(elementView.render().el);
+        });
+        datumView.el.appendChild(fragment);
+
+        return datumView;
     }
 
 });
@@ -68,25 +87,30 @@ Tracuse.views.ElementBase = Backbone.View.extend({
         }
     },
 
-    render: function render() {
+    template: function () {
         "use strict";
-        /* Add viewuse to DOM */
         var elementView = this;
+        var templateOutput = "";
 
         var templateName = "element/element_base.html";
         var templateData = {
             id: elementView.cid,
             this_element: elementView.model.toJSON()
         };
-        var rendered = Tracuse.templates.env.render(templateName, templateData);
-        elementView.el.innerHTML = rendered;
-        elementView.appendEl.appendChild(elementView.el);
+        templateOutput = Tracuse.templates.env.render(templateName, templateData);
+
+        return templateOutput;
     },
 
-    initialize: function initialize(options) {
+    render: function render() {
         "use strict";
-        this.appendEl = options.appendEl;
-        this.render();
+        var elementView = this;
+        elementView.el.innerHTML = elementView.template();
+        return elementView;
+    },
+
+    initialize: function initialize() {
+        "use strict";
         this.listenTo(this.model, "change", this.render);
     }
 
@@ -129,24 +153,49 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         }
     },
 
-    render: function render() {
+    template: function () {
         "use strict";
-        /* Add viewuse to DOM */
         var viewuseView = this;
-        
+        var templateOutput = "";
+
         var templateName = "viewuse/viewuse_base.html";
         var templateData = {
             this_viewuse: viewuseView.model.toJSON()
         };
-        var rendered = Tracuse.templates.env.render(templateName, templateData);
-        viewuseView.el.innerHTML = rendered;
-        viewuseView.appendEl.appendChild(viewuseView.el);
+        templateOutput = Tracuse.templates.env.render(templateName, templateData);
+
+        return templateOutput;
     },
 
-    initialize: function initialize(options) {
+    render: function render() {
         "use strict";
-        this.appendEl = options.appendEl;
-        this.render();
+        var viewuseView = this;
+        viewuseView.el.innerHTML = viewuseView.template();
+        return viewuseView;
+    },
+
+    initialize: function initialize(options, callback) {
+        "use strict";
+        var viewuseView = this;
+
+        // Get datum view
+        viewuseView.datumViews = [];
+        var datumViewName = viewuseView.model.get("viewuse_datum_id").get("entity_name");
+        var DatumView = Tracuse.views[datumViewName];
+
+        // Set datum collection from filter
+        var filter = viewuseView.model.get("filter_json");
+        Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
+            viewuseView.collection = datumObjects;
+            viewuseView.collection.each(function (model) {
+                viewuseView.datumViews.push(new DatumView({
+                    model: model,
+                    elementViewName: "ElementBase"
+                }));
+            });
+            callback(viewuseView);
+        });
+
     },
 
     nextId: function nextId() {
@@ -214,19 +263,25 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
 Tracuse.views.initializeViewuse = function initializeViewuse(viewuseObject, appendEl) {
     "use strict";
-    // Initialize Viewuse View
-    // Test for append element
-    // Call Arrangement sub-view
+    /* Initialize Viewuse View
+     * Test for append element
+     * Call Arrangement sub-view
+     * Wait for callback related to fetching filtered datums
+     * */
 
     if (!appendEl) appendEl = Tracuse.el.viewuses;
 
     var arrangementViewName = viewuseObject.get("viewuse_arrangement_id").get("entity_name");
-    var viewuseView = Tracuse.views[arrangementViewName];
-    new viewuseView({
-        model: viewuseObject,
-        id: Tracuse.views.ViewuseBase.prototype.nextId(),
-        appendEl: appendEl
-    });
+    var viewClass = Tracuse.views[arrangementViewName];
+    new viewClass(
+        {
+            model: viewuseObject,
+            id: Tracuse.views.ViewuseBase.prototype.nextId()
+        },
+        function (viewuseView) {
+            appendEl.appendChild(viewuseView.render().el)
+        }
+    );
 };
 /**
  * Created by Sam Baron on 6/12/2015.
@@ -247,31 +302,18 @@ Tracuse.views.ViewuseTile = Tracuse.views.ViewuseBase.extend({
         // Add class for arrangement view name
         viewuseView.el.classList.add("viewuse_tile");
 
-        // Get datum view class name
-        var datumViewName = viewuseView.model.get("viewuse_datum_id").get("entity_name");
-
         // Set element to append datums
-        var appendEl = viewuseView.el.querySelector(".datums");
+        var datumsEl = viewuseView.el.querySelector(".datums");
 
-        // Render filtered datums
-        var filter = viewuseView.model.get("filters").first().attributes;
-        Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
-
-            for (var i = 0, imax = datumObjects.length; i < imax; i++) {
-                var datumObject = datumObjects.models[i];
-                new Tracuse.views[datumViewName]({
-                    model: datumObject,
-                    appendEl: appendEl
-                });
-            }
-
+        // Render datums
+        var fragment = document.createDocumentFragment();
+        _.each(viewuseView.datumViews, function (datumView) {
+            fragment.appendChild(datumView.render().el);
         });
-    }
+        datumsEl.appendChild(fragment);
 
-    //initialize: function (options) {
-    //    "use strict";
-    //    Tracuse.views.ViewuseBase.prototype.initialize.call(this, options);
-    //}
+        return viewuseView;
+    }
 });
 
 

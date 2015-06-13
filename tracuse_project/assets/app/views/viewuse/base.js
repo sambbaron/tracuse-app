@@ -18,24 +18,49 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         }
     },
 
-    render: function render() {
+    template: function () {
         "use strict";
-        /* Add viewuse to DOM */
         var viewuseView = this;
-        
+        var templateOutput = "";
+
         var templateName = "viewuse/viewuse_base.html";
         var templateData = {
             this_viewuse: viewuseView.model.toJSON()
         };
-        var rendered = Tracuse.templates.env.render(templateName, templateData);
-        viewuseView.el.innerHTML = rendered;
-        viewuseView.appendEl.appendChild(viewuseView.el);
+        templateOutput = Tracuse.templates.env.render(templateName, templateData);
+
+        return templateOutput;
     },
 
-    initialize: function initialize(options) {
+    render: function render() {
         "use strict";
-        this.appendEl = options.appendEl;
-        this.render();
+        var viewuseView = this;
+        viewuseView.el.innerHTML = viewuseView.template();
+        return viewuseView;
+    },
+
+    initialize: function initialize(options, callback) {
+        "use strict";
+        var viewuseView = this;
+
+        // Get datum view
+        viewuseView.datumViews = [];
+        var datumViewName = viewuseView.model.get("viewuse_datum_id").get("entity_name");
+        var DatumView = Tracuse.views[datumViewName];
+
+        // Set datum collection from filter
+        var filter = viewuseView.model.get("filter_json");
+        Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
+            viewuseView.collection = datumObjects;
+            viewuseView.collection.each(function (model) {
+                viewuseView.datumViews.push(new DatumView({
+                    model: model,
+                    elementViewName: "ElementBase"
+                }));
+            });
+            callback(viewuseView);
+        });
+
     },
 
     nextId: function nextId() {
@@ -103,17 +128,23 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
 Tracuse.views.initializeViewuse = function initializeViewuse(viewuseObject, appendEl) {
     "use strict";
-    // Initialize Viewuse View
-    // Test for append element
-    // Call Arrangement sub-view
+    /* Initialize Viewuse View
+     * Test for append element
+     * Call Arrangement sub-view
+     * Wait for callback related to fetching filtered datums
+     * */
 
     if (!appendEl) appendEl = Tracuse.el.viewuses;
 
     var arrangementViewName = viewuseObject.get("viewuse_arrangement_id").get("entity_name");
-    var viewuseView = Tracuse.views[arrangementViewName];
-    new viewuseView({
-        model: viewuseObject,
-        id: Tracuse.views.ViewuseBase.prototype.nextId(),
-        appendEl: appendEl
-    });
+    var viewClass = Tracuse.views[arrangementViewName];
+    new viewClass(
+        {
+            model: viewuseObject,
+            id: Tracuse.views.ViewuseBase.prototype.nextId()
+        },
+        function (viewuseView) {
+            appendEl.appendChild(viewuseView.render().el)
+        }
+    );
 };
