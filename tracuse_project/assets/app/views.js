@@ -3,7 +3,13 @@ loadTracuse();
 Tracuse.views.DatumBase = Backbone.View.extend({
 
     tagName: "article",
-    className: "datum"
+    className: "datum",
+
+    initialize: function initialize(options) {
+        "use strict";
+        this.appendEl = options.appendEl;
+        this.render();
+    }
 
 });
 /**
@@ -15,6 +21,11 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
     render: function () {
         "use strict";
         var datumView = this;
+
+        // Add class for arrangement view name
+        datumView.el.classList.add("datum_medium");
+
+        datumView.appendEl.appendChild(datumView.el);
     }
 
 });
@@ -186,17 +197,24 @@ Tracuse.views.ViewuseTile = Tracuse.views.ViewuseBase.extend({
         Tracuse.views.ViewuseBase.prototype.render.apply(viewuseView, arguments);
 
         // Add class for arrangement view name
-        var viewName = viewuseView.model.get("viewuse_arrangement_id").get("schema_name");
-        viewuseView.el.classList.add(viewName);
+        viewuseView.el.classList.add("viewuse_tile");
 
-        var datumView = viewuseView.model.get("viewuse_datum_id").get("entity_name");
+        // Get datum view class name
+        var datumViewName = viewuseView.model.get("viewuse_datum_id").get("entity_name");
+
+        // Set element to append datums
+        var appendEl = viewuseView.el.querySelector(".content");
 
         // Return filtered datums
         var filter = viewuseView.model.get("filters").first().attributes;
         Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
 
             for (var i = 0, imax = datumObjects.length; i < imax; i++) {
-                var datumObject = datumObjects[i];
+                var datumObject = datumObjects.models[i];
+                new Tracuse.views[datumViewName]({
+                    model: datumObject,
+                    appendEl: appendEl
+                });
             }
 
         });
