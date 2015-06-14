@@ -9,9 +9,31 @@
     border: 1px solid #6E8BD9;
     border-radius: 0.5em;
     padding: 1em;
-    resize: both;
     overflow: auto;
     background-color: #fafafa;
+}
+
+.viewuse-handle {
+    height: 100%;
+    width: 100%;
+}
+
+.ui-resizable-handle.ui-resizable-e {
+    right: 0;
+}
+
+.ui-resizable-handle.ui-resizable-s {
+    bottom: 0;
+}
+
+.ui-resizable-handle.ui-resizable-ne {
+    top: 0;
+    right: 0;
+}
+
+.ui-resizable-handle.ui-resizable-se {
+    right: 0;
+    bottom: 0;
 }
 
 .viewuse.active {

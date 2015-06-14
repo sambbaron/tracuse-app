@@ -213,9 +213,9 @@ var lineno = null;
 var colno = null;
 var output = "";
 try {
-output += "<input name=\"title\" value=\"";
+output += "<div class=\"viewuse-handle\">\r\n\r\n    <input name=\"title\" value=\"";
 output += runtime.suppressValue(env.getFilter("default").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"readable_name", env.opts.autoescape),"Empty View"), env.opts.autoescape);
-output += "\">\r\n\r\n<div class=\"datums\">\r\n\r\n</div>\r\n\r\n<nav class=\"viewuse-controls\">\r\n    <button name=\"viewuse-options\">View<br>Options</button>\r\n    <br>\r\n    <button name=\"new-object\">New<br>Object</button>\r\n    <br>\r\n</nav>\r\n\r\n";
+output += "\">\r\n\r\n    <div class=\"datums\">\r\n\r\n    </div>\r\n\r\n    <nav class=\"viewuse-controls\">\r\n        <button name=\"viewuse-options\">View<br>Options</button>\r\n        <br>\r\n        <button name=\"new-object\">New<br>Object</button>\r\n        <br>\r\n    </nav>\r\n\r\n</div>";
 cb(null, output);
 ;
 } catch (e) {

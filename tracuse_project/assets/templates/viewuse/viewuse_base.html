@@ -1,13 +1,16 @@
-<input name="title" value="{{ this_viewuse.readable_name|default('Empty View') }}">
+<div class="viewuse-handle">
 
-<div class="datums">
+    <input name="title" value="{{ this_viewuse.readable_name|default('Empty View') }}">
+
+    <div class="datums">
+
+    </div>
+
+    <nav class="viewuse-controls">
+        <button name="viewuse-options">View<br>Options</button>
+        <br>
+        <button name="new-object">New<br>Object</button>
+        <br>
+    </nav>
 
 </div>
-
-<nav class="viewuse-controls">
-    <button name="viewuse-options">View<br>Options</button>
-    <br>
-    <button name="new-object">New<br>Object</button>
-    <br>
-</nav>
-

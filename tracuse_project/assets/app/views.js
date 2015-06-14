@@ -150,6 +150,10 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         "click button[name='viewuse-options']": function (ev) {
             this.showOption(ev.target, Tracuse.views.ViewuseOptions);
             ev.stopPropagation();
+        },
+        "scroll": function (ev) {
+            this.scrollResizeHandles(ev.target);
+            ev.stopPropagation();
         }
     },
 
@@ -171,6 +175,16 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         "use strict";
         var viewuseView = this;
         viewuseView.el.innerHTML = viewuseView.template();
+
+        viewuseView.$el.resizable({
+            handles: "n, e, s, w, ne, se"
+        });
+        viewuseView.$el.draggable({
+            handle: ".viewuse-handle",
+            cursor: "move",
+            distance: 5
+        });
+
         return viewuseView;
     },
 
@@ -259,6 +273,37 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         /* Trigger from viewuse button*/
         var viewuse = this;
         new optionView({viewuseView: viewuse});
+    },
+
+    scrollResizeHandles: function scrollResizeHandles(el) {
+        "use strict";
+        /* Move jquery-ui resizable handles with scroll */
+
+        var handleN = el.querySelector(".ui-resizable-handle.ui-resizable-n");
+        var handleS = el.querySelector(".ui-resizable-handle.ui-resizable-s");
+        var handleE = el.querySelector(".ui-resizable-handle.ui-resizable-e");
+        var handleW = el.querySelector(".ui-resizable-handle.ui-resizable-w");
+        var handleNE = el.querySelector(".ui-resizable-handle.ui-resizable-ne");
+        var handleSE = el.querySelector(".ui-resizable-handle.ui-resizable-se");
+
+        handleN.style.top = (el.scrollTop).toString() + "px";
+        handleN.style.left = (el.scrollLeft).toString() + "px";
+
+        handleS.style.bottom = (el.scrollTop * -1).toString() + "px";
+        handleS.style.left = (el.scrollLeft).toString() + "px";
+
+        handleE.style.top = (el.scrollTop).toString() + "px";
+        handleE.style.right = (el.scrollLeft * -1).toString() + "px";
+
+        handleW.style.top = (el.scrollTop).toString() + "px";
+        handleW.style.left = (el.scrollLeft).toString() + "px";
+
+        handleNE.style.top = (el.scrollTop).toString() + "px";
+        handleNE.style.right = (el.scrollLeft * -1).toString() + "px";
+
+        handleSE.style.bottom = (el.scrollTop * -1).toString() + "px";
+        handleSE.style.right = (el.scrollLeft * -1).toString() + "px";
+
     }
 
 });
@@ -281,7 +326,7 @@ Tracuse.views.initializeViewuse = function initializeViewuse(viewuseObject, appe
             id: Tracuse.views.ViewuseBase.prototype.nextId()
         },
         function (viewuseView) {
-            appendEl.appendChild(viewuseView.render().el)
+            appendEl.appendChild(viewuseView.render().el);
         }
     );
 };
