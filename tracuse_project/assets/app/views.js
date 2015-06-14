@@ -1,4 +1,50 @@
 loadTracuse();
+Tracuse.utils.positionOnScroll = function positionOnScroll(positionElement, scrollElement, location, offsetX, offsetY) {
+    "use strict";
+    /* Set position of element when scroll changes
+     *
+     * positionElement (element): what to move
+     * scrollElement (element): parent that is scrolled
+     * location (string): cardinal location of placement
+     *   ne, nw, se, sw
+     * offsetX (integer): horizontal offset in pixels
+     * offsetY (integer): vertical offset in pixels
+     *
+     * Return: positionElement
+     * */
+    location = location.toLowerCase();
+    offsetX = offsetX || 0;
+    offsetY = offsetY || 0;
+    var scrollTop = scrollElement.scrollTop + offsetY;
+    var scrollLeft = scrollElement.scrollLeft + offsetX;
+    var scrollBottom = scrollElement.scrollTop * -1 + offsetY;
+    var scrollRight = scrollElement.scrollLeft * -1 + offsetX;
+
+    switch (location) {
+        case "nw":
+            positionElement.style.top = scrollTop.toString() + "px";
+            positionElement.style.left = scrollLeft.toString() + "px";
+            break;
+
+        case "sw":
+            positionElement.style.bottom = scrollBottom.toString() + "px";
+            positionElement.style.left = scrollLeft.toString() + "px";
+            break;
+
+        case "ne":
+            positionElement.style.top = scrollTop.toString() + "px";
+            positionElement.style.right = scrollRight.toString() + "px";
+            break;
+
+        case "se":
+            positionElement.style.bottom = scrollBottom.toString() + "px";
+            positionElement.style.right = scrollRight.toString() + "px";
+            break;
+    }
+
+    return positionElement;
+
+};
 
 Tracuse.views.DatumBase = Backbone.View.extend({
 
@@ -152,7 +198,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             ev.stopPropagation();
         },
         "scroll": function (ev) {
-            this.scrollResizeHandles(ev.target);
+            this.scrollPositionElements(ev.target);
             ev.stopPropagation();
         }
     },
@@ -281,9 +327,9 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         new optionView({viewuseView: viewuse});
     },
 
-    scrollResizeHandles: function scrollResizeHandles(el) {
+    scrollPositionElements: function scrollPositionElements(el) {
         "use strict";
-        /* Move jquery-ui resizable handles with scroll */
+        /* Move elements with scroll */
 
         var handleN = el.querySelector(".ui-resizable-handle.ui-resizable-n");
         var handleS = el.querySelector(".ui-resizable-handle.ui-resizable-s");
@@ -291,25 +337,17 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var handleW = el.querySelector(".ui-resizable-handle.ui-resizable-w");
         var handleNE = el.querySelector(".ui-resizable-handle.ui-resizable-ne");
         var handleSE = el.querySelector(".ui-resizable-handle.ui-resizable-se");
+        var controlMenu = el.querySelector(".viewuse-controls button[name='viewuse-options']");
+        var controlClose = el.querySelector(".viewuse-controls button[name='close-viewuse']");
 
-        handleN.style.top = (el.scrollTop).toString() + "px";
-        handleN.style.left = (el.scrollLeft).toString() + "px";
-
-        handleS.style.bottom = (el.scrollTop * -1).toString() + "px";
-        handleS.style.left = (el.scrollLeft).toString() + "px";
-
-        handleE.style.top = (el.scrollTop).toString() + "px";
-        handleE.style.right = (el.scrollLeft * -1).toString() + "px";
-
-        handleW.style.top = (el.scrollTop).toString() + "px";
-        handleW.style.left = (el.scrollLeft).toString() + "px";
-
-        handleNE.style.top = (el.scrollTop).toString() + "px";
-        handleNE.style.right = (el.scrollLeft * -1).toString() + "px";
-
-        handleSE.style.bottom = (el.scrollTop * -1).toString() + "px";
-        handleSE.style.right = (el.scrollLeft * -1).toString() + "px";
-
+        Tracuse.utils.positionOnScroll(handleN, el, "nw");
+        Tracuse.utils.positionOnScroll(handleS, el, "sw");
+        Tracuse.utils.positionOnScroll(handleE, el, "ne");
+        Tracuse.utils.positionOnScroll(handleW, el, "nw");
+        Tracuse.utils.positionOnScroll(handleNE, el, "ne");
+        Tracuse.utils.positionOnScroll(handleSE, el, "se");
+        Tracuse.utils.positionOnScroll(controlMenu, el, "nw");
+        Tracuse.utils.positionOnScroll(controlClose, el, "ne");
     }
 
 });
