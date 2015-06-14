@@ -124,12 +124,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         this.$el.addClass("active");
     },
 
-    showOption: function showOption(el, optionView) {
-        "use strict";
-        /* Trigger from viewuse button*/
-        var viewuse = this;
-        new optionView({viewuseView: viewuse});
-    },
 
     scrollPositionElements: function scrollPositionElements(el) {
         "use strict";
