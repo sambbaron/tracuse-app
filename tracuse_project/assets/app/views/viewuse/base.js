@@ -53,7 +53,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         });
 
         viewuseView.$el.draggable({
-            handle: ".viewuse-handle",
+            handle: ".viewuse-content",
             cursor: "move",
             distance: 5
         });
