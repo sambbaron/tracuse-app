@@ -9,22 +9,6 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
         e.stopPropagation();
     });
 
-    // Double-click anywhere in a view to nest a new view
-    window.addEventListener("dblclick", function (e) {
-        var targetEl = e.target;
-        var appendEl;
-
-        if (targetEl.classList.contains("viewuse") || targetEl === Tracuse.el.viewuses) {
-            appendEl = targetEl;
-        } else if (targetEl.parentNode.tagName === "SECTION") {
-            appendEl = targetEl.parentNode;
-        }
-
-        var viewuseObject = new Tracuse.models.ViewuseObject();
-        Tracuse.views.initializeViewuse(viewuseObject, appendEl);
-        e.stopPropagation();
-    });
-
 };
 
 Tracuse.init.attachDynamicEvents = function attachDynamicEvents() {

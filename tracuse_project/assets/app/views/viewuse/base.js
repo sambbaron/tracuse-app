@@ -12,6 +12,12 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             this.menuView.showHide();
             ev.stopPropagation();
         },
+        "click button[name='viewuse-add']": function clickMenu(ev) {
+            var viewuseObject = new Tracuse.models.ViewuseObject();
+            var appendEl = this.el;
+            Tracuse.views.initializeViewuse(viewuseObject, appendEl);
+            ev.stopPropagation();
+        },
         "click button[name='viewuse-close']": function clickClose(ev) {
             this.$el.fadeOut(200, function () {
                 this.remove();
