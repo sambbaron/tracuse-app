@@ -13,15 +13,11 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             ev.stopPropagation();
         },
         "click button[name='viewuse-add']": function clickMenu(ev) {
-            var viewuseObject = new Tracuse.models.ViewuseObject();
-            var appendEl = this.el;
-            Tracuse.views.initializeViewuse(viewuseObject, appendEl);
+            this.addViewuse();
             ev.stopPropagation();
         },
         "click button[name='viewuse-close']": function clickClose(ev) {
-            this.$el.fadeOut(200, function () {
-                this.remove();
-            });
+            this.closeViewuse();
             ev.stopPropagation();
         },
         "scroll": function scroll(ev) {
@@ -124,6 +120,24 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         this.$el.addClass("active");
     },
 
+    addViewuse: function addViewuse() {
+        "use strict";
+        /* Append blank viewuse*/
+        var viewuseView = this;
+
+        var viewuseObject = new Tracuse.models.ViewuseObject();
+        var appendEl = viewuseView.el;
+        Tracuse.views.initializeViewuse(viewuseObject, appendEl);
+    },
+
+    closeViewuse: function closeViewuse() {
+        "use strict";
+        var viewuseView = this;
+
+        viewuseView.$el.fadeOut(200, function () {
+            viewuseView.remove();
+        });
+    },
 
     scrollPositionElements: function scrollPositionElements(el) {
         "use strict";
