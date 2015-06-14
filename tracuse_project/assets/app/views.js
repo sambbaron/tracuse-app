@@ -179,6 +179,12 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         viewuseView.$el.resizable({
             handles: "n, e, s, w, ne, se"
         });
+        // Remove inline styles from resizable handles
+        var resizeHandles = viewuseView.el.querySelectorAll(".ui-resizable-handle");
+        _.each(resizeHandles, function (resizeHandle) {
+            resizeHandle.removeAttribute("style");
+        });
+
         viewuseView.$el.draggable({
             handle: ".viewuse-handle",
             cursor: "move",
