@@ -16,6 +16,8 @@
 .viewuse-handle {
     height: 100%;
     width: 100%;
+    min-height: 8em;
+    min-width: 15em;
 }
 
 .ui-resizable-handle.ui-resizable-e {
