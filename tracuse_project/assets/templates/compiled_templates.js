@@ -207,6 +207,23 @@ root: root
 };
 })();
 })();
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/menu.html"] = (function() {function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+output += "<button name=\"viewuse-add\"><i class=\"fa fa-plus-circle\"></i><span>Add View</span></button>\r\n<button name=\"viewuse-edit\"><i class=\"fa fa-edit\"></i><span>Edit View</span></button>\r\n<button name=\"object-create\"><i class=\"fa fa-edit\"></i><span>Create Object</span></button>\r\n<button name=\"viewuse-close\"><i class=\"fa fa-close\"></i><span>Close View</span></button>";
+cb(null, output);
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+})();
+})();
 (function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/viewuse_base.html"] = (function() {function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
@@ -214,7 +231,7 @@ var output = "";
 try {
 output += "<div class=\"viewuse-content\">\r\n\r\n    <input name=\"title\" value=\"";
 output += runtime.suppressValue(env.getFilter("default").call(context, runtime.memberLookup((runtime.contextOrFrameLookup(context, frame, "this_viewuse")),"readable_name", env.opts.autoescape),"Empty View"), env.opts.autoescape);
-output += "\">\r\n\r\n    <div class=\"datums\">\r\n\r\n    </div>\r\n\r\n    <nav class=\"viewuse-controls\">\r\n        <button name=\"viewuse-menu\"><i id=\"menu-icon\" class=\"fa fa-bars\"></i></button>\r\n        <button name=\"viewuse-close\"><i id=\"menu-icon\" class=\"fa fa-close\"></i></button>\r\n    </nav>\r\n\r\n</div>";
+output += "\">\r\n\r\n    <div class=\"datums\">\r\n\r\n    </div>\r\n\r\n    <nav class=\"viewuse-controls\">\r\n        <button name=\"viewuse-menu\"><i class=\"fa fa-bars\"></i></button>\r\n        <button name=\"viewuse-close\"><i class=\"fa fa-close\"></i></button>\r\n    </nav>\r\n\r\n</div>";
 cb(null, output);
 ;
 } catch (e) {
