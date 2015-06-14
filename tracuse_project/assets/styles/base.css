@@ -6,15 +6,20 @@ body {
     color: #35446A;
 }
 
+div, section, article, p,
+input, select, button {
+    margin: 0.25em;
+    padding: 0.25em;
+}
+
 header, footer {
     width: 100%;
 }
 
 header {
     position: fixed;
-    height: 4rem;
     top: 0;
-    padding: 0.75em 0;
+    height: 4rem;
 }
 
 footer {
@@ -31,41 +36,71 @@ header button[name='menu'] {
     top: 50%;
     transform: translateY(-50%);
     left: 2rem;
+    margin: 0;
     font-size: 200%;
     opacity: 0.75;
 }
 
 header img {
     position: absolute;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-50%);
     height: 65%;
 }
 
 header nav {
     display: inline-block;
     position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     right: 5rem;
 }
 
 header .nav-button {
-    display: inline-block;
     height: 2em;
-    margin-left: 0.5em;
     border: solid 1px darkgray;
-    border-radius: 0.5em;
-    padding: 0.5em;
-    text-align: center;
     font-size: 135%;
     color: #35446A;
-    cursor: pointer;
-}
-
-header .nav-button:focus {
-    background-color: #ffffff;
 }
 
 input, select {
     border: solid 1px lightgray;
+    border-radius: 0.35em;
     background-color: rgba(250, 250, 250, 0.5);
+}
+
+input:focus, select:focus {
+    box-shadow: 0 0 1em rgba(217, 166, 22, 0.75);
+}
+
+button {
+    cursor: pointer;
+    border-radius: 0.5em;
+}
+
+button:hover {
+    background-color: #fafafa;
+}
+
+button span {
+    margin: 0 0.25em;
+}
+
+.ui-resizable-handle.ui-resizable-e {
+    right: 0;
+}
+
+.ui-resizable-handle.ui-resizable-s {
+    bottom: 0;
+}
+
+.ui-resizable-handle.ui-resizable-ne {
+    top: 0;
+    right: 0;
+}
+
+.ui-resizable-handle.ui-resizable-se {
+    right: 0;
+    bottom: 0;
 }

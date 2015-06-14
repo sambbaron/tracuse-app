@@ -17,16 +17,11 @@
 }
 
 .viewuse-menu button:hover {
-    color: yellow;
-}
-
-.viewuse-menu button span {
-    margin-left: 0.25em;
+    color: #6E8BD9;
 }
 
 .viewuse-menu button[name='menu-hide'] {
     position: absolute;
     top: 0;
     right: 0;
-    margin: 0.25em;
 }
