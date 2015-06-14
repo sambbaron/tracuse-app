@@ -15,7 +15,7 @@ root: root
 };
 })();
 })();
-(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["datum/datum_base.html"] = (function() {function root(env, context, frame, runtime, cb) {
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["datum/base.html"] = (function() {function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
 var output = "";
@@ -57,12 +57,12 @@ root: root
 };
 })();
 })();
-(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["datum/datum_medium.html"] = (function() {function root(env, context, frame, runtime, cb) {
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["datum/medium.html"] = (function() {function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
 var output = "";
 try {
-env.getTemplate("datum/datum_base.html", true, "datum/datum_medium.html", function(t_2,parentTemplate) {
+env.getTemplate("datum/datum_base.html", true, "datum/medium.html", function(t_2,parentTemplate) {
 if(t_2) { cb(t_2); return; }
 for(var t_1 in parentTemplate.blocks) {
 context.addBlock(t_1, parentTemplate.blocks[t_1]);
@@ -102,7 +102,7 @@ frame.set("loop.first", t_4 === 0);
 frame.set("loop.last", t_4 === t_5 - 1);
 frame.set("loop.length", t_5);
 output += "\r\n        ";
-env.getTemplate("element/element.html", false, "datum/datum_medium.html", function(t_10,t_8) {
+env.getTemplate("element/element.html", false, "datum/medium.html", function(t_10,t_8) {
 if(t_10) { cb(t_10); return; }
 t_8.render(context.getVariables(), frame.push(), function(t_11,t_9) {
 if(t_11) { cb(t_11); return; }
@@ -125,12 +125,12 @@ root: root
 };
 })();
 })();
-(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["datum/datum_small.html"] = (function() {function root(env, context, frame, runtime, cb) {
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["datum/small.html"] = (function() {function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
 var output = "";
 try {
-env.getTemplate("datum/datum_base.html", true, "datum/datum_small.html", function(t_2,parentTemplate) {
+env.getTemplate("datum/datum_base.html", true, "datum/small.html", function(t_2,parentTemplate) {
 if(t_2) { cb(t_2); return; }
 for(var t_1 in parentTemplate.blocks) {
 context.addBlock(t_1, parentTemplate.blocks[t_1]);
@@ -207,24 +207,7 @@ root: root
 };
 })();
 })();
-(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/menu.html"] = (function() {function root(env, context, frame, runtime, cb) {
-var lineno = null;
-var colno = null;
-var output = "";
-try {
-output += "<button name=\"viewuse-add\"><i class=\"fa fa-plus-circle\"></i><span>Add View</span></button>\r\n<button name=\"viewuse-edit\"><i class=\"fa fa-edit\"></i><span>Edit View</span></button>\r\n<button name=\"object-create\"><i class=\"fa fa-edit\"></i><span>Create Object</span></button>\r\n<button name=\"viewuse-close\"><i class=\"fa fa-close\"></i><span>Close View</span></button>";
-cb(null, output);
-;
-} catch (e) {
-  cb(runtime.handleError(e, lineno, colno));
-}
-}
-return {
-root: root
-};
-})();
-})();
-(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/viewuse_base.html"] = (function() {function root(env, context, frame, runtime, cb) {
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/base.html"] = (function() {function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
 var output = "";
@@ -243,7 +226,7 @@ root: root
 };
 })();
 })();
-(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/viewuse_filter.html"] = (function() {function root(env, context, frame, runtime, cb) {
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/filter.html"] = (function() {function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
 var output = "";
@@ -379,7 +362,24 @@ root: root
 };
 })();
 })();
-(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/viewuse_options.html"] = (function() {function root(env, context, frame, runtime, cb) {
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/menu.html"] = (function() {function root(env, context, frame, runtime, cb) {
+var lineno = null;
+var colno = null;
+var output = "";
+try {
+output += "<button name=\"viewuse-add\"><i class=\"fa fa-plus-circle\"></i><span>Add View</span></button>\r\n<button name=\"viewuse-edit\"><i class=\"fa fa-edit\"></i><span>Edit View</span></button>\r\n<button name=\"object-create\"><i class=\"fa fa-edit\"></i><span>Create Object</span></button>\r\n<button name=\"viewuse-close\"><i class=\"fa fa-close\"></i><span>Close View</span></button>";
+cb(null, output);
+;
+} catch (e) {
+  cb(runtime.handleError(e, lineno, colno));
+}
+}
+return {
+root: root
+};
+})();
+})();
+(function() {(window.nunjucksPrecompiled = window.nunjucksPrecompiled || {})["viewuse/options.html"] = (function() {function root(env, context, frame, runtime, cb) {
 var lineno = null;
 var colno = null;
 var output = "";

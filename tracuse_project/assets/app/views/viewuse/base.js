@@ -29,7 +29,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var viewuseView = this;
         var templateOutput = "";
 
-        var templateName = "viewuse/viewuse_base.html";
+        var templateName = "viewuse/base.html";
         var templateData = {
             this_viewuse: viewuseView.model.toJSON()
         };
