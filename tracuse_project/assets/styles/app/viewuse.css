@@ -1,6 +1,6 @@
 
 .viewuse {
-    display: inline-block;
+    display: none;
     position: relative;
     min-height: 8em;
     min-width: 15em;

@@ -377,6 +377,9 @@ Tracuse.views.initializeViewuse = function initializeViewuse(viewuseObject, appe
         },
         function (viewuseView) {
             appendEl.appendChild(viewuseView.render().el);
+            viewuseView.$el.fadeIn(200, function() {
+                viewuseView.el.style.display = "inline-block";
+            })
         }
     );
 };
