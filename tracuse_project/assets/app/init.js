@@ -11,21 +11,22 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
 
 };
 
-Tracuse.init.attachDynamicEvents = function attachDynamicEvents() {
+Tracuse.init.loadTemplates = function loadTemplates() {
     "use strict";
-    /* Attach all dynamic event handlers associated with app components*/
-    //Tracuse.events.Viewuse.attach();
-};
-
-Tracuse.init.loadAppTemplate = function loadAppTemplate() {
-    "use strict";
-    /* Insert client side base app template to server side template
-     Set saved elements variables
+    /* Load nunjucks template environment
+     * Insert client side base app template to server side template
+     * Set saved elements variables
      */
-    var appTemplate = Tracuse.templates.app;
-    var output = Tracuse.templates.env.render(appTemplate);
+    var templateRoot = "/assets/templates";
+    var appTemplate = "app.html";
+
+    var webLoader = new nunjucks.WebLoader(templateRoot);
+    Tracuse.templates.env = new nunjucks.Environment(webLoader);
+    console.info("Load Nunjucks Template Environment: " + templateRoot);
+
+    var renderedApp = Tracuse.templates.env.render(appTemplate);
     Tracuse.el.app = document.querySelector("#app");
-    Tracuse.el.app.innerHTML = output;
+    Tracuse.el.app.innerHTML = renderedApp;
     Tracuse.el.viewuses = document.querySelector("#viewuses");
 };
 
@@ -56,9 +57,8 @@ Tracuse.init.firstViewuse = function firstViewuse() {
 Tracuse.init.initApp = function initApp() {
     "use strict";
     Tracuse.init.fetchData();
-    Tracuse.init.loadAppTemplate();
+    Tracuse.init.loadTemplates();
     Tracuse.init.attachGlobalEvents();
-    Tracuse.init.attachDynamicEvents();
     Tracuse.init.ajaxSetup();
     Tracuse.init.firstViewuse();
 };
