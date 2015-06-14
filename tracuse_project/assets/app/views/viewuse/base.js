@@ -16,6 +16,12 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             this.showOption(ev.target, Tracuse.views.ViewuseOptions);
             ev.stopPropagation();
         },
+        "click button[name='viewuse-close']": function (ev) {
+            this.$el.fadeOut(200, function () {
+                this.remove();
+            });
+            ev.stopPropagation();
+        },
         "scroll": function (ev) {
             this.scrollPositionElements(ev.target);
             ev.stopPropagation();
@@ -157,7 +163,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var handleNE = el.querySelector(".ui-resizable-handle.ui-resizable-ne");
         var handleSE = el.querySelector(".ui-resizable-handle.ui-resizable-se");
         var controlMenu = el.querySelector(".viewuse-controls button[name='viewuse-menu']");
-        var controlClose = el.querySelector(".viewuse-controls button[name='close-viewuse']");
+        var controlClose = el.querySelector(".viewuse-controls button[name='viewuse-close']");
 
         Tracuse.utils.positionOnScroll(handleN, el, "nw");
         Tracuse.utils.positionOnScroll(handleS, el, "sw");
