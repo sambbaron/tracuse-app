@@ -56,27 +56,34 @@
     margin: 1em auto;
 }
 
-.viewuse-controls {
-    display: none;
+.viewuse-controls button {
+    border-style: solid;
+    border-color: #6E8BD9;
+    padding: 0.25em;
+    text-align: center;
+    font-size: 150%;
+    opacity: 0.75;
+
+}
+
+.viewuse-controls button[name="viewuse-options"] {
     position: absolute;
     top: 0;
     left: 0;
+    border-width: 0 1px 1px 0;
 }
 
-.viewuse-controls button {
-    width: 4em;
-    border-style: solid;
-    border-width: 0 1px 1px 0;
-    padding: 0.25em;
-    background-color: #ebf0fa;
-    text-align: center;
-    cursor: pointer;
-
+.viewuse-controls button[name="close-viewuse"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 0 1px 1px;
 }
 
 .viewuse-controls button:hover {
     background-color: #6E8BD9;
     color: #fafafa;
+    opacity: 1;
 }
 
 .viewuse-panel {

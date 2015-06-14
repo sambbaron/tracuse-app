@@ -4,14 +4,14 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
     className: "viewuse",
 
     events: {
-        "mouseenter": function (ev) {
-            this.setState(ev.target, true);
-            ev.stopPropagation();
-        },
-        "mouseleave": function (ev) {
-            this.setState(ev.target, false);
-            ev.stopPropagation();
-        },
+        //"mouseenter": function (ev) {
+        //    this.setState(ev.target, true);
+        //    ev.stopPropagation();
+        //},
+        //"mouseleave": function (ev) {
+        //    this.setState(ev.target, false);
+        //    ev.stopPropagation();
+        //},
         "click button[name='viewuse-options']": function (ev) {
             this.showOption(ev.target, Tracuse.views.ViewuseOptions);
             ev.stopPropagation();
