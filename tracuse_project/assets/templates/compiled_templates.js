@@ -367,7 +367,7 @@ var lineno = null;
 var colno = null;
 var output = "";
 try {
-output += "<button name=\"viewuse-add\"><i class=\"fa fa-plus-circle\"></i><span>Add View</span></button>\r\n<button name=\"viewuse-edit\"><i class=\"fa fa-edit\"></i><span>Edit View</span></button>\r\n<button name=\"object-create\"><i class=\"fa fa-edit\"></i><span>Create Object</span></button>\r\n<button name=\"viewuse-close\"><i class=\"fa fa-close\"></i><span>Close View</span></button>\r\n<button name=\"menu-hide\"><i class=\"fa fa-toggle-left\"></i></button>";
+output += "<button name=\"viewuse-add\"><i class=\"fa fa-plus-circle\"></i><span>Add View</span></button>\r\n<button name=\"viewuse-edit\"><i class=\"fa fa-edit\"></i><span>Edit View</span></button>\r\n<button name=\"object-create\"><i class=\"fa fa-star\"></i><span>Create Object</span></button>\r\n<button name=\"viewuse-close\"><i class=\"fa fa-close\"></i><span>Close View</span></button>\r\n<button name=\"menu-hide\"><i class=\"fa fa-toggle-left\"></i></button>";
 cb(null, output);
 ;
 } catch (e) {
