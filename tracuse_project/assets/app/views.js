@@ -185,25 +185,21 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
     className: "viewuse",
 
     events: {
-        //"mouseenter": function (ev) {
-        //    this.setState(ev.target, true);
-        //    ev.stopPropagation();
-        //},
-        //"mouseleave": function (ev) {
-        //    this.setState(ev.target, false);
-        //    ev.stopPropagation();
-        //},
-        "click button[name='viewuse-menu']": function (ev) {
+        "click *": function clickViewuse(ev) {
+            this.setActive();
+            ev.stopPropagation();
+        },
+        "click button[name='viewuse-menu']": function clickMenu(ev) {
             this.showOption(ev.target, Tracuse.views.ViewuseOptions);
             ev.stopPropagation();
         },
-        "click button[name='viewuse-close']": function (ev) {
+        "click button[name='viewuse-close']": function clickClose(ev) {
             this.$el.fadeOut(200, function () {
                 this.remove();
             });
             ev.stopPropagation();
         },
-        "scroll": function (ev) {
+        "scroll": function scroll(ev) {
             this.scrollPositionElements(ev.target);
             ev.stopPropagation();
         }
@@ -242,6 +238,8 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             cursor: "move",
             distance: 5
         });
+
+        viewuseView.setActive();
 
         return viewuseView;
     },
@@ -294,36 +292,11 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         return newId;
     },
 
-    setState: function setState(el, active) {
+    setActive: function setActive() {
         "use strict";
-        /* Set active viewuse - show buttons and set 'active' class
-         * */
-        var active = active || false;
-        var controls = el.querySelector(".viewuse-controls");
-
+        /* Set active viewuse - 'active' class */
         $(".viewuse").removeClass("active");
-        $(".viewuse-controls").hide();
-
-        if (active) {
-            el.classList.add("active");
-            $(controls).show();
-        }
-
-        // Change state if coming in/out of parent viewuse
-        var parentViewuse = el.parentNode;
-        if (parentViewuse && parentViewuse.classList.contains("viewuse")) {
-            parentViewuse.classList.toggle("active");
-            var parentControls = parentViewuse.querySelector(".viewuse-controls");
-            $(parentControls).toggle();
-        }
-
-        // Change state if coming in/out of child viewuse
-        var childViewuse = el.querySelector(".viewuse");
-        if (childViewuse) {
-            childViewuse.classList.toggle("active");
-            var childControls = childViewuse.querySelector(".viewuse-controls");
-            $(childControls).toggle();
-        }
+        this.$el.addClass("active");
     },
 
     showOption: function showOption(el, optionView) {
@@ -377,7 +350,7 @@ Tracuse.views.initializeViewuse = function initializeViewuse(viewuseObject, appe
         },
         function (viewuseView) {
             appendEl.appendChild(viewuseView.render().el);
-            viewuseView.$el.fadeIn(200, function() {
+            viewuseView.$el.fadeIn(200, function () {
                 viewuseView.el.style.display = "inline-block";
             })
         }
