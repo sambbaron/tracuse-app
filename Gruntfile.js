@@ -9,7 +9,6 @@ module.exports = function (grunt) {
                     "<%= pkg.dir.app %>controller/utils.js", "<%= pkg.dir.app %>controller/*",
                     "<%= pkg.dir.app %>models/utils.js", "<%= pkg.dir.app %>models/*",
                     "<%= pkg.dir.app %>views/utils.js", "<%= pkg.dir.app %>views/**/*",
-                    "<%= pkg.dir.templates %>compiled_templates.js",
                     "<%= pkg.dir.app %>init.js"
                 ],
                 dest: "<%= pkg.dir.dist %>app.js"
@@ -40,7 +39,7 @@ module.exports = function (grunt) {
             precompile: {
                 baseDir: "<%= pkg.dir.templates %>",
                 src: ["<%= pkg.dir.templates %>**/*.html"],
-                dest: "<%= pkg.dir.templates %>compiled_templates.js"
+                dest: "<%= pkg.dir.dist %>templates.js"
             }
         },
 
@@ -50,10 +49,7 @@ module.exports = function (grunt) {
                 tasks: ["nunjucks"]
             },
             concat_app: {
-                files: [
-                    "<%= pkg.dir.app %>**/**/**",
-                    "<%= pkg.dir.templates %>*.js"
-                ],
+                files: ["<%= pkg.dir.app %>**/**/**"],
                 tasks: ["concat:app"]
             },
             concat_styles_base: {
