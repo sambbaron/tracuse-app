@@ -9,7 +9,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             ev.stopPropagation();
         },
         "click button[name='viewuse-menu']": function clickMenu(ev) {
-
+            this.menuView.showHide();
             ev.stopPropagation();
         },
         "click button[name='viewuse-close']": function clickClose(ev) {
@@ -173,7 +173,7 @@ Tracuse.views.initializeViewuse = function initializeViewuse(viewuseObject, appe
                 viewuseView.el.style.display = "inline-block";
             });
             // Append ViewuseMenu view
-            new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
+            viewuseView.menuView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
         }
     );
 };
