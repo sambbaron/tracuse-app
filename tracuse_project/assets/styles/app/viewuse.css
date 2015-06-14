@@ -26,20 +26,20 @@
     min-width: 15em;
 }
 
-.ui-resizable-handle.ui-resizable-e {
+.viewuse .ui-resizable-handle.ui-resizable-e {
     right: 0;
 }
 
-.ui-resizable-handle.ui-resizable-s {
+.viewuse .ui-resizable-handle.ui-resizable-s {
     bottom: 0;
 }
 
-.ui-resizable-handle.ui-resizable-ne {
+.viewuse .ui-resizable-handle.ui-resizable-ne {
     top: 0;
     right: 0;
 }
 
-.ui-resizable-handle.ui-resizable-se {
+.viewuse .ui-resizable-handle.ui-resizable-se {
     right: 0;
     bottom: 0;
 }
