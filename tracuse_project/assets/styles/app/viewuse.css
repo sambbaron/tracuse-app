@@ -42,7 +42,7 @@
     background-color: #f5f5f5;
 }
 
-.viewuse > input[name="title"] {
+.viewuse input[name="title"] {
     display: block;
     margin: 0 auto;
     border: none;
