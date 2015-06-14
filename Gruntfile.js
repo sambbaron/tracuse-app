@@ -30,8 +30,7 @@ module.exports = function (grunt) {
             styles_app: {
                 src: [
                     "<%= pkg.dir.styles %>app/base_app.css",
-                    "<%= pkg.dir.styles %>app/viewuse.css",
-                    "<%= pkg.dir.styles %>app/datum.css"
+                    "<%= pkg.dir.styles %>app/*/*"
                 ],
                 dest: "<%= pkg.dir.dist %>styles_app.css"
             }
