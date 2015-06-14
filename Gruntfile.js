@@ -3,24 +3,37 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
         concat: {
-            options: {
-                banner: "loadTracuse();\n"
+            app: {
+                src: [
+                    "<%= pkg.dir.app %>main.js",
+                    "<%= pkg.dir.app %>controller/utils.js", "<%= pkg.dir.app %>controller/*",
+                    "<%= pkg.dir.app %>models/utils.js", "<%= pkg.dir.app %>models/*",
+                    "<%= pkg.dir.app %>views/utils.js", "<%= pkg.dir.app %>views/**/*",
+                    "<%= pkg.dir.templates %>compiled_templates.js", "<%= pkg.dir.templates %>template_init.js",
+                    "<%= pkg.dir.app %>init.js"
+                ],
+                dest: "<%= pkg.dir.dist %>app.js"
             },
-            models: {
-                src: ["<%= pkg.dir.app %>models/utils.js", "<%= pkg.dir.app %>/models/*"],
-                dest: "<%= pkg.dir.app %>models.js"
+            styles_base: {
+                src: [
+                    "<%= pkg.dir.styles %>reset.css",
+                    "<%= pkg.dir.styles %>base.css"
+                ],
+                dest: "<%= pkg.dir.dist %>styles_base.css"
             },
-            views: {
-                src: ["<%= pkg.dir.app %>views/utils.js", "<%= pkg.dir.app %>/views/**/*"],
-                dest: "<%= pkg.dir.app %>views.js"
+            styles_website: {
+                src: [
+                    "<%= pkg.dir.styles %>website/**"
+                ],
+                dest: "<%= pkg.dir.dist %>styles_website.css"
             },
-            controller: {
-                src: ["<%= pkg.dir.app %>controller/utils.js", "<%= pkg.dir.app %>/controller/*"],
-                dest: "<%= pkg.dir.app %>controller.js"
-            },
-            templates: {
-                src: ["<%= pkg.dir.templates %>compiled_templates.js", "<%= pkg.dir.templates %>template_init.js"],
-                dest: "<%= pkg.dir.app %>templates.js"
+            styles_app: {
+                src: [
+                    "<%= pkg.dir.styles %>app/base_app.css",
+                    "<%= pkg.dir.styles %>app/viewuse.css",
+                    "<%= pkg.dir.styles %>app/datum.css"
+                ],
+                dest: "<%= pkg.dir.dist %>styles_app.css"
             }
         },
 
@@ -37,21 +50,24 @@ module.exports = function (grunt) {
                 files: ["<%= pkg.dir.templates %>**/*.html"],
                 tasks: ["nunjucks"]
             },
-            concat_models: {
-                files: ["<%= pkg.dir.app %>/models/*"],
-                tasks: ["concat:models"]
+            concat_app: {
+                files: [
+                    "<%= pkg.dir.app %>**/**/**",
+                    "<%= pkg.dir.templates %>*.js"
+                ],
+                tasks: ["concat:app"]
             },
-            concat_views: {
-                files: ["<%= pkg.dir.app %>/views/**/*"],
-                tasks: ["concat:views"]
+            concat_styles_base: {
+                files: ["<%= pkg.dir.styles %>*"],
+                tasks: ["concat:styles_base"]
             },
-            concat_controller: {
-                files: ["<%= pkg.dir.app %>/controller/*"],
-                tasks: ["concat:controller"]
+            concat_styles_website: {
+                files: ["<%= pkg.dir.styles %>website/*"],
+                tasks: ["concat:styles_website"]
             },
-            concat_templates: {
-                files: ["<%= pkg.dir.templates %>*.js"],
-                tasks: ["concat:templates"]
+            concat_styles_app: {
+                files: ["<%= pkg.dir.styles %>app/**/**"],
+                tasks: ["concat:styles_app"]
             }
         }
     });

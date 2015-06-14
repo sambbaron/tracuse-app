@@ -2,9 +2,7 @@
 {% load staticfiles %}
 
 {% block css_block %}
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/app/base_app.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/app/viewuse.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/app/datum.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/styles_app.css' %}">
 {% endblock %}
 
 {% block logo_source %}
@@ -26,12 +24,7 @@
     <script src="{% static 'libraries/backbone/backbone-relational.js' %}"></script>
     <script src="{% static 'libraries/nunjucks/nunjucks-slim.min.js' %}"></script>
 
-    <script src="{% static 'app/main.js' %}"></script>
-    <script src="{% static 'app/controller.js' %}"></script>
-    <script src="{% static 'app/models.js' %}"></script>
+    <script src="{% static 'dist/app.js' %}"></script>
     <script>Tracuse.models.bootstrapData({{ bootstrap_data|safe }})</script>
-    <script src="{% static 'app/views.js' %}"></script>
-    <script src="{% static 'app/templates.js' %}"></script>
-    <script src="{% static 'app/init.js' %}"></script>
 
 {% endblock %}

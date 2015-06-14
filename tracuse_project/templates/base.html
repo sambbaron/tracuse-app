@@ -9,9 +9,10 @@
 
     <link rel="icon" href="{% static 'images/Tracuse-Icon-32x32.png' %}">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/reset.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/base.css' %}">
-    {% block css_block %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'dist/styles_base.css' %}">
+    {% block css_block %}
+        <link rel="stylesheet" type="text/css" href="{% static 'dist/styles_website.css' %}">
+    {% endblock %}
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'libraries/jquery/jquery-ui.min.css' %}">
 
@@ -26,12 +27,18 @@
     <button name="menu"><i id="menu-icon" class="fa fa-bars"></i><span> MENU</span></button>
     <a href="/"><img src="{% block logo_source %}{% endblock %}" alt="Tracuse Logo"></a>
     <nav>
-        <a href="{% url 'tester_home' %}"><div class="nav-button">Tester Page</div></a>
+        <a href="{% url 'tester_home' %}">
+            <div class="nav-button">Tester Page</div>
+        </a>
         {% block nav_block %}{% endblock %}
         {% if user.is_authenticated %}
-            <a href="{% url 'user_logout' %}"><div class="nav-button">Logout</div></a>
+            <a href="{% url 'user_logout' %}">
+                <div class="nav-button">Logout</div>
+            </a>
         {% else %}
-            <a href="{% url 'user_login' %}"><div class="nav-button">Login</div></a>
+            <a href="{% url 'user_login' %}">
+                <div class="nav-button">Login</div>
+            </a>
         {% endif %}
     </nav>
 </header>

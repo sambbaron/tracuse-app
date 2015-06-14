@@ -1,5 +1,3 @@
-loadTracuse();
-
 Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
     "use strict";
     /* Attach all global event handlers*/
