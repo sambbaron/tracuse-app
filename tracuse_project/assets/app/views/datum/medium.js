@@ -34,7 +34,7 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
         datumView.collection.each(function (model) {
             datumView.elementSubViews.push(new ElementView({
                 model: model,
-                templateName: "element/no_label.html"
+                templateName: "element/base.html"
             }));
         });
 
