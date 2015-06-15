@@ -1,9 +1,11 @@
 
 .datum {
     position: relative;
+    width: 10em;
     border: 1px solid #6E8BD9;
     background-color: #DBE0ED;
     box-shadow: 1px 1px 0 darkgray;
+    font-size: 125%;
 }
 
 .datum i {
@@ -33,4 +35,12 @@
 /*Item*/
 .datum[datum_group_id="4"] {
     border-radius: 25% 25% 0 0 / 40% 40% 0 0;
+}
+
+.datum .element-input {
+    height: 3em;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    text-align: center;
 }
