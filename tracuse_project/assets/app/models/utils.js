@@ -1,5 +1,4 @@
-
-Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute) {
+Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, modelOptions) {
     "use strict";
     /* Create basic Backbone api-driven model with "all" collection*/
 
@@ -13,6 +12,9 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute) {
         url: function () {
             return url + this.get(this.idAttribute) + "/";
         }
+    });
+    _.each(modelOptions, function (optionValue, optionKey) {
+        model.prototype[optionKey] = optionValue;
     });
 
     model.collBase = Backbone.Collection.extend({
