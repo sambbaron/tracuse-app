@@ -16,7 +16,7 @@ Tracuse.views.ElementBase = Backbone.View.extend({
         var elementView = this;
         var templateOutput = "";
 
-        var templateName = "element/element_base.html";
+        var templateName = "element/base.html";
         var templateData = {
             id: elementView.cid,
             this_element: elementView.model.toJSON()
