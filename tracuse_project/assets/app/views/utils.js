@@ -1,6 +1,7 @@
 Tracuse.utils.positionOnScroll = function positionOnScroll(positionElement, scrollElement, location, offsetX, offsetY) {
     "use strict";
     /* Set position of element when scroll changes
+     * Use Jquery because positionElement is Jquery element
      *
      * positionElement (element): what to move
      * scrollElement (element): parent that is scrolled
@@ -21,23 +22,23 @@ Tracuse.utils.positionOnScroll = function positionOnScroll(positionElement, scro
 
     switch (location) {
         case "nw":
-            positionElement.style.top = scrollTop.toString() + "px";
-            positionElement.style.left = scrollLeft.toString() + "px";
+            positionElement.css({top: scrollTop.toString() + "px"});
+            positionElement.css({left: scrollLeft.toString() + "px"});
             break;
 
         case "sw":
-            positionElement.style.bottom = scrollBottom.toString() + "px";
-            positionElement.style.left = scrollLeft.toString() + "px";
+            positionElement.css({bottom: scrollBottom.toString() + "px"});
+            positionElement.css({left: scrollLeft.toString() + "px"});
             break;
 
         case "ne":
-            positionElement.style.top = scrollTop.toString() + "px";
-            positionElement.style.right = scrollRight.toString() + "px";
+            positionElement.css({top: scrollTop.toString() + "px"});
+            positionElement.css({right: scrollRight.toString() + "px"});
             break;
 
         case "se":
-            positionElement.style.bottom = scrollBottom.toString() + "px";
-            positionElement.style.right = scrollRight.toString() + "px";
+            positionElement.css({bottom: scrollBottom.toString() + "px"});
+            positionElement.css({right: scrollRight.toString() + "px"});
             break;
     }
 

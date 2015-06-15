@@ -165,25 +165,28 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
     scrollPositionElements: function scrollPositionElements(el) {
         "use strict";
-        /* Move elements with scroll */
+        /* Move elements with scroll
+        * Use Jquery to find direct descendants
+        * */
+        var viewuseView = this;
 
-        var handleN = el.querySelector(".ui-resizable-handle.ui-resizable-n");
-        var handleS = el.querySelector(".ui-resizable-handle.ui-resizable-s");
-        var handleE = el.querySelector(".ui-resizable-handle.ui-resizable-e");
-        var handleW = el.querySelector(".ui-resizable-handle.ui-resizable-w");
-        var handleNE = el.querySelector(".ui-resizable-handle.ui-resizable-ne");
-        var handleSE = el.querySelector(".ui-resizable-handle.ui-resizable-se");
-        var controlMenu = el.querySelector(".viewuse-controls button[name='viewuse-menu']");
-        var controlClose = el.querySelector(".viewuse-controls button[name='viewuse-close']");
+        var handleN = viewuseView.$(" > .ui-resizable-handle.ui-resizable-n");
+        var handleS = viewuseView.$(" > .ui-resizable-handle.ui-resizable-s");
+        var handleE = viewuseView.$(" > .ui-resizable-handle.ui-resizable-e");
+        var handleW = viewuseView.$(" > .ui-resizable-handle.ui-resizable-w");
+        var handleNE = viewuseView.$(" > .ui-resizable-handle.ui-resizable-ne");
+        var handleSE = viewuseView.$(" > .ui-resizable-handle.ui-resizable-se");
+        var controlMenu = viewuseView.$(" > .viewuse-controls button[name='viewuse-menu']");
+        var controlClose = viewuseView.$(" > .viewuse-controls button[name='viewuse-close']");
 
-        Tracuse.utils.positionOnScroll(handleN, el, "nw");
-        Tracuse.utils.positionOnScroll(handleS, el, "sw");
-        Tracuse.utils.positionOnScroll(handleE, el, "ne");
-        Tracuse.utils.positionOnScroll(handleW, el, "nw");
-        Tracuse.utils.positionOnScroll(handleNE, el, "ne");
-        Tracuse.utils.positionOnScroll(handleSE, el, "se");
-        Tracuse.utils.positionOnScroll(controlMenu, el, "nw");
-        Tracuse.utils.positionOnScroll(controlClose, el, "ne");
+        Tracuse.utils.positionOnScroll(handleN, viewuseView.el, "nw");
+        Tracuse.utils.positionOnScroll(handleS, viewuseView.el, "sw");
+        Tracuse.utils.positionOnScroll(handleE, viewuseView.el, "ne");
+        Tracuse.utils.positionOnScroll(handleW, viewuseView.el, "nw");
+        Tracuse.utils.positionOnScroll(handleNE, viewuseView.el, "ne");
+        Tracuse.utils.positionOnScroll(handleSE, viewuseView.el, "se");
+        Tracuse.utils.positionOnScroll(controlMenu, viewuseView.el, "nw");
+        Tracuse.utils.positionOnScroll(controlClose, viewuseView.el, "ne");
     }
 
 });
