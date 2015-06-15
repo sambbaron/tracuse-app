@@ -9,7 +9,7 @@ Tracuse.views.DatumsTile = Tracuse.views.DatumsBase.extend({
 
         // Render datums
         var fragment = document.createDocumentFragment();
-        _.each(datumsView.datumViews, function (datumView) {
+        _.each(datumsView.datumSubViews, function (datumView) {
             fragment.appendChild(datumView.render().el);
         });
         datumsView.el.appendChild(fragment);
@@ -24,13 +24,13 @@ Tracuse.views.DatumsTile = Tracuse.views.DatumsBase.extend({
         datumsView.viewuseView = options.viewuseView;
 
         // Get datum view
-        datumsView.datumViews = [];
+        datumsView.datumSubViews = [];
         var datumViewName = datumsView.viewuseView.model.get("viewuse_datum_id").get("entity_name");
         var DatumView = Tracuse.views[datumViewName];
 
         if (datumsView.collection) {
             datumsView.collection.each(function (model) {
-                datumsView.datumViews.push(new DatumView({
+                datumsView.datumSubViews.push(new DatumView({
                     model: model,
                     elementViewName: "ElementBase"
                 }));
