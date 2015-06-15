@@ -1,8 +1,18 @@
 
 .datum {
+    position: relative;
     border: 1px solid #6E8BD9;
-    background-color: #aac8ff;
+    background-color: #DBE0ED;
     box-shadow: 1px 1px 0 darkgray;
+}
+
+.datum i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    opacity: 0.15;
+    font-size: 400%;
 }
 
 /*Area*/
