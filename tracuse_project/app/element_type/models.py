@@ -78,10 +78,7 @@ class ElementType(EntityModel):
             that renders to string representation
             use "value" as placeholder for element_value
         editable (boolean): Whether value can be edited by user
-        datum_types (DatumType set):
-            related datum types from ElementDatumType
-        datum_objects (DatumObject set):
-            related datum objects from ElementDatumObject
+        html_element (string): html input element type
         data_type_name (string): ElementDataType.entity_name
         element_value_model (ElementValueMeta class):
             uses data_type_name
