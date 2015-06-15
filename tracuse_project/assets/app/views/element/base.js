@@ -36,8 +36,9 @@ Tracuse.views.ElementBase = Backbone.View.extend({
         return elementView;
     },
 
-    initialize: function initialize() {
+    initialize: function initialize(options) {
         "use strict";
+        if(options.templateName) this.templateName = options.templateName;
         this.listenTo(this.model, "change", this.render);
     }
 

@@ -10,6 +10,7 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
         datumView.el.classList.add("datum-medium");
 
         // Render elements
+        // Only add elements with ElementDatumType.primary_view set true
         var fragment = document.createDocumentFragment();
         _.each(datumView.elementSubViews, function (elementView) {
             if (elementView.model.get("element_datum_type_id").get("primary_view")) {
@@ -25,8 +26,18 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
         "use strict";
         var datumView = this;
 
-        datumView.elementViewName = "ElementBase";
-        Tracuse.views.DatumBase.prototype.initialize.apply(datumView, arguments);
+        // Set element collection and views
+        datumView.elementSubViews = [];
+        var ElementView = Tracuse.views.ElementBase;
+
+        datumView.collection = datumView.model.get("elements");
+        datumView.collection.each(function (model) {
+            datumView.elementSubViews.push(new ElementView({
+                model: model,
+                templateName: "element/no_label.html"
+            }));
+        });
+
     }
 
 });
