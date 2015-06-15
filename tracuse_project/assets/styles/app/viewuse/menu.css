@@ -4,14 +4,16 @@
     top: 0;
     left: 0;
     height: 100%;
-    padding-top: 1em;
+    padding-top: 3em;
     background-color: #6E8BD9;
 }
 
 .viewuse-menu button {
     display: block;
+    width: 9em;
     margin: 0.25em;
     padding: 0.25em;
+    text-align: left;
     font-size: 150%;
     color: #fafafa;
 }
@@ -24,4 +26,5 @@
     position: absolute;
     top: 0;
     right: 0;
+    width: auto;
 }
