@@ -22,13 +22,13 @@ Tracuse.views.DatumBase = Backbone.View.extend({
         var datumView = this;
 
         // Set element collection and views
-        datumView.elementViews = [];
+        datumView.elementSubViews = [];
         var elementViewName = options.elementViewName;
         var ElementView = Tracuse.views[elementViewName];
 
         datumView.collection = datumView.model.get("elements");
         datumView.collection.each(function (model) {
-            datumView.elementViews.push(new ElementView({
+            datumView.elementSubViews.push(new ElementView({
                 model: model
             }));
         });
