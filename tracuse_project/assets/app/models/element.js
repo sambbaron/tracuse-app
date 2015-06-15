@@ -18,3 +18,17 @@ Tracuse.models.ElementDatumType =
 
 Tracuse.models.ElementDatumObject =
     Tracuse.models.ModelFactory("element_datum_object", "element_datum_object_id");
+Tracuse.models.ElementDatumObject.prototype.relations = [
+    {
+        type: Backbone.HasOne,
+        key: "element_datum_type_id",
+        relatedModel: "Tracuse.models.ElementDatumType",
+        collectionType: "Tracuse.models.ElementDatumType.collBase"
+    },
+    {
+        type: Backbone.HasOne,
+        key: "element_type_id",
+        relatedModel: "Tracuse.models.ElementType",
+        collectionType: "Tracuse.models.ElementType.collBase"
+    }
+];
