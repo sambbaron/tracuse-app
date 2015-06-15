@@ -31,8 +31,7 @@ Tracuse.views.DatumsTile = Tracuse.views.DatumsBase.extend({
         if (datumsView.collection) {
             datumsView.collection.each(function (model) {
                 datumsView.datumSubViews.push(new DatumView({
-                    model: model,
-                    elementViewName: "ElementBase"
+                    model: model
                 }));
             });
         }
