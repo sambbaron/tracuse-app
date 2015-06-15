@@ -1,13 +1,8 @@
 
 .datum {
-    position: relative;
-    display: inline-block;
-    margin: 0.5em;
-    border: none;
-    border-radius: 2.5%;
-    padding: 0.5em;
-    box-shadow: 1px 1px 0.5px #a9a9a9;
-    background-color: #d0d7e8;
+    border: 1px solid #6E8BD9;
+    background-color: #aac8ff;
+    box-shadow: 1px 1px 0 darkgray;
 }
 
 /*Area*/

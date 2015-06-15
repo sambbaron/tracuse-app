@@ -1,0 +1,6 @@
+.element input, .element select, .element textarea {
+    height: 3em;
+    border: none;
+    background-color: transparent;
+    text-align: center;
+}
