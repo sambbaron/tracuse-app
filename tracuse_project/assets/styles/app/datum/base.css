@@ -29,27 +29,3 @@
 .datum[datum_group_id="4"] {
     border-radius: 25% 25% 0 0 / 40% 40% 0 0;
 }
-
-.datum[template="datum_small"] {
-    height: 2.5em;
-    width: 4em;
-}
-
-.datum[template="datum_small"] p {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    width: 100%;
-    padding: 0.25em;
-    text-align: center;
-}
-
-.datum[template="datum_small"] p.datum_type_name {
-    font-size: 125%;
-    font-weight: bold;
-    color: rgba(250, 250, 250, 0.50);
-}
-
-.datum[template="datum_small"] p.headline {
-}
