@@ -7,7 +7,7 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
         Tracuse.views.DatumBase.prototype.render.apply(datumView, arguments);
 
         // Add class for arrangement view name
-        datumView.el.classList.add("datum_medium");
+        datumView.el.classList.add("datum-medium");
 
         // Render elements
         var fragment = document.createDocumentFragment();

@@ -5,7 +5,7 @@ Tracuse.views.DatumsTile = Tracuse.views.DatumsBase.extend({
         var datumsView = this;
 
         // Add class for arrangement view name
-        datumsView.el.classList.add("datums_tile");
+        datumsView.el.classList.add("datums-tile");
 
         // Render datums
         var fragment = document.createDocumentFragment();
