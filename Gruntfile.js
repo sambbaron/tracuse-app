@@ -22,14 +22,14 @@ module.exports = function (grunt) {
             },
             styles_website: {
                 src: [
-                    "<%= pkg.dir.styles %>website/**"
+                    "<%= pkg.dir.styles %>website/*"
                 ],
                 dest: "<%= pkg.dir.dist %>styles_website.css"
             },
             styles_app: {
                 src: [
                     "<%= pkg.dir.styles %>app/base_app.css",
-                    "<%= pkg.dir.styles %>app/**/**"
+                    "<%= pkg.dir.styles %>app/**/*"
                 ],
                 dest: "<%= pkg.dir.dist %>styles_app.css"
             }
@@ -49,7 +49,7 @@ module.exports = function (grunt) {
                 tasks: ["nunjucks"]
             },
             concat_app: {
-                files: ["<%= pkg.dir.app %>**/**/**"],
+                files: ["<%= pkg.dir.app %>**/**/*"],
                 tasks: ["concat:app"]
             },
             concat_styles_base: {
@@ -61,7 +61,7 @@ module.exports = function (grunt) {
                 tasks: ["concat:styles_website"]
             },
             concat_styles_app: {
-                files: ["<%= pkg.dir.styles %>app/**/**"],
+                files: ["<%= pkg.dir.styles %>app/**/*"],
                 tasks: ["concat:styles_app"]
             }
         }
