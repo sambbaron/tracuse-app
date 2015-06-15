@@ -48,10 +48,8 @@ Tracuse.init.firstViewuse = function firstViewuse() {
      ***Currently use first viewuse object
      ***Change to user saved prior session
      */
-
     var viewuseObject = Tracuse.models.ViewuseObject.all.first();
-    Tracuse.views.initializeViewuse(viewuseObject);
-
+    new Tracuse.views.ViewuseBase({model: viewuseObject});
 };
 
 Tracuse.init.initApp = function initApp() {

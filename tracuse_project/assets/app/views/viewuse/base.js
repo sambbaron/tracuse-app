@@ -65,28 +65,44 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         return viewuseView;
     },
 
-    initialize: function initialize(options, callback) {
+    initialize: function initialize(options) {
         "use strict";
         var viewuseView = this;
 
-        // Get datum view
-        viewuseView.datumViews = [];
-        var datumViewName = viewuseView.model.get("viewuse_datum_id").get("entity_name");
-        var DatumView = Tracuse.views[datumViewName];
+        if (!options.id) {
+            viewuseView.id = viewuseView.nextId();
+            viewuseView.el.id = viewuseView.id;
+        }
 
-        // Set datum collection from filter
+        if (!options.appendEl) {
+            options.appendEl = Tracuse.el.viewuses;
+        }
+
+        var viewuseEl = viewuseView.render().el;
+
+        var datumsViewName = viewuseView.model.get("viewuse_arrangement_id").get("entity_name");
+        var DatumsView = Tracuse.views[datumsViewName];
+
+        // Get datums
         var filter = viewuseView.model.get("filter_json");
         Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
-            if (datumObjects) {
-                viewuseView.collection = datumObjects;
-                viewuseView.collection.each(function (model) {
-                    viewuseView.datumViews.push(new DatumView({
-                        model: model,
-                        elementViewName: "ElementBase"
-                    }));
-                });
-            }
-            callback(viewuseView);
+
+            var datumsView = new DatumsView({
+                collection: datumObjects,
+                viewuseView: viewuseView
+            });
+
+            var datumsEl = datumsView.render().el;
+            var datumsContainer = viewuseView.el.querySelector(".viewuse-content");
+            datumsContainer.appendChild(datumsEl);
+
+            options.appendEl.appendChild(viewuseEl);
+            viewuseView.$el.fadeIn(200, function () {
+                viewuseView.el.style.display = "inline-block";
+            });
+            // Append ViewuseMenu view
+            viewuseView.menuView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
+
         });
 
     },
@@ -126,8 +142,11 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var viewuseView = this;
 
         var viewuseObject = new Tracuse.models.ViewuseObject();
-        var appendEl = viewuseView.el;
-        Tracuse.views.initializeViewuse(viewuseObject, appendEl);
+        var appendEl = viewuseView.el.querySelector(".viewuse-content .datums");
+        new Tracuse.views.ViewuseBase({
+            model: viewuseObject,
+            appendEl: appendEl
+        });
 
         viewuseView.menuView.showHide();
     },
@@ -165,31 +184,3 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
     }
 
 });
-
-Tracuse.views.initializeViewuse = function initializeViewuse(viewuseObject, appendEl) {
-    "use strict";
-    /* Initialize Viewuse View
-     * Test for append element
-     * Call Arrangement sub-view
-     * Wait for callback related to fetching filtered datums
-     * */
-
-    if (!appendEl) appendEl = Tracuse.el.viewuses;
-
-    var arrangementViewName = viewuseObject.get("viewuse_arrangement_id").get("entity_name");
-    var viewClass = Tracuse.views[arrangementViewName];
-    new viewClass(
-        {
-            model: viewuseObject,
-            id: Tracuse.views.ViewuseBase.prototype.nextId()
-        },
-        function (viewuseView) {
-            appendEl.appendChild(viewuseView.render().el);
-            viewuseView.$el.fadeIn(200, function () {
-                viewuseView.el.style.display = "inline-block";
-            });
-            // Append ViewuseMenu view
-            viewuseView.menuView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
-        }
-    );
-};
