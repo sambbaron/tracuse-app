@@ -16,7 +16,7 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video,
-fieldset, input, select, button {
+fieldset, input, select, textarea, button {
     margin: 0;
     padding: 0;
     border: 0;
@@ -61,4 +61,8 @@ table {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+textarea {
+    resize: none;
 }

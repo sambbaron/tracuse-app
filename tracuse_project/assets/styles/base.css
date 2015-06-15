@@ -7,9 +7,10 @@ body {
 }
 
 div, section, article, p,
-input, select, button {
+input, select, textarea, button {
     margin: 0.25em;
     padding: 0.25em;
+    line-height: 1.25em;
 }
 
 header, footer {
@@ -64,13 +65,13 @@ header .nav-button {
     color: #35446A;
 }
 
-input, select {
+input, select, textarea {
     border: solid 1px lightgray;
     border-radius: 0.35em;
     background-color: rgba(250, 250, 250, 0.5);
 }
 
-input:focus, select:focus {
+input:focus, select:focus, textarea:focus {
     box-shadow: 0 0 1em rgba(217, 166, 22, 0.75);
 }
 
