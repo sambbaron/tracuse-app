@@ -2,6 +2,7 @@ Tracuse.views.ViewuseMenu = Backbone.View.extend({
 
     tagName: "nav",
     className: "menu viewuse-menu",
+    templateName: "viewuse/menu.html",
 
     events: {
         "click button[name='menu-hide']": function (ev) {
@@ -15,9 +16,11 @@ Tracuse.views.ViewuseMenu = Backbone.View.extend({
         var menuView = this;
         var templateOutput = "";
 
-        var templateName = "viewuse/menu.html";
         var templateData = {};
-        templateOutput = Tracuse.templates.env.render(templateName, templateData);
+        templateOutput = Tracuse.templates.env.render(
+            menuView.templateName,
+            templateData
+        );
 
         return templateOutput;
     },

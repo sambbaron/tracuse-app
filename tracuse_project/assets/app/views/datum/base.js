@@ -2,6 +2,7 @@ Tracuse.views.DatumBase = Backbone.View.extend({
 
     tagName: "article",
     className: "datum",
+    templateName: "",
 
     template: function () {
         "use strict";

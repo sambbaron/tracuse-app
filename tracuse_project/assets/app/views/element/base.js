@@ -2,6 +2,7 @@ Tracuse.views.ElementBase = Backbone.View.extend({
 
     tagName: "p",
     className: "element",
+    templateName: "element/base.html",
 
     events: {
         "change .element-input": function (ev) {
@@ -16,12 +17,14 @@ Tracuse.views.ElementBase = Backbone.View.extend({
         var elementView = this;
         var templateOutput = "";
 
-        var templateName = "element/base.html";
         var templateData = {
             id: elementView.cid,
             this_element: elementView.model.toJSON()
         };
-        templateOutput = Tracuse.templates.env.render(templateName, templateData);
+        templateOutput = Tracuse.templates.env.render(
+            elementView.templateName,
+            templateData
+        );
 
         return templateOutput;
     },

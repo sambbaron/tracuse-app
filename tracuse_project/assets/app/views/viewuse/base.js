@@ -2,6 +2,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
     tagName: "section",
     className: "viewuse",
+    templateName: "viewuse/base.html",
 
     events: {
         "click *": function clickViewuse(ev) {
@@ -31,11 +32,13 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var viewuseView = this;
         var templateOutput = "";
 
-        var templateName = "viewuse/base.html";
         var templateData = {
             this_viewuse: viewuseView.model.toJSON()
         };
-        templateOutput = Tracuse.templates.env.render(templateName, templateData);
+        templateOutput = Tracuse.templates.env.render(
+            viewuseView.templateName,
+            templateData
+        );
 
         return templateOutput;
     },
