@@ -8,7 +8,7 @@ from app.element_value.admin import ElementValuesInline
 class ElementDatumTypeInline(EntityModelInline):
     model = ElementDatumType
 
-    fields = EntityModelInline.fields + ("datum_type", "element_type")
+    fields = EntityModelInline.fields + ("datum_type", "element_type", "calc_expression", "primary_view",)
 
 
 class ElementDatumObjectInline(BaseModelInline):
@@ -20,11 +20,11 @@ class ElementDatumObjectInline(BaseModelInline):
 
 @admin.register(ElementDatumType)
 class ElementDatumTypeAdmin(EntityModelAdmin):
-    list_display = EntityModelAdmin.list_display + ("datum_type", "element_type", "calc_expression",)
-    list_editable = EntityModelAdmin.list_editable + ("datum_type", "element_type", "calc_expression",)
+    list_display = EntityModelAdmin.list_display + ("datum_type", "element_type", "calc_expression", "primary_view",)
+    list_editable = EntityModelAdmin.list_editable + ("datum_type", "element_type", "calc_expression", "primary_view",)
     list_filter = ("datum_type", "element_type", "calc_expression",)
 
-    fields = EntityModelAdmin.fields + ("datum_type", "element_type")
+    fields = EntityModelAdmin.fields + ("datum_type", "element_type", "calc_expression", "primary_view",)
 
 
 @admin.register(ElementDatumObject)

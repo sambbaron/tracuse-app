@@ -60,6 +60,7 @@ class ElementOperator(EntityModel):
                                            null=False, blank=False
                                            )
     sort_base_length = 2
+
     @property
     def sort_parts(self):
         return [self.element_data_type.sort]
@@ -168,6 +169,10 @@ class ElementDatumType(EntityModel):
         calc_expression (string):
             Expression in django template language
             Used for defaults and updates
+        primary_view (boolean):
+            Whether element_datum_type is included in viewuse
+            Temporary solution until more direct assignment of
+              elements to viewuses
     """
 
     class Meta(BaseModel.Meta):
@@ -191,6 +196,9 @@ class ElementDatumType(EntityModel):
     calc_expression = models.CharField(max_length=255,
                                        default="",
                                        null=False, blank=True
+                                       )
+    primary_view = models.BooleanField(default=False,
+                                       null=False, blank=False
                                        )
 
     sort_base_length = -1
