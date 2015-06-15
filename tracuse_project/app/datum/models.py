@@ -46,6 +46,8 @@ class DatumType(EntityModel):
             --> {{name}} and {{description}}
         element_types (ElementType set):
             related element types from ElementDatumType
+        icon_class (string, nullable):
+            html element class for icon
     """
 
     class Meta(EntityModel.Meta):
@@ -67,6 +69,10 @@ class DatumType(EntityModel):
                                            through="element_type.ElementDatumType",
                                            related_name="+"
                                            )
+    icon_class = models.CharField(max_length=25,
+                                  null=True, blank=True
+                                  )
+
     sort_base_length = 3
 
     @property
