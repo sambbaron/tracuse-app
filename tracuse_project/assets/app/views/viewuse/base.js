@@ -128,6 +128,8 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var viewuseObject = new Tracuse.models.ViewuseObject();
         var appendEl = viewuseView.el;
         Tracuse.views.initializeViewuse(viewuseObject, appendEl);
+
+        viewuseView.menuView.showHide();
     },
 
     closeViewuse: function closeViewuse() {
