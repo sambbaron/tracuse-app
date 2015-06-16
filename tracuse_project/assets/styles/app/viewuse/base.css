@@ -27,10 +27,9 @@
 }
 
 .viewuse input[name="title"] {
+    position: relative;
     display: block;
     margin: 0 auto;
-    border: none;
-    background: none;
     text-align: center;
     font-size: 150%;
 }
