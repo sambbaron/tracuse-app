@@ -11,7 +11,6 @@
     border-left: none;
 }
 
-
 .viewuse-edit .title {
     width: 100%;
     font-size: 150%;
@@ -24,12 +23,17 @@
     text-align: center;
 }
 
-.viewuse-edit .select-viewuse select {
-    border: 2px solid #fafafa;
-}
-
 .viewuse-edit .viewuse-actions button {
     display: block;
     width: 100%;
+    margin-bottom: 1em;
     text-align: left;
+}
+
+.viewuse-edit .label,
+.viewuse-edit .input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
