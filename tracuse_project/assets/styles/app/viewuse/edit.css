@@ -1,0 +1,30 @@
+.viewuse-edit {
+    /*font-size: 150%;*/
+}
+
+.viewuse-edit .section {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.viewuse-edit .title {
+    width: 100%;
+    font-size: 150%;
+    text-align: center;
+}
+
+.viewuse-edit .content {
+    font-size: 125%;
+}
+
+.viewuse-edit .viewuse-actions {
+    width: 14em;
+}
+
+.viewuse-edit .viewuse-actions button {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
