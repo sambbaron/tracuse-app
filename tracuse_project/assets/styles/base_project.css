@@ -6,7 +6,7 @@ body {
     color: #35446A;
 }
 
-div, section, article, aside, p,
+div, section, article, aside, p, fieldset,
 input, select, textarea, button {
     margin: 0.25em;
     padding: 0.25em;
