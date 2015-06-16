@@ -30,5 +30,7 @@
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+    border: 1px solid #a9d963;
+    border-radius: 0.5em;
     background-color: #ddf0bf;
 }
