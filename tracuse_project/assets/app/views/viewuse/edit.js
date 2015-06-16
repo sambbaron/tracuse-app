@@ -4,6 +4,12 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
     className: "panel panel-popout viewuse-edit",
     templateName: "viewuse/edit.html",
 
+    events: {
+        "click button[name='cancel-apply-viewuse']": function clickClose(ev) {
+            this.showHide();
+            ev.stopPropagation();
+        }
+    },
 
     template: function () {
         "use strict";
