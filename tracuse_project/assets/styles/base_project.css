@@ -87,9 +87,15 @@ button span {
     margin: 0 0.25em;
 }
 
-/* Fix JQuery-UI Resizable Controls Position
-* Avoid scroll
-*/
+/* Customize JQuery-UI*/
+
+/*Resizable */
+/*Undo position: relative default*/
+.ui-resizable {
+    position: inherit;
+}
+
+/*Fix controls position to avoid scroll*/
 .ui-resizable-handle.ui-resizable-e {
     right: 0;
 }
