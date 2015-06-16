@@ -17,6 +17,10 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             this.addViewuse();
             ev.stopPropagation();
         },
+        "click button[name='viewuse-edit']": function clickMenu(ev) {
+            this.editViewuse();
+            ev.stopPropagation();
+        },
         "click button[name='viewuse-close']": function clickClose(ev) {
             this.closeViewuse();
             ev.stopPropagation();
@@ -149,6 +153,18 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         new Tracuse.views.ViewuseBase({
             model: viewuseObject,
             appendEl: appendEl
+        });
+
+        viewuseView.menuSubView.showHide();
+    },
+
+    editViewuse: function editViewuse() {
+        "use strict";
+        /* Open Viewuse Edit */
+        var viewuseView = this;
+
+        new Tracuse.views.ViewuseEdit({
+            model: viewuseView.model
         });
 
         viewuseView.menuSubView.showHide();
