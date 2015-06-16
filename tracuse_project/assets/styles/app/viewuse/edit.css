@@ -1,12 +1,16 @@
 .viewuse-edit {
-    /*font-size: 150%;*/
+    display: flex;
 }
 
 .viewuse-edit .section {
     position: relative;
-    display: inline-block;
-    vertical-align: top;
+    border-left: 1px solid #fafafa;
 }
+
+.viewuse-edit .section:first-child {
+    border-left: none;
+}
+
 
 .viewuse-edit .title {
     width: 100%;
@@ -15,20 +19,17 @@
 }
 
 .viewuse-edit .content {
+    width: 100%;
     font-size: 125%;
+    text-align: center;
 }
 
 .viewuse-edit .select-viewuse select {
     border: 2px solid #fafafa;
 }
 
-.viewuse-edit .viewuse-actions {
-    width: 14em;
-}
-
 .viewuse-edit .viewuse-actions button {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+    display: block;
+    width: 95%;
     text-align: left;
 }

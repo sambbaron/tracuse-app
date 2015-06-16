@@ -44,7 +44,12 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
 
     showHide: function showHide() {
         "use strict";
-        this.$el.fadeToggle(200);
+        if (this.el.style.display === "") {
+            this.$el.fadeIn(200);
+            this.el.style.display = "flex";
+        } else {
+            this.$el.fadeOut(200);
+        }
     }
 
 });
