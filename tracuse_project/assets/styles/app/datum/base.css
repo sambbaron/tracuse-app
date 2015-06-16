@@ -40,12 +40,10 @@
     border-radius: 25% 25% 0 0 / 40% 40% 0 0;
 }
 
+/*Default Element Size and Position*/
 .datum .element-input {
     position: relative;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    border: none;
-    background-color: transparent;
-    text-align: center;
 }

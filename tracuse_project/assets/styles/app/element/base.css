@@ -1,0 +1,6 @@
+/* Default Element Input Styling */
+.element-input {
+    border: none;
+    background-color: transparent;
+    text-align: center;
+}
