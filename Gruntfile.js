@@ -16,7 +16,7 @@ module.exports = function (grunt) {
             styles_base: {
                 src: [
                     "<%= pkg.dir.styles %>reset.css",
-                    "<%= pkg.dir.styles %>base.css"
+                    "<%= pkg.dir.styles %>base_project.css"
                 ],
                 dest: "<%= pkg.dir.dist %>styles_base.css"
             },
