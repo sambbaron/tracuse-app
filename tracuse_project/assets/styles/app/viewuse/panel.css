@@ -35,12 +35,12 @@
     box-shadow: 3px 3px 1px #ddd;
 }
 
-.panel-popout .input {
+.panel-popout .input-element {
     border: 2px solid #fafafa;
     background-color: rgba(250, 250, 250, 0.5);
 }
 
-.panel-popout .input:focus {
+.panel-popout .input-element:focus {
     background-color: #fafafa;
 
 }

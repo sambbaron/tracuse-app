@@ -23,17 +23,24 @@
     text-align: center;
 }
 
+.viewuse-edit .input-wrap {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.viewuse-edit .input-element {
+    text-align: center;
+}
+
+.viewuse-edit .viewuse-actions {
+    width: 15em;
+}
+
 .viewuse-edit .viewuse-actions button {
     display: block;
     width: 100%;
     margin-bottom: 1em;
     text-align: left;
-}
-
-.viewuse-edit .label,
-.viewuse-edit .input {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
 }
