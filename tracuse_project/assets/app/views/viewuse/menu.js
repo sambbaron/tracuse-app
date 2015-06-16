@@ -1,7 +1,7 @@
 Tracuse.views.ViewuseMenu = Backbone.View.extend({
 
     tagName: "nav",
-    className: "menu viewuse-menu",
+    className: "panel panel-embed viewuse-menu",
     templateName: "viewuse/menu.html",
 
     events: {
