@@ -10,7 +10,7 @@ div, section, article, aside, p, fieldset,
 label, input, select, textarea, button {
     margin: 0.25em;
     padding: 0.25em;
-    line-height: 1.25em;
+    line-height: 1.15em;
 }
 
 header, footer {
