@@ -40,11 +40,11 @@ class ElementDatumObjectAdmin(BaseModelAdmin):
 
 @admin.register(ElementType)
 class ElementTypeAdmin(EntityModelAdmin):
-    list_display = EntityModelAdmin.list_display + ("element_data_type", "str_expression", "html_element")
-    list_editable = EntityModelAdmin.list_editable + ("element_data_type", "str_expression", "html_element")
+    list_display = EntityModelAdmin.list_display + ("element_data_type", "str_expression", "element_view",)
+    list_editable = EntityModelAdmin.list_editable + ("element_data_type", "str_expression", "element_view",)
     list_filter = ("element_data_type", )
 
-    fields = EntityModelAdmin.fields + ("element_data_type",)
+    fields = EntityModelAdmin.fields + ("element_data_type", "str_expression", "element_view",)
 
     inlines = [ElementDatumTypeInline, ]
 

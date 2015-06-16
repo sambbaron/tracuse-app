@@ -79,7 +79,7 @@ class ElementType(EntityModel):
             that renders to string representation
             use "value" as placeholder for element_value
         editable (boolean): Whether value can be edited by user
-        html_element (string): html input element type
+        element_view (string): front-end client view name to render element
         data_type_name (string): ElementDataType.entity_name
         element_value_model (ElementValueMeta class):
             uses data_type_name
@@ -100,8 +100,8 @@ class ElementType(EntityModel):
                                       null=False, blank=True
                                       )
     editable = models.BooleanField()
-    html_element = models.CharField(max_length=25,
-                                    default="text",
+    element_view = models.CharField(max_length=25,
+                                    default="ElementText",
                                     null=False, blank=False
                                     )
     datum_types = models.ManyToManyField("datum.DatumType",
