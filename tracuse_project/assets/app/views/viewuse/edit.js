@@ -1,7 +1,7 @@
 Tracuse.views.ViewuseEdit = Backbone.View.extend({
 
     tagName: "aside",
-    className: "popout-panel viewuse-edit",
+    className: "panel popout-panel viewuse-edit",
     templateName: "viewuse/edit.html",
 
 
@@ -34,8 +34,11 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         editView.render();
         Tracuse.el.viewuses.appendChild(editView.el);
         return editView;
+    },
+
+    showHide: function showHide() {
+        "use strict";
+        this.$el.fadeToggle(200);
     }
-
-
 
 });
