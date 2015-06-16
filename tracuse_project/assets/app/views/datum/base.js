@@ -30,6 +30,27 @@ Tracuse.views.DatumBase = Backbone.View.extend({
         var datumView = this;
         datumView.el.innerHTML = datumView.template();
         return datumView;
+    },
+
+    initialize: function () {
+        "use strict";
+        var datumView = this;
+        var elementViewName, ElementView;
+
+        // Set element collection and views
+        datumView.elementSubViews = [];
+        datumView.collection = datumView.model.get("elements");
+        datumView.collection.each(function (elementModel) {
+
+            // Set element subview based on element type
+            elementViewName = elementModel.get("element_type_id").get("element_view");
+            ElementView = Tracuse.views[elementViewName];
+
+            datumView.elementSubViews.push(new ElementView({
+                model: elementModel
+            }));
+        });
+
     }
 
 });

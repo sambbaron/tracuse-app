@@ -2,7 +2,6 @@ Tracuse.views.ElementBase = Backbone.View.extend({
 
     tagName: "p",
     className: "element",
-    templateName: "element/base.html",
 
     events: {
         "change .element-input": function (ev) {
@@ -36,9 +35,8 @@ Tracuse.views.ElementBase = Backbone.View.extend({
         return elementView;
     },
 
-    initialize: function initialize(options) {
+    initialize: function initialize() {
         "use strict";
-        if(options.templateName) this.templateName = options.templateName;
         this.listenTo(this.model, "change", this.render);
     }
 

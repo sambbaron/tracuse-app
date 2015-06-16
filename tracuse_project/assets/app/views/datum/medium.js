@@ -20,24 +20,6 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
         datumView.el.appendChild(fragment);
 
         return datumView;
-    },
-
-    initialize: function () {
-        "use strict";
-        var datumView = this;
-
-        // Set element collection and views
-        datumView.elementSubViews = [];
-        var ElementView = Tracuse.views.ElementBase;
-
-        datumView.collection = datumView.model.get("elements");
-        datumView.collection.each(function (model) {
-            datumView.elementSubViews.push(new ElementView({
-                model: model,
-                templateName: "element/base.html"
-            }));
-        });
-
     }
 
 });
