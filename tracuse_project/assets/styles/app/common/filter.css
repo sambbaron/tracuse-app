@@ -8,47 +8,47 @@
     height: 22em;
 }
 
-
-.datum-filter .groups-types .title {
-    text-align: left;
-    margin-left: 1em;
+.datum-filter .groups {
+    width: 7em;
 }
 
-/*Types Title*/
-.datum-filter .groups-types .title span {
-    margin-left: 6em;
+.datum-filter .types {
+    width: 22em;
 }
 
-.datum-filter .groups-types .content .container {
-    height: 3.5em;
+.datum-filter .content .groups-types-container {
+    position: relative;
+    height: 3em;
     margin: 0;
-    border-top: 1px solid #fafafa;
+    border-top: 1px dashed #FAFAFA;
     padding: 0;
 }
 
-.datum-filter .groups-types .content .container:first-child {
+.datum-filter .content .groups-types-container:first-child {
     border-top: none;
 }
 
-.datum-filter .groups-types .content .groups {
-    display: inline-block;
-    height: 100%;
-    width: 5em;
-    vertical-align: top;
-}
-
-.datum-filter .groups-types .content .types {
-    display: inline-block;
-    width: 17em;
-    vertical-align: top;
-}
-
-.datum-filter .groups-types button[name='add-datum_group'] {
+.datum-filter .content .groups-types-container .types-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
     width: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+.datum-filter .groups button[name='add-datum_group'] {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 90%;
     font-size: 100%;
 }
 
-.datum-filter .groups-types button[name='add-datum_type'] {
+.datum-filter .types button[name='add-datum_type'] {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 85%;
