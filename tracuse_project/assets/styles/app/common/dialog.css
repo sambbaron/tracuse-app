@@ -26,6 +26,7 @@
 }
 
 .dialog-popout {
+    display: flex;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -37,6 +38,34 @@
 
 .dialog-popout.drag {
     transform: none;
+}
+
+.dialog-popout .title {
+    width: 100%;
+    font-size: 150%;
+    text-align: center;
+}
+
+.dialog-popout .content {
+    width: 100%;
+    font-size: 125%;
+    text-align: center;
+}
+
+.dialog-popout .section {
+    position: relative;
+    border-left: 2px solid #fafafa;
+}
+
+.dialog-popout .section:first-child {
+    border-left: none;
+}
+
+.dialog-popout .input-wrap {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 .dialog-popout .input-element {

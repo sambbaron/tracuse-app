@@ -1,35 +1,3 @@
-.viewuse-edit {
-    display: flex;
-}
-
-.viewuse-edit .section {
-    position: relative;
-    border-left: 2px solid #fafafa;
-}
-
-.viewuse-edit .section:first-child {
-    border-left: none;
-}
-
-.viewuse-edit .title {
-    width: 100%;
-    font-size: 150%;
-    text-align: center;
-}
-
-.viewuse-edit .content {
-    width: 100%;
-    font-size: 125%;
-    text-align: center;
-}
-
-.viewuse-edit .input-wrap {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
 .viewuse-edit .input-element {
     text-align: center;
 }
