@@ -81,3 +81,36 @@
 
     </div>
 </fieldset>
+
+<fieldset class="section elements">
+    <p class="title">Element Values</p>
+
+    <div class="content">
+        <label class="input-wrap">
+            <span class="input-label">Types</span>
+            <select class="input-element" name="element_types">
+                <option></option>
+                {% for element_type in element_types %}
+                    <option value="{{ element_type.element_type_id }}">
+                        {{ element_type.readable_name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <label class="input-wrap">
+            <span class="input-label">Operators</span>
+            <select class="input-element" name="element_operators">
+                <option></option>
+            </select>
+        </label>
+
+        <label class="input-wrap">
+            <span class="input-label">Filter Value</span>
+            <input class="input-element" name="element_value">
+        </label>
+
+        <button class="add-filter" name="add-element"><i class="fa fa-plus"></i></button>
+
+    </div>
+</fieldset>
