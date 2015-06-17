@@ -91,8 +91,10 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var DatumsView = Tracuse.views[datumsViewName];
 
         // Get datums
-        var filter = viewuseView.model.get("filter_json");
-        Tracuse.utils.getFilteredDatums(filter, function (datumObjects) {
+        var filter = new Tracuse.models.Filter({
+            filter_object: viewuseView.model.get("filter_json")
+        });
+        filter.getFilteredDatums(function (datumObjects) {
 
             var datumsView = new DatumsView({
                 collection: datumObjects,

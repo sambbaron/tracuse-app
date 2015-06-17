@@ -1,9 +1,14 @@
+Tracuse.models.Filter = function Filter(options) {
+    "use strict";
+    this.filter_object = options.filter_object || null;
+};
 
-Tracuse.utils.getFilteredDatums = function getFilteredDatums(filter, callback) {
+Tracuse.models.Filter.prototype.getFilteredDatums = function getFilteredDatums(callback) {
     "use strict";
     /* Send either filter json object or filter set id
      Return array of datum datum objects
      */
+    var filter = this.filter_object;
     var request = new XMLHttpRequest();
     var filterUrl = "";
 
