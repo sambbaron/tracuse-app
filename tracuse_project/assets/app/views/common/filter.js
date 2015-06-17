@@ -1,16 +1,12 @@
 Tracuse.views.DatumFilter = Backbone.View.extend({
 
     tagName: "aside",
-    className: "dialog dialog-popout datum-filter",
-    templateName: "datum/filter.html",
+    className: "dialog dialog-popout dialog-options datum-filter",
+    templateName: "common/filter.html",
 
     events: {
         "drag": function drag(ev, ui) {
             this.el.classList.add("drag");
-            ev.stopPropagation();
-        },
-        "click button[name='cancel-apply-viewuse']": function clickClose(ev) {
-            this.showHide();
             ev.stopPropagation();
         }
     },
