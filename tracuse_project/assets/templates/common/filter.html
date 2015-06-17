@@ -11,7 +11,7 @@
     <div class="content">
         {% for datum_group in datum_groups %}
             <div class="groups-types-container">
-                <button class="add-filter" name="add-datum_group" value="{{ datum_group.datum_group_id }}">
+                <button class="add-filter" name="add-group" value="{{ datum_group.datum_group_id }}">
                     {{ datum_group.readable_name }}
                 </button>
             </div>
@@ -28,7 +28,7 @@
             <div class="groups-types-container">
                 <div class="types-container">
                     {% for datum_type in datum_group.datum_types %}
-                        <button class="add-filter" name="add-datum_type" value="{{ datum_type.datum_type_id }}">
+                        <button class="add-filter" name="add-type" value="{{ datum_type.datum_type_id }}">
                             {{ datum_type.readable_name }}
                         </button>
                     {% endfor %}

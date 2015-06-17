@@ -35,7 +35,7 @@
 
 }
 
-.datum-filter .groups button[name='add-datum_group'] {
+.datum-filter .groups button[name='add-group'] {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -44,7 +44,7 @@
     font-size: 100%;
 }
 
-.datum-filter .types button[name='add-datum_type'] {
+.datum-filter .types button[name='add-type'] {
     margin-top: 0;
     margin-bottom: 0;
     font-size: 85%;
