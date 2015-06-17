@@ -1,0 +1,47 @@
+.datum-filter {
+    background-color: #d0d7e8;
+}
+
+.datum-filter .groups-types .title {
+    text-align: left;
+    margin-left: 1em;
+}
+
+/*Types Title*/
+.datum-filter .groups-types .title span {
+    margin-left: 6em;
+}
+
+.datum-filter .groups-types .content .container {
+    height: 3.5em;
+    margin: 0;
+    border-top: 1px solid #fafafa;
+    padding: 0;
+}
+
+.datum-filter .groups-types .content .container:first-child {
+    border-top: none;
+}
+
+.datum-filter .groups-types .content .groups {
+    display: inline-block;
+    height: 100%;
+    width: 5em;
+    vertical-align: top;
+}
+
+.datum-filter .groups-types .content .types {
+    display: inline-block;
+    width: 17em;
+}
+
+.datum-filter .groups-types button[name='add-datum_group'] {
+    width: 100%;
+    font-size: 100%;
+}
+
+.datum-filter .groups-types button[name='add-datum_type'] {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 85%;
+}
