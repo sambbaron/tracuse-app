@@ -5,6 +5,10 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
     templateName: "viewuse/edit.html",
 
     events: {
+        "drag": function drag(ev, ui) {
+            this.el.classList.add("drag");
+            ev.stopPropagation();
+        },
         "click button[name='cancel-apply-viewuse']": function clickClose(ev) {
             this.showHide();
             ev.stopPropagation();
@@ -37,6 +41,10 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         "use strict";
         var editView = this;
         editView.el.innerHTML = editView.template();
+        editView.$el.draggable({
+            cursor: "move",
+            distance: 5
+        });
         return editView;
     },
 
@@ -51,12 +59,12 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
     showHide: function showHide() {
         "use strict";
         var editView = this;
-        
+
         if (editView.el.style.display === "") {
             editView.$el.fadeIn(200);
             editView.el.style.display = "flex";
         } else {
-            editView.$el.fadeOut(200, function() {
+            editView.$el.fadeOut(200, function () {
                 editView.remove();
             });
         }
