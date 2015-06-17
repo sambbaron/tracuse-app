@@ -12,6 +12,10 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         "click button[name='cancel-apply-viewuse']": function clickClose(ev) {
             this.showHide();
             ev.stopPropagation();
+        },
+        "click button[name='open-filter']": function openFilter(ev) {
+            this.openFilter();
+            ev.stopPropagation();
         }
     },
 
@@ -65,6 +69,17 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
                 editView.remove();
             });
         }
+    },
+
+    openFilter: function openFilter() {
+        "use strict";
+        /* Open Viewuse Edit */
+        var viewuseView = this;
+
+        var filterView = new Tracuse.views.DatumFilter({
+            model: viewuseView.model
+        });
+        filterView.showHide();
     }
 
 });
