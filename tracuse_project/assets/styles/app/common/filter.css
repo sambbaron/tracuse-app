@@ -1,6 +1,12 @@
 .datum-filter {
     background-color: #d0d7e8;
+    max-width: 75em;
 }
+
+.datum-filter > .section {
+    height: 22em;
+}
+
 
 .datum-filter .groups-types .title {
     text-align: left;
@@ -33,6 +39,7 @@
 .datum-filter .groups-types .content .types {
     display: inline-block;
     width: 17em;
+    vertical-align: top;
 }
 
 .datum-filter .groups-types button[name='add-datum_group'] {

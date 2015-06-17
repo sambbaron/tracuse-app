@@ -51,16 +51,7 @@ Tracuse.views.DatumFilter = Backbone.View.extend({
 
     showHide: function showHide() {
         "use strict";
-        var filterView = this;
-
-        if (filterView.el.style.display === "") {
-            filterView.$el.fadeIn(200);
-            filterView.el.style.display = "flex";
-        } else {
-            filterView.$el.fadeOut(200, function () {
-                filterView.remove();
-            });
-        }
+        this.$el.fadeToggle(200);
     }
 
 });

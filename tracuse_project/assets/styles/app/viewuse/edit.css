@@ -1,3 +1,11 @@
+.viewuse-edit {
+    max-width: 66em;
+}
+
+.viewuse-edit > .section {
+    height: 22em;
+}
+
 .viewuse-edit .input-element {
     text-align: center;
 }
