@@ -45,3 +45,11 @@
     margin-bottom: 0;
     font-size: 85%;
 }
+
+.datum-filter .associations .input-wrap {
+    text-align: left;
+}
+
+.datum-filter .associations .input-element[name='association_datums'] {
+    width: 10em;
+}

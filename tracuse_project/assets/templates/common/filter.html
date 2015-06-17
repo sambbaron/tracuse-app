@@ -21,3 +21,40 @@
     </div>
 
 </fieldset>
+
+<fieldset class="section associations">
+    <p class="title">Associations</p>
+
+    <label class="input-wrap">
+        <span class="input-label">Groups</span>
+        <select class="input-element" name="association_groups">
+            <option></option>
+            {% for datum_group in datum_groups %}
+                <option value="{{ datum_group.datum_group_id }}">
+                    {{ datum_group.readable_name }}
+                </option>
+            {% endfor %}
+        </select>
+    </label>
+
+    <label class="input-wrap">
+        <span class="input-label">Types</span>
+        <select class="input-element" name="association_types">
+            <option></option>
+            {% for datum_type in datum_types %}
+                <option value="{{ datum_type.datum_type_id }}">
+                    {{ datum_type.readable_name }}
+                </option>
+            {% endfor %}
+        </select>
+    </label>
+
+    <label class="input-wrap">
+        <span class="input-label">Objects</span>
+        <select class="input-element" name="association_datums">
+            <option></option>
+        </select>
+    </label>
+    <button class="add-filter" name="add-association"><i class="fa fa-plus"></i></button>
+
+</fieldset>
