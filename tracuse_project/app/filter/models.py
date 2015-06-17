@@ -389,7 +389,7 @@ class FilterSet(EntityModel):
         user (integer, fk, optional): User
         rules_dict (dict):
             Lists of FilterSetRule objects related to FilterSet
-            Use to run filter
+            Use to run filter and convert back/forth to json
     """
 
     class Meta(EntityModel.Meta):
