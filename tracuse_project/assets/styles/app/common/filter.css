@@ -55,7 +55,11 @@
 }
 
 .datum-filter .associations .input-wrap {
-    text-align: left;
+    display: inline-block;
+}
+
+.datum-filter .associations .input-label {
+    display: block;
 }
 
 .datum-filter .associations .input-element[name='association_datums'] {
