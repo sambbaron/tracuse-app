@@ -24,10 +24,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
             this_viewuse: editView.model.toJSON(),
             viewuse_objects: Tracuse.models.ViewuseObject.all.toJSON(),
             viewuse_arrangements: Tracuse.models.ViewuseArrangement.all.toJSON(),
-            viewuse_datums: Tracuse.models.ViewuseDatum.all.toJSON(),
-            datum_groups: Tracuse.models.DatumGroup.all.toJSON(),
-            datum_types: Tracuse.models.DatumType.all.toJSON(),
-            element_types: Tracuse.models.ElementType.all.toJSON()
+            viewuse_datums: Tracuse.models.ViewuseDatum.all.toJSON()
         };
         templateOutput = Tracuse.templates.env.render(
             editView.templateName,
