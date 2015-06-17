@@ -84,19 +84,21 @@ Backbone.Collection.prototype.idsToObjects = function idsToObjects(idArray, call
     var model = thisCollection.model;
     var newCollection = new model.collBase();
 
-    for (var i = 0, imax = idArray.length; i < imax; i++) {
-        var id = idArray[i];
+    var target = idArray.length;
+    var counter = 0;
+    _.each(idArray, function (id) {
         thisCollection.getFetchOne(id, function (modelObject) {
             newCollection.add(modelObject);
+            counter++;
         });
-    }
+    });
 
-    var c = 0;
+    var check = 0;
     var checkObject = setInterval(function () {
-        if (idArray.length === newCollection.length || c > 50) {
+        if (target === counter || check > 50) {
             clearInterval(checkObject);
             callback(newCollection);
         }
-        c++;
+        check++;
     }, 100);
 };
