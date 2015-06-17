@@ -1,6 +1,7 @@
 .datum-filter {
-    background-color: #d0d7e8;
     max-width: 75em;
+    border: 1px solid #6E8BD9;
+    background-color: #d0d7e8;
 }
 
 .datum-filter > .section {
