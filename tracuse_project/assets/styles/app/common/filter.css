@@ -8,10 +8,6 @@
     height: 22em;
 }
 
-.datum-filter .groups {
-    width: 7em;
-}
-
 .datum-filter .types {
     width: 22em;
 }
@@ -54,14 +50,23 @@
     font-size: 85%;
 }
 
-.datum-filter .associations .input-wrap {
-    display: inline-block;
+.datum-filter .input-wrap {
+    display: block;
+    margin-bottom: 0;
 }
 
-.datum-filter .associations .input-label {
+.datum-filter .input-label {
     display: block;
 }
 
 .datum-filter .associations .input-element[name='association_datums'] {
     width: 10em;
+}
+
+.datum-filter .elements .input-element[name='element_operators'] {
+    width: 10em;
+}
+
+.datum-filter .add-filter i {
+    font-size: 150%;
 }
