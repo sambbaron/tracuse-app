@@ -48,6 +48,7 @@
 
 .dialog-options .title {
     width: 100%;
+    margin: 0 auto;
     font-size: 150%;
     text-align: center;
 }
@@ -55,6 +56,7 @@
 .dialog-options > .section {
     display: inline-block;
     position: relative;
+    margin: 0 auto;
     border-left: 2px solid #fafafa;
     vertical-align: top;
 }
@@ -65,14 +67,14 @@
 
 .dialog-options .content {
     width: 100%;
+    margin: 0 auto;
     font-size: 125%;
     text-align: center;
 }
 
 .dialog-options .input-wrap {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     text-align: center;
 }
 
