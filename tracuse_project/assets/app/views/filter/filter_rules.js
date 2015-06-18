@@ -16,12 +16,11 @@ Tracuse.views.FilterRuleBase = Backbone.View.extend({
         var filterRuleView = this;
         var templateOutput = "";
 
-        var filterRuleData = filterRuleView.model.toJSON();
-        filterRuleData.title = filterRuleView.model.title();
-        filterRuleData.value = filterRuleView.model.value();
-
         var templateData = {
-            this_rule: filterRuleData
+            rule_type: filterRuleView.model.rule_type,
+            rule_title: filterRuleView.model.title(),
+            rule_value: filterRuleView.model.value(),
+            this_rule: filterRuleView.model.toJSON()
         };
         templateOutput = Tracuse.templates.env.render(
             filterRuleView.templateName,

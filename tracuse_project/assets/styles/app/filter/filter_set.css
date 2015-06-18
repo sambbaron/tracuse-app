@@ -8,6 +8,10 @@
     height: 22em;
 }
 
+.datum-filter .selections form {
+    display: none;
+}
+
 .datum-filter .types {
     width: 22em;
 }

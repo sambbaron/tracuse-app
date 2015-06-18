@@ -1,3 +1,9 @@
-<button class="selected-rule" name="{{ this_rule.rule_type }}" value="{{ this_rule.value }}">
-    <span>{{ this_rule.title }}</span>
+<button class="selected-rule" name="{{ rule_type }}" value="{{ rule_value }}">
+    <span>{{ rule_title }}</span>
+
+    <form>
+        {% for attr_name, attr_value in this_rule %}
+            <input name="{{ attr_name }}" value="{{ attr_value }}">
+        {% endfor %}
+    </form>
 </button>
