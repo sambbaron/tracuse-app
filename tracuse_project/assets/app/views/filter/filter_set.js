@@ -21,7 +21,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             this.selectElement(ev.target);
             ev.stopPropagation();
         },
-        "click button[name^='add-']": function (ev) {
+        "click .add-filter": function (ev) {
             this.addFilter(ev.target);
             ev.stopPropagation();
         }
@@ -70,15 +70,10 @@ Tracuse.views.FilterSet = Backbone.View.extend({
                 filterRuleFrag.appendChild(filterRuleView.el.querySelector("button"));
 
                 // Hide group and type elements that have been selected
+                var filterName = filterRule.get("rule_type");
                 var filterValue = filterRule.value();
-                if (filterRule.get("rule_type") === "FilterRuleGroup") {
-                    var groupEl = filterView.el.querySelector("[name='add-group'][value='" + filterValue + "']");
-                    groupEl.style.visibility = "hidden";
-                }
-                if (filterRule.get("rule_type") === "FilterRuleType") {
-                    var typeEl = filterView.el.querySelector("[name='add-type'][value='" + filterValue + "']");
-                    typeEl.style.visibility = "hidden";
-                }
+                var filterEl = filterView.el.querySelector(".add-filter[name='" + filterName + "'][value='" + filterValue + "']");
+                filterEl.style.visibility = "hidden";
             });
         });
 
@@ -168,6 +163,13 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             optionFrag.appendChild(optionEl);
         });
         elementOperatorsEl.appendChild(optionFrag);
+    },
+
+    addFilter: function addFilter(el) {
+        "use strict";
+        /* Add filter rule to model and render in view */
+
+
     }
 
 });
