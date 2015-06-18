@@ -1,36 +1,66 @@
-Tracuse.models.Filter = function Filter(options) {
-    "use strict";
-    this.filter_object = options.filter_object || null;
-};
+Tracuse.models.FilterRuleUser = Backbone.RelationalModel.extend({});
+Tracuse.models.FilterRuleGroup = Backbone.RelationalModel.extend({});
+Tracuse.models.FilterRuleType = Backbone.RelationalModel.extend({});
+Tracuse.models.FilterRuleAssociation = Backbone.RelationalModel.extend({});
+Tracuse.models.FilterRuleElement = Backbone.RelationalModel.extend({});
+Tracuse.models.FilterRuleDataType = Backbone.RelationalModel.extend({});
 
-Tracuse.models.Filter.prototype.getFilteredDatums = function getFilteredDatums(callback) {
-    "use strict";
-    /* Send either filter json object or filter set id
-     Return array of datum datum objects
-     */
-    var filter = this.filter_object;
-    var request = new XMLHttpRequest();
-    var filterUrl = "";
+Tracuse.models.FilterSet = Backbone.RelationalModel.extend({
 
-    request.onreadystatechange = function () {
-        if ((request.readyState === 4) && (request.status === 200)) {
-            Tracuse.models.DatumObject.all.idsToObjects(JSON.parse(request.responseText),
-                function (datumObjects) {
-                    callback(datumObjects);
-                });
+    url: Tracuse.routes.api.filter.json,
+
+    relations: [
+        {
+            type: Backbone.HasMany,
+            key: "FilterRuleUser",
+            relatedModel: "Tracuse.models.FilterRuleGroup"
+        },
+        {
+            type: Backbone.HasMany,
+            key: "FilterRuleGroup",
+            relatedModel: "Tracuse.models.FilterRuleGroup"
+        },
+        {
+            type: Backbone.HasMany,
+            key: "FilterRuleType",
+            relatedModel: "Tracuse.models.FilterRuleGroup"
+        },
+        {
+            type: Backbone.HasMany,
+            key: "FilterRuleAssociation",
+            relatedModel: "Tracuse.models.FilterRuleGroup"
+        },
+        {
+            type: Backbone.HasMany,
+            key: "FilterRuleElement",
+            relatedModel: "Tracuse.models.FilterRuleGroup"
+        },
+        {
+            type: Backbone.HasMany,
+            key: "FilterRuleDataType",
+            relatedModel: "Tracuse.models.FilterRuleGroup"
         }
-    };
+    ],
 
-    if (typeof filter === "number") {
-        filterUrl = Tracuse.routes.api.filter.id.replace("<pk>", filter);
-        request.open("GET", filterUrl, true);
-        request.send();
-    } else if (typeof filter === "object") {
-        filterUrl = Tracuse.routes.api.filter.json;
-        request.open("POST", filterUrl, true);
+    getFilteredDatums: function getFilteredDatums(callback) {
+        "use strict";
+        /* Send either filter json object
+         Return array of datum datum objects
+         */
+        var filter = this;
+        var request = new XMLHttpRequest();
+
+        request.onreadystatechange = function () {
+            if ((request.readyState === 4) && (request.status === 200)) {
+                Tracuse.models.DatumObject.all.idsToObjects(JSON.parse(request.responseText),
+                    function (datumObjects) {
+                        callback(datumObjects);
+                    });
+            }
+        };
+
+        request.open("POST", filter.url, true);
         request = Tracuse.utils.csrfSafeRequest(request);
-        request.send(JSON.stringify(filter));
-    } else {
-        callback(null);
+        request.send(filter.toJSON());
     }
-};
+});

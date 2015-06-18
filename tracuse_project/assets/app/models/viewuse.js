@@ -20,6 +20,11 @@ Tracuse.models.ViewuseObject =
                 key: "viewuse_datum",
                 relatedModel: "Tracuse.models.ViewuseDatum",
                 collectionType: "Tracuse.models.ViewuseDatum.collBase"
+            },
+            {
+                type: Backbone.HasOne,
+                key: "filter_json",
+                relatedModel: "Tracuse.models.FilterSet"
             }
         ]
     });
