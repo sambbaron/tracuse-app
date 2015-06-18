@@ -62,6 +62,9 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         var filterView = this;
         filterView.render();
 
+        // Set container for selected rules
+        filterView.ruleContainerEl = filterView.el.querySelector(".selections .content");
+
         // Create and add filter rule views
         var filterRuleFrag = document.createDocumentFragment();
         _.each(filterView.model.attributes, function (filterRuleCollection) {
@@ -77,8 +80,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             });
         });
 
-        var filterRuleContainer = filterView.el.querySelector(".selections .content");
-        filterRuleContainer.appendChild(filterRuleFrag);
+        filterView.ruleContainerEl.appendChild(filterRuleFrag);
 
         Tracuse.el.viewuses.appendChild(filterView.el);
         return filterView;
