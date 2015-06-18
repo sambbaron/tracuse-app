@@ -1,8 +1,8 @@
-Tracuse.views.FilterBase = Backbone.View.extend({
+Tracuse.views.FilterSet = Backbone.View.extend({
 
     tagName: "aside",
     className: "dialog dialog-popout dialog-options datum-filter",
-    templateName: "filter/base.html",
+    templateName: "filter/filter_set.html",
 
     events: {
         "drag": function drag(ev, ui) {
