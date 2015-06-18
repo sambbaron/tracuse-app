@@ -1,4 +1,4 @@
-Tracuse.views.DatumFilter = Backbone.View.extend({
+Tracuse.views.FilterBase = Backbone.View.extend({
 
     tagName: "aside",
     className: "dialog dialog-popout dialog-options datum-filter",

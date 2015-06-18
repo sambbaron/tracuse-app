@@ -67,7 +67,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         /* Open Viewuse Edit */
         var viewuseView = this;
 
-        var filterView = new Tracuse.views.DatumFilter({
+        var filterView = new Tracuse.views.FilterBase({
             model: viewuseView.model
         });
         filterView.showHide();
