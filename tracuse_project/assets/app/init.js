@@ -58,7 +58,7 @@ Tracuse.init.initApp = function initApp() {
     Tracuse.init.loadTemplates();
     Tracuse.init.attachGlobalEvents();
     Tracuse.init.ajaxSetup();
-    Tracuse.init.firstViewuse();
+    //Tracuse.init.firstViewuse();
 
     var viewuse = Tracuse.models.ViewuseObject.all.first();
     var filter = new Tracuse.views.FilterBase({
