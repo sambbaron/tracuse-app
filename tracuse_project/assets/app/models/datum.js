@@ -42,18 +42,18 @@ Tracuse.models.DatumObject =
                 key: "elements",
                 relatedModel: "Tracuse.models.ElementDatumObject",
                 collectionType: "Tracuse.models.ElementDatumObject.collBase"
-            },
-            {
-                type: Backbone.HasMany,
-                key: "parent_datums",
-                relatedModel: "Tracuse.models.DatumObject",
-                collectionType: "Tracuse.models.DatumObject.collBase"
-            },
-            {
-                type: Backbone.HasMany,
-                key: "child_datums",
-                relatedModel: "Tracuse.models.DatumObject",
-                collectionType: "Tracuse.models.DatumObject.collBase"
             }
+            //{
+            //    type: Backbone.HasMany,
+            //    key: "parent_datums",
+            //    relatedModel: "Tracuse.models.DatumObject",
+            //    collectionType: "Tracuse.models.DatumObject.collBase"
+            //},
+            //{
+            //    type: Backbone.HasMany,
+            //    key: "child_datums",
+            //    relatedModel: "Tracuse.models.DatumObject",
+            //    collectionType: "Tracuse.models.DatumObject.collBase"
+            //}
         ]
     });
