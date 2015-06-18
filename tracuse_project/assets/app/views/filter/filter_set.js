@@ -64,11 +64,20 @@ Tracuse.views.FilterSet = Backbone.View.extend({
 
         // Create and add filter rule views
         var filterRuleFrag = document.createDocumentFragment();
-        _.each(filterView.model.attributes, function (filterRuleCollection, filterType) {
-            //var FilterRuleView = Tracuse.views[filterType];
+        _.each(filterView.model.attributes, function (filterRuleCollection) {
             filterRuleCollection.each(function (filterRule) {
                 var filterRuleView = new Tracuse.views.FilterRuleBase({model: filterRule});
                 filterRuleFrag.appendChild(filterRuleView.el);
+                // Hide group and type elements that have been selected
+                var filterValue = filterRule.value();
+                if (filterRule.get("rule_type") === "FilterRuleGroup") {
+                    var groupEl = filterView.el.querySelector("[name='add-group'][value='" + filterValue + "']");
+                    groupEl.style.visibility = "hidden";
+                }
+                if (filterRule.get("rule_type") === "FilterRuleType") {
+                    var typeEl = filterView.el.querySelector("[name='add-type'][value='" + filterValue + "']");
+                    typeEl.style.visibility = "hidden";
+                }
             });
         });
 
