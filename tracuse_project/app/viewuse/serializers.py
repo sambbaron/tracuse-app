@@ -19,6 +19,16 @@ class ViewuseObjectSerializer(ViewuseObject):
 
     ViewuseObject.serial_basic = serial_basic
 
+    def serial_related(self):
+        """All properties with relations
+        """
+        output = self.serial_basic()
+        output["viewuse_arrangement"] = self.viewuse_arrangement_id
+        output["viewuse_datum"] = self.viewuse_datum_id
+        return output
+
+    ViewuseObject.serial_related = serial_related
+
 
 class ViewuseArrangementSerializer(ViewuseArrangement):
     class Meta:
