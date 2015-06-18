@@ -59,8 +59,10 @@ Tracuse.models.FilterSet = Backbone.RelationalModel.extend({
             }
         };
 
+        var filterData = JSON.stringify(filter.toJSON());
+
         request.open("POST", filter.url, true);
         request = Tracuse.utils.csrfSafeRequest(request);
-        request.send(filter.toJSON());
+        request.send(filterData);
     }
 });
