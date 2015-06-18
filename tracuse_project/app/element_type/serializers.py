@@ -14,16 +14,15 @@ class ElementTypeSerializer(ElementType):
 
     ElementType.serial_basic = serial_basic
     
-    def serial_related_list(self):
-        """All properties
-        With related data lists
+    def serial_related(self):
+        """All properties with relations
         """
-        element_operators = [element_operator.element_operator_id for element_operator in self.element_operators.all()]
         output = self.serial_basic()
-        output["element_operators"] = element_operators
+        output["element_operators"] = \
+            [element_operator.element_operator_id for element_operator in self.element_operators.all()]
         return output
 
-    ElementType.serial_related_list = serial_related_list
+    ElementType.serial_related = serial_related
 
 
 class ElementOperatorSerializer(ElementOperator):
@@ -54,9 +53,9 @@ class ElementDatumObjectSerializer(ElementDatumObject):
     class Meta:
         abstract = True
 
-    def serial_ids_value(self):
-        """Elements with all ids and value
-        """
+    def serial_basic(self):
+        """All properties"""
+
         element_value = ""
         if self.element_value:
             element_value = self.element_value.elvalue
@@ -72,4 +71,15 @@ class ElementDatumObjectSerializer(ElementDatumObject):
 
         return output
 
-    ElementDatumObject.serial_ids_value = serial_ids_value
+    ElementDatumObject.serial_basic = serial_basic
+
+    def serial_related(self):
+        """All properties with relations
+        """
+        output = self.serial_basic()
+        output["element_datum_type"] = self.element_datum_type.element_datum_type_id
+        output["element_type"] = self.element_type.element_type_id
+
+        return output
+
+    ElementDatumObject.serial_related = serial_related

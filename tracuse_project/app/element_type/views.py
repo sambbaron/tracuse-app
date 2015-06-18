@@ -23,7 +23,7 @@ class ElementTypeAll(View):
     def get(self, request):
         queryset = ElementType.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=ElementTypeSerializer.serial_related_list
+                                     serializer=ElementTypeSerializer.serial_related
                                      ).serialize()
         response = JsonResponse(serialized_data, status=200, safe=False)
         return response
@@ -71,7 +71,7 @@ class ElementDatumObjectAll(View):
     def get(self, request):
         queryset = ElementDatumObject.actives.all()
         serialized_data = Serializer(data=queryset,
-                                     serializer=ElementDatumObjectSerializer.serial_ids_value
+                                     serializer=ElementDatumObjectSerializer.serial_related
                                      ).serialize()
         response = JsonResponse(serialized_data, status=200, safe=False)
         return response
@@ -93,7 +93,7 @@ class ElementDatumObjectOne(View):
     def get(self, request, pk):
         object = self.get_object(pk)
         serialized_data = Serializer(data=object,
-                                     serializer=ElementDatumObjectSerializer.serial_ids_value
+                                     serializer=ElementDatumObjectSerializer.serial_related
                                      ).serialize()
         response = JsonResponse(serialized_data, status=200)
         return response
@@ -108,7 +108,7 @@ class ElementDatumObjectOne(View):
         element_value_object.save()
 
         if object.element_value.elvalue == serialized_data["element_value"]:
-            response_content = ElementDatumObjectSerializer.serial_ids_value(object)
+            response_content = ElementDatumObjectSerializer.serial_related(object)
             response = JsonResponse(response_content, status=200)
         else:
             response = HttpResponse("Update error", status=400)
