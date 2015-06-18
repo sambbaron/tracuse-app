@@ -68,7 +68,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         var viewuseView = this;
 
         var filterView = new Tracuse.views.FilterBase({
-            model: viewuseView.model
+            model: viewuseView.model.get("filter_json")
         });
         filterView.showHide();
     }

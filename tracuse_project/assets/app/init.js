@@ -62,7 +62,7 @@ Tracuse.init.initApp = function initApp() {
 
     var viewuse = Tracuse.models.ViewuseObject.all.first();
     var filter = new Tracuse.views.FilterBase({
-        model: viewuse
+        model: viewuse.get("filter_json")
     });
     filter.showHide();
 };

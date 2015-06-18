@@ -33,7 +33,7 @@ Tracuse.views.FilterBase = Backbone.View.extend({
         var templateOutput = "";
 
         var templateData = {
-            this_viewuse: filterView.model.toJSON(),
+            this_filter: filterView.model.toJSON(),
             datum_groups: Tracuse.models.DatumGroup.all.toJSON(),
             datum_types: Tracuse.models.DatumType.all.toJSON(),
             element_types: Tracuse.models.ElementType.all.toJSON()
