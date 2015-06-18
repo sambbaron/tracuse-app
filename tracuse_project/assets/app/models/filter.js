@@ -42,27 +42,22 @@ Tracuse.models.FilterSet = Backbone.RelationalModel.extend({
         }
     ],
 
-    getFilteredDatums: function getFilteredDatums(callback) {
+    fetchFilteredDatums: function fetchFilteredDatums(callback) {
         "use strict";
         /* Send either filter json object
          Return array of datum datum objects
          */
         var filter = this;
-        var request = new XMLHttpRequest();
 
-        request.onreadystatechange = function () {
-            if ((request.readyState === 4) && (request.status === 200)) {
-                Tracuse.models.DatumObject.all.idsToObjects(JSON.parse(request.responseText),
-                    function (datumObjects) {
-                        callback(datumObjects);
-                    });
-            }
-        };
-
-        var filterData = JSON.stringify(filter.toJSON());
-
-        request.open("POST", filter.url, true);
-        request = Tracuse.utils.csrfSafeRequest(request);
-        request.send(filterData);
+        $.ajax({
+            method: "POST",
+            url: filter.url,
+            data: JSON.stringify(filter.toJSON())
+        }).done(function (data) {
+            Tracuse.models.DatumObject.all.idsToObjects(data,
+                function (datumObjects) {
+                    callback(datumObjects);
+                });
+        });
     }
 });
