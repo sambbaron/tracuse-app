@@ -2,7 +2,7 @@
     <p class="title">Filter Selections</p>
 
     <div class="content"></div>
-    
+
 </fieldset>
 
 <fieldset class="section groups">
@@ -11,7 +11,7 @@
     <div class="content">
         {% for datum_group in datum_groups %}
             <div class="groups-types-container">
-                <button class="add-filter" name="add-group" value="{{ datum_group.datum_group_id }}">
+                <button class="add-filter" name="FilterRuleGroup" value="{{ datum_group.datum_group_id }}">
                     {{ datum_group.readable_name }}
                 </button>
             </div>
@@ -28,7 +28,7 @@
             <div class="groups-types-container">
                 <div class="types-container">
                     {% for datum_type in datum_group.datum_types %}
-                        <button class="add-filter" name="add-type" value="{{ datum_type.datum_type_id }}">
+                        <button class="add-filter" name="FilterRuleType" value="{{ datum_type.datum_type_id }}">
                             {{ datum_type.readable_name }}
                         </button>
                     {% endfor %}
@@ -78,7 +78,7 @@
             Placeholder for additional association options
             Distance & Parent/Child/Both
         </label>
-        <button class="add-filter" name="add-association"><i class="fa fa-plus"></i></button>
+        <button class="add-filter" name="FilterRuleAssociation"><i class="fa fa-plus"></i></button>
 
     </div>
 </fieldset>
@@ -111,7 +111,7 @@
             <input class="input-element" name="element_value">
         </label>
 
-        <button class="add-filter" name="add-element"><i class="fa fa-plus"></i></button>
+        <button class="add-filter" name="FilterRuleElement"><i class="fa fa-plus"></i></button>
 
     </div>
 </fieldset>
