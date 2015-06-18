@@ -86,7 +86,7 @@ class DatumObjectSerializer(DatumObject):
 
         elements = []
         for element in self.element_datum_objects.all():
-            element_object = ElementDatumObjectSerializer.serial_ids_value(element)
+            element_object = ElementDatumObjectSerializer.serial_related(element)
             elements.append(element_object)
 
         output["elements"] = elements
