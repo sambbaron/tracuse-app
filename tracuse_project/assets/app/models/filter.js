@@ -5,13 +5,19 @@ Tracuse.models.FilterRuleGroup = Backbone.RelationalModel.extend({
         {
             type: Backbone.HasOne,
             key: "datum_group",
-            relatedModel: "Tracuse.models.DatumGroup"
+            relatedModel: "Tracuse.models.DatumGroup",
+            includeInJSON: false
         }
     ],
 
-    initialize: function (options) {
+    initialize: function initialize(options) {
         "use strict";
         this.set("datum_group", options.datum_group_id);
+    },
+
+    title: function title() {
+        "use strict";
+        return this.get("datum_group").get("readable_name");
     }
 });
 
@@ -20,13 +26,19 @@ Tracuse.models.FilterRuleType = Backbone.RelationalModel.extend({
         {
             type: Backbone.HasOne,
             key: "datum_type",
-            relatedModel: "Tracuse.models.DatumType"
+            relatedModel: "Tracuse.models.DatumType",
+            includeInJSON: false
         }
     ],
 
-    initialize: function (options) {
+    initialize: function initialize(options) {
         "use strict";
         this.set("datum_type", options.datum_type_id);
+    },
+
+    title: function title() {
+        "use strict";
+        return this.get("datum_type").get("readable_name");
     }
 });
 
@@ -35,13 +47,19 @@ Tracuse.models.FilterRuleAssociation = Backbone.RelationalModel.extend({
         {
             object: Backbone.HasOne,
             key: "datum_object",
-            relatedModel: "Tracuse.models.DatumObject"
+            relatedModel: "Tracuse.models.DatumObject",
+            includeInJSON: false
         }
     ],
 
-    initialize: function (options) {
+    initialize: function initialize(options) {
         "use strict";
         this.set("datum_object", options.datum_object_id);
+    },
+
+    title: function title() {
+        "use strict";
+        return this.get("datum_object").get("headline");
     }
 });
 
@@ -50,19 +68,28 @@ Tracuse.models.FilterRuleElement = Backbone.RelationalModel.extend({
         {
             object: Backbone.HasOne,
             key: "element_type",
-            relatedModel: "Tracuse.models.ElementType"
+            relatedModel: "Tracuse.models.ElementType",
+            includeInJSON: false
         },
         {
             object: Backbone.HasOne,
             key: "element_operator",
-            relatedModel: "Tracuse.models.ElementOperator"
+            relatedModel: "Tracuse.models.ElementOperator",
+            includeInJSON: false
         }
     ],
 
-    initialize: function (options) {
+    initialize: function initialize(options) {
         "use strict";
         this.set("element_type", options.element_type_id);
         this.set("element_operator", options.element_operator_id);
+    },
+
+    title: function title() {
+        "use strict";
+        return this.get("element_type").get("readable_name") + " " +
+            this.get("element_operator").get("readable_name") + " " +
+            this.get("element_value");
     }
 });
 
