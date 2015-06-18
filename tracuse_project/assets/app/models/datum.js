@@ -15,7 +15,7 @@ Tracuse.models.DatumType =
         relations: [
             {
                 type: Backbone.HasOne,
-                key: "datum_group_id",
+                key: "datum_group",
                 relatedModel: "Tracuse.models.DatumGroup"
             }
         ]
@@ -27,13 +27,13 @@ Tracuse.models.DatumObject =
         relations: [
             {
                 type: Backbone.HasOne,
-                key: "datum_group_id",
+                key: "datum_group",
                 relatedModel: "Tracuse.models.DatumGroup",
                 collectionType: "Tracuse.models.DatumGroup.collBase"
             },
             {
                 type: Backbone.HasOne,
-                key: "datum_type_id",
+                key: "datum_type",
                 relatedModel: "Tracuse.models.DatumType",
                 collectionType: "Tracuse.models.DatumType.collBase"
             },

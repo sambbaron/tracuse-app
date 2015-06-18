@@ -87,7 +87,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
         var viewuseEl = viewuseView.render().el;
 
-        var datumsViewName = viewuseView.model.get("viewuse_arrangement_id").get("entity_name");
+        var datumsViewName = viewuseView.model.get("viewuse_arrangement").get("entity_name");
         var DatumsView = Tracuse.views[datumsViewName];
 
         // Get datums

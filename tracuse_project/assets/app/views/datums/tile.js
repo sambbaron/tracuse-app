@@ -25,7 +25,7 @@ Tracuse.views.DatumsTile = Tracuse.views.DatumsBase.extend({
 
         // Get datum view
         datumsView.datumSubViews = [];
-        var datumViewName = datumsView.viewuseView.model.get("viewuse_datum_id").get("entity_name");
+        var datumViewName = datumsView.viewuseView.model.get("viewuse_datum").get("entity_name");
         var DatumView = Tracuse.views[datumViewName];
 
         if (datumsView.collection) {

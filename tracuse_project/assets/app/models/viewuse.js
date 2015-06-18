@@ -11,13 +11,13 @@ Tracuse.models.ViewuseObject =
         relations: [
             {
                 type: Backbone.HasOne,
-                key: "viewuse_arrangement_id",
+                key: "viewuse_arrangement",
                 relatedModel: "Tracuse.models.ViewuseArrangement",
                 collectionType: "Tracuse.models.ViewuseArrangement.collBase"
             },
             {
                 type: Backbone.HasOne,
-                key: "viewuse_datum_id",
+                key: "viewuse_datum",
                 relatedModel: "Tracuse.models.ViewuseDatum",
                 collectionType: "Tracuse.models.ViewuseDatum.collBase"
             }

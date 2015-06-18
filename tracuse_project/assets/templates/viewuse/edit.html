@@ -40,7 +40,7 @@
                 <option></option>
                 {% for viewuse_arrangement in viewuse_arrangements %}
                     <option value="{{ viewuse_arrangement.viewuse_arrangement_id }}"
-                            {{ " selected" if this_viewuse.viewuse_arrangement_id.viewuse_arrangement_id == viewuse_arrangement.viewuse_arrangement_id }}>
+                            {{ " selected" if this_viewuse.viewuse_arrangement.viewuse_arrangement_id == viewuse_arrangement.viewuse_arrangement_id }}>
                         {{ viewuse_arrangement.readable_name }}
                     </option>
                 {% endfor %}
@@ -52,7 +52,7 @@
                 <option></option>
                 {% for viewuse_datum in viewuse_datums %}
                     <option value="{{ viewuse_datum.viewuse_datum_id }}"
-                            {{ " selected" if this_viewuse.viewuse_datum_id.viewuse_datum_id == viewuse_datum.viewuse_datum_id }}>
+                            {{ " selected" if this_viewuse.viewuse_datum.viewuse_datum_id == viewuse_datum.viewuse_datum_id }}>
                         {{ viewuse_datum.readable_name }}
                     </option>
                 {% endfor %}

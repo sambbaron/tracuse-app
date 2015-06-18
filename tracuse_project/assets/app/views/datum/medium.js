@@ -13,7 +13,7 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
         // Only add elements with ElementDatumType.primary_view set true
         var fragment = document.createDocumentFragment();
         _.each(datumView.elementSubViews, function (elementView) {
-            if (elementView.model.get("element_datum_type_id").get("primary_view")) {
+            if (elementView.model.get("element_datum_type").get("primary_view")) {
                 fragment.appendChild(elementView.render().el);
             }
         });
