@@ -76,7 +76,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
                 var filterName = filterRule.get("rule_type");
                 var filterValue = filterRule.value();
                 var filterEl = filterView.el.querySelector(".add-filter[name='" + filterName + "'][value='" + filterValue + "']");
-                filterEl.style.visibility = "hidden";
+                if (filterEl) filterEl.style.visibility = "hidden";
             });
         });
 
@@ -171,7 +171,18 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         "use strict";
         /* Add filter rule to model and render in view */
 
+        // Set filter rule model from element name
+        var ruleModelName = el.getAttributes("name");
+        var FilterRuleModel = Tracuse.models[ruleModelName];
 
+        // Create filter rule model
+        var newRuleModel = new FilterRuleModel();
+
+        // Save filter rule model to filter set
+
+        // Create filter rule view
+
+        // Append filter rule to rule container
     }
 
 });
