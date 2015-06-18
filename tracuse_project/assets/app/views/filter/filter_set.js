@@ -61,6 +61,20 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         "use strict";
         var filterView = this;
         filterView.render();
+
+        // Create and add filter rule views
+        var filterRuleFrag = document.createDocumentFragment();
+        _.each(filterView.model.attributes, function (filterRuleCollection, filterType) {
+            //var FilterRuleView = Tracuse.views[filterType];
+            filterRuleCollection.each(function (filterRule) {
+                var filterRuleView = new Tracuse.views.FilterRuleBase({model: filterRule});
+                filterRuleFrag.appendChild(filterRuleView.el);
+            });
+        });
+
+        var filterRuleContainer = filterView.el.querySelector(".selections .content");
+        filterRuleContainer.appendChild(filterRuleFrag);
+
         Tracuse.el.viewuses.appendChild(filterView.el);
         return filterView;
     },
@@ -118,7 +132,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         var datumObjects = Tracuse.models.DatumObject.all.where({
             datum_type_id: parseInt(el.value)
         });
-        _.each(datumObjects, function(datum){
+        _.each(datumObjects, function (datum) {
             var optionEl = document.createElement("option");
             optionEl.innerHTML = datum.get("headline");
             optionEl.value = datum.id;
@@ -137,7 +151,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         var elementOperators = elementType.get("element_operators").models;
 
         var optionFrag = document.createDocumentFragment();
-        _.each(elementOperators, function(operator) {
+        _.each(elementOperators, function (operator) {
             var optionEl = document.createElement("option");
             optionEl.innerHTML = operator.get("readable_name");
             optionEl.value = operator.get("entity_name");
