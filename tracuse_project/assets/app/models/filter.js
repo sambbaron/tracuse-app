@@ -2,9 +2,7 @@ Tracuse.models.FilterRuleUser = Backbone.RelationalModel.extend({});
 
 Tracuse.models.FilterRuleGroup = Backbone.RelationalModel.extend({
 
-    defaults: {
-        rule_type: "FilterRuleGroup"
-    },
+    rule_type: "FilterRuleGroup",
 
     relations: [
         {
@@ -33,9 +31,7 @@ Tracuse.models.FilterRuleGroup = Backbone.RelationalModel.extend({
 
 Tracuse.models.FilterRuleType = Backbone.RelationalModel.extend({
 
-    defaults: {
-        rule_type: "FilterRuleType"
-    },
+    rule_type: "FilterRuleType",
 
     relations: [
         {
@@ -64,9 +60,7 @@ Tracuse.models.FilterRuleType = Backbone.RelationalModel.extend({
 
 Tracuse.models.FilterRuleAssociation = Backbone.RelationalModel.extend({
 
-    defaults: {
-        rule_type: "FilterRuleAssociation"
-    },
+    rule_type: "FilterRuleAssociation",
 
     relations: [
         {
@@ -95,9 +89,7 @@ Tracuse.models.FilterRuleAssociation = Backbone.RelationalModel.extend({
 
 Tracuse.models.FilterRuleElement = Backbone.RelationalModel.extend({
 
-    defaults: {
-        rule_type: "FilterRuleElement"
-    },
+    rule_type: "FilterRuleElement",
 
     relations: [
         {
