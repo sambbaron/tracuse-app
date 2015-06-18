@@ -1,7 +1,6 @@
 Tracuse.views.FilterRuleBase = Backbone.View.extend({
 
-    tagName: "p",
-    className: "filter-rule",
+    tagName: "none",
     templateName: "filter/filter_rule.html",
 
     events: {

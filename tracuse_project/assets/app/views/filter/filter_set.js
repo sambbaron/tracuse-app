@@ -67,7 +67,8 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         _.each(filterView.model.attributes, function (filterRuleCollection) {
             filterRuleCollection.each(function (filterRule) {
                 var filterRuleView = new Tracuse.views.FilterRuleBase({model: filterRule});
-                filterRuleFrag.appendChild(filterRuleView.el);
+                filterRuleFrag.appendChild(filterRuleView.el.querySelector("button"));
+
                 // Hide group and type elements that have been selected
                 var filterValue = filterRule.value();
                 if (filterRule.get("rule_type") === "FilterRuleGroup") {
