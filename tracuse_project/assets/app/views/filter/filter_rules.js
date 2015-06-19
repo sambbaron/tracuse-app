@@ -4,9 +4,8 @@ Tracuse.views.FilterRuleBase = Backbone.View.extend({
     templateName: "filter/filter_rule.html",
 
     events: {
-        "click": function(ev) {
-            "use strict";
-            this.remove();
+        "click": function (ev) {
+            this.removeFilterRule();
             ev.stopPropagation();
         }
     },
@@ -37,10 +36,29 @@ Tracuse.views.FilterRuleBase = Backbone.View.extend({
         return filterRuleView;
     },
 
-    initialize: function initialize() {
+    initialize: function initialize(options) {
         "use strict";
+        this.filterSetView = options.filterSetView;
         this.render();
-        this.el = this.el.querySelector("button");
+        this.setElement(this.el.querySelector("button"));
+    },
+
+    removeFilterRule: function removeFilterRule() {
+        "use strict";
+        /* Delete filter rule model from filter set
+        * Remove filter rule view
+        * Show filter rule input element (groups and types)
+        * */
+        var filterRuleView = this;
+
+        var filterSetCollection = filterRuleView.model.collection;
+
+        filterSetCollection.remove(filterRuleView.model);
+        filterRuleView.remove();
+        filterRuleView.filterSetView.showHideRuleInput(filterRuleView.model);
+
+        return filterRuleView;
+
     }
 
 });
