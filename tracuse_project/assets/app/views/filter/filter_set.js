@@ -22,7 +22,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             ev.stopPropagation();
         },
         "click .add-filter": function (ev) {
-            this.addFilter(ev.target);
+            this.addFilterRule(ev.target);
             ev.stopPropagation();
         }
     },
@@ -167,22 +167,37 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         elementOperatorsEl.appendChild(optionFrag);
     },
 
-    addFilter: function addFilter(el) {
+    addFilterRule: function addFilter(el) {
         "use strict";
         /* Add filter rule to model and render in view */
+        var filterView = this;
 
         // Set filter rule model from element name
-        var ruleModelName = el.getAttributes("name");
+        var ruleModelName = el.getAttribute("name");
         var FilterRuleModel = Tracuse.models[ruleModelName];
+        var FilterRuleView = Tracuse.views.FilterRuleBase;
 
         // Create filter rule model
-        var newRuleModel = new FilterRuleModel();
+        var ruleForm = el.querySelector("form");
+        //var ruleData = $(ruleForm).serializeArray();
+        var ruleData = $(ruleForm).serializeArray().reduce(function (obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+        }, {});
+        var newRuleModel = new FilterRuleModel(ruleData);
 
         // Save filter rule model to filter set
+        filterView.model.get(ruleModelName).add(newRuleModel);
 
         // Create filter rule view
+        var ruleView = new FilterRuleView({
+            model: newRuleModel
+        });
 
         // Append filter rule to rule container
+        filterView.ruleContainerEl.appendChild(ruleView.el);
+
+        console.warn(filterView.model);
     }
 
 });

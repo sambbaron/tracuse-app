@@ -13,6 +13,9 @@
             <div class="groups-types-container">
                 <button class="add-filter" name="FilterRuleGroup" value="{{ datum_group.datum_group_id }}">
                     {{ datum_group.readable_name }}
+                    <form>
+                        <input name="datum_group_id" value="{{ datum_group.datum_group_id }}">
+                    </form>
                 </button>
             </div>
         {% endfor %}
@@ -30,6 +33,9 @@
                     {% for datum_type in datum_group.datum_types %}
                         <button class="add-filter" name="FilterRuleType" value="{{ datum_type.datum_type_id }}">
                             {{ datum_type.readable_name }}
+                            <form>
+                                <input name="datum_type_id" value="{{ datum_type.datum_type_id }}">
+                            </form>
                         </button>
                     {% endfor %}
                 </div>
@@ -69,7 +75,7 @@
 
         <label class="input-wrap">
             <span class="input-label">Objects</span>
-            <select class="input-element" name="association_datums">
+            <select class="input-element" name="association_datums" form="association-form">
                 <option></option>
             </select>
         </label>
@@ -78,7 +84,10 @@
             Placeholder for additional association options
             Distance & Parent/Child/Both
         </label>
-        <button class="add-filter" name="FilterRuleAssociation"><i class="fa fa-plus"></i></button>
+        <button class="add-filter" name="FilterRuleAssociation"><i class="fa fa-plus"></i>
+
+            <form id="association-form"></form>
+        </button>
 
     </div>
 </fieldset>
@@ -89,7 +98,7 @@
     <div class="content">
         <label class="input-wrap">
             <span class="input-label">Types</span>
-            <select class="input-element" name="element_types">
+            <select class="input-element" name="element_types" form="element-form">
                 <option></option>
                 {% for element_type in element_types %}
                     <option value="{{ element_type.element_type_id }}">
@@ -101,17 +110,20 @@
 
         <label class="input-wrap">
             <span class="input-label">Operators</span>
-            <select class="input-element" name="element_operators">
+            <select class="input-element" name="element_operators" form="element-form">
                 <option></option>
             </select>
         </label>
 
         <label class="input-wrap">
             <span class="input-label">Filter Value</span>
-            <input class="input-element" name="element_value">
+            <input class="input-element" name="element_value" form="element-form">
         </label>
 
-        <button class="add-filter" name="FilterRuleElement"><i class="fa fa-plus"></i></button>
+        <button class="add-filter" name="FilterRuleElement"><i class="fa fa-plus"></i>
+
+            <form id="element-form"></form>
+        </button>
 
     </div>
 </fieldset>
