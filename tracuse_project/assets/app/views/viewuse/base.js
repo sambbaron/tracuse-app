@@ -166,7 +166,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var editView = new Tracuse.views.ViewuseEdit({
             model: viewuseView.model
         });
-        editView.showHide();
 
         viewuseView.menuSubView.showHide();
     },

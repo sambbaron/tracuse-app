@@ -10,7 +10,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             ev.stopPropagation();
         },
         "click button[name='cancel-apply-filter']": function clickClose(ev) {
-            this.showHide();
+            this.closeFilter();
             ev.stopPropagation();
         },
         "change .associations select[name='association_groups']": function (ev) {
@@ -85,12 +85,16 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         });
 
         Tracuse.el.viewuses.appendChild(filterView.el);
+        filterView.$el.fadeIn(200);
         return filterView;
     },
 
-    showHide: function showHide() {
+    closeFilter: function closeFilter() {
         "use strict";
-        this.$el.fadeToggle(200);
+        var filterView = this;
+        filterView.$el.fadeOut(200, function () {
+            filterView.remove();
+        });
     },
 
     showHideRuleInput: function showHideRuleInput(filterRuleModel) {

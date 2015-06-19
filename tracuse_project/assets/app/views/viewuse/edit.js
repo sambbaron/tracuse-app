@@ -10,7 +10,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
             ev.stopPropagation();
         },
         "click button[name='cancel-apply-viewuse']": function clickClose(ev) {
-            this.showHide();
+            this.closeEdit();
             ev.stopPropagation();
         },
         "click button[name='open-filter']": function openFilter(ev) {
@@ -54,12 +54,16 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         var editView = this;
         editView.render();
         Tracuse.el.viewuses.appendChild(editView.el);
+        editView.$el.fadeIn(200);
         return editView;
     },
 
-    showHide: function showHide() {
+    closeEdit: function closeEdit() {
         "use strict";
-        this.$el.fadeToggle(200);
+        var editView = this;
+        editView.$el.fadeOut(200, function () {
+            editView.remove();
+        });
     },
 
     openFilter: function openFilter() {
@@ -67,8 +71,11 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         /* Open Viewuse Edit */
         var viewuseView = this;
 
+        // Use cloned filter model to avoid live changes
+        var filterModel = viewuseView.model.get("filter_json").clone();
+
         viewuseView.filterView = new Tracuse.views.FilterSet({
-            model: viewuseView.model.get("filter_json")
+            model: filterModel
         });
         viewuseView.filterView.showHide();
     }
