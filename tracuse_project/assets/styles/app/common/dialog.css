@@ -66,11 +66,6 @@
     border-left: none;
 }
 
-/*.dialog-options .selections,*/
-/*.dialog-options .actions {*/
-    /*background-color: #ddf0bf;*/
-/*}*/
-
 .dialog-options .content {
     width: 100%;
     margin: 0 auto;
@@ -78,13 +73,12 @@
     text-align: center;
 }
 
-.dialog-options .selections button {
-    color: #9ccd65;
-    background-color: #edf8de;
+.dialog-options .selections * {
+    color: #85be2e;
 }
 
-.dialog-options .selections button:hover {
-    background-color: #fafafa;
+.dialog-options .actions * {
+    color: #e76707;
 }
 
 .dialog-options .actions button {
