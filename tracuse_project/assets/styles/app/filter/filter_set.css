@@ -18,7 +18,7 @@
     width: 22em;
 }
 
-.datum-filter .content .groups-types-container {
+.datum-filter .groups-types-container {
     position: relative;
     height: 3.5em;
     margin: 0;
@@ -26,11 +26,11 @@
     padding: 0;
 }
 
-.datum-filter .content .groups-types-container:first-child {
+.datum-filter .groups-types-container:first-child {
     border-top: none;
 }
 
-.datum-filter .content .groups-types-container .types-container {
+.datum-filter .groups-types-container .types-container {
     position: absolute;
     top: 50%;
     left: 50%;
