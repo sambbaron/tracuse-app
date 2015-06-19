@@ -1,7 +1,5 @@
 .datum-filter {
-    max-width: 77em;
-    border: 1px solid #6E8BD9;
-    background-color: #d0d7e8;
+    width: 100em;
 }
 
 .datum-filter > .section {
@@ -14,19 +12,6 @@
 
 .datum-filter .selections {
     width: 12em;
-}
-
-.datum-filter .selections .title {
-    color: #85be2e;
-}
-
-.datum-filter .selections button {
-    color: #9ccd65;
-    background-color: #edf8de;
-}
-
-.datum-filter .selections button:hover {
-    background-color: #fafafa;
 }
 
 .datum-filter .types {
