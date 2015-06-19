@@ -200,20 +200,21 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             obj[item.name] = item.value;
             return obj;
         }, {});
-        var newRuleModel = new FilterRuleModel(ruleData);
+        var ruleModel = new FilterRuleModel(ruleData);
 
         // Save filter rule model to filter set
-        filterView.model.get(ruleModelName).add(newRuleModel);
+        filterView.model.get(ruleModelName).add(ruleModel);
 
         // Create filter rule view
         var ruleView = new FilterRuleView({
-            model: newRuleModel
+            model: ruleModel
         });
 
         // Append filter rule to rule container
         filterView.ruleContainerEl.appendChild(ruleView.el);
 
-        console.warn(filterView.model);
+        // Hide filter rule input (groups and types)
+        filterView.showHideRuleInput(ruleModel);
     }
 
 });
