@@ -180,7 +180,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         _.each(elementOperators, function (operator) {
             var optionEl = document.createElement("option");
             optionEl.innerHTML = operator.get("readable_name");
-            optionEl.value = operator.get("entity_name");
+            optionEl.value = operator.get("element_operator_id");
             optionFrag.appendChild(optionEl);
         });
         elementOperatorsEl.appendChild(optionFrag);
