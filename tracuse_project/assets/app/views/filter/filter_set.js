@@ -9,6 +9,10 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             this.el.classList.add("drag");
             ev.stopPropagation();
         },
+        "click button[name='cancel-apply-filter']": function clickClose(ev) {
+            this.showHide();
+            ev.stopPropagation();
+        },
         "change .associations select[name='association_groups']": function (ev) {
             this.selectAssociationGroup(ev.target);
             ev.stopPropagation();
