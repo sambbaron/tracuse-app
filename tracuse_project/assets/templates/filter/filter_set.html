@@ -27,7 +27,7 @@
     <div class="content">
         {% for datum_group in datum_groups %}
             <div class="groups-types-container">
-                <button class="add-filter" name="FilterRuleGroup" value="{{ datum_group.datum_group_id }}">
+                <button class="add-filter input-element" name="FilterRuleGroup" value="{{ datum_group.datum_group_id }}">
                     {{ datum_group.readable_name }}
                     <form>
                         <input name="datum_group_id" data-type="integer" value="{{ datum_group.datum_group_id }}">
@@ -47,7 +47,7 @@
             <div class="groups-types-container">
                 <div class="types-container">
                     {% for datum_type in datum_group.datum_types %}
-                        <button class="add-filter" name="FilterRuleType" value="{{ datum_type.datum_type_id }}">
+                        <button class="add-filter input-element" name="FilterRuleType" value="{{ datum_type.datum_type_id }}">
                             {{ datum_type.readable_name }}
                             <form>
                                 <input name="datum_type_id" data-type="integer" value="{{ datum_type.datum_type_id }}">
