@@ -64,7 +64,7 @@ Tracuse.models.FilterRuleAssociation = Backbone.RelationalModel.extend({
 
     relations: [
         {
-            object: Backbone.HasOne,
+            type: Backbone.HasOne,
             key: "datum_object",
             relatedModel: "Tracuse.models.DatumObject",
             includeInJSON: false
@@ -93,13 +93,13 @@ Tracuse.models.FilterRuleElement = Backbone.RelationalModel.extend({
 
     relations: [
         {
-            object: Backbone.HasOne,
+            type: Backbone.HasOne,
             key: "element_type",
             relatedModel: "Tracuse.models.ElementType",
             includeInJSON: false
         },
         {
-            object: Backbone.HasOne,
+            type: Backbone.HasOne,
             key: "element_operator",
             relatedModel: "Tracuse.models.ElementOperator",
             includeInJSON: false
