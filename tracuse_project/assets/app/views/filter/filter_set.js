@@ -73,10 +73,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
                 filterRuleFrag.appendChild(filterRuleView.el.querySelector("button"));
 
                 // Hide group and type elements that have been selected
-                var filterName = filterRule.rule_type;
-                var filterKey = filterRule.key();
-                var filterEl = filterView.el.querySelector(".add-filter[name='" + filterName + "'][value='" + filterKey + "']");
-                if (filterEl) filterEl.style.visibility = "hidden";
+                filterView.showHideRuleInput(filterRule);
             });
         });
 
@@ -89,6 +86,25 @@ Tracuse.views.FilterSet = Backbone.View.extend({
     showHide: function showHide() {
         "use strict";
         this.$el.fadeToggle(200);
+    },
+
+    showHideRuleInput: function showHideRuleInput(filterRuleModel) {
+        "use strict";
+        /* Hide filter rule input element when selected
+         * Only for groups and types
+         * */
+        var filterView = this;
+
+        var filterName = filterRuleModel.rule_type;
+        var filterKey = filterRuleModel.key();
+        var filterEl = filterView.$(".add-filter[name='" + filterName + "'][value='" + filterKey + "']");
+        if (filterEl) filterEl.toggle(function() {
+            filterEl.css({visibility: "visible"});
+        }, function() {
+            filterEl.css({visibility: "hidden"});
+        });
+
+        return filterEl;
     },
 
     selectAssociationGroup: function selectAssociationGroup(el) {
