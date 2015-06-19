@@ -1,5 +1,5 @@
 .datum-filter {
-    width: 100em;
+    width: 85em;
 }
 
 .datum-filter > .section {
@@ -59,6 +59,7 @@
 .datum-filter .input-wrap {
     display: block;
     margin-bottom: 0;
+    font-size: 85%;
 }
 
 .datum-filter .input-label {
