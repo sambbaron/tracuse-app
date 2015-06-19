@@ -198,11 +198,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
 
         // Create filter rule model
         var ruleForm = el.querySelector("form");
-        //var ruleData = $(ruleForm).serializeArray();
-        var ruleData = $(ruleForm).serializeArray().reduce(function (obj, item) {
-            obj[item.name] = item.value;
-            return obj;
-        }, {});
+        var ruleData = Tracuse.utils.serializeForm(ruleForm);
         var ruleModel = new FilterRuleModel(ruleData);
 
         // Save filter rule model to filter set

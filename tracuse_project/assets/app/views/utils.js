@@ -45,3 +45,28 @@ Tracuse.utils.positionOnScroll = function positionOnScroll(positionElement, scro
     return positionElement;
 
 };
+
+Tracuse.utils.serializeForm = function serializeForm(formEl) {
+    "use strict";
+    /* Serialize form input elements into key/value object
+     * Convert values to appropriate format using element type
+     * ***Flat serialization
+     * */
+    var output = {};
+
+    var inputs = formEl.elements;
+    _.each(inputs, function (input) {
+
+        var value = input.value;
+        switch (input.getAttribute("datatype")) {
+            case "integer":
+                value = parseInt(value);
+                break;
+        }
+
+        output[input.name] = value;
+    });
+
+    return output;
+
+};
