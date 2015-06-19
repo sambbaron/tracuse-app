@@ -17,7 +17,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             this.selectAssociationType(ev.target);
             ev.stopPropagation();
         },
-        "change .elements select[name='element_types']": function (ev) {
+        "change .elements select[name='element_type_id']": function (ev) {
             this.selectElement(ev.target);
             ev.stopPropagation();
         },
