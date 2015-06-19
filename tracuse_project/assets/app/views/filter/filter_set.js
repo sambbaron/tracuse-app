@@ -73,9 +73,9 @@ Tracuse.views.FilterSet = Backbone.View.extend({
                 filterRuleFrag.appendChild(filterRuleView.el.querySelector("button"));
 
                 // Hide group and type elements that have been selected
-                var filterName = filterRule.get("rule_type");
-                var filterValue = filterRule.value();
-                var filterEl = filterView.el.querySelector(".add-filter[name='" + filterName + "'][value='" + filterValue + "']");
+                var filterName = filterRule.rule_type;
+                var filterKey = filterRule.key();
+                var filterEl = filterView.el.querySelector(".add-filter[name='" + filterName + "'][value='" + filterKey + "']");
                 if (filterEl) filterEl.style.visibility = "hidden";
             });
         });

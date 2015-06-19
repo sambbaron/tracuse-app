@@ -23,7 +23,7 @@ Tracuse.models.FilterRuleGroup = Backbone.RelationalModel.extend({
         return this.get("datum_group").get("readable_name");
     },
 
-    value: function value() {
+    key: function key() {
         "use strict";
         return this.get("datum_group_id");
     }
@@ -52,7 +52,7 @@ Tracuse.models.FilterRuleType = Backbone.RelationalModel.extend({
         return this.get("datum_type").get("readable_name");
     },
 
-    value: function value() {
+    key: function key() {
         "use strict";
         return this.get("datum_type_id");
     }
@@ -81,7 +81,7 @@ Tracuse.models.FilterRuleAssociation = Backbone.RelationalModel.extend({
         return this.get("datum_object").get("headline");
     },
 
-    value: function value() {
+    key: function key() {
         "use strict";
         return this.get("datum_object_id");
     }
@@ -119,7 +119,7 @@ Tracuse.models.FilterRuleElement = Backbone.RelationalModel.extend({
             this.get("element_value");
     },
 
-    value: function value() {
+    key: function key() {
         "use strict";
         return this.get("element_type_id") + "," +
             this.get("element_operator_id") + "," +
