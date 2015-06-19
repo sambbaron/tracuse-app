@@ -73,27 +73,27 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
     openFilter: function openFilter() {
         "use strict";
         /* Open Datum Filter Set */
-        var viewuseView = this;
+        var editView = this;
 
         // Use cloned filter model to avoid live changes
-        var origModel = viewuseView.model.get("filter_json");
+        var origModel = editView.model.get("filter_json");
         var filterModel = new Tracuse.models.FilterSet(origModel.toJSON());
 
-        viewuseView.filterView = new Tracuse.views.FilterSet({
+        editView.filterView = new Tracuse.views.FilterSet({
             model: filterModel,
-            parentView: viewuseView
+            parentView: editView
         });
     },
 
     saveFilter: function saveFilter() {
         "use strict";
         /* Set Viewuse Filter model using Filter Set view model */
-        var viewuseView = this;
+        var editView = this;
 
-        var filterAttributes = viewuseView.filterView.model.toJSON();
-        viewuseView.model.set("filter_json", filterAttributes);
+        var filterAttributes = editView.filterView.model.toJSON();
+        editView.model.set("filter_json", filterAttributes);
 
-        viewuseView.filterView.closeFilter();
+        editView.filterView.closeFilter();
     }
 
 });
