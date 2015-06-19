@@ -147,22 +147,22 @@ Tracuse.models.FilterSet = Backbone.RelationalModel.extend({
         {
             type: Backbone.HasMany,
             key: "FilterRuleType",
-            relatedModel: "Tracuse.models.FilterRuleGroup"
+            relatedModel: "Tracuse.models.FilterRuleType"
         },
         {
             type: Backbone.HasMany,
             key: "FilterRuleAssociation",
-            relatedModel: "Tracuse.models.FilterRuleGroup"
+            relatedModel: "Tracuse.models.FilterRuleAssociation"
         },
         {
             type: Backbone.HasMany,
             key: "FilterRuleElement",
-            relatedModel: "Tracuse.models.FilterRuleGroup"
+            relatedModel: "Tracuse.models.FilterRuleElement"
         },
         {
             type: Backbone.HasMany,
             key: "FilterRuleDataType",
-            relatedModel: "Tracuse.models.FilterRuleGroup"
+            relatedModel: "Tracuse.models.FilterRuleDataType"
         }
     ],
 
