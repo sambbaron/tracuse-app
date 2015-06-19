@@ -85,6 +85,10 @@
     display: block;
 }
 
+.dialog-options .actions span {
+    text-align: left;
+}
+
 .dialog-options .input-wrap {
     display: block;
     margin: 0 auto;

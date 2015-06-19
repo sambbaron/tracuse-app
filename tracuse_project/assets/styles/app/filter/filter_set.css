@@ -12,6 +12,28 @@
 
 .datum-filter .selections {
     width: 12em;
+    text-align: left;
+}
+
+.datum-filter .actions {
+    width: 11em;
+}
+
+.datum-filter .actions button {
+    font-size: 115%;
+}
+
+.datum-filter .actions button i {
+    float: left;
+    height: 2em;
+    padding-top: 0.25em;
+    padding-right: 0.25em;
+    font-size: 125%;
+}
+
+.datum-filter .actions button span {
+    display: block;
+    height: 2em;
 }
 
 .datum-filter .types {
