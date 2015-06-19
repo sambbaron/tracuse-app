@@ -21,6 +21,10 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             this.editViewuse();
             ev.stopPropagation();
         },
+        "click button[name='filter-edit']": function clickMenu(ev) {
+            this.openFilter();
+            ev.stopPropagation();
+        },
         "click button[name='viewuse-close']": function clickClose(ev) {
             this.closeViewuse();
             ev.stopPropagation();
@@ -170,6 +174,37 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         viewuseView.menuSubView.showHide();
     },
 
+    openFilter: function openFilter() {
+        "use strict";
+        /* Open Datum Filter Set */
+        var viewuseView = this;
+
+        // Use cloned filter model to avoid live changes
+        var origModel = viewuseView.model.get("filter_json");
+        var filterModel = new Tracuse.models.FilterSet(origModel.toJSON());
+
+        viewuseView.filterView = new Tracuse.views.FilterSet({
+            model: filterModel,
+            parentView: viewuseView
+        });
+
+        viewuseView.menuSubView.showHide();
+    },
+
+    saveFilter: function saveFilter() {
+        "use strict";
+        /* Set Viewuse Filter model using Filter Set view model */
+        var viewuseView = this;
+
+        var filterAttributes = viewuseView.model.toJSON();
+        viewuseView.model.set("filter_json", filterAttributes);
+        viewuseView.model.save();
+
+        viewuseView.filterView.closeFilter();
+
+        viewuseView.render();
+    },
+
     closeViewuse: function closeViewuse() {
         "use strict";
         var viewuseView = this;
@@ -182,8 +217,8 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
     scrollPositionElements: function scrollPositionElements(el) {
         "use strict";
         /* Move elements with scroll
-        * Use Jquery to find direct descendants
-        * */
+         * Use Jquery to find direct descendants
+         * */
         var viewuseView = this;
 
         var handleN = viewuseView.$(" > .ui-resizable-handle.ui-resizable-n");
