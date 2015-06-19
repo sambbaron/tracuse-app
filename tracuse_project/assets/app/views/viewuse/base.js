@@ -209,13 +209,13 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         /* Set Viewuse Filter model using Filter Set view model */
         var viewuseView = this;
 
-        var filterAttributes = viewuseView.model.toJSON();
+        var filterAttributes = viewuseView.filterView.model.toJSON();
         viewuseView.model.set("filter_json", filterAttributes);
         viewuseView.model.save();
 
         viewuseView.filterView.closeFilter();
 
-        viewuseView.render();
+        viewuseView.renderDatums();
     },
 
     closeViewuse: function closeViewuse() {
