@@ -13,6 +13,7 @@ from .serializers import (ViewuseObjectSerializer,
                           ViewuseArrangementSerializer,
                           ViewuseDatumSerializer)
 from app.common.serializers import Serializer
+from app.common.utils.model import update_model
 
 
 class ViewuseObjectAll(View):
@@ -50,6 +51,26 @@ class ViewuseObjectOne(View):
                                      serializer=ViewuseObjectSerializer.serial_related
                                      ).serialize()
         response = JsonResponse(serialized_data, status=200)
+        return response
+
+    def put(self, request, pk):
+        object = self.get_object(pk)
+        request_data = request.body.decode()
+        serialized_data = json.loads(request_data)
+
+        field_list = [
+            ("viewuse_arrangement_id",),
+            ("viewuse_datum_id",),
+            ("filter_json", "json"),
+        ]
+
+        model_save = update_model(object, field_list, serialized_data)
+        if type(model_save) == str:
+            response = HttpResponse(model_save, status=400)
+        else:
+            serialized_data = ViewuseObjectSerializer.serial_related(model_save)
+            response = JsonResponse(serialized_data, status=200)
+
         return response
 
 
