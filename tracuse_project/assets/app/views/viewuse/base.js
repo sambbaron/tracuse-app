@@ -13,19 +13,19 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             this.menuSubView.showHide();
             ev.stopPropagation();
         },
-        "click button[name='viewuse-add']": function clickMenu(ev) {
+        "click button[name='viewuse-add']": function addViewuse(ev) {
             this.addViewuse();
             ev.stopPropagation();
         },
-        "click button[name='viewuse-edit']": function clickMenu(ev) {
+        "click button[name='viewuse-edit']": function editViewuse(ev) {
             this.editViewuse();
             ev.stopPropagation();
         },
-        "click button[name='filter-edit']": function clickMenu(ev) {
+        "click button[name='filter-edit']": function openFilter(ev) {
             this.openFilter();
             ev.stopPropagation();
         },
-        "click button[name='viewuse-close']": function clickClose(ev) {
+        "click button[name='viewuse-close']": function closeViewuse(ev) {
             this.closeViewuse();
             ev.stopPropagation();
         },
