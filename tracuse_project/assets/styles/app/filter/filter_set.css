@@ -99,3 +99,7 @@
 .datum-filter .add-filter i {
     font-size: 150%;
 }
+
+.datum-filter .selected-rule {
+    font-size: 75%;
+}
