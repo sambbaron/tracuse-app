@@ -58,7 +58,7 @@ Tracuse.utils.serializeForm = function serializeForm(formEl) {
     _.each(inputs, function (input) {
 
         var value = input.value;
-        switch (input.getAttribute("datatype")) {
+        switch (input.getAttribute("data-type")) {
             case "integer":
                 value = parseInt(value);
                 break;

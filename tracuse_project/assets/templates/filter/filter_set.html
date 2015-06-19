@@ -14,7 +14,7 @@
                 <button class="add-filter" name="FilterRuleGroup" value="{{ datum_group.datum_group_id }}">
                     {{ datum_group.readable_name }}
                     <form>
-                        <input name="datum_group_id" value="{{ datum_group.datum_group_id }}">
+                        <input name="datum_group_id" data-type="integer" value="{{ datum_group.datum_group_id }}">
                     </form>
                 </button>
             </div>
@@ -34,7 +34,7 @@
                         <button class="add-filter" name="FilterRuleType" value="{{ datum_type.datum_type_id }}">
                             {{ datum_type.readable_name }}
                             <form>
-                                <input name="datum_type_id" value="{{ datum_type.datum_type_id }}">
+                                <input name="datum_type_id" data-type="integer" value="{{ datum_type.datum_type_id }}">
                             </form>
                         </button>
                     {% endfor %}
@@ -75,7 +75,7 @@
 
         <label class="input-wrap">
             <span class="input-label">Objects</span>
-            <select class="input-element" name="datum_object_id" form="association-form">
+            <select class="input-element" name="datum_object_id" data-type="integer" form="association-form">
                 <option></option>
             </select>
         </label>
@@ -98,7 +98,7 @@
     <div class="content">
         <label class="input-wrap">
             <span class="input-label">Types</span>
-            <select class="input-element" name="element_type_id" form="element-form">
+            <select class="input-element" name="element_type_id" data-type="integer" form="element-form">
                 <option></option>
                 {% for element_type in element_types %}
                     <option value="{{ element_type.element_type_id }}">
@@ -110,14 +110,14 @@
 
         <label class="input-wrap">
             <span class="input-label">Operators</span>
-            <select class="input-element" name="element_operator_id" form="element-form">
+            <select class="input-element" name="element_operator_id" data-type="integer" form="element-form">
                 <option></option>
             </select>
         </label>
 
         <label class="input-wrap">
             <span class="input-label">Filter Value</span>
-            <input class="input-element" name="element_value" form="element-form">
+            <input class="input-element" name="element_value" data-type="text" form="element-form">
         </label>
 
         <button class="add-filter" name="FilterRuleElement"><i class="fa fa-plus"></i>
