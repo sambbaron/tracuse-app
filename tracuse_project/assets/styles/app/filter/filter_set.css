@@ -76,11 +76,11 @@
     display: block;
 }
 
-.datum-filter .associations .input-element[name='association_datums'] {
+.datum-filter .associations .input-element[name='datum_object_id'] {
     width: 10em;
 }
 
-.datum-filter .elements .input-element[name='element_operators'] {
+.datum-filter .elements .input-element[name='element_operator_id'] {
     width: 10em;
 }
 

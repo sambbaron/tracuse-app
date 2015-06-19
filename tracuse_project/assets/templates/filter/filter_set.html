@@ -75,7 +75,7 @@
 
         <label class="input-wrap">
             <span class="input-label">Objects</span>
-            <select class="input-element" name="association_datums" form="association-form">
+            <select class="input-element" name="datum_object_id" form="association-form">
                 <option></option>
             </select>
         </label>
@@ -98,7 +98,7 @@
     <div class="content">
         <label class="input-wrap">
             <span class="input-label">Types</span>
-            <select class="input-element" name="element_types" form="element-form">
+            <select class="input-element" name="element_type_id" form="element-form">
                 <option></option>
                 {% for element_type in element_types %}
                     <option value="{{ element_type.element_type_id }}">
@@ -110,7 +110,7 @@
 
         <label class="input-wrap">
             <span class="input-label">Operators</span>
-            <select class="input-element" name="element_operators" form="element-form">
+            <select class="input-element" name="element_operator_id" form="element-form">
                 <option></option>
             </select>
         </label>
