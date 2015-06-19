@@ -492,7 +492,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Names",
       "str_expression": "",
       "element_data_type": 1,
@@ -511,7 +510,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Descriptions",
       "str_expression": "",
       "element_data_type": 1,
@@ -530,7 +528,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "First Names",
       "str_expression": "",
       "element_data_type": 1,
@@ -549,7 +546,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Last Names",
       "str_expression": "",
       "element_data_type": 1,
@@ -568,7 +564,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Nicknames",
       "str_expression": "",
       "element_data_type": 1,
@@ -587,7 +582,6 @@
   },
   {
     "fields": {
-      "html_element": "datetime",
       "readable_plural_name": "Birthdays",
       "str_expression": "{{ value|date:'F j, Y' }}",
       "element_data_type": 4,
@@ -606,7 +600,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Entity Types",
       "str_expression": "",
       "element_data_type": 1,
@@ -625,7 +618,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Street Addresses",
       "str_expression": "",
       "element_data_type": 1,
@@ -644,7 +636,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Citys",
       "str_expression": "",
       "element_data_type": 1,
@@ -663,7 +654,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "States",
       "str_expression": "",
       "element_data_type": 1,
@@ -682,7 +672,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Zips",
       "str_expression": "",
       "element_data_type": 1,
@@ -701,7 +690,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Countries",
       "str_expression": "",
       "element_data_type": 1,
@@ -720,7 +708,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Latitudes",
       "str_expression": "{{ value|floatformat:6 }}",
       "element_data_type": 5,
@@ -739,7 +726,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Longitudes",
       "str_expression": "{{ value|floatformat:6 }}",
       "element_data_type": 5,
@@ -758,7 +744,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Phones",
       "str_expression": "",
       "element_data_type": 1,
@@ -777,7 +762,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Emails",
       "str_expression": "",
       "element_data_type": 1,
@@ -796,7 +780,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Websites",
       "str_expression": "",
       "element_data_type": 1,
@@ -815,7 +798,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Facebook",
       "str_expression": "",
       "element_data_type": 1,
@@ -834,7 +816,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "LinkedIn",
       "str_expression": "",
       "element_data_type": 1,
@@ -853,7 +834,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Twitter",
       "str_expression": "",
       "element_data_type": 1,
@@ -872,7 +852,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Action Statuses",
       "str_expression": "",
       "element_data_type": 1,
@@ -891,7 +870,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Action Efforts",
       "str_expression": "{{ value|floatformat:0 }}",
       "element_data_type": 5,
@@ -910,7 +888,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Schedule Types",
       "str_expression": "",
       "element_data_type": 1,
@@ -929,7 +906,6 @@
   },
   {
     "fields": {
-      "html_element": "datetime",
       "readable_plural_name": "Beginning Buffers",
       "str_expression": "{{ value|date:'F j, Y g:i A'}}",
       "element_data_type": 4,
@@ -948,7 +924,6 @@
   },
   {
     "fields": {
-      "html_element": "datetime",
       "readable_plural_name": "Beginning Events",
       "str_expression": "{{ value|date:'F j, Y g:i A'}}",
       "element_data_type": 4,
@@ -967,7 +942,6 @@
   },
   {
     "fields": {
-      "html_element": "datetime",
       "readable_plural_name": "Ending Events",
       "str_expression": "{{ value|date:'F j, Y g:i A'}}",
       "element_data_type": 4,
@@ -986,7 +960,6 @@
   },
   {
     "fields": {
-      "html_element": "datetime",
       "readable_plural_name": "Ending Buffers",
       "str_expression": "{{ value|date:'F j, Y g:i A'}}",
       "element_data_type": 4,
@@ -1005,7 +978,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Event Times",
       "str_expression": "{{ value|floatformat:2 }}",
       "element_data_type": 5,
@@ -1024,7 +996,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Total Times",
       "str_expression": "{{ value|floatformat:2 }}",
       "element_data_type": 5,
@@ -1043,7 +1014,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Recurring Optionss",
       "str_expression": "",
       "element_data_type": 2,
@@ -1062,7 +1032,6 @@
   },
   {
     "fields": {
-      "html_element": "datetime",
       "readable_plural_name": "Alerts",
       "str_expression": "{{ value|date:'F j, Y g:i A'}}",
       "element_data_type": 4,
@@ -1081,7 +1050,6 @@
   },
   {
     "fields": {
-      "html_element": "checkbox",
       "readable_plural_name": "Logged In",
       "str_expression": "",
       "element_data_type": 3,
@@ -1100,7 +1068,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Item Statuses",
       "str_expression": "",
       "element_data_type": 1,
@@ -1119,7 +1086,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Item Contents",
       "str_expression": "",
       "element_data_type": 2,
@@ -1138,7 +1104,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Froms",
       "str_expression": "",
       "element_data_type": 1,
@@ -1157,7 +1122,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Tos",
       "str_expression": "",
       "element_data_type": 1,
@@ -1176,7 +1140,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Links",
       "str_expression": "",
       "element_data_type": 1,
@@ -1195,7 +1158,6 @@
   },
   {
     "fields": {
-      "html_element": "text",
       "readable_plural_name": "Attachments",
       "str_expression": "",
       "element_data_type": 6,
@@ -1214,7 +1176,6 @@
   },
   {
     "fields": {
-      "html_element": "datetime",
       "readable_plural_name": "Creation Dates",
       "str_expression": "{{ value|date:'F j, Y g:i A'}}",
       "element_data_type": 4,
@@ -1233,7 +1194,6 @@
   },
   {
     "fields": {
-      "html_element": "datetime",
       "readable_plural_name": "Modification Dates",
       "str_expression": "{{ value|date:'F j, Y g:i A'}}",
       "element_data_type": 4,
