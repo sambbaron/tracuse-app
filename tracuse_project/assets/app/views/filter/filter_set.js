@@ -97,12 +97,12 @@ Tracuse.views.FilterSet = Backbone.View.extend({
 
         var filterName = filterRuleModel.rule_type;
         var filterKey = filterRuleModel.key();
-        var filterEl = filterView.$(".add-filter[name='" + filterName + "'][value='" + filterKey + "']");
-        if (filterEl) filterEl.toggle(function() {
-            filterEl.css({visibility: "visible"});
-        }, function() {
-            filterEl.css({visibility: "hidden"});
-        });
+        var filterEl = filterView.el.querySelector(".add-filter[name='" + filterName + "'][value='" + filterKey + "']");
+        if (filterEl) if (filterEl.style.visibility === "hidden") {
+            filterEl.style.visibility = "visible";
+        } else {
+            filterEl.style.visibility = "hidden";
+        }
 
         return filterEl;
     },
