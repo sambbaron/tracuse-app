@@ -91,30 +91,16 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
         var viewuseEl = viewuseView.render().el;
 
-        var datumsViewName = viewuseView.model.get("viewuse_arrangement").get("entity_name");
-        var DatumsView = Tracuse.views[datumsViewName];
+        viewuseView.renderDatums();
 
-        // Get datums
-        var filter = new Tracuse.models.FilterSet(viewuseView.model.get("filter_json"));
-        filter.fetchFilteredDatums(function (datumObjects) {
-
-            var datumsView = new DatumsView({
-                collection: datumObjects,
-                viewuseView: viewuseView
-            });
-
-            var datumsEl = datumsView.render().el;
-            var datumsContainer = viewuseView.el.querySelector(".viewuse-content");
-            datumsContainer.appendChild(datumsEl);
-
-            options.appendEl.appendChild(viewuseEl);
-            viewuseView.$el.fadeIn(200, function () {
-                viewuseView.el.style.display = "inline-block";
-            });
-            // Append ViewuseMenu view
-            viewuseView.menuSubView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
-
+        // Append Viewuse to 'appendEl'
+        options.appendEl.appendChild(viewuseEl);
+        viewuseView.$el.fadeIn(200, function () {
+            viewuseView.el.style.display = "inline-block";
         });
+        // Append ViewuseMenu view
+        viewuseView.menuSubView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
+
 
     },
 
@@ -145,6 +131,33 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         /* Set active viewuse - 'active' class */
         $(".viewuse").removeClass("active");
         this.$el.addClass("active");
+    },
+
+    renderDatums: function renderDatums() {
+        "use strict";
+        /* Append Datums to Viewuse*/
+        var viewuseView = this;
+
+        var datumsViewName = viewuseView.model.get("viewuse_arrangement").get("entity_name");
+        var DatumsView = Tracuse.views[datumsViewName];
+
+        // Get datums
+        var filter = new Tracuse.models.FilterSet(viewuseView.model.get("filter_json"));
+        filter.fetchFilteredDatums(function (datumObjects) {
+
+            // Create Datums (Collection) View
+            var datumsView = new DatumsView({
+                collection: datumObjects,
+                viewuseView: viewuseView
+            });
+
+            var datumsEl = datumsView.render().el;
+            var datumsContainer = viewuseView.el.querySelector(".viewuse-content");
+            datumsContainer.innerHTML = "";
+            datumsContainer.appendChild(datumsEl);
+
+            return datumsView
+        });
     },
 
     addViewuse: function addViewuse() {
