@@ -40,6 +40,7 @@ Tracuse.views.FilterRuleBase = Backbone.View.extend({
     initialize: function initialize() {
         "use strict";
         this.render();
+        this.el = this.el.querySelector("button");
     }
 
 });
