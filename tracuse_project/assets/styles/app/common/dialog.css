@@ -43,8 +43,8 @@
 
 .dialog-options {
     padding: 0;
-    border: 1px solid #9ccd65;
-    background-color: #ddf0bf;
+    border: 1px solid #587e1f;
+    background-color: #cce8a2;
 }
 
 .dialog-options .title {
@@ -74,7 +74,7 @@
 }
 
 .dialog-options .selections * {
-    color: #85be2e;
+    color: #587e1f;
 }
 
 .dialog-options .actions * {
