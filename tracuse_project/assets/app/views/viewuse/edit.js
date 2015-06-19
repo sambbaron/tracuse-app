@@ -16,6 +16,10 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         "click button[name='open-filter']": function openFilter(ev) {
             this.openFilter();
             ev.stopPropagation();
+        },
+        "click button[name='save-filter']": function saveFilter(ev) {
+            this.saveFilter();
+            ev.stopPropagation();
         }
     },
 
@@ -68,16 +72,28 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
 
     openFilter: function openFilter() {
         "use strict";
-        /* Open Viewuse Edit */
+        /* Open Datum Filter Set */
         var viewuseView = this;
 
         // Use cloned filter model to avoid live changes
-        var filterModel = viewuseView.model.get("filter_json").clone();
+        var origModel = viewuseView.model.get("filter_json");
+        var filterModel = new Tracuse.models.FilterSet(origModel.toJSON());
 
         viewuseView.filterView = new Tracuse.views.FilterSet({
-            model: filterModel
+            model: filterModel,
+            parentView: viewuseView
         });
-        viewuseView.filterView.showHide();
+    },
+
+    saveFilter: function saveFilter() {
+        "use strict";
+        /* Set Viewuse Filter model using Filter Set view model */
+        var viewuseView = this;
+
+        var filterAttributes = viewuseView.filterView.model.toJSON();
+        viewuseView.model.set("filter_json", filterAttributes);
+
+        viewuseView.filterView.closeFilter();
     }
 
 });

@@ -9,7 +9,11 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             this.el.classList.add("drag");
             ev.stopPropagation();
         },
-        "click button[name='cancel-apply-filter']": function clickClose(ev) {
+        "click button[name='save-filter']": function saveFilter(ev) {
+            this.parentView.saveFilter();
+            ev.stopPropagation();
+        },
+        "click button[name='cancel-filter']": function closeFilter(ev) {
             this.closeFilter();
             ev.stopPropagation();
         },
@@ -61,9 +65,12 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         return filterView;
     },
 
-    initialize: function initialize() {
+    initialize: function initialize(options) {
         "use strict";
         var filterView = this;
+
+        filterView.parentView = options.parentView;
+
         filterView.render();
 
         // Create and add filter rule views
