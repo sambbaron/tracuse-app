@@ -12,6 +12,19 @@
     display: none;
 }
 
+.datum-filter .selections {
+    width: 12em;
+}
+
+.datum-filter .selections button {
+    color: #9ccd65;
+    background-color: #edf8de;
+}
+
+.datum-filter .selections button:hover {
+    background-color: #fafafa;
+}
+
 .datum-filter .types {
     width: 22em;
 }
