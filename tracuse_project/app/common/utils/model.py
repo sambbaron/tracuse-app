@@ -14,7 +14,10 @@ def convert_field_data(field_data, field_type):
         field_type (string):
             Django field name or custom field name
     """
-    output = False
+
+    error_message = "err:{} data conversion".format(field_type)
+    output = error_message
+
     if field_type in ["BooleanField", "boolean"]:
         if field_data.lower() == "false":
             output = False
@@ -24,7 +27,7 @@ def convert_field_data(field_data, field_type):
         try:
             output = int(field_data)
         except ValueError:
-            output = "error: integer data conversion"
+            return error_message
     elif field_type in ["json", ]:
         output = json.dumps(field_data)
 
@@ -66,6 +69,9 @@ def update_model(model_object, field_list, data):
 
         request_data = data[field_name]
         converted_data = convert_field_data(request_data, field_type)
+
+        if converted_data[3] == "err:":
+            return converted_data[4:]
 
         try:
             setattr(model_object, field_name, converted_data)
