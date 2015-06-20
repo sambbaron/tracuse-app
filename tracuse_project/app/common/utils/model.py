@@ -23,7 +23,7 @@ def convert_field_data(field_data, field_type):
             output = False
         else:
             output = bool(field_data)
-    elif field_type in ["IntegerField", "AutoField", "ForeignKey", "integer"]:
+    elif field_type in ["IntegerField", "BigIntegerField", "AutoField", "ForeignKey", "integer"]:
         try:
             output = int(field_data)
         except ValueError:
