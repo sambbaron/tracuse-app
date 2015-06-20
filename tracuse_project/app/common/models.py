@@ -1,8 +1,8 @@
 from django.db import models
 
-from .utils.entity import (camel_to_underscore,
-                           camel_to_spaced_capital,
-                           sort_range_value)
+from app.utils.entity import (camel_to_underscore,
+                              camel_to_spaced_capital,
+                              sort_range_value)
 from .managers import (BaseMixinManagerActive,
                        BaseMixinManagerInactive)
 

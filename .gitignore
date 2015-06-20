@@ -71,7 +71,7 @@ bower_components
 node_modules
 
 # Miscellaneous Items
-tracuse_project/app/common/management/commands/sandbox.py
+tracuse_project/app/utils/management/commands/sandbox.py
 */sql.sql
 x_old_models/
 *.sh

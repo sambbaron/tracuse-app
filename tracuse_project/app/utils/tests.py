@@ -1,7 +1,7 @@
 from django.test import TestCase
 from model_mommy import mommy
 
-from . import entity
+from utils import entity
 from . import model
 
 

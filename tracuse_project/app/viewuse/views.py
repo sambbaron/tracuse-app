@@ -1,11 +1,10 @@
 import json
 
-from django.http import JsonResponse, HttpResponse, Http404
+from django.http import JsonResponse, Http404
 from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-
 from .models import (ViewuseObject,
                      ViewuseArrangement,
                      ViewuseDatum)
@@ -13,7 +12,7 @@ from .serializers import (ViewuseObjectSerializer,
                           ViewuseArrangementSerializer,
                           ViewuseDatumSerializer)
 from app.common.serializers import Serializer
-from app.common.utils.model import update_model
+from utils.model import update_model
 
 
 class ViewuseObjectAll(View):

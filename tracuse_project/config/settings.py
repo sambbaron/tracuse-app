@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.common',
+    'app.utils',
     'app.tracuser',
     'app.datum',
     'app.element_type',
@@ -45,7 +46,7 @@ INSTALLED_APPS = (
     'app.association',
     'app.filter',
     'app.watchword',
-    'app.viewuse'
+    'app.viewuse',
 )
 
 MIDDLEWARE_CLASSES = (
