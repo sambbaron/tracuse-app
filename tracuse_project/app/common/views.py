@@ -16,13 +16,14 @@ def app_index(request):
                        ViewuseObjectAll, ViewuseArrangementAll, ViewuseDatumAll
                        ]
 
-    bootstrap_request = RequestFactory()
+    bootstrap_request = RequestFactory().get("")
     bootstrap_request.user = request.user
-    bootstrap_data = {}
 
-    for view in bootstrap_views:
-        view_key = view.model_name
-        view_data = view().get(bootstrap_request).content.decode()
+    bootstrap_data = {}
+    for view_class in bootstrap_views:
+        view_key = view_class.model_name
+        view_object = view_class(request=bootstrap_request)
+        view_data = view_object.dispatch(request=bootstrap_request).content.decode()
         bootstrap_data[view_key] = view_data
 
     return render(request, "app/base_app.html", {"bootstrap_data": bootstrap_data})
