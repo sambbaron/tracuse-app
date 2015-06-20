@@ -5,7 +5,7 @@ from common.tests.test_data import TestDataCommon
 from utils.serializer import Serializer
 
 
-class TestSerializerMethods(TestCase):
+class TestUtilsSerializerFunctions(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.test = TestDataCommon()
@@ -24,7 +24,7 @@ class TestSerializerMethods(TestCase):
         self.assertEqual(expected, actual)
 
 
-class TestSerializerClass(TestCase):
+class TestUtilsSerializerClass(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.test = TestDataCommon()
