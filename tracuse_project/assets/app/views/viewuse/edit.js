@@ -9,7 +9,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
             this.el.classList.add("drag");
             ev.stopPropagation();
         },
-        "click button[name='cancel-apply-viewuse']": function clickClose(ev) {
+        "click button[name='cancel-viewuse']": function clickClose(ev) {
             this.closeEdit();
             ev.stopPropagation();
         },
