@@ -58,7 +58,16 @@ class TestUtilsEntity(TestCase):
 class TestUtilsModel(TestCase):
     """Test model functions"""
 
-    def test_convert_field_data_boolean(self):
+    def test_convert_field_data_boolean_false(self):
+        """Test convert_field_data with boolean value
+        """
+        test_data = "false"
+        test_type = "boolean"
+        expected = False
+        actual = model.convert_field_data(test_data, test_type)
+        self.assertEqual(expected, actual)
+
+    def test_convert_field_data_boolean_true(self):
         """Test convert_field_data with boolean value
         """
         test_data = "true"
@@ -67,7 +76,7 @@ class TestUtilsModel(TestCase):
         actual = model.convert_field_data(test_data, test_type)
         self.assertEqual(expected, actual)
 
-    def test_convert_field_data_integer(self):
+    def test_convert_field_data_integer_good(self):
         """Test convert_field_data with integer value
         """
         test_data = "9"
@@ -75,6 +84,17 @@ class TestUtilsModel(TestCase):
         expected = 9
         actual = model.convert_field_data(test_data, test_type)
         self.assertEqual(expected, actual)
+
+    def test_convert_field_data_integer_bad(self):
+        """Test convert_field_data with integer value
+        """
+        test_data = "abc"
+        test_type = "integer"
+        expected = 9
+        self.assertRaisesMessage(
+            model.convert_field_data(test_data, test_type),
+            "error: integer data conversion"
+        )
 
     def test_convert_field_data_json(self):
         """Test convert_field_data with json value

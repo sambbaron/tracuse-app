@@ -16,9 +16,15 @@ def convert_field_data(field_data, field_type):
     """
     output = False
     if field_type in ["BooleanField", "boolean"]:
-        output = bool(field_data)
+        if field_data.lower() == "false":
+            output = False
+        else:
+            output = bool(field_data)
     elif field_type in ["IntegerField", "AutoField", "ForeignKey", "integer"]:
-        output = int(field_data)
+        try:
+            output = int(field_data)
+        except ValueError:
+            output = "error: integer data conversion"
     elif field_type in ["json", ]:
         output = json.dumps(field_data)
 
