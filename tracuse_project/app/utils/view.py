@@ -17,12 +17,8 @@ class ViewBase(View):
         queryset: Django queryset object
         serializer: Custom serializer class
     """
-    queryset = None
+    model = None
     serializer = None
-
-    @property
-    def model(self):
-        return self.queryset.model
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -34,15 +30,17 @@ class ViewBase(View):
         except self.model.DoesNotExist:
             raise Http404("{} does not exist".format(self.model.__name__))
 
-    def serialized_data(self, data):
+    @classmethod
+    def serialized_data(cls, data):
         return Serializer(data=data,
-                          serializer=self.serializer
+                          serializer=cls.serializer
                           ).serialize()
 
 
 class ViewAll(ViewBase):
     """ Base View for all rows
     """
+    queryset = None
 
     def get(self, request):
         response_data = self.serialized_data(self.queryset)
