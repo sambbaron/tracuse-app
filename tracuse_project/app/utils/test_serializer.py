@@ -2,8 +2,7 @@ import json
 
 from django.test import TestCase
 from common.tests.test_data import TestDataCommon
-
-from ..serializers import Serializer
+from utils.serializer import Serializer
 
 
 class TestSerializerMethods(TestCase):
@@ -15,7 +14,7 @@ class TestSerializerMethods(TestCase):
         """Test serialize_all method
         using DatumGroup
         """
-        from ..serializers import serialize_all
+        from utils.serializer import serialize_all
         from app.datum.models import DatumGroup
 
         test_object = self.test.datum_group1

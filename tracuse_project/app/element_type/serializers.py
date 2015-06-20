@@ -1,6 +1,6 @@
 from .models import ElementOperator, ElementType, ElementDatumType, ElementDatumObject
 
-from app.common.serializers import serialize_all
+from utils.serializer import serialize_all
 
 
 class ElementTypeSerializer(ElementType):

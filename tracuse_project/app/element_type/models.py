@@ -4,7 +4,7 @@ from django.template import Context, Template
 from app.common.models import EntityModel, BaseModel
 from app.element_value.models import ElementValueMeta
 
-from app.common.serializers import Serializer
+from app.utils.serializer import Serializer
 
 
 class ElementDataType(EntityModel):

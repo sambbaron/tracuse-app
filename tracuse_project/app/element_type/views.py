@@ -4,13 +4,12 @@ from django.http import JsonResponse, HttpResponse, Http404
 from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-
 from .models import ElementOperator, ElementType, ElementDatumType, ElementDatumObject
 from .serializers import (ElementTypeSerializer,
                           ElementOperatorSerializer,
                           ElementDatumTypeSerializer,
                           ElementDatumObjectSerializer)
-from app.common.serializers import Serializer
+from utils.serializer import Serializer
 
 
 class ElementTypeAll(View):

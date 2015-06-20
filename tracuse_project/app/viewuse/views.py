@@ -11,7 +11,7 @@ from .models import (ViewuseObject,
 from .serializers import (ViewuseObjectSerializer,
                           ViewuseArrangementSerializer,
                           ViewuseDatumSerializer)
-from app.common.serializers import Serializer
+from utils.serializer import Serializer
 from utils.model import update_model
 
 

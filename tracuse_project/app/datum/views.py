@@ -1,16 +1,15 @@
 import json
 
-from django.http import HttpResponse, JsonResponse, Http404
+from django.http import JsonResponse, Http404
 from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-
 from .models import DatumGroup, DatumType, DatumObject
 from .serializers import (DatumGroupSerializer,
                           DatumTypeSerializer,
                           DatumObjectSerializer,
                           DatumObjectDeserializer)
-from app.common.serializers import Serializer
+from utils.serializer import Serializer
 
 
 class DatumGroupAll(View):

@@ -2,7 +2,7 @@ from .models import DatumGroup, DatumType, DatumObject
 
 from app.element_type.serializers import ElementDatumObjectSerializer
 
-from app.common.serializers import serialize_all
+from utils.serializer import serialize_all
 
 
 class DatumGroupSerializer(DatumGroup):

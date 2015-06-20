@@ -3,8 +3,7 @@ import json
 from .models import (ViewuseObject,
                      ViewuseArrangement,
                      ViewuseDatum)
-
-from app.common.serializers import serialize_all
+from utils.serializer import serialize_all
 
 
 class ViewuseObjectSerializer(ViewuseObject):

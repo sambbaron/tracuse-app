@@ -9,8 +9,8 @@ from app.element_type.models import ElementType, ElementDatumObject
 from app.element_value.models import ElementValueMeta
 from app.association.models import AssociationAll, AssociationDirection
 
+from app.utils.serializer import Serializer
 from .datum_methods import DatumObjectMethodFactory
-from app.common.serializers import Serializer
 
 
 class DatumGroup(EntityModel):
