@@ -76,7 +76,7 @@ class TestUtilsModel(TestCase):
         actual = model.convert_field_data(test_data, test_type)
         self.assertEqual(expected, actual)
 
-    def test_convert_field_data_integer_good(self):
+    def test_convert_field_data_integer_success(self):
         """Test convert_field_data with integer value
         """
         test_data = "9"
@@ -85,16 +85,14 @@ class TestUtilsModel(TestCase):
         actual = model.convert_field_data(test_data, test_type)
         self.assertEqual(expected, actual)
 
-    def test_convert_field_data_integer_bad(self):
+    def test_convert_field_data_integer_failure(self):
         """Test convert_field_data with integer value
         """
         test_data = "abc"
         test_type = "integer"
-        expected = 9
-        self.assertRaisesMessage(
-            model.convert_field_data(test_data, test_type),
-            "error: integer data conversion"
-        )
+        expected = "err:integer data conversion"
+        actual = model.convert_field_data(test_data, test_type)
+        self.assertEqual(expected, actual)
 
     def test_convert_field_data_json(self):
         """Test convert_field_data with json value
