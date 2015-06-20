@@ -70,13 +70,13 @@ def update_model(model_object, field_list, data):
         request_data = data[field_name]
         converted_data = convert_field_data(request_data, field_type)
 
-        if type(converted_data) == str and converted_data[3] == "err:":
-            return converted_data[4:]
+        if type(converted_data) == str and converted_data[:4] == "err:":
+            return converted_data[4:] + "; Field: {}; Raw data: {};".format(field_name, request_data)
 
         try:
             setattr(model_object, field_name, converted_data)
         except:
-            return "Error updating '{}'; Raw data: {}; Converted data: {}".format(field_name,
+            return "Error updating '{}'; Raw data: {}; Converted data: {};".format(field_name,
                                                                                   request_data,
                                                                                   converted_data
                                                                                   )
