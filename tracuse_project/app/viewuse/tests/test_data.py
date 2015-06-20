@@ -24,6 +24,7 @@ class TestDataViewuse(object):
         # Viewuse Object
         self.viewuse_object1 = mommy.make("viewuse.ViewuseObject",
                                           entity_name="Viewuse1",
+                                          readable_name="Viewuse 1 Title",
                                           viewuse_arrangement=self.viewuse_arrangement1,
                                           viewuse_datum=self.viewuse_datum2,
                                           filter_json='{"TestFilter1": "TestFilter1"}',
@@ -31,6 +32,7 @@ class TestDataViewuse(object):
                                           )
         self.viewuse_object2 = mommy.make("viewuse.ViewuseObject",
                                           entity_name="Viewuse2",
+                                          readable_name="Viewuse 2 Title",
                                           viewuse_arrangement=self.viewuse_arrangement1,
                                           viewuse_datum=self.viewuse_datum1,
                                           filter_json='{"TestFilter2": "TestFilter2"}',

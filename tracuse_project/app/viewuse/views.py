@@ -59,6 +59,7 @@ class ViewuseObjectOne(View):
         serialized_data = json.loads(request_data)
 
         field_list = [
+            ("readable_name",),
             ("viewuse_arrangement_id",),
             ("viewuse_datum_id",),
             ("filter_json", "json"),
@@ -66,9 +67,11 @@ class ViewuseObjectOne(View):
 
         model_save = update_model(object, field_list, serialized_data)
         if type(model_save) == str:
-            response = HttpResponse(model_save, status=400)
+            response = JsonResponse(model_save, status=400, safe=False)
         else:
-            serialized_data = ViewuseObjectSerializer.serial_related(model_save)
+            serialized_data = Serializer(data=model_save,
+                                         serializer=ViewuseObjectSerializer.serial_related
+                                         ).serialize()
             response = JsonResponse(serialized_data, status=200)
 
         return response

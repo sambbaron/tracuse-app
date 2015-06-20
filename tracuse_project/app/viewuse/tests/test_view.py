@@ -52,6 +52,27 @@ class TestViewuseObjectOne(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(expected_actual, response_actual)
 
+    def test_put(self):
+        """Test ViewuseObjectOne.put success"""
+        request_id = self.test.viewuse_object1.viewuse_object_id
+        request_data = json.dumps({
+            "readable_name": "Change Viewuse Title",
+            "viewuse_arrangement_id": self.test.viewuse_object1.viewuse_arrangement_id,
+            "viewuse_datum_id": self.test.viewuse_object1.viewuse_datum_id,
+            "filter_json": self.test.viewuse_object1.filter_json
+        })
+        request = self.factory.put("", request_data, "application/json")
+        request.user = self.test.user1
+
+        view = views.ViewuseObjectOne(request=request)
+        response = view.dispatch(request=request, pk=request_id)
+        response_content = json.loads(response.content.decode())
+
+        actual_response = response_content["readable_name"]
+        expected_response = "Change Viewuse Title"
+        self.assertEqual(200, response.status_code)
+        self.assertEqual(expected_response, actual_response)
+
 
 class TestViewuseArrangementAll(TestCase):
     @classmethod
