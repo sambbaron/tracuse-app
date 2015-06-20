@@ -46,9 +46,9 @@ class ViewBase(View):
         request_data = request.body.decode()
         return json.loads(request_data, encoding=DjangoJSONEncoder)
 
-    def update_save(self, model_object, request_data):
+    def update_save(self, model_object, request_data, request_object):
         """Save request data to model object"""
-        return update_model(model_object, self.field_list, request_data)
+        return update_model(model_object, self.field_list, request_data, request_object)
 
     def update_response(self, save_result, success_code, fail_code):
         """Return HTTP response for data update
@@ -73,10 +73,9 @@ class ViewAll(ViewBase):
         return response
 
     def post(self, request):
-        # object = self.model.objects.create()
         object = self.model()
         request_data = self.update_prep(request)
-        save_result = self.update_save(object, request_data)
+        save_result = self.update_save(object, request_data, request)
         response = self.update_response(save_result, 201, 400)
         return response
 
@@ -94,7 +93,7 @@ class ViewOne(ViewBase):
     def put(self, request, pk):
         object = self.get_object(pk)
         request_data = self.update_prep(request)
-        save_result = self.update_save(object, request_data)
+        save_result = self.update_save(object, request_data, request)
         response = self.update_response(save_result, 200, 400)
         return response
 

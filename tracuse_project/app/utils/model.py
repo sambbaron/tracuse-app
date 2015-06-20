@@ -33,17 +33,19 @@ def convert_field_data(field_data, field_type):
     return output
 
 
-def update_model(model_object, field_list, data):
+def update_model(model_object, field_list, data, request=None):
     """Helper function to update model data
 
         Attributes:
             model_object: model instance
             field_list (tuple list): Fields to update
                 First: field name
-                Second: data type
+                Second: data type or data source (ex: "request")
             data (dict): data to save
                 Key: field name
                 Value: value
+            request: HTTP request object
+                Used for session data - user, etc.
 
         Return:
             Saved model object or error message
@@ -58,16 +60,23 @@ def update_model(model_object, field_list, data):
         except FieldDoesNotExist:
             return "'{}' not a valid field".format(field_name)
 
-        if field_name not in data:
-            return "'{}' not in data request".format(field_name)
-
         try:
             field_type = field[1]
         except IndexError:
             field_type = model_field.get_internal_type()
 
-        request_data = data[field_name]
-        converted_data = convert_field_data(request_data, field_type)
+        # Set update data from HTTP request object
+        if field_type == "request":
+            request_data =  getattr(request, field_name)
+            converted_data = request_data
+        else:
+            # Set update data from request data
+
+            if field_name not in data:
+                return "'{}' not in data request".format(field_name)
+
+            request_data = data[field_name]
+            converted_data = convert_field_data(request_data, field_type)
 
         if type(converted_data) == str and converted_data[:4] == "err:":
             return converted_data[4:] + "; Field: {}; Raw data: {};".format(field_name, request_data)
