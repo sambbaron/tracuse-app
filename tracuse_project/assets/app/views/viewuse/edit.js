@@ -53,9 +53,12 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         return editView;
     },
 
-    initialize: function initialize() {
+    initialize: function initialize(options) {
         "use strict";
         var editView = this;
+
+        editView.viewuseView = options.viewuseView;
+
         editView.render();
         Tracuse.el.viewuses.appendChild(editView.el);
         editView.$el.fadeIn(200);
