@@ -1,6 +1,7 @@
 from django.test import TestCase
 
 from . import entity
+from . import model
 
 
 class TestUtilsEntity(TestCase):
@@ -51,4 +52,35 @@ class TestUtilsEntity(TestCase):
             return_start=False
         )
         expected = 229999
+        self.assertEqual(expected, actual)
+
+
+class TestUtilsModel(TestCase):
+    """Test model functions"""
+
+    def test_convert_field_data_boolean(self):
+        """Test convert_field_data with boolean value
+        """
+        test_data = "true"
+        test_type = "boolean"
+        expected = True
+        actual = model.convert_field_data(test_data, test_type)
+        self.assertEqual(expected, actual)
+
+    def test_convert_field_data_integer(self):
+        """Test convert_field_data with integer value
+        """
+        test_data = "9"
+        test_type = "integer"
+        expected = 9
+        actual = model.convert_field_data(test_data, test_type)
+        self.assertEqual(expected, actual)
+
+    def test_convert_field_data_json(self):
+        """Test convert_field_data with json value
+        """
+        test_data = {"Test": "Data"}
+        test_type = "json"
+        expected = '{"Test": "Data"}'
+        actual = model.convert_field_data(test_data, test_type)
         self.assertEqual(expected, actual)
