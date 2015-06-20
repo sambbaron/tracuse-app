@@ -89,3 +89,42 @@ class TestSerializerClass(TestCase):
         actual = test_data["datum_type_id"]
         expected = self.test.datum_type1.datum_type_id
         self.assertEqual(expected, actual)
+
+    def test_serialize_instance_dict_with_pk(self):
+        """Test serialize method
+        using DatumObjectSerializer.serial_basic
+        """
+        from app.datum.models import DatumObject
+        from app.datum.serializers import DatumObjectSerializer
+
+        test_object = DatumObject.objects.first()
+        test_data = Serializer(data=test_object,
+                               serializer=DatumObjectSerializer.serial_basic,
+                               dict_with_pk=True
+                               ).serialize()
+
+        actual = test_data[test_object.pk]["datum_type_id"]
+        expected = self.test.datum_type1.datum_type_id
+        self.assertEqual(expected, actual)
+
+    def test_serialize_queryset_dict_with_pk(self):
+        """Test serialize method
+        using DatumObjectSerializer.serial_basic
+        """
+        from app.datum.models import DatumObject
+        from app.datum.serializers import DatumObjectSerializer
+
+        test_queryset = DatumObject.objects.all()
+        test_data = Serializer(data=test_queryset,
+                               serializer=DatumObjectSerializer.serial_basic,
+                               dict_with_pk=True
+                               ).serialize()
+
+        actual_count = len(test_data)
+        expected_count = 1
+        self.assertEqual(expected_count, actual_count)
+
+        actual = test_data[test_queryset.first().pk]["datum_type_id"]
+        expected = self.test.datum_type1.datum_type_id
+        self.assertEqual(expected, actual)
+
