@@ -21,7 +21,7 @@ def app_index(request):
 
     bootstrap_data = {}
     for view_class in bootstrap_views:
-        view_key = view_class.model_name
+        view_key = view_class.model.__name__
         view_object = view_class(request=bootstrap_request)
         view_data = view_object.dispatch(request=bootstrap_request).content.decode()
         bootstrap_data[view_key] = view_data

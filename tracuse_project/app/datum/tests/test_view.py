@@ -112,9 +112,8 @@ class TestDatumObjectAll(TestCase):
         view = views.DatumObjectAll(request=request)
         response = view.dispatch(request=request)
 
-        response_content = json.loads(response.content.decode())
-        actual_content = response_content["error"]
-        expected_content = "Data post error"
+        actual_content = json.loads(response.content.decode())
+        expected_content = "'datum_type_id' not in data request"
         self.assertEqual(response.status_code, 400)
         self.assertEqual(expected_content, actual_content)
 
