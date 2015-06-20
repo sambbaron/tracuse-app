@@ -1,11 +1,11 @@
 from django.db import models
 
 
-class BaseMixinManagerActive(models.Manager):
+class BaseModelManagerActive(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(active=True)
 
 
-class BaseMixinManagerInactive(models.Manager):
+class BaseModelManagerInactive(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(active=False)

@@ -3,8 +3,8 @@ from django.db import models
 from app.utils.entity import (camel_to_underscore,
                               camel_to_spaced_capital,
                               sort_range_value)
-from .managers import (BaseMixinManagerActive,
-                       BaseMixinManagerInactive)
+from .managers import (BaseModelManagerActive,
+                       BaseModelManagerInactive)
 
 
 class BaseModel(models.Model):
@@ -42,8 +42,8 @@ class BaseModel(models.Model):
 
     # Custom model managers for active/inactive records
     objects = models.Manager()
-    actives = BaseMixinManagerActive()
-    inactives = BaseMixinManagerInactive()
+    actives = BaseModelManagerActive()
+    inactives = BaseModelManagerInactive()
 
     def _last_sort_value(self, sort_start=0, sort_end=0):
         """Object with maximum sort value

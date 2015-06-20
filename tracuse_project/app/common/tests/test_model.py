@@ -9,7 +9,7 @@ class TestManagerBaseMixin(TestCase):
         cls.test = TestDataCommon()
 
     def test_base_mixin_manager_active(self):
-        """Test BaseMixinManagerActive.get_queryset
+        """Test BaseModelManagerActive.get_queryset
         """
         from app.datum.models import DatumType
 
@@ -18,7 +18,7 @@ class TestManagerBaseMixin(TestCase):
         self.assertEqual(expected, actual)
 
     def test_base_mixin_manager_inactive(self):
-        """Test BaseMixinManagerInactive.get_queryset
+        """Test BaseModelManagerInactive.get_queryset
         """
         from app.datum.models import DatumType
 
