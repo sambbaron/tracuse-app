@@ -138,13 +138,13 @@ class DatumObject(BaseModel):
 
     sort_base_length = 1
 
-    def __init__(self, *args, **kwargs):
-        """Set method class for DatumType-specific methods"""
-        super().__init__(*args, **kwargs)
-        self.datum_methods = DatumObjectMethodFactory(
-            datum_object=self,
-            datum_type_name=self.datum_type.entity_name
-        )
+    # def __init__(self, *args, **kwargs):
+    #     """Set method class for DatumType-specific methods"""
+    #     super().__init__(*args, **kwargs)
+    #     self.datum_methods = DatumObjectMethodFactory(
+    #         datum_object=self,
+    #         datum_type_name=self.datum_type.entity_name
+    #     )
 
     @property
     def sort_parts(self):

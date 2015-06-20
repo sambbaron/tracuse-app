@@ -75,6 +75,7 @@ class ViewOne(ViewBase):
     def update_response(self, save_result, success_code, fail_code):
         """Return HTTP response for data update
         Assume that string response is an error
+        Serialize resulting model object
         """
         if type(save_result) == str:
             response = JsonResponse(save_result, status=fail_code, safe=False)
