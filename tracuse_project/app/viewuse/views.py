@@ -22,7 +22,7 @@ class ViewuseObjectAll(ViewAll):
 class ViewuseObjectOne(ViewOne):
     model = ViewuseObject
     serializer = ViewuseObjectSerializer.serial_related
-    field_list = [
+    update_fields = [
         ("readable_name",),
         ("viewuse_arrangement_id",),
         ("viewuse_datum_id",),

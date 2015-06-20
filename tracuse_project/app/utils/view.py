@@ -17,13 +17,13 @@ class ViewBase(View):
         model: Django model class
         serializer: Custom serializer class
         queryset: Django queryset object
-        field_list (string list):
+        update_fields (list of strings):
             Field names for data update
     """
     model = None
     serializer = None
     queryset = None
-    field_list = []
+    update_fields = []
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -48,7 +48,7 @@ class ViewBase(View):
 
     def update_save(self, model_object, request_data, request_object):
         """Save request data to model object"""
-        return update_model(model_object, self.field_list, request_data, request_object)
+        return update_model(model_object, self.update_fields, request_data, request_object)
 
     def update_response(self, save_result, success_code, fail_code):
         """Return HTTP response for data update

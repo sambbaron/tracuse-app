@@ -33,12 +33,12 @@ def convert_field_data(field_data, field_type):
     return output
 
 
-def update_model(model_object, field_list, data, request=None):
+def update_model(model_object, fields, data, request=None):
     """Helper function to update model data
 
         Attributes:
             model_object: model instance
-            field_list (tuple list): Fields to update
+            fields (list of tuples): Fields to update
                 First: field name
                 Second: data type or data source (ex: "request")
             data (dict): data to save
@@ -51,7 +51,7 @@ def update_model(model_object, field_list, data, request=None):
             Saved model object or error message
     """
 
-    for field in field_list:
+    for field in fields:
 
         field_name = field[0]
 

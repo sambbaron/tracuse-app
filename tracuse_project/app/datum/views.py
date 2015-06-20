@@ -22,7 +22,7 @@ class DatumObjectAll(ViewAll):
     model = DatumObject
     serializer = DatumObjectSerializer.serial_related
 
-    field_list = [
+    update_fields = [
         ("user", "request"),
         ("datum_type_id",)
     ]
