@@ -15,7 +15,7 @@ def convert_field_data(field_data, field_type):
             Django field name or custom field name
     """
 
-    error_message = "err:{} data conversion".format(field_type)
+    error_message = "err:'{}' data conversion failure".format(field_type)
     output = error_message
 
     if field_type in ["BooleanField", "boolean"]:

@@ -90,7 +90,7 @@ class TestUtilsModel(TestCase):
         """
         test_data = "abc"
         test_type = "integer"
-        expected = "err:integer data conversion"
+        expected = "err:'integer' data conversion failure"
         actual = model.convert_field_data(test_data, test_type)
         self.assertEqual(expected, actual)
 
