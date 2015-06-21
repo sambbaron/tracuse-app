@@ -5,7 +5,9 @@ Tracuse.models.DatumGroup =
                 type: Backbone.HasMany,
                 key: "datum_types",
                 relatedModel: "Tracuse.models.DatumType",
-                collectionType: "Tracuse.models.DatumType.collBase"
+                collectionType: "Tracuse.models.DatumType.collBase",
+                includeInJSON: false,
+                includeInTemplate: true
             }
         ]
     });
@@ -16,7 +18,9 @@ Tracuse.models.DatumType =
             {
                 type: Backbone.HasOne,
                 key: "datum_group",
-                relatedModel: "Tracuse.models.DatumGroup"
+                relatedModel: "Tracuse.models.DatumGroup",
+                includeInJSON: false,
+                includeInTemplate: true
             }
         ]
     });
@@ -29,19 +33,25 @@ Tracuse.models.DatumObject =
                 type: Backbone.HasOne,
                 key: "datum_group",
                 relatedModel: "Tracuse.models.DatumGroup",
-                collectionType: "Tracuse.models.DatumGroup.collBase"
+                collectionType: "Tracuse.models.DatumGroup.collBase",
+                includeInJSON: false,
+                includeInTemplate: true
             },
             {
                 type: Backbone.HasOne,
                 key: "datum_type",
                 relatedModel: "Tracuse.models.DatumType",
-                collectionType: "Tracuse.models.DatumType.collBase"
+                collectionType: "Tracuse.models.DatumType.collBase",
+                includeInJSON: false,
+                includeInTemplate: true
             },
             {
                 type: Backbone.HasMany,
                 key: "elements",
                 relatedModel: "Tracuse.models.ElementDatumObject",
-                collectionType: "Tracuse.models.ElementDatumObject.collBase"
+                collectionType: "Tracuse.models.ElementDatumObject.collBase",
+                includeInJSON: false,
+                includeInTemplate: true
             }
             //{
             //    type: Backbone.HasMany,
@@ -56,4 +66,12 @@ Tracuse.models.DatumObject =
             //    collectionType: "Tracuse.models.DatumObject.collBase"
             //}
         ]
+        //
+        //toTemplate: function () {
+        //    "use strict";
+        //    var data = _.clone(this.attributes);
+        //    data.datum_group = _.clone(this.get("datum_group").attributes);
+        //    data.datum_type = _.clone(this.get("datum_type").attributes);
+        //    return data;
+        //}
     });

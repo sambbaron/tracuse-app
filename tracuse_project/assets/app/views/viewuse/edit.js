@@ -34,10 +34,10 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         var templateOutput = "";
 
         var templateData = {
-            this_viewuse: editView.model.toJSON(),
-            viewuse_objects: Tracuse.models.ViewuseObject.all.toJSON(),
-            viewuse_arrangements: Tracuse.models.ViewuseArrangement.all.toJSON(),
-            viewuse_datums: Tracuse.models.ViewuseDatum.all.toJSON()
+            this_viewuse: editView.model.toTemplate(),
+            viewuse_objects: Tracuse.models.ViewuseObject.all.toTemplate(),
+            viewuse_arrangements: Tracuse.models.ViewuseArrangement.all.toTemplate(),
+            viewuse_datums: Tracuse.models.ViewuseDatum.all.toTemplate()
         };
         templateOutput = Tracuse.templates.env.render(
             editView.templateName,
@@ -99,7 +99,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
 
         // Use cloned filter model to avoid live changes
         var origModel = editView.model.get("filter_json");
-        var filterModel = new Tracuse.models.FilterSet(origModel.toJSON());
+        var filterModel = new Tracuse.models.FilterSet(origModel.toTemplate());
 
         editView.filterView = new Tracuse.views.FilterSet({
             model: filterModel,
@@ -112,7 +112,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         /* Set Viewuse Filter model using Filter Set view model */
         var editView = this;
 
-        var filterAttributes = editView.filterView.model.toJSON();
+        var filterAttributes = editView.filterView.model.toTemplate();
         editView.model.set("filter_json", filterAttributes);
 
         editView.filterView.closeFilter();

@@ -23,10 +23,10 @@ Tracuse.views.ViewuseOptions = Backbone.View.extend({
         var templateData = {
             id: this.id,
             pid: this.viewuseView.id,
-            this_viewuse: this.viewuseView.model.toJSON(),
-            viewuse_objects: Tracuse.models.ViewuseObject.all.toJSON(),
-            viewuse_arrangements: Tracuse.models.ViewuseArrangement.all.toJSON(),
-            viewuse_datums: Tracuse.models.ViewuseDatum.all.toJSON()
+            this_viewuse: this.viewuseView.model.toTemplate(),
+            viewuse_objects: Tracuse.models.ViewuseObject.all.toTemplate(),
+            viewuse_arrangements: Tracuse.models.ViewuseArrangement.all.toTemplate(),
+            viewuse_datums: Tracuse.models.ViewuseDatum.all.toTemplate()
         };
         return Tracuse.templates.env.render(templateName, templateData);
     },

@@ -41,7 +41,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var templateOutput = "";
 
         var templateData = {
-            this_viewuse: viewuseView.model.toJSON()
+            this_viewuse: viewuseView.model.toTemplate()
         };
         templateOutput = Tracuse.templates.env.render(
             viewuseView.templateName,
@@ -199,7 +199,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
         // Use cloned filter model to avoid live changes
         var origModel = viewuseView.model.get("filter_json");
-        var filterModel = new Tracuse.models.FilterSet(origModel.toJSON());
+        var filterModel = new Tracuse.models.FilterSet(origModel.toTemplate());
 
         viewuseView.filterView = new Tracuse.views.FilterSet({
             model: filterModel,
@@ -214,7 +214,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         /* Set Viewuse Filter model using Filter Set view model */
         var viewuseView = this;
 
-        var filterAttributes = viewuseView.filterView.model.toJSON();
+        var filterAttributes = viewuseView.filterView.model.toTemplate();
         viewuseView.model.set("filter_json", filterAttributes);
         viewuseView.model.save();
 

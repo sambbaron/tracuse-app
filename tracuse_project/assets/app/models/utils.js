@@ -11,6 +11,22 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
         idAttribute: idAttribute,
         url: function () {
             return url + this.get(this.idAttribute) + "/";
+        },
+        toTemplate: function () {
+            var thisModel = this;
+
+            _.each(thisModel._relations, function (rel) {
+                rel.options.jsonOptionSave = rel.options.includeInJSON;
+                rel.options.includeInJSON = rel.options.includeInTemplate;
+            });
+
+            var data = thisModel.toJSON();
+
+            _.each(thisModel._relations, function (rel) {
+                rel.options.includeInJSON = rel.options.jsonOptionSave;
+            });
+
+            return data;
         }
     });
     _.each(modelOptions, function (optionValue, optionKey) {
@@ -20,7 +36,13 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
     model.collBase = Backbone.Collection.extend({
         model: model,
         url: url,
-        comparator: "sort"
+        comparator: "sort",
+
+        toTemplate: function (options) {
+            return this.map(function (model) {
+                return model.toTemplate(options);
+            });
+        }
     });
     model.all = new model.collBase();
 

@@ -13,18 +13,24 @@ Tracuse.models.ViewuseObject =
                 type: Backbone.HasOne,
                 key: "viewuse_arrangement",
                 relatedModel: "Tracuse.models.ViewuseArrangement",
-                collectionType: "Tracuse.models.ViewuseArrangement.collBase"
+                collectionType: "Tracuse.models.ViewuseArrangement.collBase",
+                includeInJSON: false,
+                includeInTemplate: true
             },
             {
                 type: Backbone.HasOne,
                 key: "viewuse_datum",
                 relatedModel: "Tracuse.models.ViewuseDatum",
-                collectionType: "Tracuse.models.ViewuseDatum.collBase"
+                collectionType: "Tracuse.models.ViewuseDatum.collBase",
+                includeInJSON: false,
+                includeInTemplate: true
             },
             {
                 type: Backbone.HasOne,
                 key: "filter_json",
-                relatedModel: "Tracuse.models.FilterSet"
+                relatedModel: "Tracuse.models.FilterSet",
+                includeInJSON: false,
+                includeInTemplate: true
             }
         ]
     });

@@ -15,7 +15,7 @@ Tracuse.views.DatumBase = Backbone.View.extend({
         datumView.el.classList.add(datumView.model.get("datum_type").get("schema_name"));
 
         var templateData = {
-            this_datum: datumView.model.toJSON()
+            this_datum: datumView.model.toTemplate()
         };
         templateOutput = Tracuse.templates.env.render(
             datumView.templateName,
