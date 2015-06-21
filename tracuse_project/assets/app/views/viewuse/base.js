@@ -51,29 +51,39 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         return templateOutput;
     },
 
-    render: function render() {
+    render: function render(callback) {
         "use strict";
         var viewuseView = this;
+
         viewuseView.el.innerHTML = viewuseView.template();
 
-        viewuseView.$el.resizable({
-            handles: "n, e, s, w, ne, se"
-        });
-        // Remove inline styles from resizable handles
-        var resizeHandles = viewuseView.el.querySelectorAll(".ui-resizable-handle");
-        _.each(resizeHandles, function (resizeHandle) {
-            resizeHandle.removeAttribute("style");
-        });
+        viewuseView.renderDatums(function (datumsView) {
 
-        viewuseView.$el.draggable({
-            handle: ".viewuse-content",
-            cursor: "move",
-            distance: 5
+            var datumsContainer = viewuseView.el.querySelector(".viewuse-content");
+            datumsContainer.appendChild(datumsView.el);
+
+            // Append ViewuseMenu view
+            viewuseView.menuSubView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
+
+            viewuseView.$el.resizable({
+                handles: "n, e, s, w, ne, se"
+            });
+            // Remove inline styles from resizable handles
+            var resizeHandles = viewuseView.el.querySelectorAll(".ui-resizable-handle");
+            _.each(resizeHandles, function (resizeHandle) {
+                resizeHandle.removeAttribute("style");
+            });
+
+            viewuseView.$el.draggable({
+                handle: ".viewuse-content",
+                cursor: "move",
+                distance: 5
+            });
+
+            viewuseView.setActive();
+
+            callback(viewuseView);
         });
-
-        viewuseView.setActive();
-
-        return viewuseView;
     },
 
     initialize: function initialize(options) {
@@ -89,18 +99,15 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             options.appendEl = Tracuse.el.viewuses;
         }
 
-        var viewuseEl = viewuseView.render().el;
+        viewuseView.render(function (viewuseView) {
 
-        viewuseView.renderDatums();
+            // Append Viewuse to 'appendEl'
+            options.appendEl.appendChild(viewuseView.el);
+            viewuseView.$el.fadeIn(200, function () {
+                viewuseView.el.style.display = "inline-block";
+            });
 
-        // Append Viewuse to 'appendEl'
-        options.appendEl.appendChild(viewuseEl);
-        viewuseView.$el.fadeIn(200, function () {
-            viewuseView.el.style.display = "inline-block";
         });
-        // Append ViewuseMenu view
-        viewuseView.menuSubView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
-
 
     },
 
@@ -133,7 +140,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         this.$el.addClass("active");
     },
 
-    renderDatums: function renderDatums() {
+    renderDatums: function renderDatums(callback) {
         "use strict";
         /* Append Datums to Viewuse*/
         var viewuseView = this;
@@ -151,12 +158,9 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
                 viewuseView: viewuseView
             });
 
-            var datumsEl = datumsView.render().el;
-            var datumsContainer = viewuseView.el.querySelector(".viewuse-content");
-            datumsContainer.innerHTML = "";
-            datumsContainer.appendChild(datumsEl);
+            datumsView.render();
 
-            return datumsView
+            callback(datumsView)
         });
     },
 

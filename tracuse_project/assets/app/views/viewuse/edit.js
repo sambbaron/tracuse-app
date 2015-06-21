@@ -88,7 +88,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         editView.model.save(formData);
 
         if (editView.viewuseView) {
-            editView.viewuseView.renderDatums();
+            editView.viewuseView.render();
         }
     },
 
