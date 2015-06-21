@@ -3,7 +3,6 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 
 from website import views
-from app.common import views_tester
 
 urlpatterns = [
 
@@ -15,12 +14,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^app/', include('app.common.urls')),
     url(r'^api/', include('app.common.api')),
-
-
-    # Tester Page
-    url(r'^tester/$', views_tester.datums_get, name="tester_home"),
-    url(r'^tester/datum/(?P<datum_pk>[0-9]*)/update/$', views_tester.datums_update, name='datums_update'),
-    url(r'^tester/datum/(?P<datum_pk>[0-9]*)/delete/$', views_tester.datums_delete, name='datums_delete'),
-    url(r'^tester/datum/create/$', views_tester.datums_create, name='datums_create'),
 
 ]
