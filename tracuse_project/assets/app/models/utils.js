@@ -11,22 +11,6 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
         idAttribute: idAttribute,
         url: function () {
             return url + this.get(this.idAttribute) + "/";
-        },
-        toTemplate: function () {
-            var thisModel = this;
-
-            _.each(thisModel._relations, function (rel) {
-                rel.options.jsonOptionSave = rel.options.includeInJSON;
-                rel.options.includeInJSON = rel.options.includeInTemplate;
-            });
-
-            var data = thisModel.toJSON();
-
-            _.each(thisModel._relations, function (rel) {
-                rel.options.includeInJSON = rel.options.jsonOptionSave;
-            });
-
-            return data;
         }
     });
     _.each(modelOptions, function (optionValue, optionKey) {
@@ -36,33 +20,36 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
     model.collBase = Backbone.Collection.extend({
         model: model,
         url: url,
-        comparator: "sort",
-
-        toTemplate: function (options) {
-            return this.map(function (model) {
-                return model.toTemplate(options);
-            });
-        }
+        comparator: "sort"
     });
     model.all = new model.collBase();
 
     return model;
 };
 
-Tracuse.models.bootstrapData = function bootstrapData(data) {
+Backbone.RelationalModel.prototype.toTemplate = function toTemplate(options) {
     "use strict";
-    /* Load bootstrap data from template into Backbone 'all' collections
-     Object keys should match model names
-     */
+    var thisModel = this;
 
-    for (var modelName in data) {
-        var model = Tracuse.models[modelName];
-        if (model) {
-            var modelData = JSON.parse(data[modelName]);
-            model.all.reset(modelData);
-            console.info("Load Bootstrap Model Data: " + modelName);
-        }
-    }
+    _.each(thisModel._relations, function (rel) {
+        rel.options.jsonOptionSave = rel.options.includeInJSON;
+        rel.options.includeInJSON = rel.options.includeInTemplate;
+    });
+
+    var data = thisModel.toJSON(options);
+
+    _.each(thisModel._relations, function (rel) {
+        rel.options.includeInJSON = rel.options.jsonOptionSave;
+    });
+
+    return data;
+};
+
+Backbone.Collection.prototype.toTemplate = function toTemplate(options) {
+    "use strict";
+    return this.map(function (model) {
+        return model.toTemplate(options);
+    });
 };
 
 Backbone.Collection.prototype.getFetchOne = function getFetchOne(id, callback) {
@@ -123,4 +110,20 @@ Backbone.Collection.prototype.idsToObjects = function idsToObjects(idArray, call
         }
         check++;
     }, 100);
+};
+
+Tracuse.models.bootstrapData = function bootstrapData(data) {
+    "use strict";
+    /* Load bootstrap data from template into Backbone 'all' collections
+     Object keys should match model names
+     */
+
+    for (var modelName in data) {
+        var model = Tracuse.models[modelName];
+        if (model) {
+            var modelData = JSON.parse(data[modelName]);
+            model.all.reset(modelData);
+            console.info("Load Bootstrap Model Data: " + modelName);
+        }
+    }
 };
