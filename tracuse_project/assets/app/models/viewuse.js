@@ -29,7 +29,7 @@ Tracuse.models.ViewuseObject =
                 type: Backbone.HasOne,
                 key: "filter_json",
                 relatedModel: "Tracuse.models.FilterSet",
-                includeInJSON: false,
+                includeInJSON: true,
                 includeInTemplate: true
             }
         ]

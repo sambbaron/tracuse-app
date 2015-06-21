@@ -9,7 +9,8 @@ Tracuse.models.FilterRuleGroup = Backbone.RelationalModel.extend({
             type: Backbone.HasOne,
             key: "datum_group",
             relatedModel: "Tracuse.models.DatumGroup",
-            includeInJSON: false
+            includeInJSON: false,
+            includeInTemplate: true
         }
     ],
 
@@ -38,7 +39,8 @@ Tracuse.models.FilterRuleType = Backbone.RelationalModel.extend({
             type: Backbone.HasOne,
             key: "datum_type",
             relatedModel: "Tracuse.models.DatumType",
-            includeInJSON: false
+            includeInJSON: false,
+            includeInTemplate: true
         }
     ],
 
@@ -67,7 +69,8 @@ Tracuse.models.FilterRuleAssociation = Backbone.RelationalModel.extend({
             type: Backbone.HasOne,
             key: "datum_object",
             relatedModel: "Tracuse.models.DatumObject",
-            includeInJSON: false
+            includeInJSON: false,
+            includeInTemplate: true
         }
     ],
 
@@ -96,13 +99,15 @@ Tracuse.models.FilterRuleElement = Backbone.RelationalModel.extend({
             type: Backbone.HasOne,
             key: "element_type",
             relatedModel: "Tracuse.models.ElementType",
-            includeInJSON: false
+            includeInJSON: false,
+            includeInTemplate: true
         },
         {
             type: Backbone.HasOne,
             key: "element_operator",
             relatedModel: "Tracuse.models.ElementOperator",
-            includeInJSON: false
+            includeInJSON: false,
+            includeInTemplate: true
         }
     ],
 
@@ -137,32 +142,44 @@ Tracuse.models.FilterSet = Backbone.RelationalModel.extend({
         {
             type: Backbone.HasMany,
             key: "FilterRuleUser",
-            relatedModel: "Tracuse.models.FilterRuleGroup"
+            relatedModel: "Tracuse.models.FilterRuleGroup",
+            includeInJSON: true,
+            includeInTemplate: true
         },
         {
             type: Backbone.HasMany,
             key: "FilterRuleGroup",
-            relatedModel: "Tracuse.models.FilterRuleGroup"
+            relatedModel: "Tracuse.models.FilterRuleGroup",
+            includeInJSON: true,
+            includeInTemplate: true
         },
         {
             type: Backbone.HasMany,
             key: "FilterRuleType",
-            relatedModel: "Tracuse.models.FilterRuleType"
+            relatedModel: "Tracuse.models.FilterRuleType",
+            includeInJSON: true,
+            includeInTemplate: true
         },
         {
             type: Backbone.HasMany,
             key: "FilterRuleAssociation",
-            relatedModel: "Tracuse.models.FilterRuleAssociation"
+            relatedModel: "Tracuse.models.FilterRuleAssociation",
+            includeInJSON: true,
+            includeInTemplate: true
         },
         {
             type: Backbone.HasMany,
             key: "FilterRuleElement",
-            relatedModel: "Tracuse.models.FilterRuleElement"
+            relatedModel: "Tracuse.models.FilterRuleElement",
+            includeInJSON: true,
+            includeInTemplate: true
         },
         {
             type: Backbone.HasMany,
             key: "FilterRuleDataType",
-            relatedModel: "Tracuse.models.FilterRuleDataType"
+            relatedModel: "Tracuse.models.FilterRuleDataType",
+            includeInJSON: true,
+            includeInTemplate: true
         }
     ],
 
