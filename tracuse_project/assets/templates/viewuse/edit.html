@@ -2,7 +2,7 @@
     <p class="title">Select View</p>
 
     <div class="content">
-        <select class="input-element" size="{{ viewuse_objects|length + 1 }}">
+        <select class="input-element select-element" size="{{ viewuse_objects|length + 1 }}">
             {% for viewuse_object in viewuse_objects %}
                 <option value="{{ viewuse_object.viewuse_object_id }}"
                         {{ " selected" if this_viewuse.viewuse_object_id == viewuse_object.viewuse_object_id }}>
@@ -21,8 +21,10 @@
         <button name="new-viewuse"><i class="fa fa-plus-circle fa-fw"></i><span>New View</span></button>
         <button name="copy-viewuse"><i class="fa fa-copy fa-fw"></i><span>Copy View</span></button>
         <button name="delete-viewuse"><i class="fa fa-ban fa-fw"></i><span>Delete View</span></button>
-        <button name="save-viewuse"><i class="fa fa-save fa-fw"></i><span>Save &amp; Apply</span></button>
-        <button name="cancel-viewuse"><i class="fa fa-remove fa-fw"></i><span>Cancel &amp; Close</span></button>
+        <button name="save-viewuse-close">
+            <i class="fa fa-save fa-fw"></i><span>Save &amp; Apply</span>
+        </button>
+        <button name="cancel-viewuse-close"><i class="fa fa-remove fa-fw"></i><span>Cancel &amp; Close</span></button>
     </div>
 
 </fieldset>
@@ -31,34 +33,36 @@
     <p class="title">Options</p>
 
     <div class="content">
-        <label class="input-wrap">
-            <span class="input-label">Title</span>
-            <input class="input-element" name="readable_name" value="{{ this_viewuse.readable_name|default('Empty View') }}">
-        </label>
-        <label class="input-wrap"><span class="input-label">Arrangement</span>
-            <select class="input-element" name="viewuse_arrangement">
-                <option></option>
-                {% for viewuse_arrangement in viewuse_arrangements %}
-                    <option value="{{ viewuse_arrangement.viewuse_arrangement_id }}"
-                            {{ " selected" if this_viewuse.viewuse_arrangement.viewuse_arrangement_id == viewuse_arrangement.viewuse_arrangement_id }}>
-                        {{ viewuse_arrangement.readable_name }}
-                    </option>
-                {% endfor %}
-            </select>
-        </label>
-        <label class="input-wrap">
-            <span class="input-label">Object Format</span>
-            <select class="input-element" name="viewuse_datum">
-                <option></option>
-                {% for viewuse_datum in viewuse_datums %}
-                    <option value="{{ viewuse_datum.viewuse_datum_id }}"
-                            {{ " selected" if this_viewuse.viewuse_datum.viewuse_datum_id == viewuse_datum.viewuse_datum_id }}>
-                        {{ viewuse_datum.readable_name }}
-                    </option>
-                {% endfor %}
-            </select>
-        </label>
-
+        <form id="viewuse-form">
+            <label class="input-wrap">
+                <span class="input-label">Title</span>
+                <input class="input-element" name="readable_name" data-type="text"
+                       value="{{ this_viewuse.readable_name|default('Empty View') }}">
+            </label>
+            <label class="input-wrap"><span class="input-label">Arrangement</span>
+                <select class="input-element" name="viewuse_arrangement_id" data-type="integer">
+                    <option></option>
+                    {% for viewuse_arrangement in viewuse_arrangements %}
+                        <option value="{{ viewuse_arrangement.viewuse_arrangement_id }}"
+                                {{ " selected" if this_viewuse.viewuse_arrangement.viewuse_arrangement_id == viewuse_arrangement.viewuse_arrangement_id }}>
+                            {{ viewuse_arrangement.readable_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label class="input-wrap">
+                <span class="input-label">Object Format</span>
+                <select class="input-element" name="viewuse_datum_id"  data-type="integer">
+                    <option></option>
+                    {% for viewuse_datum in viewuse_datums %}
+                        <option value="{{ viewuse_datum.viewuse_datum_id }}"
+                                {{ " selected" if this_viewuse.viewuse_datum.viewuse_datum_id == viewuse_datum.viewuse_datum_id }}>
+                            {{ viewuse_datum.readable_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </label>
+        </form>
     </div>
 
 </fieldset>

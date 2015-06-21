@@ -9,7 +9,12 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
             this.el.classList.add("drag");
             ev.stopPropagation();
         },
-        "click button[name='cancel-viewuse']": function clickClose(ev) {
+        "click button[name='save-viewuse-close']": function saveViewuse(ev) {
+            this.saveViewuse();
+            this.closeEdit();
+            ev.stopPropagation();
+        },
+        "click button[name='cancel-viewuse-close']": function closeEdit(ev) {
             this.closeEdit();
             ev.stopPropagation();
         },
@@ -71,6 +76,20 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         editView.$el.fadeOut(200, function () {
             editView.remove();
         });
+    },
+
+    saveViewuse: function saveViewuse() {
+        "use strict";
+        /* Save Viewuse and render datums */
+        var editView = this;
+
+        var formEl = editView.el.querySelector("#viewuse-form");
+        var formData = Tracuse.utils.serializeForm(formEl);
+        editView.model.save(formData);
+
+        if (editView.viewuseView) {
+            editView.viewuseView.renderDatums();
+        }
     },
 
     openFilter: function openFilter() {
