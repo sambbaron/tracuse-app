@@ -39,12 +39,12 @@ class ViewBase(View):
         except self.model.DoesNotExist:
             raise Http404("{} does not exist".format(self.model.__name__))
 
-    def update_prep(self, request):
+    def update_decode(self, request):
         """Convert request data to python object"""
         request_data = request.body.decode()
         return json.loads(request_data, encoding=DjangoJSONEncoder)
 
-    def update_save(self, model_object, request_data, request_object):
+    def update_model(self, model_object, request_data, request_object):
         """Save request data to model object"""
         return update_model(model_object, self.update_fields, request_data, request_object)
 
@@ -72,8 +72,8 @@ class ViewAll(ViewBase):
 
     def post(self, request):
         object = self.model()
-        request_data = self.update_prep(request)
-        save_result = self.update_save(object, request_data, request)
+        request_data = self.update_decode(request)
+        save_result = self.update_model(object, request_data, request)
         response = self.update_response(save_result, 201, 400)
         return response
 
@@ -90,8 +90,8 @@ class ViewOne(ViewBase):
 
     def put(self, request, pk):
         object = self.get_object(pk)
-        request_data = self.update_prep(request)
-        save_result = self.update_save(object, request_data, request)
+        request_data = self.update_decode(request)
+        save_result = self.update_model(object, request_data, request)
         response = self.update_response(save_result, 200, 400)
         return response
 

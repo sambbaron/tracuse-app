@@ -35,7 +35,7 @@ class ElementDatumObjectOne(ViewOne):
     model = ElementDatumObject
     serializer=ElementDatumObjectSerializer(template="serial_related")
 
-    def update_save(self, model_object, request_data, request_object):
+    def update_model(self, model_object, request_data, request_object):
         element_value_object = model_object.element_value
         element_value_object.elvalue = request_data["element_value"]
         element_value_object.save()
