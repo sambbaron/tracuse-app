@@ -20,6 +20,15 @@ class ViewuseObjectSerializer(Serializer):
         output["viewuse_datum"] = self.obj.viewuse_datum_id
         return output
 
+    def serial_update(self):
+        output = {
+            "readable_name": self.obj.readable_name,
+            "viewuse_arrangement_id": self.obj.viewuse_arrangement_id,
+            "viewuse_datum_id": self.obj.viewuse_datum_id,
+            "filter_json": self.obj.filter_json
+        }
+        return output
+
 
 class ViewuseArrangementSerializer(Serializer):
     model = ViewuseArrangement

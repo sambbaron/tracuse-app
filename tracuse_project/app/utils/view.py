@@ -5,6 +5,7 @@ from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.core.serializers.json import DjangoJSONEncoder
+from django.core.exceptions import FieldDoesNotExist
 
 from utils.model import update_model
 
@@ -49,9 +50,40 @@ class ViewBase(View):
         request_data = request.body.decode()
         return json.loads(request_data, encoding=DjangoJSONEncoder)
 
-    def update_model(self, model_object, request_data, request_object):
-        """Save request data to model object"""
-        return update_model(model_object, self.update_fields, request_data, request_object)
+    def update_model(self, model_object, model_update):
+        """Save request data to model object using deserializer
+
+        Return:
+            Model Object
+        """
+
+        # return update_model(model_object, self.update_fields, request_data, request_object)
+        self.deserializer.data = model_object
+        deserialized_model = self.deserializer.serialize()
+
+        for field_name, field_instance in deserialized_model.items():
+
+            try:
+                model_object._meta.get_field(field_name)
+            except FieldDoesNotExist:
+                return "'{}' not a valid field".format(field_name)
+
+            if field_name not in model_update:
+                return "'{}' not in data request".format(field_name)
+
+            field_update = model_update[field_name]
+
+            try:
+                setattr(model_object, field_name, field_update)
+                # field_instance = field_update
+            except:
+                return "Error updating '{}'; Update data: {};".format(field_name,
+                                                                      model_update
+                                                                      )
+
+        model_object.save()
+
+        return model_object
 
     def update_response(self, save_result, success_code, fail_code):
         """Return HTTP response for data update
@@ -78,7 +110,7 @@ class ViewAll(ViewBase):
     def post(self, request):
         object = self.model()
         request_data = self.update_decode(request)
-        save_result = self.update_model(object, request_data, request)
+        save_result = self.update_model(object, request_data)
         response = self.update_response(save_result, 201, 400)
         return response
 
@@ -96,7 +128,7 @@ class ViewOne(ViewBase):
     def put(self, request, pk):
         object = self.get_object(pk)
         request_data = self.update_decode(request)
-        save_result = self.update_model(object, request_data, request)
+        save_result = self.update_model(object, request_data)
         response = self.update_response(save_result, 200, 400)
         return response
 
