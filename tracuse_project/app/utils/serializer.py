@@ -1,7 +1,5 @@
-import importlib
 import json
 
-from django.apps import apps
 from django.db.models import QuerySet
 from django.core.serializers.json import DjangoJSONEncoder
 
@@ -78,9 +76,13 @@ class Serializer(object):
         return output
 
     def serialize(self):
-        """ Output serialized data using field method and serializer object
+        """ Serialize data from model object
 
+        Use template method on model object
         Serializes QuerySets and individual object instances
+
+        Return:
+            Python object or encoded output
         """
         if not self.data:
             raise ValueError("Serializer has empty 'data' attribute")
