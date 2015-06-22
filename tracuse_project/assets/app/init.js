@@ -2,8 +2,8 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
     "use strict";
     /* Attach all global event handlers*/
 
-    // Render button for testing
-    var renderButton = document.querySelector("#render-page");
+    // Button for rendering test view
+    var renderButton = document.querySelector("#add-test-view");
     renderButton.addEventListener("click", function (e) {
         Tracuse.init.firstViewuse();
         e.stopPropagation();
