@@ -16,7 +16,7 @@ class Serializer(object):
         template (string):
             Method name starting with "serial"
             Results in serialized object
-        format (string): Serialize output format
+        format (string): Convert into other format
             If none, return python dictionary
         object_wrap_pk (boolean):
             True:
@@ -52,18 +52,18 @@ class Serializer(object):
 
         return output
 
-    def _format_output(self, dict_output):
+    def _encode(self, data):
         """Format serialized data from python object"""
 
-        formatted_output = dict_output
+        output = data
 
         if self.format == "json":
-            formatted_output = json.dumps(dict_output,
-                                          cls=DjangoJSONEncoder,
-                                          indent=4
-                                          )
+            output = json.dumps(data,
+                                cls=DjangoJSONEncoder,
+                                indent=4
+                                )
 
-        return formatted_output
+        return output
 
     def serialize(self):
         """ Output serialized data using field method and serializer object
@@ -100,6 +100,6 @@ class Serializer(object):
             else:
                 output = serialized_obj
 
-        output = self._format_output(output)
+        output = self._encode(output)
 
         return output

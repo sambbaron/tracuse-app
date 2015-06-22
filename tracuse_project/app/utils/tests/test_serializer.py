@@ -10,7 +10,7 @@ class TestUtilsSerializerClass(TestCase):
     def setUpTestData(cls):
         cls.test = TestDataCommon()
 
-    def test_format_serialize_json(self):
+    def test_serialize_encode_json(self):
         """Test _format_output method
         with json
         """
@@ -19,7 +19,7 @@ class TestUtilsSerializerClass(TestCase):
                                      template="",
                                      format="json"
                                      )
-        test_json = test_serializer._format_output(test_data)
+        test_json = test_serializer._encode(test_data)
         actual = type(test_json)
         expected = str
         self.assertEqual(expected, actual)
