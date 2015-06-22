@@ -11,6 +11,7 @@ class Serializer(object):
     Attributes:
         model: Django model class
         data: Django model object or queryset
+        obj: Single object being serialized
         template (string):
             Method name starting with "serial"
             Results in serialized object
