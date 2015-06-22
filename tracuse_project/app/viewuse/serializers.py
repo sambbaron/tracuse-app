@@ -3,51 +3,29 @@ import json
 from .models import (ViewuseObject,
                      ViewuseArrangement,
                      ViewuseDatum)
-from utils.serializer import serialize_all
+from app.utils.serializer import Serializer
 
 
-class ViewuseObjectSerializer(ViewuseObject):
-    class Meta:
-        abstract = True
+class ViewuseObjectSerializer(Serializer):
+    model = ViewuseObject
 
-    def serial_basic(self):
-        """All properties"""
-        output = serialize_all(self.__class__, self)
+    @property
+    def serial_default(self):
+        output = super().serial_default
         output["filter_json"] = json.loads(output["filter_json"])
         return output
 
-    ViewuseObject.serial_basic = serial_basic
-
+    @property
     def serial_related(self):
-        """All properties with relations
-        """
-        output = self.serial_basic()
-        output["viewuse_arrangement"] = self.viewuse_arrangement_id
-        output["viewuse_datum"] = self.viewuse_datum_id
+        output = self.serial_default
+        output["viewuse_arrangement"] = self.obj.viewuse_arrangement_id
+        output["viewuse_datum"] = self.obj.viewuse_datum_id
         return output
 
-    ViewuseObject.serial_related = serial_related
+
+class ViewuseArrangementSerializer(Serializer):
+    model = ViewuseArrangement
 
 
-class ViewuseArrangementSerializer(ViewuseArrangement):
-    class Meta:
-        abstract = True
-
-    def serial_basic(self):
-        """All properties"""
-        output = serialize_all(self.__class__, self)
-        return output
-
-    ViewuseArrangement.serial_basic = serial_basic
-
-
-class ViewuseDatumSerializer(ViewuseDatum):
-    class Meta:
-        abstract = True
-
-    def serial_basic(self):
-        """All properties"""
-        output = serialize_all(self.__class__, self)
-        return output
-
-    ViewuseDatum.serial_basic = serial_basic
+class ViewuseDatumSerializer(Serializer):
+    model = ViewuseDatum

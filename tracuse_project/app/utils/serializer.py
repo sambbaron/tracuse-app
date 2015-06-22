@@ -6,78 +6,51 @@ from django.db.models import QuerySet
 from django.core.serializers.json import DjangoJSONEncoder
 
 
-def serialize_all(model, instance):
-    """Serialize all fields in model
-
-    Use db columns, not django fields
-
-    Attributes:
-        model (django model)
-        instance (model instance)
-
-    Returns:
-        Dictionary
-            Key: column name
-            Value: column value
-    """
-    output = {}
-    for field in model._meta.fields:
-        column_name = field.get_attname_column()[1]
-        output[column_name] = getattr(instance, column_name)
-
-    return output
-
-
 class Serializer(object):
-    """Serialize object using classes/methods in app/serializers.py
+    """ Serialize and deserialize Django model data
+    To/from JSON
 
     Attributes:
-        data: Data to be serialized
-        serializer:
-            Serializer object: class.method object OR
-            Serializer string: 'app_name.serializer_class.serializer.method'
+        model: Django model class
+        data: Django model object or queryset
+        template (string):
+            method name of template property starting with "serial"
+            Template property results in serialized object
         format (string): Serialize output format
-            If none, return dictionary
-        dict_with_pk (boolean):
+            If none, return python dictionary
+        object_wrap_pk (boolean):
             True:
                 Wrap serialized data in dictionary
-                with primary key as dictionary key
+                with primary key as key
             False:
                 Serialized data in list
+
+    'Serialize' method outputs serialized object
     """
+    model = None
+    field_format = []
 
-    def __init__(self, data, serializer, dict_with_pk=False, format=None):
+    def __init__(self, data=None, template=None, format=None, object_wrap_pk=False):
         self.data = data
-        self.serializer = serializer
+        self.template = template or "serial_default"
         self.format = format
-        self.dict_with_pk = dict_with_pk
+        self.object_wrap_pk = object_wrap_pk
 
-    def _set_serializer_method(self):
-        """Convert serializer string to serializer method
+    @property
+    def serial_default(self):
+        """ All fields in model
 
-        Assumes serializer class is in "serializers.py"
-        String format: 'app_name.serializer_class.serializer.method'
+        Use db columns, not django fields
         """
+        output = {}
+        for field in self.model._meta.fields:
+            column_name = field.get_attname_column()[1]
+            output[column_name] = getattr(self.obj, column_name)
 
-        serializer_method = self.serializer
-
-        if isinstance(self.serializer, str):
-            serializer_split = self.serializer.split(".")
-            app_name_str = serializer_split[0]
-            serializer_class_str = serializer_split[1]
-            serializer_method_str = serializer_split[2]
-
-            # Use Django app registry to retrieve app path
-            app_path = apps.get_app_config(app_name_str).name
-
-            serializer_module = importlib.import_module(app_path + ".serializers")
-            serializer_class = getattr(serializer_module, serializer_class_str)
-            serializer_method = getattr(serializer_class, serializer_method_str)
-
-        return serializer_method
+        return output
 
     def _format_output(self, dict_output):
-        """Format serialized data into common type"""
+        """Format serialized data from python object"""
 
         formatted_output = dict_output
 
@@ -89,35 +62,39 @@ class Serializer(object):
 
         return formatted_output
 
+    @property
     def serialize(self):
-        """Output serialized data using app serializers
+        """ Output serialized data using field method and serializer object
 
         Serializes QuerySets and individual object instances
         """
-
-        # Set serializer object
-        serializer = self._set_serializer_method()
+        if not self.data:
+            raise ValueError("Serializer has no 'data' attribute")
 
         # Set output type
-        if self.dict_with_pk:
+        if self.object_wrap_pk:
             output = {}
         else:
             output = []
 
+        # Serialize Django queryset object
         if type(self.data) == QuerySet:
 
             for obj in self.data:
-                serialized_obj = serializer(obj)
+                self.obj = obj
+                serialized_obj = getattr(self, self.template)
 
-                if self.dict_with_pk:
+                if self.object_wrap_pk:
                     output[obj.pk] = serialized_obj
                 else:
                     output.append(serialized_obj)
 
+        # Serialize single object
         else:
-            serialized_obj = serializer(self.data)
-            if self.dict_with_pk:
-                output[self.data.pk] = serialized_obj
+            self.obj = self.data
+            serialized_obj = getattr(self, self.template)
+            if self.object_wrap_pk:
+                output[self.obj.pk] = serialized_obj
             else:
                 output = serialized_obj
 

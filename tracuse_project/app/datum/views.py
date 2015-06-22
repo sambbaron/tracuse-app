@@ -9,18 +9,18 @@ from .serializers import (DatumGroupSerializer,
 class DatumGroupAll(ViewAll):
     model = DatumGroup
     queryset = DatumGroup.actives.all()
-    serializer = DatumGroupSerializer.serial_related
+    serializer = DatumGroupSerializer(template="serial_related")
 
 
 class DatumTypeAll(ViewAll):
     model = DatumType
     queryset = DatumType.actives.all()
-    serializer = DatumTypeSerializer.serial_related
+    serializer = DatumTypeSerializer(template="serial_related")
 
 
 class DatumObjectAll(ViewAll):
     model = DatumObject
-    serializer = DatumObjectSerializer.serial_related
+    serializer = DatumObjectSerializer(template="serial_related")
 
     update_fields = [
         ("user", "request"),
@@ -34,4 +34,4 @@ class DatumObjectAll(ViewAll):
 
 class DatumObjectOne(ViewOne):
     model = DatumObject
-    serializer = DatumObjectSerializer.serial_elements_object
+    serializer = DatumObjectSerializer(template="serial_elements_object")

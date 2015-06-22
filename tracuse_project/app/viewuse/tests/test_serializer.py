@@ -13,11 +13,11 @@ class TestViewuseObjectSerializer(TestCase):
         cls.test = TestDataViewuse()
 
     def test_serial_basic(self):
-        """Test ViewuseObjectSerializer.serial_basic
+        """Test ViewuseObjectSerializer.serial_default
         """
         test_object = self.test.viewuse_object1
-        test_serialized = ViewuseObjectSerializer. \
-            serial_basic(test_object)
+        test_serialized = ViewuseObjectSerializer\
+            (data=test_object, template="serial_default").serialize
         actual = test_serialized["entity_name"]
         expected = "Viewuse1"
         self.assertEqual(expected, actual)
@@ -26,8 +26,8 @@ class TestViewuseObjectSerializer(TestCase):
         """Test ViewuseObjectSerializer.serial_related
         """
         test_object = self.test.viewuse_object1
-        test_serialized = ViewuseObjectSerializer. \
-            serial_related(test_object)
+        test_serialized = ViewuseObjectSerializer\
+            (data=test_object, template="serial_related").serialize
         actual = test_serialized["entity_name"]
         expected = "Viewuse1"
         self.assertEqual(expected, actual)
@@ -39,11 +39,11 @@ class TestViewuseArrangementSerializer(TestCase):
         cls.test = TestDataViewuse()
 
     def test_serial_basic(self):
-        """Test ViewuseArrangementSerializer.serial_basic
+        """Test ViewuseArrangementSerializer.serial_default
         """
         test_object = self.test.viewuse_arrangement1
-        test_serialized = ViewuseArrangementSerializer. \
-            serial_basic(test_object)
+        test_serialized = ViewuseArrangementSerializer\
+            (data=test_object, template="serial_default").serialize
         actual = test_serialized["entity_name"]
         expected = "Arrangement1"
         self.assertEqual(expected, actual)
@@ -55,11 +55,11 @@ class TestViewuseDatumSerializer(TestCase):
         cls.test = TestDataViewuse()
 
     def test_serial_basic(self):
-        """Test ViewuseDatumSerializer.serial_basic
+        """Test ViewuseDatumSerializer.serial_default
         """
         test_object = self.test.viewuse_datum1
-        test_serialized = ViewuseDatumSerializer. \
-            serial_basic(test_object)
+        test_serialized = ViewuseDatumSerializer\
+            (data=test_object, template="serial_default").serialize
         actual = test_serialized["entity_name"]
         expected = "Datum1"
         self.assertEqual(expected, actual)

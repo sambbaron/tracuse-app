@@ -153,14 +153,14 @@ class DatumObject(BaseModel):
     @property
     def headline(self):
         """Use DatumType.headline_expr with django template expression"""
+        from app.datum.serializers import DatumObjectSerializer
         output = ""
         expression = self.datum_type.headline_expr
 
         if expression:
             template = Template(expression)
-            element_dict = Serializer(data=self,
-                                      serializer="datum.DatumObjectSerializer.serial_element_name_value"
-                                      ).serialize()
+            serializer = DatumObjectSerializer(data=self, template="serial_element_name_value")
+            element_dict = serializer.serialize
             context = Context(element_dict)
             output = template.render(context)
 

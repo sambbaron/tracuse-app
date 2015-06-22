@@ -309,14 +309,16 @@ class ElementDatumObject(BaseModel):
         """Use calc_expression and django template engine
         to return calculated value
         """
+        from app.datum.serializers import DatumObjectSerializer
+
         output = ""
         expression = self.element_datum_type.calc_expression
 
         if expression:
             template = Template(expression)
-            datum_dict = Serializer(data=self.datum_object,
-                                    serializer="datum.DatumObjectSerializer.serial_element_name_value"
-                                    ).serialize()
+            datum_dict = DatumObjectSerializer(data=self.datum_object,
+                                               template="serial_element_name_value"
+                                               ).serialize
             context = Context(datum_dict)
             output = template.render(context)
 

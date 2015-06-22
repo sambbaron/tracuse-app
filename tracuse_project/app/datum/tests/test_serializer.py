@@ -12,12 +12,12 @@ class TestDatumGroupSerializer(TestCase):
     def setUpTestData(cls):
         cls.test = TestDataDatum()
 
-    def test_serial_basic(self):
-        """Test DatumGroupSerializer.serial_basic
+    def test_serial_default(self):
+        """Test DatumGroupSerializer.serial_default
         """
         test_object = self.test.datum_group1
-        test_serialized = DatumGroupSerializer. \
-            serial_basic(test_object)
+        test_serialized = DatumGroupSerializer\
+            (data=test_object, template="serial_default").serialize
         actual = test_serialized["entity_name"]
         expected = "TestDatumGroup1"
         self.assertEqual(expected, actual)
@@ -26,8 +26,8 @@ class TestDatumGroupSerializer(TestCase):
         """Test DatumGroupSerializer.serial_related
         """
         test_object = self.test.datum_group1
-        test_serialized = DatumGroupSerializer. \
-            serial_related(test_object)
+        test_serialized = DatumGroupSerializer\
+            (data=test_object, template="serial_related").serialize
         actual = test_serialized["entity_name"]
         expected = "TestDatumGroup1"
         self.assertEqual(expected, actual)
@@ -38,12 +38,12 @@ class TestDatumTypeSerializer(TestCase):
     def setUpTestData(cls):
         cls.test = TestDataDatum()
 
-    def test_serial_basic(self):
-        """Test DatumTypeSerializer.serial_basic
+    def test_serial_default(self):
+        """Test DatumTypeSerializer.serial_default
         """
         test_object = self.test.datum_type1
-        test_serialized = DatumTypeSerializer. \
-            serial_basic(test_object)
+        test_serialized = DatumTypeSerializer\
+            (data=test_object, template="serial_default").serialize
         actual = test_serialized["entity_name"]
         expected = "TestDatumType1"
         self.assertEqual(expected, actual)
@@ -52,8 +52,8 @@ class TestDatumTypeSerializer(TestCase):
         """Test DatumTypeSerializer.serial_related
         """
         test_object = self.test.datum_type1
-        test_serialized = DatumTypeSerializer. \
-            serial_related(test_object)
+        test_serialized = DatumTypeSerializer\
+            (data=test_object, template="serial_related").serialize
         actual = test_serialized["entity_name"]
         expected = "TestDatumType1"
         self.assertEqual(expected, actual)
@@ -64,12 +64,12 @@ class TestDatumObjectSerializer(TestCase):
     def setUpTestData(cls):
         cls.test = TestDataDatum()
 
-    def test_serial_basic(self):
-        """Test DatumObjectSerializer.serial_basic
+    def test_serial_default(self):
+        """Test DatumObjectSerializer.serial_default
         """
         test_object = self.test.datum_object1
-        test_serialized = DatumObjectSerializer. \
-            serial_basic(test_object)
+        test_serialized = DatumObjectSerializer\
+            (data=test_object, template="serial_default").serialize
         actual = test_serialized["datum_type_id"]
         expected = self.test.datum_type1.datum_type_id
         self.assertEqual(expected, actual)
@@ -78,7 +78,8 @@ class TestDatumObjectSerializer(TestCase):
         """Test DatumObjectSerializer.serial_related
         """
         test_object = self.test.datum_object1
-        test_serialized = DatumObjectSerializer.serial_related(test_object)
+        test_serialized = DatumObjectSerializer\
+            (data=test_object, template="serial_related").serialize
 
         actual_type = test_serialized["datum_type_id"]
         expected_type = self.test.datum_type1.datum_type_id
@@ -92,7 +93,8 @@ class TestDatumObjectSerializer(TestCase):
         """Test DatumObjectSerializer.serial_elements_object
         """
         test_object = self.test.datum_object1
-        test_serialized = DatumObjectSerializer.serial_elements_object(test_object)
+        test_serialized = DatumObjectSerializer\
+            (data=test_object, template="serial_elements_object").serialize
 
         actual_type = test_serialized["datum_type_id"]
         expected_type = self.test.datum_type1.datum_type_id
@@ -106,7 +108,8 @@ class TestDatumObjectSerializer(TestCase):
         """Test DatumObjectSerializer.serial_element_name_value
         """
         test_object = self.test.datum_object1
-        test_serialized = DatumObjectSerializer.serial_element_name_value(test_object)
+        test_serialized = DatumObjectSerializer\
+            (data=test_object, template="serial_element_name_value").serialize
         actual = test_serialized["name"]
         expected = "Test Object Name"
         self.assertEqual(expected, actual)

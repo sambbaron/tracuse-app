@@ -14,11 +14,11 @@ class TestElementTypeSerializer(TestCase):
         cls.test = TestDataElement()
 
     def test_serial_basic(self):
-        """Test ElementTypeSerializer.serial_basic
+        """Test ElementTypeSerializer.serial_default
         """
         test_object = self.test.element_type1
-        test_serialized = ElementTypeSerializer. \
-            serial_basic(test_object)
+        test_serialized = ElementTypeSerializer\
+            (data=test_object, template="serial_default").serialize
         actual = test_serialized["entity_name"]
         expected = "Name"
         self.assertEqual(expected, actual)
@@ -27,8 +27,8 @@ class TestElementTypeSerializer(TestCase):
         """Test ElementTypeSerializer.serial_related
         """
         test_object = self.test.element_type1
-        test_serialized = ElementTypeSerializer. \
-            serial_related(test_object)
+        test_serialized = ElementTypeSerializer\
+            (data=test_object, template="serial_related").serialize
         actual = test_serialized["element_operators"]
         expected = [self.test.element_operator1.element_operator_id,
                     self.test.element_operator2.element_operator_id
@@ -42,11 +42,11 @@ class TestElementOperatorSerializer(TestCase):
         cls.test = TestDataElement()
 
     def test_serial_basic(self):
-        """Test ElementTypeSerializer.serial_basic
+        """Test ElementTypeSerializer.serial_default
         """
         test_object = self.test.element_operator1
-        test_serialized = ElementOperatorSerializer. \
-            serial_basic(test_object)
+        test_serialized = ElementOperatorSerializer\
+            (data=test_object, template="serial_default").serialize
         actual = test_serialized["entity_name"]
         expected = "exact"
         self.assertEqual(expected, actual)
@@ -58,11 +58,11 @@ class TestElementDatumTypeSerializer(TestCase):
         cls.test = TestDataElement()
 
     def test_serial_basic(self):
-        """Test ElementDatumTypeSerializer.serial_basic
+        """Test ElementDatumTypeSerializer.serial_default
         """
         test_object = self.test.element_datum_type1
-        test_serialized = ElementDatumTypeSerializer. \
-            serial_basic(test_object)
+        test_serialized = ElementDatumTypeSerializer\
+            (data=test_object, template="serial_default").serialize
         actual = test_serialized["entity_name"]
         expected = "TestDatumType1Name"
         self.assertEqual(expected, actual)
@@ -74,11 +74,11 @@ class TestElementDatumObjectSerializer(TestCase):
         cls.test = TestDataElement()
 
     def test_serial_basic(self):
-        """Test ElementDatumObjectSerializer.serial_basic
+        """Test ElementDatumObjectSerializer.serial_default
         """
         test_object = self.test.element_datum_object1
-        test_serialized = ElementDatumObjectSerializer. \
-            serial_basic(test_object)
+        test_serialized = ElementDatumObjectSerializer\
+            (data=test_object, template="serial_default").serialize
         actual = test_serialized["element_value"]
         expected = "Test Object Name"
         self.assertEqual(expected, actual)
@@ -87,8 +87,8 @@ class TestElementDatumObjectSerializer(TestCase):
         """Test ElementDatumObjectSerializer.serial_related
         """
         test_object = self.test.element_datum_object1
-        test_serialized = ElementDatumObjectSerializer. \
-            serial_related(test_object)
+        test_serialized = ElementDatumObjectSerializer\
+            (data=test_object, template="serial_related").serialize
         actual = test_serialized["element_value"]
         expected = "Test Object Name"
         self.assertEqual(expected, actual)
