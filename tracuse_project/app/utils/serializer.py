@@ -16,8 +16,7 @@ class Serializer(object):
         template (string):
             Method name starting with "serial"
             Results in serialized object
-        format (string): Convert into other format
-            If none, return python dictionary
+        format (string): Convert into other format, like json
         object_wrap_pk (boolean):
             True:
                 Wrap serialized data in dictionary
@@ -59,6 +58,19 @@ class Serializer(object):
 
         if self.format == "json":
             output = json.dumps(data,
+                                cls=DjangoJSONEncoder,
+                                indent=4
+                                )
+
+        return output
+
+    def _decode(self, data):
+        """Format serialized data from python object"""
+
+        output = data
+
+        if self.format == "json":
+            output = json.loads(data,
                                 cls=DjangoJSONEncoder,
                                 indent=4
                                 )
