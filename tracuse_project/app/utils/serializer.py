@@ -14,8 +14,8 @@ class Serializer(object):
         model: Django model class
         data: Django model object or queryset
         template (string):
-            method name of template property starting with "serial"
-            Template property results in serialized object
+            Method name starting with "serial"
+            Results in serialized object
         format (string): Serialize output format
             If none, return python dictionary
         object_wrap_pk (boolean):
