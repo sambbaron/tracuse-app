@@ -14,24 +14,29 @@ class ViewBase(View):
 
     Attributes:
         model: Django model class
-        serializer: Custom serializer class
+        serializer: Serializer with template for get calls
+        deserializer: Serializer with template for put/post calls
+            If not provided, same as 'serializer'
         queryset: Django queryset object
         update_fields (list of strings):
             Field names for data update
     """
     model = None
-    serializer = None
     queryset = None
+    serializer = None
+    deserializer = None
     update_fields = []
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
+        self.request = request
+        self.serializer = self.serializer
+        self.deserializer = self.deserializer or self.serializer
         return super().dispatch(request, *args, **kwargs)
 
-    @classmethod
-    def serialized_data(cls, data):
-        cls.serializer.data = data
-        return cls.serializer.serialize()
+    def serialized_data(self, data):
+        self.serializer.data = data
+        return self.serializer.serialize()
 
     def get_object(self, pk):
         try:
