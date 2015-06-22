@@ -25,6 +25,19 @@ class TestUtilsSerializerClass(TestCase):
         self.assertEqual(expected, actual)
         json.loads(test_json)
 
+    def test_serialize_no_data(self):
+        """Test serialize method
+        with no data
+        """
+        from app.datum.serializers import DatumObjectSerializer
+
+        test_serializer = DatumObjectSerializer(data=None,
+                                                template="serial_default"
+                                                )
+
+        with self.assertRaisesMessage(ValueError, "Serializer has empty 'data' attribute"):
+            test_serializer.serialize
+
     def test_serialize_queryset(self):
         """Test serialize method
         using DatumObjectSerializer.serial_default

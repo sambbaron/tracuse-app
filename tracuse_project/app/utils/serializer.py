@@ -69,7 +69,7 @@ class Serializer(object):
         Serializes QuerySets and individual object instances
         """
         if not self.data:
-            raise ValueError("Serializer has no 'data' attribute")
+            raise ValueError("Serializer has empty 'data' attribute")
 
         # Set output type
         if self.object_wrap_pk:
