@@ -8,9 +8,8 @@ from app.utils.serializer import Serializer
 class DatumGroupSerializer(Serializer):
     model = DatumGroup
 
-    @property
     def serial_related(self):
-        output = self.serial_default
+        output = self.serial_default()
         output["datum_types"] = [datum_type.datum_type_id for datum_type in self.obj.datum_types.all()]
         return output
 
@@ -18,9 +17,8 @@ class DatumGroupSerializer(Serializer):
 class DatumTypeSerializer(Serializer):
     model = DatumType
 
-    @property
     def serial_related(self):
-        output = self.serial_default
+        output = self.serial_default()
         output["datum_group"] = self.obj.datum_group_id
         return output
 
@@ -28,7 +26,6 @@ class DatumTypeSerializer(Serializer):
 class DatumObjectSerializer(Serializer):
     model = DatumObject
     
-    @property
     def serial_default(self):
         output = {
             "datum_object_id": self.obj.datum_object_id,
@@ -39,9 +36,8 @@ class DatumObjectSerializer(Serializer):
 
         return output
 
-    @property
     def serial_related(self):
-        output = self.serial_default
+        output = self.serial_default()
 
         output["datum_group"] = self.obj.datum_group.datum_group_id
         output["datum_type"] = self.obj.datum_type_id
@@ -51,21 +47,19 @@ class DatumObjectSerializer(Serializer):
 
         return output
 
-    @property
     def serial_elements_object(self):
         """Replace element ids with objects
         """
-        output = self.serial_related
+        output = self.serial_related()
 
         elements = []
         for element in self.obj.element_datum_objects.all():
-            element_object = ElementDatumObjectSerializer(data=element, template="serial_related").serialize
+            element_object = ElementDatumObjectSerializer(data=element, template="serial_related").serialize()
             elements.append(element_object)
         output["elements"] = elements
 
         return output
 
-    @property
     def serial_element_name_value(self):
         """Simple elements dictionary for expression evaluation
         """

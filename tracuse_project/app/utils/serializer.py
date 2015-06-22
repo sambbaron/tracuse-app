@@ -37,6 +37,9 @@ class Serializer(object):
         self.object_wrap_pk = object_wrap_pk
 
     @property
+    def _template_method(self):
+        return getattr(self, self.template)
+
     def serial_default(self):
         """ All fields in model
 
@@ -62,7 +65,6 @@ class Serializer(object):
 
         return formatted_output
 
-    @property
     def serialize(self):
         """ Output serialized data using field method and serializer object
 
@@ -82,7 +84,7 @@ class Serializer(object):
 
             for obj in self.data:
                 self.obj = obj
-                serialized_obj = getattr(self, self.template)
+                serialized_obj = self._template_method()
 
                 if self.object_wrap_pk:
                     output[obj.pk] = serialized_obj
@@ -92,7 +94,7 @@ class Serializer(object):
         # Serialize single object
         else:
             self.obj = self.data
-            serialized_obj = getattr(self, self.template)
+            serialized_obj = self._template_method()
             if self.object_wrap_pk:
                 output[self.obj.pk] = serialized_obj
             else:

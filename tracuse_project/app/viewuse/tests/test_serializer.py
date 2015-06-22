@@ -17,7 +17,7 @@ class TestViewuseObjectSerializer(TestCase):
         """
         test_object = self.test.viewuse_object1
         test_serialized = ViewuseObjectSerializer\
-            (data=test_object, template="serial_default").serialize
+            (data=test_object, template="serial_default").serialize()
         actual = test_serialized["entity_name"]
         expected = "Viewuse1"
         self.assertEqual(expected, actual)
@@ -27,7 +27,7 @@ class TestViewuseObjectSerializer(TestCase):
         """
         test_object = self.test.viewuse_object1
         test_serialized = ViewuseObjectSerializer\
-            (data=test_object, template="serial_related").serialize
+            (data=test_object, template="serial_related").serialize()
         actual = test_serialized["entity_name"]
         expected = "Viewuse1"
         self.assertEqual(expected, actual)
@@ -43,7 +43,7 @@ class TestViewuseArrangementSerializer(TestCase):
         """
         test_object = self.test.viewuse_arrangement1
         test_serialized = ViewuseArrangementSerializer\
-            (data=test_object, template="serial_default").serialize
+            (data=test_object, template="serial_default").serialize()
         actual = test_serialized["entity_name"]
         expected = "Arrangement1"
         self.assertEqual(expected, actual)
@@ -59,7 +59,7 @@ class TestViewuseDatumSerializer(TestCase):
         """
         test_object = self.test.viewuse_datum1
         test_serialized = ViewuseDatumSerializer\
-            (data=test_object, template="serial_default").serialize
+            (data=test_object, template="serial_default").serialize()
         actual = test_serialized["entity_name"]
         expected = "Datum1"
         self.assertEqual(expected, actual)

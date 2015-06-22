@@ -31,7 +31,7 @@ class ViewBase(View):
     @classmethod
     def serialized_data(cls, data):
         cls.serializer.data = data
-        return cls.serializer.serialize
+        return cls.serializer.serialize()
 
     def get_object(self, pk):
         try:

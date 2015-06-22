@@ -318,7 +318,7 @@ class ElementDatumObject(BaseModel):
             template = Template(expression)
             datum_dict = DatumObjectSerializer(data=self.datum_object,
                                                template="serial_element_name_value"
-                                               ).serialize
+                                               ).serialize()
             context = Context(datum_dict)
             output = template.render(context)
 

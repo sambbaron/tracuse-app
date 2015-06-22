@@ -36,7 +36,7 @@ class TestUtilsSerializerClass(TestCase):
                                                 )
 
         with self.assertRaisesMessage(ValueError, "Serializer has empty 'data' attribute"):
-            test_serializer.serialize
+            test_serializer.serialize()
 
     def test_serialize_queryset(self):
         """Test serialize method
@@ -48,7 +48,7 @@ class TestUtilsSerializerClass(TestCase):
         test_queryset = DatumObject.objects.all()
         test_data = DatumObjectSerializer(data=test_queryset,
                                           template="serial_default"
-                                          ).serialize
+                                          ).serialize()
 
         actual_count = len(test_data)
         expected_count = 1
@@ -64,7 +64,7 @@ class TestUtilsSerializerClass(TestCase):
         test_object = DatumObject.objects.first()
         test_data = DatumObjectSerializer(data=test_object,
                                           template="serial_default"
-                                          ).serialize
+                                          ).serialize()
 
         actual = test_data["datum_type_id"]
         expected = self.test.datum_type1.datum_type_id
@@ -81,7 +81,7 @@ class TestUtilsSerializerClass(TestCase):
         test_data = DatumObjectSerializer(data=test_object,
                                           template="serial_default",
                                           object_wrap_pk=True
-                                          ).serialize
+                                          ).serialize()
 
         actual = test_data[test_object.pk]["datum_type_id"]
         expected = self.test.datum_type1.datum_type_id
@@ -98,7 +98,7 @@ class TestUtilsSerializerClass(TestCase):
         test_data = DatumObjectSerializer(data=test_queryset,
                                           template="serial_default",
                                           object_wrap_pk=True
-                                          ).serialize
+                                          ).serialize()
 
         actual_count = len(test_data)
         expected_count = 1
