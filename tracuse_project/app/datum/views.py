@@ -22,11 +22,6 @@ class DatumObjectAll(ViewAll):
     model = DatumObject
     serializer = DatumObjectSerializer(template="serial_related")
 
-    update_fields = [
-        ("user", "request"),
-        ("datum_type_id",)
-    ]
-
     @property
     def queryset(self):
         return DatumObject.actives.filter(user=self.request.user).all()

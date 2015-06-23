@@ -23,12 +23,6 @@ class ViewuseObjectOne(ViewOne):
     model = ViewuseObject
     serializer = ViewuseObjectSerializer(template="serial_related")
     deserializer = ViewuseObjectSerializer(template="serial_update")
-    update_fields = [
-        ("readable_name",),
-        ("viewuse_arrangement_id",),
-        ("viewuse_datum_id",),
-        ("filter_json", "json"),
-    ]
 
 
 class ViewuseArrangementAll(ViewAll):

@@ -19,14 +19,11 @@ class ViewBase(View):
         deserializer: Serializer with template for put/post calls
             If not provided, same as 'serializer'
         queryset: Django queryset object
-        update_fields (list of strings):
-            Field names for data update
     """
     model = None
     queryset = None
     serializer = None
     deserializer = None
-    update_fields = []
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
@@ -75,7 +72,6 @@ class ViewBase(View):
 
             try:
                 setattr(model_object, field_name, field_update)
-                # field_instance = field_update
             except:
                 return "Error updating '{}'; Update data: {};".format(field_name,
                                                                       model_update
