@@ -12,7 +12,8 @@ from .serializers import (ViewuseObjectSerializer,
 
 class ViewuseObjectAll(ViewAll):
     model = ViewuseObject
-    serializer = ViewuseObjectSerializer("serial_related")
+    serializer_class = ViewuseObjectSerializer
+    serializer_template = "serial_related"
 
     @property
     def queryset(self):
@@ -21,17 +22,20 @@ class ViewuseObjectAll(ViewAll):
 
 class ViewuseObjectOne(ViewOne):
     model = ViewuseObject
-    serializer = ViewuseObjectSerializer("serial_related")
-    deserializer = ViewuseObjectSerializer("serial_update")
+    serializer_class = ViewuseObjectSerializer
+    serializer_template = "serial_related"
+    deserializer_template = "serial_update"
 
 
 class ViewuseArrangementAll(ViewAll):
     model = ViewuseArrangement
     queryset = ViewuseArrangement.actives.all()
-    serializer = ViewuseArrangementSerializer("serial_default")
+    serializer_class = ViewuseArrangementSerializer
+    serializer_template = "serial_default"
 
 
 class ViewuseDatumAll(ViewAll):
     model = ViewuseDatum
     queryset = ViewuseDatum.actives.all()
-    serializer = ViewuseDatumSerializer("serial_default")
+    serializer_class = ViewuseDatumSerializer
+    serializer_template = "serial_default"

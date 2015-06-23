@@ -3,27 +3,42 @@ from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
+from app.utils.serializer import Serializer
+
 
 class ViewBase(View):
     """Base View Class for all api-based views
 
     Attributes:
         model: Django model class
-        serializer: Serializer with template for get calls
-        deserializer: Serializer with template for put/post calls
+        serializer_class: Serializer class
+        serializer_template/deserializer_template (string):
+            template name - corresponds to serializer method
+        serializer: Serializer instance with template for get calls
+        deserializer: Serializer instance with template for put/post calls
             If not provided, same as 'serializer'
         queryset: Django queryset object
     """
     model = None
     queryset = None
-    serializer = None
-    deserializer = None
+    serializer_class = Serializer
+    serializer_template = None
+    deserializer_template = None
+
+    def __init__(self, **kwargs):
+        """Create serializer and deserializer instances """
+        if self.serializer_class:
+            self.serializer = self.serializer_class(self.serializer_template)
+
+            if not self.deserializer_template:
+                self.deserializer_template = self.serializer_template
+            self.deserializer = self.serializer_class(self.deserializer_template)
+
+        super().__init__(**kwargs)
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
         self.request = request
-        self.serializer = self.serializer
-        self.deserializer = self.deserializer or self.serializer
         return super().dispatch(request, *args, **kwargs)
 
     def serialized_data(self, data):
