@@ -21,6 +21,7 @@ class DatumTypeAll(ViewAll):
 class DatumObjectAll(ViewAll):
     model = DatumObject
     serializer = DatumObjectSerializer(template="serial_related")
+    deserializer = DatumObjectSerializer(template="serial_post")
 
     @property
     def queryset(self):

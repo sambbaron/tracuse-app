@@ -78,3 +78,5 @@ class DatumObjectSerializer(Serializer):
                 output.append((element_name, element_value.elvalue))
 
         return output
+
+    serial_post = ["datum_type_id", "user"]
