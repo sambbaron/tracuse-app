@@ -148,7 +148,7 @@ class Serializer(object):
                     output.append(serialized_obj)
 
         # Serialize single object
-        else:
+        elif type(self.data) == self.model:
             self.obj = self.data
             serialized_obj = self._serialize_template()
             if object_wrap_pk:
