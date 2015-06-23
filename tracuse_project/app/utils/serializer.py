@@ -73,10 +73,7 @@ class Serializer(object):
         output = data
 
         if format == "json":
-            output = json.dumps(data,
-                                cls=DjangoJSONEncoder,
-                                indent=4
-                                )
+            output = json.dumps(data, cls=DjangoJSONEncoder)
 
         return output
 
