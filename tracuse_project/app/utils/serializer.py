@@ -2,6 +2,7 @@ import json
 
 from django.db.models import QuerySet
 from django.core.serializers.json import DjangoJSONEncoder
+from django.core.exceptions import FieldDoesNotExist
 
 
 class Serializer(object):
@@ -11,11 +12,10 @@ class Serializer(object):
     Attributes:
         model: Django model class
         data: Django model object or queryset
-        obj: Single object being serialized
+        obj: Single object being serialized or deserialized
         template (string):
             Method name starting with "serial"
             Results in serialized object
-        format (string): Convert into other format, like json
         object_wrap_pk (boolean):
             True:
                 Wrap serialized data in dictionary
@@ -33,16 +33,28 @@ class Serializer(object):
     model = None
     field_format = []
 
-    def __init__(self, data=None, template=None, format=None, object_wrap_pk=False):
+    def __init__(self, data=None, template=None, object_wrap_pk=False):
         self.data = data
         self.template = template or "serial_default"
-        self.format = format
         self.object_wrap_pk = object_wrap_pk
 
     @property
     def _template(self):
         """Return template property from template string"""
         return getattr(self, self.template)
+
+    @property
+    def _template_fields(self):
+        """Return field names from template as list of strings"""
+        output = []
+        for obj in self._template:
+            if type(obj) == tuple:
+                field_name = obj[0]
+            else:
+                field_name = obj
+            output.append(field_name)
+
+        return output
 
     @property
     def serial_default(self):
@@ -56,12 +68,13 @@ class Serializer(object):
 
         return output
 
-    def _encode(self, data):
+    @staticmethod
+    def encode(format, data):
         """Format serialized data from python object"""
 
         output = data
 
-        if self.format == "json":
+        if format == "json":
             output = json.dumps(data,
                                 cls=DjangoJSONEncoder,
                                 indent=4
@@ -69,16 +82,14 @@ class Serializer(object):
 
         return output
 
-    def _decode(self, data):
+    @staticmethod
+    def decode(format, data):
         """Format serialized data from python object"""
 
         output = data
 
-        if self.format == "json":
-            output = json.loads(data,
-                                cls=DjangoJSONEncoder,
-                                indent=4
-                                )
+        if format == "json":
+            output = json.loads(data, encoding=DjangoJSONEncoder)
 
         return output
 
@@ -118,7 +129,7 @@ class Serializer(object):
         Serializes QuerySets and individual object instances
 
         Return:
-            Python object or encoded output
+            Python dictionary
         """
         if not self.data:
             raise ValueError("Serializer has empty 'data' attribute")
@@ -150,6 +161,48 @@ class Serializer(object):
             else:
                 output = serialized_obj
 
-        output = self._encode(output)
-
         return output
+
+    def deserialize(self, model_update, request):
+        """Save data to model object using serializer template fields
+
+        Attributes:
+            model_update (object): Data to update object
+            request: HTTP request object for session data
+
+        Return:
+            Saved model object
+        """
+
+        if self.data.__class__ == self.model:
+            self.obj = self.data
+        else:
+            raise AttributeError("Object not instance of '{}'".format(self.model.__name__))
+
+        fields = self._template_fields
+
+        for field_name in fields:
+
+            if field_name == "user":
+                model_update["user"] = request.user
+
+            try:
+                self.obj._meta.get_field(field_name)
+            except FieldDoesNotExist:
+                return "'{}' not a valid field".format(field_name)
+
+            if field_name not in model_update:
+                return "'{}' not in data request".format(field_name)
+
+            field_update = model_update[field_name]
+
+            try:
+                setattr(self.obj, field_name, field_update)
+            except:
+                return "Error updating '{}'; Update data: {};".format(field_name,
+                                                                      model_update
+                                                                      )
+
+        self.obj.save()
+
+        return self.obj

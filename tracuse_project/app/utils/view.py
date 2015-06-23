@@ -42,44 +42,17 @@ class ViewBase(View):
         except self.model.DoesNotExist:
             raise Http404("{} does not exist".format(self.model.__name__))
 
-    def update_decode(self, request):
-        """Convert request data to python object"""
+    def update_prep(self, request):
+        """Pull  and decode request data
+        Perform other prep tasks before updating model
+        """
         request_data = request.body.decode()
-        return json.loads(request_data, encoding=DjangoJSONEncoder)
+        return self.deserializer.decode("json", request_data)
 
     def update_model(self, model_object, model_update):
-        """Save request data to model object using deserializer
-
-        Return:
-            Model Object
-        """
-
-        # return update_model(model_object, self.update_fields, request_data, request_object)
+        """Save request data to model object using deserializer"""
         self.deserializer.data = model_object
-        fields = self.deserializer.serialize()
-
-        for field_name in fields:
-
-            try:
-                model_object._meta.get_field(field_name)
-            except FieldDoesNotExist:
-                return "'{}' not a valid field".format(field_name)
-
-            if field_name not in model_update:
-                return "'{}' not in data request".format(field_name)
-
-            field_update = model_update[field_name]
-
-            try:
-                setattr(model_object, field_name, field_update)
-            except:
-                return "Error updating '{}'; Update data: {};".format(field_name,
-                                                                      model_update
-                                                                      )
-
-        model_object.save()
-
-        return model_object
+        return self.deserializer.deserialize(model_update, self.request)
 
     def update_response(self, save_result, success_code, fail_code):
         """Return HTTP response for data update
@@ -105,7 +78,7 @@ class ViewAll(ViewBase):
 
     def post(self, request):
         object = self.model()
-        request_data = self.update_decode(request)
+        request_data = self.update_prep(request)
         save_result = self.update_model(object, request_data)
         response = self.update_response(save_result, 201, 400)
         return response
@@ -123,7 +96,7 @@ class ViewOne(ViewBase):
 
     def put(self, request, pk):
         object = self.get_object(pk)
-        request_data = self.update_decode(request)
+        request_data = self.update_prep(request)
         save_result = self.update_model(object, request_data)
         response = self.update_response(save_result, 200, 400)
         return response

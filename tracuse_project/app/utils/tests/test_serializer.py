@@ -16,10 +16,9 @@ class TestUtilsSerializerClass(TestCase):
         """
         test_data = {"test_string": "string", "test_number": 5}
         test_serializer = Serializer(data=test_data,
-                                     template="",
-                                     format="json"
+                                     template=""
                                      )
-        test_json = test_serializer._encode(test_data)
+        test_json = test_serializer.encode("json", test_data)
         actual = type(test_json)
         expected = str
         self.assertEqual(expected, actual)
