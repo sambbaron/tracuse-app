@@ -59,9 +59,9 @@ class ViewBase(View):
 
         # return update_model(model_object, self.update_fields, request_data, request_object)
         self.deserializer.data = model_object
-        deserialized_model = self.deserializer.serialize()
+        fields = self.deserializer.serialize()
 
-        for field_name, field_instance in deserialized_model.items():
+        for field_name in fields:
 
             try:
                 model_object._meta.get_field(field_name)
