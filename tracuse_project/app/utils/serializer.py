@@ -138,12 +138,12 @@ class Serializer(object):
         # Serialize Django queryset object
         if type(self.data) == QuerySet:
 
-            for obj in self.data:
-                self.obj = obj
+            for object in self.data:
+                self.obj = object
                 serialized_obj = self._serialize_template()
 
                 if object_wrap_pk:
-                    output[obj.pk] = serialized_obj
+                    output[self.obj.pk] = serialized_obj
                 else:
                     output.append(serialized_obj)
 
@@ -151,6 +151,7 @@ class Serializer(object):
         elif type(self.data) == self.model:
             self.obj = self.data
             serialized_obj = self._serialize_template()
+
             if object_wrap_pk:
                 output[self.obj.pk] = serialized_obj
             else:
