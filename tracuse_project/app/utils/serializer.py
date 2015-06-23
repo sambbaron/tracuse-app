@@ -105,7 +105,7 @@ class Serializer(object):
                 try:
                     field_value = getattr(self.obj, field_name)
                 except AttributeError:
-                    raise ("'{}' not in object").format(field_name)
+                    raise AttributeError("'{}' not in object".format(field_name))
 
             output[field_name] = field_value
 
