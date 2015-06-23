@@ -22,28 +22,24 @@ class Serializer(object):
             False:
                 Serialized data in list
 
-    Template property defines output structure
-    List of Strings or Tuple
-        First: field name
-        Second: field value (if no field value, use field name)
-
-    'Serialize' method outputs serialized object
+    Template method defines output structure using 'obj' property
+        Returns List of Strings or Tuple
+            First: field name
+            Second: field value (if no field value, use field name)
     """
     model = None
 
     def __init__(self, template=None):
         self.template = template or "serial_default"
 
-    @property
     def _template(self):
         """Return template property from template string"""
-        return getattr(self, self.template)
+        return getattr(self, self.template)()
 
-    @property
     def _template_fields(self):
         """Return field names from template as list of strings"""
         output = []
-        for obj in self._template:
+        for obj in self._template():
             if type(obj) == tuple:
                 field_name = obj[0]
             else:
@@ -52,7 +48,6 @@ class Serializer(object):
 
         return output
 
-    @property
     def serial_default(self):
         """ All fields in model
 
@@ -89,7 +84,7 @@ class Serializer(object):
                 Value: field value
         """
         output = {}
-        for object in self._template:
+        for object in self._template():
             if type(object) == str:
                 field_name = object
                 field_value = None
@@ -165,7 +160,7 @@ class Serializer(object):
         else:
             raise AttributeError("Object not instance of '{}'".format(self.model.__name__))
 
-        fields = self._template_fields
+        fields = self._template_fields()
 
         for field_name in fields:
 
