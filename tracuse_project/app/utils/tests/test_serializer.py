@@ -106,3 +106,36 @@ class TestUtilsSerializerClass(TestCase):
         actual = test_data[test_queryset.first().pk]["datum_type_id"]
         expected = self.test.datum_type1.datum_type_id
         self.assertEqual(expected, actual)
+
+    # def test_deserialize_success(self):
+    #     """Test deserialize method
+    #     """
+    #     from app.datum.serializers import DatumGroupSerializer
+    #
+    #     test_update = {
+    #
+    #     }
+    #     test_data = DatumGroupSerializer(data=test_queryset,
+    #                                      template="serial_default",
+    #                                      object_wrap_pk=True
+    #                                      ).serialize()
+    #
+    # def test_deserialize_failure_bad_field(self):
+    #     """Test deserialize with field not in model
+    #     """
+    #     field_list = [("badfield",)]
+    #     data = {"sort": 99}
+    #     expected = "'badfield' not a valid field"
+    #     actual = model.deserialize(self.test_model, field_list, data)
+    #     self.assertEqual(expected, actual)
+    #     self.assertEqual(self.test_model.sort, 10)
+    #
+    # def test_deserialize_failure_field_not_data(self):
+    #     """Test deserialize with field not in data
+    #     """
+    #     field_list = [("sort",)]
+    #     data = {"badfield": 99}
+    #     expected = "'sort' not in data request"
+    #     actual = model.deserialize(self.test_model, field_list, data)
+    #     self.assertEqual(expected, actual)
+    #     self.assertEqual(self.test_model.sort, 10)
