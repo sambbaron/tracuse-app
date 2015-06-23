@@ -9,19 +9,19 @@ from .serializers import (DatumGroupSerializer,
 class DatumGroupAll(ViewAll):
     model = DatumGroup
     queryset = DatumGroup.actives.all()
-    serializer = DatumGroupSerializer(template="serial_related")
+    serializer = DatumGroupSerializer("serial_related")
 
 
 class DatumTypeAll(ViewAll):
     model = DatumType
     queryset = DatumType.actives.all()
-    serializer = DatumTypeSerializer(template="serial_related")
+    serializer = DatumTypeSerializer("serial_related")
 
 
 class DatumObjectAll(ViewAll):
     model = DatumObject
-    serializer = DatumObjectSerializer(template="serial_related")
-    deserializer = DatumObjectSerializer(template="serial_post")
+    serializer = DatumObjectSerializer("serial_related")
+    deserializer = DatumObjectSerializer("serial_post")
 
     @property
     def queryset(self):
@@ -30,4 +30,4 @@ class DatumObjectAll(ViewAll):
 
 class DatumObjectOne(ViewOne):
     model = DatumObject
-    serializer = DatumObjectSerializer(template="serial_elements_object")
+    serializer = DatumObjectSerializer("serial_elements_object")

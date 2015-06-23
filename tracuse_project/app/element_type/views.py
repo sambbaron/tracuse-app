@@ -10,30 +10,30 @@ from .serializers import (ElementTypeSerializer,
 class ElementTypeAll(ViewAll):
     model = ElementType
     queryset = ElementType.actives.all()
-    serializer=ElementTypeSerializer(template="serial_related")
+    serializer=ElementTypeSerializer("serial_related")
 
 
 class ElementOperatorAll(ViewAll):
     model = ElementOperator
     queryset = ElementOperator.actives.all()
-    serializer=ElementOperatorSerializer(template="serial_default")
+    serializer=ElementOperatorSerializer("serial_default")
 
 
 class ElementDatumTypeAll(ViewAll):
     model = ElementDatumType
     queryset = ElementDatumType.actives.all()
-    serializer=ElementDatumTypeSerializer(template="serial_default")
+    serializer=ElementDatumTypeSerializer("serial_default")
 
 
 class ElementDatumObjectAll(ViewAll):
     model = ElementDatumObject
     queryset = ElementDatumObject.actives.all()
-    serializer=ElementDatumObjectSerializer(template="serial_related")
+    serializer=ElementDatumObjectSerializer("serial_related")
 
 
 class ElementDatumObjectOne(ViewOne):
     model = ElementDatumObject
-    serializer=ElementDatumObjectSerializer(template="serial_related")
+    serializer=ElementDatumObjectSerializer("serial_related")
 
     def update_model(self, model_object, request_data):
         element_value_object = model_object.element_value

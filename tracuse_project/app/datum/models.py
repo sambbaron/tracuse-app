@@ -159,7 +159,7 @@ class DatumObject(BaseModel):
 
         if expression:
             template = Template(expression)
-            serializer = DatumObjectSerializer(template="serial_element_name_value")
+            serializer = DatumObjectSerializer("serial_element_name_value")
             element_dict = serializer.serialize(self)
             context = Context(element_dict)
             output = template.render(context)

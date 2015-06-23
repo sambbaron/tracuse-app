@@ -30,7 +30,7 @@ class TestUtilsSerializerClass(TestCase):
         from app.datum.serializers import DatumObjectSerializer
 
         test_queryset = DatumObject.objects.all()
-        test_data = DatumObjectSerializer(template="serial_default"
+        test_data = DatumObjectSerializer("serial_default"
                                           ).serialize(test_queryset)
 
         actual_count = len(test_data)
@@ -45,7 +45,7 @@ class TestUtilsSerializerClass(TestCase):
         from app.datum.serializers import DatumObjectSerializer
 
         test_object = DatumObject.objects.first()
-        test_data = DatumObjectSerializer(template="serial_default"
+        test_data = DatumObjectSerializer("serial_default"
                                           ).serialize(test_object)
 
         actual = test_data["datum_type_id"]
@@ -60,7 +60,7 @@ class TestUtilsSerializerClass(TestCase):
         from app.datum.serializers import DatumObjectSerializer
 
         test_object = DatumObject.objects.first()
-        test_data = DatumObjectSerializer(template="serial_default"
+        test_data = DatumObjectSerializer("serial_default"
                                           ).serialize(test_object, object_wrap_pk=True)
 
         actual = test_data[test_object.pk]["datum_type_id"]
@@ -75,7 +75,7 @@ class TestUtilsSerializerClass(TestCase):
         from app.datum.serializers import DatumObjectSerializer
 
         test_queryset = DatumObject.objects.all()
-        test_data = DatumObjectSerializer(template="serial_default"
+        test_data = DatumObjectSerializer("serial_default"
                                           ).serialize(test_queryset, object_wrap_pk=True)
 
         actual_count = len(test_data)
@@ -95,7 +95,7 @@ class TestUtilsSerializerClass(TestCase):
     #
     #     }
     #     test_data = DatumGroupSerializer(data=test_queryset,
-    #                                      template="serial_default",
+    #                                      "serial_default",
     #                                      object_wrap_pk=True
     #                                      ).serialize()
     #
