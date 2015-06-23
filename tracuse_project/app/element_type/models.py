@@ -316,9 +316,8 @@ class ElementDatumObject(BaseModel):
 
         if expression:
             template = Template(expression)
-            datum_dict = DatumObjectSerializer(data=self.datum_object,
-                                               template="serial_element_name_value"
-                                               ).serialize()
+            serializer = DatumObjectSerializer(template="serial_element_name_value")
+            datum_dict = serializer.serialize(self.datum_object)
             context = Context(datum_dict)
             output = template.render(context)
 

@@ -11,8 +11,7 @@ class Serializer(object):
 
     Attributes:
         model: Django model class
-        data: Django model object or queryset
-        obj: Single object being serialized or deserialized
+        obj: Object being serialized or deserialized
         template (string):
             Method name starting with "serial"
             Results in serialized object
@@ -32,8 +31,7 @@ class Serializer(object):
     """
     model = None
 
-    def __init__(self, data=None, template=None):
-        self.data = data
+    def __init__(self, template=None):
         self.template = template or "serial_default"
 
     @property
@@ -69,23 +67,17 @@ class Serializer(object):
     @staticmethod
     def encode(format, data):
         """Format serialized data from python object"""
-
         output = data
-
         if format == "json":
             output = json.dumps(data, cls=DjangoJSONEncoder)
-
         return output
 
     @staticmethod
     def decode(format, data):
         """Format serialized data from python object"""
-
         output = data
-
         if format == "json":
             output = json.loads(data, encoding=DjangoJSONEncoder)
-
         return output
 
     def _serialize_template(self):
@@ -117,7 +109,7 @@ class Serializer(object):
 
         return output
 
-    def serialize(self, object_wrap_pk=False):
+    def serialize(self, data, object_wrap_pk=False):
         """ Serialize data from model object
 
         Use template method on model object
@@ -126,8 +118,6 @@ class Serializer(object):
         Return:
             Python dictionary
         """
-        if not self.data:
-            raise ValueError("Serializer has empty 'data' attribute")
 
         # Set output type
         if object_wrap_pk:
@@ -136,9 +126,9 @@ class Serializer(object):
             output = []
 
         # Serialize Django queryset object
-        if type(self.data) == QuerySet:
+        if type(data) == QuerySet:
 
-            for object in self.data:
+            for object in data:
                 self.obj = object
                 serialized_obj = self._serialize_template()
 
@@ -148,8 +138,8 @@ class Serializer(object):
                     output.append(serialized_obj)
 
         # Serialize single object
-        elif type(self.data) == self.model:
-            self.obj = self.data
+        elif type(data) == self.model:
+            self.obj = data
             serialized_obj = self._serialize_template()
 
             if object_wrap_pk:
@@ -159,7 +149,7 @@ class Serializer(object):
 
         return output
 
-    def deserialize(self, model_update, request):
+    def deserialize(self, data, model_update, request):
         """Save data to model object using serializer template fields
 
         Attributes:
@@ -170,8 +160,8 @@ class Serializer(object):
             Saved model object
         """
 
-        if self.data.__class__ == self.model:
-            self.obj = self.data
+        if type(data) == self.model:
+            self.obj = data
         else:
             raise AttributeError("Object not instance of '{}'".format(self.model.__name__))
 

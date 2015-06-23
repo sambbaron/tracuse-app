@@ -15,27 +15,12 @@ class TestUtilsSerializerClass(TestCase):
         with json
         """
         test_data = {"test_string": "string", "test_number": 5}
-        test_serializer = Serializer(data=test_data,
-                                     template=""
-                                     )
+        test_serializer = Serializer()
         test_json = test_serializer.encode("json", test_data)
         actual = type(test_json)
         expected = str
         self.assertEqual(expected, actual)
         json.loads(test_json)
-
-    def test_serialize_no_data(self):
-        """Test serialize method
-        with no data
-        """
-        from app.datum.serializers import DatumObjectSerializer
-
-        test_serializer = DatumObjectSerializer(data=None,
-                                                template="serial_default"
-                                                )
-
-        with self.assertRaisesMessage(ValueError, "Serializer has empty 'data' attribute"):
-            test_serializer.serialize()
 
     def test_serialize_queryset(self):
         """Test serialize method
@@ -45,9 +30,8 @@ class TestUtilsSerializerClass(TestCase):
         from app.datum.serializers import DatumObjectSerializer
 
         test_queryset = DatumObject.objects.all()
-        test_data = DatumObjectSerializer(data=test_queryset,
-                                          template="serial_default"
-                                          ).serialize()
+        test_data = DatumObjectSerializer(template="serial_default"
+                                          ).serialize(test_queryset)
 
         actual_count = len(test_data)
         expected_count = 1
@@ -61,9 +45,8 @@ class TestUtilsSerializerClass(TestCase):
         from app.datum.serializers import DatumObjectSerializer
 
         test_object = DatumObject.objects.first()
-        test_data = DatumObjectSerializer(data=test_object,
-                                          template="serial_default"
-                                          ).serialize()
+        test_data = DatumObjectSerializer(template="serial_default"
+                                          ).serialize(test_object)
 
         actual = test_data["datum_type_id"]
         expected = self.test.datum_type1.datum_type_id
@@ -77,9 +60,8 @@ class TestUtilsSerializerClass(TestCase):
         from app.datum.serializers import DatumObjectSerializer
 
         test_object = DatumObject.objects.first()
-        test_data = DatumObjectSerializer(data=test_object,
-                                          template="serial_default"
-                                          ).serialize(object_wrap_pk=True)
+        test_data = DatumObjectSerializer(template="serial_default"
+                                          ).serialize(test_object, object_wrap_pk=True)
 
         actual = test_data[test_object.pk]["datum_type_id"]
         expected = self.test.datum_type1.datum_type_id
@@ -93,9 +75,8 @@ class TestUtilsSerializerClass(TestCase):
         from app.datum.serializers import DatumObjectSerializer
 
         test_queryset = DatumObject.objects.all()
-        test_data = DatumObjectSerializer(data=test_queryset,
-                                          template="serial_default"
-                                          ).serialize(object_wrap_pk=True)
+        test_data = DatumObjectSerializer(template="serial_default"
+                                          ).serialize(test_queryset, object_wrap_pk=True)
 
         actual_count = len(test_data)
         expected_count = 1

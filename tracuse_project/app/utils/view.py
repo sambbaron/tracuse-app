@@ -27,8 +27,7 @@ class ViewBase(View):
         return super().dispatch(request, *args, **kwargs)
 
     def serialized_data(self, data):
-        self.serializer.data = data
-        serialized_data = self.serializer.serialize()
+        serialized_data = self.serializer.serialize(data)
         encoded_data = self.serializer.encode("json", serialized_data)
         return encoded_data
 
@@ -47,8 +46,7 @@ class ViewBase(View):
 
     def update_model(self, model_object, model_update):
         """Save request data to model object using deserializer"""
-        self.deserializer.data = model_object
-        return self.deserializer.deserialize(model_update, self.request)
+        return self.deserializer.deserialize(model_object, model_update, self.request)
 
     def update_response(self, save_result, success_code, fail_code):
         """Return HTTP response for data update
