@@ -68,7 +68,6 @@ class TestViewuseObjectOne(TestCase):
         response = view.dispatch(request=request, pk=request_id)
         response_content = json.loads(response.content.decode())
 
-        print(response_content)
         actual_response = response_content["readable_name"]
         expected_response = "Change Viewuse Title"
         self.assertEqual(200, response.status_code)
