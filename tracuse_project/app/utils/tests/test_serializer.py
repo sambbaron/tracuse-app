@@ -78,9 +78,8 @@ class TestUtilsSerializerClass(TestCase):
 
         test_object = DatumObject.objects.first()
         test_data = DatumObjectSerializer(data=test_object,
-                                          template="serial_default",
-                                          object_wrap_pk=True
-                                          ).serialize()
+                                          template="serial_default"
+                                          ).serialize(object_wrap_pk=True)
 
         actual = test_data[test_object.pk]["datum_type_id"]
         expected = self.test.datum_type1.datum_type_id
@@ -95,9 +94,8 @@ class TestUtilsSerializerClass(TestCase):
 
         test_queryset = DatumObject.objects.all()
         test_data = DatumObjectSerializer(data=test_queryset,
-                                          template="serial_default",
-                                          object_wrap_pk=True
-                                          ).serialize()
+                                          template="serial_default"
+                                          ).serialize(object_wrap_pk=True)
 
         actual_count = len(test_data)
         expected_count = 1

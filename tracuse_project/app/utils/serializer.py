@@ -31,12 +31,10 @@ class Serializer(object):
     'Serialize' method outputs serialized object
     """
     model = None
-    field_format = []
 
-    def __init__(self, data=None, template=None, object_wrap_pk=False):
+    def __init__(self, data=None, template=None):
         self.data = data
         self.template = template or "serial_default"
-        self.object_wrap_pk = object_wrap_pk
 
     @property
     def _template(self):
@@ -122,7 +120,7 @@ class Serializer(object):
 
         return output
 
-    def serialize(self):
+    def serialize(self, object_wrap_pk=False):
         """ Serialize data from model object
 
         Use template method on model object
@@ -135,7 +133,7 @@ class Serializer(object):
             raise ValueError("Serializer has empty 'data' attribute")
 
         # Set output type
-        if self.object_wrap_pk:
+        if object_wrap_pk:
             output = {}
         else:
             output = []
@@ -147,7 +145,7 @@ class Serializer(object):
                 self.obj = obj
                 serialized_obj = self._serialize_template()
 
-                if self.object_wrap_pk:
+                if object_wrap_pk:
                     output[obj.pk] = serialized_obj
                 else:
                     output.append(serialized_obj)
@@ -156,7 +154,7 @@ class Serializer(object):
         else:
             self.obj = self.data
             serialized_obj = self._serialize_template()
-            if self.object_wrap_pk:
+            if object_wrap_pk:
                 output[self.obj.pk] = serialized_obj
             else:
                 output = serialized_obj
