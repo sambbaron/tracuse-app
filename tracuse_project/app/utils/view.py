@@ -58,7 +58,7 @@ class ViewBase(View):
             response = HttpResponse(save_result, status=fail_code)
         else:
             response_data = self.serialized_data(save_result)
-            response = HttpResponse(response_data, status=success_code)
+            response = HttpResponse(response_data, status=success_code, content_type="application/json")
 
         return response
 
@@ -69,7 +69,7 @@ class ViewAll(ViewBase):
 
     def get(self, request):
         response_data = self.serialized_data(self.queryset)
-        response = HttpResponse(response_data, status=200)
+        response = HttpResponse(response_data, status=200, content_type="application/json")
         return response
 
     def post(self, request):
@@ -87,7 +87,7 @@ class ViewOne(ViewBase):
     def get(self, request, pk):
         object = self.get_object(pk)
         response_data = self.serialized_data(object)
-        response = HttpResponse(response_data, status=200)
+        response = HttpResponse(response_data, status=200, content_type="application/json")
         return response
 
     def put(self, request, pk):
