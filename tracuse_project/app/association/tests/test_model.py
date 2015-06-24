@@ -2,7 +2,7 @@ from model_mommy import mommy
 
 from django.test import TestCase
 
-from .test_data import TestDataAssociation
+from association.tests.test_data import TestDataAssociation
 
 
 class TestManagerAssociationManager(TestCase):

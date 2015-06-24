@@ -3,7 +3,7 @@ from django.test import TestCase
 from model_mommy import mommy
 
 from .test_data import TestDataDatum
-from app.association.test_data import TestDataAssociation
+from association.tests.test_data import TestDataAssociation
 
 
 class TestModelDatumObject(TestCase):
