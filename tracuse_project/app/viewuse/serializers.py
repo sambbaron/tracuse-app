@@ -26,7 +26,7 @@ class ViewuseObjectSerializer(Serializer):
             "readable_name",
             "viewuse_arrangement_id",
             "viewuse_datum_id",
-            "filter_json"
+            ("filter_json", json.dumps(self.obj.filter_json))
         ]
 
 

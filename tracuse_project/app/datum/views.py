@@ -30,6 +30,10 @@ class DatumObjectAll(ViewAll):
     def queryset(self):
         return DatumObject.actives.filter(user=self.request.user).all()
 
+    def update_model(self, model_object, model_update):
+        model_update["user"] = self.request.user
+        return self.deserializer.deserialize(model_object, model_update)
+
 
 class DatumObjectOne(ViewOne):
     model = DatumObject

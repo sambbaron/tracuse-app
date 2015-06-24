@@ -113,7 +113,7 @@ class TestDatumObjectAll(TestCase):
         response = view.dispatch(request=request)
 
         actual_content = response.content.decode()
-        expected_content = "'datum_type_id' not in data request"
+        expected_content = "'datum_type_id' not in data object"
         self.assertEqual(response.status_code, 400)
         self.assertEqual(expected_content, actual_content)
 
