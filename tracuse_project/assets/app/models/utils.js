@@ -27,21 +27,29 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
     return model;
 };
 
+Backbone.RelationalModel.prototype.setTemplateOption = function setTemplateOption(onOff) {
+    "use strict";
+    var model = this;
+    _.each(model._relations, function (rel) {
+        if (onOff) {
+            rel.options.jsonOptionSave = rel.options.includeInJSON;
+            rel.options.includeInJSON = rel.options.includeInTemplate;
+        } else {
+            rel.options.includeInJSON = rel.options.jsonOptionSave;
+        }
+        if (typeof rel.related.setTemplateOption !== "undefined") {
+            rel.related.setTemplateOption(onOff);
+        }
+    });
+    return model;
+};
+
 Backbone.RelationalModel.prototype.toTemplate = function toTemplate(options) {
     "use strict";
-    var thisModel = this;
-
-    _.each(thisModel._relations, function (rel) {
-        rel.options.jsonOptionSave = rel.options.includeInJSON;
-        rel.options.includeInJSON = rel.options.includeInTemplate;
-    });
-
-    var data = thisModel.toJSON(options);
-
-    _.each(thisModel._relations, function (rel) {
-        rel.options.includeInJSON = rel.options.jsonOptionSave;
-    });
-
+    var model = this;
+    model.setTemplateOption(true);
+    var data = model.toJSON(options);
+    model.setTemplateOption(false);
     return data;
 };
 
