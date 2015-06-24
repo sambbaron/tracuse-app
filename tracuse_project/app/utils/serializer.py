@@ -15,12 +15,6 @@ class Serializer(object):
         template (string):
             Method name starting with "serial"
             Results in serialized object
-        object_wrap_pk (boolean):
-            True:
-                Wrap serialized data in dictionary
-                with primary key as key
-            False:
-                Serialized data in list
 
     Template method defines output structure using 'obj' property
         Returns List of Strings or Tuple
@@ -104,11 +98,16 @@ class Serializer(object):
 
         return output
 
-    def serialize(self, data, object_wrap_pk=False):
+    def serialize(self, model_object, object_wrap_pk=False):
         """ Serialize data from model object
 
-        Use template method on model object
-        Serializes QuerySets and individual object instances
+        model_object: Model QuerySet or single object
+        object_wrap_pk (boolean):
+            True:
+                Wrap serialized data in dictionary
+                with primary key as key
+            False:
+                Serialized data in list
 
         Return:
             Python dictionary
@@ -121,9 +120,9 @@ class Serializer(object):
             output = []
 
         # Serialize Django queryset object
-        if type(data) == QuerySet:
+        if type(model_object) == QuerySet:
 
-            for object in data:
+            for object in model_object:
                 self.obj = object
                 serialized_obj = self._serialize_template()
 
@@ -133,8 +132,8 @@ class Serializer(object):
                     output.append(serialized_obj)
 
         # Serialize single object
-        elif type(data) == self.model:
-            self.obj = data
+        elif type(model_object) == self.model:
+            self.obj = model_object
             serialized_obj = self._serialize_template()
 
             if object_wrap_pk:
