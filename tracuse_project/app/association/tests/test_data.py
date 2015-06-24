@@ -3,6 +3,11 @@ from model_mommy import mommy
 
 class TestDataAssociation(object):
     def __init__(self):
+        # Users
+        self.user1 = mommy.make("auth.User",
+                                username="TestUser1"
+                                )
+
         # Datum Type
         self.datum_type1 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType1",
