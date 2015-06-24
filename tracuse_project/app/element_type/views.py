@@ -44,16 +44,22 @@ class ElementDatumObjectOne(ViewOne):
     model = ElementDatumObject
     serializer_class = ElementDatumObjectSerializer
     serializer_template = "serial_related"
+    deserializer_template = "serial_update"
 
     def update_model(self, model_object, request_data):
-        element_value_object = model_object.element_value
-        element_value_object.elvalue = request_data["element_value"]
-        element_value_object.save()
-        if element_value_object.elvalue == request_data["element_value"]:
-            return model_object
-        else:
-            return "Error updating element value"
+        """ Override ViewBase update_model
+        Get ElementValue model object and set deserializer model
+        """
+        pk = model_object.pk
 
+        element_value_object = model_object.element_value
+        self.deserializer.model = element_value_object.__class__
+        element_value_save = self.deserializer.deserialize(element_value_object, request_data)
+
+        if type(element_value_save) == str:
+            return element_value_save
+        else:
+            return self.get_object(pk)
 
 class ElementOptionAll(ViewAll):
     model = ElementOption

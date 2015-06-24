@@ -54,6 +54,11 @@ class ElementDatumObjectSerializer(Serializer):
 
         return output
 
+    def serial_update(self):
+        return [
+            ("elvalue", self.obj.element_value)
+        ]
+
 
 class ElementOptionSerializer(Serializer):
     model = ElementOption
