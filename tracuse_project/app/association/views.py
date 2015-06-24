@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from utils.view import ViewAll, ViewOne
 
-# Create your views here.
+from .models import AssociationDirection
+from .serializers import AssociationDirectionSerializer
+
+
+class AssociationDirectionAll(ViewAll):
+    model = AssociationDirection
+    queryset = AssociationDirection.objects.all()
+    serializer_class = AssociationDirectionSerializer

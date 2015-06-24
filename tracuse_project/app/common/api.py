@@ -6,6 +6,7 @@ from app.datum import views as DatumViews
 from app.element_type import views as ElementViews
 from app.filter import views as FilterViews
 from app.viewuse import views as ViewuseViews
+from app.association import views as AssociationViews
 
 urlpatterns = [
 
@@ -29,5 +30,6 @@ urlpatterns = [
     url(r'^filter/json/$', FilterViews.RunFilter.filter_from_json, name="filter-from-json"),
     url(r'^filter/(?P<pk>[0-9]+)/$', FilterViews.RunFilter.filter_from_set, name="filter-from-set"),
 
+    url(r'^association_direction/$', AssociationViews.AssociationDirectionAll.as_view(), name="association-direction-all"),
 
 ]
