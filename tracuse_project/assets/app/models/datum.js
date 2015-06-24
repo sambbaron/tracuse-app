@@ -66,12 +66,4 @@ Tracuse.models.DatumObject =
             //    collectionType: "Tracuse.models.DatumObject.collBase"
             //}
         ]
-        //
-        //toTemplate: function () {
-        //    "use strict";
-        //    var data = _.clone(this.attributes);
-        //    data.datum_group = _.clone(this.get("datum_group").attributes);
-        //    data.datum_type = _.clone(this.get("datum_type").attributes);
-        //    return data;
-        //}
     });
