@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from app.common.admin import BaseModelAdmin, BaseModelInline, EntityModelAdmin, EntityModelInline
-from .models import ElementType, ElementDatumType, ElementDatumObject, ElementOperator
+from .models import ElementType, ElementDatumType, ElementDatumObject, ElementOperator, ElementOption
 from app.element_value.admin import ElementValuesInline
 
 
@@ -15,7 +15,13 @@ class ElementDatumObjectInline(BaseModelInline):
     model = ElementDatumObject
 
     fields = BaseModelInline.fields + ("datum_object", "element_type", "element_value")
-    readonly_fields = BaseModelInline.readonly_fields + ("element_value", )
+    readonly_fields = BaseModelInline.readonly_fields + ("element_value",)
+
+
+class ElementOptionInline(EntityModelInline):
+    model = ElementOption
+
+    fields = EntityModelInline.fields
 
 
 @admin.register(ElementDatumType)
@@ -31,7 +37,7 @@ class ElementDatumTypeAdmin(EntityModelAdmin):
 class ElementDatumObjectAdmin(BaseModelAdmin):
     list_display = BaseModelAdmin.list_display + ("datum_object", "element_type", "element_value")
     list_display_links = ("element_value",)
-    list_filter = ("datum_object", "element_type", )
+    list_filter = ("datum_object", "element_type",)
 
     fields = BaseModelAdmin.fields + (("datum_object", "element_type"),)
 
@@ -42,16 +48,25 @@ class ElementDatumObjectAdmin(BaseModelAdmin):
 class ElementTypeAdmin(EntityModelAdmin):
     list_display = EntityModelAdmin.list_display + ("element_data_type", "str_expression", "element_view",)
     list_editable = EntityModelAdmin.list_editable + ("element_data_type", "str_expression", "element_view",)
-    list_filter = ("element_data_type", )
+    list_filter = ("element_data_type",)
 
     fields = EntityModelAdmin.fields + ("element_data_type", "str_expression", "element_view",)
 
-    inlines = [ElementDatumTypeInline, ]
+    inlines = [ElementDatumTypeInline, ElementOptionInline, ]
+
 
 @admin.register(ElementOperator)
 class ElementOperator(EntityModelAdmin):
-    list_display = EntityModelAdmin.list_display + ("element_data_type", "default_operator", )
-    list_editable = EntityModelAdmin.list_editable + ("element_data_type", "default_operator", )
-    list_filter = ("element_data_type", )
+    list_display = EntityModelAdmin.list_display + ("element_data_type", "default_operator",)
+    list_editable = EntityModelAdmin.list_editable + ("element_data_type", "default_operator",)
+    list_filter = ("element_data_type",)
 
-    fields = EntityModelAdmin.fields + ("element_data_type", "default_operator", )
+    fields = EntityModelAdmin.fields + ("element_data_type", "default_operator",)
+
+
+@admin.register(ElementOption)
+class ElementOption(EntityModelAdmin):
+    list_display = EntityModelAdmin.list_display
+    list_editable = EntityModelAdmin.list_editable
+
+    fields = EntityModelAdmin.fields
