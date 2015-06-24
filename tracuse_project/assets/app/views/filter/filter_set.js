@@ -44,7 +44,8 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             this_filter: filterView.model.toTemplate(),
             datum_groups: Tracuse.models.DatumGroup.all.toTemplate(),
             datum_types: Tracuse.models.DatumType.all.toTemplate(),
-            element_types: Tracuse.models.ElementType.all.toTemplate()
+            element_types: Tracuse.models.ElementType.all.toTemplate(),
+            association_directions: Tracuse.models.AssociationDirection.all.toTemplate()
         };
         templateOutput = Tracuse.templates.env.render(
             filterView.templateName,

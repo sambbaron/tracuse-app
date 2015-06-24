@@ -96,10 +96,19 @@
             </select>
         </label>
 
-        <label class="input-wrap" style="display: none">
-            Placeholder for additional association options
-            Distance & Parent/Child/Both
+        <label class="input-wrap">
+            <span class="input-label">Direction</span>
+            <select class="input-element" name="association_direction_id" form="association-form">
+                <option></option>
+                {% for association_direction in association_directions %}
+                    <option value="{{ association_direction.association_direction_id }}"
+                            {{ " selected" if association_direction.readable_name == "Both" }}>
+                        {{ association_direction.readable_name }}
+                    </option>
+                {% endfor %}
+            </select>
         </label>
+
         <button class="add-filter" name="FilterRuleAssociation"><i class="fa fa-plus"></i>
 
             <form id="association-form"></form>
