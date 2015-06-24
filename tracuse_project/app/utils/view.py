@@ -22,7 +22,7 @@ class ViewBase(View):
     model = None
     queryset = None
     serializer_class = Serializer
-    serializer_template = None
+    serializer_template = "serial_default"
     deserializer_template = None
 
     def __init__(self, **kwargs):
