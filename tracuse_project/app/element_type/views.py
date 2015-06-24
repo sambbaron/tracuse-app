@@ -1,10 +1,15 @@
 from utils.view import ViewAll, ViewOne
 
-from .models import ElementOperator, ElementType, ElementDatumType, ElementDatumObject
+from .models import (ElementOperator,
+                     ElementType,
+                     ElementDatumType,
+                     ElementDatumObject,
+                     ElementOption)
 from .serializers import (ElementTypeSerializer,
                           ElementOperatorSerializer,
                           ElementDatumTypeSerializer,
-                          ElementDatumObjectSerializer)
+                          ElementDatumObjectSerializer,
+                          ElementOptionSerializer)
 
 
 class ElementTypeAll(ViewAll):
@@ -48,3 +53,9 @@ class ElementDatumObjectOne(ViewOne):
             return model_object
         else:
             return "Error updating element value"
+
+
+class ElementOptionAll(ViewAll):
+    model = ElementOption
+    queryset = ElementOption.actives.all()
+    serializer_class = ElementOptionSerializer

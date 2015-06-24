@@ -5,7 +5,8 @@ from .test_data import TestDataElement
 from ..serializers import (ElementTypeSerializer,
                            ElementOperatorSerializer,
                            ElementDatumTypeSerializer,
-                           ElementDatumObjectSerializer)
+                           ElementDatumObjectSerializer,
+                           ElementOptionSerializer)
 
 
 class TestElementTypeSerializer(TestCase):
@@ -91,4 +92,20 @@ class TestElementDatumObjectSerializer(TestCase):
             ("serial_related").serialize(test_object)
         actual = test_serialized["element_value"]
         expected = "Test Object Name"
+        self.assertEqual(expected, actual)
+
+
+class TestElementOptionSerializer(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataElement()
+
+    def test_serial_default(self):
+        """Test ElementOptionSerializer.serial_default
+        """
+        test_object = self.test.element_option1
+        test_serialized = ElementOptionSerializer \
+            ("serial_default").serialize(test_object)
+        actual = test_serialized["entity_name"]
+        expected = "Option1"
         self.assertEqual(expected, actual)

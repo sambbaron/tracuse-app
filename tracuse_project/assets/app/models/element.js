@@ -8,6 +8,14 @@ Tracuse.models.ElementType =
                 collectionType: "Tracuse.models.ElementOperator.collBase",
                 includeInJSON: false,
                 includeInTemplate: true
+            },
+            {
+                type: Backbone.HasMany,
+                key: "element_options",
+                relatedModel: "Tracuse.models.ElementOption",
+                collectionType: "Tracuse.models.ElementOption.collBase",
+                includeInJSON: false,
+                includeInTemplate: true
             }
         ]
     });
@@ -39,3 +47,6 @@ Tracuse.models.ElementDatumObject =
             }
         ]
     });
+
+Tracuse.models.ElementOption =
+    Tracuse.models.ModelFactory("element_option", "element_option_id");

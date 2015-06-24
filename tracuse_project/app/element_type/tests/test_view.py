@@ -141,3 +141,26 @@ class TestElementDatumObjectOne(TestCase):
         actual_response = response_content["element_value"]
         expected_response = "Change Name"
         self.assertEqual(expected_response, actual_response)
+
+
+class TestElementOptionAll(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataElement()
+
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_get(self):
+        """Test ElementOptionAll.get api"""
+        request = self.factory.get("")
+        request.user = self.test.user1
+
+        view = views.ElementOptionAll(request=request)
+        response = view.dispatch(request=request)
+
+        response_content = json.loads(response.content.decode())
+        response_count = len(response_content)
+        expected_count = 1
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(expected_count, response_count)
