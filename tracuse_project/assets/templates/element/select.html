@@ -1,0 +1,9 @@
+{% include "element/label.html" %}
+<select class="input-element element-input">
+    {% for element_option in this_element.element_type.element_options %}
+        <option value="{{ element_option.element_option_id }}"
+                {{ " selected" if this_element.element_option_id == element_option.element_option_id }}>
+            {{ element_option.readable_name }}
+        </option>
+    {% endfor %}
+</select>
