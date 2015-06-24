@@ -61,7 +61,7 @@ class ViewBase(View):
 
     def update_model(self, model_object, model_update):
         """Save request data to model object using deserializer"""
-        return self.deserializer.deserialize(model_object, model_update, self.request)
+        return self.deserializer.deserialize(model_object, model_update)
 
     def update_response(self, save_result, success_code, fail_code):
         """Return HTTP response for data update

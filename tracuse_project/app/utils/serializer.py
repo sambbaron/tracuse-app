@@ -92,7 +92,7 @@ class Serializer(object):
                 try:
                     field_value = getattr(self.obj, field_name)
                 except AttributeError:
-                    raise AttributeError("'{}' not in object".format(field_name))
+                    return "'{}' not in data object".format(field_name)
 
             output[field_name] = field_value
 
@@ -143,46 +143,45 @@ class Serializer(object):
 
         return output
 
-    def deserialize(self, data, model_update, request):
+    def deserialize(self, model_object, update_object):
         """Save data to model object using serializer template fields
 
         Attributes:
-            model_update (object): Data to update object
+            model_object: Single model object
+            update_object (dict): Data to update model
             request: HTTP request object for session data
 
         Return:
             Saved model object
         """
 
-        if type(data) == self.model:
-            self.obj = data
-        else:
+        if type(model_object) != self.model:
             raise AttributeError("Object not instance of '{}'".format(self.model.__name__))
 
-        fields = self._template_fields()
+        # Add update_object keys as attributes to 'obj' property
+        self.obj = type('UpdateObject', (object,), update_object)
 
-        for field_name in fields:
+        # Convert update_object into serial template
+        update_object = self._serialize_template()
+        # Error if string
+        if type(update_object) == str:
+            return update_object
 
-            if field_name == "user":
-                model_update["user"] = request.user
+        # Update model object
+        for field_name, field_value in update_object.items():
 
             try:
-                self.obj._meta.get_field(field_name)
+                self.model._meta.get_field(field_name)
             except FieldDoesNotExist:
                 return "'{}' not a valid field".format(field_name)
 
-            if field_name not in model_update:
-                return "'{}' not in data request".format(field_name)
-
-            field_update = model_update[field_name]
-
             try:
-                setattr(self.obj, field_name, field_update)
+                setattr(model_object, field_name, field_value)
             except:
-                return "Error updating '{}'; Update data: {};".format(field_name,
-                                                                      model_update
+                return "Error updating '{}'; Update value: {};".format(field_name,
+                                                                      field_value
                                                                       )
 
-        self.obj.save()
+        model_object.save()
 
-        return self.obj
+        return model_object
