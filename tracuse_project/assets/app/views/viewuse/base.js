@@ -219,7 +219,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             {
                 success: function () {
                     viewuseView.filterView.closeFilter();
-                    viewuseView.render();
+                    viewuseView.render(function(){});
                 }
             });
     },
