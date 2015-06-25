@@ -1,4 +1,8 @@
 /* Custom Element Input Styling */
 .element-text {
-    height: 3em;
+    height: 2.85em;
+}
+
+.element-select {
+    width: auto;
 }

@@ -1,4 +1,15 @@
 /* Default Element Input Styling */
+
+.element {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
 .element-input {
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
 }

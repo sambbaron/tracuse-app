@@ -1,12 +1,7 @@
 .datum-medium {
-    width: 9em;
+    width: 10em;
 }
 
 .datum-medium .element label {
     display: none;
-}
-
-.datum-medium .element {
-    margin: 0;
-    padding: 0;
 }
