@@ -2,6 +2,14 @@ Tracuse.models.ElementType =
     Tracuse.models.ModelFactory("element_type", "element_type_id", {
         relations: [
             {
+                type: Backbone.HasOne,
+                key: "element_data_type",
+                relatedModel: "Tracuse.models.ElementDataType",
+                collectionType: "Tracuse.models.ElementDataType.collBase",
+                includeInJSON: false,
+                includeInTemplate: true
+            },
+            {
                 type: Backbone.HasMany,
                 key: "element_operators",
                 relatedModel: "Tracuse.models.ElementOperator",
@@ -50,3 +58,7 @@ Tracuse.models.ElementDatumObject =
 
 Tracuse.models.ElementOption =
     Tracuse.models.ModelFactory("element_option", "element_option_id");
+
+Tracuse.models.ElementDataType =
+    Tracuse.models.ModelFactory("element_data_type", "element_data_type_id");
+

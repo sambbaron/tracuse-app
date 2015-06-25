@@ -13,6 +13,7 @@ class ElementTypeSerializer(Serializer):
 
     def serial_related(self):
         output = self.serial_default()
+        output.append(("element_data_type", self.obj.element_data_type_id))
         output.append(("element_operators",
                        [element_operator.element_operator_id for element_operator in self.obj.element_operators.all()]))
         output.append(("element_options",
