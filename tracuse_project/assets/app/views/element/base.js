@@ -1,6 +1,6 @@
 Tracuse.views.ElementBase = Backbone.View.extend({
 
-    tagName: "p",
+    tagName: "div",
     className: "element",
 
     events: {
