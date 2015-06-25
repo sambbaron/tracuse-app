@@ -10,7 +10,8 @@
     <link rel="icon" href="{% static 'images/Tracuse-Icon-32x32.png' %}">
 
     <link rel="stylesheet" type="text/css" href="{% static 'libraries/font_awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'libraries/jquery/jquery-ui.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'libraries/jquery-ui/jquery-ui.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'libraries/jquery-datetimepicker/jquery.datetimepicker.css'%}"/ >
 
     <link rel="stylesheet" type="text/css" href="{% static 'dist/styles_base.css' %}">
     {% block css_block %}
@@ -47,10 +48,9 @@
 
 {% block menu %}{% endblock %}
 
-{#<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>#}
-{#<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>#}
 <script src={% static "libraries/jquery/jquery.min.js" %}></script>
-<script src={% static "libraries/jquery/jquery-ui.min.js" %}></script>
+<script src={% static "libraries/jquery-ui/jquery-ui.min.js" %}></script>
+<script src={% static "libraries/jquery-datetimepicker/jquery.datetimepicker.js" %}></script>
 {% block script_block %}{% endblock %}
 
 </body>

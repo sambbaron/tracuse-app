@@ -8,6 +8,7 @@
     "backbone-relational": "^0.10.0-beta.0",
     "font-awesome": "^4.3.0",
     "jquery": "^2.1.4",
+    "jquery-datetimepicker": "^2.4.0",
     "jquery-ui": "^1.10.5",
     "nunjucks": "^1.3.4"
   },
