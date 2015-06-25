@@ -2,7 +2,8 @@ from .models import (ElementOperator,
                      ElementType,
                      ElementDatumType,
                      ElementDatumObject,
-                     ElementOption)
+                     ElementOption,
+                     ElementDataType)
 
 from app.utils.serializer import Serializer
 
@@ -16,7 +17,7 @@ class ElementTypeSerializer(Serializer):
                        [element_operator.element_operator_id for element_operator in self.obj.element_operators.all()]))
         output.append(("element_options",
                        [element_option.element_option_id for element_option in self.obj.element_options.all()]))
-        
+
         return output
 
 
@@ -62,3 +63,7 @@ class ElementDatumObjectSerializer(Serializer):
 
 class ElementOptionSerializer(Serializer):
     model = ElementOption
+
+
+class ElementDataTypeSerializer(Serializer):
+    model = ElementDataType

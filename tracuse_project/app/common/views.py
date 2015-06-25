@@ -3,7 +3,9 @@ from django.contrib.auth.decorators import login_required
 from django.test import RequestFactory
 
 from app.datum.views import DatumGroupAll, DatumTypeAll
-from app.element_type.views import ElementTypeAll, ElementDatumTypeAll, ElementOperatorAll, ElementOptionAll
+from app.element_type.views import (ElementTypeAll, ElementDatumTypeAll,
+                                    ElementOperatorAll, ElementOptionAll,
+                                    ElementDataTypeAll)
 from app.viewuse.views import ViewuseObjectAll, ViewuseArrangementAll, ViewuseDatumAll
 from app.association.views import AssociationDirectionAll
 
@@ -13,7 +15,8 @@ def app_index(request):
     """Load app with bootstrapped data
     """
     bootstrap_views = [DatumGroupAll, DatumTypeAll,
-                       ElementTypeAll, ElementDatumTypeAll, ElementOperatorAll, ElementOptionAll,
+                       ElementTypeAll, ElementDatumTypeAll,
+                       ElementOperatorAll, ElementOptionAll, ElementDataTypeAll,
                        ViewuseObjectAll, ViewuseArrangementAll, ViewuseDatumAll,
                        AssociationDirectionAll
                        ]

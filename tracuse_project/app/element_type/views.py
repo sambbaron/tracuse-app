@@ -4,12 +4,14 @@ from .models import (ElementOperator,
                      ElementType,
                      ElementDatumType,
                      ElementDatumObject,
-                     ElementOption)
+                     ElementOption,
+                     ElementDataType)
 from .serializers import (ElementTypeSerializer,
                           ElementOperatorSerializer,
                           ElementDatumTypeSerializer,
                           ElementDatumObjectSerializer,
-                          ElementOptionSerializer)
+                          ElementOptionSerializer,
+                          ElementDataTypeSerializer)
 
 
 class ElementTypeAll(ViewAll):
@@ -65,3 +67,8 @@ class ElementOptionAll(ViewAll):
     model = ElementOption
     queryset = ElementOption.actives.all()
     serializer_class = ElementOptionSerializer
+
+class ElementDataTypeAll(ViewAll):
+    model = ElementDataType
+    queryset = ElementDataType.objects.all()
+    serializer_class = ElementDataTypeSerializer
