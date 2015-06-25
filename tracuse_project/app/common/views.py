@@ -4,8 +4,7 @@ from django.test import RequestFactory
 
 from app.datum.views import DatumGroupAll, DatumTypeAll
 from app.element_type.views import (ElementTypeAll, ElementDatumTypeAll,
-                                    ElementOperatorAll, ElementOptionAll,
-                                    ElementDataTypeAll)
+                                    ElementOperatorAll, ElementOptionAll)
 from app.viewuse.views import ViewuseObjectAll, ViewuseArrangementAll, ViewuseDatumAll
 from app.association.views import AssociationDirectionAll
 
@@ -16,7 +15,7 @@ def app_index(request):
     """
     bootstrap_views = [DatumGroupAll, DatumTypeAll,
                        ElementTypeAll, ElementDatumTypeAll,
-                       ElementOperatorAll, ElementOptionAll, ElementDataTypeAll,
+                       ElementOperatorAll, ElementOptionAll,
                        ViewuseObjectAll, ViewuseArrangementAll, ViewuseDatumAll,
                        AssociationDirectionAll
                        ]

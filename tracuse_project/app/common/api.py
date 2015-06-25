@@ -22,7 +22,6 @@ urlpatterns = [
     url(r'^element_datum_object/(?P<pk>[0-9]+)/$', ElementViews.ElementDatumObjectOne.as_view(), name="element-datum-object-one"),
     url(r'^element_datum_object/$', ElementViews.ElementDatumObjectAll.as_view(), name="element-datum-object-all"),
     url(r'^element_option/$', ElementViews.ElementOptionAll.as_view(), name="element-option-all"),
-    url(r'^element_data_type/$', ElementViews.ElementDataTypeAll.as_view(), name="element-data-type-all"),
 
     url(r'^viewuse_object/(?P<pk>[0-9]+)/$', ViewuseViews.ViewuseObjectOne.as_view(), name="viewuse-object-one"),
     url(r'^viewuse_object/$', ViewuseViews.ViewuseObjectAll.as_view(), name="viewuse-object-all"),

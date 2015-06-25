@@ -13,7 +13,7 @@ class ElementTypeSerializer(Serializer):
 
     def serial_related(self):
         output = self.serial_default()
-        output.append(("element_data_type", self.obj.element_data_type_id))
+        output.append(("element_data_type", self.obj.element_data_type.schema_name))
         output.append(("element_operators",
                        [element_operator.element_operator_id for element_operator in self.obj.element_operators.all()]))
         output.append(("element_options",
@@ -42,6 +42,7 @@ class ElementDatumObjectSerializer(Serializer):
             "element_datum_object_id",
             ("element_datum_type_id", self.obj.element_datum_type.element_datum_type_id),
             ("element_type_id", self.obj.element_type.element_type_id),
+            ("element_data_type", self.obj.element_type.element_data_type.schema_name),
             "datum_object_id",
             ("element_name", self.obj.element_type.readable_name),
             ("element_value", element_value)
