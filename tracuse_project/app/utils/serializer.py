@@ -1,4 +1,6 @@
 import json
+import datetime
+import decimal
 
 from django.db.models import QuerySet
 from django.core.serializers.json import DjangoJSONEncoder
@@ -58,7 +60,7 @@ class Serializer(object):
         """Format serialized data from python object"""
         output = data
         if format == "json":
-            output = json.dumps(data, cls=DjangoJSONEncoder)
+            output = json.dumps(data, cls=CustomJSONEncoder)
         return output
 
     @staticmethod
@@ -66,7 +68,7 @@ class Serializer(object):
         """Format serialized data from python object"""
         output = data
         if format == "json":
-            output = json.loads(data, encoding=DjangoJSONEncoder)
+            output = json.loads(data, parse_float=decimal.Decimal)
         return output
 
     def _serialize_template(self):
@@ -179,9 +181,36 @@ class Serializer(object):
                 setattr(model_object, field_name, field_value)
             except:
                 return "Error updating '{}'; Update value: {};".format(field_name,
-                                                                      field_value
-                                                                      )
+                                                                       field_value
+                                                                       )
 
         model_object.save()
 
         return model_object
+
+
+class CustomJSONEncoder(json.JSONEncoder):
+    """ JSONEncoder subclass that knows how to encode date/time and decimal types.
+
+    Modeled after DjangoJSONEncoder, except convert decimal to float
+    """
+    def default(self, o):
+        # See "Date Time String Format" in the ECMA-262 specification.
+        if isinstance(o, datetime.datetime):
+            r = o.isoformat()
+            if o.microsecond:
+                r = r[:23] + r[26:]
+            if r.endswith('+00:00'):
+                r = r[:-6] + 'Z'
+            return r
+        elif isinstance(o, datetime.date):
+            return o.isoformat()
+        elif isinstance(o, datetime.time):
+            r = o.isoformat()
+            if o.microsecond:
+                r = r[:12]
+            return r
+        elif isinstance(o, decimal.Decimal):
+            return o.__float__()
+        else:
+            return super().default(o)
