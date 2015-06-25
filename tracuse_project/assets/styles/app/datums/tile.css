@@ -1,3 +1,4 @@
-.datums.datums-tile .datum {
+.datums-tile .datum {
     display: inline-block;
+    vertical-align: top;
 }
