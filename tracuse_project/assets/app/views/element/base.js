@@ -5,9 +5,7 @@ Tracuse.views.ElementBase = Backbone.View.extend({
 
     events: {
         "change .element-input": function (ev) {
-            var data = {};
-            data[ev.target.name] = ev.target.value;
-            this.model.save(data);
+            this.updateElement(ev.target.value);
             ev.stopPropagation();
         }
     },
@@ -39,6 +37,11 @@ Tracuse.views.ElementBase = Backbone.View.extend({
     initialize: function initialize() {
         "use strict";
         this.listenTo(this.model, "change", this.render);
+    },
+
+    updateElement: function updateElement(value) {
+        "use strict";
+        this.model.save({"element_value": value});
     }
 
 });
