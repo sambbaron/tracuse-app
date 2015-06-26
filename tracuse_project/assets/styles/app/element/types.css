@@ -1,10 +1,10 @@
 /* Custom Element Input Styling */
-.element-text {
+.element-text .element-input {
     height: 2.85em;
+    width: 100%;
 }
 
-.element-select {
-    width: auto;
+.element-select .element-input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
