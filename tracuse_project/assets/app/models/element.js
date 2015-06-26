@@ -45,7 +45,26 @@ Tracuse.models.ElementDatumObject =
                 includeInJSON: false,
                 includeInTemplate: true
             }
-        ]
+        ],
+
+        parse: function parse(response) {
+            "use strict";
+            /* Convert datetime string to moment object */
+            if (response.element_data_type === "datetime") {
+                response.element_value = moment(response.element_value);
+            }
+            return response;
+        },
+
+        get: function (attr) {
+            "use strict";
+            /* Convert datetime string to moment object */
+            var value = this.attributes[attr];
+            if (this.attributes["element_data_type"] === "datetime" && typeof value === "string") {
+                value = moment(value);
+            }
+            return value;
+        }
     });
 
 Tracuse.models.ElementOption =
