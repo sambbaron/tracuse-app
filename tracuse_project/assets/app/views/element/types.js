@@ -12,17 +12,20 @@ Tracuse.views.ElementDatetime = Tracuse.views.ElementBase.extend({
     className: "element element-datetime",
     templateName: "element/base.html",
 
+    momentFormat: "M/D/YYYY h:mm a",
+    pickerFormat: "m/d/Y h:i a",
+
     render: function () {
         "use strict";
         var elementView = Tracuse.views.ElementBase.prototype.render.apply(this, arguments);
 
         var rawDatetime = elementView.model.get("element_value");
-        var formatDatetime = rawDatetime.format("M/D/YYYY h:mm a");
+        var formatDatetime = rawDatetime.format(elementView.momentFormat);
         var inputEl = elementView.el.querySelector("input");
         inputEl.setAttribute("value", formatDatetime);
 
         $(inputEl).datetimepicker({
-            format: "m/d/Y h:i a"
+            format: elementView.pickerFormat
         });
         return elementView;
     },
@@ -34,3 +37,11 @@ Tracuse.views.ElementDatetime = Tracuse.views.ElementBase.extend({
     }
 });
 
+Tracuse.views.ElementDate = Tracuse.views.ElementDatetime.extend({
+    className: "element element-date",
+    templateName: "element/base.html",
+
+    momentFormat: "M/D/YYYY",
+    pickerFormat: "m/d/Y"
+
+});
