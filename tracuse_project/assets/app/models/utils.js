@@ -37,7 +37,7 @@ Backbone.RelationalModel.prototype.setTemplateOption = function setTemplateOptio
         } else {
             rel.options.includeInJSON = rel.options.jsonOptionSave;
         }
-        if (typeof rel.related.setTemplateOption !== "undefined") {
+        if (rel.related && typeof rel.related.setTemplateOption !== "undefined") {
             rel.related.setTemplateOption(onOff);
         }
     });
