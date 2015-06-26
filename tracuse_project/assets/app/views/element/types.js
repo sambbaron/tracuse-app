@@ -21,7 +21,9 @@ Tracuse.views.ElementDatetime = Tracuse.views.ElementBase.extend({
         var inputEl = elementView.el.querySelector("input");
         inputEl.setAttribute("value", formatDatetime);
 
-        $(inputEl).datetimepicker();
+        $(inputEl).datetimepicker({
+            format: "m/d/Y h:i a"
+        });
         return elementView;
     },
 
