@@ -4,6 +4,19 @@ Tracuse.views.DatumBase = Backbone.View.extend({
     className: "datum",
     templateName: "datum/base.html",
 
+    events: {
+        "click *": function clickDatum(ev) {
+            "use strict";
+            this.setActive();
+            ev.stopPropagation();
+        },
+        "focusin *": function focusDatum(ev) {
+            "use strict";
+            this.setActive();
+            ev.stopPropagation();
+        }
+    },
+
     template: function () {
         "use strict";
         var datumView = this;
@@ -53,6 +66,15 @@ Tracuse.views.DatumBase = Backbone.View.extend({
             }));
         });
 
+    },
+
+    setActive: function setActive() {
+        "use strict";
+        /* Set active datum - 'active' class */
+        if (!this.$el.hasClass("active")) {
+            this.viewuseView.$(".datum").removeClass("active");
+            this.$el.addClass("active", 100);
+        }
     }
 
 });
