@@ -4,4 +4,24 @@
 
 .datum-medium .element label {
     display: none;
+    position: absolute;
+    top: -0.1em;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    font-size: 75%;
+    color: #587e1f;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.datum-medium .element.active {
+    margin-top: -0.25em;
+    padding-top: 0.25em;
+    border-radius: 0.5em;
+    background-color: rgba(204, 232, 162, 0.5);
+}
+
+.datum-medium .element .element-input:focus {
+    background-color: rgba(204, 232, 162, 0.5);
 }

@@ -1,5 +1,18 @@
 Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
 
+    events: {
+        "focusin .element-input": function (ev) {
+            "use strict";
+            this.setActiveElement(ev.target);
+            ev.stopPropagation();
+        },
+        "focusout .element-input": function (ev) {
+            "use strict";
+            this.setActiveElement(ev.target);
+            ev.stopPropagation();
+        }
+    },
+
     render: function () {
         "use strict";
         var datumView = this;
@@ -20,6 +33,15 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
         datumView.el.appendChild(fragment);
 
         return datumView;
+    },
+
+    setActiveElement: function setActiveElement(el) {
+        "use strict";
+        /*Show/Hide Element label*/
+        var elementEl = el.parentNode;
+        var labelEl = elementEl.querySelector("label");
+        $(labelEl).fadeToggle(100);
+        $(elementEl).toggleClass("active");
     }
 
 });
