@@ -62,7 +62,8 @@ Tracuse.views.DatumBase = Backbone.View.extend({
             ElementView = Tracuse.views[elementViewName];
 
             datumView.elementSubViews.push(new ElementView({
-                model: elementModel
+                model: elementModel,
+                datumView: datumView
             }));
         });
 
