@@ -123,7 +123,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         var optionFrag, optionEl;
 
         // Update Datum Types
-        var datumTypesEl = filterEl.querySelector("[name='association_types']");
+        var datumTypesEl = filterEl.querySelector(".associations [name='association_types']");
         datumTypesEl.innerHTML = "";
         optionFrag = document.createDocumentFragment();
         var datumGroup = Tracuse.models.DatumGroup.all.get(el.value);
@@ -137,7 +137,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         datumTypesEl.appendChild(optionFrag);
 
         // Update Datum Objects
-        var datumObjectsEl = filterEl.querySelector("[name='datum_object_id']");
+        var datumObjectsEl = filterEl.querySelector(".associations [name='datum_object_id']");
         datumObjectsEl.innerHTML = "";
 
         optionFrag = document.createDocumentFragment();
@@ -157,7 +157,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         "use strict";
         /* Update Datum Objects*/
         var filterEl = this.el;
-        var datumObjectsEl = filterEl.querySelector("[name='datum_object_id']");
+        var datumObjectsEl = filterEl.querySelector(".associations [name='datum_object_id']");
         datumObjectsEl.innerHTML = "";
 
         var optionFrag = document.createDocumentFragment();
@@ -176,7 +176,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
     selectElement: function selectElement(el) {
         // Add element operators
         var filterEl = this.el;
-        var elementOperatorsEl = filterEl.querySelector("[name='element_operator_id']");
+        var elementOperatorsEl = filterEl.querySelector(".elements [name='element_operator_id']");
         elementOperatorsEl.innerHTML = "";
 
         var elementType = Tracuse.models.ElementType.all.get(el.value);
