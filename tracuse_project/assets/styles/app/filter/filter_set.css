@@ -1,29 +1,29 @@
-.datum-filter {
+.filter-set {
     width: 85em;
 }
 
-.datum-filter > .section {
+.filter-set > .section {
     height: 22em;
 }
 
-.datum-filter form {
+.filter-set form {
     display: none;
 }
 
-.datum-filter .selections {
+.filter-set .selections {
     width: 12em;
     text-align: left;
 }
 
-.datum-filter .actions {
+.filter-set .actions {
     width: 11em;
 }
 
-.datum-filter .actions button {
+.filter-set .actions button {
     font-size: 115%;
 }
 
-.datum-filter .actions button i {
+.filter-set .actions button i {
     float: left;
     height: 2em;
     padding-top: 0.25em;
@@ -31,16 +31,16 @@
     font-size: 125%;
 }
 
-.datum-filter .actions button span {
+.filter-set .actions button span {
     display: block;
     height: 2em;
 }
 
-.datum-filter .types {
+.filter-set .types {
     width: 22em;
 }
 
-.datum-filter .groups-types-container {
+.filter-set .groups-types-container {
     position: relative;
     height: 3.5em;
     margin: 0;
@@ -48,11 +48,11 @@
     padding: 0;
 }
 
-.datum-filter .groups-types-container:first-child {
+.filter-set .groups-types-container:first-child {
     border-top: none;
 }
 
-.datum-filter .groups-types-container .types-container {
+.filter-set .groups-types-container .types-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -63,7 +63,7 @@
 
 }
 
-.datum-filter .groups button {
+.filter-set .groups button {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -72,42 +72,42 @@
     font-size: 100%;
 }
 
-.datum-filter .types button {
+.filter-set .types button {
     margin: 0.15em;
     padding: 0.15em;
     font-size: 85%;
 }
 
-.datum-filter .input-wrap {
+.filter-set .input-wrap {
     display: inline-block;
     margin-bottom: 0;
     font-size: 85%;
 }
 
-.datum-filter .input-label {
+.filter-set .input-label {
     display: block;
 }
 
-.datum-filter .associations .input-element[name='association_groups'] {
+.filter-set .associations .input-element[name='association_groups'] {
     width: 5em;
 }
 
-.datum-filter .associations .input-element[name='association_types'] {
+.filter-set .associations .input-element[name='association_types'] {
     width: 8em;
 }
 
-.datum-filter .associations .input-element[name='datum_object_id'] {
+.filter-set .associations .input-element[name='datum_object_id'] {
     width: 12em;
 }
 
-.datum-filter .elements .input-element[name='element_operator_id'] {
+.filter-set .elements .input-element[name='element_operator_id'] {
     width: 10em;
 }
 
-.datum-filter .add-filter i {
+.filter-set .add-filter i {
     font-size: 150%;
 }
 
-.datum-filter .selected-rule {
+.filter-set .selected-rule {
     font-size: 75%;
 }

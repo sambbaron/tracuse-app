@@ -1,7 +1,7 @@
 Tracuse.views.FilterSet = Backbone.View.extend({
 
     tagName: "aside",
-    className: "dialog dialog-popout dialog-options datum-filter",
+    className: "dialog dialog-popout dialog-options filter-set",
     templateName: "filter/filter_set.html",
 
     events: {
