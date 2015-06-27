@@ -85,6 +85,8 @@
 
 .dialog-options .actions button {
     display: block;
+    width: 100%;
+    text-align: left;
 }
 
 .dialog-options .actions span {
