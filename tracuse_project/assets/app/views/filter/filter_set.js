@@ -5,10 +5,6 @@ Tracuse.views.FilterSet = Backbone.View.extend({
     templateName: "filter/filter_set.html",
 
     events: {
-        "drag": function drag(ev, ui) {
-            this.el.classList.add("drag");
-            ev.stopPropagation();
-        },
         "click button[name='save-filter']": function saveFilter(ev) {
             this.parentView.saveFilter();
             ev.stopPropagation();
@@ -59,10 +55,6 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         "use strict";
         var filterView = this;
         filterView.el.innerHTML = filterView.template();
-        filterView.$el.draggable({
-            cursor: "move",
-            distance: 5
-        });
         return filterView;
     },
 

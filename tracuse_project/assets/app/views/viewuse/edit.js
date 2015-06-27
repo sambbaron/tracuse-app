@@ -5,10 +5,6 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
     templateName: "viewuse/edit.html",
 
     events: {
-        "drag": function drag(ev, ui) {
-            this.el.classList.add("drag");
-            ev.stopPropagation();
-        },
         "click button[name='save-viewuse-close']": function saveViewuse(ev) {
             this.saveViewuse();
             this.closeEdit();
@@ -51,10 +47,6 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         "use strict";
         var editView = this;
         editView.el.innerHTML = editView.template();
-        editView.$el.draggable({
-            cursor: "move",
-            distance: 5
-        });
         return editView;
     },
 
