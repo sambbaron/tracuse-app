@@ -5,7 +5,7 @@
 .datum-medium .element label {
     display: none;
     position: absolute;
-    top: -0.1em;
+    top: -0.15em;
     left: 50%;
     transform: translateX(-50%);
     margin: 0 auto;
@@ -24,4 +24,13 @@
 
 .datum-medium .element .element-input:focus {
     background-color: rgba(204, 232, 162, 0.5);
+}
+
+.datum-medium .element-text .element-input {
+    height: 2.85em;
+    width: 100%;
+}
+
+.datum-medium .element-datetime .element-input {
+    width: 100%;
 }
