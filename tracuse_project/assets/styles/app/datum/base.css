@@ -20,6 +20,10 @@
     cursor: default;
 }
 
+.datum.active {
+
+}
+
 /*Area*/
 .datum[datum_group_id="1"] {
     border-radius: 0;
