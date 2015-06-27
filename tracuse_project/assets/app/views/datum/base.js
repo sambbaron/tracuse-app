@@ -32,10 +32,12 @@ Tracuse.views.DatumBase = Backbone.View.extend({
         return datumView;
     },
 
-    initialize: function () {
+    initialize: function (options) {
         "use strict";
         var datumView = this;
         var elementViewName, ElementView;
+
+        datumView.viewuseView = options.viewuseView;
 
         // Set element collection and views
         datumView.elementSubViews = [];
