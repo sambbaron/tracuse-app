@@ -88,6 +88,14 @@
     display: block;
 }
 
+.datum-filter .associations .input-element[name='association_groups'] {
+    width: 5em;
+}
+
+.datum-filter .associations .input-element[name='association_types'] {
+    width: 8em;
+}
+
 .datum-filter .associations .input-element[name='datum_object_id'] {
     width: 12em;
 }
