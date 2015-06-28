@@ -17,7 +17,7 @@
     <p class="title">Select View</p>
 
     <div class="content">
-        <select class="input-element select-element" size="{{ viewuse_objects|length + 1 }}">
+        <select class="input-element select-viewuse" name="viewuse_object_id" size="{{ viewuse_objects|length + 1 }}">
             {% for viewuse_object in viewuse_objects %}
                 <option value="{{ viewuse_object.viewuse_object_id }}"
                         {{ " selected" if this_viewuse.viewuse_object_id == viewuse_object.viewuse_object_id }}>

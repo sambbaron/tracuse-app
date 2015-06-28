@@ -5,6 +5,10 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
     templateName: "viewuse/edit.html",
 
     events: {
+        "click button[name='new-viewuse']": function newViewuse(ev) {
+            this.newViewuse();
+            ev.stopPropagation();
+        },
         "click button[name='save-viewuse-close']": function saveViewuse(ev) {
             this.saveViewuse();
             this.closeEdit();
@@ -12,6 +16,10 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         },
         "click button[name='cancel-viewuse-close']": function closeEdit(ev) {
             this.closeEdit();
+            ev.stopPropagation();
+        },
+        "change .selections .select-viewuse": function changeSelectViewuse(ev) {
+            this.selectViewuse(ev.target.value);
             ev.stopPropagation();
         },
         "click button[name='open-filter']": function openFilter(ev) {
@@ -70,6 +78,15 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         });
     },
 
+    newViewuse: function newViewuse() {
+        "use strict";
+        /* Create new viewuse model and attach to view */
+        var editView = this;
+
+        editView.model = new Tracuse.models.ViewuseObject();
+        editView.render();
+    },
+
     saveViewuse: function saveViewuse() {
         "use strict";
         /* Save Viewuse and render datums */
@@ -77,11 +94,22 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
 
         var formEl = editView.el.querySelector("#viewuse-form");
         var formData = Tracuse.utils.serializeForm(formEl);
-        editView.model.save(formData);
+        editView.model.save(formData, {
+            success: function () {
+                if (editView.viewuseView) {
+                    editView.viewuseView.model = editView.model;
+                    editView.viewuseView.render(function () {/*Do not use ViewuseBase.render callback*/});
+                }
+            }
+        });
+    },
 
-        if (editView.viewuseView) {
-            editView.viewuseView.render();
-        }
+    selectViewuse: function selectViewuse(viewuseID) {
+        "use strict";
+        /* Change view model to selected Viewuse */
+        var editView = this;
+        editView.model = Tracuse.models.ViewuseObject.all.get(viewuseID);
+        editView.render();
     },
 
     openFilter: function openFilter() {
