@@ -98,7 +98,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
             success: function () {
                 if (editView.viewuseView) {
                     editView.viewuseView.model = editView.model;
-                    editView.viewuseView.render(function () {/*Do not use ViewuseBase.render callback*/});
+                    editView.viewuseView.renderDatums(function () {/*Do not use ViewuseBase.render callback*/});
                 }
             }
         });
