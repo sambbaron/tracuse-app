@@ -57,31 +57,29 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
         viewuseView.el.innerHTML = viewuseView.template();
 
-        viewuseView.renderDatums(function (datumsView) {
+        // Append ViewuseMenu view
+        viewuseView.menuSubView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
 
+        viewuseView.$el.resizable({
+            handles: "n, e, s, w, ne, se"
+        });
+        // Remove inline styles from resizable handles
+        var resizeHandles = viewuseView.el.querySelectorAll(".ui-resizable-handle");
+        _.each(resizeHandles, function (resizeHandle) {
+            resizeHandle.removeAttribute("style");
+        });
+
+        viewuseView.$el.draggable({
+            handle: ".viewuse-content",
+            cursor: "move",
+            distance: 5
+        });
+
+        viewuseView.setActive();
+
+        viewuseView.renderDatums(function (datumsView) {
             var datumsContainer = viewuseView.el.querySelector(".viewuse-content");
             datumsContainer.appendChild(datumsView.el);
-
-            // Append ViewuseMenu view
-            viewuseView.menuSubView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
-
-            viewuseView.$el.resizable({
-                handles: "n, e, s, w, ne, se"
-            });
-            // Remove inline styles from resizable handles
-            var resizeHandles = viewuseView.el.querySelectorAll(".ui-resizable-handle");
-            _.each(resizeHandles, function (resizeHandle) {
-                resizeHandle.removeAttribute("style");
-            });
-
-            viewuseView.$el.draggable({
-                handle: ".viewuse-content",
-                cursor: "move",
-                distance: 5
-            });
-
-            viewuseView.setActive();
-
             callback(viewuseView);
         });
     },
@@ -219,7 +217,8 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             {
                 success: function () {
                     viewuseView.filterView.closeFilter();
-                    viewuseView.render(function(){});
+                    viewuseView.render(function () {
+                    });
                 }
             });
     },
