@@ -3,8 +3,10 @@ Tracuse.models.ViewuseObject =
         defaults: function () {
             "use strict";
             return {
-                viewuse_arrangement_id: Tracuse.models.ViewuseArrangement.all.first(),
-                viewuse_datum_id: Tracuse.models.ViewuseDatum.all.first()
+                readable_name: "Empty View",
+                viewuse_arrangement: Tracuse.models.ViewuseArrangement.all.first(),
+                viewuse_datum: Tracuse.models.ViewuseDatum.all.first(),
+                filter_json: new Tracuse.models.FilterSet()
             };
         },
 
