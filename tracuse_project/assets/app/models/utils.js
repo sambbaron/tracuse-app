@@ -10,7 +10,8 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
         modelName: modelName,
         idAttribute: idAttribute,
         url: function () {
-            return url + this.get(this.idAttribute) + "/";
+            var urlID = this.id ? this.id + "/" : "";
+            return url + urlID;
         }
     });
     _.each(modelOptions, function (optionValue, optionKey) {
