@@ -14,6 +14,7 @@ class ViewuseObjectAll(ViewAll):
     model = ViewuseObject
     serializer_class = ViewuseObjectSerializer
     serializer_template = "serial_related"
+    deserializer_template = "serial_update"
 
     @property
     def queryset(self):
