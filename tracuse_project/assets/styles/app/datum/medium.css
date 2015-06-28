@@ -5,13 +5,13 @@
 .datum-medium .element label {
     display: none;
     position: absolute;
-    top: -0.15em;
+    top: -0.2em;
     left: 50%;
     transform: translateX(-50%);
     margin: 0 auto;
     font-size: 75%;
     color: #587e1f;
-    font-weight: bold;
+    opacity: 0.5;
     white-space: nowrap;
 }
 
