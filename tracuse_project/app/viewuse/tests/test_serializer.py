@@ -18,8 +18,8 @@ class TestViewuseObjectSerializer(TestCase):
         test_object = self.test.viewuse_object1
         test_serialized = ViewuseObjectSerializer\
             ("serial_default").serialize(test_object)
-        actual = test_serialized["entity_name"]
-        expected = "Viewuse1"
+        actual = test_serialized["title"]
+        expected = "Viewuse 1 Title"
         self.assertEqual(expected, actual)
 
     def test_serial_related(self):
@@ -28,8 +28,8 @@ class TestViewuseObjectSerializer(TestCase):
         test_object = self.test.viewuse_object1
         test_serialized = ViewuseObjectSerializer\
             ("serial_related").serialize(test_object)
-        actual = test_serialized["entity_name"]
-        expected = "Viewuse1"
+        actual = test_serialized["title"]
+        expected = "Viewuse 1 Title"
         self.assertEqual(expected, actual)
 
 

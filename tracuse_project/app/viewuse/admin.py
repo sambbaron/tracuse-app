@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from app.common.admin import EntityModelAdmin, EntityModelInline
+from app.common.admin import BaseModelAdmin, BaseModelInline, EntityModelAdmin, EntityModelInline
 from .models import ViewuseObject, ViewuseArrangement, ViewuseDatum
 
 
@@ -39,8 +39,8 @@ class ViewuseObjectInline(EntityModelInline):
 
 
 @admin.register(ViewuseObject)
-class ViewuseObjectAdmin(EntityModelAdmin):
-    list_display = EntityModelAdmin.list_display + ("viewuse_arrangement", "viewuse_datum", "filter_json", "filter_set",)
-    list_editable = EntityModelAdmin.list_editable + ("viewuse_arrangement", "viewuse_datum", "filter_json", "filter_set",)
+class ViewuseObjectAdmin(BaseModelAdmin):
+    list_display = BaseModelAdmin.list_display + ("title", "description", "viewuse_arrangement", "viewuse_datum", "viewuse_filter",)
+    list_editable = BaseModelAdmin.list_editable + ("title", "description", "viewuse_arrangement", "viewuse_datum", "viewuse_filter",)
 
-    fields = EntityModelAdmin.fields + ("viewuse_arrangement", "viewuse_datum", "filter_json", "filter_set",)
+    fields = BaseModelAdmin.fields + ("title", "description", "viewuse_arrangement", "viewuse_datum", "viewuse_filter",)

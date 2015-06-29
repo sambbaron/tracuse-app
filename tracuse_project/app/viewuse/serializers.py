@@ -11,8 +11,8 @@ class ViewuseObjectSerializer(Serializer):
 
     def serial_default(self):
         output = super().serial_default()
-        output.remove("filter_json")
-        output.append(("filter_json", json.loads(self.obj.filter_json)))
+        output.remove("viewuse_filter")
+        output.append(("viewuse_filter", json.loads(self.obj.viewuse_filter)))
         return output
 
     def serial_related(self):
@@ -23,10 +23,10 @@ class ViewuseObjectSerializer(Serializer):
 
     def serial_update(self):
         return [
-            "readable_name",
+            "title",
             "viewuse_arrangement_id",
             "viewuse_datum_id",
-            ("filter_json", json.dumps(self.obj.filter_json))
+            ("viewuse_filter", json.dumps(self.obj.viewuse_filter))
         ]
 
 

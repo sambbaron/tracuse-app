@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterField(
             model_name='viewusefilter',
-            name='filter_json',
+            name='viewuse_filter',
             field=models.CharField(blank=True, max_length=255, default='', null=True),
         ),
         migrations.AlterField(

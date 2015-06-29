@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='viewuseobject',
-            name='filter_json',
+            name='viewuse_filter',
             field=models.CharField(default='', null=True, blank=True, max_length=255),
         ),
         migrations.AddField(

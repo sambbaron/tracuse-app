@@ -5,23 +5,22 @@ from django.contrib.auth.models import User
 from app.common.models import BaseModel, EntityModel
 
 
-class ViewuseObject(EntityModel):
+class ViewuseObject(BaseModel):
     """Primary View Object
 
     Attributes:
-        See EntityModel
+        See BaseModel
         user_id (integer, fk, nullable): User
             No user - global viewuse available to all users
-        EntityModel.readable_name (string):
-            Viewuse title
+        title (string)
+        description (string)
         viewuse_arrangement_id (integer, fk, required):
             ViewuseArrangement - Datum Placement View/Template
         viewuse_datum_id (integer, fk, required):
             ViewuseDatum - Datum Format View/Template
-        filter_json (string):
+        viewuse_filter (string):
             JSON string of filter rules
-        filter_set_id (integer, fk, required):
-            FilterSet
+            Correspond to FilterSet model
     """
 
     class Meta(EntityModel.Meta):
@@ -35,6 +34,12 @@ class ViewuseObject(EntityModel):
                              null=True, blank=True,
                              db_index=True
                              )
+    title = models.CharField(max_length=100,
+                             null=True, blank=True
+                             )
+    description = models.CharField(max_length=255,
+                                   null=True, blank=True
+                                   )
     viewuse_arrangement = models.ForeignKey("viewuse.ViewuseArrangement",
                                             db_column="viewuse_arrangement_id",
                                             related_name="viewuse_objects",
@@ -45,16 +50,11 @@ class ViewuseObject(EntityModel):
                                       related_name="viewuse_objects",
                                       null=False, blank=False
                                       )
-    filter_json = models.CharField(max_length=255,
-                                   default="",
-                                   null=True, blank=True,
-                                   unique=False
-                                   )
-    filter_set = models.ForeignKey("filter.FilterSet",
-                                   db_column="filter_set_id",
-                                   related_name="viewuse_filters",
-                                   null=True, blank=True
-                                   )
+    viewuse_filter = models.CharField(max_length=255,
+                                      default="",
+                                      null=True, blank=True,
+                                      unique=False
+                                      )
 
 
 class ViewuseArrangement(EntityModel):

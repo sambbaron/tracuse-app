@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
                 ('long_definition', models.CharField(null=True, max_length=100, blank=True)),
                 ('example', models.CharField(null=True, max_length=100, blank=True)),
                 ('viewuse_filter_id', models.AutoField(serialize=False, primary_key=True)),
-                ('filter_json', models.CharField(max_length=255, default='')),
+                ('viewuse_filter', models.CharField(max_length=255, default='')),
                 ('filter_set', models.ForeignKey(db_column='filter_set_id', related_name='viewuse_filters', to='filter.FilterSet')),
                 ('viewuse_arrangement', models.ForeignKey(db_column='viewuse_arrangement_id', related_name='viewuse_filters', to='viewuse.ViewuseArrangement')),
             ],
