@@ -117,12 +117,8 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         /* Open Datum Filter Set */
         var editView = this;
 
-        // Use cloned filter model to avoid live changes
-        var origModel = editView.model.get("filter_json");
-        var filterModel = new Tracuse.models.FilterSet(origModel.toTemplate());
-
         editView.filterView = new Tracuse.views.FilterSet({
-            model: filterModel,
+            model: editView.model.get("filter_json"),
             parentView: editView
         });
     },
