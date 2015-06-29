@@ -78,8 +78,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         viewuseView.setActive();
 
         viewuseView.renderDatums(function (datumsView) {
-            var datumsContainer = viewuseView.el.querySelector(".viewuse-content");
-            datumsContainer.appendChild(datumsView.el);
             callback(viewuseView);
         });
     },
@@ -157,6 +155,10 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             });
 
             datumsView.render();
+
+            var datumsContainer = viewuseView.el.querySelector(".viewuse-content");
+            datumsContainer.innerHTML = "";
+            datumsContainer.appendChild(datumsView.el);
 
             callback(datumsView)
         });
