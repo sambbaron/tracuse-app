@@ -118,7 +118,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         var editView = this;
 
         editView.filterView = new Tracuse.views.FilterSet({
-            model: editView.model.get("filter_json"),
+            model: editView.model.get("viewuse_filter"),
             parentView: editView
         });
     },
@@ -129,7 +129,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         var editView = this;
 
         var filterAttributes = editView.filterView.model.toTemplate();
-        editView.model.set("filter_json", filterAttributes);
+        editView.model.set("viewuse_filter", filterAttributes);
 
         editView.filterView.closeFilter();
     }

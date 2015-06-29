@@ -145,7 +145,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var DatumsView = Tracuse.views[datumsViewName];
 
         // Get datums
-        var filter = new Tracuse.models.FilterSet(viewuseView.model.get("filter_json"));
+        var filter = new Tracuse.models.FilterSet(viewuseView.model.get("viewuse_filter"));
         filter.fetchFilteredDatums(function (datumObjects) {
 
             // Create Datums (Collection) View
@@ -198,7 +198,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var viewuseView = this;
 
         // Use cloned filter model to avoid live changes
-        var origModel = viewuseView.model.get("filter_json");
+        var origModel = viewuseView.model.get("viewuse_filter");
         var filterModel = new Tracuse.models.FilterSet(origModel.toJSON());
 
         viewuseView.filterView = new Tracuse.views.FilterSet({
@@ -215,7 +215,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var viewuseView = this;
 
         var filterData = viewuseView.filterView.model.toJSON();
-        viewuseView.model.save({filter_json: filterData},
+        viewuseView.model.save({viewuse_filter: filterData},
             {
                 success: function () {
                     viewuseView.filterView.closeFilter();

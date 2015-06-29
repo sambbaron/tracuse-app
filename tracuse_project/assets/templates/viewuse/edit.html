@@ -21,7 +21,7 @@
             {% for viewuse_object in viewuse_objects %}
                 <option value="{{ viewuse_object.viewuse_object_id }}"
                         {{ " selected" if this_viewuse.viewuse_object_id == viewuse_object.viewuse_object_id }}>
-                    {{ viewuse_object.readable_name }}
+                    {{ viewuse_object.title }}
                 </option>
             {% endfor %}
         </select>
@@ -36,8 +36,8 @@
         <form id="viewuse-form">
             <label class="input-wrap">
                 <span class="input-label">Title</span>
-                <input class="input-element" name="readable_name" data-type="text"
-                       value="{{ this_viewuse.readable_name|default('Empty View') }}">
+                <input class="input-element" name="title" data-type="text"
+                       value="{{ this_viewuse.title|default('Empty View') }}">
             </label>
             <label class="input-wrap"><span class="input-label">Arrangement</span>
                 <select class="input-element" name="viewuse_arrangement_id" data-type="integer">
