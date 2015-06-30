@@ -50,8 +50,7 @@ class ViewuseObject(BaseModel):
                                       related_name="viewuse_objects",
                                       null=False, blank=False
                                       )
-    viewuse_filter = models.CharField(max_length=255,
-                                      default="",
+    viewuse_filter = models.TextField(default="",
                                       null=True, blank=True,
                                       unique=False
                                       )
