@@ -56,6 +56,9 @@ class ViewuseObject(BaseModel):
                                       unique=False
                                       )
 
+    def __str__(self):
+        return self.title
+
 
 class ViewuseArrangement(EntityModel):
     """Placement of Datums within Viewuse
