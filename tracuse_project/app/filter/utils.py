@@ -83,6 +83,7 @@ def compile_datum_set_rules(filter_rules, datum_filter_rules):
 
 def run_filter_from_model(**rules):
     """Apply filter rules and return list of datum_object_ids
+    Using Django model objects as input
 
     Arguments:
         Key: filter rule group name
@@ -148,6 +149,8 @@ def convert_rules_dict_model(rules_dict):
     return rules_model
 
 def run_filter_from_dict(**rules):
+    """ Run filter using dictionary of rules as input
+    """
 
     rules_model = convert_rules_dict_model(rules)
     output = run_filter_from_model(**rules_model)
