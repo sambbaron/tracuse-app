@@ -31,6 +31,7 @@
                     {{ datum_group.readable_name }}
                     <form>
                         <input name="datum_group_id" data-type="integer" value="{{ datum_group.datum_group_id }}">
+                        <input name="conditional" data-type="text" value="OR">
                     </form>
                 </button>
             </div>
@@ -51,6 +52,7 @@
                             {{ datum_type.readable_name }}
                             <form>
                                 <input name="datum_type_id" data-type="integer" value="{{ datum_type.datum_type_id }}">
+                                <input name="conditional" data-type="text" value="OR">
                             </form>
                         </button>
                     {% endfor %}
@@ -108,6 +110,7 @@
                 {% endfor %}
             </select>
         </label>
+        <input name="conditional" data-type="text" value="AND" form="association-form">
         <br>
         <button class="add-filter" name="FilterRuleAssociation"><i class="fa fa-plus"></i>
 
@@ -144,6 +147,7 @@
             <span class="input-label">Filter Value</span>
             <input class="input-element" name="element_value" data-type="text" form="element-form">
         </label>
+        <input name="conditional" data-type="text" value="AND" form="element-form">
         <br>
         <button class="add-filter" name="FilterRuleElement"><i class="fa fa-plus"></i>
 

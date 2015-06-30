@@ -111,3 +111,9 @@
 .filter-set .selected-rule {
     font-size: 75%;
 }
+
+.filter-set [name='conditional'] {
+    position: absolute;
+    height: 0;
+    width: 0;
+}
