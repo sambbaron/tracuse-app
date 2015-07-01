@@ -32,16 +32,6 @@ main {
     top: 4rem;
 }
 
-header button[name='menu'] {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 2rem;
-    margin: 0;
-    font-size: 200%;
-    opacity: 0.75;
-}
-
 header img {
     position: absolute;
     top: 50%;
