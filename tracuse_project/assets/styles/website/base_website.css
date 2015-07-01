@@ -91,9 +91,9 @@ header .nav-button:hover {
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgb(250, 250, 250) url("/assets/images/hero-background.jpg") no-repeat top center;
+    background: rgb(250, 250, 250) url("/assets/images/hero-background-3000x1500.png") no-repeat top center;
     background-size: cover;
-    opacity: 0.5;
+    opacity: 0.25;
     z-index: -1;
 }
 
