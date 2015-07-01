@@ -48,13 +48,6 @@ header nav {
     right: 5rem;
 }
 
-header .nav-button {
-    height: 2em;
-    border: solid 1px darkgray;
-    font-size: 135%;
-    color: #35446A;
-}
-
 input, select, textarea {
     border-radius: 0.35em;
 }
@@ -66,6 +59,7 @@ input:focus, select:focus, textarea:focus {
 button {
     cursor: pointer;
     border-radius: 0.35em;
+    padding: 0.35em;
 }
 
 button:hover {
