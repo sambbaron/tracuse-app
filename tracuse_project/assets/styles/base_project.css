@@ -65,7 +65,7 @@ input:focus, select:focus, textarea:focus {
 
 button {
     cursor: pointer;
-    border-radius: 0.5em;
+    border-radius: 0.35em;
 }
 
 button:hover {
