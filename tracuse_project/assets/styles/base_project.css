@@ -21,6 +21,7 @@ header {
     position: fixed;
     top: 0;
     height: 4rem;
+    text-align: center;
 }
 
 footer {
@@ -33,19 +34,17 @@ main {
 }
 
 header img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    display: inline-block;
     height: 65%;
+    margin: 0.25em auto;
+
 }
 
 header nav {
     display: inline-block;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 5rem;
+    float: right;
+    margin-right: 2em;
+
 }
 
 input, select, textarea {
