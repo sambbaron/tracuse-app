@@ -1,47 +1,56 @@
 (function () {
+    "use strict";
 
-    //Main Menu
-    var menuButton = $("header button[name='menu']");
-    var mainMenu = $(".main-menu");
-    var mainMenuOptions = $(".main-menu ul li a");
-    menuButton.on("click", function (e) {
-        "use strict";
-        menuButton.toggleClass("active", 200);
-        mainMenu.fadeToggle(200);
-        e.stopPropagation();
-    });
-    mainMenuOptions.on("click", function (e) {
-        "use strict";
-        menuButton.toggleClass("active", 200);
-        mainMenu.fadeOut(200);
-        e.stopPropagation();
-    });
+    var headerNav = $("header > nav");
+    var navButtons = $("nav button");
+    var headerImg = $("header > a > img");
+    var sections = $('section.nav-stop');
+    var firstSection = sections.first();
 
-    //Learn Menu/Options
-    var learnOptions = $(".learn-menu ul li a");
-    learnOptions.on("click", function (e) {
+    var toggleNavRunning = false;
+    var toggleHeaderNav = function () {
+        if (!toggleNavRunning) {
+            toggleNavRunning = true;
+            headerNav.fadeToggle(100, function () {
+                headerImg.toggleClass("nav-active");
+                toggleNavRunning = false;
+            });
+        }
+    };
+
+    //Navigation Button - Set Active
+    navButtons.on("click", function (e) {
         "use strict";
         var option = e.target;
-        learnOptions.removeClass("active");
+        navButtons.removeClass("active");
         $(option).addClass("active", 200);
         e.stopPropagation();
     });
 
-    // Highlight appropriate menu item on scroll
-    var sections = $('.learn-content section');
+    // Highlight appropriate nav item on scroll
     $(window).scroll(function () {
         var currentScroll = $(this).scrollTop();
         var currentSection;
 
-        sections.each(function () {
-            var topPosition = $(this).offset().top;
-            if (topPosition - 25 < currentScroll) {
-                currentSection = $(this);
-                var currentId = currentSection.attr('id');
-                learnOptions.removeClass('active');
-                $("[href=#" + currentId + "]").addClass('active');
-            }
+        // Show/Hide header nav buttons
+        var firstSectionPosition = firstSection.offset().top;
+        if (currentScroll >= firstSectionPosition && headerNav.css("display") === "none") {
+            toggleHeaderNav();
+        } else if (currentScroll < firstSectionPosition && headerNav.css("display") === "block") {
+            toggleHeaderNav();
+        }
 
+        // Set active nav button
+        sections.each(function () {
+            var section = $(this);
+
+            var topPosition = section.offset().top;
+            if (topPosition - 25 < currentScroll) {
+                currentSection = section;
+                var currentId = currentSection.attr('id');
+                headerNav.find("button").removeClass('active');
+                headerNav.find("[href=#" + currentId + "] button").addClass('active');
+            }
         });
 
     });

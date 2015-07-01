@@ -9,17 +9,58 @@
     {% static 'images/Tracuse-LogoName-Small-325x85.png' %}
 {% endblock %}
 
+{% block nav_block %}
+    <a href="#objects">
+        <button class="nav-button">Keep It Simple</button>
+    </a>
+    <a href="#associations">
+        <button class="nav-button">How You Think</button>
+    </a>
+    <a href="#views">
+        <button class="nav-button">How You Work</button>
+    </a>
+    <a href="#help">
+        <button class="nav-button">Guiding Hand</button>
+    </a>
+    <a href="#sign-up">
+        <button class="sign-up-button nav-button">Sign-Up</button>
+    </a>
+{% endblock %}
+
 {% block body_block %}
 
     <section id="hero">
         <h2 class="intro">A Truly <strong>Personal</strong> <br>Information Management System</h2>
         <br>
-        <a href="/learn">Learn<br>More</a>
-        <a href="#sign-up">Sign<br>Up</a>
+        <a href="#objects">
+            <button class="nav-button">Learn<br>More</button>
+        </a>
+        <a href="#sign-up">
+            <button class="nav-button">Sign<br>Up</button>
+        </a>
     </section>
 
+    <section class="nav-stop learn-content" id="objects">
+        Keep it Simple
+        Simple Objects
+    </section>
 
-    <section id="sign-up">
+    <section class="nav-stop learn-content" id="associations">
+        How you Think
+        Associations
+    </section>
+
+    <section class="nav-stop learn-content" id="views">
+        How you Work
+        Flexible Views
+    </section>
+
+    <section class="nav-stop learn-content" id="help">
+        How you View
+        Personalized Formatting
+    </section>
+
+    <section class="nav-stop" id="sign-up">
 
     </section>
 
