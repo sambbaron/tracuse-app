@@ -33,7 +33,7 @@
         var currentSection;
 
         // Show/Hide header nav buttons
-        var firstSectionPosition = firstSection.offset().top;
+        var firstSectionPosition = firstSection.offset().top - 25;
         if (currentScroll >= firstSectionPosition && headerNav.css("display") === "none") {
             toggleHeaderNav();
         } else if (currentScroll < firstSectionPosition && headerNav.css("display") === "block") {
