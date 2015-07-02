@@ -114,8 +114,16 @@ header nav {
 }
 
 .learn-content {
-    min-height: 35rem;
-    padding: 4em 1em 1em;
+    min-height: 45em;
+    margin: 0;
+}
+
+.learn-content:before {
+    display: block;
+    content: " ";
+    height: 8em;
+    margin-top: -4em;
+    visibility: hidden;
 }
 
 .learn-content .text {
