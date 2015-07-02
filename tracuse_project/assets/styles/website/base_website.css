@@ -114,7 +114,7 @@ header nav {
 }
 
 .learn-content {
-    min-height: 45em;
+    min-height: 45rem;
     margin: 0;
 }
 
@@ -127,6 +127,7 @@ header nav {
 }
 
 .learn-content .text {
+    margin: 0;
     font-size: 350%;
     text-shadow: 1px 1px 0 #c8c8c8;
 }
@@ -149,5 +150,20 @@ header nav {
 #mission img {
     display: block;
     width: 90%;
+    max-width: 100%;
     margin: 0 auto;
+}
+
+#objects * {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#objects p {
+    width: 6.5em;
+}
+
+#objects img {
+    width: 50em;
+    margin-top: 1em;
 }
