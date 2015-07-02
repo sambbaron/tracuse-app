@@ -20,7 +20,6 @@
 
     //Navigation Button - Set Active
     navButtons.on("click", function (e) {
-        "use strict";
         var option = e.target;
         navButtons.removeClass("active");
         $(option).addClass("active", 200);
@@ -33,7 +32,7 @@
         var currentSection;
 
         // Show/Hide header nav buttons
-        var firstSectionPosition = firstSection.offset().top - 25;
+        var firstSectionPosition = firstSection.offset().top - 200;
         if (currentScroll >= firstSectionPosition && headerNav.css("display") === "none") {
             toggleHeaderNav();
         } else if (currentScroll < firstSectionPosition && headerNav.css("display") === "block") {
