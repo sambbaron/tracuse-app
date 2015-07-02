@@ -9,6 +9,7 @@ header nav {
 }
 
 .nav-button {
+    margin-bottom: 0;
     background-color: #a9d963;
     font-size: 135%;
 }
@@ -19,7 +20,7 @@ header nav {
 
 .nav-button.active {
     background-color: hsl(84, 60%, 71%);
-    box-shadow: 0 0 5px 5px hsl(84, 60%, 71%);
+    box-shadow: 0 0 5px 5px #a9d963;
 }
 
 [href='#sign-up'] button {
@@ -32,12 +33,8 @@ header nav {
 }
 
 [href='#sign-up'] button.active {
+    background-color: hsl(25, 94%, 56%);
     box-shadow: 0 0 5px 5px #e76707;
-}
-
-header img.nav-active {
-    /*margin-left: 3em;*/
-    /*margin-right: 1em;*/
 }
 
 #login-form {
