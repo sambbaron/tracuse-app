@@ -72,11 +72,12 @@ header nav {
 }
 
 #hero {
-    height: 100vh;
+    position: relative;
+    height: 45em;
     text-align: center;
 }
 
-#hero::before {
+#hero-background::before {
     content: " ";
     display: block;
     position: absolute;
@@ -113,27 +114,17 @@ header nav {
 }
 
 .learn-content {
-    height: 100vh;
-    padding: 1em;
-}
-
-.learn-content::before {
-    display: block;
-    content: " ";
-    height: 4rem;
-    visibility: hidden;
+    min-height: 35rem;
+    padding: 4em 1em 1em;
 }
 
 .learn-content .text {
-    width: 9em;
-    margin: 1em;
-    float: left;
     font-size: 300%;
-    /*text-shadow: 1px 1px 0 #ddd;*/
+    text-shadow: 1px 1px 0 #c8c8c8;
 }
 
-.learn-content p {
-    padding-bottom: 1em;
+.learn-content img {
+    max-width: 100%;
 }
 
 .learn-content img {
