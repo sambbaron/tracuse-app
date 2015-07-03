@@ -140,7 +140,7 @@ header nav {
     background-color: #35436a;
 }
 
-#mission p {
+#mission .text {
     margin: 0 auto;
     text-align: center;
     color: #fafafa;
@@ -154,12 +154,12 @@ header nav {
     margin: 0 auto;
 }
 
-#objects * {
+#objects > * {
     display: inline-block;
     vertical-align: top;
 }
 
-#objects p {
+#objects .text {
     width: 6.5em;
 }
 
