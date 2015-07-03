@@ -113,6 +113,30 @@ header nav {
     color: #fafafa;
 }
 
+.nav-stop.bkgrd-white {
+    background-color: #fafafa;
+    color: #35436a;
+    text-shadow: 1px 1px 0 #c8c8c8;
+}
+
+.nav-stop.bkgrd-blue {
+    background-color: #35436a;
+    color: #fafafa;
+    text-shadow: 1px 1px 0 #969696;
+}
+
+.nav-stop.bkgrd-green {
+    background-color: #a9d963;
+    color: #35436a;
+    text-shadow: 1px 1px 0 #969696;
+}
+
+.nav-stop.bkgrd-orange {
+    background-color: #e76707;
+    color: #fafafa;
+    text-shadow: 1px 1px 0 #969696;
+}
+
 .learn-content {
     min-height: 45rem;
     margin: 0;
@@ -129,22 +153,15 @@ header nav {
 .learn-content .text {
     margin: 0;
     font-size: 350%;
-    text-shadow: 1px 1px 0 #c8c8c8;
 }
 
 .learn-content img {
     max-width: 100%;
 }
 
-#mission {
-    background-color: #35436a;
-}
-
 #mission .text {
     margin: 0 auto;
     text-align: center;
-    color: #fafafa;
-    text-shadow: 1px 1px 0 #969696;
 }
 
 #mission img {
