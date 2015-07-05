@@ -19,6 +19,41 @@
         }
     };
 
+    /* Run content transitions */
+    var toggleContentTransition = function (sectionID) {
+
+        var duration = 500;
+        var sectionElement = $("#" + sectionID);
+
+        switch (sectionID) {
+
+            case "objects":
+                var oldImg = sectionElement.find("img.old");
+                var arrowImg = sectionElement.find("img.arrow");
+                var newObjImg = sectionElement.find("img.new");
+                if (oldImg.css("display") === "none") {
+                    oldImg.fadeIn(duration, function () {
+                        arrowImg.fadeIn(duration, function () {
+                            newObjImg.fadeIn(duration);
+                        });
+                    });
+                }
+                break;
+
+            case "associations":
+                var foldersImg = sectionElement.find("img.folders");
+                var tagsImg = sectionElement.find("img.tags");
+                var newAssocImg = sectionElement.find("img.new");
+                if (foldersImg.css("display") === "none") {
+                    foldersImg.effect("slide", {"direction": "left"}, duration);
+                    tagsImg.effect("slide", {"direction": "right"}, duration, function () {
+                        newAssocImg.effect("slide", {"direction": "down"}, duration);
+                    });
+                }
+                break;
+        }
+    };
+
     /* Navigation Button - Set Active */
     navButtons.on("click", function (e) {
         var button = e.target;
@@ -50,6 +85,9 @@
                 var currentId = currentSection.attr('id');
                 headerNav.find("button").removeClass('active');
                 headerNav.find("[href=#" + currentId + "] button").addClass('active');
+
+                // Transition content
+                toggleContentTransition(currentId);
             }
         });
 

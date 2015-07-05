@@ -180,7 +180,51 @@ header nav {
     width: 6.5em;
 }
 
-#objects img {
+#objects .image-container {
+    position: relative;
     width: 50em;
     margin-top: 1em;
+}
+
+#objects .image-container img {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#associations {
+    text-align: center;
+}
+
+#associations .content-container {
+    display: inline-block;
+}
+
+#associations .content-container > * {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#associations .text {
+    width: 14em;
+    text-align: center;
+}
+
+#associations .text p {
+    margin: 0;
+}
+
+#associations .image-container.side {
+    width: 15em;
+    opacity: 0.5;
+}
+
+#associations .image-container.bottom {
+    width: 60em;
+    margin: -8em auto;
+}
+
+#associations img {
+    display: none;
 }

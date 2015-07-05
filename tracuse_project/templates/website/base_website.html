@@ -60,21 +60,34 @@
                 Simplify your data into clearly defined, easy-to-use objects
             </p>
         </div>
-        <img src="{% static 'images/learn/objects-1500x900.png' %}">
+        <div class="image-container">
+            <img class="old" src="{% static 'images/learn/objects-old-1500x900.png' %}">
+            <img class="arrow" src="{% static 'images/learn/objects-arrow-1500x900.png' %}">
+            <img class="new" src="{% static 'images/learn/objects-new-1500x900.png' %}">
+        </div>
     </section>
 
     <section class="nav-stop learn-content bkgrd-green" id="associations">
-        <div class="container">
-            <img class="folders" src="#">
+        <div class="content-container">
+            <div class="image-container side">
+                <img class="folders" src="{% static 'images/learn/associations-folders-900x1350.png' %}">
+            </div>
 
             <div class="text">
                 <p>
                     Ditch the folders and tags
-                    <br><br>
+                </p>
+
+                <p>
                     Let's organize our data the way we think
                 </p>
             </div>
-            <img class="tags" src="#">
+            <div class="image-container side">
+                <img class="tags" src="{% static 'images/learn/associations-tags-900x1350.png' %}">
+            </div>
+        </div>
+        <div class="image-container bottom">
+            <img class="new" src="{% static 'images/learn/associations-new-1800x600.png' %}">
         </div>
     </section>
 
