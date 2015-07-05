@@ -177,12 +177,12 @@ header nav {
 }
 
 #objects .text {
-    width: 6.5em;
+    width: 35%;
 }
 
 #objects .image-container {
     position: relative;
-    width: 50em;
+    width: 60%;
     margin-top: 1em;
 }
 
@@ -199,6 +199,7 @@ header nav {
 
 #associations .content-container {
     display: inline-block;
+    width: 100%;
 }
 
 #associations .content-container > * {
@@ -207,7 +208,7 @@ header nav {
 }
 
 #associations .text {
-    width: 14em;
+    width: 65%;
     text-align: center;
 }
 
@@ -216,13 +217,14 @@ header nav {
 }
 
 #associations .image-container.side {
-    width: 15em;
+    width: 15%;
     opacity: 0.5;
 }
 
 #associations .image-container.bottom {
-    width: 60em;
-    margin: -8em auto;
+    width: 55em;
+    max-width: 100%;
+    margin: -4% auto;
 }
 
 #associations img {
