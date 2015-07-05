@@ -21,9 +21,9 @@
 
     //Navigation Button - Set Active
     navButtons.on("click", function (e) {
-        var option = e.target;
+        var button = e.target;
         navButtons.removeClass("active");
-        $(option).addClass("active", 200);
+        $(button).addClass("active", 200);
         e.stopPropagation();
     });
 
