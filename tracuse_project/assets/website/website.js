@@ -9,6 +9,7 @@
 
     var toggleNavRunning = false;
     var toggleHeaderNav = function () {
+        /* Show header navbar and offset logo image */
         if (!toggleNavRunning) {
             toggleNavRunning = true;
             headerNav.fadeToggle(100, function () {
