@@ -7,9 +7,9 @@
     var sections = $('section.nav-stop');
     var firstSection = sections.first();
 
+    /* Show header navbar and offset logo image */
     var toggleNavRunning = false;
     var toggleHeaderNav = function () {
-        /* Show header navbar and offset logo image */
         if (!toggleNavRunning) {
             toggleNavRunning = true;
             headerNav.fadeToggle(100, function () {
@@ -19,7 +19,7 @@
         }
     };
 
-    //Navigation Button - Set Active
+    /* Navigation Button - Set Active */
     navButtons.on("click", function (e) {
         var button = e.target;
         navButtons.removeClass("active");
@@ -27,7 +27,7 @@
         e.stopPropagation();
     });
 
-    // Highlight appropriate nav item on scroll
+    /* Highlight appropriate nav item on scroll */
     $(window).scroll(function () {
         var currentScroll = $(this).scrollTop();
         var currentSection;
