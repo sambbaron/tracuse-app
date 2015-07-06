@@ -6,13 +6,15 @@
     var headerImg = $("header > a > img");
     var sections = $('section.nav-stop');
     var firstSection = sections.first();
+    var longDuration = 500;
+    var shortDuration = 100;
 
     /* Show header navbar and offset logo image */
     var toggleNavRunning = false;
     var toggleHeaderNav = function () {
         if (!toggleNavRunning) {
             toggleNavRunning = true;
-            headerNav.fadeToggle(100, function () {
+            headerNav.fadeToggle(shortDuration, function () {
                 headerImg.toggleClass("nav-active");
                 toggleNavRunning = false;
             });
@@ -22,7 +24,6 @@
     /* Run content transitions */
     var toggleContentTransition = function (sectionID) {
 
-        var duration = 500;
         var sectionElement = $("#" + sectionID);
 
         switch (sectionID) {
@@ -32,9 +33,9 @@
                 var arrowImg = sectionElement.find("img.arrow");
                 var newObjImg = sectionElement.find("img.new");
                 if (oldImg.css("display") === "none") {
-                    oldImg.fadeIn(duration, function () {
-                        arrowImg.fadeIn(duration, function () {
-                            newObjImg.fadeIn(duration);
+                    oldImg.fadeIn(longDuration, function () {
+                        arrowImg.fadeIn(longDuration, function () {
+                            newObjImg.fadeIn(longDuration);
                         });
                     });
                 }
@@ -45,9 +46,9 @@
                 var tagsImg = sectionElement.find("img.tags");
                 var newAssocImg = sectionElement.find("img.new");
                 if (foldersImg.css("display") === "none") {
-                    foldersImg.effect("slide", {"direction": "left"}, duration);
-                    tagsImg.effect("slide", {"direction": "right"}, duration, function () {
-                        newAssocImg.effect("slide", {"direction": "down"}, duration);
+                    foldersImg.effect("slide", {"direction": "left"}, longDuration);
+                    tagsImg.effect("slide", {"direction": "right"}, longDuration, function () {
+                        newAssocImg.effect("slide", {"direction": "down"}, longDuration);
                     });
                 }
                 break;
@@ -58,9 +59,9 @@
                 var viewsImg2 = sectionElement.find("img.2");
                 var viewsImg3 = sectionElement.find("img.3");
                 if (viewsImg1.css("display") === "none") {
-                    viewsImg1.fadeIn(duration, function () {
-                        viewsImg2.fadeIn(duration, function () {
-                            viewsImg3.fadeIn(duration);
+                    viewsImg1.fadeIn(longDuration, function () {
+                        viewsImg2.fadeIn(longDuration, function () {
+                            viewsImg3.fadeIn(longDuration);
                         });
                     });
                 }
@@ -73,7 +74,7 @@
     navButtons.on("click", function (e) {
         var button = e.target;
         navButtons.removeClass("active");
-        $(button).addClass("active", 200);
+        $(button).addClass("active", shortDuration);
         e.stopPropagation();
     });
 
