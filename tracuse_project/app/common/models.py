@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 from app.utils.entity import (camel_to_underscore,
                               camel_to_spaced_capital,
@@ -35,10 +36,8 @@ class BaseModel(models.Model):
     sort_base_length = 3
     sort_parts = []
 
-    # TODO Add columns when schema is more stable
-    # FIXME Django Limitation - Can't do DEFAULT SQL statement
-    # created = models.DateTimeField(default=datetime.now)
-    # modified = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(default=timezone.now)
+    modified = models.DateTimeField(auto_now=True)
 
     # Custom model managers for active/inactive records
     objects = models.Manager()
