@@ -80,6 +80,8 @@ class ViewAll(ViewBase):
     """ Base View for all rows
     """
 
+    http_method_names = ["get", "post"]
+
     def get(self, request):
         response_data = self.serialized_data(self.queryset)
         response = HttpResponse(response_data, status=200, content_type="application/json")
@@ -96,6 +98,8 @@ class ViewAll(ViewBase):
 class ViewOne(ViewBase):
     """Base View for single object
     """
+
+    http_method_names = ["get", "put", "delete"]
 
     def get(self, request, pk):
         object = self.get_object(pk)
