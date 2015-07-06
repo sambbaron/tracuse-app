@@ -286,3 +286,15 @@ header nav {
     margin: 0.5em auto;
     font-size: 150%;
 }
+
+footer {
+    height: 6rem;
+    padding: 2rem;
+    background-color: #35436a;
+}
+
+footer .logo {
+    display: block;
+    height: 2em;
+    margin: 0 auto;
+}
