@@ -23,16 +23,16 @@ header nav {
     box-shadow: 0 0 5px 5px #a9d963;
 }
 
-[href='#sign-up'] button {
+.sign-up-button {
     background-color: #e76707;
     color: #fafafa;
 }
 
-[href='#sign-up'] button:hover {
+.sign-up-button:hover {
     background-color: hsl(25, 94%, 56%);
 }
 
-[href='#sign-up'] button.active {
+.sign-up-button.active {
     background-color: hsl(25, 94%, 56%);
     box-shadow: 0 0 5px 5px #e76707;
 }
@@ -239,4 +239,50 @@ header nav {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+#sign-up p.lead {
+    text-align: center;
+    font-size: 250%;
+}
+
+#sign-up p.end {
+    margin: 1em auto;
+    text-align: center;
+    font-style: italic;
+    font-size: 200%;
+}
+
+#sign-up-form {
+    width: 25em;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0.5em;
+    background-color: #fddfca;
+    box-shadow: 4pt 4pt 5pt rgba(0, 0, 0, 0.75);
+    color: #35436a;
+    font-size: 150%;
+    text-align: center;
+}
+
+#sign-up form * {
+    display: block;
+    margin: 0 auto;
+}
+
+#sign-up form input {
+    width: 75%;
+    border: 1px solid #35436a;
+}
+
+#sign-up form textarea {
+    width: 90%;
+    border: 1px solid #35436a;
+    resize: vertical;
+}
+
+#sign-up form button {
+    width: 6em;
+    margin: 0.5em auto;
+    font-size: 150%;
 }

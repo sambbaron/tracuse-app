@@ -22,9 +22,9 @@
     <a href="#views">
         <button class="nav-button">How You Work</button>
     </a>
-{#    <a href="#help">#}
-{#        <button class="nav-button">Guiding Hand</button>#}
-{#    </a>#}
+    {#    <a href="#help">#}
+    {#        <button class="nav-button">Guiding Hand</button>#}
+    {#    </a>#}
     <a href="#sign-up">
         <button class="sign-up-button nav-button">Sign-Up</button>
     </a>
@@ -40,7 +40,7 @@
             <button class="nav-button">Learn<br>More</button>
         </a>
         <a href="#sign-up">
-            <button class="nav-button">Sign<br>Up</button>
+            <button class="nav-button sign-up-button">Sign<br>Up</button>
         </a>
     </section>
 
@@ -109,8 +109,21 @@
 {#        Personalized Formatting#}
 {#    </section>#}
 
-    <section class="nav-stop bkgrd-orange" id="sign-up">
-        <p>
+    <section class="nav-stop bkgrd-white" id="sign-up">
+        <p class="lead">
+            Sign up for notification as soon as Tracuse is available
+        </p>
+        <form id="sign-up-form" name="sign-up-form">
+            {% csrf_token %}
+            <label for="name">NAME</label>
+            <input id="name" name="name" type="text">
+            <label for="email">EMAIL</label>
+            <input id="email" name="email" type="email">
+            <label for="comments">COMMENTS</label>
+            <textarea id="comments" name="comments" placeholder="Tell us your thoughts about the project" rows="3"></textarea>
+            <button class="sign-up-button" type="submit">Sign Up</button>
+        </form>
+        <p class="end">
             Let's do something extraordinary with ordinary data.
         </p>
     </section>
