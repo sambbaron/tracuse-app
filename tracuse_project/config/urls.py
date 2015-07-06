@@ -7,7 +7,6 @@ from website import views
 urlpatterns = [
 
     url(r'^$', TemplateView.as_view(template_name="website/base_website.html"), name='index'),
-    url(r'^learn/$', TemplateView.as_view(template_name="website/learn.html"), name='learn'),
     url(r'^login/$', views.user_login, name='user_login'),
     url(r'^logout/$', views.user_logout, name='user_logout'),
 
