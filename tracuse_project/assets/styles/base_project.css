@@ -47,7 +47,7 @@ header nav {
 
 }
 
-input, select, textarea {
+form, label, input, select, textarea {
     border-radius: 0.35em;
 }
 
