@@ -51,6 +51,21 @@
                     });
                 }
                 break;
+
+
+            case "views":
+                var viewsImg1 = sectionElement.find("img.1");
+                var viewsImg2 = sectionElement.find("img.2");
+                var viewsImg3 = sectionElement.find("img.3");
+                if (viewsImg1.css("display") === "none") {
+                    viewsImg1.fadeIn(duration, function () {
+                        viewsImg2.fadeIn(duration, function () {
+                            viewsImg3.fadeIn(duration);
+                        });
+                    });
+                }
+                break;
+
         }
     };
 

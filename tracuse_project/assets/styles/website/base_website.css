@@ -230,3 +230,19 @@ header nav {
 #associations img {
     display: none;
 }
+
+#views .text {
+    text-align: center;
+}
+
+#views .image-container {
+    position: relative;
+    max-width: 100%;
+}
+
+#views .image-container img {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
