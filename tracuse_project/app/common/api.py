@@ -7,6 +7,7 @@ from app.element_type import views as ElementViews
 from app.filter import views as FilterViews
 from app.viewuse import views as ViewuseViews
 from app.association import views as AssociationViews
+from app.tracuser import views as TracuserViews
 
 urlpatterns = [
 
@@ -32,5 +33,7 @@ urlpatterns = [
     url(r'^filter/(?P<pk>[0-9]+)/$', FilterViews.RunFilter.filter_from_set, name="filter-from-set"),
 
     url(r'^association_direction/$', AssociationViews.AssociationDirectionAll.as_view(), name="association-direction-all"),
+
+    url(r'^tracuser_landing/$', TracuserViews.TracuserLandingAll.as_view(), name="tracuser-landing-all"),
 
 ]
