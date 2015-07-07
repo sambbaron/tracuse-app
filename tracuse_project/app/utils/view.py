@@ -54,7 +54,10 @@ class ViewBase(View):
         Perform other prep tasks before updating model
         """
         request_data = request.body.decode()
-        return self.deserializer.decode(self.deserializer_format, request_data)
+        if self.deserializer_format == "form":
+            return request.POST.dict()
+        else:
+            return self.deserializer.decode(self.deserializer_format, request_data)
 
     def update_model(self, model_object, model_update):
         """Save request data to model object using deserializer"""
