@@ -126,6 +126,7 @@ SERIALIZATION_MODULES = {
 MODEL_GROUPS = {
     # All core apps
     "all_data": [
+        "auth",
         "tracuser",
         "datum",
         "element_type",
