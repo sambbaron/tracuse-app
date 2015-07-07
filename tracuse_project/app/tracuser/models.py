@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 from django.contrib.auth.models import User
 
@@ -24,3 +25,4 @@ class TracuserLanding(BaseModel):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     comments = models.TextField()
+    timestamp = models.DateTimeField(default=timezone.now)
