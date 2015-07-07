@@ -65,12 +65,6 @@ bower_components
 # Node
 node_modules
 
-# Miscellaneous Items
-tracuse_project/app/utils/management/commands/sandbox.py
-*/sql.sql
-x_old_models/
-*.sh
-
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion
 
@@ -120,3 +114,7 @@ crashlytics.properties
 crashlytics-build.properties
 
 
+# Project-Specific Items
+tracuse_project/app/utils/management/commands/sandbox.py
+*secrets.json
+*/sql.sql
