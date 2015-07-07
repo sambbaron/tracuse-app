@@ -24,6 +24,8 @@ class ViewBase(View):
     serializer_class = Serializer
     serializer_template = "serial_default"
     deserializer_template = None
+    serializer_format = "json"
+    deserializer_format = "json"
 
     def __init__(self, **kwargs):
         """Create serializer and deserializer instances """
@@ -38,7 +40,7 @@ class ViewBase(View):
 
     def serialized_data(self, data):
         serialized_data = self.serializer.serialize(data)
-        encoded_data = self.serializer.encode("json", serialized_data)
+        encoded_data = self.serializer.encode(self.serializer_format, serialized_data)
         return encoded_data
 
     def get_object(self, pk):
@@ -52,7 +54,7 @@ class ViewBase(View):
         Perform other prep tasks before updating model
         """
         request_data = request.body.decode()
-        return self.deserializer.decode("json", request_data)
+        return self.deserializer.decode(self.deserializer_format, request_data)
 
     def update_model(self, model_object, model_update):
         """Save request data to model object using deserializer"""
