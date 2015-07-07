@@ -135,24 +135,6 @@ header nav {
     max-width: 100%;
 }
 
-.nav-stop.bkgrd-white {
-    background-color: #fafafa;
-    color: #35436a;
-    text-shadow: 1px 1px 0 #c8c8c8;
-}
-
-.nav-stop.bkgrd-blue {
-    background-color: #35436a;
-    color: #fafafa;
-    text-shadow: 1px 1px 0 #969696;
-}
-
-.nav-stop.bkgrd-green {
-    background-color: #a9d963;
-    color: #35436a;
-    text-shadow: 1px 1px 0 #969696;
-}
-
 #mission .text {
     margin: 0 auto;
     text-align: center;
