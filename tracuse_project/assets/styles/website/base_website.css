@@ -229,44 +229,47 @@ header nav {
 }
 
 #sign-up p.end {
-    margin: 1em auto;
+    margin: 0.5em auto 0;
     text-align: center;
     font-style: italic;
     font-size: 200%;
 }
 
-#sign-up-form {
-    width: 25em;
+#sign-up form {
+    width: 20em;
     max-width: 90%;
     margin: 0 auto;
-    padding: 0.5em;
+    /*padding: 0.5em;*/
     background-color: #fddfca;
-    box-shadow: 4pt 4pt 5pt rgba(0, 0, 0, 0.75);
-    color: #35436a;
+    /*box-shadow: 4pt 4pt 5pt rgba(0, 0, 0, 0.75);*/
+    /*color: #35436a;*/
     font-size: 150%;
-    text-align: center;
+    text-align: left;
 }
 
-#sign-up form * {
+#sign-up form > * {
     display: block;
-    margin: 0 auto;
+    width: 100%;
+}
+
+#sign-up form label {
+    font-size: 75%;
+    margin-top: 0.5em;
 }
 
 #sign-up form input {
-    width: 75%;
-    border: 1px solid #35436a;
+    border: 2px solid #35436a;
 }
 
 #sign-up form textarea {
-    width: 90%;
-    border: 1px solid #35436a;
+    border: 2px solid #35436a;
     resize: vertical;
 }
 
 #sign-up form button {
-    width: 6em;
+    width: 5em;
     margin: 0.5em auto;
-    font-size: 150%;
+    font-size: 125%;
 }
 
 footer {
