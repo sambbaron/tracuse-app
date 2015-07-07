@@ -129,9 +129,9 @@ SERIALIZATION_MODULES = {
     "myjsonflat": "serializers.myjsonflat",
 }
 
-# Custom model groups
-# Setup Models used for initial groups and types
+# Custom model groups used with 'dumpmodelgroup' command
 MODEL_GROUPS = {
+    # Setup Models used for initial groups and types
     "setup_data": [
         "auth.user",
         "datum.DatumGroup",
@@ -141,8 +141,12 @@ MODEL_GROUPS = {
         "element_type.ElementOption",
         "element_type.ElementDatumType",
         "association.AssociationType",
-        "association.AssociationDirection"
+        "association.AssociationDirection",
+        "viewuse.ViewuseObject",
+        "viewuse.ViewuseArrangement",
+        "viewuse.ViewuseDatum",
     ],
+    # Output for sample data
     "sample_data": [
         "datum.DatumObject",
         "element_type.ElementDatumObject",
