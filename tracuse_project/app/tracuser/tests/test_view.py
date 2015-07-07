@@ -19,15 +19,10 @@ class TestTracuserLandingAll(TestCase):
         """Test TracuserLandingAll.post api
         success
         """
-        new_user = {
-            "name": "TestUserPost",
-            "email": "test_post@test.com",
-            "comments": ""
-        }
+        new_user = "name=TestUserPost&email=test_post%40test.com&comments="
         request = self.factory.post("",
-                                    data=json.dumps(new_user),
-                                    content_type="application/json"
-                                    )
+                                    data=new_user,
+                                    content_type="application/x-www-form-urlencoded")
         request.user = AnonymousUser()
 
         view = views.TracuserLandingAll(request=request)
