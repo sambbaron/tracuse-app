@@ -109,4 +109,20 @@
 
     });
 
+    /* Post sign-up form */
+    $("#sign-up-form").on("submit", function (e) {
+        e.preventDefault();
+        var form = $(this);
+
+        $.ajax({
+            type: "POST",
+            url: "/api/tracuser_landing/",
+            data: form.serialize(),
+            success: function (data, status) {
+                alert(status);
+            }
+        });
+
+    });
+
 }());
