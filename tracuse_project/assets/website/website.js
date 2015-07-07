@@ -118,8 +118,11 @@
             type: "POST",
             url: "/api/tracuser_landing/",
             data: form.serialize(),
-            success: function (data, status) {
-                alert(status);
+            success: function () {
+                form.find("button").fadeOut(shortDuration, function () {
+                    form.find(".message span").html("Thanks!! We'll be in touch soon.");
+                    form.find(".message").fadeIn(shortDuration);
+                });
             }
         });
 
