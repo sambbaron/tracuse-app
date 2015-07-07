@@ -120,7 +120,7 @@
             data: form.serialize(),
             success: function () {
                 form.find("button").fadeOut(shortDuration, function () {
-                    form.find(".message span").html("Thanks!! We'll be in touch soon.");
+                    form.find(".message").html("Thanks!! We'll be in touch soon.");
                     form.find(".message").fadeIn(shortDuration);
                 });
             }
