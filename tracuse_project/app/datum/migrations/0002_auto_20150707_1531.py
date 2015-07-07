@@ -6,10 +6,11 @@ from django.conf import settings
 
 
 class Migration(migrations.Migration):
+
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('association', '0002_auto_20150707_1531'),
         ('datum', '0001_initial'),
-        ('association', '0002_auto_20150512_0854'),
         ('element_type', '0001_initial'),
     ]
 
@@ -32,7 +33,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='datumobject',
             name='datum_type',
-            field=models.ForeignKey(related_name='datum_objects', to='datum.DatumType', db_column='datum_type_id'),
+            field=models.ForeignKey(related_name='datum_objects', db_column='datum_type_id', to='datum.DatumType'),
         ),
         migrations.AddField(
             model_name='datumobject',
@@ -42,6 +43,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='datumobject',
             name='user',
-            field=models.ForeignKey(related_name='datum_objects', to=settings.AUTH_USER_MODEL, db_column='user_id'),
+            field=models.ForeignKey(related_name='datum_objects', db_column='user_id', to=settings.AUTH_USER_MODEL),
         ),
     ]

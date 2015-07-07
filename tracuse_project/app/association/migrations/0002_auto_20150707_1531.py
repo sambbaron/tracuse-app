@@ -5,6 +5,7 @@ from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
+
     dependencies = [
         ('datum', '0001_initial'),
         ('association', '0001_initial'),
@@ -14,27 +15,27 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='associationall',
             name='child_datum',
-            field=models.ForeignKey(related_name='all_child_associations', to='datum.DatumObject', db_column='child_datum_id'),
+            field=models.ForeignKey(related_name='all_child_associations', db_column='child_datum_id', to='datum.DatumObject'),
         ),
         migrations.AddField(
             model_name='associationall',
             name='parent_datum',
-            field=models.ForeignKey(related_name='all_parent_associations', to='datum.DatumObject', db_column='parent_datum_id'),
+            field=models.ForeignKey(related_name='all_parent_associations', db_column='parent_datum_id', to='datum.DatumObject'),
         ),
         migrations.AddField(
             model_name='associationadjacent',
             name='association_type',
-            field=models.ForeignKey(related_name='associations_adjacent', to='association.AssociationType', db_column='association_type_id'),
+            field=models.ForeignKey(related_name='associations_adjacent', db_column='association_type_id', to='association.AssociationType'),
         ),
         migrations.AddField(
             model_name='associationadjacent',
             name='child_datum',
-            field=models.ForeignKey(related_name='adjacent_child_associations', to='datum.DatumObject', db_column='child_datum_id'),
+            field=models.ForeignKey(related_name='adjacent_child_associations', db_column='child_datum_id', to='datum.DatumObject'),
         ),
         migrations.AddField(
             model_name='associationadjacent',
             name='parent_datum',
-            field=models.ForeignKey(related_name='adjacent_parent_associations', to='datum.DatumObject', db_column='parent_datum_id'),
+            field=models.ForeignKey(related_name='adjacent_parent_associations', db_column='parent_datum_id', to='datum.DatumObject'),
         ),
         migrations.AlterUniqueTogether(
             name='associationall',

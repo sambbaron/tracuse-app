@@ -14,19 +14,20 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TracuserLanding',
             fields=[
-                ('active', models.BooleanField(db_index=True, default=True)),
-                ('sort', models.BigIntegerField(db_index=True, default=0)),
+                ('active', models.BooleanField(default=True, db_index=True)),
+                ('sort', models.BigIntegerField(default=0, db_index=True)),
                 ('created', models.DateTimeField(default=django.utils.timezone.now)),
                 ('modified', models.DateTimeField(auto_now=True)),
-                ('tracuser_landing_id', models.AutoField(serialize=False, primary_key=True)),
+                ('tracuser_landing_id', models.AutoField(primary_key=True, serialize=False)),
                 ('name', models.CharField(max_length=100)),
                 ('email', models.EmailField(max_length=254)),
                 ('comments', models.TextField()),
+                ('timestamp', models.DateTimeField(default=django.utils.timezone.now)),
             ],
             options={
                 'verbose_name': 'User Landing Signup',
-                'abstract': False,
                 'db_table': 'tracuser_landing',
+                'abstract': False,
             },
         ),
     ]
