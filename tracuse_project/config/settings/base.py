@@ -124,6 +124,17 @@ SERIALIZATION_MODULES = {
 
 # Custom model groups used with 'dumpmodelgroup' command
 MODEL_GROUPS = {
+    # All core apps
+    "all_data": [
+        "tracuser",
+        "datum",
+        "element_type",
+        "element_value",
+        "association",
+        "filter",
+        "watchword",
+        "viewuse",
+    ],
     # Setup Models used for initial groups and types
     "setup_data": [
         "auth.user",
