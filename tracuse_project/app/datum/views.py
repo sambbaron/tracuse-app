@@ -1,4 +1,4 @@
-from utils.view import ViewAll, ViewOne
+from utils.view import ViewAll, ViewOne, LoginRequiredMixin
 
 from .models import DatumGroup, DatumType, DatumObject
 from .serializers import (DatumGroupSerializer,
@@ -6,21 +6,21 @@ from .serializers import (DatumGroupSerializer,
                           DatumObjectSerializer)
 
 
-class DatumGroupAll(ViewAll):
+class DatumGroupAll(LoginRequiredMixin, ViewAll):
     model = DatumGroup
     queryset = DatumGroup.actives.all()
     serializer_class = DatumGroupSerializer
     serializer_template = "serial_related"
 
 
-class DatumTypeAll(ViewAll):
+class DatumTypeAll(LoginRequiredMixin, ViewAll):
     model = DatumType
     queryset = DatumType.actives.all()
     serializer_class = DatumTypeSerializer
     serializer_template = "serial_related"
 
 
-class DatumObjectAll(ViewAll):
+class DatumObjectAll(LoginRequiredMixin, ViewAll):
     model = DatumObject
     serializer_class = DatumObjectSerializer
     serializer_template = "serial_related"
@@ -35,7 +35,7 @@ class DatumObjectAll(ViewAll):
         return self.deserializer.deserialize(model_object, model_update)
 
 
-class DatumObjectOne(ViewOne):
+class DatumObjectOne(LoginRequiredMixin, ViewOne):
     model = DatumObject
     serializer_class = DatumObjectSerializer
     serializer_template = "serial_elements_object"

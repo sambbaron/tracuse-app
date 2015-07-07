@@ -36,11 +36,6 @@ class ViewBase(View):
 
         super().__init__(**kwargs)
 
-    @method_decorator(login_required)
-    def dispatch(self, request, *args, **kwargs):
-        self.request = request
-        return super().dispatch(request, *args, **kwargs)
-
     def serialized_data(self, data):
         serialized_data = self.serializer.serialize(data)
         encoded_data = self.serializer.encode("json", serialized_data)
@@ -119,3 +114,9 @@ class ViewOne(ViewBase):
         object.delete()
         response = HttpResponse(status=204)
         return response
+
+
+class LoginRequiredMixin(object):
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)

@@ -1,4 +1,4 @@
-from utils.view import ViewAll, ViewOne
+from utils.view import ViewAll, ViewOne, LoginRequiredMixin
 
 from .models import (ElementOperator,
                      ElementType,
@@ -14,35 +14,35 @@ from .serializers import (ElementTypeSerializer,
                           ElementDataTypeSerializer)
 
 
-class ElementTypeAll(ViewAll):
+class ElementTypeAll(LoginRequiredMixin, ViewAll):
     model = ElementType
     queryset = ElementType.actives.all()
     serializer_class = ElementTypeSerializer
     serializer_template = "serial_related"
 
 
-class ElementOperatorAll(ViewAll):
+class ElementOperatorAll(LoginRequiredMixin, ViewAll):
     model = ElementOperator
     queryset = ElementOperator.actives.all()
     serializer_class = ElementOperatorSerializer
     serializer_template = "serial_default"
 
 
-class ElementDatumTypeAll(ViewAll):
+class ElementDatumTypeAll(LoginRequiredMixin, ViewAll):
     model = ElementDatumType
     queryset = ElementDatumType.actives.all()
     serializer_class = ElementDatumTypeSerializer
     serializer_template = "serial_default"
 
 
-class ElementDatumObjectAll(ViewAll):
+class ElementDatumObjectAll(LoginRequiredMixin, ViewAll):
     model = ElementDatumObject
     queryset = ElementDatumObject.actives.all()
     serializer_class = ElementDatumObjectSerializer
     serializer_template = "serial_related"
 
 
-class ElementDatumObjectOne(ViewOne):
+class ElementDatumObjectOne(LoginRequiredMixin, ViewOne):
     model = ElementDatumObject
     serializer_class = ElementDatumObjectSerializer
     serializer_template = "serial_related"
@@ -63,12 +63,14 @@ class ElementDatumObjectOne(ViewOne):
         else:
             return self.get_object(pk)
 
-class ElementOptionAll(ViewAll):
+
+class ElementOptionAll(LoginRequiredMixin, ViewAll):
     model = ElementOption
     queryset = ElementOption.actives.all()
     serializer_class = ElementOptionSerializer
 
-class ElementDataTypeAll(ViewAll):
+
+class ElementDataTypeAll(LoginRequiredMixin, ViewAll):
     model = ElementDataType
     queryset = ElementDataType.objects.all()
     serializer_class = ElementDataTypeSerializer
