@@ -4,4 +4,4 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['52.25.209.228', '.tracuse.com']
+ALLOWED_HOSTS = ['52.27.201.16', '.tracuse.com']
