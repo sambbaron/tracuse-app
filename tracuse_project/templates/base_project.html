@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <title>Tracuse</title>
 
+    {% block meta_block %}{% endblock %}
+
     <link rel="icon" href="{% static 'images/Tracuse-Icon-32x32.png' %}">
 
     <link rel="stylesheet" type="text/css" href="{% static 'libraries/font_awesome/css/font-awesome.min.css' %}">
@@ -15,6 +17,8 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'dist/styles_base.css' %}">
     {% block css_block %}{% endblock %}
+
+    {% block script_top_block %}{% endblock %}
 
 </head>
 <body>
