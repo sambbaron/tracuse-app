@@ -1,6 +1,48 @@
 {% extends "base_project.html" %}
 {% load staticfiles %}
 
+{% block meta_block %}
+
+    <meta charset="utf-8"/>
+    <meta name="description"
+          content="Get the information you need for any situation.  Navigate across your data, projects, and tasks for better planning, prioritization, and focus."/>
+    <meta name="robots" content="index,follow"/>
+
+    <!-- Bing Verification -->
+    <meta name="msvalidate.01" content="4A37629E5ACDB926889B52C8E10A35A0"/>
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Tracuse"/>
+    <meta property="og:site_name" content="Tracuse"/>
+    <meta property="og:image" content="http://www.tracuse.com/images/Tracuse-LogoShadow-Small-200x200.png"/>
+    <meta property="og:url" content="http://www.tracuse.com"/>
+    <meta property="og:description"
+          content="Tracuse lets you see and organize all of your information across every app, every part of your life.  Navigate across your data, projects, and tasks for better planning, prioritization, and focus."/>
+
+{% endblock %}
+
+{% block script_top_block %}
+    <!-- Google Web Analytics -->
+    <script>
+        if (window.location.host != 'localhost') {
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                            (i[r].q = i[r].q || []).push(arguments)
+                        }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-54037140-1', 'auto');
+            ga('send', 'pageview');
+        }
+    </script>
+{% endblock %}
+
 {% block css_block %}
     <link rel="stylesheet" type="text/css" href="{% static 'styles/website/base_website.css' %}">
 {% endblock %}
@@ -104,15 +146,16 @@
         </div>
     </section>
 
-{#    <section class="nav-stop learn-content bkgrd-white" id="help">#}
-{#        How you View#}
-{#        Personalized Formatting#}
-{#    </section>#}
+    {#    <section class="nav-stop learn-content bkgrd-white" id="help">#}
+    {#        How you View#}
+    {#        Personalized Formatting#}
+    {#    </section>#}
 
     <section class="nav-stop bkgrd-orange" id="sign-up">
         <p class="lead">
             Sign up for notification as soon as Tracuse is available
         </p>
+
         <form id="sign-up-form" name="sign-up-form">
             {% csrf_token %}
             <label for="name">NAME</label>
