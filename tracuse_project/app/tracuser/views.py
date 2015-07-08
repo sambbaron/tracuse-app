@@ -1,6 +1,6 @@
 from django.utils.decorators import method_decorator
 
-from utils.view import ViewAll, ViewOne
+from app.utils.view import ViewAll, ViewOne
 
 from .models import TracuserLanding
 from .serializers import TracuserLandingSerializer

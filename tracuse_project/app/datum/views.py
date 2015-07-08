@@ -1,4 +1,4 @@
-from utils.view import ViewAll, ViewOne, LoginRequiredMixin
+from app.utils.view import ViewAll, ViewOne, LoginRequiredMixin
 
 from .models import DatumGroup, DatumType, DatumObject
 from .serializers import (DatumGroupSerializer,

@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from utils import entity
+from app.utils import entity
 
 
 class TestUtilsEntity(TestCase):

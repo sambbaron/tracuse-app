@@ -1,6 +1,6 @@
 from django.db.models import Q
 
-from utils.view import ViewAll, ViewOne, LoginRequiredMixin
+from app.utils.view import ViewAll, ViewOne, LoginRequiredMixin
 
 from .models import (ViewuseObject,
                      ViewuseArrangement,

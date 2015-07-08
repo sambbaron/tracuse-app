@@ -2,7 +2,7 @@ import json
 
 from django.test import TestCase
 from common.tests.test_data import TestDataCommon
-from utils.serializer import Serializer
+from app.utils.serializer import Serializer
 
 
 class TestUtilsSerializerClass(TestCase):
