@@ -70,7 +70,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         _.each(filterView.model.attributes, function (filterRuleCollection, ruleModelName) {
             var filterRuleFrag = document.createDocumentFragment();
             filterRuleCollection.each(function (filterRule) {
-                var filterRuleView = new Tracuse.views.FilterRuleBase({
+                var filterRuleView = new Tracuse.views.FilterRule({
                     model: filterRule,
                     filterSetView: filterView
                 });
@@ -200,7 +200,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         // Set filter rule model from element name
         var ruleModelName = el.getAttribute("name");
         var FilterRuleModel = Tracuse.models[ruleModelName];
-        var FilterRuleView = Tracuse.views.FilterRuleBase;
+        var FilterRuleView = Tracuse.views.FilterRule;
 
         // Create filter rule model
         var ruleForm = el.querySelector("form");
