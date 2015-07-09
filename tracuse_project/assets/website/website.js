@@ -114,6 +114,9 @@
         e.preventDefault();
         var form = $(this);
 
+        // Google Analytics Event
+        ga("send", "event", "button", "click", "signup", 1);
+
         $.ajax({
             type: "POST",
             url: "/api/tracuser_landing/",
@@ -125,7 +128,6 @@
                 });
             }
         });
-
     });
 
 }());
