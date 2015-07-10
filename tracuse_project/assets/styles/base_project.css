@@ -135,6 +135,11 @@ button span {
     box-shadow: 0 0 5px 5px #a7d760;
 }
 
+.effects-darkgreen-white:hover {
+    background-color: #85be2e;
+    color: #fafafa;
+}
+
 .effects-darkorange:hover {
     background-color: hsl(25, 94%, 56%);
 }
