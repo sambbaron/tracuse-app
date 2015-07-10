@@ -1,6 +1,8 @@
 Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, modelOptions) {
     "use strict";
-    /* Create basic Backbone api-driven model with "all" collection*/
+    /* Create base Backbone Relational api-driven model
+    * Create "all" Collection for model
+    * */
 
     // Default url
     var url = Tracuse.routes.api[modelName] ||
@@ -10,14 +12,17 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
         modelName: modelName,
         idAttribute: idAttribute,
         url: function () {
+            // Add trailing slash to url
             var urlID = this.id ? this.id + "/" : "";
             return url + urlID;
         }
     });
+    // Add custom properties to model
     _.each(modelOptions, function (optionValue, optionKey) {
         model.prototype[optionKey] = optionValue;
     });
 
+    // Base Collection
     model.collBase = Backbone.Collection.extend({
         model: model,
         url: url,
@@ -30,6 +35,9 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
 
 Backbone.RelationalModel.prototype.setTemplateOption = function setTemplateOption(onOff) {
     "use strict";
+    /* Toggle includeInTemplate option as includeInJSON
+    * In order to use toJSON function to create toTemplate output
+    * */
     var model = this;
     _.each(model._relations, function (rel) {
         if (onOff) {
@@ -47,6 +55,11 @@ Backbone.RelationalModel.prototype.setTemplateOption = function setTemplateOptio
 
 Backbone.RelationalModel.prototype.toTemplate = function toTemplate(options) {
     "use strict";
+    /* Create property similar to Backbone toJSON
+     * Use for template data
+     * Specifically to use related models in templates, but not in AJAX calls
+     * Use toJSON function to output toTemplate
+     * */
     var model = this;
     model.setTemplateOption(true);
     var data = model.toJSON(options);
@@ -56,6 +69,9 @@ Backbone.RelationalModel.prototype.toTemplate = function toTemplate(options) {
 
 Backbone.Collection.prototype.toTemplate = function toTemplate(options) {
     "use strict";
+    /* Collection property for model toTemplate
+    * Use toJSON as template
+    * */
     return this.map(function (model) {
         return model.toTemplate(options);
     });
@@ -123,8 +139,8 @@ Backbone.Collection.prototype.idsToObjects = function idsToObjects(idArray, call
 
 Tracuse.models.bootstrapData = function bootstrapData(data) {
     "use strict";
-    /* Load bootstrap data from template into Backbone 'all' collections
-     Object keys should match model names
+    /* Load bootstrap data from server template into Backbone 'all' collections
+     * Object keys must match model names
      */
 
     for (var modelName in data) {
