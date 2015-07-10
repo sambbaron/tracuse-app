@@ -4,7 +4,7 @@ body {
     font-family: "Source Sans Pro", Helvetica, sans-serif;
 }
 
-div, section, article, aside, p, fieldset,
+section, article, aside, p, fieldset,
 label, input, select, textarea, button {
     margin: 0.25em;
     padding: 0.25em;
