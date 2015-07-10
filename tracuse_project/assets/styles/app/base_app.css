@@ -24,12 +24,18 @@ footer {
 }
 
 #app {
+    position: relative;
     height: calc(100vh - 6em);
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 #viewuses {
+    position: relative;
     display: inline-block;
     height: 100%;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
