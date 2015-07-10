@@ -1,9 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,600,600italic);
 
 body {
-    background-color: #FAFAFA;
     font-family: "Source Sans Pro", Helvetica, sans-serif;
-    color: #35436a;
 }
 
 div, section, article, aside, p, fieldset,
