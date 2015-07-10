@@ -88,7 +88,7 @@ header nav {
 }
 
 .nav-stop {
-    min-height: 45rem;
+    min-height: 46rem;
     margin: 0;
 }
 
@@ -144,6 +144,7 @@ header nav {
 }
 
 #associations {
+    padding-top: 1em;
     text-align: center;
 }
 
