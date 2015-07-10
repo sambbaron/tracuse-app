@@ -63,36 +63,43 @@ button span {
 .color-white-darkblue {
     background-color: #fafafa;
     color: #35436a;
+    border-color: #35436a;
 }
 
 .color-white-green {
     background-color: #fafafa;
     color: #85be2e;
+    border-color: #85be2e;
 }
 
 .color-darkblue-white {
     background-color: #35436a;
     color: #fafafa;
+    border-color: #fafafa;
 }
 
 .color-green-white {
     background-color: #a9d963;
     color: #fafafa;
+    border-color: #fafafa;
 }
 
 .color-green-darkblue {
     background-color: #a9d963;
     color: #35436a;
+    border-color: #35436a;
 }
 
 .color-orange-darkblue {
     background-color: #fddfca;
     color: #35436a;
+    border-color: #35436a;
 }
 
 .color-orange-white {
     background-color: #e76707;
     color: #fafafa;
+    border-color: #fafafa;
 }
 
 .text-shadow-light {
@@ -101,10 +108,6 @@ button span {
 
 .text-shadow-dark {
     text-shadow: 1px 1px 0 #969696;
-}
-
-.border-darkblue {
-    border-color: #35436a;
 }
 
 .effects-green:hover {
