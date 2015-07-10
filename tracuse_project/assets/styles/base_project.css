@@ -69,8 +69,18 @@ button span {
     color: #35436a;
 }
 
+.color-white-green {
+    background-color: #fafafa;
+    color: #85be2e;
+}
+
 .color-blue-white {
     background-color: #35436a;
+    color: #fafafa;
+}
+
+.color-green-white {
+    background-color: #a9d963;
     color: #fafafa;
 }
 
@@ -84,9 +94,9 @@ button span {
     color: #35436a;
 }
 
-.color-white-green {
-    background-color: #fafafa;
-    color: #85be2e;
+.color-orange-white {
+    background-color: #e76707;
+    color: #fafafa;
 }
 
 .text-shadow-light {
@@ -95,6 +105,24 @@ button span {
 
 .text-shadow-dark {
     text-shadow: 1px 1px 0 #969696;
+}
+
+.button-green:hover {
+    background-color: hsl(84, 60%, 71%);
+}
+
+.button-green.active {
+    background-color: hsl(84, 60%, 71%);
+    box-shadow: 0 0 5px 5px #a9d963;
+}
+
+.button-orange:hover {
+    background-color: hsl(25, 94%, 56%);
+}
+
+.button-orange.active {
+    background-color: hsl(25, 94%, 56%);
+    box-shadow: 0 0 5px 5px #e76707;
 }
 
 /* Customize JQuery-UI*/
