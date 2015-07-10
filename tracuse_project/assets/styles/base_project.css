@@ -116,13 +116,22 @@ button span {
     text-shadow: 1px 1px 0 #969696;
 }
 
+.effects-white:hover {
+    background-color: #fafafa;
+}
+
+.effects-white.active {
+    background-color: #fafafa;
+    box-shadow: 0 0 5px 5px #ffffff;
+}
+
 .effects-green:hover {
     background-color: hsl(84, 60%, 71%);
 }
 
 .effects-green.active {
     background-color: hsl(84, 60%, 71%);
-    box-shadow: 0 0 5px 5px #a9d963;
+    box-shadow: 0 0 5px 5px #a7d760;
 }
 
 .effect-orange:hover {
