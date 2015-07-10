@@ -95,8 +95,7 @@ header nav {
     padding: 2em 1em 1em 1em;
     font-size: 400%;
     line-height: 1.25em;
-    color: rgb(0, 0, 0);
-    text-shadow: 1px 1px 0 #ddd;
+    color: #000;
     opacity: 1;
 }
 

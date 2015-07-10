@@ -69,31 +69,34 @@ button span {
 .color-white-blue {
     background-color: #fafafa;
     color: #35436a;
-    text-shadow: 1px 1px 0 #c8c8c8;
 }
 
 .color-blue-white {
     background-color: #35436a;
     color: #fafafa;
-    text-shadow: 1px 1px 0 #969696;
 }
 
 .color-green-blue {
     background-color: #a9d963;
     color: #35436a;
-    text-shadow: 1px 1px 0 #969696;
 }
 
 .color-orange-blue {
     background-color: #fddfca;
     color: #35436a;
-    text-shadow: 1px 1px 0 #c8c8c8;
 }
 
 .color-white-green {
     background-color: #fafafa;
     color: #85be2e;
-    text-shadow: 1px 1px 0 #c8c8c8;
+}
+
+.text-shadow-light {
+    text-shadow: 1px 1px 0 #e1e1e1;
+}
+
+.text-shadow-dark {
+    text-shadow: 1px 1px 0 #969696;
 }
 
 /* Customize JQuery-UI*/
