@@ -107,6 +107,10 @@ button span {
     text-shadow: 1px 1px 0 #969696;
 }
 
+.border-darkblue {
+    border-color: #35436a;
+}
+
 .effects-green:hover {
     background-color: hsl(84, 60%, 71%);
 }

@@ -228,11 +228,11 @@ header nav {
 }
 
 #sign-up form input {
-    border: 2px solid #35436a;
+    border: 2px solid;
 }
 
 #sign-up form textarea {
-    border: 2px solid #35436a;
+    border: 2px solid;
     resize: vertical;
 }
 
