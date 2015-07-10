@@ -66,7 +66,7 @@ button span {
     border-color: #35436a;
 }
 
-.color-white-green {
+.color-white-darkgreen {
     background-color: #fafafa;
     color: #85be2e;
     border-color: #85be2e;
@@ -84,25 +84,25 @@ button span {
     border-color: #fafafa;
 }
 
-.color-green-white {
+.color-lightgreen-white {
     background-color: #a9d963;
     color: #fafafa;
     border-color: #fafafa;
 }
 
-.color-green-darkblue {
+.color-lightgreen-darkblue {
     background-color: #a9d963;
     color: #35436a;
     border-color: #35436a;
 }
 
-.color-orange-darkblue {
+.color-lightorange-darkblue {
     background-color: #fddfca;
     color: #35436a;
     border-color: #35436a;
 }
 
-.color-orange-white {
+.color-darkorange-white {
     background-color: #e76707;
     color: #fafafa;
     border-color: #fafafa;
@@ -126,20 +126,20 @@ button span {
     box-shadow: 0 0 5px 5px #ffffff;
 }
 
-.effects-green:hover {
+.effects-lightgreen:hover {
     background-color: hsl(84, 60%, 71%);
 }
 
-.effects-green.active {
+.effects-lightgreen.active {
     background-color: hsl(84, 60%, 71%);
     box-shadow: 0 0 5px 5px #a7d760;
 }
 
-.effects-orange:hover {
+.effects-darkorange:hover {
     background-color: hsl(25, 94%, 56%);
 }
 
-.effects-orange.active {
+.effects-darkorange.active {
     background-color: hsl(25, 94%, 56%);
     box-shadow: 0 0 5px 5px #e76707;
 }
