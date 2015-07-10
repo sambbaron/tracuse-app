@@ -33,9 +33,7 @@
 
 <header>
     <a href="/"><img src="{% block logo_source %}{% endblock %}" alt="Tracuse Logo"></a>
-    <nav>
-        {% block nav_block %}{% endblock %}
-    </nav>
+    {% block nav_block %}{% endblock %}
 </header>
 
 {% block menu %}{% endblock %}

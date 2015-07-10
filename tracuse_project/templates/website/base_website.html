@@ -52,24 +52,26 @@
 {% endblock %}
 
 {% block nav_block %}
-    <a href="#mission">
-        <button class="nav-button">The Mission</button>
-    </a>
-    <a href="#objects">
-        <button class="nav-button">Keep It Simple</button>
-    </a>
-    <a href="#associations">
-        <button class="nav-button">How You Think</button>
-    </a>
-    <a href="#views">
-        <button class="nav-button">How You Work</button>
-    </a>
-    {#    <a href="#help">#}
-    {#        <button class="nav-button">Guiding Hand</button>#}
-    {#    </a>#}
-    <a href="#sign-up">
-        <button class="sign-up-button nav-button">Sign-Up</button>
-    </a>
+    <nav>
+        <a href="#mission">
+            <button class="nav-button color-green-white button-green">The Mission</button>
+        </a>
+        <a href="#objects">
+            <button class="nav-button color-green-white button-green">Keep It Simple</button>
+        </a>
+        <a href="#associations">
+            <button class="nav-button color-green-white button-green">How You Think</button>
+        </a>
+        <a href="#views">
+            <button class="nav-button color-green-white button-green">How You Work</button>
+        </a>
+        {#    <a href="#help">#}
+        {#        <button class="nav-button">Guiding Hand</button>#}
+        {#    </a>#}
+        <a href="#sign-up">
+            <button class="nav-button color-orange-white button-orange">Sign-Up</button>
+        </a>
+    </nav>
 {% endblock %}
 
 {% block body_block %}
@@ -81,10 +83,10 @@
         </h2>
         <br>
         <a href="#mission">
-            <button class="nav-button">Learn<br>More</button>
+            <button class="nav-button color-green-white button-green">Learn<br>More</button>
         </a>
         <a href="#sign-up">
-            <button class="nav-button sign-up-button">Sign<br>Up</button>
+            <button class="nav-button color-orange-white button-orange">Sign<br>Up</button>
         </a>
     </section>
 
@@ -166,7 +168,7 @@
             <input id="email" name="email" type="email" required>
             <label for="comments">COMMENTS</label>
             <textarea id="comments" name="comments" placeholder="Share your thoughts about the project" rows="3"></textarea>
-            <button class="sign-up-button" type="submit">Sign Up</button>
+            <button class="color-orange-white button-orange" type="submit">Sign Up</button>
             <p class="message"></p>
         </form>
         <p class="end">

@@ -10,31 +10,7 @@ header nav {
 
 .nav-button {
     margin-bottom: 0;
-    background-color: #a9d963;
     font-size: 135%;
-}
-
-.nav-button:hover {
-    background-color: hsl(84, 60%, 71%);
-}
-
-.nav-button.active {
-    background-color: hsl(84, 60%, 71%);
-    box-shadow: 0 0 5px 5px #a9d963;
-}
-
-.sign-up-button {
-    background-color: #e76707;
-    color: #fafafa;
-}
-
-.sign-up-button:hover {
-    background-color: hsl(25, 94%, 56%);
-}
-
-.sign-up-button.active {
-    background-color: hsl(25, 94%, 56%);
-    box-shadow: 0 0 5px 5px #e76707;
 }
 
 #login-form {
@@ -109,7 +85,6 @@ header nav {
     width: 5em;
     margin: 0.5em 1em;
     font-size: 200%;
-    color: #fafafa;
 }
 
 .nav-stop {
@@ -238,7 +213,6 @@ header nav {
     width: 20em;
     max-width: 90%;
     margin: 0 auto;
-    background-color: #fddfca;
     font-size: 150%;
     text-align: left;
 }
