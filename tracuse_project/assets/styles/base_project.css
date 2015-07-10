@@ -64,7 +64,7 @@ button span {
 
 /* Color Schemes */
 
-.color-white-blue {
+.color-white-darkblue {
     background-color: #fafafa;
     color: #35436a;
 }
@@ -84,12 +84,12 @@ button span {
     color: #fafafa;
 }
 
-.color-green-blue {
+.color-green-darkblue {
     background-color: #a9d963;
     color: #35436a;
 }
 
-.color-orange-blue {
+.color-orange-darkblue {
     background-color: #fddfca;
     color: #35436a;
 }
