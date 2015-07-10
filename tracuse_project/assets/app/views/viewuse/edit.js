@@ -1,7 +1,7 @@
 Tracuse.views.ViewuseEdit = Backbone.View.extend({
 
     tagName: "aside",
-    className: "dialog dialog-popout dialog-options viewuse-edit",
+    className: "dialog dialog-popout dialog-options color-white-green viewuse-edit",
     templateName: "viewuse/edit.html",
 
     events: {
