@@ -78,6 +78,12 @@ button span {
     border-color: #fafafa;
 }
 
+.color-lightblue-white {
+    background-color: #6e8cd8;
+    color: #fafafa;
+    border-color: #fafafa;
+}
+
 .color-green-white {
     background-color: #a9d963;
     color: #fafafa;
