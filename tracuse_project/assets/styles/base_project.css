@@ -64,29 +64,35 @@ button span {
     margin: 0 0.25em;
 }
 
-/* Backgrounds */
+/* Color Schemes */
 
-.bkgrd-white {
+.color-white-blue {
     background-color: #fafafa;
     color: #35436a;
     text-shadow: 1px 1px 0 #c8c8c8;
 }
 
-.bkgrd-blue {
+.color-blue-white {
     background-color: #35436a;
     color: #fafafa;
     text-shadow: 1px 1px 0 #969696;
 }
 
-.bkgrd-green {
+.color-green-blue {
     background-color: #a9d963;
     color: #35436a;
     text-shadow: 1px 1px 0 #969696;
 }
 
-.bkgrd-orange {
+.color-orange-blue {
     background-color: #fddfca;
     color: #35436a;
+    text-shadow: 1px 1px 0 #c8c8c8;
+}
+
+.color-white-green {
+    background-color: #fafafa;
+    color: #85be2e;
     text-shadow: 1px 1px 0 #c8c8c8;
 }
 
