@@ -1,8 +1,9 @@
 Tracuse.views.ViewuseEdit = Backbone.View.extend({
 
     tagName: "aside",
-    className: "dialog dialog-popout dialog-options color-white-green viewuse-edit",
+    className: "dialog dialog-popout dialog-options color-white-darkgreen viewuse-edit",
     templateName: "viewuse/edit.html",
+    buttonEffectsClass: "effects-darkgreen-white",
 
     events: {
         "click button[name='new-viewuse']": function newViewuse(ev) {
@@ -55,6 +56,12 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         "use strict";
         var editView = this;
         editView.el.innerHTML = editView.template();
+
+        // Set button styling using class
+        editView.$("button").each(function () {
+            $(this).addClass(editView.buttonEffectsClass);
+        });
+
         return editView;
     },
 
@@ -98,7 +105,8 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
             success: function () {
                 if (editView.viewuseView) {
                     editView.viewuseView.model = editView.model;
-                    editView.viewuseView.renderDatums(function () {/*Do not use ViewuseBase.render callback*/});
+                    editView.viewuseView.renderDatums(function () {/*Do not use ViewuseBase.render callback*/
+                    });
                 }
             }
         });
