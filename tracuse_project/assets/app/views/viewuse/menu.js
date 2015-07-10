@@ -3,6 +3,7 @@ Tracuse.views.ViewuseMenu = Backbone.View.extend({
     tagName: "nav",
     className: "dialog dialog-embed dialog-menu color-lightblue-white viewuse-menu",
     templateName: "viewuse/menu.html",
+    buttonEffectsClass: "effects-white-lightblue",
 
     events: {
         "click button[name='menu-hide']": function (ev) {
@@ -29,6 +30,12 @@ Tracuse.views.ViewuseMenu = Backbone.View.extend({
         "use strict";
         var menuView = this;
         menuView.el.innerHTML = menuView.template();
+
+        // Set button styling using class
+        menuView.$("button").each(function () {
+            $(this).addClass(menuView.buttonEffectsClass);
+        });
+
         return menuView;
     },
 

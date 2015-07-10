@@ -34,11 +34,6 @@
     padding: 0.25em;
     text-align: left;
     font-size: 150%;
-    color: #fafafa;
-}
-
-.dialog-menu button:hover {
-    color: #6E8BD9;
 }
 
 .dialog-options .title {
