@@ -107,20 +107,20 @@ button span {
     text-shadow: 1px 1px 0 #969696;
 }
 
-.button-green:hover {
+.effects-green:hover {
     background-color: hsl(84, 60%, 71%);
 }
 
-.button-green.active {
+.effects-green.active {
     background-color: hsl(84, 60%, 71%);
     box-shadow: 0 0 5px 5px #a9d963;
 }
 
-.button-orange:hover {
+.effect-orange:hover {
     background-color: hsl(25, 94%, 56%);
 }
 
-.button-orange.active {
+.effect-orange.active {
     background-color: hsl(25, 94%, 56%);
     box-shadow: 0 0 5px 5px #e76707;
 }
