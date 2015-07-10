@@ -11,12 +11,11 @@
 
 .dialog-popout {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    max-width: 90%;
-    border-radius: 0.5em;
-    box-shadow: 3px 3px 1px #ddd;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
 }
 
 .dialog-popout.drag {
@@ -44,9 +43,8 @@
 }
 
 .dialog-options {
-    padding: 0;
-    border: 1px solid #587e1f;
-    background-color: #cce8a2;
+    background-color: #fafafa;
+    color: #85be2e;
 }
 
 .dialog-options .title {
@@ -73,14 +71,6 @@
     margin: 0 auto;
     font-size: 125%;
     text-align: center;
-}
-
-.dialog-options .selections * {
-    color: #587e1f;
-}
-
-.dialog-options .actions * {
-    color: #e76707;
 }
 
 .dialog-options .actions button {
