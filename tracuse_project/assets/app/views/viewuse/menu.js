@@ -30,12 +30,6 @@ Tracuse.views.ViewuseMenu = Backbone.View.extend({
         "use strict";
         var menuView = this;
         menuView.el.innerHTML = menuView.template();
-
-        // Set button styling using class
-        menuView.$("button").each(function () {
-            $(this).addClass(menuView.buttonEffectsClass);
-        });
-
         return menuView;
     },
 
@@ -43,8 +37,15 @@ Tracuse.views.ViewuseMenu = Backbone.View.extend({
         "use strict";
         var menuView = this;
 
-        menuView.viewuseView = options.viewuseView;
         menuView.render();
+
+        // Set DialogMenu view
+        menuView = new Tracuse.views.DialogMenu({
+            el: menuView.el,
+            buttonEffectsClass: menuView.buttonEffectsClass
+        });
+
+        menuView.viewuseView = options.viewuseView;
         menuView.viewuseView.el.appendChild(menuView.el);
 
         return menuView;
