@@ -19,10 +19,6 @@
     padding: 0;
 }
 
-.dialog-popout.drag {
-    transform: none;
-}
-
 .dialog-menu {
     overflow-x: hidden;
     overflow-y: auto;
@@ -37,6 +33,45 @@
     font-size: 150%;
 }
 
+.dialog-options .menu button {
+    display: block;
+    font-size: 200%;
+    border: 3px solid transparent;
+    text-align: left;
+}
+
+.dialog-options .menu button.hover {
+    width: 8em;
+    border: 3px solid;
+}
+
+.dialog-options .menu button * {
+    display: inline;
+}
+
+.dialog-options .menu button span {
+    display: none;
+    position: absolute;
+    width: 6em;
+    text-align: center;
+}
+
+.dialog-options > .main {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    height: 100%;
+    margin-left: 5em;
+}
+
+.dialog-options > .main > .section {
+    flex: 1 1 auto;
+    position: relative;
+    margin: 0;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+}
+
 .dialog-options .title {
     width: 100%;
     margin: 0 auto;
@@ -44,34 +79,21 @@
     text-align: center;
 }
 
-.dialog-options > .section {
-    display: inline-block;
-    position: relative;
-    height: 100%;
-    margin: 0;
-    border: 1px solid;
-    vertical-align: top;
-}
-
-.dialog-options > .section:first-child {
-    border-left: none;
-}
-
 .dialog-options .content {
     width: 100%;
     margin: 0 auto;
+    padding: 0.25em;
     font-size: 125%;
     text-align: center;
 }
 
-.dialog-options .actions button {
-    display: block;
-    width: 100%;
-    text-align: left;
-}
-
-.dialog-options .actions span {
-    text-align: left;
+.dialog-options .menu {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    height: 100%;
+    width: 5em;
+    box-shadow: 0 2px 1px #808080;
 }
 
 .dialog-options .input-wrap {

@@ -3,9 +3,24 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
     tagName: "aside",
     className: "dialog dialog-popout dialog-options color-white-darkgreen viewuse-edit",
     templateName: "viewuse/edit.html",
+    menuEffectsClass: "effects-white-darkgreen",
     buttonEffectsClass: "effects-darkgreen-white",
 
     events: {
+        "mouseenter .menu button": function enterMenuButton(ev) {
+            var el = ev.target;
+            var span = el.querySelector("span");
+            $(el).addClass("hover", 200);
+            $(span).effect("slide", {direction: "left"}, 200);
+            ev.stopPropagation();
+        },
+        "mouseleave .menu button": function exitMenuButton(ev) {
+            var el = ev.target;
+            var span = el.querySelector("span");
+            $(el).removeClass("hover", 200);
+            $(span).hide("slide", {direction: "left"}, 200);
+            ev.stopPropagation();
+        },
         "click button[name='new-viewuse']": function newViewuse(ev) {
             this.newViewuse();
             ev.stopPropagation();
@@ -58,7 +73,10 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         editView.el.innerHTML = editView.template();
 
         // Set button styling using class
-        editView.$("button").each(function () {
+        editView.$(".menu button").each(function () {
+            $(this).addClass(editView.menuEffectsClass);
+        });
+        editView.$(".wrapper button").each(function () {
             $(this).addClass(editView.buttonEffectsClass);
         });
 
