@@ -62,6 +62,12 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
             $(this).addClass(editView.buttonEffectsClass);
         });
 
+        // Set DialogMenu view
+        editView.menuView = new Tracuse.views.DialogMenu({
+            el: editView.el.querySelector(".dialog-menu"),
+            buttonEffectsClass: "effects-white-darkgreen"
+        });
+
         return editView;
     },
 
@@ -72,12 +78,6 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         editView.viewuseView = options.viewuseView;
 
         editView.render();
-
-        // Set DialogMenu view
-        new Tracuse.views.DialogMenu({
-            el: editView.el.querySelector(".dialog-menu"),
-            buttonEffectsClass: "effects-white-darkgreen"
-        });
 
         Tracuse.el.viewuses.appendChild(editView.el);
         editView.$el.fadeIn(200);
