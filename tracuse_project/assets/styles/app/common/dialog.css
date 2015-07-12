@@ -22,13 +22,11 @@
 .dialog-menu button {
     display: block;
     font-size: 200%;
-    border: 3px solid transparent;
     text-align: left;
 }
 
 .dialog-menu button.hover {
     width: 8em;
-    border: 3px solid;
 }
 
 .dialog-menu button * {
@@ -47,7 +45,6 @@
     top: 4rem;
     left: 0;
     height: 100%;
-    width: 5em;
     box-shadow: 0 2px 1px #808080;
 }
 
