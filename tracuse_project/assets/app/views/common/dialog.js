@@ -5,18 +5,15 @@ Tracuse.views.DialogMenu = Backbone.View.extend({
 
     events: {
         "mouseenter button": function enterMenuButton(ev) {
-            var el = ev.target;
-            var span = el.querySelector("span");
-            $(el).addClass("hover", 200);
-            $(span).effect("slide", {direction: "left"}, 200);
+            this.toggleButton(ev.target, true);
             ev.stopPropagation();
         },
         "mouseleave button": function exitMenuButton(ev) {
-            var el = ev.target;
-            var span = el.querySelector("span");
-            $(el).removeClass("hover", 200);
-            $(span).hide("slide", {direction: "left"}, 200);
+            this.toggleButton(ev.target, false);
             ev.stopPropagation();
+        },
+        "click button": function exitMenuButton(ev) {
+            this.toggleButton(ev.target, false);
         }
     },
 
@@ -24,8 +21,8 @@ Tracuse.views.DialogMenu = Backbone.View.extend({
         "use strict";
         var menuView = this;
 
-        menuView.el = options.el;
-        menuView.buttonEffectsClass = options.buttonEffectsClass;
+        menuView.el = options.el || menuView.render().el;
+        menuView.buttonEffectsClass = options.buttonEffectsClass || menuView.buttonEffectsClass;
 
         // Set button styling using class
         menuView.$("button").each(function () {
@@ -35,6 +32,18 @@ Tracuse.views.DialogMenu = Backbone.View.extend({
         menuView.delegateEvents();
 
         return menuView;
+    },
+
+    toggleButton: function toggleButton(el, option) {
+        "use strict";
+        var span = el.querySelector("span");
+        if (option) {
+            $(el).addClass("hover", 200);
+            $(span).effect("slide", {direction: "left"}, 200);
+        } else {
+            $(el).removeClass("hover", 200);
+            $(span).hide("slide", {direction: "left"}, 200);
+        }
     }
 
 });
