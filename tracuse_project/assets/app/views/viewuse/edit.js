@@ -75,7 +75,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
 
         // Set DialogMenu view
         new Tracuse.views.DialogMenu({
-            el: editView.el.querySelector(".menu"),
+            el: editView.el.querySelector(".dialog-menu"),
             buttonEffectsClass: "effects-white-darkgreen"
         });
 

@@ -19,27 +19,36 @@
     padding: 0;
 }
 
-.dialog-options .menu button {
+.dialog-menu button {
     display: block;
     font-size: 200%;
     border: 3px solid transparent;
     text-align: left;
 }
 
-.dialog-options .menu button.hover {
+.dialog-menu button.hover {
     width: 8em;
     border: 3px solid;
 }
 
-.dialog-options .menu button * {
+.dialog-menu button * {
     display: inline;
 }
 
-.dialog-options .menu button span {
+.dialog-menu button span {
     display: none;
     position: absolute;
     width: 6em;
     text-align: center;
+}
+
+.dialog-options .dialog-menu {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    height: 100%;
+    width: 5em;
+    box-shadow: 0 2px 1px #808080;
 }
 
 .dialog-options > .main {
@@ -71,15 +80,6 @@
     padding: 0.25em;
     font-size: 125%;
     text-align: center;
-}
-
-.dialog-options .menu {
-    position: fixed;
-    top: 4rem;
-    left: 0;
-    height: 100%;
-    width: 5em;
-    box-shadow: 0 2px 1px #808080;
 }
 
 .dialog-options .input-wrap {
