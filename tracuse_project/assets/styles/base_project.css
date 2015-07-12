@@ -96,6 +96,12 @@ button span {
     border-color: #35436a;
 }
 
+.color-darkgreen-white {
+    background-color: #85be2e;
+    color: #fafafa;
+    border-color: #fafafa;
+}
+
 .color-lightorange-darkblue {
     background-color: #fddfca;
     color: #35436a;
@@ -119,6 +125,7 @@ button span {
 .effects-white-lightblue:hover {
     background-color: #fafafa;
     color: #6e8cd8;
+    border-color: #6e8cd8;
 }
 
 .effects-white.active {
@@ -138,6 +145,13 @@ button span {
 .effects-darkgreen-white:hover {
     background-color: #85be2e;
     color: #fafafa;
+    border-color: #fafafa;
+}
+
+.effects-white-darkgreen:hover {
+    background-color: #fafafa;
+    color: #85be2e;
+    border-color: #85be2e;
 }
 
 .effects-darkorange:hover {
