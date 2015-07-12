@@ -2,6 +2,18 @@
     padding-top: 3em;
 }
 
+.viewuse-menu {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.viewuse-menu  button {
+    display: block;
+    width: 9em;
+    text-align: left;
+    font-size: 150%;
+}
+
 .viewuse-menu button[name='menu-hide'] {
     position: absolute;
     top: 0;
