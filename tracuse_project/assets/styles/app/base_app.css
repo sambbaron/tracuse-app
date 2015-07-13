@@ -39,3 +39,18 @@ footer {
     margin: 0;
     padding: 0;
 }
+
+.help-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0.5em;
+    background-color: rgba(150, 150, 150, 0.75);
+    color: #fafafa;
+    font-size: 200%;
+    text-align: center;
+}
