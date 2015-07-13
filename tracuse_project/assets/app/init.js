@@ -14,19 +14,21 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
 Tracuse.init.loadTemplates = function loadTemplates() {
     "use strict";
     /* Load nunjucks template environment
-     * Insert client side base app template to server side template
-     * Set saved elements variables
      */
     var templateRoot = "/assets/templates";
-    var appTemplate = "app.html";
-
     var webLoader = new nunjucks.WebLoader(templateRoot);
     Tracuse.templates.env = new nunjucks.Environment(webLoader);
     console.info("Load Nunjucks Template Environment: " + templateRoot);
+};
 
-    var renderedApp = Tracuse.templates.env.render(appTemplate);
+Tracuse.init.renderApp = function renderApp() {
+    "use strict";
+    /* Render App view and insert into server side template
+     * Set special element variables
+     * */
+    var appView = new Tracuse.views.App();
     Tracuse.el.app = document.querySelector("#app");
-    Tracuse.el.app.innerHTML = renderedApp;
+    Tracuse.el.app.innerHTML = appView.render().el.innerHTML;
     Tracuse.el.viewuses = document.querySelector("#viewuses");
 };
 
@@ -56,6 +58,7 @@ Tracuse.init.initApp = function initApp() {
     "use strict";
     Tracuse.init.fetchData();
     Tracuse.init.loadTemplates();
+    Tracuse.init.renderApp();
     Tracuse.init.attachGlobalEvents();
     Tracuse.init.ajaxSetup();
     Tracuse.init.firstViewuse();
