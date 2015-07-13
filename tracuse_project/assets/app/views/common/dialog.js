@@ -47,7 +47,7 @@ Tracuse.views.DialogMenu = Backbone.View.extend({
             $el.animate({"width": "8em"}, 200);
             $span.effect("slide", {direction: "left"}, 200);
         } else {
-            $el.animate({"width": "auto"}, 200);
+            $el.animate({"width": "2em"}, 200);
             $span.hide("slide", {direction: "left"}, 200);
         }
     }
