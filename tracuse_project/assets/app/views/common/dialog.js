@@ -41,13 +41,14 @@ Tracuse.views.DialogMenu = Backbone.View.extend({
 
     toggleButton: function toggleButton(el, option) {
         "use strict";
-        var span = el.querySelector("span");
+        var $el = $(el);
+        var $span = $el.find("span");
         if (option) {
-            $(el).addClass("hover", 200);
-            $(span).effect("slide", {direction: "left"}, 200);
+            $el.addClass("hover", 200);
+            $span.effect("slide", {direction: "left"}, 200);
         } else {
-            $(el).removeClass("hover", 200);
-            $(span).hide("slide", {direction: "left"}, 200);
+            $el.removeClass("hover", 200);
+            $span.hide("slide", {direction: "left"}, 200);
         }
     }
 
