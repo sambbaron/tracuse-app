@@ -19,13 +19,16 @@
     padding: 0;
 }
 
-.dialog-menu {
+.dialog-dock {
     position: fixed;
     top: 4rem;
     left: 0;
     height: 100%;
-    width: 5em;
     box-shadow: 0 2px 1px #808080;
+}
+
+.dialog-menu {
+    width: 5em;
 }
 
 .dialog-menu button {
