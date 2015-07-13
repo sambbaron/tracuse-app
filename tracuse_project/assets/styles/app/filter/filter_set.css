@@ -7,6 +7,10 @@
     text-align: left;
 }
 
+.filter-set .groups {
+    max-width: 8em;
+}
+
 .filter-set .types {
     width: 22em;
 }
