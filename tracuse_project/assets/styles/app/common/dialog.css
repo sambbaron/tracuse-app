@@ -34,7 +34,7 @@
 }
 
 .dialog-menu button.hover {
-    width: 8em;
+    width: 9em;
 }
 
 .dialog-menu button * {
@@ -44,8 +44,8 @@
 .dialog-menu button span {
     display: none;
     position: absolute;
-    width: 6em;
     text-align: center;
+    white-space: nowrap;
 }
 
 .dialog-options > .main {
