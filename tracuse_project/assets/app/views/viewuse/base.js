@@ -10,7 +10,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             ev.stopPropagation();
         },
         "click button[name='viewuse-menu']": function clickMenu(ev) {
-            this.showMenu();
+            Tracuse.views.app.menuView.showHide();
             ev.stopPropagation();
         },
         "click button[name='viewuse-close']": function closeViewuse(ev) {
@@ -119,9 +119,13 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
     setActive: function setActive() {
         "use strict";
-        /* Set active viewuse - 'active' class */
+        /* Set active viewuse
+         * 'Active' class
+         * Set viewuse on ViewuseMenu
+         * */
         $(".viewuse").removeClass("active");
         this.$el.addClass("active");
+        Tracuse.views.app.menuView.viewuseView = this;
     },
 
     renderDatums: function renderDatums(callback) {
@@ -150,14 +154,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
 
             callback(datumsView)
         });
-    },
-
-    showMenu: function showMenu() {
-        "use strict";
-        /* Show ViewuseMenu and set active viewuse */
-        var menuView = Tracuse.views.app.menuView;
-        menuView.showHide();
-        menuView.viewuseView = this;
     },
 
     addViewuse: function addViewuse() {
