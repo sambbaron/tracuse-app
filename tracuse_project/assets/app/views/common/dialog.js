@@ -1,6 +1,7 @@
 Tracuse.views.DialogMenu = Backbone.View.extend({
 
-    tagName: "none",
+    tagName: "nav",
+    className: "dialog-menu",
     buttonEffectsClass: "",
 
     events: {
