@@ -24,6 +24,8 @@
     top: 4rem;
     left: 0;
     height: 100%;
+    width: 5em;
+    border: 1px solid transparent;
     box-shadow: 0 2px 1px #808080;
 }
 
@@ -35,6 +37,8 @@
 
 .dialog-menu button.hover {
     width: 9em;
+    border: 1px solid;
+    box-shadow: 1px 2px 1px #808080;
 }
 
 .dialog-menu button * {
@@ -44,8 +48,9 @@
 .dialog-menu button span {
     display: none;
     position: absolute;
-    text-align: center;
+    text-align: left;
     white-space: nowrap;
+    margin-left: 1em;
 }
 
 .dialog-options > .main {
