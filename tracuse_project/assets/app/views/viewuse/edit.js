@@ -57,7 +57,8 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
 
         // Set FilterSet view
         editView.filterView = new Tracuse.views.FilterSet({
-            model: editView.model.get("viewuse_filter")
+            model: editView.model.get("viewuse_filter"),
+            parentView: editView
         });
         var filterEl = editView.el.querySelector(".viewuse-filter");
         filterEl.appendChild(editView.filterView.el);
