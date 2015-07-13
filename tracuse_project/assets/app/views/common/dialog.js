@@ -22,7 +22,11 @@ Tracuse.views.DialogMenu = Backbone.View.extend({
         "use strict";
         var menuView = this;
 
-        menuView.el = options.el || menuView.render().el;
+        if (options.el) {
+            menuView.setElement(options.el);
+        } else {
+            menuView.setElement(menuView.render().el);
+        }
         menuView.buttonEffectsClass = options.buttonEffectsClass || menuView.buttonEffectsClass;
 
         // Set button styling using class

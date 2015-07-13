@@ -1,13 +1,31 @@
-Tracuse.views.ViewuseMenu = Backbone.View.extend({
+Tracuse.views.ViewuseMenu = Tracuse.views.DialogMenu.extend({
 
     tagName: "nav",
-    className: "dialog dialog-embed dialog-menu color-lightblue-white viewuse-menu",
+    className: "dialog dialog-menu color-lightblue-white viewuse-menu",
     templateName: "viewuse/menu.html",
     buttonEffectsClass: "effects-white-lightblue",
 
     events: {
         "click button[name='menu-hide']": function (ev) {
             this.showHide();
+            ev.stopPropagation();
+        },
+        "click button[name='viewuse-add']": function addViewuse(ev) {
+            this.viewuseView.addViewuse();
+            ev.stopPropagation();
+        },
+        "click button[name='viewuse-edit']": function editViewuse(ev) {
+            this.viewuseView.editViewuse();
+            this.showHide();
+            ev.stopPropagation();
+        },
+        "click button[name='filter-edit']": function openFilter(ev) {
+            this.viewuseView.openFilter();
+            this.showHide();
+            ev.stopPropagation();
+        },
+        "click button[name='viewuse-close']": function closeViewuse(ev) {
+            this.viewuseView.closeViewuse();
             ev.stopPropagation();
         }
     },
@@ -36,24 +54,16 @@ Tracuse.views.ViewuseMenu = Backbone.View.extend({
     initialize: function initialize(options) {
         "use strict";
         var menuView = this;
-
+        _.extend(menuView.events, Tracuse.views.DialogMenu.prototype.events);
         menuView.render();
-
-        // Set DialogMenu view
-        menuView = new Tracuse.views.DialogMenu({
-            el: menuView.el,
-            buttonEffectsClass: menuView.buttonEffectsClass
-        });
-
-        menuView.viewuseView = options.viewuseView;
-        menuView.viewuseView.el.appendChild(menuView.el);
-
+        menuView.viewuseView = options.viewuseView || null;
+        menuView = Tracuse.views.DialogMenu.prototype.initialize.call(menuView, {});
         return menuView;
     },
 
     showHide: function showHide() {
         "use strict";
-        this.$el.toggle("slide");
+        this.$el.toggle("slide", 200);
     }
 
 });

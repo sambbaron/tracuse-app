@@ -24,6 +24,11 @@ Tracuse.views.App = Backbone.View.extend({
         "use strict";
         var appView = this;
         appView.el.innerHTML = appView.template();
+
+        // Add ViewuseMenu
+        appView.menuView = new Tracuse.views.ViewuseMenu({});
+        appView.el.appendChild(appView.menuView.el);
+
         return appView;
     }
 

@@ -10,19 +10,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             ev.stopPropagation();
         },
         "click button[name='viewuse-menu']": function clickMenu(ev) {
-            this.menuSubView.showHide();
-            ev.stopPropagation();
-        },
-        "click button[name='viewuse-add']": function addViewuse(ev) {
-            this.addViewuse();
-            ev.stopPropagation();
-        },
-        "click button[name='viewuse-edit']": function editViewuse(ev) {
-            this.editViewuse();
-            ev.stopPropagation();
-        },
-        "click button[name='filter-edit']": function openFilter(ev) {
-            this.openFilter();
+            this.showMenu();
             ev.stopPropagation();
         },
         "click button[name='viewuse-close']": function closeViewuse(ev) {
@@ -58,7 +46,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         viewuseView.el.innerHTML = viewuseView.template();
 
         // Append ViewuseMenu view
-        viewuseView.menuSubView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
+        //viewuseView.menuSubView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
 
         viewuseView.$el.resizable({
             handles: "n, e, s, w, ne, se"
@@ -164,6 +152,14 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         });
     },
 
+    showMenu: function showMenu() {
+        "use strict";
+        /* Show ViewuseMenu and set active viewuse */
+        var menuView = Tracuse.views.app.menuView;
+        menuView.showHide();
+        menuView.viewuseView = this;
+    },
+
     addViewuse: function addViewuse() {
         "use strict";
         /* Append blank viewuse*/
@@ -175,8 +171,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             model: viewuseObject,
             appendEl: appendEl
         });
-
-        viewuseView.menuSubView.showHide();
     },
 
     editViewuse: function editViewuse() {
@@ -188,8 +182,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             model: viewuseView.model,
             viewuseView: viewuseView
         });
-
-        viewuseView.menuSubView.showHide();
     },
 
     openFilter: function openFilter() {
@@ -205,8 +197,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             model: filterModel,
             parentView: viewuseView
         });
-
-        viewuseView.menuSubView.showHide();
     },
 
     saveFilter: function saveFilter() {
