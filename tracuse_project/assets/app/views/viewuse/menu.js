@@ -17,10 +17,6 @@ Tracuse.views.ViewuseMenu = Tracuse.views.DialogMenu.extend({
         "click button[name='viewuse-edit']": function editViewuse(ev) {
             this.viewuseView.editViewuse();
             ev.stopPropagation();
-        },
-        "click button[name='viewuse-close']": function closeViewuse(ev) {
-            this.viewuseView.closeViewuse();
-            ev.stopPropagation();
         }
     },
 
