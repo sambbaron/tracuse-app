@@ -39,6 +39,11 @@ Tracuse.views.DialogMenu = Backbone.View.extend({
         return menuView;
     },
 
+    showHide: function showHide() {
+        "use strict";
+        this.$el.toggle("slide", 200);
+    },
+
     toggleButton: function toggleButton(el, option) {
         "use strict";
         var $el = $(el);

@@ -57,11 +57,6 @@ Tracuse.views.ViewuseMenu = Tracuse.views.DialogMenu.extend({
         menuView.viewuseView = options.viewuseView || null;
         menuView = Tracuse.views.DialogMenu.prototype.initialize.call(menuView, {});
         return menuView;
-    },
-
-    showHide: function showHide() {
-        "use strict";
-        this.$el.toggle("slide", 200);
     }
 
 });
