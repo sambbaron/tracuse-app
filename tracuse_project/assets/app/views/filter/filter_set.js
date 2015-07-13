@@ -1,18 +1,10 @@
 Tracuse.views.FilterSet = Backbone.View.extend({
 
     tagName: "aside",
-    className: "dialog dialog-popout dialog-options filter-set",
+    className: "dialog-options filter-set",
     templateName: "filter/filter_set.html",
 
     events: {
-        "click button[name='save-filter']": function saveFilter(ev) {
-            this.parentView.saveFilter();
-            ev.stopPropagation();
-        },
-        "click button[name='cancel-filter']": function closeFilter(ev) {
-            this.closeFilter();
-            ev.stopPropagation();
-        },
         "change .associations select[name='association_groups']": function (ev) {
             this.selectAssociationGroup(ev.target);
             ev.stopPropagation();
@@ -83,18 +75,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             var ruleDiv = filterView.el.querySelector("#" + ruleModelName);
             if(ruleDiv) ruleDiv.appendChild(filterRuleFrag);
         });
-
-        Tracuse.el.viewuses.appendChild(filterView.el);
-        filterView.$el.fadeIn(200);
         return filterView;
-    },
-
-    closeFilter: function closeFilter() {
-        "use strict";
-        var filterView = this;
-        filterView.$el.fadeOut(200, function () {
-            filterView.remove();
-        });
     },
 
     showHideRuleInput: function showHideRuleInput(filterRuleModel) {

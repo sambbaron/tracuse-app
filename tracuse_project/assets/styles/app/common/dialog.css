@@ -51,6 +51,11 @@
     white-space: nowrap;
 }
 
+.dialog-options {
+    margin: 0;
+    padding: 0;
+}
+
 .dialog-options > .main {
     display: flex;
     flex-flow: row wrap;
@@ -63,8 +68,9 @@
     flex: 1 1 auto;
     position: relative;
     margin: 0;
+    padding: 0;
+    border-top: 3px solid;
     border-right: 1px solid;
-    border-bottom: 1px solid;
 }
 
 .dialog-options .title {
@@ -72,6 +78,7 @@
     margin: 0 auto;
     font-size: 150%;
     text-align: center;
+    text-shadow: 1px 1px 0 #e1e1e1;
 }
 
 .dialog-options .content {
@@ -90,11 +97,11 @@
 
 .dialog-options .input-element {
     border: 2px solid;
-    background-color: rgba(250, 250, 250, 0.5);
+    /*background-color: rgba(250, 250, 250, 0.5);*/
 }
 
-.dialog-options .input-element:focus,
-.dialog-options .input-element:hover {
-    background-color: #fafafa;
-    box-shadow: none;
-}
+/*.dialog-options .input-element:focus,*/
+/*.dialog-options .input-element:hover {*/
+    /*background-color: #fafafa;*/
+    /*box-shadow: none;*/
+/*}*/

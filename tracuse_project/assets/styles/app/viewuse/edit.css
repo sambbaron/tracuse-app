@@ -9,3 +9,17 @@
 .viewuse-edit .selections select {
     text-align: left;
 }
+
+.viewuse-edit .viewuse-filter {
+    padding: 0;
+    border-top: none;
+}
+
+.viewuse-edit .viewuse-filter .filter-set > .main {
+    font-size: 85%;
+    margin: 0;
+}
+
+.viewuse-edit .viewuse-filter .filter-set > .main > .section {
+    border-width: 1px;
+}

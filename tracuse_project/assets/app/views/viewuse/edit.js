@@ -57,15 +57,22 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         var editView = this;
         editView.el.innerHTML = editView.template();
 
-        // Set button styling using class
-        editView.$(".main button").each(function () {
-            $(this).addClass(editView.buttonEffectsClass);
-        });
-
         // Set DialogMenu view
         editView.menuView = new Tracuse.views.DialogMenu({
             el: editView.el.querySelector(".dialog-menu"),
             buttonEffectsClass: "effects-white-darkgreen"
+        });
+
+        // Set FilterSet view
+        editView.filterView = new Tracuse.views.FilterSet({
+            model: editView.model.get("viewuse_filter")
+        });
+        var filterEl = editView.el.querySelector(".viewuse-filter");
+        filterEl.appendChild(editView.filterView.el);
+
+        // Set button styling using class
+        editView.$(".main button").each(function () {
+            $(this).addClass(editView.buttonEffectsClass);
         });
 
         return editView;
