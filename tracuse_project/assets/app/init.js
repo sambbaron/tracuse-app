@@ -26,9 +26,12 @@ Tracuse.init.renderApp = function renderApp() {
     /* Render App view and insert into server side template
      * Set special element variables
      * */
-    var appView = new Tracuse.views.App();
+    var mainEl = document.querySelector("main");
+    Tracuse.views.app = new Tracuse.views.App();
+    Tracuse.views.app.render();
+    mainEl.appendChild(Tracuse.views.app.el);
+
     Tracuse.el.app = document.querySelector("#app");
-    Tracuse.el.app.innerHTML = appView.render().el.innerHTML;
     Tracuse.el.viewuses = document.querySelector("#viewuses");
 };
 

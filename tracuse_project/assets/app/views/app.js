@@ -1,10 +1,10 @@
 Tracuse.views.App = Backbone.View.extend({
 
-    tagName: "none",
+    tagName: "div",
+    id: "app",
     templateName: "app.html",
 
-    events: {
-    },
+    events: {},
 
     template: function () {
         "use strict";
