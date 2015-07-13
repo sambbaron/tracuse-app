@@ -7,51 +7,36 @@
     text-align: left;
 }
 
-.filter-set .groups {
-    max-width: 8em;
-}
-
 .filter-set .types {
-    width: 22em;
+    width: 25em;
 }
 
-.filter-set .groups-types-container {
-    position: relative;
-    height: 3.5em;
-    margin: 0;
+.filter-set .types-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: center;
+    padding: 0.25em;
     border-top: 1px dashed;
-    padding: 0;
+    text-align: left;
 }
 
-.filter-set .groups-types-container:first-child {
+.filter-set .types-container:first-child {
     border-top: none;
 }
 
-.filter-set .groups-types-container .types-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    width: 100%;
-    margin: 0;
-    padding: 0;
-
-}
-
-.filter-set .groups button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+.filter-set .types-container [name='datum_group'] {
     width: 4em;
-    margin: 0 auto;
-    font-size: 100%;
+    margin: 0;
+    border: none;
     text-align: center;
+    font-size: 115%;
+    font-weight: bold;
 }
 
-.filter-set .types button {
-    margin: 0.15em;
-    padding: 0.15em;
+.filter-set .types-container [name='FilterRuleType'] {
+    padding: 0.25em;
     font-size: 85%;
 }
 

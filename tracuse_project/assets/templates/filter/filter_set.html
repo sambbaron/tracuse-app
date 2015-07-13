@@ -4,30 +4,9 @@
         <p class="title">Filter Selections</p>
 
         <div class="content">
-            <div id="FilterRuleGroup"></div>
             <div id="FilterRuleType"></div>
             <div id="FilterRuleAssociation"></div>
             <div id="FilterRuleElement"></div>
-        </div>
-
-    </fieldset>
-
-    <fieldset class="section groups">
-        <p class="title">Groups</p>
-
-        <div class="content">
-            {% for datum_group in datum_groups %}
-                <div class="groups-types-container">
-                    <button class="add-filter input-element" name="FilterRuleGroup" value="{{ datum_group.datum_group_id }}"
-                            title="{{ datum_group.long_definition }}">
-                        {{ datum_group.readable_name }}
-                        <form>
-                            <input name="datum_group_id" data-type="integer" value="{{ datum_group.datum_group_id }}">
-                            <input name="conditional" data-type="text" value="OR">
-                        </form>
-                    </button>
-                </div>
-            {% endfor %}
         </div>
 
     </fieldset>
@@ -37,19 +16,21 @@
 
         <div class="content">
             {% for datum_group in datum_groups %}
-                <div class="groups-types-container">
-                    <div class="types-container">
-                        {% for datum_type in datum_group.datum_types %}
-                            <button class="add-filter input-element" name="FilterRuleType" value="{{ datum_type.datum_type_id }}"
-                                    title="{{ datum_type.long_definition }}">
-                                {{ datum_type.readable_name }}
-                                <form>
-                                    <input name="datum_type_id" data-type="integer" value="{{ datum_type.datum_type_id }}">
-                                    <input name="conditional" data-type="text" value="OR">
-                                </form>
-                            </button>
-                        {% endfor %}
-                    </div>
+                <div class="types-container">
+                    <button class="input-element" name="datum_group" value="{{ datum_group.datum_group_id }}"
+                            title="{{ datum_group.long_definition }}">
+                        {{ datum_group.readable_name }}
+                    </button>
+                    {% for datum_type in datum_group.datum_types %}
+                        <button class="add-filter input-element" name="FilterRuleType" value="{{ datum_type.datum_type_id }}"
+                                title="{{ datum_type.long_definition }}">
+                            {{ datum_type.readable_name }}
+                            <form>
+                                <input name="datum_type_id" data-type="integer" value="{{ datum_type.datum_type_id }}">
+                                <input name="conditional" data-type="text" value="OR">
+                            </form>
+                        </button>
+                    {% endfor %}
                 </div>
             {% endfor %}
         </div>

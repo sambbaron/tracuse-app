@@ -20,6 +20,20 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         "click .add-filter": function (ev) {
             this.addFilterRule(ev.target);
             ev.stopPropagation();
+        },
+        "click [name='datum_group']": function (ev) {
+            "use strict";
+            this.selectFilterGroup(ev.target);
+            this.hoverFilterGroup(ev.target, false);
+            ev.stopPropagation();
+        },
+        "mouseenter [name='datum_group']": function enterGroupButton(ev) {
+            this.hoverFilterGroup(ev.target, true);
+            ev.stopPropagation();
+        },
+        "mouseleave [name='datum_group']": function exitGroupButton(ev) {
+            this.hoverFilterGroup(ev.target, false);
+            ev.stopPropagation();
         }
     },
 
@@ -73,7 +87,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             });
 
             var ruleDiv = filterView.el.querySelector("#" + ruleModelName);
-            if(ruleDiv) ruleDiv.appendChild(filterRuleFrag);
+            if (ruleDiv) ruleDiv.appendChild(filterRuleFrag);
         });
         return filterView;
     },
@@ -205,6 +219,34 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         filterView.showHideRuleInput(ruleModel);
 
         return ruleView;
+    },
+
+    selectFilterGroup: function selectFilterGroup(el) {
+        "use strict";
+        /* Apply all filter types when filter group clicked
+        * */
+        var filterTypes = el.parentNode.querySelectorAll("[name='FilterRuleType']");
+        _.each(filterTypes, function (filterType) {
+            if (filterType.style.visibility !== "hidden") {
+                filterType.click();
+            }
+        })
+    },
+
+    hoverFilterGroup: function hoverFilterGroup(el, option) {
+        "use strict";
+        /* Apply parent button effects class to parent 'types-container'
+        * Remove button effects class from group button
+        * */
+        var filterView = this;
+
+        var buttonEffectsClass = filterView.parentView.buttonEffectsClass;
+        el.classList.remove(buttonEffectsClass);
+        if (option) {
+            el.parentNode.classList.add(buttonEffectsClass);
+        } else {
+            el.parentNode.classList.remove(buttonEffectsClass);
+        }
     }
 
 });
