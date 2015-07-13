@@ -82,6 +82,7 @@
     font-size: 150%;
     text-align: center;
     text-shadow: 1px 1px 0 #e1e1e1;
+    cursor: default;
 }
 
 .dialog-options .content {
