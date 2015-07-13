@@ -1,7 +1,7 @@
 Tracuse.views.ViewuseMenu = Tracuse.views.DialogMenu.extend({
 
     tagName: "nav",
-    className: "dialog dialog-menu color-lightblue-white viewuse-menu",
+    className: "dialog dialog-embed dialog-menu color-lightblue-white viewuse-menu",
     templateName: "viewuse/menu.html",
     buttonEffectsClass: "effects-white-lightblue",
 

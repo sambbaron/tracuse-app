@@ -10,7 +10,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             ev.stopPropagation();
         },
         "click button[name='viewuse-menu']": function clickMenu(ev) {
-            Tracuse.views.app.menuView.showHide();
+            this.menuView.showHide();
             ev.stopPropagation();
         },
         "click button[name='viewuse-close']": function closeViewuse(ev) {
@@ -46,7 +46,8 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         viewuseView.el.innerHTML = viewuseView.template();
 
         // Append ViewuseMenu view
-        //viewuseView.menuSubView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
+        viewuseView.menuView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
+        viewuseView.el.appendChild(viewuseView.menuView.el);
 
         viewuseView.$el.resizable({
             handles: "n, e, s, w, ne, se"
@@ -121,11 +122,9 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         "use strict";
         /* Set active viewuse
          * 'Active' class
-         * Set viewuse on ViewuseMenu
          * */
         $(".viewuse").removeClass("active");
         this.$el.addClass("active");
-        Tracuse.views.app.menuView.viewuseView = this;
     },
 
     renderDatums: function renderDatums(callback) {
