@@ -1,10 +1,5 @@
 .viewuse-menu {
-    position: fixed;
-    top: 4rem;
-    left: 0;
-    height: 100%;
-    padding-top: 3em;
-    box-shadow: 0 2px 1px #808080;
+    padding-top: 5em;
 }
 
 .viewuse-menu button[name='menu-hide'] {

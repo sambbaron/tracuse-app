@@ -19,6 +19,14 @@
     padding: 0;
 }
 
+.dialog-menu {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    height: 100%;
+    box-shadow: 0 2px 1px #808080;
+}
+
 .dialog-menu button {
     display: block;
     font-size: 200%;
@@ -38,14 +46,6 @@
     position: absolute;
     width: 6em;
     text-align: center;
-}
-
-.dialog-options .dialog-menu {
-    position: fixed;
-    top: 4rem;
-    left: 0;
-    height: 100%;
-    box-shadow: 0 2px 1px #808080;
 }
 
 .dialog-options > .main {
