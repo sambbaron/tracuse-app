@@ -22,14 +22,6 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         "change .selections .select-viewuse": function changeSelectViewuse(ev) {
             this.selectViewuse(ev.target.value);
             ev.stopPropagation();
-        },
-        "click button[name='open-filter']": function openFilter(ev) {
-            this.openFilter();
-            ev.stopPropagation();
-        },
-        "click button[name='save-filter']": function saveFilter(ev) {
-            this.saveFilter();
-            ev.stopPropagation();
         }
     },
 
@@ -132,28 +124,6 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         var editView = this;
         editView.model = Tracuse.models.ViewuseObject.all.get(viewuseID);
         editView.render();
-    },
-
-    openFilter: function openFilter() {
-        "use strict";
-        /* Open Datum Filter Set */
-        var editView = this;
-
-        editView.filterView = new Tracuse.views.FilterSet({
-            model: editView.model.get("viewuse_filter"),
-            parentView: editView
-        });
-    },
-
-    saveFilter: function saveFilter() {
-        "use strict";
-        /* Set Viewuse Filter model using Filter Set view model */
-        var editView = this;
-
-        var filterAttributes = editView.filterView.model.toTemplate();
-        editView.model.set("viewuse_filter", filterAttributes);
-
-        editView.filterView.closeFilter();
     }
 
 });
