@@ -210,6 +210,7 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             model: ruleModel,
             filterSetView: filterView
         });
+        ruleView.el.classList.add(filterView.parentView.buttonEffectsClass);
 
         // Append filter rule to rule container
         var ruleDiv = filterView.el.querySelector("#" + ruleModelName);
