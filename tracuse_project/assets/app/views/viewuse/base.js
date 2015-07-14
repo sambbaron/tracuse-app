@@ -49,20 +49,25 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         viewuseView.menuView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
         viewuseView.el.appendChild(viewuseView.menuView.el);
 
-        viewuseView.$el.resizable({
-            handles: "n, e, s, w, ne, se"
-        });
-        // Remove inline styles from resizable handles
-        var resizeHandles = viewuseView.el.querySelectorAll(".ui-resizable-handle");
-        _.each(resizeHandles, function (resizeHandle) {
-            resizeHandle.removeAttribute("style");
-        });
+        // Add JQuery interactions if not base Viewuse
+        if (!viewuseView.foundation) {
+            viewuseView.$el.resizable({
+                handles: "n, e, s, w, ne, se"
+            });
+            // Remove inline styles from resizable handles
+            var resizeHandles = viewuseView.el.querySelectorAll(".ui-resizable-handle");
+            _.each(resizeHandles, function (resizeHandle) {
+                resizeHandle.removeAttribute("style");
+            });
 
-        viewuseView.$el.draggable({
-            handle: ".viewuse-content",
-            cursor: "move",
-            distance: 5
-        });
+            viewuseView.$el.draggable({
+                handle: ".viewuse-content",
+                cursor: "move",
+                distance: 5
+            });
+        } else {
+            viewuseView.$el.addClass("viewuse-foundation");
+        }
 
         viewuseView.setActive();
 
@@ -81,8 +86,10 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         }
 
         if (!options.appendEl) {
-            options.appendEl = Tracuse.el.viewuses;
+            options.appendEl = Tracuse.el.foundation;
         }
+
+        viewuseView.foundation = options.foundation || false;
 
         viewuseView.render(function (viewuseView) {
 
@@ -101,7 +108,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         /* Calculate next viewuse id value*/
         var newId;
         var idArray = [];
-        var viewuses = Tracuse.el.viewuses.querySelectorAll(".viewuse");
+        var viewuses = Tracuse.el.app.querySelectorAll(".viewuse");
 
         for (var i = 0; i < viewuses.length; i++) {
             var viewuseId = viewuses[i].getAttribute("id");

@@ -32,7 +32,6 @@ Tracuse.init.renderApp = function renderApp() {
     mainEl.appendChild(Tracuse.views.app.el);
 
     Tracuse.el.app = document.querySelector("#app");
-    Tracuse.el.viewuses = document.querySelector("#viewuses");
 };
 
 Tracuse.init.ajaxSetup = function ajaxSetup() {
@@ -54,7 +53,12 @@ Tracuse.init.firstViewuse = function firstViewuse() {
      ***Change to user saved prior session
      */
     var viewuseObject = Tracuse.models.ViewuseObject.all.first();
-    new Tracuse.views.ViewuseBase({model: viewuseObject});
+    new Tracuse.views.ViewuseBase({
+        model: viewuseObject,
+        foundation: true,
+        appendEl: Tracuse.el.app
+    });
+    Tracuse.el.foundation = document.querySelector(".viewuse-foundation");
 };
 
 Tracuse.init.initApp = function initApp() {
