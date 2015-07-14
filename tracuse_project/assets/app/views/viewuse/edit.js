@@ -55,9 +55,9 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
             buttonEffectsClass: "effects-white-darkgreen"
         });
 
-        // Set FilterSet view
+        // Set FilterSet view using model clone
         editView.filterView = new Tracuse.views.FilterSet({
-            model: editView.model.get("viewuse_filter"),
+            model: new Tracuse.models.FilterSet(editView.model.get("viewuse_filter").toJSON()),
             parentView: editView
         });
         var filterEl = editView.el.querySelector(".viewuse-filter");
@@ -108,9 +108,14 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
 
         var formEl = editView.el.querySelector("#viewuse-form");
         var formData = Tracuse.utils.serializeForm(formEl);
+
+        // Save filter from FilterSet model clone
+        editView.model.set({
+            "viewuse_filter": editView.filterView.model.toJSON()
+        });
+
         editView.model.save(formData, {
             success: function () {
-
             }
         });
     },
