@@ -16,6 +16,10 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
             this.copyViewuse();
             ev.stopPropagation();
         },
+        "click button[name='delete-viewuse']": function deleteViewuse(ev) {
+            this.deleteViewuse();
+            ev.stopPropagation();
+        },
         "click button[name='undo-changes']": function revertViewuse(ev) {
             this.render();
             ev.stopPropagation();
@@ -130,9 +134,28 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         return newViewuse;
     },
 
+    deleteViewuse: function deleteViewuse() {
+        "use strict";
+        /* Delete Viewuse and submit DELETE call
+         * */
+        var editView = this;
+
+        editView.model.destroy();
+
+        // Set view model to first Viewuse in select list
+        var selectEl = editView.el.querySelector(".select-viewuse");
+        var firstViewuse = Tracuse.models.ViewuseObject.all.get(selectEl[0].value);
+        editView.model = firstViewuse;
+
+        editView.render();
+
+        return editView;
+    },
+
     saveViewuse: function saveViewuse() {
         "use strict";
-        /* Save Viewuse and render datums */
+        /* Save Viewuse and submit PUT call
+         * */
         var editView = this;
 
         var formEl = editView.el.querySelector("#viewuse-form");
