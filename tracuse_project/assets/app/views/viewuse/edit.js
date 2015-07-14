@@ -10,6 +10,10 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
             this.newViewuse();
             ev.stopPropagation();
         },
+        "click button[name='copy-viewuse']": function copyViewuse(ev) {
+            this.copyViewuse();
+            ev.stopPropagation();
+        },
         "click button[name='undo-changes']": function revertViewuse(ev) {
             this.render();
             ev.stopPropagation();
@@ -103,6 +107,25 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
 
         editView.model = new Tracuse.models.ViewuseObject();
         editView.render();
+    },
+
+    copyViewuse: function copyViewuse() {
+        "use strict";
+        /* Copy Viewuse into new model and select */
+        var editView = this;
+        var viewuseTitle = editView.model.get("title") + " Copy";
+
+        var newViewuse = editView.model.clone();
+        Tracuse.models.ViewuseObject.all.add(newViewuse);
+        newViewuse.save({
+            title: viewuseTitle,
+            viewuse_filter: editView.model.get("viewuse_filter")
+        });
+
+        editView.model = newViewuse;
+        editView.render();
+
+        return newViewuse;
     },
 
     saveViewuse: function saveViewuse() {
