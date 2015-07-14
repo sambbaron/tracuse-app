@@ -10,6 +10,10 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
             this.newViewuse();
             ev.stopPropagation();
         },
+        "click button[name='undo-changes']": function revertViewuse(ev) {
+            this.render();
+            ev.stopPropagation();
+        },
         "click button[name='save-viewuse']": function saveViewuse(ev) {
             this.saveViewuse();
             ev.stopPropagation();
