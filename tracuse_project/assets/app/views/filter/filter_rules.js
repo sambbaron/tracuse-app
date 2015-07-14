@@ -19,7 +19,7 @@ Tracuse.views.FilterRule = Backbone.View.extend({
             rule_type: filterRuleView.model.rule_type,
             rule_title: filterRuleView.model.title(),
             rule_key: filterRuleView.model.key(),
-            this_rule: filterRuleView.model.toTemplate()
+            this_rule: filterRuleView.model.toJSON()
         };
         templateOutput = Tracuse.templates.env.render(
             filterRuleView.templateName,
@@ -39,26 +39,23 @@ Tracuse.views.FilterRule = Backbone.View.extend({
     initialize: function initialize(options) {
         "use strict";
         this.filterSetView = options.filterSetView;
+        this.ruleModelName = options.ruleModelName;
         this.render();
         this.setElement(this.el.querySelector("button"));
     },
 
     removeFilterRule: function removeFilterRule() {
         "use strict";
-        /* Delete filter rule model from filter set
-        * Remove filter rule view
-        * Show filter rule input element (groups and types)
-        * */
+        /* Remove FilterRule view
+         * Remove FilterRule model from FilterSet model
+         * */
         var filterRuleView = this;
-
-        var filterSetCollection = filterRuleView.model.collection;
-
-        filterSetCollection.remove(filterRuleView.model);
+        filterRuleView.filterSetView.removeFilterRule(
+            filterRuleView.ruleModelName,
+            filterRuleView.model
+        );
         filterRuleView.remove();
-        filterRuleView.filterSetView.showHideRuleInput(filterRuleView.model);
-
         return filterRuleView;
-
     }
 
 });

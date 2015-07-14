@@ -78,7 +78,8 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             filterRuleCollection.each(function (filterRule) {
                 var filterRuleView = new Tracuse.views.FilterRule({
                     model: filterRule,
-                    filterSetView: filterView
+                    filterSetView: filterView,
+                    ruleModelName: ruleModelName
                 });
                 filterRuleFrag.appendChild(filterRuleView.el);
 
@@ -208,7 +209,8 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         // Create filter rule view
         var ruleView = new FilterRuleView({
             model: ruleModel,
-            filterSetView: filterView
+            filterSetView: filterView,
+            ruleModelName: ruleModelName
         });
         ruleView.el.classList.add(filterView.parentView.buttonEffectsClass);
 
@@ -220,6 +222,15 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         filterView.showHideRuleInput(ruleModel);
 
         return ruleView;
+    },
+
+    removeFilterRule: function removeFilterRule(ruleModelName, ruleModel) {
+        "use strict";
+        /* Remove FilterRule model from FilterSet model clone
+         *  Show FilterRuleType button
+         * */
+        this.model.get(ruleModelName).remove(ruleModel);
+        this.showHideRuleInput(ruleModel);
     },
 
     selectFilterGroup: function selectFilterGroup(el) {
@@ -237,8 +248,8 @@ Tracuse.views.FilterSet = Backbone.View.extend({
     hoverFilterGroup: function hoverFilterGroup(el, option) {
         "use strict";
         /* Apply parent button effects class to parent 'types-container'
-        * Remove button effects class from group button
-        * */
+         * Remove button effects class from group button
+         * */
         var filterView = this;
 
         var buttonEffectsClass = filterView.parentView.buttonEffectsClass;
