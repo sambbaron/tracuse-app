@@ -168,7 +168,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var viewuseView = this;
 
         var viewuseObject = new Tracuse.models.ViewuseObject();
-        var appendEl = viewuseView.el.querySelector(".viewuse-content .datums");
+        var appendEl = viewuseView.el.querySelector(".viewuse-content");
         new Tracuse.views.ViewuseBase({
             model: viewuseObject,
             appendEl: appendEl
