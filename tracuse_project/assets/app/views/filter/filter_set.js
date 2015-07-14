@@ -81,6 +81,10 @@ Tracuse.views.FilterSet = Backbone.View.extend({
                     filterSetView: filterView,
                     ruleModelName: ruleModelName
                 });
+
+                // Add format classes to selected FilterRule element
+                filterView.formatFilterRule(filterRuleView.el);
+
                 filterRuleFrag.appendChild(filterRuleView.el);
 
                 // Hide group and type elements that have been selected
@@ -212,7 +216,9 @@ Tracuse.views.FilterSet = Backbone.View.extend({
             filterSetView: filterView,
             ruleModelName: ruleModelName
         });
-        ruleView.el.classList.add(filterView.parentView.buttonEffectsClass);
+
+        // Add format classes to selected FilterRule element
+        filterView.formatFilterRule(ruleView.el);
 
         // Append filter rule to rule container
         var ruleDiv = filterView.el.querySelector("#" + ruleModelName);
@@ -233,10 +239,22 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         this.showHideRuleInput(ruleModel);
     },
 
+    formatFilterRule: function formatFilterRule(el) {
+        "use strict";
+        /* Add format classes to filter rule element
+         * Use parent view
+         * */
+        var parentView = this.parentView;
+        if (parentView) {
+            el.classList.add(parentView.ruleColorClass);
+            el.classList.add(parentView.ruleEffectsClass);
+        }
+    },
+
     selectFilterGroup: function selectFilterGroup(el) {
         "use strict";
         /* Apply all filter types when filter group clicked
-        * */
+         * */
         var filterTypes = el.parentNode.querySelectorAll("[name='FilterRuleType']");
         _.each(filterTypes, function (filterType) {
             if (filterType.style.visibility !== "hidden") {

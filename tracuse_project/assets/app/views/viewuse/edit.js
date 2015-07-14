@@ -4,6 +4,8 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
     className: "dialog dialog-popout dialog-options color-white-darkgreen viewuse-edit",
     templateName: "viewuse/edit.html",
     buttonEffectsClass: "effects-darkgreen-white",
+    ruleColorClass: "color-darkgreen-white",
+    ruleEffectsClass: "effects-white-darkgreen",
 
     events: {
         "click button[name='new-viewuse']": function newViewuse(ev) {
@@ -72,7 +74,7 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         filterEl.appendChild(editView.filterView.el);
 
         // Set button styling using class
-        editView.$(".main button").each(function () {
+        editView.$(".main button:not(.selected-rule)").each(function () {
             $(this).addClass(editView.buttonEffectsClass);
         });
 
