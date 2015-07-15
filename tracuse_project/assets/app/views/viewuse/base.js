@@ -72,6 +72,7 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         viewuseView.setActive();
 
         viewuseView.renderDatums(function (datumsView) {
+            viewuseView.renderNestedViewuses();
             callback(viewuseView);
         });
     },
@@ -147,6 +148,39 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         });
     },
 
+    renderNestedViewuses: function renderNestedViewuses() {
+        "use strict";
+        /* Render nested Viewuses relative to Datums
+         * */
+        var viewuseView = this;
+        _.each(viewuseView.model.get("viewuse_nested").models, function (nestedViewuseModel) {
+            var newViewuseModel = Tracuse.models.ViewuseObject.all.get(nestedViewuseModel.get("nested_viewuse_id"));
+            if (newViewuseModel) {
+                viewuseView.addNestedViewuse(newViewuseModel, nestedViewuseModel.get("order"));
+            }
+        });
+    },
+
+    addNestedViewuse: function addNestedViewuse(nestedViewuseModel, placementOrder) {
+        "use strict";
+        /* Add Viewuse into DOM
+         * Use parent Viewuse
+         * placementOrder (integer): relative to Datums
+         * */
+        var viewuseView = this;
+
+        var nestedViewuseView = new Tracuse.views.ViewuseBase({
+            model: nestedViewuseModel,
+            parentView: viewuseView
+        });
+        nestedViewuseView.render(function (newView) {
+            var contentEl = viewuseView.el.querySelector(".viewuse-content");
+            var datumsEl = viewuseView.el.querySelector(".datums");
+            contentEl.insertBefore(newView.el, datumsEl);
+            newView.showViewuse();
+        });
+    },
+
     showViewuse: function showViewuse() {
         "use strict";
         this.$el.fadeIn(200);
@@ -157,22 +191,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         var viewuseView = this;
         viewuseView.$el.fadeOut(200, function () {
             viewuseView.remove();
-        });
-    },
-
-    addViewuse: function addViewuse(placementOrder) {
-        "use strict";
-        /* Add Viewuse into DOM
-         * parentViewuse (Viewuse view)
-         * placement (integer): relative to Datums
-         * */
-        var viewuseView = this;
-
-        var viewuseObject = new Tracuse.models.ViewuseObject();
-        var appendEl = viewuseView.el.querySelector(".viewuse-content");
-        new Tracuse.views.ViewuseBase({
-            model: viewuseObject,
-            appendEl: appendEl
         });
     },
 
