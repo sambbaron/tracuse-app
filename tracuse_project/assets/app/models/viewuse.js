@@ -33,6 +33,13 @@ Tracuse.models.ViewuseObject =
                 relatedModel: "Tracuse.models.FilterSet",
                 includeInJSON: true,
                 includeInTemplate: true
+            },
+            {
+                type: Backbone.HasMany,
+                key: "viewuse_nested",
+                relatedModel: "Tracuse.models.ViewuseNested",
+                includeInJSON: false,
+                includeInTemplate: true
             }
         ]
     });
@@ -42,3 +49,6 @@ Tracuse.models.ViewuseArrangement =
 
 Tracuse.models.ViewuseDatum =
     Tracuse.models.ModelFactory("viewuse_datum", "viewuse_datum_id");
+
+Tracuse.models.ViewuseNested =
+    Tracuse.models.ModelFactory("viewuse_nested", "viewuse_nested_id");
