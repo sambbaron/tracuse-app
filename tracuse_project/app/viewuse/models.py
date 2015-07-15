@@ -122,12 +122,12 @@ class ViewuseNested(BaseModel):
     viewuse_nested_id = models.AutoField(primary_key=True)
     parent_viewuse = models.ForeignKey("viewuse.ViewuseObject",
                                        db_column="parent_viewuse_id",
-                                       related_name="parent_viewuses",
+                                       related_name="nested_viewuses",
                                        null=False, blank=False
                                        )
     nested_viewuse = models.ForeignKey("viewuse.ViewuseObject",
                                        db_column="nested_viewuse_id",
-                                       related_name="nested_viewuses",
+                                       related_name="parent_viewuses",
                                        null=False, blank=False
                                        )
     order = models.IntegerField(default=1,

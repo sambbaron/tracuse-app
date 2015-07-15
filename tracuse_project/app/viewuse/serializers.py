@@ -2,7 +2,8 @@ import json
 
 from .models import (ViewuseObject,
                      ViewuseArrangement,
-                     ViewuseDatum)
+                     ViewuseDatum,
+                     ViewuseNested)
 from app.utils.serializer import Serializer
 
 
@@ -19,6 +20,7 @@ class ViewuseObjectSerializer(Serializer):
         output = self.serial_default()
         output.append(("viewuse_arrangement", self.obj.viewuse_arrangement_id))
         output.append(("viewuse_datum", self.obj.viewuse_datum_id))
+        output.append(("viewuse_nested", [viewuse_nested.viewuse_nested_id for viewuse_nested in self.obj.nested_viewuses.all()]))
         return output
 
     def serial_update(self):
@@ -36,3 +38,6 @@ class ViewuseArrangementSerializer(Serializer):
 
 class ViewuseDatumSerializer(Serializer):
     model = ViewuseDatum
+
+class ViewuseNestedSerializer(Serializer):
+    model = ViewuseNested
