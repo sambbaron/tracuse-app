@@ -84,23 +84,8 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             viewuseView.id = viewuseView.nextId();
             viewuseView.el.id = viewuseView.id;
         }
-
-        if (!options.appendEl) {
-            options.appendEl = Tracuse.el.foundation;
-        }
-
+        viewuseView.parentView = options.parentView || null;
         viewuseView.foundation = options.foundation || false;
-
-        viewuseView.render(function (viewuseView) {
-
-            // Append Viewuse to 'appendEl'
-            options.appendEl.appendChild(viewuseView.el);
-            viewuseView.$el.fadeIn(200, function () {
-                viewuseView.el.style.display = "inline-block";
-            });
-
-        });
-
     },
 
     nextId: function nextId() {
@@ -162,9 +147,25 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         });
     },
 
-    addViewuse: function addViewuse() {
+    showViewuse: function showViewuse() {
         "use strict";
-        /* Append blank viewuse*/
+        this.$el.fadeIn(200);
+    },
+
+    closeViewuse: function closeViewuse() {
+        "use strict";
+        var viewuseView = this;
+        viewuseView.$el.fadeOut(200, function () {
+            viewuseView.remove();
+        });
+    },
+
+    addViewuse: function addViewuse(placementOrder) {
+        "use strict";
+        /* Add Viewuse into DOM
+         * parentViewuse (Viewuse view)
+         * placement (integer): relative to Datums
+         * */
         var viewuseView = this;
 
         var viewuseObject = new Tracuse.models.ViewuseObject();
@@ -215,15 +216,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
                     });
                 }
             });
-    },
-
-    closeViewuse: function closeViewuse() {
-        "use strict";
-        var viewuseView = this;
-
-        viewuseView.$el.fadeOut(200, function () {
-            viewuseView.remove();
-        });
     },
 
     scrollPositionElements: function scrollPositionElements(el) {
