@@ -97,3 +97,51 @@ class ViewuseDatum(EntityModel):
 
 class ViewuseFormatting():
     pass
+
+
+class ViewuseNested(BaseModel):
+    """Viewuses spatially nested within Viewuses
+
+    Attributes:
+        See BaseModel
+        parent_viewuse_id (integer, pk, fk): ViewuseObject
+        nested_viewuse_id (integer, pk, fk): ViewuseObject
+        order (integer): relative to parent Datum content
+            used for positioning
+            example: -1 -> before datums
+                      1 -> after datums
+        height (string): CSS height
+        width (string): CSS width
+    """
+
+    class Meta(EntityModel.Meta):
+        db_table = "viewuse_nested"
+        verbose_name = "Nested Viewuse"
+        verbose_name_plural = "Nested Viewuses"
+
+    viewuse_nested_id = models.AutoField(primary_key=True)
+    parent_viewuse = models.ForeignKey("viewuse.ViewuseObject",
+                                       db_column="parent_viewuse_id",
+                                       related_name="parent_viewuses",
+                                       null=False, blank=False
+                                       )
+    nested_viewuse = models.ForeignKey("viewuse.ViewuseObject",
+                                       db_column="nested_viewuse_id",
+                                       related_name="nested_viewuses",
+                                       null=False, blank=False
+                                       )
+    order = models.IntegerField(default=1,
+                                null=False, blank=False
+                                )
+    height = models.CharField(max_length=4, default="auto",
+                              null=False, blank=False
+                              )
+    width = models.CharField(max_length=4, default="auto",
+                             null=False, blank=False
+                             )
+
+    def __str__(self):
+        return "{} -> {}".format(
+            self.parent_viewuse.__str__(),
+            self.nested_viewuse.__str__()
+        )
