@@ -1,4 +1,11 @@
+.datums-tile {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
 .datums-tile .datum {
-    display: inline-block;
-    vertical-align: top;
+    flex: 0 1 auto;
 }
