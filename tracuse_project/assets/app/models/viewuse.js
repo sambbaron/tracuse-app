@@ -3,7 +3,7 @@ Tracuse.models.ViewuseObject =
         defaults: function () {
             "use strict";
             return {
-                readable_name: "Empty View",
+                title: "Empty View",
                 viewuse_arrangement: Tracuse.models.ViewuseArrangement.all.first(),
                 viewuse_datum: Tracuse.models.ViewuseDatum.all.first(),
                 viewuse_filter: new Tracuse.models.FilterSet()
