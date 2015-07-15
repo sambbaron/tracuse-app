@@ -28,6 +28,8 @@ urlpatterns = [
     url(r'^viewuse_object/$', ViewuseViews.ViewuseObjectAll.as_view(), name="viewuse-object-all"),
     url(r'^viewuse_arrangement/$', ViewuseViews.ViewuseArrangementAll.as_view(), name="viewuse-arrangement-all"),
     url(r'^viewuse_datum/$', ViewuseViews.ViewuseDatumAll.as_view(), name="viewuse-datum-all"),
+    url(r'^viewuse_nested/(?P<pk>[0-9]+)/$', ViewuseViews.ViewuseNestedOne.as_view(), name="viewuse-nested-one"),
+    url(r'^viewuse_nested/$', ViewuseViews.ViewuseNestedAll.as_view(), name="viewuse-nested-all"),
 
     url(r'^filter/json/$', FilterViews.RunFilter.filter_from_json, name="filter-from-json"),
     url(r'^filter/(?P<pk>[0-9]+)/$', FilterViews.RunFilter.filter_from_set, name="filter-from-set"),
