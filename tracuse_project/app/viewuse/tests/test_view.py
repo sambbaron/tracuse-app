@@ -118,3 +118,26 @@ class TestViewuseDatumAll(TestCase):
         expected_count = 2
         self.assertEqual(response.status_code, 200)
         self.assertEqual(expected_count, response_count)
+
+
+class TestViewuseNestedAll(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataViewuse()
+
+    def setUp(self):
+        self.factory = RequestFactory()
+
+    def test_get(self):
+        """Test ViewuseNestedAll.get api"""
+        request = self.factory.get("")
+        request.user = self.test.user1
+
+        view = views.ViewuseNestedAll(request=request)
+        response = view.dispatch(request=request)
+
+        response_content = json.loads(response.content.decode())
+        response_count = len(response_content)
+        expected_count = 1
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(expected_count, response_count)
