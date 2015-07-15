@@ -48,6 +48,7 @@ class ViewuseNestedAll(LoginRequiredMixin, ViewAll):
     model = ViewuseNested
     queryset = ViewuseNested.actives.all()
     serializer_class = ViewuseNestedSerializer
+    serializer_template = "serial_related"
 
 
 class ViewuseNestedOne(LoginRequiredMixin, ViewOne):

@@ -80,3 +80,13 @@ class TestViewuseNestedSerializer(TestCase):
         actual = test_serialized["parent_viewuse_id"]
         expected = self.test.viewuse_object1.viewuse_object_id
         self.assertEqual(expected, actual)
+
+    def test_serial_related(self):
+        """Test ViewuseNestedSerializer.serial_related
+        """
+        test_object = self.test.viewuse_nested1
+        test_serialized = ViewuseNestedSerializer\
+            ("serial_related").serialize(test_object)
+        actual = test_serialized["nested_title"]
+        expected = self.test.viewuse_object2.title
+        self.assertEqual(expected, actual)

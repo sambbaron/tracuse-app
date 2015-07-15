@@ -41,3 +41,8 @@ class ViewuseDatumSerializer(Serializer):
 
 class ViewuseNestedSerializer(Serializer):
     model = ViewuseNested
+
+    def serial_related(self):
+        output =  self.serial_default()
+        output.append(("nested_title", self.obj.nested_viewuse.title))
+        return output
