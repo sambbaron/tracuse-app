@@ -187,37 +187,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         });
     },
 
-    openFilter: function openFilter() {
-        "use strict";
-        /* Open Datum Filter Set */
-        var viewuseView = this;
-
-        // Use cloned filter model to avoid live changes
-        var origModel = viewuseView.model.get("viewuse_filter");
-        var filterModel = new Tracuse.models.FilterSet(origModel.toJSON());
-
-        viewuseView.filterView = new Tracuse.views.FilterSet({
-            model: filterModel,
-            parentView: viewuseView
-        });
-    },
-
-    saveFilter: function saveFilter() {
-        "use strict";
-        /* Set Viewuse Filter model using Filter Set view model */
-        var viewuseView = this;
-
-        var filterData = viewuseView.filterView.model.toJSON();
-        viewuseView.model.save({viewuse_filter: filterData},
-            {
-                success: function () {
-                    viewuseView.filterView.closeFilter();
-                    viewuseView.renderDatums(function () {
-                    });
-                }
-            });
-    },
-
     scrollPositionElements: function scrollPositionElements(el) {
         "use strict";
         /* Move elements with scroll
