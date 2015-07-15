@@ -35,3 +35,9 @@ class TestDataViewuse(object):
                                           viewuse_datum=self.viewuse_datum1,
                                           viewuse_filter='{"TestFilter2": "TestFilter2"}',
                                           )
+
+        # Nested Viewuses
+        self.viewuse_nested1 = mommy.make("viewuse.ViewuseNested",
+                                          parent_viewuse=self.viewuse_object1,
+                                          nested_viewuse=self.viewuse_object2
+                                          )

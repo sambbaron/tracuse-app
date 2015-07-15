@@ -4,7 +4,8 @@ from .test_data import TestDataViewuse
 
 from ..serializers import (ViewuseObjectSerializer,
                            ViewuseArrangementSerializer,
-                           ViewuseDatumSerializer)
+                           ViewuseDatumSerializer,
+                           ViewuseNestedSerializer)
 
 
 class TestViewuseObjectSerializer(TestCase):
@@ -62,4 +63,20 @@ class TestViewuseDatumSerializer(TestCase):
             ("serial_default").serialize(test_object)
         actual = test_serialized["entity_name"]
         expected = "Datum1"
+        self.assertEqual(expected, actual)
+
+
+class TestViewuseNestedSerializer(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.test = TestDataViewuse()
+
+    def test_serial_default(self):
+        """Test ViewuseNestedSerializer.serial_default
+        """
+        test_object = self.test.viewuse_nested1
+        test_serialized = ViewuseNestedSerializer\
+            ("serial_default").serialize(test_object)
+        actual = test_serialized["parent_viewuse_id"]
+        expected = self.test.viewuse_object1.viewuse_object_id
         self.assertEqual(expected, actual)
