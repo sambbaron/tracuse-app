@@ -67,3 +67,7 @@ a {
 textarea {
     resize: none;
 }
+
+img {
+    background-color: initial;
+}
