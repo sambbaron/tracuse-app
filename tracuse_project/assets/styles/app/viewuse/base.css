@@ -4,13 +4,12 @@
     position: relative;
     min-height: 8em;
     min-width: 15em;
-    float: left;
-    margin: 2em;
-    border: 1px solid #6E8BD9;
+    margin: 1em;
+    border-width: 1px;
+    border-style: solid;
     border-radius: 0.5em;
     padding: 1em;
     overflow: auto;
-    background-color: #fafafa;
     box-shadow: 2px 2px 1px #ddd;
 }
 
