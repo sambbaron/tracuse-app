@@ -23,10 +23,11 @@ fieldset, input, select, textarea, button {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    background-color: unset;
     box-shadow: none;
     box-sizing: border-box;
+    background-color: inherit;
     color: inherit;
+    border-color: inherit;
 }
 
 /* HTML5 display-role reset for older browsers */
