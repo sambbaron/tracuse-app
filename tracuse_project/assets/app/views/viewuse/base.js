@@ -1,7 +1,7 @@
 Tracuse.views.ViewuseBase = Backbone.View.extend({
 
     tagName: "section",
-    className: "viewuse color-white-darkblue",
+    className: "viewuse color-white-darkblue effects-lightblue",
     templateName: "viewuse/base.html",
 
     events: {
