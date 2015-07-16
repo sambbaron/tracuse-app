@@ -50,6 +50,9 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         viewuseView.el.appendChild(viewuseView.menuView.el);
 
         // Add JQuery interactions if not base Viewuse
+        viewuseView.$(".viewuse-content").sortable({
+            tolerance: "pointer"
+        });
         if (!viewuseView.foundation) {
             viewuseView.$el.resizable({
                 handles: "n, e, s, w, ne, se"
@@ -60,11 +63,11 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
                 resizeHandle.removeAttribute("style");
             });
 
-            viewuseView.$el.draggable({
-                handle: ".viewuse-content",
-                cursor: "move",
-                distance: 5
-            });
+            //viewuseView.$el.draggable({
+            //    handle: ".viewuse-content",
+            //    cursor: "move",
+            //    distance: 5
+            //});
         } else {
             viewuseView.$el.addClass("viewuse-foundation");
         }
