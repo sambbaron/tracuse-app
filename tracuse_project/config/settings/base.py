@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'app.filter',
     'app.watchword',
     'app.viewuse',
+    'app.windowuse',
 )
 
 MIDDLEWARE_CLASSES = (
