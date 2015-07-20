@@ -11,11 +11,13 @@ class TestDataWindowuse(object):
         # Windowuse Objects
         self.windowuse_object1 = mommy.make("windowuse.WindowuseObject",
                                             title="Windowuse 1 Title",
-                                            user=self.user1
+                                            user=self.user1,
+                                            datum_filter='{"TestFilter1": "TestFilter1"}'
                                             )
         self.windowuse_object2 = mommy.make("windowuse.WindowuseObject",
                                             title="Windowuse 2 Title",
-                                            user=self.user1
+                                            user=self.user1,
+                                            datum_filter='{"TestFilter1": "TestFilter1"}'
                                             )
 
         # Viewuse Objects

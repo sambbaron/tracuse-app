@@ -30,3 +30,10 @@ class WindowuseViewuseSerializer(Serializer):
         output.append(("windowuse_object", self.obj.windowuse_object_id))
         output.append(("viewuse_object", self.obj.viewuse_object_id))
         return output
+
+    def serial_update(self):
+        return [
+            "sort",
+            "windowuse_object_id",
+            "viewuse_object_id"
+        ]
