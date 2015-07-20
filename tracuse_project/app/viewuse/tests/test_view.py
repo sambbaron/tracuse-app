@@ -57,6 +57,7 @@ class TestViewuseObjectOne(TestCase):
         request_id = self.test.viewuse_object1.viewuse_object_id
         request_data = json.dumps({
             "title": "Change Viewuse Title",
+            "description": self.test.viewuse_object1.description,
             "viewuse_arrangement_id": self.test.viewuse_object1.viewuse_arrangement_id,
             "viewuse_datum_id": self.test.viewuse_object1.viewuse_datum_id,
             "datum_filter": self.test.viewuse_object1.datum_filter
