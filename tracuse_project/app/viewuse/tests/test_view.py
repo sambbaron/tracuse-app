@@ -21,8 +21,11 @@ class TestViewuseObjectAll(TestCase):
 
         view = views.ViewuseObjectAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 2
         self.assertEqual(response.status_code, 200)
@@ -45,8 +48,11 @@ class TestViewuseObjectOne(TestCase):
 
         view = views.ViewuseObjectOne(request=request)
         response = view.dispatch(request=request, pk=request_id)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_actual = response_content["title"]
         expected_actual = "Viewuse 1 Title"
         self.assertEqual(response.status_code, 200)
@@ -67,7 +73,10 @@ class TestViewuseObjectOne(TestCase):
 
         view = views.ViewuseObjectOne(request=request)
         response = view.dispatch(request=request, pk=request_id)
-        response_content = json.loads(response.content.decode())
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
         actual_response = response_content["title"]
         expected_response = "Change Viewuse Title"
@@ -90,8 +99,11 @@ class TestViewuseArrangementAll(TestCase):
 
         view = views.ViewuseArrangementAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 1
         self.assertEqual(response.status_code, 200)
@@ -113,8 +125,11 @@ class TestViewuseDatumAll(TestCase):
 
         view = views.ViewuseDatumAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 2
         self.assertEqual(response.status_code, 200)
@@ -136,8 +151,11 @@ class TestViewuseNestedAll(TestCase):
 
         view = views.ViewuseNestedAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 1
         self.assertEqual(response.status_code, 200)

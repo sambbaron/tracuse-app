@@ -21,8 +21,11 @@ class TestWindowuseObjectAll(TestCase):
 
         view = views.WindowuseObjectAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 2
         self.assertEqual(response.status_code, 200)
@@ -45,8 +48,11 @@ class TestWindowuseObjectOne(TestCase):
 
         view = views.WindowuseObjectOne(request=request)
         response = view.dispatch(request=request, pk=request_id)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_actual = response_content["title"]
         expected_actual = "Windowuse 1 Title"
         self.assertEqual(response.status_code, 200)
@@ -65,7 +71,10 @@ class TestWindowuseObjectOne(TestCase):
 
         view = views.WindowuseObjectOne(request=request)
         response = view.dispatch(request=request, pk=request_id)
-        response_content = json.loads(response.content.decode())
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
         actual_response = response_content["datum_filter"]
         expected_response = '{"TestFilter1": "Change Filter"}'
@@ -88,8 +97,11 @@ class TestWindowuseObjectAll(TestCase):
 
         view = views.WindowuseObjectAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 2
         self.assertEqual(response.status_code, 200)
@@ -112,8 +124,11 @@ class TestWindowuseViewuseOne(TestCase):
 
         view = views.WindowuseViewuseOne(request=request)
         response = view.dispatch(request=request, pk=request_id)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_actual = response_content["windowuse_object_id"]
         expected_actual = self.test.windowuse_object1.windowuse_object_id
         self.assertEqual(response.status_code, 200)
@@ -133,7 +148,10 @@ class TestWindowuseViewuseOne(TestCase):
 
         view = views.WindowuseViewuseOne(request=request)
         response = view.dispatch(request=request, pk=request_id)
-        response_content = json.loads(response.content.decode())
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
         actual_response = response_content["windowuse_object_id"]
         expected_response = self.test.windowuse_object2.windowuse_object_id

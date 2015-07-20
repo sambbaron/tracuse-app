@@ -30,8 +30,11 @@ class TestRunFilter(TestCase):
         request.user = user
 
         response = views.RunFilter.filter_from_json(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 2
         self.assertEqual(response.status_code, 200)
@@ -50,8 +53,11 @@ class TestRunFilter(TestCase):
         response = views.RunFilter.filter_from_set(request=request,
                                                    pk=request_pk
                                                    )
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 14
         self.assertEqual(response.status_code, 200)

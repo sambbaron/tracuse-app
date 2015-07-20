@@ -21,8 +21,11 @@ class TestDatumGroupAll(TestCase):
 
         view = views.DatumGroupAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 3
         self.assertEqual(response.status_code, 200)
@@ -44,8 +47,11 @@ class TestDatumTypeAll(TestCase):
 
         view = views.DatumTypeAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 3
         self.assertEqual(response.status_code, 200)
@@ -67,8 +73,11 @@ class TestDatumObjectAll(TestCase):
 
         view = views.DatumObjectAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 3
         self.assertEqual(response.status_code, 200)
@@ -89,8 +98,11 @@ class TestDatumObjectAll(TestCase):
 
         view = views.DatumObjectAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         actual_content = response_content["datum_type_id"]
         expected_content = self.test.datum_type1.datum_type_id
         self.assertEqual(response.status_code, 201)
@@ -134,8 +146,11 @@ class TestDatumObjectOne(TestCase):
 
         view = views.DatumObjectOne(request=request)
         response = view.dispatch(request=request, pk=request_id)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_actual = response_content["headline"]
         expected_actual = "Test Object Name"
         self.assertEqual(response.status_code, 200)

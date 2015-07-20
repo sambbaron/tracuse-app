@@ -21,8 +21,11 @@ class TestElementTypeAll(TestCase):
 
         view = views.ElementTypeAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 3
         self.assertEqual(response.status_code, 200)
@@ -44,8 +47,11 @@ class TestElementOperatorAll(TestCase):
 
         view = views.ElementOperatorAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 2
         self.assertEqual(response.status_code, 200)
@@ -67,8 +73,11 @@ class TestElementDatumTypeAll(TestCase):
 
         view = views.ElementDatumTypeAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 3
         self.assertEqual(response.status_code, 200)
@@ -90,8 +99,11 @@ class TestElementDatumObjectAll(TestCase):
 
         view = views.ElementDatumObjectAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 3
         self.assertEqual(response.status_code, 200)
@@ -114,8 +126,11 @@ class TestElementDatumObjectOne(TestCase):
 
         view = views.ElementDatumObjectOne(request=request)
         response = view.dispatch(request=request, pk=request_id)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_actual = response_content["element_name"]
         expected_actual = "Name"
         self.assertEqual(response.status_code, 200)
@@ -136,7 +151,10 @@ class TestElementDatumObjectOne(TestCase):
 
         view = views.ElementDatumObjectOne(request=request)
         response = view.dispatch(request=request, pk=test_pk)
-        response_content = json.loads(response.content.decode())
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
         actual_response = response_content["element_value"]
         expected_response = "Change Name"
@@ -158,8 +176,11 @@ class TestElementOptionAll(TestCase):
 
         view = views.ElementOptionAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 1
         self.assertEqual(response.status_code, 200)
@@ -180,8 +201,11 @@ class TestElementDataTypeAll(TestCase):
 
         view = views.ElementDataTypeAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 1
         self.assertEqual(response.status_code, 200)

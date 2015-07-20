@@ -27,8 +27,11 @@ class TestTracuserLandingAll(TestCase):
 
         view = views.TracuserLandingAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         actual_content = response_content["name"]
         expected_content = "TestUserPost"
         self.assertEqual(response.status_code, 201)

@@ -21,8 +21,11 @@ class TestAssociationDirectionAll(TestCase):
 
         view = views.AssociationDirectionAll(request=request)
         response = view.dispatch(request=request)
+        try:
+            response_content = json.loads(response.content.decode())
+        except:
+            raise Exception(response.content.decode())
 
-        response_content = json.loads(response.content.decode())
         response_count = len(response_content)
         expected_count = 3
         self.assertEqual(response.status_code, 200)
