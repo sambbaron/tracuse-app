@@ -44,7 +44,6 @@ INSTALLED_APPS = (
     'app.association',
     'app.filter',
     'app.watchword',
-    'app.ui',
     'app.viewuse',
     'app.windowuse',
 )
