@@ -4,12 +4,10 @@ from app.utils.view import ViewAll, ViewOne, LoginRequiredMixin
 
 from .models import (ViewuseObject,
                      ViewuseArrangement,
-                     ViewuseDatum,
-                     ViewuseNested)
+                     ViewuseDatum)
 from .serializers import (ViewuseObjectSerializer,
                           ViewuseArrangementSerializer,
-                          ViewuseDatumSerializer,
-                          ViewuseNestedSerializer)
+                          ViewuseDatumSerializer)
 
 
 class ViewuseObjectAll(LoginRequiredMixin, ViewAll):
@@ -42,15 +40,3 @@ class ViewuseDatumAll(LoginRequiredMixin, ViewAll):
     queryset = ViewuseDatum.actives.all()
     serializer_class = ViewuseDatumSerializer
     serializer_template = "serial_default"
-
-
-class ViewuseNestedAll(LoginRequiredMixin, ViewAll):
-    model = ViewuseNested
-    queryset = ViewuseNested.actives.all()
-    serializer_class = ViewuseNestedSerializer
-    serializer_template = "serial_related"
-
-
-class ViewuseNestedOne(LoginRequiredMixin, ViewOne):
-    model = ViewuseNested
-    serializer_class = ViewuseNestedSerializer

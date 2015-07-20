@@ -6,7 +6,7 @@ from app.datum.views import DatumGroupAll, DatumTypeAll
 from app.element_type.views import (ElementTypeAll, ElementDatumTypeAll,
                                     ElementOperatorAll, ElementOptionAll)
 from app.viewuse.views import (ViewuseObjectAll, ViewuseArrangementAll,
-                               ViewuseDatumAll, ViewuseNestedAll)
+                               ViewuseDatumAll)
 from app.windowuse.views import (WindowuseObjectAll, WindowuseViewuseAll)
 from app.association.views import AssociationDirectionAll
 
@@ -19,7 +19,7 @@ def app_index(request):
                        ElementTypeAll, ElementDatumTypeAll,
                        ElementOperatorAll, ElementOptionAll,
                        ViewuseObjectAll, ViewuseArrangementAll,
-                       ViewuseDatumAll, ViewuseNestedAll,
+                       ViewuseDatumAll,
                        WindowuseObjectAll, WindowuseViewuseAll,
                        AssociationDirectionAll
                        ]

@@ -29,9 +29,7 @@ urlpatterns = [
     url(r'^viewuse_object/$', ViewuseViews.ViewuseObjectAll.as_view(), name="viewuse-object-all"),
     url(r'^viewuse_arrangement/$', ViewuseViews.ViewuseArrangementAll.as_view(), name="viewuse-arrangement-all"),
     url(r'^viewuse_datum/$', ViewuseViews.ViewuseDatumAll.as_view(), name="viewuse-datum-all"),
-    url(r'^viewuse_nested/(?P<pk>[0-9]+)/$', ViewuseViews.ViewuseNestedOne.as_view(), name="viewuse-nested-one"),
-    url(r'^viewuse_nested/$', ViewuseViews.ViewuseNestedAll.as_view(), name="viewuse-nested-all"),
-    
+
     url(r'^windowuse_object/(?P<pk>[0-9]+)/$', WindowuseViews.WindowuseObjectOne.as_view(), name="windowuse-object-one"),
     url(r'^windowuse_object/$', WindowuseViews.WindowuseObjectAll.as_view(), name="windowuse-object-all"),
     url(r'^windowuse_viewuse/(?P<pk>[0-9]+)/$', WindowuseViews.WindowuseViewuseOne.as_view(), name="windowuse-viewuse-one"),
