@@ -26,11 +26,11 @@ class ViewuseObject(BaseModel):
     class Meta(EntityModel.Meta):
         db_table = "viewuse_object"
         verbose_name = "Viewuse Object"
+        default_related_name = "viewuse_objects"
 
     viewuse_object_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User,
                              db_column="user_id",
-                             related_name="viewuse_objects",
                              null=True, blank=True,
                              db_index=True
                              )
@@ -42,12 +42,10 @@ class ViewuseObject(BaseModel):
                                    )
     viewuse_arrangement = models.ForeignKey("viewuse.ViewuseArrangement",
                                             db_column="viewuse_arrangement_id",
-                                            related_name="viewuse_objects",
                                             null=False, blank=False
                                             )
     viewuse_datum = models.ForeignKey("viewuse.ViewuseDatum",
                                       db_column="viewuse_datum_id",
-                                      related_name="viewuse_objects",
                                       null=False, blank=False
                                       )
     viewuse_filter = models.TextField(default="",
