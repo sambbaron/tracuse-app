@@ -9,7 +9,7 @@ from .serializers import WindowuseObjectSerializer, WindowuseViewuseSerializer
 class WindowuseObjectAll(LoginRequiredMixin, ViewAll):
     model = WindowuseObject
     serializer_class = WindowuseObjectSerializer
-    serializer_template = "serial_default"
+    serializer_template = "serial_related"
     deserializer_template = "serial_update"
 
     @property
@@ -20,7 +20,7 @@ class WindowuseObjectAll(LoginRequiredMixin, ViewAll):
 class WindowuseObjectOne(LoginRequiredMixin, ViewOne):
     model = WindowuseObject
     serializer_class = WindowuseObjectSerializer
-    serializer_template = "serial_default"
+    serializer_template = "serial_related"
     deserializer_template = "serial_update"
 
 

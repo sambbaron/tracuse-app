@@ -14,6 +14,11 @@ class WindowuseObjectSerializer(Serializer):
         output.append(("datum_filter", json.loads(self.obj.datum_filter)))
         return output
 
+    def serial_related(self):
+        output = self.serial_default()
+        output.append(("viewuse_objects", [viewuse.viewuse_object_id for viewuse in self.obj.windowuse_viewuses.all()]))
+        return output
+
     def serial_update(self):
         return [
             "title",

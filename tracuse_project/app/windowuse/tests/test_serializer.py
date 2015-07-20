@@ -21,6 +21,16 @@ class TestWindowuseObjectSerializer(TestCase):
         expected = "Windowuse 1 Title"
         self.assertEqual(expected, actual)
 
+    def test_serial_related(self):
+        """Test WindowuseObjectSerializer.serial_related
+        """
+        test_object = self.test.windowuse_object1
+        test_serialized = WindowuseObjectSerializer \
+            ("serial_related").serialize(test_object)
+        actual = test_serialized["viewuse_objects"][0]
+        expected = self.test.viewuse_object1.viewuse_object_id
+        self.assertEqual(expected, actual)
+
 
 class TestWindowuseViewuseSerializer(TestCase):
     @classmethod
