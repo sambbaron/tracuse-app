@@ -26,6 +26,7 @@ class ViewuseObjectSerializer(Serializer):
     def serial_update(self):
         return [
             "title",
+            "description",
             "viewuse_arrangement_id",
             "viewuse_datum_id",
             ("datum_filter", json.dumps(self.obj.datum_filter))
