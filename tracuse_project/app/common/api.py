@@ -6,6 +6,7 @@ from app.datum import views as DatumViews
 from app.element_type import views as ElementViews
 from app.filter import views as FilterViews
 from app.viewuse import views as ViewuseViews
+from app.windowuse import views as WindowuseViews
 from app.association import views as AssociationViews
 from app.tracuser import views as TracuserViews
 
@@ -30,6 +31,11 @@ urlpatterns = [
     url(r'^viewuse_datum/$', ViewuseViews.ViewuseDatumAll.as_view(), name="viewuse-datum-all"),
     url(r'^viewuse_nested/(?P<pk>[0-9]+)/$', ViewuseViews.ViewuseNestedOne.as_view(), name="viewuse-nested-one"),
     url(r'^viewuse_nested/$', ViewuseViews.ViewuseNestedAll.as_view(), name="viewuse-nested-all"),
+    
+    url(r'^windowuse_object/(?P<pk>[0-9]+)/$', WindowuseViews.WindowuseObjectOne.as_view(), name="windowuse-object-one"),
+    url(r'^windowuse_object/$', WindowuseViews.WindowuseObjectAll.as_view(), name="windowuse-object-all"),
+    url(r'^windowuse_viewuse/(?P<pk>[0-9]+)/$', WindowuseViews.WindowuseViewuseOne.as_view(), name="windowuse-viewuse-one"),
+    url(r'^windowuse_viewuse/$', WindowuseViews.WindowuseViewuseAll.as_view(), name="windowuse-viewuse-all"),
 
     url(r'^filter/json/$', FilterViews.RunFilter.filter_from_json, name="filter-from-json"),
     url(r'^filter/(?P<pk>[0-9]+)/$', FilterViews.RunFilter.filter_from_set, name="filter-from-set"),
