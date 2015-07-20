@@ -50,14 +50,14 @@ class ViewuseNestedAdmin(BaseModelAdmin):
 class ViewuseObjectInline(EntityModelInline):
     model = ViewuseObject
 
-    fields = EntityModelInline.fields + ("title", "description", "viewuse_arrangement", "viewuse_datum", "viewuse_filter",)
+    fields = EntityModelInline.fields + ("title", "description", "viewuse_arrangement", "viewuse_datum", "datum_filter",)
 
 
 @admin.register(ViewuseObject)
 class ViewuseObjectAdmin(BaseModelAdmin):
-    list_display = BaseModelAdmin.list_display + ("title", "description", "viewuse_arrangement", "viewuse_datum", "viewuse_filter",)
-    list_editable = BaseModelAdmin.list_editable + ("title", "description", "viewuse_arrangement", "viewuse_datum", "viewuse_filter",)
+    list_display = BaseModelAdmin.list_display + ("title", "description", "viewuse_arrangement", "viewuse_datum", "datum_filter",)
+    list_editable = BaseModelAdmin.list_editable + ("title", "description", "viewuse_arrangement", "viewuse_datum", "datum_filter",)
 
-    fields = BaseModelAdmin.fields + ("title", "description", "viewuse_arrangement", "viewuse_datum", "viewuse_filter")
+    fields = BaseModelAdmin.fields + ("title", "description", "viewuse_arrangement", "viewuse_datum", "datum_filter")
 
     inlines = [ViewuseNestedInline, ]

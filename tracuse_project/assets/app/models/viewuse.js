@@ -6,7 +6,7 @@ Tracuse.models.ViewuseObject =
                 title: "Empty View",
                 viewuse_arrangement: Tracuse.models.ViewuseArrangement.all.first(),
                 viewuse_datum: Tracuse.models.ViewuseDatum.all.first(),
-                viewuse_filter: new Tracuse.models.FilterSet()
+                datum_filter: new Tracuse.models.FilterSet()
             };
         },
 
@@ -29,7 +29,7 @@ Tracuse.models.ViewuseObject =
             },
             {
                 type: Backbone.HasOne,
-                key: "viewuse_filter",
+                key: "datum_filter",
                 relatedModel: "Tracuse.models.FilterSet",
                 includeInJSON: true,
                 includeInTemplate: true

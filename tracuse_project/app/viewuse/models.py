@@ -18,7 +18,7 @@ class ViewuseObject(BaseModel):
             ViewuseArrangement - Datum Placement View/Template
         viewuse_datum_id (integer, fk, required):
             ViewuseDatum - Datum Format View/Template
-        viewuse_filter (string):
+        datum_filter (string):
             JSON string of filter rules
             Correspond to FilterSet model
     """
@@ -48,10 +48,10 @@ class ViewuseObject(BaseModel):
                                       db_column="viewuse_datum_id",
                                       null=False, blank=False
                                       )
-    viewuse_filter = models.TextField(default="",
-                                      null=True, blank=True,
-                                      unique=False
-                                      )
+    datum_filter = models.TextField(default="",
+                                    null=True, blank=True,
+                                    unique=False
+                                    )
 
     def __str__(self):
         return self.title

@@ -67,7 +67,7 @@ class Migration(migrations.Migration):
                 ('viewuse_object_id', models.AutoField(primary_key=True, serialize=False)),
                 ('title', models.CharField(max_length=100, null=True, blank=True)),
                 ('description', models.CharField(max_length=255, null=True, blank=True)),
-                ('viewuse_filter', models.TextField(null=True, default='', blank=True)),
+                ('datum_filter', models.TextField(null=True, default='', blank=True)),
                 ('user', models.ForeignKey(related_name='viewuse_objects', blank=True, null=True, db_column='user_id', to=settings.AUTH_USER_MODEL)),
                 ('viewuse_arrangement', models.ForeignKey(related_name='viewuse_objects', db_column='viewuse_arrangement_id', to='viewuse.ViewuseArrangement')),
                 ('viewuse_datum', models.ForeignKey(related_name='viewuse_objects', db_column='viewuse_datum_id', to='viewuse.ViewuseDatum')),

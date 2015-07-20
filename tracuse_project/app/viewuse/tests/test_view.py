@@ -59,7 +59,7 @@ class TestViewuseObjectOne(TestCase):
             "title": "Change Viewuse Title",
             "viewuse_arrangement_id": self.test.viewuse_object1.viewuse_arrangement_id,
             "viewuse_datum_id": self.test.viewuse_object1.viewuse_datum_id,
-            "viewuse_filter": self.test.viewuse_object1.viewuse_filter
+            "datum_filter": self.test.viewuse_object1.datum_filter
         })
         request = self.factory.put("", request_data, "application/json")
         request.user = self.test.user1
