@@ -1,3 +1,33 @@
+Tracuse.views.BaseView = Backbone.View.extend({
+    /* Extended Backbone View with common properties/methods
+     * Includes Nunjucks template integration
+     * */
+
+    templateName: "",
+    templateData: {
+        this_object: this.model.toTemplate()
+    },
+
+    template: function () {
+        "use strict";
+        /* Render to Nunjucks template string
+         * */
+        return Tracuse.templates.env.render(
+            this.templateName,
+            this.templateData
+        );
+    },
+
+    render: function () {
+        "use strict";
+        /* Set View element HTML to rendered template string
+         * */
+        this.el.innerHTML = this.template();
+        return this;
+    }
+
+});
+
 Tracuse.utils.positionOnScroll = function positionOnScroll(positionElement, scrollElement, location, offsetX, offsetY) {
     "use strict";
     /* Set position of element when scroll changes
