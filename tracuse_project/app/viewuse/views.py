@@ -2,12 +2,8 @@ from django.db.models import Q
 
 from app.utils.view import ViewAll, ViewOne, LoginRequiredMixin
 
-from .models import (ViewuseObject,
-                     ViewuseArrangement,
-                     ViewuseDatum)
-from .serializers import (ViewuseObjectSerializer,
-                          ViewuseArrangementSerializer,
-                          ViewuseDatumSerializer)
+from .models import ViewuseObject
+from .serializers import ViewuseObjectSerializer
 
 
 class ViewuseObjectAll(LoginRequiredMixin, ViewAll):
@@ -26,17 +22,3 @@ class ViewuseObjectOne(LoginRequiredMixin, ViewOne):
     serializer_class = ViewuseObjectSerializer
     serializer_template = "serial_related"
     deserializer_template = "serial_update"
-
-
-class ViewuseArrangementAll(LoginRequiredMixin, ViewAll):
-    model = ViewuseArrangement
-    queryset = ViewuseArrangement.actives.all()
-    serializer_class = ViewuseArrangementSerializer
-    serializer_template = "serial_default"
-
-
-class ViewuseDatumAll(LoginRequiredMixin, ViewAll):
-    model = ViewuseDatum
-    queryset = ViewuseDatum.actives.all()
-    serializer_class = ViewuseDatumSerializer
-    serializer_template = "serial_default"
