@@ -67,7 +67,7 @@ class UiObjectModel(BaseModel):
         """
 
         type_class = globals()["Ui" + attribute_type + "Type"]
-        type_property = locals()["ui_" + attribute_type.lower() + "type"]
+        type_property = locals()["ui_" + attribute_type.lower() + "_type"]
         option_class = UiOptionMeta(attribute_type, type_property.entity_name)
 
         if type_class and type_property and option_class:
