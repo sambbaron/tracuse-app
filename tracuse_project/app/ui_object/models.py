@@ -54,6 +54,9 @@ class UiObjectModel(BaseModel):
                                     unique=False
                                     )
 
+    def __str__(self):
+        return self.title
+
     def _ui_option_model(self, attribute_type):
         """ Return UI option model
 
