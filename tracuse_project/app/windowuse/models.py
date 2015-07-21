@@ -3,43 +3,22 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from app.common.models import BaseModel
+from app.ui_object.models import UiObjectModel
 
 
-class WindowuseObject(BaseModel):
-    """App Window Object - Container for Viewuses
+class WindowuseObject(UiObjectModel):
+    """Top-Level UI Object - Container for Viewuses
 
     Attributes:
-        See BaseModel
-        user_id (integer, fk, nullable): User
-            No user - global viewuse available to all users
-        title (string)
-        description (string)
+        See UiObjectModel
     """
 
-    class Meta(BaseModel.Meta):
+    class Meta(UiObjectModel.Meta):
         db_table = "windowuse_object"
         verbose_name = "Windowuse Object"
         default_related_name = "windowuse_objects"
 
     windowuse_object_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User,
-                             db_column="user_id",
-                             null=True, blank=True,
-                             db_index=True
-                             )
-    title = models.CharField(max_length=100,
-                             null=True, blank=True
-                             )
-    description = models.CharField(max_length=255,
-                                   null=True, blank=True
-                                   )
-    datum_filter = models.TextField(default="",
-                                    null=True, blank=True,
-                                    unique=False
-                                    )
-
-    def __str__(self):
-        return self.title
 
 
 class WindowuseViewuse(BaseModel):
