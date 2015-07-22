@@ -64,6 +64,8 @@ class TestViewuseObjectOne(TestCase):
         request_data = json.dumps({
             "title": "Change Viewuse Title",
             "description": self.test.viewuse_object1.description,
+            "ui_arrangement_type_id": self.test.viewuse_object1.ui_arrangement_type_id,
+            "ui_formatting_type_id": self.test.viewuse_object1.ui_formatting_type_id,
             "datum_filter": self.test.viewuse_object1.datum_filter
         })
         request = self.factory.put("", request_data, "application/json")

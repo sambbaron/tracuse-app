@@ -64,6 +64,8 @@ class TestWindowuseObjectOne(TestCase):
         request_data = json.dumps({
             "title": self.test.windowuse_object1.title,
             "description": self.test.windowuse_object1.description,
+            "ui_arrangement_type_id": self.test.windowuse_object1.ui_arrangement_type_id,
+            "ui_formatting_type_id": self.test.windowuse_object1.ui_formatting_type_id,
             "datum_filter": '{"TestFilter1": "Change Filter"}'
         })
         request = self.factory.put("", request_data, "application/json")
@@ -82,7 +84,7 @@ class TestWindowuseObjectOne(TestCase):
         self.assertEqual(expected_response, actual_response)
 
 
-class TestWindowuseObjectAll(TestCase):
+class TestWindowuseViewuseAll(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.test = TestDataWindowuse()
@@ -91,11 +93,11 @@ class TestWindowuseObjectAll(TestCase):
         self.factory = RequestFactory()
 
     def test_get(self):
-        """Test WindowuseObjectAll.get api"""
+        """Test WindowuseViewuseAll.get api"""
         request = self.factory.get("")
         request.user = self.test.user1
 
-        view = views.WindowuseObjectAll(request=request)
+        view = views.WindowuseViewuseAll(request=request)
         response = view.dispatch(request=request)
         try:
             response_content = json.loads(response.content.decode())
