@@ -149,9 +149,11 @@ MODEL_GROUPS = {
         "element_type.ElementDatumType",
         "association.AssociationType",
         "association.AssociationDirection",
+        "ui_object.UiArrangementType",
+        "ui_object.UiFormattingType",
         "viewuse.ViewuseObject",
-        "viewuse.ViewuseArrangement",
-        "viewuse.ViewuseDatum",
+        "windowuse.WindowuseObject",
+        "windowuse.WindowuseViewuse",
     ],
     # Output for sample data
     "sample_data": [
