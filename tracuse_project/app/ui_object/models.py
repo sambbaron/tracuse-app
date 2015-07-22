@@ -100,19 +100,19 @@ class UiObjectModel(BaseModel):
             return option_model
 
     @property
-    def ui_arrangement_options(self):
+    def ui_arrangement_option_model(self):
         return self._ui_option_model("Arrangement")
 
     @property
-    def ui_formatting_options(self):
+    def ui_formatting_option_model(self):
         return self._ui_option_model("Formatting")
 
     def save(self, *args, **kwargs):
-        a = self.ui_arrangement_options
-        f = self.ui_formatting_options
+        a = self.ui_arrangement_option_model
+        f = self.ui_formatting_option_model
         super().save(*args, **kwargs)
 
     def delete(self, using=None):
-        self.ui_arrangement_options.delete()
-        self.ui_formatting_options.delete()
+        self.ui_arrangement_option_model.delete()
+        self.ui_formatting_option_model.delete()
         super().delete(using)
