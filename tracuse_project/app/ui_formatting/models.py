@@ -1,7 +1,7 @@
 from django.db import models
 
 from app.common.models import EntityModel
-from app.ui_object.models import UiOptionModel
+from app.ui_option.models import UiOptionModel
 
 
 class UiFormattingType(EntityModel):
