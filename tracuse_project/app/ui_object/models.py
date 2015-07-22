@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from app.common.models import BaseModel, EntityModel
+from app.ui_arrangement.models import *
+from app.ui_formatting.models import *
 
 
 class UiObjectModel(BaseModel):
@@ -57,6 +59,14 @@ class UiObjectModel(BaseModel):
     def __str__(self):
         return self.title
 
+    @staticmethod
+    def _ui_option_class(attribute_type, option_name):
+        option_model_name = "Ui" + attribute_type + option_name
+        try:
+            return globals()[option_model_name]
+        except KeyError:
+            raise NameError("{} model class does not exist".format(option_model_name))
+
     def _ui_option_model(self, attribute_type):
         """ Return UI option model
 
@@ -67,10 +77,13 @@ class UiObjectModel(BaseModel):
         """
 
         type_class = globals()["Ui" + attribute_type + "Type"]
-        type_property = locals()["ui_" + attribute_type.lower() + "_type"]
-        option_class = UiOptionMeta(attribute_type, type_property.entity_name)
+        type_property = getattr(self, "ui_" + attribute_type.lower() + "_type")
+        if type_class and type_property:
+            option_class = self._ui_option_class(attribute_type, type_property.entity_name)
+        else:
+            return None
 
-        if type_class and type_property and option_class:
+        if option_class:
             option_model = option_class.objects.filter(
                 ui_object_id=self.pk
             ).first()
@@ -78,11 +91,11 @@ class UiObjectModel(BaseModel):
             if not option_model:
                 # Delete records in other option models
                 for type_model in type_class.objects.all():
-                    option_model_class = UiOptionMeta(attribute_type, type_model.entity_name)
+                    option_model_class = self._ui_option_class(attribute_type, type_model.entity_name)
                     if option_model_class:
                         option_model_class.objects.filter(ui_object_id=self.pk).delete()
 
-                option_model = option_class.create(ui_object_id=self.pk)
+                option_model = option_class.objects.create(ui_object_id=self.pk)
 
             return option_model
 
@@ -94,43 +107,12 @@ class UiObjectModel(BaseModel):
     def ui_formatting_options(self):
         return self._ui_option_model("Formatting")
 
+    def save(self, *args, **kwargs):
+        a = self.ui_arrangement_options
+        f = self.ui_formatting_options
+        super().save(*args, **kwargs)
+
     def delete(self, using=None):
         self.ui_arrangement_options.delete()
         self.ui_formatting_options.delete()
         super().delete(using)
-
-
-class UiOptionMeta(object):
-    """Factory class for UiOption models
-
-    Model Name = "Ui" + Attribute Name + Type Name
-
-    Attributes:
-        attribute_name (string)
-        type_name (string)
-    """
-
-    def __new__(cls, attribute_name, type_name):
-        option_model_name = "Ui" + attribute_name + type_name
-        try:
-            return globals()[option_model_name]
-        except KeyError:
-            raise NameError("{} model class does not exist".format(option_model_name))
-
-
-class UiOptionModel(BaseModel):
-    """ Common properties for UI Attribute Option Models
-
-    Arrangement and Formatting Options
-
-    Attributes:
-        See BaseModel
-        ui_object_id (integer, required):
-            Loose Foreign Key to UI Object subclasses
-
-    """
-
-    class Meta(BaseModel.Meta):
-        abstract = True
-
-    ui_object_id = models.IntegerField()
