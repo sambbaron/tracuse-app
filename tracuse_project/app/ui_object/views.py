@@ -6,9 +6,11 @@ from .serializers import UiArrangementTypeSerializer, UiFormattingTypeSerializer
 
 class UiArrangementTypeAll(LoginRequiredMixin, ViewAll):
     model = UiArrangementType
+    queryset = UiArrangementType.actives.all()
     serializer_class = UiArrangementTypeSerializer
 
 
 class UiFormattingTypeAll(LoginRequiredMixin, ViewAll):
     model = UiFormattingType
+    queryset = UiFormattingType.actives.all()
     serializer_class = UiFormattingTypeSerializer
