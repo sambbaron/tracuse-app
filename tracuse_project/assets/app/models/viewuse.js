@@ -4,8 +4,8 @@ Tracuse.models.ViewuseObject =
             "use strict";
             return {
                 title: "Empty View",
-                viewuse_arrangement: Tracuse.models.ViewuseArrangement.all.first(),
-                viewuse_datum: Tracuse.models.ViewuseDatum.all.first(),
+                ui_arrangement_type: Tracuse.models.UiArrangementType.all.first(),
+                ui_formatting_type: Tracuse.models.UiFormattingType.all.first(),
                 datum_filter: new Tracuse.models.FilterSet()
             };
         },
@@ -13,17 +13,15 @@ Tracuse.models.ViewuseObject =
         relations: [
             {
                 type: Backbone.HasOne,
-                key: "viewuse_arrangement",
-                relatedModel: "Tracuse.models.ViewuseArrangement",
-                collectionType: "Tracuse.models.ViewuseArrangement.collBase",
+                key: "ui_arrangement_type",
+                relatedModel: "Tracuse.models.UiArrangementType",
                 includeInJSON: false,
                 includeInTemplate: true
             },
             {
                 type: Backbone.HasOne,
-                key: "viewuse_datum",
-                relatedModel: "Tracuse.models.ViewuseDatum",
-                collectionType: "Tracuse.models.ViewuseDatum.collBase",
+                key: "ui_formatting_type",
+                relatedModel: "Tracuse.models.UiFormattingType",
                 includeInJSON: false,
                 includeInTemplate: true
             },
@@ -36,9 +34,3 @@ Tracuse.models.ViewuseObject =
             }
         ]
     });
-
-Tracuse.models.ViewuseArrangement =
-    Tracuse.models.ModelFactory("viewuse_arrangement", "viewuse_arrangement_id");
-
-Tracuse.models.ViewuseDatum =
-    Tracuse.models.ModelFactory("viewuse_datum", "viewuse_datum_id");
