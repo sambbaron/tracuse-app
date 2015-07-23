@@ -5,7 +5,7 @@ Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
     // Button for rendering test view
     var renderButton = document.querySelector("#add-test-view");
     renderButton.addEventListener("click", function (e) {
-        Tracuse.init.foundationViewuse();
+        Tracuse.init.loadWindowuse();
         e.stopPropagation();
     });
 
@@ -46,22 +46,20 @@ Tracuse.init.ajaxSetup = function ajaxSetup() {
     });
 };
 
-Tracuse.init.foundationViewuse = function foundationViewuse() {
+Tracuse.init.loadWindowuse = function loadWindowuse() {
     "use strict";
-    /* Render initial Viewuse at startup as 'foundation' Viewuse
-     ***Currently use first viewuse object
+    /* Render initial Windowuse at startup
+     ***Currently use first windowuse object
      ***Change to user saved prior session
      */
-    var viewuseObject = Tracuse.models.ViewuseObject.all.first();
-    var foundationView = new Tracuse.views.ViewuseBase({
-        model: viewuseObject,
-        foundation: true
+    var windowuseObject = Tracuse.models.WindowuseObject.all.first();
+    var windowuseView = new Tracuse.views.WindowuseBase({
+        model: windowuseObject
     });
-    foundationView.render(function (viewuseView) {
-        Tracuse.el.app.appendChild(viewuseView.el);
-        viewuseView.showViewuse();
+    windowuseView.render(function (windowuseView) {
+        Tracuse.el.app.appendChild(windowuseView.el);
+        windowuseView.show();
     });
-    Tracuse.el.foundation = document.querySelector(".viewuse-foundation");
 };
 
 Tracuse.init.initApp = function initApp() {
@@ -71,7 +69,7 @@ Tracuse.init.initApp = function initApp() {
     Tracuse.init.renderApp();
     Tracuse.init.attachGlobalEvents();
     Tracuse.init.ajaxSetup();
-    Tracuse.init.foundationViewuse();
+    Tracuse.init.loadWindowuse();
 };
 
 Tracuse.init.fetchData = function fetchData() {
