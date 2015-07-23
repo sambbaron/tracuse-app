@@ -56,10 +56,9 @@ Tracuse.init.loadWindowuse = function loadWindowuse() {
     var windowuseView = new Tracuse.views.WindowuseBase({
         model: windowuseObject
     });
-    windowuseView.render(function (windowuseView) {
-        Tracuse.el.app.appendChild(windowuseView.el);
-        windowuseView.show();
-    });
+    var windowuseEl = windowuseView.render().el;
+    Tracuse.el.app.appendChild(windowuseEl);
+    windowuseView.show();
 };
 
 Tracuse.init.initApp = function initApp() {
