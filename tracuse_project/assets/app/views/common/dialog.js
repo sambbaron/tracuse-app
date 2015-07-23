@@ -15,6 +15,10 @@ Tracuse.views.DialogMenu = Backbone.View.extend({
         },
         "click button": function exitMenuButton(ev) {
             this.toggleButton(ev.target, false);
+        },
+        "click button[name='hide-menu']": function hideMenu(ev) {
+            this.showHide();
+            ev.stopPropagation();
         }
     },
 
