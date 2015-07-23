@@ -1,4 +1,4 @@
-Tracuse.views.App = Backbone.View.extend({
+Tracuse.views.App = Tracuse.views.BaseView.extend({
 
     tagName: "div",
     id: "app",
@@ -18,27 +18,6 @@ Tracuse.views.App = Backbone.View.extend({
             $(ev.target).slideUp(200);
             ev.stopPropagation();
         }
-    },
-
-    template: function () {
-        "use strict";
-        var appView = this;
-        var templateOutput = "";
-
-        var templateData = {};
-        templateOutput = Tracuse.templates.env.render(
-            appView.templateName,
-            templateData
-        );
-
-        return templateOutput;
-    },
-
-    render: function render() {
-        "use strict";
-        var appView = this;
-        appView.el.innerHTML = appView.template();
-        return appView;
     }
 
 });
