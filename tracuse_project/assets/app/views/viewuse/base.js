@@ -53,24 +53,20 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
         viewuseView.$(".viewuse-content").sortable({
             tolerance: "pointer"
         });
-        if (!viewuseView.foundation) {
-            viewuseView.$el.resizable({
-                handles: "n, e, s, w, ne, se"
-            });
-            // Remove inline styles from resizable handles
-            var resizeHandles = viewuseView.el.querySelectorAll(".ui-resizable-handle");
-            _.each(resizeHandles, function (resizeHandle) {
-                resizeHandle.removeAttribute("style");
-            });
+        viewuseView.$el.resizable({
+            handles: "n, e, s, w, ne, se"
+        });
+        // Remove inline styles from resizable handles
+        var resizeHandles = viewuseView.el.querySelectorAll(".ui-resizable-handle");
+        _.each(resizeHandles, function (resizeHandle) {
+            resizeHandle.removeAttribute("style");
+        });
 
-            //viewuseView.$el.draggable({
-            //    handle: ".viewuse-content",
-            //    cursor: "move",
-            //    distance: 5
-            //});
-        } else {
-            viewuseView.$el.addClass("viewuse-foundation");
-        }
+        //viewuseView.$el.draggable({
+        //    handle: ".viewuse-content",
+        //    cursor: "move",
+        //    distance: 5
+        //});
 
         viewuseView.setActive();
 
@@ -89,7 +85,6 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             viewuseView.el.id = viewuseView.id;
         }
         viewuseView.parentView = options.parentView || null;
-        viewuseView.foundation = options.foundation || false;
     },
 
     nextId: function nextId() {

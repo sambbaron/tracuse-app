@@ -13,19 +13,6 @@
     box-shadow: 2px 2px 1px #ddd;
 }
 
-.viewuse-foundation {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: calc(100vh - 4rem);
-    width: 100%;
-    margin: 0;
-    overflow: visible;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-}
-
 .viewuse-content {
     display: flex;
     flex-flow: row wrap;
