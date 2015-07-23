@@ -4,8 +4,12 @@ Tracuse.views.BaseView = Backbone.View.extend({
      * */
 
     templateName: "",
-    templateData: {
-        this_object: this.model.toTemplate()
+    templateData: function () {
+        var data = {};
+        if (this.model) {
+            data = {this_object: this.model.toTemplate()};
+        }
+        return data;
     },
 
     template: function () {
@@ -14,7 +18,7 @@ Tracuse.views.BaseView = Backbone.View.extend({
          * */
         return Tracuse.templates.env.render(
             this.templateName,
-            this.templateData
+            this.templateData()
         );
     },
 
