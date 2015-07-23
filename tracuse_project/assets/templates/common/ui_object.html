@@ -1,0 +1,16 @@
+<p class="title"> {{ this_object.title|default('Title') }}</p>
+
+<article class="content">
+    {% block content %}{% endblock %}
+</article>
+
+<div class="controls">
+    <button name="show-menu" title="Show Menu"><i class="fa fa-bars"></i></button>
+    <button name="close-object" title="Close Object"><i class="fa fa-close"></i></button>
+    {% block controls %}{% endblock %}
+</div>
+
+<nav class="menu dialog-menu">
+    <button name="hide-menu" class="effects-white-darkgreen"><i class="fa fa-toggle-left fa-fw"></i><span>Hide Menu</span></button>
+    {% block menu %}{% endblock %}
+</nav>
