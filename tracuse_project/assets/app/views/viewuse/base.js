@@ -1,7 +1,9 @@
-Tracuse.views.ViewuseBase = Backbone.View.extend({
+Tracuse.views.ViewuseBase = Tracuse.views.UiObject.extend({
 
-    tagName: "section",
-    className: "viewuse color-white-darkblue effects-lightblue",
+    className: function () {
+        return Tracuse.views.UiObject.prototype.className +
+            " viewuse";
+    },
     templateName: "viewuse/base.html",
 
     events: {
@@ -9,82 +11,10 @@ Tracuse.views.ViewuseBase = Backbone.View.extend({
             this.setActive();
             ev.stopPropagation();
         },
-        "click button[name='viewuse-menu']": function clickMenu(ev) {
-            this.menuView.showHide();
-            ev.stopPropagation();
-        },
-        "click button[name='viewuse-close']": function closeViewuse(ev) {
-            this.closeViewuse();
-            ev.stopPropagation();
-        },
         "scroll": function scroll(ev) {
             this.scrollPositionElements(ev.target);
             ev.stopPropagation();
         }
-    },
-
-    template: function () {
-        "use strict";
-        var viewuseView = this;
-        var templateOutput = "";
-
-        var templateData = {
-            this_viewuse: viewuseView.model.toTemplate()
-        };
-        templateOutput = Tracuse.templates.env.render(
-            viewuseView.templateName,
-            templateData
-        );
-
-        return templateOutput;
-    },
-
-    render: function render(callback) {
-        "use strict";
-        var viewuseView = this;
-
-        viewuseView.el.innerHTML = viewuseView.template();
-
-        // Append ViewuseMenu view
-        viewuseView.menuView = new Tracuse.views.ViewuseMenu({viewuseView: viewuseView});
-        viewuseView.el.appendChild(viewuseView.menuView.el);
-
-        // Add JQuery interactions if not base Viewuse
-        viewuseView.$(".viewuse-content").sortable({
-            tolerance: "pointer"
-        });
-        viewuseView.$el.resizable({
-            handles: "n, e, s, w, ne, se"
-        });
-        // Remove inline styles from resizable handles
-        var resizeHandles = viewuseView.el.querySelectorAll(".ui-resizable-handle");
-        _.each(resizeHandles, function (resizeHandle) {
-            resizeHandle.removeAttribute("style");
-        });
-
-        //viewuseView.$el.draggable({
-        //    handle: ".viewuse-content",
-        //    cursor: "move",
-        //    distance: 5
-        //});
-
-        viewuseView.setActive();
-
-        viewuseView.renderDatums(function (datumsView) {
-            viewuseView.renderNestedViewuses();
-            callback(viewuseView);
-        });
-    },
-
-    initialize: function initialize(options) {
-        "use strict";
-        var viewuseView = this;
-
-        if (!options.id) {
-            viewuseView.id = viewuseView.nextId();
-            viewuseView.el.id = viewuseView.id;
-        }
-        viewuseView.parentView = options.parentView || null;
     },
 
     nextId: function nextId() {

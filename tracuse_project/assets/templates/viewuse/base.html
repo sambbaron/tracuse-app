@@ -1,11 +1,15 @@
-<input name="title" value="{{ this_viewuse.title|default('Empty View') }}">
+{% extends "common/ui_object.html" %}
 
-<div class="viewuse-content">
+{% block content %}
 
-</div>
+{% endblock %}
 
-<nav class="viewuse-controls color-white-lightblue">
-    <button name="viewuse-menu" title="Settings Menu" class="effects-lightblue-white"><i class="fa fa-bars"></i></button>
-    <button name="viewuse-close" title="Close View" class="effects-lightblue-white"><i class="fa fa-close"></i></button>
-</nav>
+{% block controls %}
 
+{% endblock %}
+
+{% block menu %}
+    <button name="edit-filter"><i class="fa fa-edit fa-fw"></i><span>Edit Filter</span></button>
+    <button name="edit-viewuse"><i class="fa fa-edit fa-fw"></i><span>Edit View</span></button>
+    <button name="object-create"><i class="fa fa-star fa-fw"></i><span>Create Object</span></button>
+{% endblock %}

@@ -1,6 +1,5 @@
 
 .viewuse {
-    display: none;
     position: relative;
     min-height: 8em;
     min-width: 15em;
@@ -11,47 +10,4 @@
     padding: 1em;
     overflow: auto;
     box-shadow: 2px 2px 1px #ddd;
-}
-
-.viewuse-content {
-    display: flex;
-    flex-flow: row wrap;
-    height: calc(100% - 2em);
-    width: 100%;
-    min-height: 8em;
-    min-width: 15em;
-}
-
-.viewuse-content > * {
-    flex: 0 1 auto;
-}
-
-.viewuse input[name="title"] {
-    position: relative;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 150%;
-}
-
-.viewuse-controls button {
-    border-style: solid;
-    margin: 0;
-    border-radius: 0;
-    text-align: center;
-    font-size: 150%;
-}
-
-.viewuse-controls button[name='viewuse-menu'] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-width: 0 1px 1px 0;
-}
-
-.viewuse-controls button[name='viewuse-close'] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-width: 0 0 1px 1px;
 }
