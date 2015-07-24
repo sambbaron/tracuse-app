@@ -1,0 +1,14 @@
+.windowuse {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 4rem);
+    margin: 0;
+}
+
+.windowuse .content {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.windowuse .content > * {
+    flex: 0 1 auto;
+}
