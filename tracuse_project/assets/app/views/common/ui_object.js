@@ -9,6 +9,8 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
     menuColorClass: "color-lightblue-white",
     menuEffectsClass: "effects-white-lightblue",
 
+    childView: "",
+    childObjects: "",
 
     events: {
         "click button[name='show-menu']": function (ev) {
@@ -31,11 +33,18 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
             el: uiView.$(".menu")
         });
 
-
         // Add styling classes
         uiView.addStylingClasses();
 
+        // Render child objects
+        uiView.renderChildren();
+
         return uiView;
+    },
+
+    initialize: function (options) {
+        "use strict";
+        this.parentView = options.parentView || null;
     },
 
     addStylingClasses: function () {
@@ -56,6 +65,28 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
 
         return uiView;
 
+    },
+
+    renderChildren: function () {
+        "use strict";
+        var uiView = this;
+
+        if (!uiView.childObjects || !uiView.childView) {
+            return uiView;
+        }
+
+        var childCollection = uiView.model.get(uiView.childObjects);
+        var childFrag = document.createDocumentFragment();
+        _.each(childCollection.models, function (childModel) {
+            var childView = new uiView.childView({
+                model: childModel,
+                parentView: uiView
+            });
+            var childEl = childView.render().el;
+            childFrag.appendChild(childEl);
+        });
+
+        uiView.$(".content").append(childFrag);
     },
 
     show: function () {
