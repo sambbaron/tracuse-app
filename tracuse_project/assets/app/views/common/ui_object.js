@@ -44,6 +44,7 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
 
     initialize: function (options) {
         "use strict";
+        _.extend(this.events, Tracuse.views.UiObject.prototype.events);
         this.parentView = options.parentView || null;
     },
 
