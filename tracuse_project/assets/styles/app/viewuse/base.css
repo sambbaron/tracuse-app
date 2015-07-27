@@ -1,8 +1,8 @@
 
 .viewuse {
     position: relative;
-    min-height: 8em;
-    min-width: 15em;
+    min-height: 20em;
+    min-width: 20em;
     margin: 1em;
     border-width: 1px;
     border-style: solid;
@@ -10,4 +10,9 @@
     padding: 1em;
     overflow: auto;
     box-shadow: 2px 2px 1px #ddd;
+    font-size: 75%;
+}
+
+.viewuse .menu {
+    min-height: 18em;
 }
