@@ -83,6 +83,7 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
                 model: childModel,
                 parentView: uiView
             });
+            childView.delegateEvents();
             var childEl = childView.render().el;
             childFrag.appendChild(childEl);
         });
