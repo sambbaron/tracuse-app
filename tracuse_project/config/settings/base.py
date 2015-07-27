@@ -137,6 +137,7 @@ MODEL_GROUPS = {
         "filter",
         "watchword",
         "viewuse",
+        "windowuse",
     ],
     # Setup Models used for initial groups and types
     "setup_data": [
