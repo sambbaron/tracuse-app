@@ -44,7 +44,6 @@ INSTALLED_APPS = (
     'app.association',
     'app.filter',
     'app.watchword',
-    'app.ui_object',
     'app.viewuse',
     'app.windowuse',
 )
@@ -150,9 +149,8 @@ MODEL_GROUPS = {
         "element_type.ElementDatumType",
         "association.AssociationType",
         "association.AssociationDirection",
-        "ui_object.UiArrangementType",
-        "ui_object.UiFormattingType",
         "viewuse.ViewuseObject",
+        "viewuse.ViewuseArrangement",
         "windowuse.WindowuseObject",
         "windowuse.WindowuseViewuse",
     ],

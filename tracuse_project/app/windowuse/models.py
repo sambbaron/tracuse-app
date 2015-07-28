@@ -2,8 +2,7 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-from app.common.models import BaseModel
-from app.ui_object.models import UiObjectModel
+from app.common.models import BaseModel, UiObjectModel
 
 
 class WindowuseObject(UiObjectModel):
@@ -12,6 +11,7 @@ class WindowuseObject(UiObjectModel):
     Attributes:
         See UiObjectModel
     """
+    common_name = "Window"
 
     class Meta(UiObjectModel.Meta):
         db_table = "windowuse_object"

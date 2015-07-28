@@ -64,8 +64,6 @@ class TestWindowuseObjectOne(TestCase):
         request_data = json.dumps({
             "title": self.test.windowuse_object1.title,
             "description": self.test.windowuse_object1.description,
-            "ui_arrangement_type_id": self.test.windowuse_object1.ui_arrangement_type_id,
-            "ui_formatting_type_id": self.test.windowuse_object1.ui_formatting_type_id,
             "datum_filter": '{"TestFilter1": "Change Filter"}'
         })
         request = self.factory.put("", request_data, "application/json")

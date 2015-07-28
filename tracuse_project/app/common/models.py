@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 
+from django.contrib.auth.models import User
+
 from app.utils.entity import (camel_to_underscore,
                               camel_to_spaced_capital,
                               sort_range_value)
@@ -242,3 +244,43 @@ class EntityModel(BaseModel):
             self.set_readable_plural_name()
 
         super().save(*args, **kwargs)
+
+
+class UiObjectModel(BaseModel):
+    """ Common properties/methods for UI Objects
+
+    Attributes:
+        See BaseModel
+        user_id (integer, fk, nullable): User
+            No user - global viewuse available to all users
+        title (string)
+        description (string)
+        datum_filter (string):
+            JSON string of filter rules
+            Correspond to FilterSet model
+    """
+
+    common_name = ""
+
+    class Meta(BaseModel.Meta):
+        abstract = True
+
+    user = models.ForeignKey(User,
+                             db_column="user_id",
+                             null=True, blank=True,
+                             db_index=True
+                             )
+    title = models.CharField(max_length=100,
+                             default="Blank " + common_name,
+                             null=True, blank=True
+                             )
+    description = models.CharField(max_length=255,
+                                   null=True, blank=True
+                                   )
+    datum_filter = models.TextField(default="",
+                                    null=True, blank=True,
+                                    unique=False
+                                    )
+
+    def __str__(self):
+        return format(self.title)

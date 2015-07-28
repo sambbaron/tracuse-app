@@ -11,7 +11,6 @@ class Migration(migrations.Migration):
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('viewuse', '0001_initial'),
-        ('ui_object', '0001_initial'),
     ]
 
     operations = [
@@ -22,20 +21,18 @@ class Migration(migrations.Migration):
                 ('sort', models.BigIntegerField(db_index=True, default=0)),
                 ('created', models.DateTimeField(default=django.utils.timezone.now)),
                 ('modified', models.DateTimeField(auto_now=True)),
-                ('title', models.CharField(max_length=100, blank=True, null=True)),
-                ('description', models.CharField(max_length=255, blank=True, null=True)),
+                ('title', models.CharField(blank=True, default='Blank ', null=True, max_length=100)),
+                ('description', models.CharField(blank=True, null=True, max_length=255)),
                 ('datum_filter', models.TextField(blank=True, default='', null=True)),
                 ('windowuse_object_id', models.AutoField(primary_key=True, serialize=False)),
-                ('ui_arrangement_type', models.ForeignKey(blank=True, db_column='ui_arrangement_type_id', to='ui_object.UiArrangementType', null=True)),
-                ('ui_formatting_type', models.ForeignKey(blank=True, db_column='ui_formatting_type_id', to='ui_object.UiFormattingType', null=True)),
-                ('user', models.ForeignKey(blank=True, db_column='user_id', to=settings.AUTH_USER_MODEL, null=True)),
+                ('user', models.ForeignKey(blank=True, null=True, db_column='user_id', to=settings.AUTH_USER_MODEL)),
             ],
             options={
+                'abstract': False,
+                'default_related_name': 'windowuse_objects',
                 'db_table': 'windowuse_object',
                 'verbose_name': 'Windowuse Object',
-                'abstract': False,
                 'ordering': ['sort'],
-                'default_related_name': 'windowuse_objects',
             },
         ),
         migrations.CreateModel(
@@ -50,11 +47,11 @@ class Migration(migrations.Migration):
                 ('windowuse_object', models.ForeignKey(to='windowuse.WindowuseObject', db_column='windowuse_object_id')),
             ],
             options={
+                'abstract': False,
+                'default_related_name': 'windowuse_viewuses',
                 'db_table': 'windowuse_viewuse',
                 'verbose_name': 'Windowuse Viewuse',
-                'abstract': False,
                 'ordering': ['sort'],
-                'default_related_name': 'windowuse_viewuses',
             },
         ),
     ]

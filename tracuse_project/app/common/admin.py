@@ -18,7 +18,7 @@ class BaseModelAdmin(admin.ModelAdmin):
 
 class BaseModelInline(admin.TabularInline):
     fields = (("__str__", "active", "sort"),)
-    readonly_fields = ("__str__", )
+    readonly_fields = ("__str__",)
 
     extra = 1
     list_select_related = True
@@ -52,9 +52,21 @@ class EntityModelInline(admin.TabularInline):
     fields = ("__str__", "active", "sort", "entity_name",
               "short_definition", "long_definition",
               "readable_name", "readable_plural_name", "schema_name")
-    readonly_fields = ("__str__", )
+    readonly_fields = ("__str__",)
     extra = 1
     list_select_related = True
     show_change_link = True
 
     ordering = ["sort"]
+
+
+class UiObjectModelInline(BaseModelInline):
+    fields = BaseModelInline.fields + ("title", "description", "datum_filter",)
+
+
+class UiObjectModelAdmin(BaseModelAdmin):
+    list_display = BaseModelAdmin.list_display + ("title", "description", "datum_filter",)
+    list_editable = BaseModelAdmin.list_editable + ("title", "description", "datum_filter",)
+
+    fields = BaseModelAdmin.fields + ("title", "description", "datum_filter",)
+    readonly_fields = BaseModelAdmin.readonly_fields

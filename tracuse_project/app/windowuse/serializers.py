@@ -1,5 +1,5 @@
 from app.utils.serializer import Serializer
-from app.ui_object.serializers import UiObjectModelSerializer
+from app.common.serializers import UiObjectModelSerializer
 
 from .models import WindowuseObject, WindowuseViewuse
 

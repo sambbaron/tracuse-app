@@ -5,7 +5,6 @@ from django.conf.urls import url
 from app.datum import views as DatumViews
 from app.element_type import views as ElementViews
 from app.filter import views as FilterViews
-from app.ui_object import views as UiObjectViews
 from app.viewuse import views as ViewuseViews
 from app.windowuse import views as WindowuseViews
 from app.association import views as AssociationViews
@@ -26,11 +25,9 @@ urlpatterns = [
     url(r'^element_datum_object/$', ElementViews.ElementDatumObjectAll.as_view(), name="element-datum-object-all"),
     url(r'^element_option/$', ElementViews.ElementOptionAll.as_view(), name="element-option-all"),
     
-    url(r'^ui_arrangement_type/$', UiObjectViews.UiArrangementTypeAll.as_view(), name="ui-arrangement-type-all"),
-    url(r'^ui_formatting_type/$', UiObjectViews.UiFormattingTypeAll.as_view(), name="ui-formatting-type-all"),
-
     url(r'^viewuse_object/(?P<pk>[0-9]+)/$', ViewuseViews.ViewuseObjectOne.as_view(), name="viewuse-object-one"),
     url(r'^viewuse_object/$', ViewuseViews.ViewuseObjectAll.as_view(), name="viewuse-object-all"),
+    url(r'^viewuse_arrangement/$', ViewuseViews.ViewuseArrangementAll.as_view(), name="viewuse-arrangement-all"),
 
     url(r'^windowuse_object/(?P<pk>[0-9]+)/$', WindowuseViews.WindowuseObjectOne.as_view(), name="windowuse-object-one"),
     url(r'^windowuse_object/$', WindowuseViews.WindowuseObjectAll.as_view(), name="windowuse-object-all"),

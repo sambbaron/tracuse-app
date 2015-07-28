@@ -1,7 +1,13 @@
 from django.contrib import admin
 
-from app.common.admin import BaseModelAdmin, BaseModelInline, EntityModelAdmin, EntityModelInline
+from app.common.admin import BaseModelAdmin, BaseModelInline, UiObjectModelAdmin, UiObjectModelInline
 from .models import WindowuseObject, WindowuseViewuse
+
+
+class WindowuseViewuseInline(BaseModelInline):
+    model = WindowuseViewuse
+
+    fields = BaseModelInline.fields + ("windowuse_object", "viewuse_object",)
 
 
 @admin.register(WindowuseViewuse)
@@ -12,17 +18,11 @@ class WindowuseViewuseAdmin(BaseModelAdmin):
     fields = BaseModelAdmin.fields + ("windowuse_object", "viewuse_object",)
 
 
-class WindowuseViewuseInline(BaseModelInline):
-    model = WindowuseViewuse
-
-    fields = BaseModelInline.fields + ("windowuse_object", "viewuse_object",)
-
-
 @admin.register(WindowuseObject)
-class WindowuseObjectAdmin(BaseModelAdmin):
-    list_display = BaseModelAdmin.list_display + ("title", "description", "datum_filter",)
-    list_editable = BaseModelAdmin.list_editable + ("title", "description", "datum_filter",)
+class WindowuseObjectAdmin(UiObjectModelAdmin):
+    list_display = UiObjectModelAdmin.list_display
+    list_editable = UiObjectModelAdmin.list_editable
 
-    fields = BaseModelAdmin.fields + ("title", "description", "datum_filter")
+    fields = UiObjectModelAdmin.fields
 
     inlines = [WindowuseViewuseInline, ]
