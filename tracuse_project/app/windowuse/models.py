@@ -11,7 +11,6 @@ class WindowuseObject(UiObjectModel):
     Attributes:
         See UiObjectModel
     """
-    common_name = "Window"
 
     class Meta(UiObjectModel.Meta):
         db_table = "windowuse_object"

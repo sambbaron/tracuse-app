@@ -13,7 +13,6 @@ class ViewuseObject(UiObjectModel):
         viewuse_arrangement_id (integer, fk, required):
             ViewuseArrangement - Datum Placement View/Template
     """
-    common_name = "View"
 
     class Meta(UiObjectModel.Meta):
         db_table = "viewuse_object"

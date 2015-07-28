@@ -260,8 +260,6 @@ class UiObjectModel(BaseModel):
             Correspond to FilterSet model
     """
 
-    common_name = ""
-
     class Meta(BaseModel.Meta):
         abstract = True
 
@@ -271,7 +269,7 @@ class UiObjectModel(BaseModel):
                              db_index=True
                              )
     title = models.CharField(max_length=100,
-                             default="Blank " + common_name,
+                             default="",
                              null=True, blank=True
                              )
     description = models.CharField(max_length=255,
