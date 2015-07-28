@@ -7,5 +7,10 @@ from .models import ViewuseObject, ViewuseArrangement
 class ViewuseObjectSerializer(UiObjectModelSerializer):
     model = ViewuseObject
 
+    def serial_related(self):
+        output =  self.serial_default()
+        output.append(("viewuse_arrangement", self.obj.viewuse_arrangement_id))
+        return output
+
 class ViewuseArrangementSerializer(Serializer):
     model = ViewuseArrangement
