@@ -9,8 +9,7 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
     menuColorClass: "color-lightblue-white",
     menuEffectsClass: "effects-white-lightblue",
 
-    childView: "",
-    childObjects: "",
+    contentStyleClass: "",
 
     events: {
         "click button[name='show-menu']": function (ev) {
@@ -33,8 +32,14 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
             el: uiView.$(".menu")
         });
 
-        // Add styling classes
+        // Add styling classes to controls/menu
         uiView.addStylingClasses();
+
+        // Add style class to 'content'
+        uiView.contentEl = uiView.$(".content");
+        if (uiView.contentEl && uiView.contentStyleClass) {
+            uiView.contentEl.addClass(uiView.contentStyleClass);
+        }
 
         // Render child objects
         uiView.renderChildren();
@@ -70,25 +75,8 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
 
     renderChildren: function () {
         "use strict";
-        var uiView = this;
-
-        if (!uiView.childObjects || !uiView.childView) {
-            return uiView;
-        }
-
-        var childCollection = uiView.model.get(uiView.childObjects);
-        var childFrag = document.createDocumentFragment();
-        _.each(childCollection.models, function (childModel) {
-            var childView = new uiView.childView({
-                model: childModel,
-                parentView: uiView
-            });
-            childView.delegateEvents();
-            var childEl = childView.render().el;
-            childFrag.appendChild(childEl);
-        });
-
-        uiView.$(".content").append(childFrag);
+        /* Empty method to render objects into 'content' element
+         * */
     },
 
     show: function () {

@@ -1,4 +1,4 @@
-.datums-tile {
+.viewuse .tile {
     display: flex;
     flex-flow: column wrap;
     justify-content: flex-start;
@@ -6,6 +6,6 @@
     align-items: flex-start;
 }
 
-.datums-tile .datum {
+.viewuse .tile > * {
     flex: 0 1 auto;
 }

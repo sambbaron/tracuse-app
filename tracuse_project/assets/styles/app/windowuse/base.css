@@ -5,10 +5,10 @@
     margin: 0;
 }
 
-.windowuse .content {
+.windowuse > .content {
     display: flex;
     flex-flow: row nowrap;
 }
-.windowuse .content > * {
+.windowuse > .content > * {
     flex: 0 1 auto;
 }

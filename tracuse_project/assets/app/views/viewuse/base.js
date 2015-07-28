@@ -17,26 +17,40 @@ Tracuse.views.ViewuseBase = Tracuse.views.UiObject.extend({
         }
     },
 
-    nextId: function nextId() {
+    renderChildren: function renderDatums(callback) {
         "use strict";
-        /* Calculate next viewuse id value*/
-        var newId;
-        var idArray = [];
-        var viewuses = Tracuse.el.app.querySelectorAll(".viewuse");
+        /* Append Datums to Viewuse*/
+        var viewuseView = this;
 
-        for (var i = 0; i < viewuses.length; i++) {
-            var viewuseId = viewuses[i].getAttribute("id");
-            viewuseId = viewuseId.substring(1);
-            idArray.push(viewuseId);
-        }
-        if (idArray.length === 0) {
-            newId = 1;
-        } else {
-            newId = Math.max.apply(Math, idArray) + 1;
-        }
-        newId = "v" + newId;
+        // Get datums
+        var filter = new Tracuse.models.FilterSet(viewuseView.model.get("datum_filter"));
+        filter.fetchFilteredDatums(function (datumObjects) {
 
-        return newId;
+            viewuseView.collection = datumObjects;
+
+            // Render datums
+            var contentFrag = document.createDocumentFragment();
+            _.each(viewuseView.collection.models, function (datumModel) {
+                var datumViewName = "DatumMedium";
+                var DatumViewClass = Tracuse.views[datumViewName];
+
+                var datumView = new DatumViewClass({
+                    model: datumModel,
+                    parentView: viewuseView
+                });
+                datumView.delegateEvents();
+                var datumEl = datumView.render().el;
+                contentFrag.appendChild(datumEl);
+            });
+            viewuseView.contentEl.append(contentFrag);
+
+            if (callback) {
+                callback(viewuseView);
+            } else {
+                return viewuseView;
+            }
+
+        });
     },
 
     setActive: function setActive() {
@@ -46,80 +60,6 @@ Tracuse.views.ViewuseBase = Tracuse.views.UiObject.extend({
          * */
         $(".viewuse").removeClass("active");
         this.$el.addClass("active");
-    },
-
-    renderDatums: function renderDatums(callback) {
-        "use strict";
-        /* Append Datums to Viewuse*/
-        var viewuseView = this;
-
-        var datumsViewName = viewuseView.model.get("viewuse_arrangement").get("entity_name");
-        var DatumsView = Tracuse.views[datumsViewName];
-
-        // Get datums
-        var filter = new Tracuse.models.FilterSet(viewuseView.model.get("datum_filter"));
-        filter.fetchFilteredDatums(function (datumObjects) {
-
-            // Create Datums (Collection) View
-            var datumsView = new DatumsView({
-                collection: datumObjects,
-                viewuseView: viewuseView
-            });
-
-            datumsView.render();
-
-            var datumsContainer = viewuseView.el.querySelector(".viewuse-content");
-            datumsContainer.innerHTML = "";
-            datumsContainer.appendChild(datumsView.el);
-
-            callback(datumsView)
-        });
-    },
-
-    renderNestedViewuses: function renderNestedViewuses() {
-        "use strict";
-        /* Render nested Viewuses relative to Datums
-         * */
-        var viewuseView = this;
-        _.each(viewuseView.model.get("viewuse_nested").models, function (nestedViewuseModel) {
-            var newViewuseModel = Tracuse.models.ViewuseObject.all.get(nestedViewuseModel.get("nested_viewuse_id"));
-            if (newViewuseModel) {
-                viewuseView.addNestedViewuse(newViewuseModel, nestedViewuseModel.get("order"));
-            }
-        });
-    },
-
-    addNestedViewuse: function addNestedViewuse(nestedViewuseModel, placementOrder) {
-        "use strict";
-        /* Add Viewuse into DOM
-         * Use parent Viewuse
-         * placementOrder (integer): relative to Datums
-         * */
-        var viewuseView = this;
-
-        var nestedViewuseView = new Tracuse.views.ViewuseBase({
-            model: nestedViewuseModel,
-            parentView: viewuseView
-        });
-        nestedViewuseView.render(function (newView) {
-            var contentEl = viewuseView.el.querySelector(".viewuse-content");
-            var datumsEl = viewuseView.el.querySelector(".datums");
-            contentEl.insertBefore(newView.el, datumsEl);
-            newView.showViewuse();
-        });
-    },
-
-    showViewuse: function showViewuse() {
-        "use strict";
-        this.$el.fadeIn(200);
-    },
-
-    closeViewuse: function closeViewuse() {
-        "use strict";
-        var viewuseView = this;
-        viewuseView.$el.fadeOut(200, function () {
-            viewuseView.remove();
-        });
     },
 
     editViewuse: function editViewuse() {
