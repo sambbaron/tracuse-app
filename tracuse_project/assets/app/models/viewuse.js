@@ -1,5 +1,5 @@
 Tracuse.models.ViewuseArrangement =
-    Tracuse.models.ModelFactory("viewuse_arrangement", "viewuse_arrangement_id", {});
+    Tracuse.models.ModelFactory("viewuse_arrangement", "viewuse_arrangement_id");
 
 Tracuse.models.ViewuseObject =
     Tracuse.models.ModelFactory("viewuse_object", "viewuse_object_id", {
