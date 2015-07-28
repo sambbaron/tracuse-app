@@ -387,6 +387,9 @@ class FilterSet(EntityModel):
     Attributes:
         See EntityModel (includes BaseModel)
         user (integer, fk, optional): User
+        rules_blank (dict):
+            Lists of blank FilterSetRule objects
+            Used for default filter objects
         rules_dict (dict):
             Lists of FilterSetRule objects related to FilterSet
             Use to run filter and convert back/forth to json
@@ -429,8 +432,19 @@ class FilterSet(EntityModel):
                                                 )
 
     @property
-    def rules_dict(self):
+    def rules_blank(self):
         rules = {}
+        rules["FilterRuleUser"] = []
+        rules["FilterRuleGroup"] = []
+        rules["FilterRuleType"] = []
+        rules["FilterRuleAssociation"] = []
+        rules["FilterRuleElement"] = []
+        rules["FilterRuleDataType"] = []
+        return rules
+
+    @property
+    def rules_dict(self):
+        rules = self.rules_blank
         if self.filter_rules_user.exists():
             rules["FilterRuleUser"] = self.filter_rules_user.all()
         if self.filter_rules_group.exists():

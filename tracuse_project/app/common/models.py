@@ -282,3 +282,11 @@ class UiObjectModel(BaseModel):
 
     def __str__(self):
         return format(self.title)
+
+    def save(self, *args, **kwargs):
+
+        if self.datum_filter is None or self.datum_filter == "":
+            from app.filter.models import FilterSet
+            self.datum_filter = FilterSet().rules_blank
+
+        super().save(*args, **kwargs)
