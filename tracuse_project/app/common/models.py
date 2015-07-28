@@ -1,3 +1,5 @@
+import json
+
 from django.db import models
 from django.utils import timezone
 
@@ -287,6 +289,6 @@ class UiObjectModel(BaseModel):
 
         if self.datum_filter is None or self.datum_filter == "":
             from app.filter.models import FilterSet
-            self.datum_filter = FilterSet().rules_blank
+            self.datum_filter = json.dumps(FilterSet().rules_blank)
 
         super().save(*args, **kwargs)
