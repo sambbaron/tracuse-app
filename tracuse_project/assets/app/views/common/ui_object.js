@@ -4,6 +4,11 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
     baseClass: "ui-object",
     objectColorClass: "color-white-lightblue",
     objectEffectsClass: "effects-lightblue",
+    controlsColorClass: "color-white-lightblue",
+    controlsEffectsClass: "effects-lightblue-white",
+    menuColorClass: "color-lightblue-white",
+    menuEffectsClass: "effects-white-lightblue",
+    contentStyleClass: "",
 
     tagName: "section",
     className: function () {
@@ -13,13 +18,6 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
             " " + this.objectTypeClass;
     },
     templateName: "common/ui_object.html",
-
-    controlsColorClass: "color-white-lightblue",
-    controlsEffectsClass: "effects-lightblue-white",
-    menuColorClass: "color-lightblue-white",
-    menuEffectsClass: "effects-white-lightblue",
-
-    contentStyleClass: "",
 
     events: {
         "click *": function clickObject(ev) {
