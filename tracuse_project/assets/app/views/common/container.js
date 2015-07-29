@@ -104,16 +104,20 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
          * Show/Hide controls
          * Add/Remove 'active' class to object and title
          * */
-        var $allObjects = this.$el.parent().find("." + this.objectTypeClass);
-        var $allTitles = $allObjects.find(" > .title");
+        var $childObjects = this.$(".base-container");
+        var $siblingObjects = this.$el.parent().find("." + this.objectTypeClass);
+        var $siblingTitles = $siblingObjects.find(" > .title");
 
-        $allObjects.find(" > .controls").hide();
+        $childObjects.removeClass("active");
+        $childObjects.find("> .controls, > .title").removeClass("active");
+
+        $siblingObjects.find(" > .controls").hide();
         this.$(" > .controls").show();
 
-        $allObjects.removeClass("active");
+        $siblingObjects.removeClass("active");
         this.$el.addClass("active");
 
-        $allTitles.removeClass("active");
+        $siblingTitles.removeClass("active");
         this.$(" > .title").addClass("active");
     },
 
