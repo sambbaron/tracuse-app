@@ -16,6 +16,13 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
     },
     templateName: "common/edit.html",
 
+    events: {
+        "scroll": function scrollObject(ev) {
+            this.scrollFixedElements();
+            ev.stopPropagation();
+        }
+    },
+
     render: function () {
         "use strict";
         var editView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
@@ -60,6 +67,17 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
         editView.$el.fadeOut(200, function () {
             editView.remove();
         });
+    },
+
+    scrollFixedElements: function () {
+        "use strict";
+        /* Move elements with scroll
+         * Use Jquery to find direct descendants
+         * */
+        var editView = this;
+
+        var title = editView.$(" > .title");
+        Tracuse.utils.positionOnScroll(title, editView.el, "nw");
     }
 
 
