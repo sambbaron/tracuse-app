@@ -45,7 +45,19 @@ Tracuse.views.DialogMenu = Tracuse.views.BaseView.extend({
 
     showHide: function showHide() {
         "use strict";
-        this.$el.toggle("slide", 200);
+        /* Can't use JQueryUI slide effect
+         *    because menu has absolute positioning
+         * */
+        var $el = this.$el;
+
+        if ($el.css("display") === "none") {
+            $el.show();
+            $el.animate({"width": "5em"}, 200);
+        } else {
+            $el.animate({"width": "0"}, 200, function () {
+                $el.hide(200);
+            });
+        }
     },
 
     toggleButton: function toggleButton(el, option) {
