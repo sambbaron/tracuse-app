@@ -3,6 +3,15 @@ Tracuse.views.WindowuseBase = Tracuse.views.UiObject.extend({
     objectTypeClass: "windowuse",
     templateName: "windowuse/base.html",
 
+    render: function () {
+        "use strict";
+        /* Set rendered Windowuse as active
+         * */
+        var windowuseView = Tracuse.views.UiObject.prototype.render.apply(this, arguments);
+        windowuseView.setActive();
+        return windowuseView;
+    },
+
     renderChildren: function () {
         "use strict";
         var windowuseView = this;
