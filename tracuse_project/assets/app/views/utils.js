@@ -40,11 +40,12 @@ Tracuse.views.BaseView = Backbone.View.extend({
 
     initialize: function (options) {
         "use strict";
+        var view = this;
         if (options) {
-            this.setOptionProperties(options);
+            view.setOptionProperties(options);
         }
-        _.extend(this.events, Tracuse.views.BaseView.prototype.events);
-        return this;
+        _.extend(view.events, Tracuse.views.BaseView.prototype.events);
+        return view;
     }
 
 });
