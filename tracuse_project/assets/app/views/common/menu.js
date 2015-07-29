@@ -55,8 +55,12 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
          *    because menu has absolute positioning
          * */
         var $el = this.$el;
+        var $allMenus = $("." + this.className).not($el);
 
         if ($el.css("display") === "none") {
+            $allMenus.animate({"width": "0"}, 200, function () {
+                $allMenus.hide(200);
+            });
             $el.show();
             $el.animate({"width": "5em"}, 200);
         } else {
