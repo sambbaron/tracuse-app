@@ -53,16 +53,7 @@ Tracuse.views.FilterSet = Tracuse.views.BaseEdit.extend({
         "use strict";
         var filterView = Tracuse.views.BaseEdit.prototype.render.apply(this, arguments);
 
-        return filterView;
-    },
-
-    initialize: function (options) {
-        "use strict";
-        var filterView = Tracuse.views.BaseEdit.prototype.initialize.call(this, options);
-
-        filterView.render();
-
-        // Create and add filter rule views
+        // Create, add, and format filter rule views
         _.each(filterView.model.attributes, function (filterRuleCollection, ruleModelName) {
             var filterRuleFrag = document.createDocumentFragment();
             filterRuleCollection.each(function (filterRule) {
@@ -84,6 +75,7 @@ Tracuse.views.FilterSet = Tracuse.views.BaseEdit.extend({
             var ruleDiv = filterView.el.querySelector("#" + ruleModelName);
             if (ruleDiv) ruleDiv.appendChild(filterRuleFrag);
         });
+
         return filterView;
     },
 
