@@ -1,7 +1,7 @@
 Tracuse.views.ViewuseEdit = Tracuse.views.BaseView.extend({
 
     tagName: "aside",
-    className: "ui-edit position-popout color-white-darkgreen viewuse-edit",
+    className: "base-edit position-popout color-white-darkgreen viewuse-edit",
     templateName: "viewuse/edit.html",
     templateData: function () {
         "use strict";

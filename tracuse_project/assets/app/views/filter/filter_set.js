@@ -1,7 +1,7 @@
 Tracuse.views.FilterSet = Backbone.View.extend({
 
     tagName: "aside",
-    className: "ui-edit filter-set",
+    className: "base-edit filter-set",
     templateName: "filter/filter_set.html",
 
     events: {
