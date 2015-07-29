@@ -147,6 +147,7 @@ MODEL_GROUPS = {
         "element_type.ElementType",
         "element_type.ElementOption",
         "element_type.ElementDatumType",
+        "element_type.ElementOperator",
         "association.AssociationType",
         "association.AssociationDirection",
         "viewuse.ViewuseObject",
