@@ -185,8 +185,8 @@ Tracuse.models.FilterSet = Backbone.RelationalModel.extend({
 
     fetchFilteredDatums: function fetchFilteredDatums(callback) {
         "use strict";
-        /* Send either filter json object
-         Return array of datum datum objects
+        /* Send filter json object
+         * Return Backbone collection of datum objects
          */
         var filter = this;
 
