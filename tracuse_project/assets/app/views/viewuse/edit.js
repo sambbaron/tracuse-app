@@ -5,7 +5,6 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
     templateData: function () {
         "use strict";
         return {
-            title: "Edit View",
             this_object: this.model.toTemplate(),
             viewuse_objects: Tracuse.models.ViewuseObject.all.toTemplate(),
             viewuse_arrangements: Tracuse.models.ViewuseArrangement.all.toTemplate()
