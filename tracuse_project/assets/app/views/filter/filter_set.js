@@ -13,6 +13,9 @@ Tracuse.views.FilterSet = Tracuse.views.BaseEdit.extend({
         };
     },
 
+    ruleColorClass: "",
+    ruleEffectsClass: "",
+
     events: {
         "change .associations select[name='association_groups']": function (ev) {
             this.selectAssociationGroup(ev.target);
@@ -44,6 +47,13 @@ Tracuse.views.FilterSet = Tracuse.views.BaseEdit.extend({
             this.hoverFilterGroup(ev.target, false);
             ev.stopPropagation();
         }
+    },
+
+    render: function () {
+        "use strict";
+        var filterView = Tracuse.views.BaseEdit.prototype.render.apply(this, arguments);
+
+        return filterView;
     },
 
     initialize: function (options) {
@@ -224,11 +234,10 @@ Tracuse.views.FilterSet = Tracuse.views.BaseEdit.extend({
         /* Add format classes to filter rule element
          * Use parent view
          * */
-        var parentView = this.parentView;
-        if (parentView) {
-            el.classList.add(parentView.ruleColorClass);
-            el.classList.add(parentView.ruleEffectsClass);
-        }
+        var filterView = this;
+        el.classList.remove(filterView.buttonEffectsClass);
+        el.classList.add(filterView.ruleColorClass);
+        el.classList.add(filterView.ruleEffectsClass);
     },
 
     selectFilterGroup: function selectFilterGroup(el) {

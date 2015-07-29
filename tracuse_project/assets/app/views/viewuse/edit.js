@@ -53,7 +53,9 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
         // Set FilterSet view using model clone
         editView.filterView = new Tracuse.views.FilterSet({
             model: new Tracuse.models.FilterSet(editView.model.get("datum_filter").toJSON()),
-            parentView: editView
+            parentView: editView,
+            ruleColorClass: editView.ruleColorClass,
+            ruleEffectsClass: editView.ruleEffectsClass
         });
         var filterContainer = editView.el.querySelector(".viewuse-filter");
         var filterEl = editView.filterView.el;
