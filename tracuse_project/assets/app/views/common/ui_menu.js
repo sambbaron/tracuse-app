@@ -28,6 +28,7 @@ Tracuse.views.UiMenu = Tracuse.views.BaseView.extend({
 
         if (options.el) {
             menuView.setElement(options.el);
+            menuView.el.classList.add(menuView.className);
         } else {
             menuView.setElement(menuView.render().el);
         }
