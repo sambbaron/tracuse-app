@@ -1,0 +1,56 @@
+
+.ui-edit {
+    margin: 0;
+    padding: 0;
+}
+
+.ui-edit > .main {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    height: 100%;
+    margin-left: 5em;
+}
+
+.ui-edit > .main > .section {
+    flex: 1 1 auto;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border-top: 3px solid;
+    border-right: 2px solid;
+}
+
+.ui-edit .title {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 150%;
+    text-align: center;
+    text-shadow: 1px 1px 0 #e1e1e1;
+    cursor: default;
+}
+
+.ui-edit .content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.25em;
+    font-size: 125%;
+    text-align: center;
+}
+
+.ui-edit .input-wrap {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ui-edit .input-element {
+    border: 2px solid;
+    /*background-color: rgba(250, 250, 250, 0.5);*/
+}
+
+/*.ui-edit .input-element:focus,*/
+/*.ui-edit .input-element:hover {*/
+    /*background-color: #fafafa;*/
+    /*box-shadow: none;*/
+/*}*/
