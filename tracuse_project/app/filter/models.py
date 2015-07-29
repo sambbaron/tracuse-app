@@ -302,7 +302,7 @@ class FilterRuleElement(FilterRuleSetModel):
     Attributes:
         See FilterRuleSetModel (includes FilterRuleModel, BaseModel)
         element_type_id (integer, fk, required): ElementType
-        elvalue (string):  ***Must match value
+        element_value (string):  ***Must match value
     """
 
     class Meta(FilterRuleModel.Meta):
@@ -315,7 +315,7 @@ class FilterRuleElement(FilterRuleSetModel):
                                      related_name="filter_rule_elements",
                                      null=False, blank=False
                                      )
-    elvalue = models.CharField(max_length=255)
+    element_value = models.CharField(max_length=255)
 
     def get_datum_set(self, datum_filter_rules):
         datum_object_prefix = "element_datum_object__datum_object"
@@ -323,7 +323,7 @@ class FilterRuleElement(FilterRuleSetModel):
 
         element_value_model = self.element_type.element_value_model
         value_lookup = "elvalue__" + self.operator
-        value_query = (value_lookup, self.elvalue)
+        value_query = (value_lookup, self.element_value)
         type_query = (element_type_prefix + "__element_type_id", self.element_type.element_type_id)
         query = element_value_model.objects.filter(type_query, value_query)
 
@@ -345,7 +345,7 @@ class FilterRuleDataType(FilterRuleSetModel):
     Attributes:
         See FilterRuleSetModel (includes FilterRuleModel, BaseModel)
         element_data_type_id (integer, fk, required): ElementDataType
-        elvalue (string):  ***Must match value
+        element_value (string):  ***Must match value
     """
 
     class Meta(FilterRuleModel.Meta):
@@ -358,15 +358,14 @@ class FilterRuleDataType(FilterRuleSetModel):
                                           related_name="filter_rule_data_types",
                                           null=False, blank=False
                                           )
-    elvalue = models.CharField(max_length=255)
+    element_value = models.CharField(max_length=255)
 
     def get_datum_set(self, datum_filter_rules):
         datum_object_prefix = "element_datum_object__datum_object"
-        element_type_prefix = "element_datum_object__element_type"
 
         element_value_model = ElementValueMeta(self.element_data_type.entity_name)
         value_lookup = "elvalue__" + self.operator
-        value_query = (value_lookup, self.elvalue)
+        value_query = (value_lookup, self.element_value)
         query = element_value_model.objects.filter(value_query)
 
         if datum_filter_rules:

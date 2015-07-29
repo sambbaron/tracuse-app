@@ -83,7 +83,7 @@ class TestFilterSetsModel(object):
                 filters.FilterRuleElement(
                     element_type=ElementType.objects.get(entity_name="Name"),
                     operator="icontains",
-                    elvalue="pdx code guild",
+                    element_value="pdx code guild",
                 ),
             ],
         }
@@ -93,7 +93,7 @@ class TestFilterSetsModel(object):
                 filters.FilterRuleElement(
                     element_type=ElementType.objects.get(entity_name="ActionEffort"),
                     operator="exact",
-                    elvalue="4",
+                    element_value="4",
                 ),
             ],
         }
@@ -103,12 +103,12 @@ class TestFilterSetsModel(object):
                 filters.FilterRuleElement(
                     element_type=ElementType.objects.get(entity_name="ActionEffort"),
                     operator="exact",
-                    elvalue="3",
+                    element_value="3",
                 ),
                 filters.FilterRuleElement(
                     element_type=ElementType.objects.get(entity_name="Description"),
                     operator="icontains",
-                    elvalue="craigs",
+                    element_value="craigs",
                 ),
             ],
         }
@@ -118,7 +118,7 @@ class TestFilterSetsModel(object):
                 filters.FilterRuleDataType(
                     element_data_type=ElementDataType.objects.get(entity_name="String"),
                     operator="icontains",
-                    elvalue="apartment",
+                    element_value="apartment",
                 ),
             ],
         }
@@ -156,19 +156,19 @@ class TestFilterSetsModel(object):
                 dict(
                     element_type_id=ElementType.objects.get(entity_name="ActionEffort").pk,
                     operator="gte",
-                    elvalue="1",
+                    element_value="1",
                 ),
                 dict(
                     conditional="AND",
                     element_type_id=ElementType.objects.get(entity_name="ActionStatus").pk,
                     operator="iexact",
-                    elvalue="Upcoming",
+                    element_value="Upcoming",
                 ),
                 dict(
                     conditional="OR",
                     element_type_id=ElementType.objects.get(entity_name="ActionStatus").pk,
                     operator="iexact",
-                    elvalue="Current",
+                    element_value="Current",
                 ),
             ],
         }
