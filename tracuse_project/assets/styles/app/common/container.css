@@ -1,10 +1,26 @@
+.base-container {
+    position: relative;
+    padding: 0;
+}
 
 .base-container > .title {
-    position: relative;
-    display: block;
-    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0.25em 2em;
     text-align: center;
     font-size: 150%;
+}
+
+.base-container > .title.active {
+    box-shadow: none;
+    font-weight: bold;
+}
+
+.base-container > .content {
+    margin-top: 3em;
 }
 
 .base-container > .controls {

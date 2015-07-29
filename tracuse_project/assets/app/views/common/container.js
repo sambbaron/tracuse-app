@@ -49,6 +49,10 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
             el: uiView.$(".menu")
         });
 
+        // Set title styling class same as object
+        uiView.$(" > .title").addClass(uiView.objectColorClass);
+        uiView.$(" > .title").addClass(uiView.objectEffectsClass);
+
         // Add styling classes to controls
         uiView.$(".controls").addClass(uiView.controlsColorClass);
         uiView.$(".controls > button").each(function () {
@@ -98,15 +102,19 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         "use strict";
         /* Set active object
          * Show/Hide controls
-         * Add/Remove 'active' class
+         * Add/Remove 'active' class to object and title
          * */
-        var $objectClass = this.$el.parent().find("." + this.objectTypeClass);
+        var $allObjects = this.$el.parent().find("." + this.objectTypeClass);
+        var $allTitles = $allObjects.find(" > .title");
 
-        $objectClass.find(" > .controls").hide();
+        $allObjects.find(" > .controls").hide();
         this.$(" > .controls").show();
 
-        $objectClass.removeClass("active");
+        $allObjects.removeClass("active");
         this.$el.addClass("active");
+
+        $allTitles.removeClass("active");
+        this.$(" > .title").addClass("active");
     },
 
     scrollFixedElements: function () {
