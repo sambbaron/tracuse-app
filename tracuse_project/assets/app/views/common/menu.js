@@ -2,6 +2,8 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
 
     tagName: "nav",
     className: "base-menu",
+    menuColorClass: "",
+    buttonColorClass: "",
     buttonEffectsClass: "",
 
     events: {
@@ -32,10 +34,14 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
         } else {
             menuView.setElement(menuView.render().el);
         }
+        menuView.menuColorClass = options.menuColorClass || menuView.menuColorClass;
+        menuView.buttonColorClass = options.buttonColorClass || menuView.buttonColorClass;
         menuView.buttonEffectsClass = options.buttonEffectsClass || menuView.buttonEffectsClass;
 
-        // Set button styling using class
+        // Set menu/button styling using classes
+        menuView.$el.addClass(menuView.menuColorClass);
         menuView.$("button").each(function () {
+            $(this).addClass(menuView.buttonColorClass);
             $(this).addClass(menuView.buttonEffectsClass);
         });
 

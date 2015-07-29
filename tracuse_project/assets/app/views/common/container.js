@@ -44,12 +44,16 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
         // Set menu view
         uiView.menuView = new Tracuse.views.BaseMenu({
+            menuColorClass: uiView.menuColorClass,
             buttonEffectsClass: uiView.menuEffectsClass,
             el: uiView.$(".menu")
         });
 
-        // Add styling classes to controls/menu
-        uiView.addStylingClasses();
+        // Add styling classes to controls
+        uiView.$(".controls").addClass(uiView.controlsColorClass);
+        uiView.$(".controls > button").each(function () {
+            $(this).addClass(uiView.controlsEffectsClass);
+        });
 
         // Add style class to 'content'
         uiView.contentEl = uiView.$(".content");
@@ -67,26 +71,6 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         "use strict";
         _.extend(this.events, Tracuse.views.BaseContainer.prototype.events);
         this.parentView = options.parentView || null;
-    },
-
-    addStylingClasses: function () {
-        "use strict";
-        /* Add styling classes to controls and menu items
-         * */
-        var uiView = this;
-
-        uiView.$(".controls").addClass(uiView.controlsColorClass);
-        uiView.$(".controls > button").each(function () {
-            $(this).addClass(uiView.controlsEffectsClass);
-        });
-
-        uiView.$(".menu").addClass(uiView.menuColorClass);
-        uiView.$(".menu > button").each(function () {
-            $(this).addClass(uiView.menuEffectsClass);
-        });
-
-        return uiView;
-
     },
 
     renderChildren: function () {
