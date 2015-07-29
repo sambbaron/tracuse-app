@@ -43,7 +43,7 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
         var uiView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
 
         // Set menu view
-        uiView.menuView = new Tracuse.views.DialogMenu({
+        uiView.menuView = new Tracuse.views.UiMenu({
             buttonEffectsClass: uiView.menuEffectsClass,
             el: uiView.$(".menu")
         });
