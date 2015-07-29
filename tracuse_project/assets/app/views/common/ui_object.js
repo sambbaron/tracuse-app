@@ -111,9 +111,15 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
     setActive: function () {
         "use strict";
         /* Set active object
-         * 'Active' class
+         * Show/Hide controls
+         * Add/Remove 'active' class
          * */
-        $("." + this.objectTypeClass).removeClass("active");
+        var $objectClass = this.$el.parent().find("." + this.objectTypeClass);
+
+        $objectClass.find(" > .controls").hide();
+        this.$(" > .controls").show();
+
+        $objectClass.removeClass("active");
         this.$el.addClass("active");
     },
 

@@ -7,6 +7,10 @@
     font-size: 150%;
 }
 
+.ui-object .controls {
+    display: none;
+}
+
 .ui-object .controls > button {
     border-style: solid;
     margin: 0;
