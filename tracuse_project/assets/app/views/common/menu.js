@@ -1,7 +1,7 @@
-Tracuse.views.UiMenu = Tracuse.views.BaseView.extend({
+Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
 
     tagName: "nav",
-    className: "ui-menu",
+    className: "base-menu",
     buttonEffectsClass: "",
 
     events: {

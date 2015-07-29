@@ -1,26 +1,26 @@
 
-.ui-menu {
+.base-menu {
     width: 5em;
     box-shadow: 0 2px 1px #808080;
 }
 
-.ui-menu button {
+.base-menu button {
     display: block;
     border: 1px solid transparent;
     font-size: 200%;
     text-align: left;
 }
 
-.ui-menu button:hover {
+.base-menu button:hover {
     border: 1px solid;
     box-shadow: 1px 2px 1px #808080;
 }
 
-.ui-menu button * {
+.base-menu button * {
     display: inline;
 }
 
-.ui-menu button span {
+.base-menu button span {
     display: none;
     position: absolute;
     text-align: left;

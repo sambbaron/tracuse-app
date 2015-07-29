@@ -1,4 +1,4 @@
-Tracuse.views.ViewuseMenu = Tracuse.views.UiMenu.extend({
+Tracuse.views.ViewuseMenu = Tracuse.views.BaseMenu.extend({
 
     tagName: "nav",
     className: "dialog dialog-embed dialog-menu color-lightblue-white viewuse-menu",
@@ -44,10 +44,10 @@ Tracuse.views.ViewuseMenu = Tracuse.views.UiMenu.extend({
     initialize: function initialize(options) {
         "use strict";
         var menuView = this;
-        _.extend(menuView.events, Tracuse.views.UiMenu.prototype.events);
+        _.extend(menuView.events, Tracuse.views.BaseMenu.prototype.events);
         menuView.render();
         menuView.viewuseView = options.viewuseView || null;
-        menuView = Tracuse.views.UiMenu.prototype.initialize.call(menuView, {});
+        menuView = Tracuse.views.BaseMenu.prototype.initialize.call(menuView, {});
         return menuView;
     }
 

@@ -54,7 +54,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseView.extend({
         editView.el.innerHTML = editView.template();
 
         // Set UiMenu view
-        editView.menuView = new Tracuse.views.UiMenu({
+        editView.menuView = new Tracuse.views.BaseMenu({
             el: editView.$(".menu"),
             buttonEffectsClass: "effects-white-darkgreen"
         });
