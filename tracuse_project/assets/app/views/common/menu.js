@@ -28,6 +28,7 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
         "use strict";
         var menuView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
         _.extend(menuView.events, Tracuse.views.BaseMenu.prototype.events);
+        menuView.delegateEvents();
 
         if (options.el) {
             menuView.setElement(options.el);

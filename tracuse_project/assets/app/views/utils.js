@@ -45,6 +45,7 @@ Tracuse.views.BaseView = Backbone.View.extend({
             view.setOptionProperties(options);
         }
         _.extend(view.events, Tracuse.views.BaseView.prototype.events);
+        view.delegateEvents();
         return view;
     }
 

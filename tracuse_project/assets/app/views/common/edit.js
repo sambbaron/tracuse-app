@@ -40,6 +40,7 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
         "use strict";
         var editView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
         _.extend(editView.events, Tracuse.views.BaseEdit.prototype.events);
+        editView.delegateEvents();
 
         var editEl = editView.render().el;
         Tracuse.el.app.appendChild(editEl);
