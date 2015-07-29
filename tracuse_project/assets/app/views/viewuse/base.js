@@ -12,17 +12,18 @@ Tracuse.views.ViewuseBase = Tracuse.views.UiObject.extend({
 
     renderChildren: function renderDatums(callback) {
         "use strict";
-        /* Append Datums to Viewuse*/
+        /* Render Datums inside Viewuse
+         * Append to 'content' element
+         * */
         var viewuseView = this;
 
-        // Get datums
+        // Get datums using filter
         var filter = new Tracuse.models.FilterSet(viewuseView.model.get("datum_filter"));
         filter.fetchFilteredDatums(function (datumObjects) {
 
             viewuseView.collection = datumObjects;
-
-            // Render datums
             var contentFrag = document.createDocumentFragment();
+
             _.each(viewuseView.collection.models, function (datumModel) {
                 var datumViewName = "DatumMedium";
                 var DatumViewClass = Tracuse.views[datumViewName];

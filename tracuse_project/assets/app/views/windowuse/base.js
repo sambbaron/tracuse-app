@@ -14,12 +14,16 @@ Tracuse.views.WindowuseBase = Tracuse.views.UiObject.extend({
 
     renderChildren: function () {
         "use strict";
+        /* Render Viewuses inside Windowuse
+         * Append to 'content' element
+         * */
         var windowuseView = this;
 
         windowuseView.collection = windowuseView.model.get("viewuse_objects");
         var contentFrag = document.createDocumentFragment();
 
         _.each(windowuseView.collection.models, function (viewuseModel) {
+            // Use ViewuseArrangement for Viewuse view name
             var viewuseViewName = viewuseModel.get("viewuse_arrangement").get("entity_name");
             var ViewuseViewClass = Tracuse.views[viewuseViewName];
 
