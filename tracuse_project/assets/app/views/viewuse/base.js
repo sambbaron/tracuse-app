@@ -54,8 +54,9 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
 
         var editView = new Tracuse.views.ViewuseEdit({
             model: viewuseView.model,
-            viewuseView: viewuseView
+            parentView: viewuseView
         });
+        editView.show();
     }
 
 });

@@ -1,18 +1,17 @@
-Tracuse.views.ViewuseEdit = Tracuse.views.BaseView.extend({
+Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
 
-    tagName: "aside",
-    className: "base-edit position-popout color-white-darkgreen viewuse-edit",
+    objectTypeClass: "viewuse-edit",
     templateName: "viewuse/edit.html",
     templateData: function () {
         "use strict";
         return {
+            title: "Edit View",
             this_object: this.model.toTemplate(),
             viewuse_objects: Tracuse.models.ViewuseObject.all.toTemplate(),
             viewuse_arrangements: Tracuse.models.ViewuseArrangement.all.toTemplate()
         };
     },
 
-    buttonEffectsClass: "effects-darkgreen-white",
     ruleColorClass: "color-darkgreen-white",
     ruleEffectsClass: "effects-white-darkgreen",
 
@@ -39,7 +38,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseView.extend({
         },
         "click button[name='close-apply']": function closeEdit(ev) {
             this.applyViewuse();
-            this.closeEdit();
+            this.closeObject();
             ev.stopPropagation();
         },
         "change .selections .select-viewuse": function changeSelectViewuse(ev) {
@@ -50,14 +49,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseView.extend({
 
     render: function render() {
         "use strict";
-        var editView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
-        editView.el.innerHTML = editView.template();
-
-        // Set UiMenu view
-        editView.menuView = new Tracuse.views.BaseMenu({
-            el: editView.$(".menu"),
-            buttonEffectsClass: "effects-white-darkgreen"
-        });
+        var editView = Tracuse.views.BaseEdit.prototype.render.apply(this, arguments);
 
         // Set FilterSet view using model clone
         editView.filterView = new Tracuse.views.FilterSet({
@@ -67,33 +59,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseView.extend({
         var filterEl = editView.el.querySelector(".viewuse-filter");
         filterEl.appendChild(editView.filterView.el);
 
-        // Set button styling using class
-        editView.$(".main button:not(.selected-rule)").each(function () {
-            $(this).addClass(editView.buttonEffectsClass);
-        });
-
         return editView;
-    },
-
-    initialize: function initialize(options) {
-        "use strict";
-        var editView = this;
-
-        editView.viewuseView = options.viewuseView;
-
-        editView.render();
-
-        Tracuse.el.app.appendChild(editView.el);
-        editView.$el.fadeIn(200);
-        return editView;
-    },
-
-    closeEdit: function closeEdit() {
-        "use strict";
-        var editView = this;
-        editView.$el.fadeOut(200, function () {
-            editView.remove();
-        });
     },
 
     newViewuse: function newViewuse() {
@@ -167,9 +133,9 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseView.extend({
         /* Re-render selected ViewuseObject into active Viewuse view
          * */
         var editView = this;
-        if (editView.viewuseView) {
-            editView.viewuseView.model = editView.model;
-            editView.viewuseView.render(function () {/*Do not use ViewuseBase.render callback*/
+        if (editView.parentView) {
+            editView.parentView.model = editView.model;
+            editView.parentView.render(function () {/*Do not use ViewuseBase.render callback*/
             });
         }
     },
