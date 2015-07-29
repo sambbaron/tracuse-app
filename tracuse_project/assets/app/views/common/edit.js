@@ -30,6 +30,9 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
             });
         }
 
+        // Set title styling class same as menu
+        editView.$(" > .title").addClass(editView.menuColorClass);
+
         return editView;
     },
 

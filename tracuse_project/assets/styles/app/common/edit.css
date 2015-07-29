@@ -5,6 +5,17 @@
     overflow-y: auto;
 }
 
+.base-edit .title {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    cursor: default;
+}
+
+.base-edit > .title {
+    font-size: 150%;
+}
+
 .base-edit > .main {
     display: flex;
     flex-flow: row wrap;
@@ -23,13 +34,9 @@
     border-right: 2px solid;
 }
 
-.base-edit .title {
-    width: 100%;
-    margin: 0 auto;
-    font-size: 150%;
-    text-align: center;
+.base-edit > .main > .section > .title {
+    font-size: 125%;
     text-shadow: 1px 1px 0 #e1e1e1;
-    cursor: default;
 }
 
 .base-edit .content {
