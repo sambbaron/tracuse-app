@@ -71,6 +71,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         "use strict";
         var uiView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
         _.extend(uiView.events, Tracuse.views.BaseContainer.prototype.events);
+        return uiView;
     },
 
     renderChildren: function () {
