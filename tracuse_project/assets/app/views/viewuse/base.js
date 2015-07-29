@@ -3,6 +3,13 @@ Tracuse.views.ViewuseBase = Tracuse.views.UiObject.extend({
     objectTypeClass: "viewuse",
     templateName: "viewuse/base.html",
 
+    events: {
+        "click button[name='edit-viewuse']": function editViewuse(ev) {
+            this.editViewuse();
+            ev.stopPropagation();
+        }
+    },
+
     renderChildren: function renderDatums(callback) {
         "use strict";
         /* Append Datums to Viewuse*/

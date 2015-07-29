@@ -1,8 +1,17 @@
-Tracuse.views.ViewuseEdit = Backbone.View.extend({
+Tracuse.views.ViewuseEdit = Tracuse.views.BaseView.extend({
 
     tagName: "aside",
     className: "dialog dialog-popout dialog-options color-white-darkgreen viewuse-edit",
     templateName: "viewuse/edit.html",
+    templateData: function () {
+        "use strict";
+        return {
+            this_object: this.model.toTemplate(),
+            viewuse_objects: Tracuse.models.ViewuseObject.all.toTemplate(),
+            viewuse_arrangements: Tracuse.models.ViewuseArrangement.all.toTemplate()
+        };
+    },
+
     buttonEffectsClass: "effects-darkgreen-white",
     ruleColorClass: "color-darkgreen-white",
     ruleEffectsClass: "effects-white-darkgreen",
@@ -39,28 +48,9 @@ Tracuse.views.ViewuseEdit = Backbone.View.extend({
         }
     },
 
-    template: function () {
-        "use strict";
-        var editView = this;
-        var templateOutput = "";
-
-        var templateData = {
-            this_viewuse: editView.model.toTemplate(),
-            viewuse_objects: Tracuse.models.ViewuseObject.all.toTemplate(),
-            viewuse_arrangements: Tracuse.models.ViewuseArrangement.all.toTemplate(),
-            viewuse_datums: Tracuse.models.ViewuseDatum.all.toTemplate()
-        };
-        templateOutput = Tracuse.templates.env.render(
-            editView.templateName,
-            templateData
-        );
-
-        return templateOutput;
-    },
-
     render: function render() {
         "use strict";
-        var editView = this;
+        var editView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
         editView.el.innerHTML = editView.template();
 
         // Set DialogMenu view
