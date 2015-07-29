@@ -1,7 +1,16 @@
-Tracuse.views.FilterRule = Backbone.View.extend({
+Tracuse.views.FilterRule = Tracuse.views.BaseView.extend({
 
     tagName: "none",
     templateName: "filter/filter_rule.html",
+    templateData: function () {
+        "use strict";
+        return {
+            rule_type: this.model.rule_type,
+            rule_title: this.model.title(),
+            rule_key: this.model.key(),
+            this_rule: this.model.toJSON()
+        };
+    },
 
     events: {
         "click": function (ev) {
@@ -10,38 +19,11 @@ Tracuse.views.FilterRule = Backbone.View.extend({
         }
     },
 
-    template: function () {
+    initialize: function (options) {
         "use strict";
-        var filterRuleView = this;
-        var templateOutput = "";
-
-        var templateData = {
-            rule_type: filterRuleView.model.rule_type,
-            rule_title: filterRuleView.model.title(),
-            rule_key: filterRuleView.model.key(),
-            this_rule: filterRuleView.model.toJSON()
-        };
-        templateOutput = Tracuse.templates.env.render(
-            filterRuleView.templateName,
-            templateData
-        );
-
-        return templateOutput;
-    },
-
-    render: function render() {
-        "use strict";
-        var filterRuleView = this;
-        filterRuleView.el.innerHTML = filterRuleView.template();
-        return filterRuleView;
-    },
-
-    initialize: function initialize(options) {
-        "use strict";
-        this.filterSetView = options.filterSetView;
-        this.ruleModelName = options.ruleModelName;
-        this.render();
-        this.setElement(this.el.querySelector("button"));
+        var filterRuleView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
+        filterRuleView.render();
+        filterRuleView.setElement(this.el.querySelector("button"));
     },
 
     removeFilterRule: function removeFilterRule() {
