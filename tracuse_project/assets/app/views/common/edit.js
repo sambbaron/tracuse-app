@@ -21,11 +21,14 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
         var editView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
 
         // Set menu view
-        editView.menuView = new Tracuse.views.BaseMenu({
-            menuColorClass: editView.menuColorClass,
-            buttonEffectsClass: editView.menuEffectsClass,
-            el: editView.$(".menu")
-        });
+        var menuEl = editView.$(" > .menu");
+        if (menuEl.length) {
+            editView.menuView = new Tracuse.views.BaseMenu({
+                menuColorClass: editView.menuColorClass,
+                buttonEffectsClass: editView.menuEffectsClass,
+                el: menuEl
+            });
+        }
 
         return editView;
     },
@@ -38,6 +41,8 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
         var editEl = editView.render().el;
         Tracuse.el.app.appendChild(editEl);
         editView.show();
+
+        return editView;
     },
 
     show: function () {
