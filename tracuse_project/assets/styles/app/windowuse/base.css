@@ -1,13 +1,15 @@
 .windowuse {
     position: relative;
-    width: 100%;
     height: calc(100vh - 4rem);
+    width: 100%;
     margin: 0;
+    overflow: auto;
 }
 
 .windowuse > .content {
     display: flex;
     flex-flow: row nowrap;
+    height: 90%;
 }
 .windowuse > .content > * {
     flex: 0 1 auto;
