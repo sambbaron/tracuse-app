@@ -20,7 +20,7 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
     templateName: "common/ui_object.html",
 
     events: {
-        "click *": function clickObject(ev) {
+        "click": function clickObject(ev) {
             this.setActive();
             ev.stopPropagation();
         },
