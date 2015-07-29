@@ -6,7 +6,6 @@ header, footer {
     background-color: #35436a;
 }
 
-
 header button[name='menu'] {
     color: rgba(255, 255, 255, 1);
 }
@@ -54,4 +53,28 @@ footer {
     color: #fafafa;
     font-size: 200%;
     text-align: center;
+}
+
+.position-embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.position-popout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.position-dock {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    height: calc(100vh - 4rem);
 }
