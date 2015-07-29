@@ -24,9 +24,10 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
         }
     },
 
-    initialize: function initialize(options) {
+    initialize: function (options) {
         "use strict";
-        var menuView = this;
+        var menuView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
+        _.extend(menuView.events, Tracuse.views.BaseMenu.prototype.events);
 
         if (options.el) {
             menuView.setElement(options.el);
@@ -34,9 +35,6 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
         } else {
             menuView.setElement(menuView.render().el);
         }
-        menuView.menuColorClass = options.menuColorClass || menuView.menuColorClass;
-        menuView.buttonColorClass = options.buttonColorClass || menuView.buttonColorClass;
-        menuView.buttonEffectsClass = options.buttonEffectsClass || menuView.buttonEffectsClass;
 
         // Set menu/button styling using classes
         menuView.$el.addClass(menuView.menuColorClass);

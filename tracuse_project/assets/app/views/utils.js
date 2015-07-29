@@ -28,6 +28,23 @@ Tracuse.views.BaseView = Backbone.View.extend({
          * */
         this.el.innerHTML = this.template();
         return this;
+    },
+
+    setOptionProperties: function (options) {
+        "use strict";
+        var view = this;
+        _.each(options, function (value, name) {
+            view[name] = value || null;
+        });
+    },
+
+    initialize: function (options) {
+        "use strict";
+        if (options) {
+            this.setOptionProperties(options);
+        }
+        _.extend(this.events, Tracuse.views.BaseView.prototype.events);
+        return this;
     }
 
 });
