@@ -1,5 +1,5 @@
 
-.ui-object > .title {
+.base-container > .title {
     position: relative;
     display: block;
     margin: 0 auto;
@@ -7,11 +7,11 @@
     font-size: 150%;
 }
 
-.ui-object > .controls {
+.base-container > .controls {
     display: none;
 }
 
-.ui-object > .controls > button {
+.base-container > .controls > button {
     border-style: solid;
     margin: 0;
     border-radius: 0;
@@ -19,21 +19,21 @@
     font-size: 150%;
 }
 
-.ui-object > .controls > button[name='show-menu'] {
+.base-container > .controls > button[name='show-menu'] {
     position: absolute;
     top: 0;
     left: 0;
     border-width: 0 1px 1px 0;
 }
 
-.ui-object > .controls > button[name='close-object'] {
+.base-container > .controls > button[name='close-object'] {
     position: absolute;
     top: 0;
     right: 0;
     border-width: 0 0 1px 1px;
 }
 
-.ui-object > .menu {
+.base-container > .menu {
     display: none;
     position: absolute;
     top: 0;

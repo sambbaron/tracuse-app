@@ -1,7 +1,7 @@
-Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
+Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
     objectTypeClass: "",
-    baseClass: "ui-object",
+    baseClass: "base-container",
     objectColorClass: "color-white-lightblue",
     objectEffectsClass: "effects-lightblue",
     controlsColorClass: "color-white-lightblue",
@@ -65,7 +65,7 @@ Tracuse.views.UiObject = Tracuse.views.BaseView.extend({
 
     initialize: function (options) {
         "use strict";
-        _.extend(this.events, Tracuse.views.UiObject.prototype.events);
+        _.extend(this.events, Tracuse.views.BaseContainer.prototype.events);
         this.parentView = options.parentView || null;
     },
 

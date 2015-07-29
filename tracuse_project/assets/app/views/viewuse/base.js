@@ -1,4 +1,4 @@
-Tracuse.views.ViewuseBase = Tracuse.views.UiObject.extend({
+Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
 
     objectTypeClass: "viewuse",
     templateName: "viewuse/base.html",
