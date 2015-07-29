@@ -66,6 +66,12 @@ button span {
     border-color: #6e8cd8;
 }
 
+.color-white-lightblue {
+    background-color: #fafafa;
+    color: #35436a;
+    border-color: #6e8cd8;
+}
+
 .color-white-darkgreen {
     background-color: #fafafa;
     color: #85be2e;
