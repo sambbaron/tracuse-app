@@ -1,4 +1,4 @@
-Tracuse.views.DialogMenu = Backbone.View.extend({
+Tracuse.views.DialogMenu = Tracuse.views.BaseView.extend({
 
     tagName: "nav",
     className: "dialog-menu",
