@@ -1,6 +1,6 @@
 Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
 
-    baseClass: "base-edit position-popout",
+    baseClass: "base-edit",
     objectTypeClass: "",
     objectColorClass: "color-white-darkgreen",
     objectEffectsClass: "",

@@ -1,6 +1,6 @@
 Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
 
-    objectTypeClass: "viewuse-edit",
+    objectTypeClass: "viewuse-edit position-popout",
     templateName: "viewuse/edit.html",
     templateData: function () {
         "use strict";
