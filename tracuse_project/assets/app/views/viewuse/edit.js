@@ -56,8 +56,9 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
             model: new Tracuse.models.FilterSet(editView.model.get("datum_filter").toJSON()),
             parentView: editView
         });
-        var filterEl = editView.el.querySelector(".viewuse-filter");
-        filterEl.appendChild(editView.filterView.el);
+        var filterContainer = editView.el.querySelector(".viewuse-filter");
+        var filterEl = editView.filterView.el;
+        filterContainer.appendChild(filterEl);
 
         return editView;
     },

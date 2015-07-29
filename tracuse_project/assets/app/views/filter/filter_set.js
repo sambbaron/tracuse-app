@@ -1,8 +1,17 @@
-Tracuse.views.FilterSet = Backbone.View.extend({
+Tracuse.views.FilterSet = Tracuse.views.BaseEdit.extend({
 
-    tagName: "aside",
-    className: "base-edit filter-set",
+    objectTypeClass: "filter-set",
     templateName: "filter/filter_set.html",
+    templateData: function () {
+        "use strict";
+        return {
+            this_filter: this.model.toTemplate(),
+            datum_groups: Tracuse.models.DatumGroup.all.toTemplate(),
+            datum_types: Tracuse.models.DatumType.all.toTemplate(),
+            element_types: Tracuse.models.ElementType.all.toTemplate(),
+            association_directions: Tracuse.models.AssociationDirection.all.toTemplate()
+        };
+    },
 
     events: {
         "change .associations select[name='association_groups']": function (ev) {
@@ -37,38 +46,9 @@ Tracuse.views.FilterSet = Backbone.View.extend({
         }
     },
 
-    template: function () {
+    initialize: function (options) {
         "use strict";
-        var filterView = this;
-        var templateOutput = "";
-
-        var templateData = {
-            this_filter: filterView.model.toTemplate(),
-            datum_groups: Tracuse.models.DatumGroup.all.toTemplate(),
-            datum_types: Tracuse.models.DatumType.all.toTemplate(),
-            element_types: Tracuse.models.ElementType.all.toTemplate(),
-            association_directions: Tracuse.models.AssociationDirection.all.toTemplate()
-        };
-        templateOutput = Tracuse.templates.env.render(
-            filterView.templateName,
-            templateData
-        );
-
-        return templateOutput;
-    },
-
-    render: function render() {
-        "use strict";
-        var filterView = this;
-        filterView.el.innerHTML = filterView.template();
-        return filterView;
-    },
-
-    initialize: function initialize(options) {
-        "use strict";
-        var filterView = this;
-
-        filterView.parentView = options.parentView;
+        var filterView = Tracuse.views.BaseEdit.prototype.initialize.call(this, options);
 
         filterView.render();
 
