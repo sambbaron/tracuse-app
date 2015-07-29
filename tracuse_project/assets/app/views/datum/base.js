@@ -1,4 +1,4 @@
-Tracuse.views.DatumBase = Backbone.View.extend({
+Tracuse.views.DatumBase = Tracuse.views.BaseView.extend({
 
     tagName: "article",
     className: "datum",
@@ -17,32 +17,15 @@ Tracuse.views.DatumBase = Backbone.View.extend({
         }
     },
 
-    template: function () {
+    render: function () {
         "use strict";
-        var datumView = this;
-        var templateOutput = "";
+        var datumView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
 
         // Add Datum Group and Datum Type names to class
         // Using names rather than ids to be more transparent, but names are a dependency
         datumView.el.classList.add(datumView.model.get("datum_group").get("schema_name"));
         datumView.el.classList.add(datumView.model.get("datum_type").get("schema_name"));
 
-        var templateData = {
-            this_datum: datumView.model.toTemplate()
-        };
-        templateOutput = Tracuse.templates.env.render(
-            datumView.templateName,
-            templateData
-        );
-
-        return templateOutput;
-    },
-
-    render: function () {
-        "use strict";
-        var datumView = this;
-        datumView.el.innerHTML = datumView.template();
-        return datumView;
     },
 
     initialize: function (options) {
