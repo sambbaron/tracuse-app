@@ -51,7 +51,6 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
 
         var editEl = editView.render().el;
         Tracuse.el.app.appendChild(editEl);
-        editView.show();
 
         return editView;
     },

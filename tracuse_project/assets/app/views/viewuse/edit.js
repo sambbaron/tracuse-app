@@ -59,6 +59,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
         var filterContainer = editView.el.querySelector(".viewuse-filter");
         var filterEl = editView.filterView.el;
         filterContainer.appendChild(filterEl);
+        editView.filterView.show();
 
         return editView;
     },
