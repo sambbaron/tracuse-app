@@ -15,33 +15,24 @@ Tracuse.views.DatumMedium = Tracuse.views.DatumBase.extend({
 
     render: function () {
         "use strict";
-        var datumView = this;
-
-        Tracuse.views.DatumBase.prototype.render.apply(datumView, arguments);
+        var datumView = Tracuse.views.DatumBase.prototype.render.apply(this, arguments);
 
         // Add class for arrangement view name
         datumView.el.classList.add("datum-medium");
 
-        // Render elements
-        // Only add elements with ElementDatumType.primary_view set true
-        var fragment = document.createDocumentFragment();
-        _.each(datumView.elementSubViews, function (elementView) {
-            if (elementView.model.get("element_datum_type").get("primary_view")) {
-                fragment.appendChild(elementView.render().el);
-            }
-        });
-        datumView.el.appendChild(fragment);
+        //// Render elements
+        //// Only add elements with ElementDatumType.primary_view set true
+        //var fragment = document.createDocumentFragment();
+        //_.each(datumView.elementSubViews, function (elementView) {
+        //    if (elementView.model.get("element_datum_type").get("primary_view")) {
+        //        fragment.appendChild(elementView.render().el);
+        //    }
+        //});
+        //datumView.el.appendChild(fragment);
 
         return datumView;
     },
 
-    setActiveElement: function setActiveElement(el) {
-        "use strict";
-        /*Show/Hide Element label*/
-        var elementEl = el.parentNode;
-        var labelEl = elementEl.querySelector("label");
-        $(labelEl).fadeToggle(100);
-        $(elementEl).toggleClass("active");
-    }
+
 
 });

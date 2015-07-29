@@ -1,14 +1,14 @@
 
 .datum {
-    position: relative;
+    /*position: relative;*/
     width: 10em;
-    border: 1px solid #6E8BD9;
-    background-color: #DBE0ED;
-    box-shadow: 1px 1px 0 darkgray;
-    font-size: 125%;
+    /*border: 1px solid #6E8BD9;*/
+    /*background-color: #DBE0ED;*/
+    /*box-shadow: 1px 1px 0 darkgray;*/
+    /*font-size: 125%;*/
 }
 
-.datum i {
+.datum .datum-icon {
     position: absolute;
     top: 50%;
     left: 50%;

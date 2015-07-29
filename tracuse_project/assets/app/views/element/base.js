@@ -1,4 +1,4 @@
-Tracuse.views.ElementBase = Backbone.View.extend({
+Tracuse.views.ElementBase = Tracuse.views.BaseView.extend({
 
     tagName: "div",
     className: "element",
@@ -10,33 +10,11 @@ Tracuse.views.ElementBase = Backbone.View.extend({
         }
     },
 
-    template: function () {
+    initialize: function (options) {
         "use strict";
-        var elementView = this;
-        var templateOutput = "";
-
-        var templateData = {
-            id: "e" + elementView.model.id,
-            this_element: elementView.model.toTemplate()
-        };
-        templateOutput = Tracuse.templates.env.render(
-            elementView.templateName,
-            templateData
-        );
-
-        return templateOutput;
-    },
-
-    render: function render() {
-        "use strict";
-        var elementView = this;
-        elementView.el.innerHTML = elementView.template();
+        var elementView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
+        elementView.listenTo(elementView.model, "change", elementView.render);
         return elementView;
-    },
-
-    initialize: function initialize() {
-        "use strict";
-        this.listenTo(this.model, "change", this.render);
     },
 
     updateElement: function updateElement(value) {

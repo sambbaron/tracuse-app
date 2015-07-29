@@ -1,7 +1,6 @@
-Tracuse.views.DatumBase = Tracuse.views.BaseView.extend({
+Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
 
-    tagName: "article",
-    className: "datum",
+    objectTypeClass: "datum",
     templateName: "datum/base.html",
 
     events: {
@@ -19,46 +18,42 @@ Tracuse.views.DatumBase = Tracuse.views.BaseView.extend({
 
     render: function () {
         "use strict";
-        var datumView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
+        var datumView = Tracuse.views.BaseContainer.prototype.render.apply(this, arguments);
 
         // Add Datum Group and Datum Type names to class
         // Using names rather than ids to be more transparent, but names are a dependency
         datumView.el.classList.add(datumView.model.get("datum_group").get("schema_name"));
         datumView.el.classList.add(datumView.model.get("datum_type").get("schema_name"));
 
+        return datumView;
     },
 
-    initialize: function (options) {
+    renderChildren: function renderElements() {
         "use strict";
+        /* Render Elements inside Datum
+         * Append to 'content' element
+         * */
         var datumView = this;
-        var elementViewName, ElementView;
 
-        datumView.viewuseView = options.viewuseView;
-
-        // Set element collection and views
-        datumView.elementSubViews = [];
         datumView.collection = datumView.model.get("elements");
-        datumView.collection.each(function (elementModel) {
+        var contentFrag = document.createDocumentFragment();
 
-            // Set element subview based on element type
-            elementViewName = elementModel.get("element_type").get("element_view");
-            ElementView = Tracuse.views[elementViewName];
+        _.each(datumView.collection.models, function (elementModel) {
+            var elementViewName = elementModel.get("element_type").get("element_view");
+            var ElementViewClass = Tracuse.views[elementViewName];
 
-            datumView.elementSubViews.push(new ElementView({
+            var elementView = new ElementViewClass({
                 model: elementModel,
-                datumView: datumView
-            }));
+                parentView: datumView
+            });
+            elementView.delegateEvents();
+            var elementEl = elementView.render().el;
+            contentFrag.appendChild(elementEl);
         });
 
-    },
+        datumView.contentEl.append(contentFrag);
 
-    setActive: function setActive() {
-        "use strict";
-        /* Set active datum - 'active' class */
-        if (!this.$el.hasClass("active")) {
-            this.viewuseView.$(".datum").removeClass("active");
-            this.$el.addClass("active", 100);
-        }
+        return datumView;
     }
 
 });
