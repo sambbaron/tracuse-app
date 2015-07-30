@@ -41,22 +41,22 @@
     cursor: default;
 }
 
-.datum-medium .element label {
+.datum-medium .element .title {
     display: none;
-    position: absolute;
-    top: -0.2em;
-    left: 50%;
-    transform: translateX(-50%);
     margin: -0.25em auto 0 auto;
-    padding-top: 0.25em;
+    padding: 0.25em 0 0;
     font-size: 75%;
     opacity: 0.5;
     white-space: nowrap;
 }
 
-.datum-medium.active .element label,
-.datum-medium .element:hover label {
+.datum-medium.active .element .title,
+.datum-medium .element:hover .title {
     display: block;
+}
+
+.datum-medium .element .content {
+    margin: 0;
 }
 
 .datum-medium .element-text .element-input {

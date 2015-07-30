@@ -1,9 +1,12 @@
-{% include "element/label.html" %}
-<select class="element-input" name="element_value">
-    {% for element_option in this_object.element_type.element_options %}
-        <option value="{{ element_option.readable_name }}"
-                {{ " selected" if this_object.element_value == element_option.readable_name }}>
-            {{ element_option.readable_name }}
-        </option>
-    {% endfor %}
-</select>
+{% extends "element/base.html" %}
+
+{% block element_input %}
+    <select class="element-input" name="element_value">
+        {% for element_option in this_object.element_type.element_options %}
+            <option value="{{ element_option.readable_name }}"
+                    {{ " selected" if this_object.element_value == element_option.readable_name }}>
+                {{ element_option.readable_name }}
+            </option>
+        {% endfor %}
+    </select>
+{% endblock %}
