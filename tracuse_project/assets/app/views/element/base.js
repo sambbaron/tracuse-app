@@ -1,7 +1,7 @@
-Tracuse.views.ElementBase = Tracuse.views.BaseView.extend({
+Tracuse.views.ElementBase = Tracuse.views.BaseContainer.extend({
 
-    tagName: "div",
-    className: "element",
+    objectTypeClass: "element",
+    templateName: "element/base.html",
 
     events: {
         "change .element-input": function (ev) {
@@ -12,7 +12,7 @@ Tracuse.views.ElementBase = Tracuse.views.BaseView.extend({
 
     initialize: function (options) {
         "use strict";
-        var elementView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
+        var elementView = Tracuse.views.BaseContainer.prototype.initialize.call(this, options);
         elementView.listenTo(elementView.model, "change", elementView.render);
         return elementView;
     },

@@ -1,15 +1,15 @@
 Tracuse.views.ElementText = Tracuse.views.ElementBase.extend({
-    className: "element element-text",
+    objectTypeClass: "element element-text",
     templateName: "element/text.html"
 });
 
 Tracuse.views.ElementSelect = Tracuse.views.ElementBase.extend({
-    className: "element element-select",
+    objectTypeClass: "element element-select",
     templateName: "element/select.html"
 });
 
 Tracuse.views.ElementDatetime = Tracuse.views.ElementBase.extend({
-    className: "element element-datetime",
+    objectTypeClass: "element element-datetime",
     templateName: "element/base.html",
 
     momentFormat: "M/D/YYYY h:mm a",
@@ -38,7 +38,7 @@ Tracuse.views.ElementDatetime = Tracuse.views.ElementBase.extend({
 });
 
 Tracuse.views.ElementDate = Tracuse.views.ElementDatetime.extend({
-    className: "element element-date",
+    objectTypeClass: "element element-date",
     templateName: "element/base.html",
 
     momentFormat: "M/D/YYYY",

@@ -1,5 +1,9 @@
-{% include "element/label.html" %}
-<input class="element-input"
-       id="{{ id }}"
-       name="element_value"
-       value="{{ this_object.element_value }}">
+{% extends "common/container.html" %}
+
+{% block content %}
+    {% include "element/label.html" %}
+    <input class="element-input"
+           id="{{ id }}"
+           name="element_value"
+           value="{{ this_object.element_value }}">
+{% endblock %}
