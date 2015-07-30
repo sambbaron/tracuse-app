@@ -3,7 +3,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
     objectTypeClass: "",
     baseClass: "base-container",
     objectColorClass: "color-white-lightblue",
-    objectEffectsClass: "effects-white effects-shadow-lightblue",
+    objectEffectsClass: "effects-lightblue",
     controlsColorClass: "color-white-lightblue",
     controlsEffectsClass: "effects-lightblue-white",
     menuColorClass: "color-lightblue-white",
@@ -120,7 +120,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
          * Remove 'active' class and hide controls
          * */
         var containerView = this;
-        var $el = $container || $("." + containerView.baseClass);
+        var $el = $container || $("." + containerView.baseClass + ".active");
 
         $el.removeClass("active");
         $el.find(" > .title").removeClass("active");
