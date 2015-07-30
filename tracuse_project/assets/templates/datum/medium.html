@@ -1,0 +1,17 @@
+{% extends "common/container.html" %}
+
+{% block content %}
+    <i class="datum-icon {{ this_object.datum_type.icon_class }}"></i>
+
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block controls %}
+    <button name="show-menu" title="Show Menu"><i class="fa fa-bars"></i></button>
+{% endblock %}
+
+{% block menu %}
+    <button name="create-object"><i class="fa fa-star fa-fw"></i><span>Create Object</span></button>
+    <button name="edit-windowuse"><i class="fa fa-edit fa-fw"></i><span>Edit Object</span></button>
+{% endblock %}
