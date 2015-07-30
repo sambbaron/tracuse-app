@@ -3,19 +3,6 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
     objectTypeClass: "datum",
     templateName: "datum/base.html",
 
-    events: {
-        "click *": function clickDatum(ev) {
-            "use strict";
-            this.setActive();
-            ev.stopPropagation();
-        },
-        "focusin *": function focusDatum(ev) {
-            "use strict";
-            this.setActive();
-            ev.stopPropagation();
-        }
-    },
-
     render: function () {
         "use strict";
         var datumView = Tracuse.views.BaseContainer.prototype.render.apply(this, arguments);
