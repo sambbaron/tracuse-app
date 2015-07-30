@@ -9,6 +9,13 @@
     font-size: 75%;
 }
 
+.datum-medium > .controls > button[name='show-menu'] {
+    position: absolute;
+    top: -0.5px;
+    left: -2em;
+    border-width: 1px 0 1px 1px;
+}
+
 .datum-medium > .content {
     margin: 0;
 }
