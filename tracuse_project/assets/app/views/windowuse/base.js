@@ -8,7 +8,7 @@ Tracuse.views.WindowuseBase = Tracuse.views.BaseContainer.extend({
         /* Set rendered Windowuse as active
          * */
         var windowuseView = Tracuse.views.BaseContainer.prototype.render.apply(this, arguments);
-        windowuseView.setActive();
+        windowuseView.applyActive();
         return windowuseView;
     },
 

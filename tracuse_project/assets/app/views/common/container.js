@@ -21,7 +21,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
     events: {
         "click": function clickObject(ev) {
-            this.setActive();
+            this.applyActive();
             ev.stopPropagation();
         },
         "scroll": function scrollObject(ev) {
@@ -98,27 +98,51 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         });
     },
 
-    setActive: function () {
+    unsetActive: function ($container) {
         "use strict";
-        /* Set active object
-         * Show/Hide controls
-         * Add/Remove 'active' class to object and title
+        /* Unset container as active
+         * If no $container, apply to all
+         * Remove 'active' class and hide controls
          * */
-        var $parentObjects = this.$el.parent(".base-container");
-        var $childObjects = this.$(".base-container");
-        var $siblingObjects = this.$el.parent().find("." + this.objectTypeClass).not(this.$el);
+        var containerView = this;
+        var $el;
 
-        $parentObjects.find(" > .menu").hide();
+        if ($container) {
+            $el = $container;
+        } else {
+            $el = $("." + containerView.baseClass);
+        }
 
-        $childObjects.removeClass("active");
-        $childObjects.find(" > .controls").hide();
+        $el.removeClass("active");
+        $el.find(" > .controls").hide();
+        $el.find(" > .menu").hide();
+    },
 
-        $siblingObjects.find(" > .controls").hide();
-        $siblingObjects.find(" > .menu").hide();
-        this.$(" > .controls").show();
+    setActive: function ($container) {
+        "use strict";
+        /* Set container as active
+         * Add 'active' class
+         * Show controls
+         * */
+        $container.addClass("active");
+        $container.find(" > .controls").show();
+    },
 
-        $siblingObjects.removeClass("active");
-        this.$el.addClass("active");
+    applyActive: function () {
+        "use strict";
+        /* Clear and apply active
+         * To object and its parents
+         * */
+        var containerView = this;
+        var $el;
+
+        containerView.unsetActive();
+
+        $el = containerView.$el;
+        containerView.setActive($el);
+        $el.parents(".base-container").each(function () {
+            containerView.setActive($(this));
+        });
 
     },
 

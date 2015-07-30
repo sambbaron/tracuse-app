@@ -141,7 +141,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
             editView.parentView.render(function () {/*Do not use ViewuseBase.render callback*/
             });
         }
-        editView.parentView.setActive();
+        editView.parentView.applyActive();
     },
 
     selectViewuse: function selectViewuse(viewuseID) {
