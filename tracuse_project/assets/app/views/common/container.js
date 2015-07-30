@@ -20,7 +20,11 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
     templateName: "common/container.html",
 
     events: {
-        "click": function clickObject(ev) {
+        "click": function activeObject(ev) {
+            this.applyActive();
+            ev.stopPropagation();
+        },
+        "focusin": function activeObject(ev) {
             this.applyActive();
             ev.stopPropagation();
         },

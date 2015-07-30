@@ -11,7 +11,15 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
             this.toggleButton(ev.target, true);
             ev.stopPropagation();
         },
+        "focusin button": function enterMenuButton(ev) {
+            this.toggleButton(ev.target, true);
+            ev.stopPropagation();
+        },
         "mouseleave button": function exitMenuButton(ev) {
+            this.toggleButton(ev.target, false);
+            ev.stopPropagation();
+        },
+        "focusout button": function exitMenuButton(ev) {
             this.toggleButton(ev.target, false);
             ev.stopPropagation();
         },
@@ -63,6 +71,8 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
         $el.show();
         $el.animate({"width": "5em"}, 200);
         $el.addClass("open");
+
+        $el.find(" > button").first().focus();
     },
 
     hide: function ($menu) {
