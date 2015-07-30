@@ -3,8 +3,12 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
     objectTypeClass: "datum",
     templateName: "datum/base.html",
 
+    elementEffectsClass: "effects-lightgreen",
+
     render: function () {
         "use strict";
+        /* Add style classes
+         * */
         var datumView = Tracuse.views.BaseContainer.prototype.render.apply(this, arguments);
 
         // Add Datum Group and Datum Type names to class
@@ -31,7 +35,8 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
 
             var elementView = new ElementViewClass({
                 model: elementModel,
-                parentView: datumView
+                parentView: datumView,
+                objectEffectsClass: datumView.elementEffectsClass
             });
             elementView.delegateEvents();
             var elementEl = elementView.render().el;
