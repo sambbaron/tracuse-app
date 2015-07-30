@@ -96,7 +96,7 @@ Backbone.Collection.prototype.getFetchOne = function getFetchOne(id, callback) {
     } else {
         // Object not in collection, fetch object
         modelOptions[idAttribute] = id;
-        var newObject = new model(modelOptions);
+        var newObject = model.findOrCreate(modelOptions);
         newObject.fetch({
             success: function (model, response) {
                 allCollection.set(model, {remove: false});
