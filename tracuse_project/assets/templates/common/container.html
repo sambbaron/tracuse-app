@@ -7,9 +7,10 @@
 {% endblock %}
 
 <div class="controls">
-    <button name="show-menu" title="Show Menu"><i class="fa fa-bars"></i></button>
-    <button name="close-object" title="Close Object"><i class="fa fa-close"></i></button>
-    {% block controls %}{% endblock %}
+    {% block controls %}
+        <button name="show-menu" title="Show Menu"><i class="fa fa-bars"></i></button>
+        <button name="close-object" title="Close Object"><i class="fa fa-close"></i></button>
+    {% endblock %}
 </div>
 
 <nav class="menu">
