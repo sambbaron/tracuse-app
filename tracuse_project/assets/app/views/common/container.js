@@ -107,13 +107,11 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         var $parentObjects = this.$el.parent(".base-container");
         var $childObjects = this.$(".base-container");
         var $siblingObjects = this.$el.parent().find("." + this.objectTypeClass).not(this.$el);
-        var $siblingTitles = $siblingObjects.find(" > .title");
 
         $parentObjects.find(" > .menu").hide();
 
         $childObjects.removeClass("active");
         $childObjects.find(" > .controls").hide();
-        $childObjects.find(" > .title").removeClass("active");
 
         $siblingObjects.find(" > .controls").hide();
         $siblingObjects.find(" > .menu").hide();
@@ -122,8 +120,6 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         $siblingObjects.removeClass("active");
         this.$el.addClass("active");
 
-        $siblingTitles.removeClass("active");
-        this.$(" > .title").addClass("active");
     },
 
     scrollFixedElements: function () {

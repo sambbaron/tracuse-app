@@ -14,7 +14,7 @@
     font-size: 150%;
 }
 
-.base-container > .title.active {
+.base-container.active > .title {
     box-shadow: none;
     font-weight: bold;
 }
