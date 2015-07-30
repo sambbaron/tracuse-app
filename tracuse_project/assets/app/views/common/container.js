@@ -105,13 +105,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
          * Remove 'active' class and hide controls
          * */
         var containerView = this;
-        var $el;
-
-        if ($container) {
-            $el = $container;
-        } else {
-            $el = $("." + containerView.baseClass);
-        }
+        var $el = $container || $("." + containerView.baseClass);
 
         $el.removeClass("active");
         $el.find(" > .controls").hide();
