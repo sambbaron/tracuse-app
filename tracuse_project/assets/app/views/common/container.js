@@ -17,7 +17,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
             " " + this.objectEffectsClass +
             " " + this.objectTypeClass;
     },
-    templateName: "common/ui_object.html",
+    templateName: "common/container.html",
 
     events: {
         "click": function clickObject(ev) {
@@ -40,43 +40,43 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
     render: function () {
         "use strict";
-        var uiView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
+        var containerView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
 
         // Set menu view
-        uiView.menuView = new Tracuse.views.BaseMenu({
-            menuColorClass: uiView.menuColorClass,
-            buttonEffectsClass: uiView.menuEffectsClass,
-            el: uiView.$(".menu")
+        containerView.menuView = new Tracuse.views.BaseMenu({
+            menuColorClass: containerView.menuColorClass,
+            buttonEffectsClass: containerView.menuEffectsClass,
+            el: containerView.$(".menu")
         });
 
         // Set title styling class same as object
-        uiView.$(" > .title").addClass(uiView.objectColorClass);
-        uiView.$(" > .title").addClass(uiView.objectEffectsClass);
+        containerView.$(" > .title").addClass(containerView.objectColorClass);
+        containerView.$(" > .title").addClass(containerView.objectEffectsClass);
 
         // Add styling classes to controls
-        uiView.$(".controls").addClass(uiView.controlsColorClass);
-        uiView.$(".controls > button").each(function () {
-            $(this).addClass(uiView.controlsEffectsClass);
+        containerView.$(".controls").addClass(containerView.controlsColorClass);
+        containerView.$(".controls > button").each(function () {
+            $(this).addClass(containerView.controlsEffectsClass);
         });
 
         // Add style class to 'content'
-        uiView.contentEl = uiView.$(".content");
-        if (uiView.contentEl && uiView.contentStyleClass) {
-            uiView.contentEl.addClass(uiView.contentStyleClass);
+        containerView.contentEl = containerView.$(".content");
+        if (containerView.contentEl && containerView.contentStyleClass) {
+            containerView.contentEl.addClass(containerView.contentStyleClass);
         }
 
         // Render child objects
-        uiView.renderChildren();
+        containerView.renderChildren();
 
-        return uiView;
+        return containerView;
     },
 
     initialize: function (options) {
         "use strict";
-        var uiView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
-        _.extend(uiView.events, Tracuse.views.BaseContainer.prototype.events);
-        uiView.delegateEvents();
-        return uiView;
+        var containerView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
+        _.extend(containerView.events, Tracuse.views.BaseContainer.prototype.events);
+        containerView.delegateEvents();
+        return containerView;
     },
 
     renderChildren: function () {
@@ -92,9 +92,9 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
     closeObject: function () {
         "use strict";
-        var uiView = this;
-        uiView.$el.fadeOut(200, function () {
-            uiView.remove();
+        var containerView = this;
+        containerView.$el.fadeOut(200, function () {
+            containerView.remove();
         });
     },
 
@@ -131,15 +131,15 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         /* Move elements with scroll
          * Use Jquery to find direct descendants
          * */
-        var uiView = this;
+        var containerView = this;
 
-        var title = uiView.$(" > .title");
-        var controlMenu = uiView.$(" > .controls button[name='show-menu']");
-        var controlClose = uiView.$(" > .controls button[name='close-object']");
+        var title = containerView.$(" > .title");
+        var controlMenu = containerView.$(" > .controls button[name='show-menu']");
+        var controlClose = containerView.$(" > .controls button[name='close-object']");
 
-        Tracuse.utils.positionOnScroll(title, uiView.el, "nw");
-        Tracuse.utils.positionOnScroll(controlMenu, uiView.el, "nw");
-        Tracuse.utils.positionOnScroll(controlClose, uiView.el, "ne");
+        Tracuse.utils.positionOnScroll(title, containerView.el, "nw");
+        Tracuse.utils.positionOnScroll(controlMenu, containerView.el, "nw");
+        Tracuse.utils.positionOnScroll(controlClose, containerView.el, "ne");
     }
 
 });
