@@ -11,7 +11,6 @@
 
 .datum-medium > .controls > button[name='show-menu'] {
     position: absolute;
-    top: -0.5px;
     left: -2em;
     border-width: 1px 0 1px 1px;
 }
@@ -48,22 +47,16 @@
     top: -0.2em;
     left: 50%;
     transform: translateX(-50%);
-    margin: 0 auto;
+    margin: -0.25em auto 0 auto;
+    padding-top: 0.25em;
     font-size: 75%;
-    color: #587e1f;
     opacity: 0.5;
     white-space: nowrap;
 }
 
-.datum-medium .element.active {
-    margin-top: -0.25em;
-    padding-top: 0.25em;
-    border-radius: 0.5em;
-    background-color: rgba(204, 232, 162, 0.5);
-}
-
-.datum-medium .element .element-input:focus {
-    background-color: rgba(204, 232, 162, 0.5);
+.datum-medium.active .element label,
+.datum-medium .element:hover label {
+    display: block;
 }
 
 .datum-medium .element-text .element-input {
