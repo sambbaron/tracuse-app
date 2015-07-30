@@ -29,7 +29,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
             ev.stopPropagation();
         },
         "click button[name='show-menu']": function showMenu(ev) {
-            this.menuView.showHide();
+            this.menuView.show();
             ev.stopPropagation();
         },
         "click button[name='close-object']": function closeObject(ev) {

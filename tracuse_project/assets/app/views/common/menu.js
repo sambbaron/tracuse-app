@@ -19,7 +19,7 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
             this.toggleButton(ev.target, false);
         },
         "click button[name='hide-menu']": function hideMenu(ev) {
-            this.showHide();
+            this.hide();
             ev.stopPropagation();
         }
     },
@@ -49,25 +49,32 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
         return menuView;
     },
 
-    showHide: function showHide() {
+    show: function ($menu) {
         "use strict";
-        /* Can't use JQueryUI slide effect
+        /* Show menu and hide other open menus
+         * Can't use JQueryUI slide effect
          *    because menu has absolute positioning
          * */
-        var $el = this.$el;
-        var $allMenus = $("." + this.className).not($el);
+        var $el = $menu || this.$el;
 
-        if ($el.css("display") === "none") {
-            $allMenus.animate({"width": "0"}, 200, function () {
-                $allMenus.hide(200);
-            });
-            $el.show();
-            $el.animate({"width": "5em"}, 200);
-        } else {
-            $el.animate({"width": "0"}, 200, function () {
-                $el.hide(200);
-            });
-        }
+        var $openMenus = $("." + this.className + ".open").not($el);
+        this.hide($openMenus);
+
+        $el.show();
+        $el.animate({"width": "5em"}, 200);
+        $el.addClass("open");
+    },
+
+    hide: function ($menu) {
+        "use strict";
+        /* Hide menu
+         * */
+        var $el = $menu || this.$el;
+
+        $el.animate({"width": "0"}, 200, function () {
+            $el.hide(200);
+        });
+        $el.removeClass("open");
     },
 
     toggleButton: function toggleButton(el, option) {
