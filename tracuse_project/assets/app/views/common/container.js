@@ -47,6 +47,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         var containerView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
 
         // Reapply class in case className components changed at initialize
+        containerView.$el.removeClass();
         containerView.$el.addClass(containerView.className());
 
         // Set menu element and view
@@ -95,6 +96,11 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         _.extend(containerView.events, Tracuse.views.BaseContainer.prototype.events);
         containerView.delegateEvents();
         return containerView;
+    },
+
+    renderMenu: function () {
+        "use strict";
+
     },
 
     renderChildren: function () {
