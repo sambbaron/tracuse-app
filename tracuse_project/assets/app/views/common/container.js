@@ -3,7 +3,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
     objectTypeClass: "",
     baseClass: "base-container",
     objectColorClass: "color-white-lightblue",
-    objectEffectsClass: "effects-lightblue",
+    objectEffectsClass: "effects-white effects-shadow-lightblue",
     controlsColorClass: "color-white-lightblue",
     controlsEffectsClass: "effects-lightblue-white",
     menuColorClass: "color-lightblue-white",
