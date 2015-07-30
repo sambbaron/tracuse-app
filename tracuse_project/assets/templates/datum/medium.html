@@ -1,8 +1,0 @@
-{% extends "datum/datum_base.html" %}
-{% set template_name = "datum_medium" %}
-
-{% block datum_content %}
-    {% for element in datum.elements %}
-        {% include "element/element.html" %}
-    {% endfor %}
-{% endblock %}
