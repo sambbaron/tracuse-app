@@ -4,7 +4,7 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
     * Create "all" Collection for model
     * */
 
-    // Default url
+    // Default base url
     var url = Tracuse.routes.api[modelName] ||
         Tracuse.routes.baseUrl + modelName + "/";
 
@@ -28,6 +28,7 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
         url: url,
         comparator: "sort"
     });
+    // Default collection for "all" model objects
     model.all = new model.collBase();
 
     return model;
