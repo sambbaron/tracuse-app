@@ -128,49 +128,58 @@ button span {
     text-shadow: 1px 1px 0 #969696;
 }
 
-.effects-white-lightblue:hover {
+.effects-white-lightblue:hover,
+.effects-white-lightblue:focus {
     background-color: #fafafa;
     color: #6e8cd8;
     border-color: #6e8cd8;
 }
 
-.effects-lightblue-white:hover {
+.effects-lightblue-white:hover,
+.effects-lightblue-white:focus {
     background-color: #6e8cd8;
     color: #fafafa;
     border-color: #fafafa;
 }
 
-.effects-lightblue.active {
+.effects-lightblue.active,
+.effects-lightblue:focus {
     background-color: #f5f5f5;
     box-shadow: 0 0 1em rgba(110, 139, 217, 0.75);
 }
 
-.effects-lightgreen:hover {
+.effects-lightgreen:hover,
+.effects-lightgreen:focus {
     background-color: hsl(84, 60%, 71%);
 }
 
-.effects-lightgreen.active {
+.effects-lightgreen.active,
+.effects-lightgreen.focus {
     background-color: hsl(84, 60%, 71%);
     box-shadow: 0 0 5px 5px #a7d760;
 }
 
-.effects-darkgreen-white:hover {
+.effects-darkgreen-white:hover,
+.effects-darkgreen-white:focus {
     background-color: #85be2e;
     color: #fafafa;
     border-color: #fafafa;
 }
 
-.effects-white-darkgreen:hover {
+.effects-white-darkgreen:hover,
+.effects-white-darkgreen:focus {
     background-color: #fafafa;
     color: #85be2e;
     border-color: #85be2e;
 }
 
-.effects-darkorange:hover {
+.effects-darkorange:hover,
+.effects-darkorange:focus {
     background-color: hsl(25, 94%, 56%);
 }
 
-.effects-darkorange.active {
+.effects-darkorange.active,
+.effects-darkorange:focus {
     background-color: hsl(25, 94%, 56%);
     box-shadow: 0 0 5px 5px #e76707;
 }
