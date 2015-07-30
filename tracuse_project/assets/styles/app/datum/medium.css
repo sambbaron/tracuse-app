@@ -13,6 +13,15 @@
     margin: 0;
 }
 
+.datum-medium > .menu {
+    font-size: 50%;
+}
+
+.datum-medium > .menu button {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .datum-medium .datum-icon {
     position: absolute;
     top: 50%;
