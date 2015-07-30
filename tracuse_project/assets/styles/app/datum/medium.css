@@ -5,6 +5,26 @@
     box-shadow: 1px 1px 0 darkgray;
 }
 
+.datum-medium > .controls {
+    font-size: 75%;
+}
+
+.datum-medium > .content {
+    margin: 0;
+}
+
+.datum-medium .datum-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    margin: 0;
+    padding: 0;
+    opacity: 0.15;
+    font-size: 400%;
+    cursor: default;
+}
+
 .datum-medium .element label {
     display: none;
     position: absolute;
