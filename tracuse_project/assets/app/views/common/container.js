@@ -46,26 +46,37 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         "use strict";
         var containerView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
 
-        // Set menu view
-        containerView.menuView = new Tracuse.views.BaseMenu({
-            menuColorClass: containerView.menuColorClass,
-            buttonEffectsClass: containerView.menuEffectsClass,
-            el: containerView.$(".menu")
-        });
+        // Set menu element and view
+        containerView.menuEl = containerView.$(" > .menu");
+        if (containerView.menuEl.length) {
+            containerView.menuView = new Tracuse.views.BaseMenu({
+                menuColorClass: containerView.menuColorClass,
+                buttonEffectsClass: containerView.menuEffectsClass,
+                el: containerView.$(".menu")
+            });
+        } else {
+            containerView.menuView = null;
+        }
 
-        // Set title styling class same as object
-        containerView.$(" > .title").addClass(containerView.objectColorClass);
-        containerView.$(" > .title").addClass(containerView.objectEffectsClass);
+        // Set title element and add styling classes
+        containerView.titleEl = containerView.$(" > .title");
+        if (containerView.titleEl.length) {
+            containerView.titleEl.addClass(containerView.objectColorClass);
+            containerView.titleEl.addClass(containerView.objectEffectsClass);
+        }
 
-        // Add styling classes to controls
-        containerView.$(".controls").addClass(containerView.controlsColorClass);
-        containerView.$(".controls > button").each(function () {
-            $(this).addClass(containerView.controlsEffectsClass);
-        });
+        // Set controls element and add styling classes
+        containerView.controlsEl = containerView.$(" > .controls");
+        if (containerView.controlsEl.length) {
+            containerView.controlsEl.addClass(containerView.controlsColorClass);
+            containerView.controlsEl.find(" > button").each(function () {
+                $(this).addClass(containerView.controlsEffectsClass);
+            });
+        }
 
-        // Add style class to 'content'
-        containerView.contentEl = containerView.$(".content");
-        if (containerView.contentEl && containerView.contentStyleClass) {
+        // Set content element and add styling class
+        containerView.contentEl = containerView.$(" > .content");
+        if (containerView.contentEl.length && containerView.contentStyleClass) {
             containerView.contentEl.addClass(containerView.contentStyleClass);
         }
 
