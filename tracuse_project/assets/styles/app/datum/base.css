@@ -3,6 +3,10 @@
     width: 10em;
 }
 
+.datum > .content {
+    margin: 0;
+}
+
 .datum .datum-icon {
     position: absolute;
     top: 50%;

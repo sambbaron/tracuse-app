@@ -2,7 +2,9 @@
     {% block content %}{% endblock %}
 </article>
 
-<p class="title"> {{ this_object.title|default('Title') }}</p>
+{% block title %}
+    <p class="title"> {{ this_object.title|default('Title') }}</p>
+{% endblock %}
 
 <div class="controls">
     <button name="show-menu" title="Show Menu"><i class="fa fa-bars"></i></button>
