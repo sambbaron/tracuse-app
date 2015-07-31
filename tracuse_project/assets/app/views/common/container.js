@@ -21,7 +21,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
     events: {
         "click": function activeObject(ev) {
-            this.applyActive();
+            this.$el.focusin();
             ev.stopPropagation();
         },
         "focusin": function activeObject(ev) {
