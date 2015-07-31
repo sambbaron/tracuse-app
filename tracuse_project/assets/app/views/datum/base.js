@@ -3,7 +3,7 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
     objectTypeClass: "datum",
     templateName: "datum/base.html",
 
-    elementEffectsClass: "effects-lightgreen",
+    elementEffectsClass: "effects-lightblue",
 
     render: function () {
         "use strict";

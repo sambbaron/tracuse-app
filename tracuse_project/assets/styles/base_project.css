@@ -143,6 +143,12 @@ button span {
     background-color: #f5f5f5;
 }
 
+.effects-lightblue.active,
+.effects-lightblue:focus {
+    background-color: rgba(110, 140, 216, 0.75);
+    color: #fafafa;
+}
+
 .effects-shadow-lightblue.active,
 .effects-shadow-lightblue:focus {
     box-shadow: 0 0 1em rgba(110, 139, 217, 0.75);
