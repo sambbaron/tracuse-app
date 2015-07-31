@@ -29,17 +29,20 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
         var editView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
 
         // Set menu view
-        var menuEl = editView.$(" > .menu");
-        if (menuEl.length) {
+        editView.$menu = editView.$(" > .menu");
+        if (editView.$menu.length) {
             editView.menuView = new Tracuse.views.BaseMenu({
                 menuColorClass: editView.menuColorClass,
                 buttonEffectsClass: editView.menuEffectsClass,
-                el: menuEl
+                el: editView.$menu
             });
         }
 
         // Set title styling class same as menu
-        editView.$(" > .title").addClass(editView.menuColorClass);
+        editView.$title = editView.$(" > .title");
+        if (editView.$title.length) {
+            editView.$(" > .title").addClass(editView.menuColorClass);
+        }
 
         // Apply button effects class
         editView.$("button").addClass(editView.buttonEffectsClass);

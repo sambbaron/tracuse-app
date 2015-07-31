@@ -51,37 +51,37 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         containerView.$el.addClass(containerView.className());
 
         // Set menu element and view
-        containerView.menuEl = containerView.$(" > .menu");
-        if (containerView.menuEl.length) {
+        containerView.$menu = containerView.$(" > .menu");
+        if (containerView.$menu.length) {
             containerView.menuView = new Tracuse.views.BaseMenu({
                 menuColorClass: containerView.menuColorClass,
                 buttonEffectsClass: containerView.menuEffectsClass,
-                el: containerView.$(".menu")
+                el: containerView.$menu
             });
         } else {
             containerView.menuView = null;
         }
 
         // Set title element and add styling classes
-        containerView.titleEl = containerView.$(" > .title");
-        if (containerView.titleEl.length) {
-            containerView.titleEl.addClass(containerView.objectColorClass);
-            containerView.titleEl.addClass(containerView.objectEffectsClass);
+        containerView.$title = containerView.$(" > .title");
+        if (containerView.$title.length) {
+            containerView.$title.addClass(containerView.objectColorClass);
+            containerView.$title.addClass(containerView.objectEffectsClass);
         }
 
         // Set controls element and add styling classes
-        containerView.controlsEl = containerView.$(" > .controls");
-        if (containerView.controlsEl.length) {
-            containerView.controlsEl.addClass(containerView.controlsColorClass);
-            containerView.controlsEl.find(" > button").each(function () {
+        containerView.$controls = containerView.$(" > .controls");
+        if (containerView.$controls.length) {
+            containerView.$controls.addClass(containerView.controlsColorClass);
+            containerView.$controls.find(" > button").each(function () {
                 $(this).addClass(containerView.controlsEffectsClass);
             });
         }
 
         // Set content element and add styling class
-        containerView.contentEl = containerView.$(" > .content");
-        if (containerView.contentEl.length && containerView.contentStyleClass) {
-            containerView.contentEl.addClass(containerView.contentStyleClass);
+        containerView.$content = containerView.$(" > .content");
+        if (containerView.$content.length && containerView.contentStyleClass) {
+            containerView.$content.addClass(containerView.contentStyleClass);
         }
 
         // Render child objects
