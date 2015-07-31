@@ -109,6 +109,14 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
          * */
     },
 
+    $parents: function () {
+        "use strict";
+        /* Set parent containers
+         * Inclusive of 'this'
+         * */
+        return this.$el.parents(".base-container").add(this.$el);
+    },
+
     show: function () {
         "use strict";
         this.$el.fadeIn(200);
@@ -125,11 +133,12 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
     unsetActive: function ($container) {
         "use strict";
         /* Unset container as active
-         * If no $container, apply to all
+         * If no $container, apply to all except 'this' and parents
          * Remove 'active' class and hide controls
          * */
         var containerView = this;
-        var $el = $container || $("." + containerView.baseClass + ".active");
+        var $el = $container ||
+            $("." + containerView.baseClass + ".active").not(containerView.$parents());
 
         $el.removeClass("active");
         $el.find(" > .title").removeClass("active");
@@ -140,30 +149,23 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
     setActive: function ($container) {
         "use strict";
         /* Set container as active
+         * If no $container, apply to 'this' and parents
          * Add 'active' class
          * Show controls
          * */
-        $container.addClass("active");
-        $container.find(" > .title").addClass("active");
-        $container.find(" > .controls").show();
+        var $el = $container || this.$parents();
+        $el.addClass("active");
+        $el.find(" > .title").addClass("active");
+        $el.find(" > .controls").show();
     },
 
     applyActive: function () {
         "use strict";
-        /* Clear and apply active
-         * To object and its parents
+        /* Clear and apply active to 'this'
          * */
         var containerView = this;
-        var $el;
-
         containerView.unsetActive();
-
-        $el = containerView.$el;
-        containerView.setActive($el);
-        $el.parents(".base-container").each(function () {
-            containerView.setActive($(this));
-        });
-
+        containerView.setActive();
     },
 
     scrollFixedElements: function () {
