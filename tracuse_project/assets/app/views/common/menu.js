@@ -63,10 +63,11 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
          * Can't use JQueryUI slide effect
          *    because menu has absolute positioning
          * */
-        var $el = $menu || this.$el;
+        var menuView = this;
+        var $el = $menu || menuView.$el;
 
-        var $openMenus = $("." + this.className + ".open").not($el);
-        this.hide($openMenus);
+        var $openMenus = $("." + menuView.className + ".open").not($el);
+        menuView.hide($openMenus);
 
         $el.show();
         $el.animate({"width": "5em"}, 200);
