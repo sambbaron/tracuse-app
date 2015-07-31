@@ -3,6 +3,15 @@ Tracuse.views.BaseView = Backbone.View.extend({
      * Includes Nunjucks template integration
      * */
 
+    idPrefix: function () {
+        "use strict";
+        return this.model.modelName + "-";
+    },
+    id: function () {
+        "use strict";
+        return this.idPrefix() + this.model.get(this.model.idAttribute);
+    },
+
     templateName: "",
     templateData: function () {
         var data = {};
