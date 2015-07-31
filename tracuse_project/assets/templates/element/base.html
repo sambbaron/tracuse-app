@@ -3,14 +3,14 @@
 {% block content %}
     {% block element_input %}
         <input class="element-input"
-               id="{{ id }}"
+               id="{{ input_id }}"
                name="element_value"
                value="{{ this_object.element_value }}">
     {% endblock %}
 {% endblock %}
 
 {% block title %}
-    <label class="title element-label" for="{{ id }}">
+    <label class="title element-label" for="{{ input_id }}">
         {{ this_object.element_name }}
     </label>
 {% endblock %}

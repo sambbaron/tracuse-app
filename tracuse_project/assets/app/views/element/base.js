@@ -2,6 +2,14 @@ Tracuse.views.ElementBase = Tracuse.views.BaseContainer.extend({
 
     objectTypeClass: "element",
     templateName: "element/base.html",
+    templateData: function () {
+        "use strict";
+        /* Add unique id for Element inputs and labels
+         * */
+        var baseData = Tracuse.views.BaseView.prototype.templateData.apply(this, arguments);
+        baseData.input_id = "input_element-" + this.model.get(this.model.idAttribute);
+        return baseData;
+    },
 
     events: {
         "change .element-input": function (ev) {
