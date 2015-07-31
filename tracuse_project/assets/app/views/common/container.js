@@ -92,6 +92,8 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
     initialize: function (options) {
         "use strict";
+        /* Inherit events for all sub-classes
+         * */
         var containerView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
         _.extend(containerView.events, Tracuse.views.BaseContainer.prototype.events);
         containerView.delegateEvents();
