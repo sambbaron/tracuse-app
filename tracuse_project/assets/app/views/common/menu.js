@@ -88,12 +88,13 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
         $el.removeClass("open");
     },
 
-    toggleButton: function toggleButton(el, option) {
+    toggleButton: function (el, option) {
         "use strict";
         var $el = $(el);
         var $span = $el.find("span");
+        var spanEm = $span.width() / parseInt($span.css("font-size"));
         if (option) {
-            var newWidth = String($el.width() + $span.width() + 25) + "px";
+            var newWidth = String(spanEm + 2.25) + "em";
             $el.animate({"width": newWidth}, 200);
             $span.css("display", "inline");
             $span.effect("slide", {direction: "left"}, 200);
