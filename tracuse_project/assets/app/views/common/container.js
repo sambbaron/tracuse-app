@@ -143,7 +143,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         $el.removeClass("active");
         $el.find(" > .title").removeClass("active");
         $el.find(" > .controls").hide();
-        $el.find(" > .menu").hide();
+        Tracuse.views.BaseMenu.prototype.hide($el.find(" > .menu"));
     },
 
     setActive: function ($container) {
