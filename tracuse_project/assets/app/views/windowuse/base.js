@@ -36,6 +36,7 @@ Tracuse.views.WindowuseBase = Tracuse.views.BaseContainer.extend({
             contentFrag.appendChild(viewuseEl);
         });
 
+        windowuseView.$content.html("");
         windowuseView.$content.append(contentFrag);
 
         return windowuseView;

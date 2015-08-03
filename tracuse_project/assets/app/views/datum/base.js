@@ -43,6 +43,7 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
             contentFrag.appendChild(elementEl);
         });
 
+        datumView.$content.html("");
         datumView.$content.append(contentFrag);
 
         return datumView;

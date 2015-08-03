@@ -36,6 +36,8 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
                 var datumEl = datumView.render().el;
                 contentFrag.appendChild(datumEl);
             });
+
+            viewuseView.$content.html("");
             viewuseView.$content.append(contentFrag);
 
             if (callback) {
