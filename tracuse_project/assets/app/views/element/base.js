@@ -18,13 +18,6 @@ Tracuse.views.ElementBase = Tracuse.views.BaseContainer.extend({
         }
     },
 
-    initialize: function (options) {
-        "use strict";
-        var elementView = Tracuse.views.BaseContainer.prototype.initialize.call(this, options);
-        elementView.listenTo(elementView.model, "change", elementView.render);
-        return elementView;
-    },
-
     updateElement: function updateElement(value) {
         "use strict";
         this.model.save({"element_value": value});

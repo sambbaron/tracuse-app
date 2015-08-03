@@ -105,12 +105,8 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         var containerView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
         _.extend(containerView.events, Tracuse.views.BaseContainer.prototype.events);
         containerView.delegateEvents();
+        containerView.listenTo(containerView.model, "change", containerView.render);
         return containerView;
-    },
-
-    renderMenu: function () {
-        "use strict";
-
     },
 
     renderChildren: function () {
