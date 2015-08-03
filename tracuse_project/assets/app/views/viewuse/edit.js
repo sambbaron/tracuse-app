@@ -127,6 +127,10 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
 
         editView.model.save(formData, {
             success: function () {
+                // Render Viewuse title in 'title' element and select menu
+                var viewuseTitle = editView.model.get("title");
+                editView.$(" > .title").html("Edit '" + viewuseTitle + "'");
+                editView.$(".select-viewuse option:checked").html(viewuseTitle);
             }
         });
     },
