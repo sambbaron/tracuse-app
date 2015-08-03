@@ -9,7 +9,9 @@ Tracuse.views.BaseView = Backbone.View.extend({
     },
     id: function () {
         "use strict";
-        return this.idPrefix() + this.model.get(this.model.idAttribute);
+        if (this.model) {
+            return this.idPrefix() + this.model.get(this.model.idAttribute);
+        }
     },
 
     templateName: "",
