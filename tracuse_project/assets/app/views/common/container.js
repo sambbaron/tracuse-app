@@ -39,6 +39,14 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         "click button[name='close-object']": function closeObject(ev) {
             this.closeObject();
             ev.stopPropagation();
+        },
+        "click button[name='create-datum']": function createDatum(ev) {
+            this.createDatum();
+            ev.stopPropagation();
+        },
+        "dblclick": function createDatum(ev) {
+            this.createDatum();
+            ev.stopPropagation();
         }
     },
 
@@ -184,6 +192,17 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         Tracuse.utils.positionOnScroll(title, containerView.el, "nw");
         Tracuse.utils.positionOnScroll(controlMenu, containerView.el, "nw");
         Tracuse.utils.positionOnScroll(controlClose, containerView.el, "ne");
+    },
+
+
+    createDatum: function () {
+        "use strict";
+        var containerView = this;
+        var createView = new Tracuse.views.DatumCreate({
+            parentView: containerView,
+            types_in_view: containerView.model.get("datum_filter").get("FilterRuleType")
+        });
+        createView.show();
     }
 
 });

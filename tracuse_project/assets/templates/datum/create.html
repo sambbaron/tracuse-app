@@ -1,0 +1,47 @@
+{% extends "common/edit.html" %}
+
+{% block title %}Create 'Object'{% endblock %}
+
+{% block main %}
+
+    <fieldset class="section in-view">
+        <p class="title">In View</p>
+
+        <div class="content">
+            <div class="types-container">
+                {% for filter_type in types_in_view %}
+                    <button class="create-datum input-element" name="datum_type_id" value="{{ filter_type.datum_type.datum_type_id }}"
+                            title="{{ filter_type.datum_type.long_definition }}">
+                        {{ filter_type.datum_type.readable_name }}
+                    </button>
+                {% endfor %}
+            </div>
+        </div>
+
+    </fieldset>
+
+    {% for datum_group in datum_groups %}
+        <fieldset class="section types">
+            <p class="title">{{ datum_group.readable_name }}</p>
+
+            <div class="content">
+                <div class="types-container">
+                    {% for datum_type in datum_group.datum_types %}
+                        <button class="create-datum input-element" name="datum_type_id" value="{{ datum_type.datum_type_id }}"
+                                title="{{ datum_type.long_definition }}">
+                            {{ datum_type.readable_name }}
+                        </button>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </fieldset>
+
+    {% endfor %}
+
+{% endblock %}
+
+{% block menu %}
+{#    <button name="create-datum"><i class="fa fa-plus-circle fa-fw"></i><span>Create</span></button>#}
+    <button name="cancel"><i class="fa fa-remove fa-fw"></i><span>Cancel</span></button>
+{% endblock %}
