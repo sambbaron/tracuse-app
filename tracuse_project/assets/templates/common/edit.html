@@ -2,7 +2,11 @@
     {% block main %}{% endblock %}
 </article>
 
-<p class="title"> Edit '{{ this_object.title }}'</p>
+<p class="title">
+    {% block title %}
+        Edit '{{ this_object.title }}'
+    {% endblock %}
+</p>
 
 <nav class="menu position-dock">
     {% block menu %}{% endblock %}
