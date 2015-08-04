@@ -142,7 +142,7 @@ Tracuse.models.FilterSet = Backbone.RelationalModel.extend({
         {
             type: Backbone.HasMany,
             key: "FilterRuleUser",
-            relatedModel: "Tracuse.models.FilterRuleGroup",
+            relatedModel: "Tracuse.models.FilterRuleUser",
             includeInJSON: true,
             includeInTemplate: true
         },
