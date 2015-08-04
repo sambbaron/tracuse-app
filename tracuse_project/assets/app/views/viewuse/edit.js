@@ -37,7 +37,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
         },
         "click button[name='close-apply']": function closeEdit(ev) {
             this.applyViewuse();
-            this.closeObject();
+            this.close();
             ev.stopPropagation();
         },
         "change .selections .select-viewuse": function changeSelectViewuse(ev) {
