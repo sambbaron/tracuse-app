@@ -28,7 +28,7 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
         return Tracuse.views.DatumMedium;
     },
 
-    editViewuse: function editViewuse() {
+    editViewuse: function () {
         "use strict";
         /* Open Viewuse Edit */
         var viewuseView = this;

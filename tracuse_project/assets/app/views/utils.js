@@ -110,7 +110,7 @@ Tracuse.utils.positionOnScroll = function positionOnScroll(positionElement, scro
 
 };
 
-Tracuse.utils.serializeForm = function serializeForm(formEl) {
+Tracuse.utils.serializeForm = function (formEl) {
     "use strict";
     /* Serialize form input elements into key/value object
      * Convert values to appropriate format using element type
