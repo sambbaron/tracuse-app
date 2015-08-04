@@ -1,6 +1,6 @@
-Tracuse.views.ElementBase = Tracuse.views.BaseContainer.extend({
+Tracuse.views.ElementBase = Tracuse.views.BaseView.extend({
 
-    objectTypeClass: "element",
+    className: "element",
     templateName: "element/base.html",
     templateData: function () {
         "use strict";

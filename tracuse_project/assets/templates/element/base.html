@@ -1,20 +1,11 @@
-{% extends "common/container.html" %}
+<label class="element-label" for="{{ input_id }}">
+    {{ this_object.element_name }}
+</label>
 
-{% block content %}
-    {% block element_input %}
-        <input class="element-input"
-               id="{{ input_id }}"
-               name="element_value"
-               value="{{ this_object.element_value }}"
-               placeholder="{{ this_object.element_name }}">
-    {% endblock %}
+{% block element_input %}
+    <input class="element-input"
+           id="{{ input_id }}"
+           name="element_value"
+           value="{{ this_object.element_value }}"
+           placeholder="{{ this_object.element_name }}">
 {% endblock %}
-
-{% block title %}
-    <label class="title element-label" for="{{ input_id }}">
-        {{ this_object.element_name }}
-    </label>
-{% endblock %}
-
-{% block controls %}{% endblock %}
-{% block menu %}{% endblock %}
