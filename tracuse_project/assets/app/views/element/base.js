@@ -7,7 +7,7 @@ Tracuse.views.ElementBase = Tracuse.views.BaseContainer.extend({
         /* Add unique id for Element inputs and labels
          * */
         var baseData = Tracuse.views.BaseView.prototype.templateData.apply(this, arguments);
-        baseData.input_id = "element_input-" + this.model.get(this.model.idAttribute);
+        baseData.input_id = this.cid + "-element_input-" + this.model.get(this.model.idAttribute);
         return baseData;
     },
 
