@@ -102,6 +102,28 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
             $el.animate({"width": "2em"}, 200);
             $span.hide("slide", {direction: "left"}, 200);
         }
+    },
+
+    toggleHelpMode: function () {
+        "use strict";
+        /* Show button labels
+         * and add class for styling
+         * */
+        var menuView = this;
+        var $buttons = menuView.$("button");
+        var toggleOpt = false;
+
+        if (menuView.$el.hasClass("help-mode")) {
+            menuView.$el.removeClass("help-mode");
+            toggleOpt = false;
+        } else {
+            menuView.$el.addClass("help-mode");
+            toggleOpt = true;
+        }
+
+        $buttons.each(function () {
+            menuView.toggleButton(this, toggleOpt);
+        });
     }
 
 });

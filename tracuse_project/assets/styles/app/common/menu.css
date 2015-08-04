@@ -26,3 +26,8 @@
     text-align: left;
     white-space: nowrap;
 }
+
+.base-menu.help-mode button {
+    background-color: rgba(150, 150, 150, 0.75);
+    color: #fafafa;
+}
