@@ -1,0 +1,39 @@
+{% extends "common/edit.html" %}
+
+{% block main %}
+
+    <fieldset class="section selections">
+        <p class="title">Object Search</p>
+
+        <div class="content">
+        </div>
+    </fieldset>
+
+    <fieldset class="section datum-elements">
+        <p class="title">Properties</p>
+
+        <div class="content">
+
+        </div>
+
+    </fieldset>
+
+    <fieldset class="section datum-associations">
+        <p class="title">Associations</p>
+
+        <div class="content">
+
+        </div>
+
+    </fieldset>
+
+{% endblock %}
+
+{% block menu %}
+    <button name="new-datum"><i class="fa fa-plus-circle fa-fw"></i><span>New View</span></button>
+    <button name="copy-datum"><i class="fa fa-copy fa-fw"></i><span>Copy View</span></button>
+    <button name="delete-datum"><i class="fa fa-ban fa-fw"></i><span>Delete View</span></button>
+    <button name="undo-changes"><i class="fa fa-undo fa-fw"></i><span>Undo Changes</span></button>
+    <button name="save-datum"><i class="fa fa-save fa-fw"></i><span>Save View</span></button>
+    <button name="close-apply"><i class="fa fa-remove fa-fw"></i><span>Close &amp; Apply</span></button>
+{% endblock %}
