@@ -5,7 +5,7 @@ Tracuse.models.DatumGroup =
                 type: Backbone.HasMany,
                 key: "datum_types",
                 relatedModel: "Tracuse.models.DatumType",
-                collectionType: "Tracuse.models.DatumType.collBase",
+                collectionType: "Tracuse.models.DatumType.BaseCollection",
                 includeInJSON: false,
                 includeInTemplate: true
             }
@@ -33,7 +33,7 @@ Tracuse.models.DatumObject =
                 type: Backbone.HasOne,
                 key: "datum_group",
                 relatedModel: "Tracuse.models.DatumGroup",
-                collectionType: "Tracuse.models.DatumGroup.collBase",
+                collectionType: "Tracuse.models.DatumGroup.BaseCollection",
                 includeInJSON: false,
                 includeInTemplate: true
             },
@@ -41,7 +41,7 @@ Tracuse.models.DatumObject =
                 type: Backbone.HasOne,
                 key: "datum_type",
                 relatedModel: "Tracuse.models.DatumType",
-                collectionType: "Tracuse.models.DatumType.collBase",
+                collectionType: "Tracuse.models.DatumType.BaseCollection",
                 includeInJSON: false,
                 includeInTemplate: true
             },
@@ -49,7 +49,7 @@ Tracuse.models.DatumObject =
                 type: Backbone.HasMany,
                 key: "elements",
                 relatedModel: "Tracuse.models.ElementDatumObject",
-                collectionType: "Tracuse.models.ElementDatumObject.collBase",
+                collectionType: "Tracuse.models.ElementDatumObject.BaseCollection",
                 includeInJSON: false,
                 includeInTemplate: true
             }
@@ -57,13 +57,13 @@ Tracuse.models.DatumObject =
             //    type: Backbone.HasMany,
             //    key: "parent_datums",
             //    relatedModel: "Tracuse.models.DatumObject",
-            //    collectionType: "Tracuse.models.DatumObject.collBase"
+            //    collectionType: "Tracuse.models.DatumObject.BaseCollection"
             //},
             //{
             //    type: Backbone.HasMany,
             //    key: "child_datums",
             //    relatedModel: "Tracuse.models.DatumObject",
-            //    collectionType: "Tracuse.models.DatumObject.collBase"
+            //    collectionType: "Tracuse.models.DatumObject.BaseCollection"
             //}
         ]
     });

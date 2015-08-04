@@ -23,13 +23,13 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
     });
 
     // Base Collection
-    model.collBase = Backbone.Collection.extend({
+    model.BaseCollection = Backbone.Collection.extend({
         model: model,
         url: url,
         comparator: "sort"
     });
     // Default collection for "all" model objects
-    model.all = new model.collBase();
+    model.all = new model.BaseCollection();
 
     return model;
 };
@@ -117,7 +117,7 @@ Backbone.Collection.prototype.idsToObjects = function idsToObjects(idArray, call
     "use strict";
     var thisCollection = this;
     var model = thisCollection.model;
-    var newCollection = new model.collBase();
+    var newCollection = new model.BaseCollection();
 
     var target = idArray.length;
     var counter = 0;

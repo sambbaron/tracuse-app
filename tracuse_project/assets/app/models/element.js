@@ -5,7 +5,7 @@ Tracuse.models.ElementType =
                 type: Backbone.HasMany,
                 key: "element_operators",
                 relatedModel: "Tracuse.models.ElementOperator",
-                collectionType: "Tracuse.models.ElementOperator.collBase",
+                collectionType: "Tracuse.models.ElementOperator.BaseCollection",
                 includeInJSON: false,
                 includeInTemplate: true
             },
@@ -13,7 +13,7 @@ Tracuse.models.ElementType =
                 type: Backbone.HasMany,
                 key: "element_options",
                 relatedModel: "Tracuse.models.ElementOption",
-                collectionType: "Tracuse.models.ElementOption.collBase",
+                collectionType: "Tracuse.models.ElementOption.BaseCollection",
                 includeInJSON: false,
                 includeInTemplate: true
             }
@@ -33,7 +33,7 @@ Tracuse.models.ElementDatumObject =
                 type: Backbone.HasOne,
                 key: "element_datum_type",
                 relatedModel: "Tracuse.models.ElementDatumType",
-                collectionType: "Tracuse.models.ElementDatumType.collBase",
+                collectionType: "Tracuse.models.ElementDatumType.BaseCollection",
                 includeInJSON: false,
                 includeInTemplate: true
             },
@@ -41,7 +41,7 @@ Tracuse.models.ElementDatumObject =
                 type: Backbone.HasOne,
                 key: "element_type",
                 relatedModel: "Tracuse.models.ElementType",
-                collectionType: "Tracuse.models.ElementType.collBase",
+                collectionType: "Tracuse.models.ElementType.BaseCollection",
                 includeInJSON: false,
                 includeInTemplate: true
             }

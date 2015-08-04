@@ -333,7 +333,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
          * */
         var containerView = this;
         var datumFilter, typeRules;
-        var datumTypes = new Tracuse.models.DatumType.collBase();
+        var datumTypes = new Tracuse.models.DatumType.BaseCollection();
 
         datumFilter = containerView.model.get("datum_filter");
         if (datumFilter) {
