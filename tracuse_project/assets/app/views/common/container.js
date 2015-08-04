@@ -19,6 +19,8 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
     },
     templateName: "common/container.html",
 
+    childModel: null,
+
     events: {
         "click": function activeObject(ev) {
             this.$el.focusin();
@@ -48,6 +50,151 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
             this.createDatum();
             ev.stopPropagation();
         }
+    },
+
+    initialize: function (options) {
+        "use strict";
+        /* Inherit events for all sub-classes
+         * */
+        var containerView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
+
+        _.extend(containerView.events, Tracuse.views.BaseContainer.prototype.events);
+        containerView.delegateEvents();
+        containerView.listenTo(containerView.model, "change", containerView.render);
+        containerView.attachChildEvents();
+
+        containerView.childCollection = [];
+        containerView.childViews = [];
+
+        return containerView;
+    },
+
+    attachChildEvents: function () {
+        "use strict";
+        /* Attach event listeners using child model
+         * */
+        var containerView = this;
+
+        if (containerView.childModel) {
+            containerView.listenTo(containerView.childModel.all, "add remove", function (model) {
+                containerView.addChild(model);
+                containerView.listenTo(model, "change", function (model) {
+                    containerView.addChild(model);
+                });
+            });
+        }
+        return containerView;
+    },
+
+    getChildModels: function (callback) {
+        "use strict";
+        /* Placeholder for returning child models
+         * */
+        callback();
+    },
+
+    childViewClass: function () {
+        "use strict";
+        /* View associated with child model
+         * */
+        return null;
+    },
+
+    newChild: function (childModel) {
+        "use strict";
+        /* Instantiation of child view
+         * */
+        var containerView = this;
+        var ViewConstructor = containerView.childViewClass();
+        var newView = new ViewConstructor({
+            model: childModel,
+            parentView: containerView
+        });
+        newView.delegateEvents();
+        return newView;
+    },
+
+    findChildView: function (model) {
+        "use strict";
+        /* Return child view using model
+         * Compare ids
+         * */
+        var containerView = this;
+        var childView;
+
+        var modelId = model.id;
+        var viewId = model.modelName + "-" + modelId;
+        childView = _.find(containerView.childViews, function (view) {
+            return view.el.id == viewId;
+        });
+        return childView;
+    },
+
+    addChild: function (childModel) {
+        "use strict";
+        /* Test whether changed object is in container
+         * Create child view and add to container
+         * */
+        var containerView = this;
+
+        containerView.getChildModels(function (childModels) {
+            var childInCollection = childModels.get(childModel);
+            var childInView = containerView.findChildView(childModel);
+            if (childInCollection && !childInView) {
+                var newView = containerView.newChild(childModel);
+                containerView.childViews.push(newView);
+                containerView.$content.append(newView.render().$el);
+            } else if (!childInCollection && childInView) {
+                containerView.childViews.pop(childInView);
+                childInView.remove();
+            }
+            return containerView;
+        });
+    },
+
+    removeChild: function (childModel) {
+        "use strict";
+        /* Remove child view from container
+         * */
+        var containerView = this;
+        var childView = containerView.findChildView(childModel);
+        if (childView) {
+            containerView.childViews.pop(childView);
+            childView.remove();
+        }
+        return containerView;
+    },
+
+    renderChildren: function () {
+        "use strict";
+        /* Render all child objects into 'content' element
+         * */
+        var containerView = this;
+        containerView.childCollection = [];
+        containerView.childViews = [];
+
+        containerView.getChildModels(function (childModels) {
+
+            if (childModels) {
+                containerView.childCollection = childModels;
+                var contentFrag = document.createDocumentFragment();
+
+                _.each(containerView.childCollection.models, function (childModel) {
+
+                    var childView = containerView.newChild(childModel);
+                    var childEl = childView.render().el;
+                    contentFrag.appendChild(childEl);
+                    containerView.childViews.push(childView);
+
+                });
+
+                containerView.$content.html("");
+                containerView.$content.append(contentFrag);
+
+            }
+
+            return containerView;
+        });
     },
 
     render: function () {
@@ -96,23 +243,6 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         containerView.renderChildren();
 
         return containerView;
-    },
-
-    initialize: function (options) {
-        "use strict";
-        /* Inherit events for all sub-classes
-         * */
-        var containerView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
-        _.extend(containerView.events, Tracuse.views.BaseContainer.prototype.events);
-        containerView.delegateEvents();
-        containerView.listenTo(containerView.model, "change", containerView.render);
-        return containerView;
-    },
-
-    renderChildren: function () {
-        "use strict";
-        /* Empty method to render objects into 'content' element
-         * */
     },
 
     $parents: function () {
@@ -172,6 +302,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         var containerView = this;
         containerView.unsetActive();
         containerView.setActive();
+        return containerView;
     },
 
     scrollFixedElements: function () {
@@ -189,7 +320,6 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         Tracuse.utils.positionOnScroll(controlMenu, containerView.el, "nw");
         Tracuse.utils.positionOnScroll(controlClose, containerView.el, "ne");
     },
-
 
     createDatum: function () {
         "use strict";

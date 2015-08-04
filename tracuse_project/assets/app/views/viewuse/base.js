@@ -3,6 +3,8 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
     objectTypeClass: "viewuse",
     templateName: "viewuse/base.html",
 
+    childModel: Tracuse.models.DatumObject,
+
     events: {
         "click button[name='edit-viewuse']": function editViewuse(ev) {
             this.editViewuse();
@@ -10,43 +12,20 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
         }
     },
 
-    renderChildren: function renderDatums(callback) {
+    getChildModels: function (callback) {
         "use strict";
-        /* Render Datums inside Viewuse
-         * Append to 'content' element
+        /* Get datums using filter
          * */
         var viewuseView = this;
-
-        // Get datums using filter
         var filter = new Tracuse.models.FilterSet(viewuseView.model.get("datum_filter"));
         filter.fetchFilteredDatums(function (datumObjects) {
-
-            viewuseView.collection = datumObjects;
-            var contentFrag = document.createDocumentFragment();
-
-            _.each(viewuseView.collection.models, function (datumModel) {
-                var datumViewName = "DatumMedium";
-                var DatumViewClass = Tracuse.views[datumViewName];
-
-                var datumView = new DatumViewClass({
-                    model: datumModel,
-                    parentView: viewuseView
-                });
-                datumView.delegateEvents();
-                var datumEl = datumView.render().el;
-                contentFrag.appendChild(datumEl);
-            });
-
-            viewuseView.$content.html("");
-            viewuseView.$content.append(contentFrag);
-
-            if (callback) {
-                callback(viewuseView);
-            } else {
-                return viewuseView;
-            }
-
+            callback(datumObjects);
         });
+    },
+
+    childViewClass: function () {
+        "use strict";
+        return Tracuse.views.DatumMedium;
     },
 
     editViewuse: function editViewuse() {
