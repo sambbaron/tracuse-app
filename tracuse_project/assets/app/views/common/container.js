@@ -100,16 +100,21 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         return null;
     },
 
-    newChild: function (childModel) {
+    newChildOptions: function (childModel) {
+        "use strict";
+        return {
+            model: childModel,
+            parentView: this
+        };
+    },
+
+    newChildView: function (childModel) {
         "use strict";
         /* Instantiation of child view
          * */
         var containerView = this;
         var ViewConstructor = containerView.childViewClass(childModel);
-        var newView = new ViewConstructor({
-            model: childModel,
-            parentView: containerView
-        });
+        var newView = new ViewConstructor(containerView.newChildOptions(childModel));
         newView.delegateEvents();
         return newView;
     },
@@ -141,7 +146,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
             var childInCollection = childModels.get(childModel);
             var childInView = containerView.findChildView(childModel);
             if (childInCollection && !childInView) {
-                var newView = containerView.newChild(childModel);
+                var newView = containerView.newChildView(childModel);
                 containerView.childViews.push(newView);
                 containerView.$content.append(newView.render().$el);
             } else if (!childInCollection && childInView) {
@@ -181,7 +186,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
                 _.each(containerView.childCollection.models, function (childModel) {
 
-                    var childView = containerView.newChild(childModel);
+                    var childView = containerView.newChildView(childModel);
                     var childEl = childView.render().el;
                     contentFrag.appendChild(childEl);
                     containerView.childViews.push(childView);

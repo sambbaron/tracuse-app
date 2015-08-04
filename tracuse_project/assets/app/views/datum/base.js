@@ -3,7 +3,29 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
     objectTypeClass: "datum",
     templateName: "datum/base.html",
 
+    childModel: Tracuse.models.ElementDatumObject,
+
     elementEffectsClass: "effects-lightblue",
+
+    getChildModels: function (callback) {
+        "use strict";
+        callback(this.model.get("elements"));
+    },
+
+    childViewClass: function (childModel) {
+        "use strict";
+        var elementViewName = childModel.get("element_type").get("element_view");
+        return Tracuse.views[elementViewName];
+    },
+
+    newChildOptions: function (childModel) {
+        "use strict";
+        return {
+            model: childModel,
+            parentView: this,
+            objectEffectsClass: this.elementEffectsClass
+        };
+    },
 
     render: function () {
         "use strict";
@@ -15,36 +37,6 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
         // Using names rather than ids to be more transparent, but names are a dependency
         datumView.el.classList.add(datumView.model.get("datum_group").get("schema_name"));
         datumView.el.classList.add(datumView.model.get("datum_type").get("schema_name"));
-
-        return datumView;
-    },
-
-    renderChildren: function renderElements() {
-        "use strict";
-        /* Render Elements inside Datum
-         * Append to 'content' element
-         * */
-        var datumView = this;
-
-        datumView.collection = datumView.model.get("elements");
-        var contentFrag = document.createDocumentFragment();
-
-        _.each(datumView.collection.models, function (elementModel) {
-            var elementViewName = elementModel.get("element_type").get("element_view");
-            var ElementViewClass = Tracuse.views[elementViewName];
-
-            var elementView = new ElementViewClass({
-                model: elementModel,
-                parentView: datumView,
-                objectEffectsClass: datumView.elementEffectsClass
-            });
-            elementView.delegateEvents();
-            var elementEl = elementView.render().el;
-            contentFrag.appendChild(elementEl);
-        });
-
-        datumView.$content.html("");
-        datumView.$content.append(contentFrag);
 
         return datumView;
     }
