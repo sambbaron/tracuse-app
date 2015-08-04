@@ -24,6 +24,21 @@ Tracuse.views.DatumCreate = Tracuse.views.BaseEdit.extend({
         }
     },
 
+    render: function () {
+        "use strict";
+        /* Hide Datum Types in view
+         * */
+        var createView = Tracuse.views.BaseEdit.prototype.render.apply(this, arguments);
+
+        createView.types_in_view.each(function (datumTypeModel) {
+            var datumTypeId = datumTypeModel.id;
+            var datumTypeEl = createView.el.querySelector(".types button[value='" + datumTypeId + "']");
+            datumTypeEl.style.visibility = "hidden";
+        });
+
+        return createView;
+    },
+
     createDatum: function (el) {
         "use strict";
         var newDatum;
