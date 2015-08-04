@@ -25,6 +25,7 @@ class DatumObjectAll(LoginRequiredMixin, ViewAll):
     serializer_class = DatumObjectSerializer
     get_template = "serial_related"
     post_template = "serial_post"
+    response_template = "serial_elements_object"
 
     @property
     def queryset(self):
