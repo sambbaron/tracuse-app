@@ -7,7 +7,10 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
 
     events: {
         "click button[name='edit-viewuse']": function editViewuse(ev) {
-            this.editViewuse();
+            new Tracuse.views.ViewuseEdit({
+                model: this.model,
+                parentView: this
+            }).show();
             ev.stopPropagation();
         }
     },
@@ -26,18 +29,6 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
     childViewClass: function () {
         "use strict";
         return Tracuse.views.DatumMedium;
-    },
-
-    editViewuse: function () {
-        "use strict";
-        /* Open Viewuse Edit */
-        var viewuseView = this;
-
-        var editView = new Tracuse.views.ViewuseEdit({
-            model: viewuseView.model,
-            parentView: viewuseView
-        });
-        editView.show();
     }
 
 });
