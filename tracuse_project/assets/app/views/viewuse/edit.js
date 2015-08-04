@@ -48,6 +48,9 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
 
     render: function () {
         "use strict";
+        /* Set FilterSet view using model clone
+         * and append to element
+         * */
         var editView = Tracuse.views.BaseEdit.prototype.render.apply(this, arguments);
 
         // Set FilterSet view using model clone
