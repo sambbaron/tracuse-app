@@ -1,12 +1,10 @@
 
 .datum-create > .main > .in-view {
     width: 100%;
-}
-
-.datum-create > .main > .in-view button {
     font-size: 150%;
 }
 
 .datum-create > .main > .types {
     max-width: 25%;
+    font-size: 75%;
 }
