@@ -7,8 +7,8 @@ Tracuse.views.App = Tracuse.views.BaseView.extend({
     events: {
         "click .help-trigger": function (ev) {
             "use strict";
-            var $helpEl = $(ev.target.parentNode.querySelector(".help-content"));
-            if ($helpEl) {
+            var $helpEl = $(ev.target).parent().find(".help-content");
+            if ($helpEl.length) {
                 $helpEl.slideDown(200);
             }
             ev.stopPropagation();
