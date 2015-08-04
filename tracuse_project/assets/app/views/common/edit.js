@@ -24,6 +24,18 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
         }
     },
 
+    initialize: function (options) {
+        "use strict";
+        var editView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
+        _.extend(editView.events, Tracuse.views.BaseEdit.prototype.events);
+        editView.delegateEvents();
+
+        var editEl = editView.render().el;
+        Tracuse.el.app.appendChild(editEl);
+
+        return editView;
+    },
+
     render: function () {
         "use strict";
         var editView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
@@ -46,18 +58,6 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
 
         // Apply button effects class
         editView.$("button").addClass(editView.buttonEffectsClass);
-
-        return editView;
-    },
-
-    initialize: function (options) {
-        "use strict";
-        var editView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
-        _.extend(editView.events, Tracuse.views.BaseEdit.prototype.events);
-        editView.delegateEvents();
-
-        var editEl = editView.render().el;
-        Tracuse.el.app.appendChild(editEl);
 
         return editView;
     },
