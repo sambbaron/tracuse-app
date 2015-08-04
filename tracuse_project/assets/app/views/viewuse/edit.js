@@ -53,7 +53,6 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
          * */
         var editView = Tracuse.views.BaseEdit.prototype.render.apply(this, arguments);
 
-        // Set FilterSet view using model clone
         editView.filterView = new Tracuse.views.FilterSet({
             model: new Tracuse.models.FilterSet(editView.model.get("datum_filter").toJSON()),
             parentView: editView,
