@@ -15,6 +15,7 @@ Tracuse.views.DatumCreate = Tracuse.views.BaseEdit.extend({
         "click .create-datum": function (ev) {
             "use strict";
             this.createDatum(ev.target);
+            this.closeObject();
             ev.stopPropagation();
         },
         "click [name='cancel']": function (ev) {
@@ -47,7 +48,11 @@ Tracuse.views.DatumCreate = Tracuse.views.BaseEdit.extend({
         newDatum = new Tracuse.models.DatumObject({
             datum_type_id: datumTypeId
         });
-        newDatum.save();
+        newDatum.save({}, {
+            success: function (model) {
+                Tracuse.models.DatumObject.all.add(model);
+            }
+        });
     }
 
 });
