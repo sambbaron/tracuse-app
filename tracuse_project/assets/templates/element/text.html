@@ -1,6 +1,9 @@
 {% extends "element/base.html" %}
 
 {% block element_input %}
-    <textarea id="{{ input_id }}" class="element-input"
-              name="element_value">{{ this_object.element_value }}</textarea>
+    <textarea id="{{ input_id }}"
+              class="element-input"
+              name="element_value"
+              placeholder="{{ this_object.element_name }}"
+            >{{ this_object.element_value }}</textarea>
 {% endblock %}
