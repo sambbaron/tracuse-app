@@ -9,8 +9,8 @@ from .serializers import WindowuseObjectSerializer, WindowuseViewuseSerializer
 class WindowuseObjectAll(LoginRequiredMixin, ViewAll):
     model = WindowuseObject
     serializer_class = WindowuseObjectSerializer
-    serializer_template = "serial_related"
-    deserializer_template = "serial_update"
+    get_template = "serial_related"
+    post_template = "serial_update"
 
     @property
     def queryset(self):
@@ -20,14 +20,14 @@ class WindowuseObjectAll(LoginRequiredMixin, ViewAll):
 class WindowuseObjectOne(LoginRequiredMixin, ViewOne):
     model = WindowuseObject
     serializer_class = WindowuseObjectSerializer
-    serializer_template = "serial_related"
-    deserializer_template = "serial_update"
+    get_template = "serial_related"
+    post_template = "serial_update"
 
 
 class WindowuseViewuseAll(LoginRequiredMixin, ViewAll):
     model = WindowuseViewuse
     serializer_class = WindowuseViewuseSerializer
-    serializer_template = "serial_related"
+    get_template = "serial_related"
 
     @property
     def queryset(self):
@@ -38,5 +38,5 @@ class WindowuseViewuseAll(LoginRequiredMixin, ViewAll):
 class WindowuseViewuseOne(LoginRequiredMixin, ViewOne):
     model = WindowuseViewuse
     serializer_class = WindowuseViewuseSerializer
-    serializer_template = "serial_related"
-    deserializer_template = "serial_update"
+    get_template = "serial_related"
+    post_template = "serial_update"

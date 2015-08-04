@@ -18,35 +18,35 @@ class ElementTypeAll(LoginRequiredMixin, ViewAll):
     model = ElementType
     queryset = ElementType.actives.all()
     serializer_class = ElementTypeSerializer
-    serializer_template = "serial_related"
+    get_template = "serial_related"
 
 
 class ElementOperatorAll(LoginRequiredMixin, ViewAll):
     model = ElementOperator
     queryset = ElementOperator.actives.all()
     serializer_class = ElementOperatorSerializer
-    serializer_template = "serial_default"
+    get_template = "serial_default"
 
 
 class ElementDatumTypeAll(LoginRequiredMixin, ViewAll):
     model = ElementDatumType
     queryset = ElementDatumType.actives.all()
     serializer_class = ElementDatumTypeSerializer
-    serializer_template = "serial_default"
+    get_template = "serial_default"
 
 
 class ElementDatumObjectAll(LoginRequiredMixin, ViewAll):
     model = ElementDatumObject
     queryset = ElementDatumObject.actives.all()
     serializer_class = ElementDatumObjectSerializer
-    serializer_template = "serial_related"
+    get_template = "serial_related"
 
 
 class ElementDatumObjectOne(LoginRequiredMixin, ViewOne):
     model = ElementDatumObject
     serializer_class = ElementDatumObjectSerializer
-    serializer_template = "serial_related"
-    deserializer_template = "serial_update"
+    get_template = "serial_related"
+    post_template = "serial_update"
 
     def update_model(self, model_object, request_data):
         """ Override ViewBase update_model

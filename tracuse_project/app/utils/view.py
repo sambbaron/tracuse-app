@@ -12,7 +12,7 @@ class ViewBase(View):
     Attributes:
         model: Django model class
         serializer_class: Serializer class
-        serializer_template/deserializer_template (string):
+        get_template/post_template (string):
             template name - corresponds to serializer method
         serializer: Serializer instance with template for get calls
         deserializer: Serializer instance with template for put/post calls
@@ -22,25 +22,33 @@ class ViewBase(View):
     model = None
     queryset = None
     serializer_class = Serializer
-    serializer_template = "serial_default"
-    deserializer_template = None
-    serializer_format = "json"
-    deserializer_format = "json"
+    get_template = "serial_default"
+    post_template = None
+    response_template = None
+    get_format = "json"
+    post_format = "json"
 
     def __init__(self, **kwargs):
-        """Create serializer and deserializer instances """
+        """ Set default serializer templates
+            Create deserializer object
+        """
         if self.serializer_class:
-            self.serializer = self.serializer_class(self.serializer_template)
 
-            if not self.deserializer_template:
-                self.deserializer_template = self.serializer_template
-            self.deserializer = self.serializer_class(self.deserializer_template)
+            if not self.post_template:
+                self.post_template = self.get_template
+            if not self.response_template:
+                self.response_template = self.get_template
+
+            self.deserializer = self.serializer_class(self.post_template)
 
         super().__init__(**kwargs)
 
-    def serialized_data(self, data):
-        serialized_data = self.serializer.serialize(data)
-        encoded_data = self.serializer.encode(self.serializer_format, serialized_data)
+    def serialized_data(self, data, template=None):
+        if template is None:
+            template = self.get_template
+        serializer = self.serializer_class(template)
+        serialized_data = serializer.serialize(data)
+        encoded_data = serializer.encode(self.get_format, serialized_data)
         return encoded_data
 
     def get_object(self, pk):
@@ -54,10 +62,10 @@ class ViewBase(View):
         Perform other prep tasks before updating model
         """
         request_data = request.body.decode()
-        if self.deserializer_format == "form":
+        if self.post_format == "form":
             return request.POST.dict()
         else:
-            return self.deserializer.decode(self.deserializer_format, request_data)
+            return self.deserializer.decode(self.post_format, request_data)
 
     def update_model(self, model_object, model_update):
         """Save request data to model object using deserializer"""
@@ -70,7 +78,7 @@ class ViewBase(View):
         if type(save_result) == str:
             response = HttpResponse(save_result, status=fail_code)
         else:
-            response_data = self.serialized_data(save_result)
+            response_data = self.serialized_data(save_result, self.response_template)
             response = HttpResponse(response_data, status=success_code, content_type="application/json")
 
         return response
@@ -83,7 +91,7 @@ class ViewAll(ViewBase):
     http_method_names = ["get", "post"]
 
     def get(self, request):
-        response_data = self.serialized_data(self.queryset)
+        response_data = self.serialized_data(self.queryset, self.get_template)
         response = HttpResponse(response_data, status=200, content_type="application/json")
         return response
 
@@ -103,7 +111,7 @@ class ViewOne(ViewBase):
 
     def get(self, request, pk):
         object = self.get_object(pk)
-        response_data = self.serialized_data(object)
+        response_data = self.serialized_data(object, self.get_template)
         response = HttpResponse(response_data, status=200, content_type="application/json")
         return response
 

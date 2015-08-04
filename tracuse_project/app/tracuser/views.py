@@ -10,6 +10,6 @@ class TracuserLandingAll(ViewAll):
     model = TracuserLanding
     queryset = TracuserLanding.objects.all()
     serializer_class = TracuserLandingSerializer
-    deserializer_template = "serial_update"
-    deserializer_format = "form"
+    post_template = "serial_update"
+    post_format = "form"
     http_method_names = ["post"]

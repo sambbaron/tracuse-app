@@ -10,21 +10,21 @@ class DatumGroupAll(LoginRequiredMixin, ViewAll):
     model = DatumGroup
     queryset = DatumGroup.actives.all()
     serializer_class = DatumGroupSerializer
-    serializer_template = "serial_related"
+    get_template = "serial_related"
 
 
 class DatumTypeAll(LoginRequiredMixin, ViewAll):
     model = DatumType
     queryset = DatumType.actives.all()
     serializer_class = DatumTypeSerializer
-    serializer_template = "serial_related"
+    get_template = "serial_related"
 
 
 class DatumObjectAll(LoginRequiredMixin, ViewAll):
     model = DatumObject
     serializer_class = DatumObjectSerializer
-    serializer_template = "serial_related"
-    deserializer_template = "serial_post"
+    get_template = "serial_related"
+    post_template = "serial_post"
 
     @property
     def queryset(self):
@@ -38,4 +38,4 @@ class DatumObjectAll(LoginRequiredMixin, ViewAll):
 class DatumObjectOne(LoginRequiredMixin, ViewOne):
     model = DatumObject
     serializer_class = DatumObjectSerializer
-    serializer_template = "serial_elements_object"
+    get_template = "serial_elements_object"
