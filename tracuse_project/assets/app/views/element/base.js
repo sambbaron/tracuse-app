@@ -13,7 +13,9 @@ Tracuse.views.ElementBase = Tracuse.views.BaseContainer.extend({
 
     events: {
         "change .element-input": function (ev) {
-            this.updateElement(ev.target.value);
+            if (this.elementImmediateSave) {
+                this.updateElement(ev.target.value);
+            }
             ev.stopPropagation();
         }
     },

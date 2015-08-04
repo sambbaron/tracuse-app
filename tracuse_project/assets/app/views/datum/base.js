@@ -6,6 +6,7 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
     childModel: Tracuse.models.ElementDatumObject,
 
     elementEffectsClass: "effects-lightblue",
+    elementImmediateSave: false,
 
     getChildModels: function (callback) {
         "use strict";
@@ -23,7 +24,8 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
         return {
             model: childModel,
             parentView: this,
-            objectEffectsClass: this.elementEffectsClass
+            objectEffectsClass: this.elementEffectsClass,
+            elementImmediateSave: this.elementImmediateSave
         };
     },
 
