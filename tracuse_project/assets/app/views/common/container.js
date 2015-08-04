@@ -93,7 +93,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         callback();
     },
 
-    childViewClass: function () {
+    childViewClass: function (childModel) {
         "use strict";
         /* View associated with child model
          * */
@@ -105,7 +105,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         /* Instantiation of child view
          * */
         var containerView = this;
-        var ViewConstructor = containerView.childViewClass();
+        var ViewConstructor = containerView.childViewClass(childModel);
         var newView = new ViewConstructor({
             model: childModel,
             parentView: containerView
