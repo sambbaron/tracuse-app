@@ -10,10 +10,10 @@
 
             <div class="content">
                 <div class="types-container">
-                    {% for filter_type in types_in_view %}
-                        <button class="create-datum input-element" name="datum_type_id" value="{{ filter_type.datum_type.datum_type_id }}"
-                                title="{{ filter_type.datum_type.long_definition }}">
-                            {{ filter_type.datum_type.readable_name }}
+                    {% for datum_type in types_in_view %}
+                        <button class="create-datum input-element" name="datum_type_id" value="{{ datum_type.datum_type_id }}"
+                                title="{{ datum_type.long_definition }}">
+                            {{ datum_type.readable_name }}
                         </button>
                     {% endfor %}
                 </div>

@@ -328,10 +328,26 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
     createDatum: function () {
         "use strict";
+        /* Open DatumCreate view
+         * Pass Datum Types in filter
+         * */
         var containerView = this;
+        var datumFilter, typeRules;
+        var datumTypes = new Tracuse.models.DatumType.collBase();
+
+        datumFilter = containerView.model.get("datum_filter");
+        if (datumFilter) {
+            typeRules = datumFilter.get("FilterRuleType");
+        }
+        if (typeRules) {
+            typeRules.each(function (ruleModel) {
+                datumTypes.add(ruleModel.get("datum_type"));
+            });
+        }
+
         var createView = new Tracuse.views.DatumCreate({
             parentView: containerView,
-            types_in_view: containerView.model.get("datum_filter").get("FilterRuleType")
+            types_in_view: datumTypes
         });
         createView.show();
     }
