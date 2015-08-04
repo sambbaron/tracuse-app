@@ -1,7 +1,7 @@
 Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
 
     tagName: "nav",
-    className: "base-menu",
+    className: "base-menu help-trigger",
     menuColorClass: "",
     buttonColorClass: "",
     buttonEffectsClass: "",
@@ -40,7 +40,7 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
 
         if (options.el) {
             menuView.setElement(options.el);
-            menuView.el.classList.add(menuView.className);
+            menuView.$el.addClass(menuView.className);
         } else {
             menuView.setElement(menuView.render().el);
         }
