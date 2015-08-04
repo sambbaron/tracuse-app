@@ -46,7 +46,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
         }
     },
 
-    render: function render() {
+    render: function () {
         "use strict";
         var editView = Tracuse.views.BaseEdit.prototype.render.apply(this, arguments);
 
@@ -65,7 +65,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
         return editView;
     },
 
-    newViewuse: function newViewuse() {
+    newViewuse: function () {
         "use strict";
         /* Create new viewuse model and attach to view */
         var editView = this;
@@ -74,7 +74,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
         editView.render();
     },
 
-    copyViewuse: function copyViewuse() {
+    copyViewuse: function () {
         "use strict";
         /* Copy Viewuse into new model and select */
         var editView = this;
@@ -93,7 +93,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
         return newViewuse;
     },
 
-    deleteViewuse: function deleteViewuse() {
+    deleteViewuse: function () {
         "use strict";
         /* Delete Viewuse and submit DELETE call
          * */
@@ -111,7 +111,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
         return editView;
     },
 
-    saveViewuse: function saveViewuse() {
+    saveViewuse: function () {
         "use strict";
         /* Save Viewuse and submit PUT call
          * */
@@ -135,7 +135,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
         });
     },
 
-    applyViewuse: function applyViewuse() {
+    applyViewuse: function () {
         "use strict";
         /* Re-render selected ViewuseObject into active Viewuse view
          * */
@@ -148,7 +148,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
         editView.parentView.applyActive();
     },
 
-    selectViewuse: function selectViewuse(viewuseID) {
+    selectViewuse: function (viewuseID) {
         "use strict";
         /* Change view model to selected Viewuse */
         var editView = this;
