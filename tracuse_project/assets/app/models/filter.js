@@ -200,5 +200,26 @@ Tracuse.models.FilterSet = Backbone.RelationalModel.extend({
                     callback(datumObjects);
                 });
         });
+    },
+
+    createDatum: function (datumType) {
+        "use strict";
+        /* Create Datum with properties
+         *   according to datum filter rules
+         * Optional datumType selection for filters with
+         *   multiple Datum Types
+         * */
+        var filterSet = this;
+        var datumModel;
+
+        // Create Datum Model
+
+        // Assign Datum Type
+
+        // Assign Datum Associations
+
+        // Save Datum (All Collection Create)
+
+        return datumModel;
     }
 });
