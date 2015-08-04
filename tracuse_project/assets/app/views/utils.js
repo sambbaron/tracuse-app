@@ -33,6 +33,17 @@ Tracuse.views.BaseView = Backbone.View.extend({
         );
     },
 
+    initialize: function (options) {
+        "use strict";
+        var view = this;
+        if (options) {
+            view.setOptionProperties(options);
+        }
+        _.extend(view.events, Tracuse.views.BaseView.prototype.events);
+        view.delegateEvents();
+        return view;
+    },
+
     render: function () {
         "use strict";
         /* Set View element HTML to rendered template string
@@ -49,15 +60,17 @@ Tracuse.views.BaseView = Backbone.View.extend({
         });
     },
 
-    initialize: function (options) {
+    show: function () {
+        "use strict";
+        this.$el.fadeIn(200);
+    },
+
+    close: function () {
         "use strict";
         var view = this;
-        if (options) {
-            view.setOptionProperties(options);
-        }
-        _.extend(view.events, Tracuse.views.BaseView.prototype.events);
-        view.delegateEvents();
-        return view;
+        view.$el.fadeOut(200, function () {
+            view.remove();
+        });
     }
 
 });

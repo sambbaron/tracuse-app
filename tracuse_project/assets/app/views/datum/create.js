@@ -15,12 +15,12 @@ Tracuse.views.DatumCreate = Tracuse.views.BaseEdit.extend({
         "click .create-datum": function (ev) {
             "use strict";
             this.createDatum(ev.target);
-            this.closeObject();
+            this.close();
             ev.stopPropagation();
         },
         "click [name='cancel']": function (ev) {
             "use strict";
-            this.closeObject();
+            this.close();
             ev.stopPropagation();
         }
     },

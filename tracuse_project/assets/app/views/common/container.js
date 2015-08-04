@@ -39,7 +39,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
             ev.stopPropagation();
         },
         "click button[name='close-object']": function closeObject(ev) {
-            this.closeObject();
+            this.close();
             ev.stopPropagation();
         },
         "click button[name='create-datum']": function createDatum(ev) {
@@ -256,19 +256,6 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
          * Inclusive of 'this'
          * */
         return this.$el.parents(".base-container").add(this.$el);
-    },
-
-    show: function () {
-        "use strict";
-        this.$el.fadeIn(200);
-    },
-
-    closeObject: function () {
-        "use strict";
-        var containerView = this;
-        containerView.$el.fadeOut(200, function () {
-            containerView.remove();
-        });
     },
 
     unsetActive: function ($container) {

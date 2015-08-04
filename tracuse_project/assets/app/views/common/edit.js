@@ -62,19 +62,6 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
         return editView;
     },
 
-    show: function () {
-        "use strict";
-        this.$el.fadeIn(200);
-    },
-
-    closeObject: function () {
-        "use strict";
-        var editView = this;
-        editView.$el.fadeOut(200, function () {
-            editView.remove();
-        });
-    },
-
     scrollFixedElements: function () {
         "use strict";
         /* Freeze title on scroll
