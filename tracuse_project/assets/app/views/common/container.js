@@ -20,7 +20,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
     templateName: "common/container.html",
 
     editViewName: "",
-    childModel: null,
+    childModelName: "",
 
     events: {
         "click": function activeObject(ev) {
@@ -143,17 +143,21 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
          * */
         var containerView = this;
 
-        if (containerView.childModel) {
-            containerView.listenTo(containerView.childModel.all, "change", function (model) {
-                containerView.changeChild(model);
-            });
-            containerView.listenTo(containerView.childModel.all, "add remove", function (model) {
-                containerView.changeChild(model);
-
-                containerView.listenTo(model, "change", function (model) {
+        if (containerView.childModelName) {
+            var childModelConst = Tracuse.models[containerView.childModelName];
+            var childModelCollection = childModelConst.all;
+            if (childModelCollection) {
+                containerView.listenTo(childModelCollection, "change", function (model) {
                     containerView.changeChild(model);
                 });
-            });
+                containerView.listenTo(childModelCollection, "add remove", function (model) {
+                    containerView.changeChild(model);
+
+                    containerView.listenTo(model, "change", function (model) {
+                        containerView.changeChild(model);
+                    });
+                });
+            }
         }
         return containerView;
     },

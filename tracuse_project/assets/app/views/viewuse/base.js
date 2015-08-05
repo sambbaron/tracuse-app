@@ -4,7 +4,7 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
     templateName: "viewuse/base.html",
 
     editViewName: "ViewuseEdit",
-    childModel: Tracuse.models.DatumObject,
+    childModelName: "DatumObject",
 
     events: {
         "dblclick > .content": function createDatum(ev) {

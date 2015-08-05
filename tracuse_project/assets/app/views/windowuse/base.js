@@ -3,7 +3,7 @@ Tracuse.views.WindowuseBase = Tracuse.views.BaseContainer.extend({
     objectTypeClass: "windowuse",
     templateName: "windowuse/base.html",
 
-    childModel: Tracuse.models.ViewuseObject,
+    childModelName: "ViewuseObject",
 
     events: {
         "dblclick > .content": function createDatum(ev) {

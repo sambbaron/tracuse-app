@@ -4,7 +4,7 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
     templateName: "datum/base.html",
 
     editViewName: "DatumEdit",
-    childModel: Tracuse.models.ElementDatumObject,
+    childModelName: "ElementDatumObject",
 
     elementEffectsClass: "active-lightblue",
     elementImmediateSave: false,
