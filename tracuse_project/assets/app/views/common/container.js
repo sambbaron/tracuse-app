@@ -57,6 +57,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
         _.extend(containerView.events, Tracuse.views.BaseContainer.prototype.events);
         containerView.delegateEvents();
+        containerView.attachChildEvents();
 
         containerView.childCollection = [];
         containerView.childViews = [];
@@ -242,9 +243,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         }
 
         // Render child objects and attach events
-        containerView.renderChildren(function () {
-            containerView.attachChildEvents();
-        });
+        containerView.renderChildren();
 
         return containerView;
 
