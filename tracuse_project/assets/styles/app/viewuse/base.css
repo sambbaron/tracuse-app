@@ -3,10 +3,10 @@
     min-height: 20em;
     min-width: 20em;
     margin: 1em;
+    padding: 0.5em;
     border-width: 1px;
     border-style: solid;
     border-radius: 0.5em;
-    padding: 1em;
     overflow: auto;
     box-shadow: 2px 2px 1px #ddd;
     font-size: 75%;

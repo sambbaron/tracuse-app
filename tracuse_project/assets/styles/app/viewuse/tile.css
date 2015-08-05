@@ -1,6 +1,6 @@
 .viewuse .tile {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     justify-content: flex-start;
     align-content: flex-start;
     align-items: center;
@@ -8,4 +8,8 @@
 
 .viewuse .tile > * {
     flex: 0 1 auto;
+}
+
+.viewuse .tile .datum {
+    margin: 0.5em;
 }
