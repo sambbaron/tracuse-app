@@ -147,10 +147,10 @@ button span {
     border-color: #fafafa;
 }
 
-.active-lightblue.active,
-.active-lightblue:focus {
-    background-color: rgba(110, 140, 216, 0.75);
-    color: #fafafa;
+.active-lightblue-bold.active,
+.active-lightblue-bold:focus {
+    background-color: rgba(110, 139, 217, 0.25);
+    font-weight: bold;
 }
 
 .active-lightblue-shadow.active,

@@ -6,7 +6,7 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
     editViewName: "DatumEdit",
     childModelName: "ElementDatumObject",
 
-    elementEffectsClass: "active-lightblue",
+    elementEffectsClass: "active-lightblue-bold",
     elementImmediateSave: false,
 
     events: {
