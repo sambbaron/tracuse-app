@@ -35,15 +35,15 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
             this.scrollFixedElements();
             ev.stopPropagation();
         },
-        "click button[name='show-menu']": function showMenu(ev) {
+        "click .menu-button[name='show-menu']": function showMenu(ev) {
             this.menuView.show();
             ev.stopPropagation();
         },
-        "click button[name='close-object']": function closeObject(ev) {
+        "click .menu-button[name='close-object']": function closeObject(ev) {
             this.close();
             ev.stopPropagation();
         },
-        "click button[name='create-datum']": function createDatum(ev) {
+        "click .menu-button[name='create-datum']": function createDatum(ev) {
             this.createDatum();
             ev.stopPropagation();
         }

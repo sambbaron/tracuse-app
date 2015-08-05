@@ -11,7 +11,7 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
             this.createDatum();
             ev.stopPropagation();
         },
-        "click button[name='edit-viewuse']": function editViewuse(ev) {
+        "click .menu-button[name='edit-viewuse']": function editViewuse(ev) {
             this.showEdit();
             ev.stopPropagation();
         }

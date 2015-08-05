@@ -13,7 +13,7 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
         "dblclick > .content": function (ev) {
             ev.stopPropagation();
         },
-        "click button[name='edit-datum']": function editDatum(ev) {
+        "click .menu-button[name='edit-datum']": function editDatum(ev) {
             this.showEdit();
             ev.stopPropagation();
         }

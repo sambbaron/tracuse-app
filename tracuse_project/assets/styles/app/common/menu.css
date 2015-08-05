@@ -4,30 +4,30 @@
     box-shadow: 0 2px 1px #808080;
 }
 
-.base-menu button {
+.base-menu .menu-button {
     display: block;
     border: 1px solid transparent;
     font-size: 200%;
     text-align: left;
 }
 
-.base-menu button:hover {
+.base-menu .menu-button:hover {
     border: 1px solid;
     box-shadow: 1px 2px 1px #808080;
 }
 
-.base-menu button * {
+.base-menu .menu-button * {
     display: inline;
 }
 
-.base-menu button span {
+.base-menu .menu-button span {
     display: none;
     position: absolute;
     text-align: left;
     white-space: nowrap;
 }
 
-.base-menu.help-mode button {
+.base-menu.help-mode .menu-button {
     background-color: rgba(150, 150, 150, 0.75);
     color: #fafafa;
 }

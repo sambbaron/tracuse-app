@@ -7,26 +7,26 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
     buttonEffectsClass: "",
 
     events: {
-        "mouseenter button": function enterMenuButton(ev) {
+        "mouseenter .menu-button": function enterMenuButton(ev) {
             this.toggleButton(ev.target, true);
             ev.stopPropagation();
         },
-        "focusin button": function enterMenuButton(ev) {
+        "focusin .menu-button": function enterMenuButton(ev) {
             this.toggleButton(ev.target, true);
             ev.stopPropagation();
         },
-        "mouseleave button": function exitMenuButton(ev) {
+        "mouseleave .menu-button": function exitMenuButton(ev) {
             this.toggleButton(ev.target, false);
             ev.stopPropagation();
         },
-        "focusout button": function exitMenuButton(ev) {
+        "focusout .menu-button": function exitMenuButton(ev) {
             this.toggleButton(ev.target, false);
             ev.stopPropagation();
         },
-        "click button": function exitMenuButton(ev) {
+        "click .menu-button": function exitMenuButton(ev) {
             this.toggleButton(ev.target, false);
         },
-        "click button[name='hide-menu']": function hideMenu(ev) {
+        "click .menu-button[name='hide-menu']": function hideMenu(ev) {
             this.hide();
             ev.stopPropagation();
         },
@@ -51,7 +51,7 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
 
         // Set menu/button styling using classes
         menuView.$el.addClass(menuView.menuColorClass);
-        menuView.$("button").each(function () {
+        menuView.$(".menu-button").each(function () {
             $(this).addClass(menuView.buttonColorClass);
             $(this).addClass(menuView.buttonEffectsClass);
         });
@@ -77,7 +77,7 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
         $el.animate({"width": "5em"}, 200);
         $el.addClass("open");
 
-        $el.find(" > button").first().focus();
+        $el.find(" > .menu-button").first().focus();
     },
 
     hide: function ($menu) {
@@ -114,7 +114,7 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
          * and add class for styling
          * */
         var menuView = this;
-        var $buttons = menuView.$("button");
+        var $buttons = menuView.$(".menu-button");
         var toggleOpt = false;
 
         if (menuView.$el.hasClass("help-mode")) {
