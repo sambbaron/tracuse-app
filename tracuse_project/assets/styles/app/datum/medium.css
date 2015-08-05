@@ -47,6 +47,10 @@
     cursor: default;
 }
 
+.datum-medium .element {
+    padding-top: 0.25em;
+}
+
 .datum-medium .element label {
     visibility: hidden;
     display: block;
@@ -66,6 +70,7 @@
 
 .datum-medium .element-input {
     margin: 0 auto;
+    padding-top: 0;
 }
 
 .datum-medium .element-text .element-input {
