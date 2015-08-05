@@ -117,10 +117,10 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         return childView;
     },
 
-    addChild: function (childModel) {
+    changeChild: function (childModel) {
         "use strict";
         /* Test whether changed object is in container
-         * Create child view and add to container
+         * Add or remove child view/element from container
          * */
         var containerView = this;
 
@@ -149,13 +149,13 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
         if (containerView.childModel) {
             containerView.listenTo(containerView.childModel.all, "change", function (model) {
-                containerView.addChild(model);
+                containerView.changeChild(model);
             });
             containerView.listenTo(containerView.childModel.all, "add remove", function (model) {
-                containerView.addChild(model);
+                containerView.changeChild(model);
 
                 containerView.listenTo(model, "change", function (model) {
-                    containerView.addChild(model);
+                    containerView.changeChild(model);
                 });
             });
         }
