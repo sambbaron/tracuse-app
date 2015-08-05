@@ -62,3 +62,7 @@
     border: 2px solid;
     text-align: center;
 }
+
+.base-edit .input-input:focus {
+    background-color: rgba(225, 225, 225, 0.5);
+}

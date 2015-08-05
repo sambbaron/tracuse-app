@@ -17,12 +17,12 @@
         <div class="content">
             {% for datum_group in datum_groups %}
                 <div class="types-container">
-                    <button class="input-input" name="datum_group" value="{{ datum_group.datum_group_id }}"
+                    <button class="input-button" name="datum_group" value="{{ datum_group.datum_group_id }}"
                             title="{{ datum_group.long_definition }}">
                         {{ datum_group.readable_name }}
                     </button>
                     {% for datum_type in datum_group.datum_types %}
-                        <button class="add-filter input-input" name="FilterRuleType" value="{{ datum_type.datum_type_id }}"
+                        <button class="add-filter input-button" name="FilterRuleType" value="{{ datum_type.datum_type_id }}"
                                 title="{{ datum_type.long_definition }}">
                             {{ datum_type.readable_name }}
                             <form>
@@ -86,7 +86,7 @@
             </label>
             <input name="conditional" data-type="text" value="AND" form="association-form">
             <br>
-            <button class="add-filter" name="FilterRuleAssociation"><i class="fa fa-plus"></i>
+            <button class="add-filter input-button" name="FilterRuleAssociation"><i class="fa fa-plus"></i>
 
                 <form id="association-form"></form>
             </button>
@@ -123,7 +123,7 @@
             </label>
             <input name="conditional" data-type="text" value="AND" form="element-form">
             <br>
-            <button class="add-filter" name="FilterRuleElement"><i class="fa fa-plus"></i>
+            <button class="add-filter input-button" name="FilterRuleElement"><i class="fa fa-plus"></i>
 
                 <form id="element-form"></form>
             </button>

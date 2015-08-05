@@ -35,6 +35,7 @@
 
 .filter-set .types-container [name='FilterRuleType'] {
     padding: 0.25em;
+    border: 2px solid;
     font-size: 85%;
 }
 
