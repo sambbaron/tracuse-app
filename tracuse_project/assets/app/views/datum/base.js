@@ -9,6 +9,9 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
     elementImmediateSave: false,
 
     events: {
+        "dblclick > .content": function (ev) {
+            ev.stopPropagation();
+        },
         "click button[name='edit-datum']": function editDatum(ev) {
             new Tracuse.views.DatumEdit({
                 model: this.model,

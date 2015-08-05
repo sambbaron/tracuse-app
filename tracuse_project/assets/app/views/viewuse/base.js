@@ -6,6 +6,10 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
     childModel: Tracuse.models.DatumObject,
 
     events: {
+        "dblclick > .content": function createDatum(ev) {
+            this.createDatum();
+            ev.stopPropagation();
+        },
         "click button[name='edit-viewuse']": function editViewuse(ev) {
             new Tracuse.views.ViewuseEdit({
                 model: this.model,

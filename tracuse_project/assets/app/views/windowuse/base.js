@@ -5,6 +5,13 @@ Tracuse.views.WindowuseBase = Tracuse.views.BaseContainer.extend({
 
     childModel: Tracuse.models.ViewuseObject,
 
+    events: {
+        "dblclick > .content": function createDatum(ev) {
+            this.createDatum();
+            ev.stopPropagation();
+        }
+    },
+
     getChildModels: function (callback) {
         "use strict";
         callback(this.model.get("viewuse_objects"));

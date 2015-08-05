@@ -45,10 +45,6 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         "click button[name='create-datum']": function createDatum(ev) {
             this.createDatum();
             ev.stopPropagation();
-        },
-        "dblclick": function createDatum(ev) {
-            this.createDatum();
-            ev.stopPropagation();
         }
     },
 
