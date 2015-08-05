@@ -61,6 +61,13 @@ Tracuse.init.loadWindowuse = function loadWindowuse() {
     windowuseView.show();
 };
 
+Tracuse.init.fetchData = function fetchData() {
+    "use strict";
+    /* Fetch initial models */
+    Tracuse.models.DatumObject.all.fetch({silent: true});
+    Tracuse.models.ElementDatumObject.all.fetch({silent: true});
+};
+
 Tracuse.init.initApp = function initApp() {
     "use strict";
     Tracuse.init.fetchData();
@@ -69,13 +76,6 @@ Tracuse.init.initApp = function initApp() {
     Tracuse.init.attachGlobalEvents();
     Tracuse.init.ajaxSetup();
     Tracuse.init.loadWindowuse();
-};
-
-Tracuse.init.fetchData = function fetchData() {
-    "use strict";
-    /* Fetch initial models */
-    Tracuse.models.DatumObject.all.fetch();
-    Tracuse.models.ElementDatumObject.all.fetch();
 };
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -148,7 +148,7 @@ Tracuse.models.bootstrapData = function bootstrapData(data) {
         var model = Tracuse.models[modelName];
         if (model) {
             var modelData = JSON.parse(data[modelName]);
-            model.all.reset(modelData);
+            model.all.reset(modelData, {silent: true});
             console.info("Load Bootstrap Model Data: " + modelName);
         }
     }
