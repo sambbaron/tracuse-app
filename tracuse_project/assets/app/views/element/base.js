@@ -12,7 +12,17 @@ Tracuse.views.ElementBase = Tracuse.views.BaseView.extend({
     },
 
     events: {
-        "change .element-input": function (ev) {
+        "focusin .element-input": function focusElement(ev) {
+            "use strict";
+            this.$el.addClass("active");
+            ev.stopPropagation();
+        },
+        "focusout .element-input": function focusElement(ev) {
+            "use strict";
+            this.$el.removeClass("active");
+            ev.stopPropagation();
+        },
+        "change .element-input": function changeElement(ev) {
             if (this.elementImmediateSave) {
                 this.updateElement(ev.target.value);
             }
