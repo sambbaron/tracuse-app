@@ -17,12 +17,12 @@
         <div class="content">
             {% for datum_group in datum_groups %}
                 <div class="types-container">
-                    <button class="input-element" name="datum_group" value="{{ datum_group.datum_group_id }}"
+                    <button class="input-input" name="datum_group" value="{{ datum_group.datum_group_id }}"
                             title="{{ datum_group.long_definition }}">
                         {{ datum_group.readable_name }}
                     </button>
                     {% for datum_type in datum_group.datum_types %}
-                        <button class="add-filter input-element" name="FilterRuleType" value="{{ datum_type.datum_type_id }}"
+                        <button class="add-filter input-input" name="FilterRuleType" value="{{ datum_type.datum_type_id }}"
                                 title="{{ datum_type.long_definition }}">
                             {{ datum_type.readable_name }}
                             <form>
@@ -43,7 +43,7 @@
         <div class="content">
             <label class="input-wrap">
                 <span class="input-label">Groups</span>
-                <select class="input-element" name="association_groups">
+                <select class="input-input" name="association_groups">
                     <option></option>
                     {% for datum_group in datum_groups %}
                         <option value="{{ datum_group.datum_group_id }}">
@@ -55,7 +55,7 @@
 
             <label class="input-wrap">
                 <span class="input-label">Types</span>
-                <select class="input-element" name="association_types">
+                <select class="input-input" name="association_types">
                     <option></option>
                     {% for datum_type in datum_types %}
                         <option value="{{ datum_type.datum_type_id }}">
@@ -67,14 +67,14 @@
             <br>
             <label class="input-wrap">
                 <span class="input-label">Objects</span>
-                <select class="input-element" name="datum_object_id" data-type="integer" form="association-form">
+                <select class="input-input" name="datum_object_id" data-type="integer" form="association-form">
                     <option></option>
                 </select>
             </label>
             <br>
             <label class="input-wrap">
                 <span class="input-label">Direction</span>
-                <select class="input-element" name="association_direction_id" form="association-form">
+                <select class="input-input" name="association_direction_id" form="association-form">
                     <option></option>
                     {% for association_direction in association_directions %}
                         <option value="{{ association_direction.association_direction_id }}"
@@ -100,7 +100,7 @@
         <div class="content">
             <label class="input-wrap">
                 <span class="input-label">Types</span>
-                <select class="input-element" name="element_type_id" data-type="integer" form="element-form">
+                <select class="input-input" name="element_type_id" data-type="integer" form="element-form">
                     <option></option>
                     {% for element_type in element_types %}
                         <option value="{{ element_type.element_type_id }}">
@@ -112,14 +112,14 @@
             <br>
             <label class="input-wrap">
                 <span class="input-label">Operators</span>
-                <select class="input-element" name="element_operator_id" data-type="integer" form="element-form">
+                <select class="input-input" name="element_operator_id" data-type="integer" form="element-form">
                     <option></option>
                 </select>
             </label>
             <br>
             <label class="input-wrap">
                 <span class="input-label">Filter Value</span>
-                <input class="input-element" name="element_value" data-type="text" form="element-form">
+                <input class="input-input" name="element_value" data-type="text" form="element-form">
             </label>
             <input name="conditional" data-type="text" value="AND" form="element-form">
             <br>

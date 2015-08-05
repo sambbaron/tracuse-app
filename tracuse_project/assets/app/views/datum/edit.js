@@ -22,6 +22,8 @@ Tracuse.views.DatumEdit = Tracuse.views.BaseEdit.extend({
                 parentView: editView
             });
             var elementEl = elementView.render().el;
+            elementView.$el.addClass("input-wrap");
+            elementView.$(".element-input").addClass("input-input");
             elementFrag.appendChild(elementEl);
         });
 

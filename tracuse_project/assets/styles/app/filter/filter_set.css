@@ -48,19 +48,19 @@
     display: block;
 }
 
-.filter-set .associations .input-element[name='association_groups'] {
+.filter-set .associations .input-input[name='association_groups'] {
     width: 5em;
 }
 
-.filter-set .associations .input-element[name='association_types'] {
+.filter-set .associations .input-input[name='association_types'] {
     width: 8em;
 }
 
-.filter-set .associations .input-element[name='datum_object_id'] {
+.filter-set .associations .input-input[name='datum_object_id'] {
     width: 12em;
 }
 
-.filter-set .elements .input-element[name='element_operator_id'] {
+.filter-set .elements .input-input[name='element_operator_id'] {
     width: 10em;
 }
 

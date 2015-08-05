@@ -6,7 +6,7 @@
         <p class="title">Select View</p>
 
         <div class="content">
-            <select class="input-element select-viewuse" name="viewuse_object_id" size="{{ viewuse_objects|length + 1 }}">
+            <select class="input-input select-viewuse" name="viewuse_object_id" size="{{ viewuse_objects|length + 1 }}">
                 {% for viewuse_object in viewuse_objects %}
                     <option value="{{ viewuse_object.viewuse_object_id }}"
                             {{ " selected" if this_object.viewuse_object_id == viewuse_object.viewuse_object_id }}>
@@ -27,11 +27,11 @@
             <form id="viewuse-form">
                 <label class="input-wrap">
                     <span class="input-label">Title</span>
-                    <input class="input-element" name="title" data-type="text"
+                    <input class="input-input" name="title" data-type="text"
                            value="{{ this_object.title|default('Empty View') }}">
                 </label>
                 <label class="input-wrap"><span class="input-label">Arrangement</span>
-                    <select class="input-element" name="viewuse_arrangement_id" data-type="integer">
+                    <select class="input-input" name="viewuse_arrangement_id" data-type="integer">
                         <option></option>
                         {% for viewuse_arrangement in viewuse_arrangements %}
                             <option value="{{ viewuse_arrangement.viewuse_arrangement_id }}"

@@ -11,7 +11,7 @@
             <div class="content">
                 <div class="types-container">
                     {% for datum_type in types_in_view %}
-                        <button class="create-datum input-element" name="datum_type_id" value="{{ datum_type.datum_type_id }}"
+                        <button class="create-datum input-input" name="datum_type_id" value="{{ datum_type.datum_type_id }}"
                                 title="{{ datum_type.long_definition }}">
                             {{ datum_type.readable_name }}
                         </button>
@@ -29,7 +29,7 @@
             <div class="content">
                 <div class="types-container">
                     {% for datum_type in datum_group.datum_types %}
-                        <button class="create-datum input-element" name="datum_type_id" value="{{ datum_type.datum_type_id }}"
+                        <button class="create-datum input-input" name="datum_type_id" value="{{ datum_type.datum_type_id }}"
                                 title="{{ datum_type.long_definition }}">
                             {{ datum_type.readable_name }}
                         </button>
