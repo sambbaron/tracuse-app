@@ -60,29 +60,11 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
         _.extend(containerView.events, Tracuse.views.BaseContainer.prototype.events);
         containerView.delegateEvents();
-        containerView.listenTo(containerView.model, "change", containerView.render);
-        containerView.attachChildEvents();
+        //containerView.listenTo(containerView.model, "change", containerView.render);
 
         containerView.childCollection = [];
         containerView.childViews = [];
 
-        return containerView;
-    },
-
-    attachChildEvents: function () {
-        "use strict";
-        /* Attach event listeners using child model
-         * */
-        var containerView = this;
-
-        if (containerView.childModel) {
-            containerView.listenTo(containerView.childModel.all, "add remove", function (model) {
-                containerView.addChild(model);
-                containerView.listenTo(model, "change", function (model) {
-                    containerView.addChild(model);
-                });
-            });
-        }
         return containerView;
     },
 
@@ -151,26 +133,36 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
                 containerView.$content.append(newView.render().$el);
             } else if (!childInCollection && childInView) {
                 containerView.childViews.pop(childInView);
+                childInView.$el.remove();
                 childInView.remove();
             }
             return containerView;
         });
     },
 
-    removeChild: function (childModel) {
+    attachChildEvents: function () {
         "use strict";
-        /* Remove child view from container
+        /* Attach event listeners to 'all' collection
+         *   of child model
          * */
         var containerView = this;
-        var childView = containerView.findChildView(childModel);
-        if (childView) {
-            containerView.childViews.pop(childView);
-            childView.remove();
+
+        if (containerView.childModel) {
+            containerView.listenTo(containerView.childModel.all, "change", function (model) {
+                containerView.addChild(model);
+            });
+            containerView.listenTo(containerView.childModel.all, "add remove", function (model) {
+                containerView.addChild(model);
+
+                containerView.listenTo(model, "change", function (model) {
+                    containerView.addChild(model);
+                });
+            });
         }
         return containerView;
     },
 
-    renderChildren: function () {
+    renderChildren: function (callback) {
         "use strict";
         /* Render all child objects into 'content' element
          * */
@@ -198,7 +190,12 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
             }
 
-            return containerView;
+            if (callback) {
+                callback(containerView);
+            } else {
+                return containerView;
+            }
+
         });
     },
 
@@ -244,10 +241,13 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
             containerView.$content.addClass(containerView.contentStyleClass);
         }
 
-        // Render child objects
-        containerView.renderChildren();
+        // Render child objects and attach events
+        containerView.renderChildren(function () {
+            containerView.attachChildEvents();
+        });
 
         return containerView;
+
     },
 
     $parents: function () {

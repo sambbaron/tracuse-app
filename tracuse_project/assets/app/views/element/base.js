@@ -20,6 +20,15 @@ Tracuse.views.ElementBase = Tracuse.views.BaseView.extend({
         }
     },
 
+    initialize: function (options) {
+        "use strict";
+        /* Attach change event so Element changes show up in multiple Viewuses
+         * */
+        var elementView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
+        elementView.listenTo(elementView.model, "change", elementView.render);
+        return elementView;
+    },
+
     render: function () {
         "use strict";
         /* Add Element styling class
