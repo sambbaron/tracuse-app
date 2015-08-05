@@ -1,6 +1,6 @@
 Tracuse.views.ElementBase = Tracuse.views.BaseView.extend({
 
-    className: "element",
+    className: "element input-wrap",
     templateName: "element/base.html",
     templateData: function () {
         "use strict";
@@ -35,6 +35,7 @@ Tracuse.views.ElementBase = Tracuse.views.BaseView.extend({
         /* Attach change event so Element changes show up in multiple Viewuses
          * */
         var elementView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
+        elementView.$el.addClass(Tracuse.views.ElementBase.prototype.className);
         elementView.listenTo(elementView.model, "change", elementView.render);
         return elementView;
     },

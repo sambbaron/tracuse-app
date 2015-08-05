@@ -1,9 +1,9 @@
-<label class="element-label" for="{{ input_id }}">
+<label class="element-label input-label" for="{{ input_id }}">
     {{ this_object.element_name }}
 </label>
 
 {% block element_input %}
-    <input class="element-input"
+    <input class="element-input input-input"
            id="{{ input_id }}"
            name="element_value"
            value="{{ this_object.element_value }}"
