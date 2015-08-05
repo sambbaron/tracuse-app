@@ -7,6 +7,7 @@ Tracuse.models.ViewuseObject =
             "use strict";
             return {
                 title: "Empty View",
+                description: "",
                 datum_filter: new Tracuse.models.FilterSet(),
                 viewuse_arrangement: Tracuse.models.ViewuseArrangement.all.first()
             };
