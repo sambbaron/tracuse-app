@@ -12,7 +12,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
     },
 
     ruleColorClass: "color-darkgreen-white",
-    ruleEffectsClass: "effects-white-darkgreen",
+    ruleEffectsClass: "hover-white-darkgreen",
 
     events: {
         "click button[name='new-viewuse']": function newViewuse(ev) {

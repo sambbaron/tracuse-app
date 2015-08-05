@@ -5,7 +5,7 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
 
     childModel: Tracuse.models.ElementDatumObject,
 
-    elementEffectsClass: "effects-lightblue",
+    elementEffectsClass: "active-lightblue",
     elementImmediateSave: false,
 
     events: {

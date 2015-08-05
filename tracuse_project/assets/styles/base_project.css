@@ -116,6 +116,8 @@ button span {
     border-color: #fafafa;
 }
 
+/* Shadow Effects */
+
 .text-shadow-light {
     text-shadow: 1px 1px 0 #e1e1e1;
 }
@@ -124,68 +126,70 @@ button span {
     text-shadow: 1px 1px 0 #969696;
 }
 
-.effects-white-lightblue:hover,
-.effects-white-lightblue:focus {
+/* Hover/Active Effects */
+
+.active-white.active,
+.active-white:focus {
+    background-color: #f5f5f5;
+}
+
+.hover-white-lightblue:hover,
+.hover-white-lightblue:focus {
     background-color: #fafafa;
     color: #6e8cd8;
     border-color: #6e8cd8;
 }
 
-.effects-lightblue-white:hover,
-.effects-lightblue-white:focus {
+.hover-lightblue-white:hover,
+.hover-lightblue-white:focus {
     background-color: #6e8cd8;
     color: #fafafa;
     border-color: #fafafa;
 }
 
-.effects-white.active,
-.effects-white:focus {
-    background-color: #f5f5f5;
-}
-
-.effects-lightblue.active,
-.effects-lightblue:focus {
+.active-lightblue.active,
+.active-lightblue:focus {
     background-color: rgba(110, 140, 216, 0.75);
     color: #fafafa;
 }
 
-.effects-shadow-lightblue.active,
-.effects-shadow-lightblue:focus {
+.active-lightblue-shadow.active,
+.active-lightblue-shadow:focus {
     box-shadow: 0 0 1em rgba(110, 139, 217, 0.75);
 }
 
-.effects-lightgreen:hover,
-.effects-lightgreen:focus {
+.hover-lightgreen:hover,
+.hover-lightgreen:focus {
     background-color: hsl(84, 60%, 71%);
 }
 
-.effects-lightgreen.active,
-.effects-lightgreen.focus {
+.active-lightgreen.active,
+.active-lightgreen.focus {
     background-color: hsl(84, 60%, 71%);
     box-shadow: 0 0 5px 5px #a7d760;
 }
 
-.effects-darkgreen-white:hover,
-.effects-darkgreen-white:focus {
+.hover-darkgreen-white:hover,
+.hover-darkgreen-white:focus {
     background-color: #85be2e;
     color: #fafafa;
     border-color: #fafafa;
 }
 
-.effects-white-darkgreen:hover,
-.effects-white-darkgreen:focus {
+.hover-white-darkgreen:hover,
+.hover-white-darkgreen:focus {
     background-color: #fafafa;
     color: #85be2e;
     border-color: #85be2e;
 }
 
-.effects-darkorange:hover,
-.effects-darkorange:focus {
+.hover-darkorange:hover,
+.hover-darkorange:focus {
     background-color: hsl(25, 94%, 56%);
 }
 
-.effects-darkorange.active,
-.effects-darkorange:focus {
+.active-darkorange.active,
+.active-darkorange:focus {
     background-color: hsl(25, 94%, 56%);
     box-shadow: 0 0 5px 5px #e76707;
 }

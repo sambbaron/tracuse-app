@@ -5,8 +5,8 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
     objectColorClass: "color-white-darkgreen",
     objectEffectsClass: "",
     menuColorClass: "color-darkgreen-white",
-    menuEffectsClass: "effects-white-darkgreen",
-    buttonEffectsClass: "effects-darkgreen-white",
+    menuEffectsClass: "hover-white-darkgreen",
+    buttonEffectsClass: "hover-darkgreen-white",
 
     tagName: "aside",
     className: function () {
@@ -57,7 +57,7 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
         }
 
         // Apply button effects class
-        editView.$("button").addClass(editView.buttonEffectsClass);
+        editView.$(".main button").addClass(editView.buttonEffectsClass);
 
         return editView;
     },
