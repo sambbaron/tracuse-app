@@ -1,8 +1,8 @@
 Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, modelOptions) {
     "use strict";
     /* Create base Backbone Relational api-driven model
-    * Create "all" Collection for model
-    * */
+     * Create "all" Collection for model
+     * */
 
     // Default base url
     var url = Tracuse.routes.api[modelName] ||
@@ -34,11 +34,25 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
     return model;
 };
 
+Backbone.RelationalModel.prototype.clone = function clone(options) {
+    "use strict";
+    /* Override clone method to include relations
+     * Use toJSON property
+     * */
+    var model = this;
+    var clonedModel = new this.constructor();
+    var clonedAttr = model.toJSON(options);
+    // Clear id value for new object
+    clonedAttr[model.idAttribute] = null;
+    clonedModel.set(clonedAttr);
+    return clonedModel;
+};
+
 Backbone.RelationalModel.prototype.setTemplateOption = function setTemplateOption(onOff) {
     "use strict";
     /* Toggle includeInTemplate option as includeInJSON
-    * In order to use toJSON function to create toTemplate output
-    * */
+     * In order to use toJSON function to create toTemplate output
+     * */
     var model = this;
     _.each(model._relations, function (rel) {
         if (onOff) {
@@ -71,8 +85,8 @@ Backbone.RelationalModel.prototype.toTemplate = function toTemplate(options) {
 Backbone.Collection.prototype.toTemplate = function toTemplate(options) {
     "use strict";
     /* Collection property for model toTemplate
-    * Use toJSON as template
-    * */
+     * Use toJSON as template
+     * */
     return this.map(function (model) {
         return model.toTemplate(options);
     });
