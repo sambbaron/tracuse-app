@@ -24,6 +24,7 @@ Tracuse.views.FilterRule = Tracuse.views.BaseView.extend({
         var filterRuleView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
         filterRuleView.render();
         filterRuleView.setElement(this.el.querySelector("button"));
+        return filterRuleView;
     },
 
     removeFilterRule: function removeFilterRule() {
