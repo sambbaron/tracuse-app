@@ -20,6 +20,15 @@ Tracuse.views.ElementBase = Tracuse.views.BaseView.extend({
         }
     },
 
+    render: function () {
+        "use strict";
+        /* Add Element styling class
+         * */
+        var elementView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
+        elementView.$el.addClass(elementView.elementEffectsClass);
+        return elementView;
+    },
+
     updateElement: function updateElement(value) {
         "use strict";
         var elementView = this;

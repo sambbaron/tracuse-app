@@ -35,7 +35,7 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
         return {
             model: childModel,
             parentView: this,
-            objectEffectsClass: this.elementEffectsClass,
+            elementEffectsClass: this.elementEffectsClass,
             elementImmediateSave: this.elementImmediateSave
         };
     },
