@@ -29,6 +29,10 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
         "click button[name='hide-menu']": function hideMenu(ev) {
             this.hide();
             ev.stopPropagation();
+        },
+        "dblclick": function(ev) {
+            "use strict";
+            ev.stopPropagation();
         }
     },
 
