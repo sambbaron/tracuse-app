@@ -3,6 +3,7 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
     objectTypeClass: "viewuse",
     templateName: "viewuse/base.html",
 
+    editViewName: "ViewuseEdit",
     childModel: Tracuse.models.DatumObject,
 
     events: {
@@ -11,10 +12,7 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
             ev.stopPropagation();
         },
         "click button[name='edit-viewuse']": function editViewuse(ev) {
-            new Tracuse.views.ViewuseEdit({
-                model: this.model,
-                parentView: this
-            }).show();
+            this.showEdit();
             ev.stopPropagation();
         }
     },

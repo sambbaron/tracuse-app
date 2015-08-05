@@ -19,6 +19,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
     },
     templateName: "common/container.html",
 
+    editViewName: "",
     childModel: null,
 
     events: {
@@ -56,7 +57,6 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
         _.extend(containerView.events, Tracuse.views.BaseContainer.prototype.events);
         containerView.delegateEvents();
-        //containerView.listenTo(containerView.model, "change", containerView.render);
 
         containerView.childCollection = [];
         containerView.childViews = [];
@@ -307,6 +307,22 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         Tracuse.utils.positionOnScroll(title, containerView.el, "nw");
         Tracuse.utils.positionOnScroll(controlMenu, containerView.el, "nw");
         Tracuse.utils.positionOnScroll(controlClose, containerView.el, "ne");
+    },
+
+    showEdit: function () {
+        "use strict";
+        /* Create and show Edit view
+         * */
+        var containerView = this;
+        var editView;
+
+        if (containerView.editViewName) {
+            editView = new Tracuse.views[containerView.editViewName]({
+                model: containerView.model,
+                parentView: containerView
+            }).show();
+        }
+        return editView;
     },
 
     createDatum: function () {

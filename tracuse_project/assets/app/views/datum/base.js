@@ -3,6 +3,7 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
     objectTypeClass: "datum",
     templateName: "datum/base.html",
 
+    editViewName: "DatumEdit",
     childModel: Tracuse.models.ElementDatumObject,
 
     elementEffectsClass: "active-lightblue",
@@ -13,10 +14,7 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
             ev.stopPropagation();
         },
         "click button[name='edit-datum']": function editDatum(ev) {
-            new Tracuse.views.DatumEdit({
-                model: this.model,
-                parentView: this
-            }).show();
+            this.showEdit();
             ev.stopPropagation();
         }
     },
