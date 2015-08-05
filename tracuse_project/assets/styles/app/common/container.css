@@ -22,7 +22,7 @@
 
 .base-container > .content {
     margin-top: 3em;
-    height: calc(100% - 3em);
+    height: 100%;
 }
 
 .base-container > .controls {

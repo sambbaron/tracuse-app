@@ -12,6 +12,10 @@
     font-size: 75%;
 }
 
+.viewuse > .content {
+    height: calc(100% - 3em);
+}
+
 .viewuse > .menu {
     min-height: 18em;
 }
