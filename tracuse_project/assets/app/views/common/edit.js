@@ -56,8 +56,8 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
             editView.$(" > .title").addClass(editView.menuColorClass);
         }
 
-        // Apply button effects class
-        editView.$(".main button").addClass(editView.buttonEffectsClass);
+        // Apply input button effects class
+        editView.$(".input-button").addClass(editView.buttonEffectsClass);
 
         return editView;
     },

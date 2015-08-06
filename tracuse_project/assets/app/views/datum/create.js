@@ -18,7 +18,7 @@ Tracuse.views.DatumCreate = Tracuse.views.BaseEdit.extend({
             this.close();
             ev.stopPropagation();
         },
-        "click [name='cancel']": function (ev) {
+        "click .menu-button[name='cancel']": function (ev) {
             "use strict";
             this.close();
             ev.stopPropagation();
@@ -33,7 +33,7 @@ Tracuse.views.DatumCreate = Tracuse.views.BaseEdit.extend({
 
         createView.types_in_view.each(function (datumTypeModel) {
             var datumTypeId = datumTypeModel.id;
-            var datumTypeEl = createView.el.querySelector(".types button[value='" + datumTypeId + "']");
+            var datumTypeEl = createView.el.querySelector(".types .input-button[value='" + datumTypeId + "']");
             datumTypeEl.style.visibility = "hidden";
         });
 

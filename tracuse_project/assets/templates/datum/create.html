@@ -2,7 +2,7 @@
 
 {% block title %}Create 'Object'{% endblock %}
 
-{% block main %}
+{% block content %}
 
     {% if types_in_view.length %}
         <fieldset class="section in-view">
@@ -11,7 +11,7 @@
             <div class="content">
                 <div class="types-container">
                     {% for datum_type in types_in_view %}
-                        <button class="create-datum input-input" name="datum_type_id" value="{{ datum_type.datum_type_id }}"
+                        <button class="create-datum input-button" name="datum_type_id" value="{{ datum_type.datum_type_id }}"
                                 title="{{ datum_type.long_definition }}">
                             {{ datum_type.readable_name }}
                         </button>
@@ -29,7 +29,7 @@
             <div class="content">
                 <div class="types-container">
                     {% for datum_type in datum_group.datum_types %}
-                        <button class="create-datum input-input" name="datum_type_id" value="{{ datum_type.datum_type_id }}"
+                        <button class="create-datum input-button" name="datum_type_id" value="{{ datum_type.datum_type_id }}"
                                 title="{{ datum_type.long_definition }}">
                             {{ datum_type.readable_name }}
                         </button>
@@ -44,6 +44,5 @@
 {% endblock %}
 
 {% block menu %}
-    {#    <button name="create-datum"><i class="fa fa-plus-circle fa-fw"></i><span>Create</span></button>#}
-    <button name="cancel"><i class="fa fa-remove fa-fw"></i><span>Cancel</span></button>
+    <button class="menu-button" name="cancel"><i class="fa fa-remove fa-fw"></i><span>Cancel</span></button>
 {% endblock %}
