@@ -112,9 +112,9 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
         var editView = this;
         var selectedId = modelId || editView.model.id;
 
-        var selectedModel = editView.collection.get(selectedId);
+        var selectedModel = editView.allCollection.get(selectedId);
         if (selectedModel) {
-            editView.model = editView.collection.get(selectedId);
+            editView.model = editView.allCollection.get(selectedId);
         }
         editView.renderCall(renderOption);
         return editView;
@@ -159,7 +159,7 @@ Tracuse.views.BaseEdit = Tracuse.views.BaseView.extend({
         var saveOptions = options || {
                 success: function (model) {
                     editView.model = model;
-                    editView.collection.add(model);
+                    editView.allCollection.add(model);
                     editView.renderPartial();
                 }
             };

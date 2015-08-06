@@ -6,7 +6,7 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
         "use strict";
         return {
             this_object: this.model.toTemplate(),
-            viewuse_objects: Tracuse.models.ViewuseObject.all.toTemplate(),
+            viewuse_objects: this.allCollection.toTemplate(),
             viewuse_arrangements: Tracuse.models.ViewuseArrangement.all.toTemplate()
         };
     },

@@ -14,7 +14,7 @@ Tracuse.views.BaseView = Backbone.View.extend({
         }
     },
 
-    collection: function () {
+    allCollection: function () {
         "use strict";
         if (this.model) {
             return this.model.constructor.all;
@@ -50,7 +50,7 @@ Tracuse.views.BaseView = Backbone.View.extend({
         view.delegateEvents();
 
         // Custom property methods
-        view.collection = view.collection();
+        view.allCollection = view.allCollection();
 
         return view;
     },

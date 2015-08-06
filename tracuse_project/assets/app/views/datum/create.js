@@ -43,7 +43,7 @@ Tracuse.views.DatumCreate = Tracuse.views.BaseEdit.extend({
     createDatum: function (el) {
         "use strict";
         var datumTypeId = el.value;
-        Tracuse.models.DatumObject.all.create({
+        this.allCollection.create({
             datum_type_id: datumTypeId
         });
     }
