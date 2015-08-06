@@ -14,6 +14,13 @@ Tracuse.views.BaseView = Backbone.View.extend({
         }
     },
 
+    collection: function () {
+        "use strict";
+        if (this.model) {
+            return this.model.constructor.all;
+        }
+    },
+
     templateName: "",
     templateData: function () {
         var data = {};
@@ -41,6 +48,10 @@ Tracuse.views.BaseView = Backbone.View.extend({
         }
         _.extend(view.events, Tracuse.views.BaseView.prototype.events);
         view.delegateEvents();
+
+        // Custom property methods
+        view.collection = view.collection();
+
         return view;
     },
 
