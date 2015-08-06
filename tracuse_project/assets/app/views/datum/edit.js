@@ -10,7 +10,7 @@ Tracuse.views.DatumEdit = Tracuse.views.BaseEdit.extend({
         /* Render Datum Elements using Element Type views
          * */
         var editView = Tracuse.views.BaseEdit.prototype.render.apply(this, arguments);
-        var elementContainer = editView.el.querySelector(".datum-elements");
+        var elementContainer = editView.el.querySelector(".datum-elements .content");
 
         var elementFrag = document.createDocumentFragment();
         var elementCollection = editView.model.get("elements");
