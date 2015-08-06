@@ -82,6 +82,25 @@ Tracuse.views.BaseView = Backbone.View.extend({
         view.$el.fadeOut(200, function () {
             view.remove();
         });
+    },
+
+    renderCall: function (renderOption) {
+        "use strict";
+        /* Execute render function based on argument
+         * If none provided or if true, then call 'render'
+         * If false, do nothing
+         * */
+        var view = this;
+        var renderFunction;
+
+        if (renderOption === undefined || renderOption === true) {
+            renderFunction = view.render;
+        } else if (renderOption !== false) {
+            renderFunction = renderOption;
+        }
+        if (renderFunction) {renderFunction.call(view); }
+
+        return view;
     }
 
 });
