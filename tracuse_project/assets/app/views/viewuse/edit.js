@@ -15,27 +15,27 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
     ruleEffectsClass: "hover-white-darkgreen",
 
     events: {
-        "click button[name='new-viewuse']": function newObject(ev) {
+        "click .menu-button[name='new-viewuse']": function newObject(ev) {
             this.newObject();
             ev.stopPropagation();
         },
-        "click button[name='copy-viewuse']": function cloneObject(ev) {
+        "click .menu-button[name='copy-viewuse']": function cloneObject(ev) {
             this.cloneObject();
             ev.stopPropagation();
         },
-        "click button[name='save-viewuse']": function saveObject(ev) {
+        "click .menu-button[name='save-viewuse']": function saveObject(ev) {
             this.saveObject();
             ev.stopPropagation();
         },
-        "click button[name='delete-viewuse']": function deleteObject(ev) {
+        "click .menu-button[name='delete-viewuse']": function deleteObject(ev) {
             this.deleteObject();
             ev.stopPropagation();
         },
-        "click button[name='undo-changes']": function revertObject(ev) {
+        "click .menu-button[name='revert-viewuse']": function revertObject(ev) {
             this.revertObject();
             ev.stopPropagation();
         },
-        "click button[name='close-apply']": function applyCloseEdit(ev) {
+        "click .menu-button[name='close-apply-viewuse']": function applyCloseEdit(ev) {
             this.renderParent();
             this.close();
             ev.stopPropagation();
