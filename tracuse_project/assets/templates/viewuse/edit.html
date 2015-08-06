@@ -2,10 +2,10 @@
 
 {% block content %}
 
-    <fieldset class="section selections help-trigger">
+    <section class="section selections help-trigger">
         <p class="title">Select View</p>
 
-        <div class="content">
+        <article class="content">
             <select class="input-input select-viewuse" name="viewuse_object_id" size="{{ viewuse_objects|length + 1 }}">
                 {% for viewuse_object in viewuse_objects %}
                     <option value="{{ viewuse_object.viewuse_object_id }}"
@@ -14,16 +14,16 @@
                     </option>
                 {% endfor %}
             </select>
-        </div>
+        </article>
         <p class="help-content">
             This is the help section for selecting a view.
         </p>
-    </fieldset>
+    </section>
 
-    <fieldset class="section viewuse-options">
+    <section class="section viewuse-options">
         <p class="title">Options</p>
 
-        <div class="content">
+        <article class="content">
             <form id="viewuse-form">
                 <label class="input-wrap">
                     <span class="input-label">Title</span>
@@ -42,14 +42,14 @@
                     </select>
                 </label>
             </form>
-        </div>
+        </article>
 
-    </fieldset>
+    </section>
 
-    <fieldset class="section viewuse-filter">
+    <section class="section viewuse-filter">
         <p class="title">Object Filter</p>
 
-    </fieldset>
+    </section>
 
 {% endblock %}
 
