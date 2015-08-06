@@ -25,7 +25,6 @@
     display: flex;
     flex-flow: row wrap;
     align-content: flex-start;
-    height: 100%;
     margin: 2.5em 0 0 5em;
     padding: 0;
 }
