@@ -1,22 +1,22 @@
-<div class="content">
+<article class="content">
 
-    <fieldset class="section selections">
+    <section class="section selections">
         <p class="title">Filter Selections</p>
 
-        <div class="content">
-            <div id="FilterRuleType"></div>
-            <div id="FilterRuleAssociation"></div>
-            <div id="FilterRuleElement"></div>
-        </div>
+        <article class="content">
+            <fieldset id="FilterRuleType"></fieldset>
+            <fieldset id="FilterRuleAssociation"></fieldset>
+            <fieldset id="FilterRuleElement"></fieldset>
+        </article>
 
-    </fieldset>
+    </section>
 
-    <fieldset class="section types">
+    <section class="section types">
         <p class="title">Types</p>
 
-        <div class="content">
+        <article class="content">
             {% for datum_group in datum_groups %}
-                <div class="types-container">
+                <fieldset class="types-container">
                     <button class="input-button" name="datum_group" value="{{ datum_group.datum_group_id }}"
                             title="{{ datum_group.long_definition }}">
                         {{ datum_group.readable_name }}
@@ -31,16 +31,16 @@
                             </form>
                         </button>
                     {% endfor %}
-                </div>
+                </fieldset>
             {% endfor %}
-        </div>
+        </article>
 
-    </fieldset>
+    </section>
 
-    <fieldset class="section associations">
+    <section class="section associations">
         <p class="title">Associations</p>
 
-        <div class="content">
+        <article class="content">
             <label class="input-wrap">
                 <span class="input-label">Groups</span>
                 <select class="input-input" name="association_groups">
@@ -91,13 +91,13 @@
                 <form id="association-form"></form>
             </button>
 
-        </div>
-    </fieldset>
+        </article>
+    </section>
 
-    <fieldset class="section elements">
+    <section class="section elements">
         <p class="title">Element Values</p>
 
-        <div class="content">
+        <article class="content">
             <label class="input-wrap">
                 <span class="input-label">Types</span>
                 <select class="input-input" name="element_type_id" data-type="integer" form="element-form">
@@ -128,7 +128,7 @@
                 <form id="element-form"></form>
             </button>
 
-        </div>
-    </fieldset>
+        </article>
+    </section>
 
-</div>
+</article>
