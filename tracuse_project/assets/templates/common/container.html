@@ -9,12 +9,12 @@
     <p class="title"> {{ this_object.title|default('Title') }}</p>
 {% endblock %}
 
-<div class="controls">
+<nav class="controls">
     {% block controls %}
         <button class="menu-button" name="show-menu" title="Show Menu"><i class="fa fa-bars"></i></button>
         <button class="menu-button" name="close-object" title="Close Object"><i class="fa fa-close"></i></button>
     {% endblock %}
-</div>
+</nav>
 
 <nav class="menu position-embed">
     <button class="menu-button hover-white-darkgreen" name="hide-menu"><i class="fa fa-toggle-left fa-fw"></i><span>Hide Menu</span></button>
