@@ -13,6 +13,19 @@
     cursor: default;
 }
 
+.base-edit .content {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.base-edit .section {
+    flex: 1 1 auto;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
 .base-edit > .title {
     position: absolute;
     top: 0;
@@ -22,18 +35,11 @@
 }
 
 .base-edit > .content {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
     margin: 2.5em 0 0 5em;
     padding: 0;
 }
 
 .base-edit > .content > .section {
-    flex: 1 1 auto;
-    position: relative;
-    margin: 0;
-    padding: 0;
     border-top: 3px solid;
     border-right: 2px solid;
 }
@@ -46,7 +52,6 @@
 .base-edit > .content > .section > .content {
     width: 100%;
     margin: 0 auto;
-    padding: 0.25em;
     font-size: 125%;
     text-align: center;
 }

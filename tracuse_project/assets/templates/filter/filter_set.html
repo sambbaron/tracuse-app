@@ -4,9 +4,9 @@
         <p class="title">Filter Selections</p>
 
         <article class="content">
-            <fieldset id="FilterRuleType"></fieldset>
-            <fieldset id="FilterRuleAssociation"></fieldset>
-            <fieldset id="FilterRuleElement"></fieldset>
+            <fieldset class="input-group rule-group" id="FilterRuleType"></fieldset>
+            <fieldset class="input-group rule-group" id="FilterRuleAssociation"></fieldset>
+            <fieldset class="input-group rule-group" id="FilterRuleElement"></fieldset>
         </article>
 
     </section>
@@ -16,7 +16,7 @@
 
         <article class="content">
             {% for datum_group in datum_groups %}
-                <fieldset class="types-container">
+                <fieldset class="input-group types-container">
                     <button class="input-button" name="datum_group" value="{{ datum_group.datum_group_id }}"
                             title="{{ datum_group.long_definition }}">
                         {{ datum_group.readable_name }}

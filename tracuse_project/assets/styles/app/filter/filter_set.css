@@ -2,19 +2,33 @@
     display: none;
 }
 
+.filter-set .input-group {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.filter-set .input-wrap {
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 85%;
+}
+
 .filter-set .selections {
-    width: 12em;
+    max-width: 20em;
     text-align: left;
 }
 
 .filter-set .types {
-    max-width: 25em;
+    max-width: 26em;
+}
+
+.filter-set .associations .content,
+.filter-set .elements .content {
+    display: inline-block;
 }
 
 .filter-set .types-container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
     padding: 0.25em;
     border-top: 1px dashed;
     text-align: left;
@@ -37,16 +51,6 @@
     padding: 0.25em;
     border: 2px solid;
     font-size: 85%;
-}
-
-.filter-set .input-wrap {
-    display: inline-block;
-    margin-bottom: 0;
-    font-size: 85%;
-}
-
-.filter-set .input-label {
-    display: block;
 }
 
 .filter-set .associations .input-input[name='association_groups'] {
