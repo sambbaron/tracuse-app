@@ -1,5 +1,6 @@
 Tracuse.views.ElementBase = Tracuse.views.BaseView.extend({
 
+    tagName: "fieldset",
     className: "element input-wrap",
     templateName: "element/base.html",
     templateData: function () {
