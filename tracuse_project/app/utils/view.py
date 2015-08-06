@@ -90,12 +90,12 @@ class ViewAll(ViewBase):
 
     http_method_names = ["get", "post"]
 
-    def get(self, request, pk):
+    def get(self, request, *args, **kwargs):
         response_data = self.serialized_data(self.queryset, self.get_template)
         response = HttpResponse(response_data, status=200, content_type="application/json")
         return response
 
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         object = self.model()
         request_data = self.update_prep(request)
         save_result = self.update_model(object, request_data)
@@ -109,21 +109,21 @@ class ViewOne(ViewBase):
 
     http_method_names = ["get", "put", "delete"]
 
-    def get(self, request, pk):
-        object = self.get_object(pk)
+    def get(self, request, *args, **kwargs):
+        object = self.get_object(kwargs["pk"])
         response_data = self.serialized_data(object, self.get_template)
         response = HttpResponse(response_data, status=200, content_type="application/json")
         return response
 
-    def put(self, request, pk):
-        object = self.get_object(pk)
+    def put(self, request, *args, **kwargs):
+        object = self.get_object(kwargs["pk"])
         request_data = self.update_prep(request)
         save_result = self.update_model(object, request_data)
         response = self.update_response(save_result, 200, 400)
         return response
 
-    def delete(self, request, pk):
-        object = self.get_object(pk)
+    def delete(self, request, *args, **kwargs):
+        object = self.get_object(kwargs["pk"])
         object.delete()
         response = HttpResponse(status=204)
         return response
