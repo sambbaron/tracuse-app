@@ -19,7 +19,9 @@ Tracuse.views.BaseView = Backbone.View.extend({
     allCollection: function () {
         "use strict";
         if (this.model) {
-            return this.model.constructor.all;
+            if (this.model.constructor.all instanceof Backbone.Collection) {
+                return this.model.constructor.all;
+            }
         }
     },
 
