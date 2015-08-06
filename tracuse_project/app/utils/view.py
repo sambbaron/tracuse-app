@@ -90,7 +90,7 @@ class ViewAll(ViewBase):
 
     http_method_names = ["get", "post"]
 
-    def get(self, request):
+    def get(self, request, pk):
         response_data = self.serialized_data(self.queryset, self.get_template)
         response = HttpResponse(response_data, status=200, content_type="application/json")
         return response
