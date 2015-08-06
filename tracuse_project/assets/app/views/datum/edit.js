@@ -3,7 +3,13 @@ Tracuse.views.DatumEdit = Tracuse.views.BaseEdit.extend({
     objectTypeClass: "datum-edit position-popout",
     templateName: "datum/edit.html",
 
-    events: {},
+    events: {
+        "click .menu-button[name='close-apply-datum']": function applyCloseEdit(ev) {
+            //this.renderParent();
+            this.close();
+            ev.stopPropagation();
+        }
+    },
 
     render: function () {
         "use strict";
