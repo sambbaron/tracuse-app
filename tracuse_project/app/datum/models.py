@@ -9,9 +9,6 @@ from app.element_type.models import ElementType, ElementDatumObject
 from app.element_value.models import ElementValueMeta
 from app.association.models import AssociationAll, AssociationDirection
 
-from app.utils.serializer import Serializer
-from .datum_methods import DatumObjectMethodFactory
-
 
 class DatumGroup(EntityModel):
     """Collection of Datum Types
@@ -63,8 +60,8 @@ class DatumType(EntityModel):
                                     db_index=True
                                     )
     title_expression = models.CharField(max_length=255,
-                                     null=False, blank=False
-                                     )
+                                        null=False, blank=False
+                                        )
     element_types = models.ManyToManyField("element_type.ElementType",
                                            through="element_type.ElementDatumType",
                                            related_name="+"
@@ -137,14 +134,6 @@ class DatumObject(BaseModel):
                                )
 
     sort_base_length = 1
-
-    # def __init__(self, *args, **kwargs):
-    #     """Set method class for DatumType-specific methods"""
-    #     super().__init__(*args, **kwargs)
-    #     self.datum_methods = DatumObjectMethodFactory(
-    #         datum_object=self,
-    #         datum_type_name=self.datum_type.entity_name
-    #     )
 
     @property
     def sort_parts(self):
