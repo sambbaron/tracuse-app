@@ -31,7 +31,7 @@ class DatumObjectSerializer(Serializer):
             "datum_object_id",
             ("datum_group_id", self.obj.datum_group.datum_group_id),
             "datum_type_id",
-            "headline"
+            "title"
         ]
 
         return output

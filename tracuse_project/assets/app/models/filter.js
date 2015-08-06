@@ -81,7 +81,7 @@ Tracuse.models.FilterRuleAssociation = Backbone.RelationalModel.extend({
 
     title: function title() {
         "use strict";
-        return this.get("datum_object").get("headline");
+        return this.get("datum_object").get("title");
     },
 
     key: function key() {

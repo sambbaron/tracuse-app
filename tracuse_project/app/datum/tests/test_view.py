@@ -151,7 +151,7 @@ class TestDatumObjectOne(TestCase):
         except:
             raise Exception(response.content.decode())
 
-        response_actual = response_content["headline"]
+        response_actual = response_content["title"]
         expected_actual = "Test Object Name"
         self.assertEqual(response.status_code, 200)
         self.assertEqual(expected_actual, response_actual)

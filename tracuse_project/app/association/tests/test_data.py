@@ -11,11 +11,11 @@ class TestDataAssociation(object):
         # Datum Type
         self.datum_type1 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType1",
-                                      headline_expr="{{name}}"
+                                      title_expression="{{name}}"
                                       )
         self.datum_type2 = mommy.make("datum.DatumType",
                                       entity_name="TestDatumType2",
-                                      headline_expr="{{name}}"
+                                      title_expression="{{name}}"
                                       )
 
         # Datum Objects

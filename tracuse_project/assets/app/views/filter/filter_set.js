@@ -128,7 +128,7 @@ Tracuse.views.FilterSet = Tracuse.views.BaseEdit.extend({
         });
         _.each(datumObjects, function (datum) {
             optionEl = document.createElement("option");
-            optionEl.innerHTML = datum.get("headline");
+            optionEl.innerHTML = datum.get("title");
             optionEl.value = datum.id;
             optionFrag.appendChild(optionEl);
         });
@@ -148,7 +148,7 @@ Tracuse.views.FilterSet = Tracuse.views.BaseEdit.extend({
         });
         _.each(datumObjects, function (datum) {
             var optionEl = document.createElement("option");
-            optionEl.innerHTML = datum.get("headline");
+            optionEl.innerHTML = datum.get("title");
             optionEl.value = datum.id;
             optionFrag.appendChild(optionEl);
         });

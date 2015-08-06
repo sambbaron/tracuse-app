@@ -101,7 +101,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 10100,
       "short_definition": "Topics, Folders",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {
@@ -120,7 +120,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 10110,
       "short_definition": "Named Plan",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {
@@ -139,7 +139,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 10120,
       "short_definition": "Settings, Tools",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {
@@ -158,7 +158,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 10130,
       "short_definition": "An Individual",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {
@@ -177,7 +177,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 10140,
       "short_definition": "Organizational Group",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {
@@ -196,7 +196,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 10150,
       "short_definition": "A Place",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {
@@ -215,7 +215,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 10160,
       "short_definition": "Contact Info",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {
@@ -234,7 +234,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 20100,
       "short_definition": "Task",
-      "headline_expr": "{{description}}"
+      "title_expression": "{{description}}"
     }
   },
   {
@@ -253,7 +253,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 20110,
       "short_definition": "Purpose, Mantra",
-      "headline_expr": "{{description}}"
+      "title_expression": "{{description}}"
     }
   },
   {
@@ -272,7 +272,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 20120,
       "short_definition": "Diary, Log",
-      "headline_expr": "{{description}}"
+      "title_expression": "{{description}}"
     }
   },
   {
@@ -291,7 +291,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 30100,
       "short_definition": "Collection of Events",
-      "headline_expr": "{{description}}"
+      "title_expression": "{{description}}"
     }
   },
   {
@@ -310,7 +310,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 30110,
       "short_definition": "When Something Happens",
-      "headline_expr": "{{ending_event}}"
+      "title_expression": "{{ending_event}}"
     }
   },
   {
@@ -329,7 +329,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 30120,
       "short_definition": "Date/Time Alert",
-      "headline_expr": "{{alert}}"
+      "title_expression": "{{alert}}"
     }
   },
   {
@@ -348,7 +348,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 40100,
       "short_definition": "Reference",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {
@@ -367,7 +367,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 40110,
       "short_definition": "Document",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {
@@ -386,7 +386,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 40120,
       "short_definition": "Collection of Files",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {
@@ -405,7 +405,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 40130,
       "short_definition": "Single Web Address",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {
@@ -424,7 +424,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 40140,
       "short_definition": "Communication",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {
@@ -443,7 +443,7 @@
       "created": "2015-07-06T19:52:03.603",
       "sort": 40150,
       "short_definition": "Article",
-      "headline_expr": "{{name}}"
+      "title_expression": "{{name}}"
     }
   },
   {

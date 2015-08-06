@@ -41,7 +41,7 @@ class DatumType(EntityModel):
         See EntityModel (includes BaseModel)
             sort (integer): DatumGroup.sort + 3-digit number
         datum_group_id (integer, fk, required): DatumGroup
-        headline_expr (string): Expression in django template language
+        title_expression (string): Expression in django template language
             that renders to string representation
             --> {{name}} and {{description}}
         element_types (ElementType set):
@@ -62,7 +62,7 @@ class DatumType(EntityModel):
                                     null=False, blank=False,
                                     db_index=True
                                     )
-    headline_expr = models.CharField(max_length=255,
+    title_expression = models.CharField(max_length=255,
                                      null=False, blank=False
                                      )
     element_types = models.ManyToManyField("element_type.ElementType",
@@ -151,11 +151,11 @@ class DatumObject(BaseModel):
         return [self.datum_type.sort]
 
     @property
-    def headline(self):
-        """Use DatumType.headline_expr with django template expression"""
+    def title(self):
+        """Use DatumType.title_expression with django template expression"""
         from app.datum.serializers import DatumObjectSerializer
         output = ""
-        expression = self.datum_type.headline_expr
+        expression = self.datum_type.title_expression
 
         if expression:
             template = Template(expression)
@@ -170,7 +170,7 @@ class DatumObject(BaseModel):
         return output
 
     def __str__(self):
-        return self.headline
+        return self.title
 
     @property
     def datum_group(self):

@@ -64,7 +64,7 @@ class Migration(migrations.Migration):
                 ('long_definition', models.CharField(max_length=100, null=True, blank=True)),
                 ('example', models.CharField(max_length=100, null=True, blank=True)),
                 ('datum_type_id', models.AutoField(primary_key=True, serialize=False)),
-                ('headline_expr', models.CharField(max_length=255)),
+                ('title_expression', models.CharField(max_length=255)),
                 ('icon_class', models.CharField(max_length=25, null=True, blank=True)),
                 ('datum_group', models.ForeignKey(related_name='datum_types', db_column='datum_group_id', to='datum.DatumGroup')),
             ],

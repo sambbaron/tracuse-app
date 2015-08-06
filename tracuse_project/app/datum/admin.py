@@ -22,17 +22,17 @@ class DatumObjectAdmin(BaseModelAdmin):
 
 @admin.register(DatumType)
 class DatumTypeAdmin(EntityModelAdmin):
-    list_display = EntityModelAdmin.list_display + ("headline_expr", "icon_class",)
-    list_editable = EntityModelAdmin.list_editable + ("headline_expr", "icon_class",)
+    list_display = EntityModelAdmin.list_display + ("title_expression", "icon_class",)
+    list_editable = EntityModelAdmin.list_editable + ("title_expression", "icon_class",)
 
-    fields = EntityModelAdmin.fields + ("headline_expr", "icon_class",)
+    fields = EntityModelAdmin.fields + ("title_expression", "icon_class",)
 
     inlines = [ElementDatumTypeInline, ]
 
 
 class DatumTypeInline(EntityModelInline):
     model = DatumType
-    fields = EntityModelAdmin.fields + ("headline_expr", )
+    fields = EntityModelAdmin.fields + ("title_expression", )
 
 
 @admin.register(DatumGroup)
