@@ -235,9 +235,9 @@ class DatumObject(BaseModel):
 
         # Start with all associations
         if direction == AssociationDirection.parent():
-            associations = self.all_child_associations
-        else:
             associations = self.all_parent_associations
+        else:
+            associations = self.all_child_associations
 
         # Base query with distance limit and self exclusion
         query = associations.filter_distance(distance_limit).exclude_self(True)
