@@ -122,7 +122,7 @@ class Serializer(object):
             output = []
 
         # Serialize Django queryset object
-        if type(model_object) == QuerySet:
+        if hasattr(model_object, "query"):
 
             for object in model_object:
                 self.obj = object
