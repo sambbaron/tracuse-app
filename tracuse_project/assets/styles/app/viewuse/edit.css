@@ -7,11 +7,11 @@
     border-top: none;
 }
 
-.viewuse-edit .viewuse-filter > .filter-set > .main {
+.viewuse-edit .viewuse-filter > .filter-set > .content {
     font-size: 85%;
     margin: 0;
 }
 
-.viewuse-edit .viewuse-filter > .filter-set > .main > .section {
+.viewuse-edit .viewuse-filter > .filter-set > .content > .section {
     border-width: 1px;
 }

@@ -21,7 +21,7 @@
     font-size: 150%;
 }
 
-.base-edit > .main {
+.base-edit > .content {
     display: flex;
     flex-flow: row wrap;
     align-content: flex-start;
@@ -30,7 +30,7 @@
     padding: 0;
 }
 
-.base-edit > .main > .section {
+.base-edit > .content > .section {
     flex: 1 1 auto;
     position: relative;
     margin: 0;
@@ -39,12 +39,12 @@
     border-right: 2px solid;
 }
 
-.base-edit > .main > .section > .title {
+.base-edit > .content > .section > .title {
     font-size: 125%;
     text-shadow: 1px 1px 0 #e1e1e1;
 }
 
-.base-edit .content {
+.base-edit > .content > .section > .content {
     width: 100%;
     margin: 0 auto;
     padding: 0.25em;
