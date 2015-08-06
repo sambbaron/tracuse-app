@@ -24,24 +24,23 @@
         <p class="title">Options</p>
 
         <article class="content">
-            <form id="viewuse-form">
-                <label class="input-wrap">
-                    <span class="input-label">Title</span>
-                    <input class="input-input" name="title" data-type="text"
-                           value="{{ this_object.title|default('Empty View') }}">
-                </label>
-                <label class="input-wrap"><span class="input-label">Arrangement</span>
-                    <select class="input-input" name="viewuse_arrangement_id" data-type="integer">
-                        <option></option>
-                        {% for viewuse_arrangement in viewuse_arrangements %}
-                            <option value="{{ viewuse_arrangement.viewuse_arrangement_id }}"
-                                    {{ " selected" if this_object.viewuse_arrangement.viewuse_arrangement_id == viewuse_arrangement.viewuse_arrangement_id }}>
-                                {{ viewuse_arrangement.readable_name }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </label>
-            </form>
+            <form id="viewuse-form"></form>
+            <label class="input-wrap">
+                <span class="input-label">Title</span>
+                <input class="input-input" name="title" data-type="text" form="viewuse-form"
+                       value="{{ this_object.title|default('Empty View') }}">
+            </label>
+            <label class="input-wrap"><span class="input-label">Arrangement</span>
+                <select class="input-input" name="viewuse_arrangement_id" data-type="integer" form="viewuse-form">
+                    <option></option>
+                    {% for viewuse_arrangement in viewuse_arrangements %}
+                        <option value="{{ viewuse_arrangement.viewuse_arrangement_id }}"
+                                {{ " selected" if this_object.viewuse_arrangement.viewuse_arrangement_id == viewuse_arrangement.viewuse_arrangement_id }}>
+                            {{ viewuse_arrangement.readable_name }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </label>
         </article>
 
     </section>
