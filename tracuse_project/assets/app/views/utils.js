@@ -5,13 +5,15 @@ Tracuse.views.BaseView = Backbone.View.extend({
 
     idPrefix: function () {
         "use strict";
-        return this.model.modelName + "-";
+        if (this.model) {
+            return this.model.modelName;
+        }
     },
     id: function () {
         "use strict";
-        if (this.model) {
-            return this.idPrefix() + this.model.get(this.model.idAttribute);
-        }
+        var idNumber = this.model.id || this.cid;
+        var idPrefix = this.idPrefix() || "view";
+        return idPrefix + "-" + idNumber;
     },
 
     allCollection: function () {
@@ -23,6 +25,7 @@ Tracuse.views.BaseView = Backbone.View.extend({
 
     templateName: "",
     templateData: function () {
+        "use strict";
         var data = {};
         if (this.model) {
             data = {this_object: this.model.toTemplate()};
