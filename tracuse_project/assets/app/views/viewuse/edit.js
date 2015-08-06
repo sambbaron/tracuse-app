@@ -15,33 +15,33 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
     ruleEffectsClass: "hover-white-darkgreen",
 
     events: {
-        "click button[name='new-viewuse']": function newViewuse(ev) {
-            this.newViewuse();
+        "click button[name='new-viewuse']": function newObject(ev) {
+            this.newObject();
             ev.stopPropagation();
         },
-        "click button[name='copy-viewuse']": function copyViewuse(ev) {
-            this.copyViewuse();
+        "click button[name='copy-viewuse']": function cloneObject(ev) {
+            this.cloneObject();
             ev.stopPropagation();
         },
-        "click button[name='delete-viewuse']": function deleteViewuse(ev) {
-            this.deleteViewuse();
+        "click button[name='save-viewuse']": function saveObject(ev) {
+            this.saveObject();
             ev.stopPropagation();
         },
-        "click button[name='undo-changes']": function revertViewuse(ev) {
-            this.render();
+        "click button[name='delete-viewuse']": function deleteObject(ev) {
+            this.deleteObject();
             ev.stopPropagation();
         },
-        "click button[name='save-viewuse']": function saveViewuse(ev) {
-            this.saveViewuse();
+        "click button[name='undo-changes']": function revertObject(ev) {
+            this.revertObject();
             ev.stopPropagation();
         },
-        "click button[name='close-apply']": function closeEdit(ev) {
-            this.applyViewuse();
+        "click button[name='close-apply']": function applyCloseEdit(ev) {
+            this.renderParent();
             this.close();
             ev.stopPropagation();
         },
-        "change .selections .select-viewuse": function changeSelectViewuse(ev) {
-            this.selectViewuse(ev.target.value);
+        "change .selections .select-viewuse": function changeSelectObject(ev) {
+            this.selectObject(ev.target.value);
             ev.stopPropagation();
         }
     },
@@ -67,95 +67,50 @@ Tracuse.views.ViewuseEdit = Tracuse.views.BaseEdit.extend({
         return editView;
     },
 
-    newViewuse: function () {
+    cloneObject: function () {
         "use strict";
-        /* Create new viewuse model and attach to view */
-        var editView = this;
-
-        editView.model = new Tracuse.models.ViewuseObject();
-        editView.render();
-    },
-
-    copyViewuse: function () {
-        "use strict";
-        /* Copy Viewuse into new model and select */
-        var editView = this;
-        var viewuseTitle = editView.model.get("title") + " Copy";
-
-        var newViewuse = editView.model.clone();
-        Tracuse.models.ViewuseObject.all.add(newViewuse);
-        newViewuse.save({
-            title: viewuseTitle,
-            datum_filter: editView.model.get("datum_filter")
-        });
-
-        editView.model = newViewuse;
-        editView.render();
-
-        return newViewuse;
-    },
-
-    deleteViewuse: function () {
-        "use strict";
-        /* Delete Viewuse and submit DELETE call
+        /* Set cloned object title
          * */
         var editView = this;
+        var cloneAttr = {title: editView.model.get("title") + " Copy"};
 
-        editView.model.destroy();
+        var cloneArg = [cloneAttr];
+        editView = Tracuse.views.BaseEdit.prototype.cloneObject.apply(editView, cloneArg);
 
-        // Set view model to first Viewuse in select list
-        var selectEl = editView.el.querySelector(".select-viewuse");
-        var firstViewuse = Tracuse.models.ViewuseObject.all.get(selectEl[0].value);
-        editView.model = firstViewuse;
-
-        editView.render();
+        editView.renderPartial();
 
         return editView;
     },
 
-    saveViewuse: function () {
+    saveObject: function () {
         "use strict";
-        /* Save Viewuse and submit PUT call
+        /* Include filter from FilterSet model clone
          * */
         var editView = this;
+        var formId = "viewuse-form";
+        var saveAttr = {"datum_filter": editView.filterView.model.toJSON()};
+        var saveOptions;
 
-        var formEl = editView.el.querySelector("#viewuse-form");
-        var formData = Tracuse.utils.serializeForm(formEl);
+        var saveArg = [formId, saveAttr, saveOptions];
 
-        // Save filter from FilterSet model clone
-        editView.model.set({
-            "datum_filter": editView.filterView.model.toJSON()
-        });
+        return Tracuse.views.BaseEdit.prototype.saveObject.apply(editView, saveArg);
+    },
 
-        editView.model.save(formData, {
+    deleteObject: function () {
+        "use strict";
+        /* Set view model to first Viewuse in select list
+         * */
+        var editView = this;
+        var renderOption = false;
+        var deleteOptions = {
             success: function () {
-                // Render Viewuse title in 'title' element and select menu
-                var viewuseTitle = editView.model.get("title");
-                editView.$(" > .title").html("Edit '" + viewuseTitle + "'");
-                editView.$(".select-viewuse option:checked").html(viewuseTitle);
+                var selectEl = editView.el.querySelector(".select-viewuse");
+                editView.selectObject(selectEl[0].value);
             }
-        });
-    },
+        };
+        var deleteArg = [deleteOptions, renderOption];
 
-    applyViewuse: function () {
-        "use strict";
-        /* Re-render selected ViewuseObject into active Viewuse view
-         * */
-        var editView = this;
-        if (editView.parentView) {
-            editView.parentView.model = editView.model;
-            editView.parentView.render(function () {/*Do not use ViewuseBase.render callback*/
-            });
-        }
-        editView.parentView.applyActive();
-    },
-
-    selectViewuse: function (viewuseID) {
-        "use strict";
-        /* Change view model to selected Viewuse */
-        var editView = this;
-        editView.model = Tracuse.models.ViewuseObject.all.get(viewuseID);
-        editView.render();
+        return Tracuse.views.BaseEdit.prototype.deleteObject.apply(editView, deleteArg);
     }
 
 });
