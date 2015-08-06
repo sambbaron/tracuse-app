@@ -78,6 +78,12 @@
     width: 100%;
 }
 
+.datum-medium .element-select .element-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
 .datum-medium .element-datetime .element-input {
     width: 100%;
 }
