@@ -255,12 +255,16 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
     },
 
-    $parents: function () {
+    $parents: function (doNotIncludeThis) {
         "use strict";
         /* Set parent containers
-         * Inclusive of 'this'
+         * Default to Inclusive of 'this'
          * */
-        return this.$el.parents(".base-container").add(this.$el);
+        var $parents = this.$el.parents(".base-container");
+        if (!doNotIncludeThis && $parents.length) {
+            $parents = $parents.add(this.$el);
+        }
+        return $parents;
     },
 
     unsetActive: function ($container) {
@@ -277,6 +281,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         $el.find(" > .title").removeClass("active");
         $el.find(" > .controls").hide();
         Tracuse.views.BaseMenu.prototype.hide($el.find(" > .menu"));
+        Tracuse.views.BaseMenu.prototype.hide(containerView.$parents(true).find(" > .menu"));
     },
 
     setActive: function ($container) {
