@@ -18,6 +18,15 @@ Tracuse.views.App = Tracuse.views.BaseView.extend({
             $(ev.target).slideUp(200);
             ev.stopPropagation();
         }
+    },
+
+    render: function () {
+        "use strict";
+        /* Set special 'app' element
+         * */
+        var appView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
+        Tracuse.el.app = appView.el;
+        return appView;
     }
 
 });

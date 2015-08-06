@@ -1,17 +1,13 @@
-Tracuse.init.attachGlobalEvents = function attachGlobalEvents() {
+Tracuse.init.fetchData = function () {
     "use strict";
-    /* Attach all global event handlers*/
-
-    // Button for rendering test view
-    var renderButton = document.querySelector("#add-test-view");
-    renderButton.addEventListener("click", function (e) {
-        Tracuse.init.loadWindowuse();
-        e.stopPropagation();
-    });
-
+    /* Fetch initial models
+     * Models not included in server template bootstrap
+     * */
+    Tracuse.models.DatumObject.all.fetch({silent: true});
+    Tracuse.models.ElementDatumObject.all.fetch({silent: true});
 };
 
-Tracuse.init.loadTemplates = function loadTemplates() {
+Tracuse.init.loadTemplates = function () {
     "use strict";
     /* Load nunjucks template environment
      */
@@ -21,21 +17,35 @@ Tracuse.init.loadTemplates = function loadTemplates() {
     console.info("Load Nunjucks Template Environment: " + templateRoot);
 };
 
-Tracuse.init.renderApp = function renderApp() {
+Tracuse.init.renderApp = function () {
     "use strict";
-    /* Render App view and insert into server side template
-     * Set special element variables
+    /* Render App view
+     * Insert into server side template
      * */
     var mainEl = document.querySelector("main");
     Tracuse.views.app = new Tracuse.views.App();
     Tracuse.views.app.render();
     mainEl.appendChild(Tracuse.views.app.el);
-
-    Tracuse.el.app = document.querySelector("#app");
 };
 
-Tracuse.init.ajaxSetup = function ajaxSetup() {
+Tracuse.init.attachGlobalEvents = function () {
     "use strict";
+    /* Attach events at 'document' scope
+     * */
+
+    // Button for rendering test view
+    var renderButton = document.querySelector("#add-test-view");
+    renderButton.addEventListener("click", function (ev) {
+        Tracuse.init.loadWindowuse();
+        ev.stopPropagation();
+    });
+
+};
+
+Tracuse.init.ajaxSetup = function () {
+    "use strict";
+    /* Attach CSRF-token from cookie before send
+     * */
     var csrftoken = Tracuse.utils.getCookie("csrftoken");
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
@@ -46,7 +56,7 @@ Tracuse.init.ajaxSetup = function ajaxSetup() {
     });
 };
 
-Tracuse.init.loadWindowuse = function loadWindowuse() {
+Tracuse.init.loadWindowuse = function () {
     "use strict";
     /* Render initial Windowuse at startup
      ***Currently use first windowuse object
@@ -61,14 +71,7 @@ Tracuse.init.loadWindowuse = function loadWindowuse() {
     windowuseView.show();
 };
 
-Tracuse.init.fetchData = function fetchData() {
-    "use strict";
-    /* Fetch initial models */
-    Tracuse.models.DatumObject.all.fetch({silent: true});
-    Tracuse.models.ElementDatumObject.all.fetch({silent: true});
-};
-
-Tracuse.init.initApp = function initApp() {
+Tracuse.init.initApp = function () {
     "use strict";
     Tracuse.init.fetchData();
     Tracuse.init.loadTemplates();
