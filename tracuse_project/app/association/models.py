@@ -166,11 +166,6 @@ class AssociationAdjacent(AssociationModel):
 
         return set(association_list)
 
-    def set_associations(self):
-        """Delete existing and create full path object associations
-        for given adjacent association"""
-        self._create_associations()
-
     def save(self, *args, **kwargs):
         """Override save method
 

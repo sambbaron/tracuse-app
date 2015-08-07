@@ -159,7 +159,7 @@ class TestModelAssociationAdjacent(TestCase):
         expected_count = 5
         self.assertEqual(expected_count, len(actual))
 
-    def test_save_set_associations(self):
+    def test_save_create_associations(self):
         """Test AssociationAdjacent.save method
         to test creation of associations in AssociationAll
         """
