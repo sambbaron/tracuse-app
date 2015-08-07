@@ -132,34 +132,34 @@ class TestModelAssociationAdjacent(TestCase):
         expected_count = 0
         self.assertEqual(expected_count, len(actual))
 
-    def test_create_associations_1_adjacent(self):
-        """Test AssociationAdjacent._create_associations method
+    def test_set_associations_1_adjacent(self):
+        """Test AssociationAdjacent._set_associations method
         2 nodes, 1 Adjacent
         """
         test_object = self.test.adjacent_association4
-        actual = test_object._create_associations()
+        actual = test_object._set_associations()
         expected_count = 3
         self.assertEqual(expected_count, len(actual))
 
-    def test_create_associations_2_adjacent(self):
-        """Test AssociationAdjacent._create_associations method
+    def test_set_associations_2_adjacent(self):
+        """Test AssociationAdjacent._set_associations method
         3 nodes, 2 Adjacent
         """
         test_object = self.test.adjacent_association6
-        actual = test_object._create_associations()
+        actual = test_object._set_associations()
         expected_count = 4
         self.assertEqual(expected_count, len(actual))
 
-    def test_create_associations_3_adjacent(self):
-        """Test AssociationAdjacent._create_associations method
+    def test_set_associations_3_adjacent(self):
+        """Test AssociationAdjacent._set_associations method
         4 nodes, 3 Adjacent
         """
         test_object = self.test.adjacent_association1
-        actual = test_object._create_associations()
+        actual = test_object._set_associations()
         expected_count = 5
         self.assertEqual(expected_count, len(actual))
 
-    def test_save_create_associations(self):
+    def test_save_set_associations(self):
         """Test AssociationAdjacent.save method
         to test creation of associations in AssociationAll
         """
@@ -193,7 +193,7 @@ class TestModelAssociationAll(TestCase):
         expected = "Test Object1 -> Test Object2 = 3"
         self.assertEqual(expected, actual)
 
-    def test_get_create_associations(self):
+    def test_get_set_associations(self):
         """Test AssociationAll.get_create_association static method
         """
         from app.association.models import AssociationAll
