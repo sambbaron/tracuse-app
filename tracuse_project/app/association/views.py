@@ -17,7 +17,7 @@ class DatumAssociationParent(LoginRequiredMixin, ViewAll):
 
     @property
     def queryset(self):
-        return AssociationAll.objects.filter(child_datum_id=self.options["datum_pk"]).all()
+        return AssociationAll.objects.filter(child_datum_id=self.view_kwargs["datum_pk"]).all()
 
 
 class DatumAssociationChild(LoginRequiredMixin, ViewAll):
@@ -27,4 +27,4 @@ class DatumAssociationChild(LoginRequiredMixin, ViewAll):
 
     @property
     def queryset(self):
-        return AssociationAll.objects.filter(parent_datum_id=self.options["datum_pk"]).all()
+        return AssociationAll.objects.filter(parent_datum_id=self.view_kwargs["datum_pk"]).all()
