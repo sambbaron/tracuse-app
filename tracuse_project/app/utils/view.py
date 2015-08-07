@@ -43,6 +43,13 @@ class ViewBase(View):
 
         super().__init__(**kwargs)
 
+    def set_view_kwargs(self, **kwargs):
+        """ Set View keyword arguments as View properties
+        Django View.as_view.view method only sets the class, not the instance
+        Apply to all http methods, which receive kwargs from dispatch method
+        """
+        self.view_kwargs = kwargs
+
     def serialized_data(self, data, template=None):
         if template is None:
             template = self.get_template
@@ -91,11 +98,13 @@ class ViewAll(ViewBase):
     http_method_names = ["get", "post"]
 
     def get(self, request, *args, **kwargs):
+        self.set_view_kwargs(**kwargs)
         response_data = self.serialized_data(self.queryset, self.get_template)
         response = HttpResponse(response_data, status=200, content_type="application/json")
         return response
 
     def post(self, request, *args, **kwargs):
+        self.set_view_kwargs(**kwargs)
         object = self.model()
         request_data = self.update_prep(request)
         save_result = self.update_model(object, request_data)
@@ -110,12 +119,14 @@ class ViewOne(ViewBase):
     http_method_names = ["get", "put", "delete"]
 
     def get(self, request, *args, **kwargs):
+        self.set_view_kwargs(**kwargs)
         object = self.get_object(kwargs["pk"])
         response_data = self.serialized_data(object, self.get_template)
         response = HttpResponse(response_data, status=200, content_type="application/json")
         return response
 
     def put(self, request, *args, **kwargs):
+        self.set_view_kwargs(**kwargs)
         object = self.get_object(kwargs["pk"])
         request_data = self.update_prep(request)
         save_result = self.update_model(object, request_data)
@@ -123,6 +134,7 @@ class ViewOne(ViewBase):
         return response
 
     def delete(self, request, *args, **kwargs):
+        self.set_view_kwargs(**kwargs)
         object = self.get_object(kwargs["pk"])
         object.delete()
         response = HttpResponse(status=204)
