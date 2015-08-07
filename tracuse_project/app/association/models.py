@@ -122,6 +122,7 @@ class AssociationAdjacent(AssociationModel):
 
     def _delete_associations(self):
         """Delete full path object associations from adjacent association"""
+        self.get_all_associations().delete()
 
     def _create_associations(self):
         """Create full path object associations from adjacent association
@@ -173,13 +174,19 @@ class AssociationAdjacent(AssociationModel):
     def save(self, *args, **kwargs):
         """Override save method
 
-        For all records:
-            Set association in AssociationAll
+        Create associations in AssociationAll
         """
         super().save(*args, **kwargs)
+        self._create_associations()
 
-        # Set association
-        self.set_associations()
+
+    def delete(self, using=None):
+        """Override delete method
+
+        Delete associations in AssociationAll
+        """
+        self._delete_associations()
+        super().delete(using)
 
 
 class AssociationAll(AssociationModel):
