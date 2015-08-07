@@ -126,7 +126,7 @@ class TestModelAssociationAdjacent(TestCase):
     def test_delete_associations(self):
         """Test AssociationAdjacent.delete_associations method
         """
-        test_object = self.test.adjacent_association6
+        test_object = self.test.adjacent_association4
         test_object._delete_associations()
         actual = test_object.all_associations
         expected_count = 0

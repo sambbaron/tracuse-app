@@ -123,8 +123,11 @@ class AssociationAdjacent(AssociationModel):
         return associations
 
     def _delete_associations(self):
-        """Delete full path object associations from adjacent association"""
-        self.all_associations.delete()
+        """Delete full path object associations from adjacent association
+        Do not delete self associations
+        """
+        delete_associations = self.all_associations.exclude(distance=0)
+        delete_associations.delete()
 
     def _create_associations(self):
         """Create full path object associations from adjacent association
