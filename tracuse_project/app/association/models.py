@@ -115,11 +115,13 @@ class AssociationAdjacent(AssociationModel):
 
     @property
     def all_associations(self):
-        """Get all associations in AssociationAll"""
-        parent_expr = models.Q(parent_datum=self.parent_datum) | models.Q(parent_datum=self.child_datum)
-        child_expr = models.Q(child_datum=self.child_datum) | models.Q(child_datum=self.parent_datum)
-        filter_expr = parent_expr | child_expr
-        associations = AssociationAll.objects.filter(filter_expr).all()
+        """Get all associations related to adjacent association
+        in AssociationAll
+        """
+        parent_datums_ids = AssociationAll.objects.filter(child_datum=self.child_datum).values_list("parent_datum_id", flat=True)
+        child_datums_ids = AssociationAll.objects.filter(parent_datum=self.parent_datum).values_list("child_datum_id", flat=True)
+        all_datum_ids = set(parent_datums_ids) & set(child_datums_ids)
+        associations = AssociationAll.objects.filter(parent_datum_id__in=all_datum_ids, child_datum_id__in=all_datum_ids)
         return associations
 
     def _delete_associations(self):

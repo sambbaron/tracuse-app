@@ -120,7 +120,7 @@ class TestModelAssociationAdjacent(TestCase):
         """
         test_object = self.test.adjacent_association6
         actual = test_object.all_associations
-        expected_count = 5
+        expected_count = 3
         self.assertEqual(expected_count, len(actual))
 
     def test_delete_associations(self):
