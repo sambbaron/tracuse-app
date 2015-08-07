@@ -47,8 +47,8 @@ class DatumObjectSerializer(Serializer):
 
         return output
 
-    def serial_elements_object(self):
-        """Replace element ids with objects
+    def serial_related_object(self):
+        """Replace related ids with model objects
         """
         output = self.serial_related()
 

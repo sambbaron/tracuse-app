@@ -89,12 +89,12 @@ class TestDatumObjectSerializer(TestCase):
         actual_elements = test_serialized["elements"]
         self.assertIn(expected_element, actual_elements)
 
-    def test_serial_elements_object(self):
-        """Test DatumObjectSerializer.serial_elements_object
+    def test_serial_related_object(self):
+        """Test DatumObjectSerializer.serial_related_object
         """
         test_object = self.test.datum_object1
         test_serialized = DatumObjectSerializer \
-            ("serial_elements_object").serialize(test_object)
+            ("serial_related_object").serialize(test_object)
 
         actual_type = test_serialized["datum_type_id"]
         expected_type = self.test.datum_type1.datum_type_id
