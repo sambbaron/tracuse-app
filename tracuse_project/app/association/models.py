@@ -171,7 +171,15 @@ class AssociationAdjacent(AssociationModel):
             )
             association_list.append(new_assoc[0])
 
-        return set(association_list)
+        association_set = set(association_list)
+
+        # Delete orphan associations not in list
+        current_associations = set(self.all_associations)
+        invalid_associations = current_associations - association_set
+        for association in invalid_associations:
+            association.delete()
+
+        return association_set
 
     def save(self, *args, **kwargs):
         """Override save method
