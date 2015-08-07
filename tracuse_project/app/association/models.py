@@ -80,6 +80,8 @@ class AssociationAdjacent(AssociationModel):
     Attributes:
         See AssociationModel (includes BaseModel)
         association_type_id (integer, fk, required): AssociationType
+        all_associations (AssociationAll):
+          All parent and child associations related to adjacent association
     """
 
     class Meta(AssociationModel.Meta):
@@ -104,7 +106,6 @@ class AssociationAdjacent(AssociationModel):
                                          null=False, blank=False
                                          )
 
-
     def __str__(self):
         return "{} -> {} = {}".format(
             self.parent_datum.__str__(),
@@ -112,7 +113,8 @@ class AssociationAdjacent(AssociationModel):
             self.association_type.readable_name
         )
 
-    def get_all_associations(self):
+    @property
+    def all_associations(self):
         """Get all associations in AssociationAll"""
         parent_expr = models.Q(parent_datum=self.parent_datum) | models.Q(parent_datum=self.child_datum)
         child_expr = models.Q(child_datum=self.child_datum) | models.Q(child_datum=self.parent_datum)
@@ -122,7 +124,7 @@ class AssociationAdjacent(AssociationModel):
 
     def _delete_associations(self):
         """Delete full path object associations from adjacent association"""
-        self.get_all_associations().delete()
+        self.all_associations.delete()
 
     def _create_associations(self):
         """Create full path object associations from adjacent association
@@ -174,7 +176,6 @@ class AssociationAdjacent(AssociationModel):
         super().save(*args, **kwargs)
         self._create_associations()
 
-
     def delete(self, using=None):
         """Override delete method
 
@@ -213,7 +214,6 @@ class AssociationAll(AssociationModel):
                                     null=False, blank=False
                                     )
     distance = models.IntegerField(default=0)
-
 
     def __str__(self):
         return "{} -> {} = {}".format(

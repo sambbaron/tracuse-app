@@ -115,11 +115,11 @@ class TestModelAssociationAdjacent(TestCase):
         expected = "Test Object1 -> Test Object2 = Default Association Type"
         self.assertEqual(expected, actual)
 
-    def test_get_all_associations(self):
-        """Test AssociationAdjacent.get_all_associations method
+    def test_all_associations(self):
+        """Test AssociationAdjacent.all_associations property
         """
         test_object = self.test.adjacent_association6
-        actual = test_object.get_all_associations()
+        actual = test_object.all_associations
         expected_count = 5
         self.assertEqual(expected_count, len(actual))
 
@@ -128,7 +128,7 @@ class TestModelAssociationAdjacent(TestCase):
         """
         test_object = self.test.adjacent_association6
         test_object._delete_associations()
-        actual = test_object.get_all_associations()
+        actual = test_object.all_associations
         expected_count = 0
         self.assertEqual(expected_count, len(actual))
 
@@ -170,7 +170,7 @@ class TestModelAssociationAdjacent(TestCase):
                                  child_datum=new_datum2
                                  )
         test_object.save()
-        actual = test_object.get_all_associations()
+        actual = test_object.all_associations
         expected_count = 3
         self.assertEqual(expected_count, len(actual))
 
