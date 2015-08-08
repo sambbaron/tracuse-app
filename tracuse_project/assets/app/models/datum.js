@@ -52,18 +52,13 @@ Tracuse.models.DatumObject =
                 collectionType: "Tracuse.models.ElementDatumObject.BaseCollection",
                 includeInJSON: false,
                 includeInTemplate: true
+            },
+            {
+                type: Backbone.HasMany,
+                key: "associations",
+                relatedModel: "Tracuse.models.AssociationAll",
+                collectionType: "Tracuse.models.AssociationAll.BaseCollection"
             }
-            //{
-            //    type: Backbone.HasMany,
-            //    key: "parent_datums",
-            //    relatedModel: "Tracuse.models.DatumObject",
-            //    collectionType: "Tracuse.models.DatumObject.BaseCollection"
-            //},
-            //{
-            //    type: Backbone.HasMany,
-            //    key: "child_datums",
-            //    relatedModel: "Tracuse.models.DatumObject",
-            //    collectionType: "Tracuse.models.DatumObject.BaseCollection"
-            //}
         ]
+
     });
