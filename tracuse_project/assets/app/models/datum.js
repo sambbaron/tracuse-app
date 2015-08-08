@@ -55,7 +55,13 @@ Tracuse.models.DatumObject =
             },
             {
                 type: Backbone.HasMany,
-                key: "associations",
+                key: "adjacent_associations",
+                relatedModel: "Tracuse.models.AssociationAdjacent",
+                collectionType: "Tracuse.models.AssociationAdjacent.BaseCollection"
+            },
+            {
+                type: Backbone.HasMany,
+                key: "all_associations",
                 relatedModel: "Tracuse.models.AssociationAll",
                 collectionType: "Tracuse.models.AssociationAll.BaseCollection"
             }
