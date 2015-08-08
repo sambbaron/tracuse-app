@@ -27,6 +27,16 @@ class TestAssociationAllSerializer(TestCase):
     def setUpTestData(cls):
         cls.test = TestDataAssociation()
 
+    def test_serial_related(self):
+        """Test AssociationAllSerializer.serial_related
+        """
+        test_object = AssociationAll.objects.first()
+        test_serialized = AssociationAllSerializer \
+            ("serial_related").serialize(test_object)
+        actual = test_serialized["parent_datum"]
+        expected = test_object.parent_datum_id
+        self.assertEqual(expected, actual)
+
     def test_serial_parent(self):
         """Test AssociationAllSerializer.serial_parent
         """
