@@ -49,7 +49,10 @@ class DatumObjectSerializer(Serializer):
     def serial_related_object(self):
         """Replace related ids with model objects
         """
-        output = self.serial_related()
+        output = self.serial_default()
+
+        output.append(("datum_group", self.obj.datum_group.datum_group_id))
+        output.append(("datum_type", self.obj.datum_type_id))
 
         elements = []
         for element in self.obj.element_datum_objects.all():
