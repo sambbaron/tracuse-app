@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from app.common.models import EntityModel, BaseModel
 from app.element_type.models import ElementType, ElementDatumObject
 from app.element_value.models import ElementValueMeta
-from app.association.models import AssociationAll, AssociationDirection
+from app.association.models import AssociationAdjacent, AssociationAll, AssociationDirection
 
 
 class DatumGroup(EntityModel):
@@ -96,8 +96,9 @@ class DatumObject(BaseModel):
         default_element_types (list):
             ElementTypes from ElementDatumType
             Return element values for multiple element types
-        elements (queryset):
-            ElementDatumObject objects
+        elements (queryset): ElementDatumObject objects
+        adjacent_associations (queryset): AssociationAdjacent objects
+        all_associations (queryset): AssociationAll objects
     """
 
     class Meta(BaseModel.Meta):
@@ -216,8 +217,18 @@ class DatumObject(BaseModel):
         return self_association
 
     @property
+    def adjacent_associations(self):
+        """ Return queryset for adjacent associations in both directions
+
+        Return:
+            AssociationAdjacent queryset
+        """
+        filter_expr = models.Q(parent_datum=self) | models.Q(child_datum=self)
+        return AssociationAdjacent.objects.filter(filter_expr)
+
+    @property
     def all_associations(self):
-        """ Return queryset for associations in both directions
+        """ Return queryset for all associations in both directions
 
         Return:
             AssociationAll queryset
