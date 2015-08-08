@@ -223,7 +223,7 @@ class DatumObject(BaseModel):
             AssociationAll queryset
         """
         filter_expr = models.Q(parent_datum=self) | models.Q(child_datum=self)
-        return AssociationAll.objects.filter(filter_expr)
+        return AssociationAll.objects.filter(filter_expr).exclude_self(True)
 
     def association_queryset(self, direction=None, distance_limit=1,
                              additional_filter=None, return_method=None, return_args=None, return_kwargs=None):
