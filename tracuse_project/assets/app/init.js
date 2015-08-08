@@ -4,7 +4,6 @@ Tracuse.init.fetchData = function () {
      * Models not included in server template bootstrap
      * */
     Tracuse.models.DatumObject.all.fetch({silent: true});
-    Tracuse.models.ElementDatumObject.all.fetch({silent: true});
 };
 
 Tracuse.init.loadTemplates = function () {
