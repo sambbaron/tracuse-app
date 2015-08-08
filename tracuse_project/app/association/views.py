@@ -1,7 +1,7 @@
 from app.utils.view import ViewAll, ViewOne, LoginRequiredMixin
 
-from .models import AssociationDirection, AssociationAll
-from .serializers import AssociationDirectionSerializer, AssociationAllSerializer
+from .models import AssociationDirection
+from .serializers import AssociationDirectionSerializer
 
 
 class AssociationDirectionAll(LoginRequiredMixin, ViewAll):
