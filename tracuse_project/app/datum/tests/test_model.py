@@ -231,6 +231,28 @@ class TestModelDatumObjectAssociationProperties(TestCase):
         expected_datum = self.test.datum_object4
         self.assertEqual(expected_datum, actual_datum)
 
+    def test_association_queryset_both(self):
+        """Test DatumObject.association_queryset
+        with both directions and no other args
+        """
+        from app.association.managers import AssociationQuerySet
+
+        test_object = self.test.datum_object3
+        both_direction = self.test.association_direction2
+        test_queryset = test_object.association_queryset(
+            direction=both_direction,
+        )
+
+        self.assertEqual(2, len(test_queryset))
+
+        actual_type = type(test_queryset)
+        expected_type = AssociationQuerySet
+        self.assertEqual(expected_type, actual_type)
+
+        actual_datum = test_queryset[0].parent_datum
+        expected_datum = self.test.datum_object2
+        self.assertEqual(expected_datum, actual_datum)
+
     def test_association_queryset_distance_value(self):
         """Test DatumObject.association_queryset
         using parent direction

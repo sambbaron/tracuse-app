@@ -1,3 +1,5 @@
+import itertools
+
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 from django.template import Context, Template
@@ -213,7 +215,17 @@ class DatumObject(BaseModel):
         )
         return self_association
 
-    def association_queryset(self, direction, distance_limit=1,
+    @property
+    def all_associations(self):
+        """ Return queryset for associations in both directions
+
+        Return:
+            AssociationAll queryset
+        """
+        filter_expr = models.Q(parent_datum=self) | models.Q(child_datum=self)
+        return AssociationAll.objects.filter(filter_expr)
+
+    def association_queryset(self, direction=None, distance_limit=1,
                              additional_filter=None, return_method=None, return_args=None, return_kwargs=None):
         """Return base association queryset
 
@@ -222,7 +234,9 @@ class DatumObject(BaseModel):
 
         Arguments:
             direction (AssociationDirection):
+                default is 'None' - returns both directions
             distance_limit (integer):
+                default is 1, 'None' returns all associations
             additional_filter (Q object):
             return_method (string):
                 QuerySet method that executes query
@@ -231,13 +245,18 @@ class DatumObject(BaseModel):
                 for return method, typically fields as strings
             return_kwargs (keyword arguments):
                 for return method, typically 'flat=true' for values_list
+
+        Return:
+            AssociationAll queryset
         """
 
         # Start with all associations
         if direction == AssociationDirection.parent():
             associations = self.all_parent_associations
-        else:
+        elif direction == AssociationDirection.child():
             associations = self.all_child_associations
+        else:
+            associations = self.all_associations
 
         # Base query with distance limit and self exclusion
         query = associations.filter_distance(distance_limit).exclude_self(True)
