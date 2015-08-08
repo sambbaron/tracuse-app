@@ -2,7 +2,7 @@ from .models import DatumGroup, DatumType, DatumObject
 
 from app.utils.serializer import Serializer
 from app.element_type.serializers import ElementDatumObjectSerializer
-from app.association.serializers import AssociationAllSerializer
+from app.association.serializers import AssociationAdjacentSerializer, AssociationAllSerializer
 
 
 class DatumGroupSerializer(Serializer):
@@ -42,7 +42,8 @@ class DatumObjectSerializer(Serializer):
         output.append(("datum_group", self.obj.datum_group.datum_group_id))
         output.append(("datum_type", self.obj.datum_type_id))
         output.append(("elements", [element.element_datum_object_id for element in self.obj.element_datum_objects.all()]))
-        output.append(("associations", [association.association_all_id for association in self.obj.all_associations.all()]))
+        output.append(("adjacent_associations", [association.association_adjacent_id for association in self.obj.adjacent_associations.all()]))
+        output.append(("all_associations", [association.association_all_id for association in self.obj.all_associations.all()]))
 
         return output
 
@@ -60,11 +61,17 @@ class DatumObjectSerializer(Serializer):
             elements.append(element_object)
         output.append(("elements", elements))
 
-        associations = []
+        adjacent_associations = []
+        for association in self.obj.adjacent_associations.all():
+            association_object = AssociationAdjacentSerializer("serial_related").serialize(association)
+            adjacent_associations.append(association_object)
+        output.append(("adjacent_associations", adjacent_associations))
+
+        all_associations = []
         for association in self.obj.all_associations.all():
             association_object = AssociationAllSerializer("serial_related").serialize(association)
-            associations.append(association_object)
-        output.append(("associations", associations))
+            all_associations.append(association_object)
+        output.append(("all_associations", all_associations))
 
         return output
 
