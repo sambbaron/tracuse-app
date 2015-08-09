@@ -124,6 +124,7 @@ Tracuse.views.BaseChildren = Tracuse.views.BaseView.extend({
     },
 
     childModelName: "",
+    childrenElementClass: "content",
 
     initialize: function (options) {
         "use strict";
@@ -137,22 +138,6 @@ Tracuse.views.BaseChildren = Tracuse.views.BaseView.extend({
         baseView.firstRender = true;
 
         return baseView;
-    },
-
-    $children: function () {
-        "use strict";
-        /* Set element to render children in
-         * Either 'content' class or view element
-         * */
-        var baseView = this;
-        var $children;
-        var $content = baseView.$(" > .content");
-        if ($content.length) {
-            $children = $content;
-        } else {
-            $children = baseView.$el;
-        }
-        return $children;
     },
 
     getChildModels: function (callback) {
@@ -255,30 +240,34 @@ Tracuse.views.BaseChildren = Tracuse.views.BaseView.extend({
 
     renderChildren: function (callback) {
         "use strict";
-        /* Render all child objects into 'content' element
+        /* Render all child objects into 'children' element
          * */
         var baseView = this;
         baseView.childCollection = [];
         baseView.childViews = [];
 
+        baseView.$children = baseView.$("> ." + baseView.childrenElementClass);
+
+
         baseView.getChildModels(function (childModels) {
 
             if (childModels) {
                 baseView.childCollection = childModels;
-                var contentFrag = document.createDocumentFragment();
+                var childrenFrag = document.createDocumentFragment();
 
                 _.each(baseView.childCollection.models, function (childModel) {
 
                     var childView = baseView.newChildView(childModel);
                     var childEl = childView.render().el;
-                    contentFrag.appendChild(childEl);
+                    childrenFrag.appendChild(childEl);
                     baseView.childViews.push(childView);
 
                 });
 
-                baseView.$children.html("");
-                baseView.$children.append(contentFrag);
-
+                if (baseView.$children.length) {
+                    baseView.$children.html("");
+                    baseView.$children.append(childrenFrag);
+                }
             }
 
             if (callback) {
@@ -288,6 +277,7 @@ Tracuse.views.BaseChildren = Tracuse.views.BaseView.extend({
             }
 
         });
+
     },
 
     render: function () {
@@ -299,7 +289,6 @@ Tracuse.views.BaseChildren = Tracuse.views.BaseView.extend({
         baseView.$el.addClass(baseView.className());
 
         // Render child objects and attach events
-        baseView.$children = baseView.$children();
         baseView.renderChildren(function () {
             if (baseView.firstRender) {
                 baseView.attachChildEvents();
