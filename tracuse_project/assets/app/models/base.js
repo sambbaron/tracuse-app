@@ -164,7 +164,6 @@ Tracuse.models.BaseCollection = Backbone.Collection.extend({
     }
 });
 
-
 Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, modelOptions) {
     "use strict";
     /* Create base Backbone Relational api-driven model

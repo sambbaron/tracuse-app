@@ -7,8 +7,8 @@ module.exports = function (grunt) {
                 src: [
                     "<%= pkg.dir.app %>main.js",
                     "<%= pkg.dir.app %>controller/utils.js", "<%= pkg.dir.app %>controller/*",
-                    "<%= pkg.dir.app %>models/utils.js", "<%= pkg.dir.app %>models/*",
-                    "<%= pkg.dir.app %>views/utils.js", "<%= pkg.dir.app %>views/**/*",
+                    "<%= pkg.dir.app %>models/base.js", "<%= pkg.dir.app %>models/*",
+                    "<%= pkg.dir.app %>views/base.js", "<%= pkg.dir.app %>views/**/*",
                     "<%= pkg.dir.app %>init.js"
                 ],
                 dest: "<%= pkg.dir.dist %>app.js"
