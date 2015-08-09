@@ -42,13 +42,6 @@ Tracuse.views.BaseMenu = Tracuse.views.BaseView.extend({
         _.extend(menuView.events, Tracuse.views.BaseMenu.prototype.events);
         menuView.delegateEvents();
 
-        if (options.el) {
-            menuView.setElement(options.el);
-            menuView.$el.addClass(menuView.className);
-        } else {
-            menuView.setElement(menuView.render().el);
-        }
-
         // Set menu/button styling using classes
         menuView.$el.addClass(menuView.menuColorClass);
         menuView.$(".menu-button").each(function () {

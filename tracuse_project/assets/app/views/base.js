@@ -70,10 +70,16 @@ Tracuse.views.BaseView = Backbone.View.extend({
 
     setOptionProperties: function (options) {
         "use strict";
+        /* Set objects in 'options' argument
+         *   as view properties
+         * */
         var baseView = this;
         _.each(options, function (value, name) {
             baseView[name] = value || null;
         });
+        if (options.el) {
+            baseView.$el.addClass(baseView.className);
+        }
     },
 
     show: function () {
