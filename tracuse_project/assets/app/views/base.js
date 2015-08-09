@@ -211,7 +211,7 @@ Tracuse.views.BaseChildren = Tracuse.views.BaseView.extend({
             if (childInCollection && !childInView) {
                 var newView = baseView.newChildView(childModel);
                 baseView.childViews.push(newView);
-                baseView.$content.append(newView.render().$el);
+                baseView.$children.append(newView.render().$el);
             } else if (!childInCollection && childInView) {
                 baseView.childViews.pop(childInView);
                 childInView.$el.remove();
