@@ -5,6 +5,7 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
 
     editViewName: "ViewuseEdit",
     childModelName: "DatumObject",
+    childViewName: "DatumMedium",
 
     events: {
         "dblclick > .content": function createDatum(ev) {
@@ -26,11 +27,6 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
         filter.fetchFilteredDatums(function (datumObjects) {
             callback(datumObjects);
         });
-    },
-
-    childViewClass: function () {
-        "use strict";
-        return Tracuse.views.DatumMedium;
     }
 
 });

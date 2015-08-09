@@ -19,16 +19,14 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
         }
     },
 
-
     getChildModels: function (callback) {
         "use strict";
         callback(this.model.get("elements"));
     },
 
-    childViewClass: function (childModel) {
+    childViewName: function (childModel) {
         "use strict";
-        var elementViewName = childModel.get("element_type").get("element_view");
-        return Tracuse.views[elementViewName];
+        return childModel.get("element_type").get("element_view");
     },
 
     newChildOptions: function (childModel) {

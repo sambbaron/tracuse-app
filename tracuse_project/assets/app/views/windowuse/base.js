@@ -17,10 +17,9 @@ Tracuse.views.WindowuseBase = Tracuse.views.BaseContainer.extend({
         callback(this.model.get("viewuse_objects"));
     },
 
-    childViewClass: function (childModel) {
+    childViewName: function (childModel) {
         "use strict";
-        var viewuseViewName = childModel.get("viewuse_arrangement").get("entity_name");
-        return Tracuse.views[viewuseViewName];
+        return childModel.get("viewuse_arrangement").get("entity_name");
     },
 
     render: function () {

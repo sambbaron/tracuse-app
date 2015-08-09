@@ -124,6 +124,7 @@ Tracuse.views.BaseChildren = Tracuse.views.BaseView.extend({
     },
 
     childModelName: "",
+    childViewName: "",
     childrenElementClass: "content",
 
     initialize: function (options) {
@@ -149,9 +150,17 @@ Tracuse.views.BaseChildren = Tracuse.views.BaseView.extend({
 
     childViewClass: function (childModel) {
         "use strict";
-        /* View associated with child model
+        /* Return view class from view name
          * */
-        return null;
+        var baseView = this;
+        var viewName = "";
+
+        if (_.isFunction(baseView.childViewName)) {
+            viewName = baseView.childViewName(childModel);
+        } else {
+            viewName = baseView.childViewName;
+        }
+        return Tracuse.views[viewName];
     },
 
     newChildOptions: function (childModel) {
