@@ -130,9 +130,6 @@ Tracuse.views.BaseChildren = Tracuse.views.BaseView.extend({
 
         baseView.firstRender = true;
 
-        baseView.childCollection = [];
-        baseView.childViews = [];
-
         return baseView;
     },
 
