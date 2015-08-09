@@ -197,19 +197,3 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
 
     return model;
 };
-
-Tracuse.models.bootstrapData = function bootstrapData(data) {
-    "use strict";
-    /* Load bootstrap data from server template into Backbone 'all' collections
-     * Object keys must match model names
-     */
-
-    for (var modelName in data) {
-        var model = Tracuse.models[modelName];
-        if (model) {
-            var modelData = JSON.parse(data[modelName]);
-            model.all.reset(modelData, {silent: true});
-            console.info("Load Bootstrap Model Data: " + modelName);
-        }
-    }
-};

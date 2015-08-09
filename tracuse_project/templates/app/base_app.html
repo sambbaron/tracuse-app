@@ -36,6 +36,6 @@
 
     <script src="{% static 'dist/templates.js' %}"></script>
     <script src="{% static 'dist/app.js' %}"></script>
-    <script>Tracuse.models.bootstrapData({{ bootstrap_data|safe }})</script>
+    <script>Tracuse.init.bootstrapData({{ bootstrap_data|safe }})</script>
 
 {% endblock %}
