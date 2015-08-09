@@ -47,17 +47,17 @@ Tracuse.views.BaseView = Backbone.View.extend({
 
     initialize: function (options) {
         "use strict";
-        var view = this;
+        var baseView = this;
         if (options) {
-            view.setOptionProperties(options);
+            baseView.setOptionProperties(options);
         }
-        _.extend(view.events, Tracuse.views.BaseView.prototype.events);
-        view.delegateEvents();
+        _.extend(baseView.events, Tracuse.views.BaseView.prototype.events);
+        baseView.delegateEvents();
 
         // Custom property methods
-        view.allCollection = view.allCollection();
+        baseView.allCollection = baseView.allCollection();
 
-        return view;
+        return baseView;
     },
 
     render: function () {
@@ -70,9 +70,9 @@ Tracuse.views.BaseView = Backbone.View.extend({
 
     setOptionProperties: function (options) {
         "use strict";
-        var view = this;
+        var baseView = this;
         _.each(options, function (value, name) {
-            view[name] = value || null;
+            baseView[name] = value || null;
         });
     },
 
@@ -83,9 +83,9 @@ Tracuse.views.BaseView = Backbone.View.extend({
 
     close: function () {
         "use strict";
-        var view = this;
-        view.$el.fadeOut(200, function () {
-            view.remove();
+        var baseView = this;
+        baseView.$el.fadeOut(200, function () {
+            baseView.remove();
         });
     },
 
@@ -95,17 +95,17 @@ Tracuse.views.BaseView = Backbone.View.extend({
          * If none provided or if true, then call 'render'
          * If false, do nothing
          * */
-        var view = this;
+        var baseView = this;
         var renderFunction;
 
         if (renderOption === undefined || renderOption === true) {
-            renderFunction = view.render;
+            renderFunction = baseView.render;
         } else if (renderOption !== false) {
             renderFunction = renderOption;
         }
-        if (renderFunction) {renderFunction.call(view); }
+        if (renderFunction) {renderFunction.call(baseView); }
 
-        return view;
+        return baseView;
     }
 
 });
