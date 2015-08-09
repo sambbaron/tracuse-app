@@ -109,3 +109,203 @@ Tracuse.views.BaseView = Backbone.View.extend({
     }
 
 });
+
+Tracuse.views.BaseChildren = Tracuse.views.BaseView.extend({
+
+    tagName: "section",
+    className: function () {
+        return "base-children";
+    },
+
+    childModelName: "",
+
+    initialize: function (options) {
+        "use strict";
+        /* Inherit events for all sub-classes
+         * */
+        var baseView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
+
+        _.extend(baseView.events, Tracuse.views.BaseChildren.prototype.events);
+        baseView.delegateEvents();
+
+        baseView.firstRender = true;
+
+        baseView.childCollection = [];
+        baseView.childViews = [];
+
+        return baseView;
+    },
+
+    $children: function () {
+        "use strict";
+        /* Set element to render children in
+         * Either 'content' class or view element
+         * */
+        var baseView = this;
+        var $children;
+        var $content = baseView.$(" > .content");
+        if ($content.length) {
+            $children = $content;
+        } else {
+            $children = baseView.$el;
+        }
+        return $children;
+    },
+
+    getChildModels: function (callback) {
+        "use strict";
+        /* Placeholder for returning child models
+         * */
+        callback();
+    },
+
+    childViewClass: function (childModel) {
+        "use strict";
+        /* View associated with child model
+         * */
+        return null;
+    },
+
+    newChildOptions: function (childModel) {
+        "use strict";
+        return {
+            model: childModel,
+            parentView: this
+        };
+    },
+
+    newChildView: function (childModel) {
+        "use strict";
+        /* Instantiation of child view
+         * */
+        var baseView = this;
+        var ViewConstructor = baseView.childViewClass(childModel);
+        var newView = new ViewConstructor(baseView.newChildOptions(childModel));
+        newView.delegateEvents();
+        return newView;
+    },
+
+    findChildView: function (model) {
+        "use strict";
+        /* Return child view using model
+         * Compare ids
+         * */
+        var baseView = this;
+        var childView;
+
+        var modelId = model.id;
+        var viewId = model.modelName + "-" + modelId;
+        childView = _.find(baseView.childViews, function (view) {
+            return view.el.id == viewId;
+        });
+        return childView;
+    },
+
+    changeChild: function (childModel) {
+        "use strict";
+        /* Test whether changed object is in container
+         * Add or remove child view/element from container
+         * */
+        var baseView = this;
+
+        baseView.getChildModels(function (childModels) {
+            var childInCollection = childModels.get(childModel);
+            var childInView = baseView.findChildView(childModel);
+            if (childInCollection && !childInView) {
+                var newView = baseView.newChildView(childModel);
+                baseView.childViews.push(newView);
+                baseView.$content.append(newView.render().$el);
+            } else if (!childInCollection && childInView) {
+                baseView.childViews.pop(childInView);
+                childInView.$el.remove();
+                childInView.remove();
+            }
+            return baseView;
+        });
+    },
+
+    attachChildEvents: function () {
+        "use strict";
+        /* Attach event listeners to 'all' collection
+         *   of child model
+         * */
+        var baseView = this;
+
+        if (baseView.childModelName) {
+            var childModelConst = Tracuse.models[baseView.childModelName];
+            var childModelCollection = childModelConst.all;
+            if (childModelCollection) {
+                baseView.listenTo(childModelCollection, "change", function (model) {
+                    baseView.changeChild(model);
+                });
+                baseView.listenTo(childModelCollection, "add remove", function (model) {
+                    baseView.changeChild(model);
+
+                    baseView.listenTo(model, "change", function (model) {
+                        baseView.changeChild(model);
+                    });
+                });
+            }
+        }
+        return baseView;
+    },
+
+    renderChildren: function (callback) {
+        "use strict";
+        /* Render all child objects into 'content' element
+         * */
+        var baseView = this;
+        baseView.childCollection = [];
+        baseView.childViews = [];
+
+        baseView.getChildModels(function (childModels) {
+
+            if (childModels) {
+                baseView.childCollection = childModels;
+                var contentFrag = document.createDocumentFragment();
+
+                _.each(baseView.childCollection.models, function (childModel) {
+
+                    var childView = baseView.newChildView(childModel);
+                    var childEl = childView.render().el;
+                    contentFrag.appendChild(childEl);
+                    baseView.childViews.push(childView);
+
+                });
+
+                baseView.$children.html("");
+                baseView.$children.append(contentFrag);
+
+            }
+
+            if (callback) {
+                callback(baseView);
+            } else {
+                return baseView;
+            }
+
+        });
+    },
+
+    render: function () {
+        "use strict";
+        var baseView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
+
+        // Reapply class in case className components changed at initialize
+        baseView.$el.removeClass();
+        baseView.$el.addClass(baseView.className());
+
+        // Render child objects and attach events
+        baseView.$children = baseView.$children();
+        baseView.renderChildren(function () {
+            if (baseView.firstRender) {
+                baseView.attachChildEvents();
+                baseView.firstRender = false;
+            }
+        });
+
+        return baseView;
+
+    }
+
+});

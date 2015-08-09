@@ -1,4 +1,4 @@
-Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
+Tracuse.views.BaseContainer = Tracuse.views.BaseChildren.extend({
 
     objectTypeClass: "",
     baseClass: "base-container",
@@ -12,7 +12,8 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
     tagName: "section",
     className: function () {
-        return this.baseClass +
+        return Tracuse.views.BaseChildren.prototype.className() +
+            " " + this.baseClass +
             " " + this.objectColorClass +
             " " + this.objectEffectsClass +
             " " + this.objectTypeClass;
@@ -20,7 +21,6 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
     templateName: "common/container.html",
 
     editViewName: "",
-    childModelName: "",
 
     events: {
         "click": function activeObject(ev) {
@@ -53,157 +53,15 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         "use strict";
         /* Inherit events for all sub-classes
          * */
-        var containerView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
-
+        var containerView = Tracuse.views.BaseChildren.prototype.initialize.call(this, options);
         _.extend(containerView.events, Tracuse.views.BaseContainer.prototype.events);
         containerView.delegateEvents();
-
-        containerView.firstRender = true;
-
-        containerView.childCollection = [];
-        containerView.childViews = [];
-
         return containerView;
-    },
-
-    getChildModels: function (callback) {
-        "use strict";
-        /* Placeholder for returning child models
-         * */
-        callback();
-    },
-
-    childViewClass: function (childModel) {
-        "use strict";
-        /* View associated with child model
-         * */
-        return null;
-    },
-
-    newChildOptions: function (childModel) {
-        "use strict";
-        return {
-            model: childModel,
-            parentView: this
-        };
-    },
-
-    newChildView: function (childModel) {
-        "use strict";
-        /* Instantiation of child view
-         * */
-        var containerView = this;
-        var ViewConstructor = containerView.childViewClass(childModel);
-        var newView = new ViewConstructor(containerView.newChildOptions(childModel));
-        newView.delegateEvents();
-        return newView;
-    },
-
-    findChildView: function (model) {
-        "use strict";
-        /* Return child view using model
-         * Compare ids
-         * */
-        var containerView = this;
-        var childView;
-
-        var modelId = model.id;
-        var viewId = model.modelName + "-" + modelId;
-        childView = _.find(containerView.childViews, function (view) {
-            return view.el.id == viewId;
-        });
-        return childView;
-    },
-
-    changeChild: function (childModel) {
-        "use strict";
-        /* Test whether changed object is in container
-         * Add or remove child view/element from container
-         * */
-        var containerView = this;
-
-        containerView.getChildModels(function (childModels) {
-            var childInCollection = childModels.get(childModel);
-            var childInView = containerView.findChildView(childModel);
-            if (childInCollection && !childInView) {
-                var newView = containerView.newChildView(childModel);
-                containerView.childViews.push(newView);
-                containerView.$content.append(newView.render().$el);
-            } else if (!childInCollection && childInView) {
-                containerView.childViews.pop(childInView);
-                childInView.$el.remove();
-                childInView.remove();
-            }
-            return containerView;
-        });
-    },
-
-    attachChildEvents: function () {
-        "use strict";
-        /* Attach event listeners to 'all' collection
-         *   of child model
-         * */
-        var containerView = this;
-
-        if (containerView.childModelName) {
-            var childModelConst = Tracuse.models[containerView.childModelName];
-            var childModelCollection = childModelConst.all;
-            if (childModelCollection) {
-                containerView.listenTo(childModelCollection, "change", function (model) {
-                    containerView.changeChild(model);
-                });
-                containerView.listenTo(childModelCollection, "add remove", function (model) {
-                    containerView.changeChild(model);
-
-                    containerView.listenTo(model, "change", function (model) {
-                        containerView.changeChild(model);
-                    });
-                });
-            }
-        }
-        return containerView;
-    },
-
-    renderChildren: function (callback) {
-        "use strict";
-        /* Render all child objects into 'content' element
-         * */
-        var containerView = this;
-        containerView.childCollection = [];
-        containerView.childViews = [];
-
-        containerView.getChildModels(function (childModels) {
-
-            if (childModels) {
-                containerView.childCollection = childModels;
-                var contentFrag = document.createDocumentFragment();
-
-                _.each(containerView.childCollection.models, function (childModel) {
-
-                    var childView = containerView.newChildView(childModel);
-                    var childEl = childView.render().el;
-                    contentFrag.appendChild(childEl);
-                    containerView.childViews.push(childView);
-
-                });
-
-                containerView.$content.html("");
-                containerView.$content.append(contentFrag);
-
-            }
-
-            if (callback) {
-                callback(containerView);
-            } else {
-                return containerView;
-            }
-
-        });
     },
 
     render: function () {
         "use strict";
-        var containerView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
+        var containerView = Tracuse.views.BaseChildren.prototype.render.apply(this, arguments);
 
         // Reapply class in case className components changed at initialize
         containerView.$el.removeClass();
@@ -242,14 +100,6 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         if (containerView.$content.length && containerView.contentStyleClass) {
             containerView.$content.addClass(containerView.contentStyleClass);
         }
-
-        // Render child objects and attach events
-        containerView.renderChildren(function () {
-            if (containerView.firstRender) {
-                containerView.attachChildEvents();
-                containerView.firstRender = false;
-            }
-        });
 
         return containerView;
 
