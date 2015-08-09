@@ -12,7 +12,7 @@ Tracuse.views.BaseView = Backbone.View.extend({
     id: function () {
         "use strict";
         var idNumber = this.model.id || this.cid;
-        var idPrefix = this.idPrefix() || "view";
+        var idPrefix = _.result(this, "idPrefix") || "view";
         return idPrefix + "-" + idNumber;
     },
 
@@ -41,7 +41,7 @@ Tracuse.views.BaseView = Backbone.View.extend({
          * */
         return Tracuse.templates.env.render(
             this.templateName,
-            this.templateData()
+            _.result(this, "templateData")
         );
     },
 
