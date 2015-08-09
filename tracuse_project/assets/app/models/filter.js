@@ -1,6 +1,6 @@
-Tracuse.models.FilterRuleUser = Backbone.RelationalModel.extend({});
+Tracuse.models.FilterRuleUser = Tracuse.models.BaseModel.extend({});
 
-Tracuse.models.FilterRuleGroup = Backbone.RelationalModel.extend({
+Tracuse.models.FilterRuleGroup = Tracuse.models.BaseModel.extend({
 
     rule_type: "FilterRuleGroup",
 
@@ -30,7 +30,7 @@ Tracuse.models.FilterRuleGroup = Backbone.RelationalModel.extend({
     }
 });
 
-Tracuse.models.FilterRuleType = Backbone.RelationalModel.extend({
+Tracuse.models.FilterRuleType = Tracuse.models.BaseModel.extend({
 
     rule_type: "FilterRuleType",
 
@@ -60,7 +60,7 @@ Tracuse.models.FilterRuleType = Backbone.RelationalModel.extend({
     }
 });
 
-Tracuse.models.FilterRuleAssociation = Backbone.RelationalModel.extend({
+Tracuse.models.FilterRuleAssociation = Tracuse.models.BaseModel.extend({
 
     rule_type: "FilterRuleAssociation",
 
@@ -90,7 +90,7 @@ Tracuse.models.FilterRuleAssociation = Backbone.RelationalModel.extend({
     }
 });
 
-Tracuse.models.FilterRuleElement = Backbone.RelationalModel.extend({
+Tracuse.models.FilterRuleElement = Tracuse.models.BaseModel.extend({
 
     rule_type: "FilterRuleElement",
 
@@ -132,9 +132,9 @@ Tracuse.models.FilterRuleElement = Backbone.RelationalModel.extend({
     }
 });
 
-Tracuse.models.FilterRuleDataType = Backbone.RelationalModel.extend({});
+Tracuse.models.FilterRuleDataType = Tracuse.models.BaseModel.extend({});
 
-Tracuse.models.FilterSet = Backbone.RelationalModel.extend({
+Tracuse.models.FilterSet = Tracuse.models.BaseModel.extend({
 
     url: Tracuse.routes.api.filter.json,
 
