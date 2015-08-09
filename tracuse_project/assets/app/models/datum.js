@@ -51,19 +51,26 @@ Tracuse.models.DatumObject =
                 relatedModel: "Tracuse.models.ElementDatumObject",
                 collectionType: "Tracuse.models.ElementDatumObject.BaseCollection",
                 includeInJSON: false,
-                includeInTemplate: true
+                includeInTemplate: true,
+                updateAllCollection: true
             },
             {
                 type: Backbone.HasMany,
                 key: "adjacent_associations",
                 relatedModel: "Tracuse.models.AssociationAdjacent",
-                collectionType: "Tracuse.models.AssociationAdjacent.BaseCollection"
+                collectionType: "Tracuse.models.AssociationAdjacent.BaseCollection",
+                includeInJSON: false,
+                includeInTemplate: true,
+                updateAllCollection: true
             },
             {
                 type: Backbone.HasMany,
                 key: "all_associations",
                 relatedModel: "Tracuse.models.AssociationAll",
-                collectionType: "Tracuse.models.AssociationAll.BaseCollection"
+                collectionType: "Tracuse.models.AssociationAll.BaseCollection",
+                includeInJSON: false,
+                includeInTemplate: true,
+                updateAllCollection: true
             }
         ]
 

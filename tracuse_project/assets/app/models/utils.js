@@ -15,6 +15,14 @@ Tracuse.models.ModelFactory = function ModelFactory(modelName, idAttribute, mode
             // Add trailing slash to url
             var urlID = this.id ? this.id + "/" : "";
             return url + urlID;
+        },
+        initialize: function () {
+            /* Attach events for related collection updates
+             * */
+            this.on("add update", function (model) {
+                model.updateRelatedCollections();
+            });
+            return this;
         }
     });
     // Add custom properties to model
@@ -46,6 +54,24 @@ Backbone.RelationalModel.prototype.clone = function clone(options) {
     clonedAttr[model.idAttribute] = null;
     clonedModel.set(clonedAttr);
     return clonedModel;
+};
+
+Backbone.RelationalModel.prototype.updateRelatedCollections = function updateRelatedCollections(options) {
+    "use strict";
+    /* Update 'all' collections for related objects
+     *   that are not otherwise fetched
+     * */
+    var model = this;
+    var addOptions = options || {merge: true};
+    _.each(model._relations, function (rel) {
+        if (rel.options.updateAllCollection) {
+            var relatedModel = Backbone.Relational.store.getObjectByName(rel.options.relatedModel);
+            var allCollection = relatedModel.all;
+            var relatedModels = model.get(rel.options.key).models;
+            allCollection.add(relatedModels, addOptions);
+        }
+    });
+    return model;
 };
 
 Backbone.RelationalModel.prototype.setTemplateOption = function setTemplateOption(onOff) {
