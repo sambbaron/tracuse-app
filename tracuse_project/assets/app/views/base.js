@@ -116,8 +116,6 @@ Tracuse.views.CollectionView = Tracuse.views.BaseView.extend({
         if (!collectionView.el) {
             collectionView.setElement(collectionView.parentView.el.querySelector(" > .content"));
         }
-        //_.extend(collectionView.events, Tracuse.views.collectionView.prototype.events);
-        //collectionView.delegateEvents();
 
         collectionView.views = [];
         collectionView.firstRender = true;
@@ -136,7 +134,7 @@ Tracuse.views.CollectionView = Tracuse.views.BaseView.extend({
         }
     },
 
-    modelOptions: function (model) {
+    subViewOptions: function (model) {
         "use strict";
         return {model: model, parentView: this};
     },
@@ -163,9 +161,9 @@ Tracuse.views.CollectionView = Tracuse.views.BaseView.extend({
         /* Instantiation of sub view
          * */
         var collectionView = this;
+        var viewOptions = collectionView.subViewOptions(model);
         var ViewConstructor = collectionView.subViewClass(model);
-        var newView = new ViewConstructor(collectionView.modelOptions(model));
-        //newView.delegateEvents();
+        var newView = new ViewConstructor(viewOptions);
         return newView;
     },
 
