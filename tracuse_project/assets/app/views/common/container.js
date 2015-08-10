@@ -108,11 +108,18 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
     },
 
+    childElement: function () {
+        "use strict";
+        return this.$content.get(0);
+    },
+
     childOptions: Tracuse.views.CollectionView.prototype.subViewOptions,
 
     renderChildren: function () {
         "use strict";
         var containerView = this;
+
+        var childEl = _.result(containerView, "childElement");
         var childCollection = _.bind(containerView.getChildModels, containerView);
         var childViewName;
         if (_.isFunction(containerView.childViewName)) {
@@ -123,7 +130,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         var childOptions = _.bind(containerView.childOptions, containerView);
 
         containerView.children = new Tracuse.views.CollectionView({
-            el: containerView.$content.get(0),
+            el: childEl,
             collection: childCollection,
             subViewName: childViewName,
             subViewOptions: childOptions
