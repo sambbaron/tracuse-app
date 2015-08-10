@@ -11,9 +11,11 @@ Tracuse.views.BaseView = Backbone.View.extend({
     },
     id: function () {
         "use strict";
-        var idNumber = this.model.id || this.cid;
-        var idPrefix = _.result(this, "idPrefix") || "view";
-        return idPrefix + "-" + idNumber;
+        if (this.model) {
+            var idNumber = this.model.id || this.cid;
+            var idPrefix = _.result(this, "idPrefix") || "view";
+            return idPrefix + "-" + idNumber;
+        }
     },
 
     allCollection: function () {
@@ -40,7 +42,7 @@ Tracuse.views.BaseView = Backbone.View.extend({
         /* Render to Nunjucks template string
          * */
         return Tracuse.templates.env.render(
-            this.templateName,
+            _.result(this, "templateName"),
             _.result(this, "templateData")
         );
     },
@@ -49,7 +51,10 @@ Tracuse.views.BaseView = Backbone.View.extend({
         "use strict";
         var baseView = this;
         if (options) {
-            baseView.setOptionProperties(options);
+            _.extend(baseView, options);
+            if (options.el) {
+                baseView.$el.addClass(baseView.className);
+            }
         }
         _.extend(baseView.events, Tracuse.views.BaseView.prototype.events);
         baseView.delegateEvents();
@@ -66,20 +71,6 @@ Tracuse.views.BaseView = Backbone.View.extend({
          * */
         this.el.innerHTML = this.template();
         return this;
-    },
-
-    setOptionProperties: function (options) {
-        "use strict";
-        /* Set objects in 'options' argument
-         *   as view properties
-         * */
-        var baseView = this;
-        _.each(options, function (value, name) {
-            baseView[name] = value || null;
-        });
-        if (options.el) {
-            baseView.$el.addClass(baseView.className);
-        }
     },
 
     show: function () {
