@@ -102,13 +102,13 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
         }
 
         // Render children
-        containerView.renderSubViews();
+        containerView.renderChildren();
 
         return containerView;
 
     },
 
-    renderSubViews: function () {
+    renderChildren: function () {
         "use strict";
         var containerView = this;
         var childCollection = _.bind(containerView.getChildModels, containerView);
