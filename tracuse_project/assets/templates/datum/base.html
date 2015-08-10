@@ -1,1 +1,17 @@
 {% extends "common/container.html" %}
+
+{% block content %}
+    <section class="section elements">
+        <p class="title">Associations</p>
+        <article class="content">
+            {% block elements %}{% endblock %}
+        </article>
+    </section>
+
+    <section class="section datum-associations">
+        <p class="title">Associations</p>
+        <article class="content">
+            {% block associations %}{% endblock %}
+        </article>
+    </section>
+{% endblock %}

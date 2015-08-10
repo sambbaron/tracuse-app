@@ -29,6 +29,11 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
         return childModel.get("element_type").get("element_view");
     },
 
+    childElement: function () {
+        "use strict";
+        return this.el.querySelector(".elements");
+    },
+
     childOptions: function (childModel) {
         "use strict";
         return {

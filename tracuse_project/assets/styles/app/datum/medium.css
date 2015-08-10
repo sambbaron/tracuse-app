@@ -21,8 +21,17 @@
     border-width: 1px 1px 1px 0;
 }
 
-.datum-medium > .content {
+.datum-medium .content {
     margin: 0;
+}
+
+.datum-medium > .content > .section {
+    margin: 0;
+    padding: 0;
+}
+
+.datum-medium > .content > .section > .title {
+    display: none;
 }
 
 .datum-medium > .menu {
