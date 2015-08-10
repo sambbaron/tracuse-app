@@ -107,197 +107,170 @@ Tracuse.views.BaseView = Backbone.View.extend({
 
 });
 
-Tracuse.views.BaseChildren = Tracuse.views.BaseView.extend({
-
-    tagName: "section",
-    className: function () {
-        return "base-children";
-    },
-
-    childModelName: "",
-    childViewName: "",
-    childrenElementClass: "content",
+Tracuse.views.CollectionView = Tracuse.views.BaseView.extend({
 
     initialize: function (options) {
         "use strict";
-        /* Inherit events for all sub-classes
-         * */
-        var baseView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
+        var collectionView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
 
-        _.extend(baseView.events, Tracuse.views.BaseChildren.prototype.events);
-        baseView.delegateEvents();
+        if (!collectionView.el) {
+            collectionView.setElement(collectionView.parentView.el.querySelector(" > .content"));
+        }
+        //_.extend(collectionView.events, Tracuse.views.collectionView.prototype.events);
+        //collectionView.delegateEvents();
 
-        baseView.firstRender = true;
-
-        return baseView;
+        collectionView.views = [];
+        collectionView.firstRender = true;
+        return collectionView;
     },
 
-    getChildModels: function (callback) {
+    getCollection: function (callback) {
         "use strict";
-        /* Placeholder for returning child models
-         * */
-        callback();
+        var collectionView = this;
+        if (_.isFunction(collectionView.collection)) {
+            collectionView.collection(function (collection) {
+                callback(collection);
+            });
+        } else {
+            callback(collectionView.collection);
+        }
     },
 
-    childViewClass: function (childModel) {
+    modelOptions: function (model) {
+        "use strict";
+        return {model: model, parentView: this};
+    },
+
+    subViewName: "",
+
+    subViewClass: function (model) {
         "use strict";
         /* Return view class from view name
          * */
-        var baseView = this;
+        var collectionView = this;
         var viewName = "";
 
-        if (_.isFunction(baseView.childViewName)) {
-            viewName = baseView.childViewName(childModel);
+        if (_.isFunction(collectionView.subViewName)) {
+            viewName = collectionView.subViewName(model);
         } else {
-            viewName = baseView.childViewName;
+            viewName = collectionView.subViewName;
         }
         return Tracuse.views[viewName];
     },
 
-    newChildOptions: function (childModel) {
+    newSubView: function (model) {
         "use strict";
-        return {
-            model: childModel,
-            parentView: this
-        };
-    },
-
-    newChildView: function (childModel) {
-        "use strict";
-        /* Instantiation of child view
+        /* Instantiation of sub view
          * */
-        var baseView = this;
-        var ViewConstructor = baseView.childViewClass(childModel);
-        var newView = new ViewConstructor(baseView.newChildOptions(childModel));
-        newView.delegateEvents();
+        var collectionView = this;
+        var ViewConstructor = collectionView.subViewClass(model);
+        var newView = new ViewConstructor(collectionView.modelOptions(model));
+        //newView.delegateEvents();
         return newView;
     },
 
-    findChildView: function (model) {
+    render: function (callback) {
         "use strict";
-        /* Return child view using model
-         * Compare ids
+        /* Render sub views into element container
          * */
-        var baseView = this;
-        var childView;
+        var collectionView = this;
 
-        var modelId = model.id;
-        var viewId = model.modelName + "-" + modelId;
-        childView = _.find(baseView.childViews, function (view) {
-            return view.el.id == viewId;
-        });
-        return childView;
-    },
+        var fragment = document.createDocumentFragment();
 
-    changeChild: function (childModel) {
-        "use strict";
-        /* Test whether changed object is in container
-         * Add or remove child view/element from container
-         * */
-        var baseView = this;
+        collectionView.getCollection(function (collection) {
 
-        baseView.getChildModels(function (childModels) {
-            var childInCollection = childModels.get(childModel);
-            var childInView = baseView.findChildView(childModel);
-            if (childInCollection && !childInView) {
-                var newView = baseView.newChildView(childModel);
-                baseView.childViews.push(newView);
-                baseView.$children.append(newView.render().$el);
-            } else if (!childInCollection && childInView) {
-                baseView.childViews.pop(childInView);
-                childInView.$el.remove();
-                childInView.remove();
-            }
-            return baseView;
-        });
-    },
+            collectionView.allCollection = collection.model.all;
 
-    attachChildEvents: function () {
-        "use strict";
-        /* Attach event listeners to 'all' collection
-         *   of child model
-         * */
-        var baseView = this;
+            collection.each(function (model) {
 
-        if (baseView.childModelName) {
-            var childModelConst = Tracuse.models[baseView.childModelName];
-            var childModelCollection = childModelConst.all;
-            if (childModelCollection) {
-                baseView.listenTo(childModelCollection, "change", function (model) {
-                    baseView.changeChild(model);
-                });
-                baseView.listenTo(childModelCollection, "add remove", function (model) {
-                    baseView.changeChild(model);
+                var subView = collectionView.newSubView(model);
+                var subViewEl = subView.render().el;
+                fragment.appendChild(subViewEl);
+                collectionView.views.push(subView);
 
-                    baseView.listenTo(model, "change", function (model) {
-                        baseView.changeChild(model);
-                    });
-                });
-            }
-        }
-        return baseView;
-    },
+            });
 
-    renderChildren: function (callback) {
-        "use strict";
-        /* Render all child objects into 'children' element
-         * */
-        var baseView = this;
-        baseView.childCollection = [];
-        baseView.childViews = [];
+            collectionView.el.innerHTML = "";
+            collectionView.el.appendChild(fragment);
 
-        baseView.$children = baseView.$("> ." + baseView.childrenElementClass);
-
-
-        baseView.getChildModels(function (childModels) {
-
-            if (childModels) {
-                baseView.childCollection = childModels;
-                var childrenFrag = document.createDocumentFragment();
-
-                _.each(baseView.childCollection.models, function (childModel) {
-
-                    var childView = baseView.newChildView(childModel);
-                    var childEl = childView.render().el;
-                    childrenFrag.appendChild(childEl);
-                    baseView.childViews.push(childView);
-
-                });
-
-                if (baseView.$children.length) {
-                    baseView.$children.html("");
-                    baseView.$children.append(childrenFrag);
-                }
+            if (collectionView.firstRender) {
+                collectionView.attachSubEvents();
+                collectionView.firstRender = false;
             }
 
             if (callback) {
-                callback(baseView);
+                callback(collectionView);
             } else {
-                return baseView;
+                return collectionView;
             }
 
         });
-
     },
 
-    render: function () {
+    findSubView: function (model) {
         "use strict";
-        var baseView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
+        /* Return sub view using model
+         * Compare ids
+         * */
+        var collectionView = this;
+        var subView;
 
-        // Reapply class in case className components changed at initialize
-        baseView.$el.removeClass();
-        baseView.$el.addClass(baseView.className());
-
-        // Render child objects and attach events
-        baseView.renderChildren(function () {
-            if (baseView.firstRender) {
-                baseView.attachChildEvents();
-                baseView.firstRender = false;
-            }
+        var modelId = model.id;
+        var viewId = model.modelName + "-" + modelId;
+        subView = _.find(collectionView.views, function (view) {
+            return view.el.id == viewId;
         });
+        return subView;
+    },
 
-        return baseView;
+    changeView: function (model) {
+        "use strict";
+        /* Test whether changed model is in container
+         * Add or remove view/element from container
+         * */
+        var collectionView = this;
 
+        collectionView.getCollection(function (collection) {
+
+            var childInCollection = collection.get(model);
+            var childInView = collectionView.findSubView(model);
+
+            if (childInCollection && !childInView) {
+                var newView = collectionView.newSubView(model);
+                collectionView.views.push(newView);
+                collectionView.$el.append(newView.render().$el);
+            } else if (!childInCollection && childInView) {
+                collectionView.views.pop(childInView);
+                childInView.$el.remove();
+                childInView.remove();
+            }
+
+            return collectionView;
+        });
+    },
+
+    attachSubEvents: function () {
+        "use strict";
+        /* Attach event listeners to 'all' collection
+         *   of model
+         * */
+        var collectionView = this;
+
+        var allCollection = collectionView.allCollection;
+
+        if (allCollection) {
+            collectionView.listenTo(allCollection, "change", function (model) {
+                collectionView.changeView(model);
+            });
+            collectionView.listenTo(allCollection, "add remove", function (model) {
+                collectionView.changeView(model);
+
+                collectionView.listenTo(model, "change", function (model) {
+                    collectionView.changeView(model);
+                });
+            });
+        }
+        return collectionView;
     }
 
 });

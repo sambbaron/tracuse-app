@@ -1,4 +1,4 @@
-Tracuse.views.BaseContainer = Tracuse.views.BaseChildren.extend({
+Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
 
     objectTypeClass: "",
     baseClass: "base-container",
@@ -12,7 +12,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseChildren.extend({
 
     tagName: "section",
     className: function () {
-        return Tracuse.views.BaseChildren.prototype.className() +
+        return _.result(this, Tracuse.views.BaseView.prototype.className) +
             " " + this.baseClass +
             " " + this.objectColorClass +
             " " + this.objectEffectsClass +
@@ -53,7 +53,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseChildren.extend({
         "use strict";
         /* Inherit events for all sub-classes
          * */
-        var containerView = Tracuse.views.BaseChildren.prototype.initialize.call(this, options);
+        var containerView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
         _.extend(containerView.events, Tracuse.views.BaseContainer.prototype.events);
         containerView.delegateEvents();
         return containerView;
@@ -61,7 +61,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseChildren.extend({
 
     render: function () {
         "use strict";
-        var containerView = Tracuse.views.BaseChildren.prototype.render.apply(this, arguments);
+        var containerView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
 
         // Reapply class in case className components changed at initialize
         containerView.$el.removeClass();
@@ -101,8 +101,30 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseChildren.extend({
             containerView.$content.addClass(containerView.contentStyleClass);
         }
 
+        // Render children
+        containerView.renderSubViews();
+
         return containerView;
 
+    },
+
+    renderSubViews: function () {
+        "use strict";
+        var containerView = this;
+        var childCollection = _.bind(containerView.getChildModels, containerView);
+        var childViewName;
+        if (_.isFunction(containerView.childViewName)) {
+            childViewName = _.bind(containerView.childViewName, containerView);
+        } else {
+            childViewName = containerView.childViewName;
+        }
+
+        containerView.children = new Tracuse.views.CollectionView({
+            el: containerView.$content.get(0),
+            collection: childCollection,
+            subViewName: childViewName
+        });
+        containerView.children.render();
     },
 
     $parents: function (doNotIncludeThis) {

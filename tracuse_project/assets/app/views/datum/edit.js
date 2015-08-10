@@ -25,26 +25,14 @@ Tracuse.views.DatumEdit = Tracuse.views.BaseEdit.extend({
         /* Render Datum Elements using Element Type views
          * */
         var editView = this;
-        var elementContainer = editView.el.querySelector(".datum-elements .content");
-
-        var elementFrag = document.createDocumentFragment();
-        var elementCollection = editView.model.get("elements");
-        elementCollection.each(function (elementModel) {
-            var elementViewName = elementModel.get("element_type").get("element_view");
-            var ElementViewConst = Tracuse.views[elementViewName];
-            var elementView = new ElementViewConst({
-                model: elementModel,
-                parentView: editView
-            });
-            var elementEl = elementView.render().el;
-            elementView.$el.addClass("input-wrap");
-            elementView.$(".element-input").addClass("input-input");
-            elementFrag.appendChild(elementEl);
+        editView.elementsView = new Tracuse.views.CollectionView({
+            el: editView.el.querySelector(".datum-elements > .content"),
+            collection: editView.model.get("elements"),
+            subViewName: function (model) {
+                return model.get("element_type").get("element_view");
+            }
         });
-
-        elementContainer.appendChild(elementFrag);
-
-        return editView;
+        editView.elementsView.render();
     }
 
 });
