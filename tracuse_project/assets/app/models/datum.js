@@ -72,6 +72,59 @@ Tracuse.models.DatumObject =
                 includeInTemplate: true,
                 updateAllCollection: true
             }
-        ]
+        ],
+
+        associationFilter: function (association, distance, direction) {
+            "use strict";
+            var datum = this;
+            var distExpr = true,
+                directionExpr = true;
+
+            if (distance) {
+                distExpr = association.get("distance") <= distance;
+            }
+
+            if (direction) {
+                if (direction.toLowerCase() === "parent") {
+                    directionExpr = association.get("child_datum").id === datum.id;
+                } else if (direction.toLowerCase() === "child") {
+                    directionExpr = association.get("parent_datum").id === datum.id;
+                }
+            }
+
+            return distExpr && directionExpr;
+        },
+
+        all_associations: function (distance, direction) {
+            "use strict";
+            var datum = this;
+            var associations = [];
+
+            if (distance || direction) {
+                var filteredAssociations = datum.get("all_associations").filter(function (association) {
+                    return datum.associationFilter(association, distance, direction);
+                });
+                associations = new Tracuse.models.AssociationAll.BaseCollection(filteredAssociations);
+            } else {
+                associations = datum.get("all_associations");
+            }
+            return associations;
+        },
+
+        adjacent_associations: function (direction) {
+            "use strict";
+            var datum = this;
+            var associations = [];
+
+            if (direction) {
+                var filteredAssociations = datum.get("adjacent_associations").filter(function (association) {
+                    return datum.associationFilter(association, null, direction);
+                });
+                associations = new Tracuse.models.AssociationAdjacent.BaseCollection(filteredAssociations);
+            } else {
+                associations = datum.get("adjacent_associations");
+            }
+            return associations;
+        }
 
     });
