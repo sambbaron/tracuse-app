@@ -11,22 +11,6 @@
     cursor: default;
 }
 
-/*Area*/
-.datum[datum_group_id="1"] {
-    border-radius: 0;
-}
-
-/*Activity*/
-.datum[datum_group_id="2"] {
-    border-radius: 50%;
-}
-
-/*Time*/
-.datum[datum_group_id="3"] {
-    border-radius: 0 0 25% 25% / 0 0 40% 40%;
-}
-
-/*Item*/
-.datum[datum_group_id="4"] {
-    border-radius: 25% 25% 0 0 / 40% 40% 0 0;
+.datum .associations {
+    display: none;
 }
