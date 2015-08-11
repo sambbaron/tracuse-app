@@ -4,7 +4,6 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
     templateName: "datum/base.html",
 
     editViewName: "DatumEdit",
-    childModelName: "ElementDatumObject",
 
     elementEffectsClass: "active-lightblue-bold",
     elementImmediateSave: false,
@@ -19,31 +18,6 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
         }
     },
 
-    getChildModels: function (callback) {
-        "use strict";
-        callback(this.model.get("elements"));
-    },
-
-    childViewName: function (childModel) {
-        "use strict";
-        return childModel.get("element_type").get("element_view");
-    },
-
-    childElement: function () {
-        "use strict";
-        return this.el.querySelector(".elements");
-    },
-
-    childOptions: function (childModel) {
-        "use strict";
-        return {
-            model: childModel,
-            parentView: this,
-            elementEffectsClass: this.elementEffectsClass,
-            elementImmediateSave: this.elementImmediateSave
-        };
-    },
-
     render: function () {
         "use strict";
         /* Add style classes
@@ -56,6 +30,57 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
         datumView.el.classList.add(datumView.model.get("datum_type").get("schema_name"));
 
         return datumView;
+    },
+
+    renderElements: function () {
+        "use strict";
+        var datumView = this;
+
+        datumView.elementViews = new Tracuse.views.CollectionView({
+            el: datumView.el.querySelector(".elements"),
+            getCollection: function (callback) {
+                callback(datumView.model.get("elements"));
+            },
+            subViewName: function (model) {
+                return model.get("element_type").get("element_view");
+            },
+            subViewOptions: function (model) {
+                return {
+                    model: model,
+                    parentView: datumView,
+                    elementEffectsClass: datumView.elementEffectsClass,
+                    elementImmediateSave: datumView.elementImmediateSave
+                };
+            }
+        });
+        datumView.elementViews.render();
+
+        return datumView;
+    },
+
+    renderAssociations: function () {
+        "use strict";
+        var datumView = this;
+
+        datumView.associationView = new Tracuse.views.CollectionView({
+            el: datumView.el.querySelector(".associations"),
+            getCollection: function (callback) {
+                callback(datumView.model.get("adjacent_associations"));
+            },
+            subViewName: "DatumSmall"
+        });
+        datumView.associationView.render();
+
+        return datumView;
+    },
+
+    renderSubViews: function () {
+        "use strict";
+        var datumView = this;
+        datumView.renderElements();
+        //datumView.renderAssociations();
+        return datumView;
     }
+
 
 });

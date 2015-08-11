@@ -4,8 +4,6 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
     templateName: "viewuse/base.html",
 
     editViewName: "ViewuseEdit",
-    childModelName: "DatumObject",
-    childViewName: "DatumMedium",
 
     events: {
         "dblclick > .content": function createDatum(ev) {
@@ -18,15 +16,23 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
         }
     },
 
-    getChildModels: function (callback) {
+    renderSubViews: function () {
         "use strict";
-        /* Get datums using filter
-         * */
         var viewuseView = this;
-        var filter = new Tracuse.models.FilterSet(viewuseView.model.get("datum_filter"));
-        filter.fetchFilteredDatums(function (datumObjects) {
-            callback(datumObjects);
+
+        viewuseView.datumViews = new Tracuse.views.CollectionView({
+            el: viewuseView.$content.get(0),
+            getCollection: function (callback) {
+                var filter = new Tracuse.models.FilterSet(viewuseView.model.get("datum_filter"));
+                filter.fetchFilteredDatums(function (datumObjects) {
+                    callback(datumObjects);
+                });
+            },
+            subViewName: "DatumMedium"
         });
+        viewuseView.datumViews.render();
+
+        return viewuseView;
     }
 
 });
