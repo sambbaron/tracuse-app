@@ -1,4 +1,12 @@
-.datum-small .elements,
-.datum-small .associations {
+.datum-small {
+    font-size: 50%;
+}
+
+.datum-small > .title {
+    position: relative;
+    background-color: transparent;
+}
+
+.datum-small > .content {
     display: none;
 }
