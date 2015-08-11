@@ -151,21 +151,19 @@ Tracuse.views.CollectionView = Tracuse.views.BaseView.extend({
         return Tracuse.views[viewName];
     },
 
-    newSubView: function (model) {
+    newSubView: function (model, options) {
         "use strict";
         /* Instantiation of sub view
          * */
         var collectionView = this;
-        var viewOptions = collectionView.subViewOptions(model);
+        var viewOptions = _.extend(collectionView.subViewOptions(model), options);
         var ViewConstructor = collectionView.subViewClass(model);
         var newView = new ViewConstructor(viewOptions);
         return newView;
     },
 
-    render: function (callback) {
+    renderSubViews: function (callback) {
         "use strict";
-        /* Render sub views into element container
-         * */
         var collectionView = this;
 
         var fragment = document.createDocumentFragment();
@@ -196,7 +194,18 @@ Tracuse.views.CollectionView = Tracuse.views.BaseView.extend({
             } else {
                 return collectionView;
             }
+        });
+    },
 
+    render: function (callback) {
+        "use strict";
+        var collectionView = Tracuse.views.BaseView.prototype.render.apply(this, arguments);
+        collectionView.renderSubViews(function (view) {
+            if (callback) {
+                callback(view);
+            } else {
+                return view;
+            }
         });
     },
 

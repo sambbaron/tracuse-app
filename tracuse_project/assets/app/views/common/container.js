@@ -135,7 +135,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
             subViewName: childViewName,
             subViewOptions: childOptions
         });
-        containerView.children.render();
+        containerView.children.renderSubViews();
     },
 
     $parents: function (doNotIncludeThis) {
