@@ -49,8 +49,9 @@ Tracuse.init.attachGlobalEvents = function () {
      * */
 
     // Button for rendering test view
-    var renderButton = document.querySelector("#add-test-view");
+    var renderButton = document.querySelector("#refresh-test-window");
     renderButton.addEventListener("click", function (ev) {
+        Tracuse.el.app.innerHTML = "";
         Tracuse.init.loadWindowuse();
         ev.stopPropagation();
     });
