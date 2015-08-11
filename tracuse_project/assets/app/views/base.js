@@ -69,7 +69,7 @@ Tracuse.views.BaseView = Backbone.View.extend({
         "use strict";
         /* Set View element HTML to rendered template string
          * */
-        if (this.el) {
+        if (this.el && this.templateName) {
             this.el.innerHTML = this.template();
         }
         return this;
