@@ -3,6 +3,18 @@
     width: 10em;
 }
 
+.datum .datum-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    margin: 0;
+    padding: 0;
+    opacity: 0.15;
+    font-size: 400%;
+    cursor: default;
+}
+
 /*Area*/
 .datum[datum_group_id="1"] {
     border-radius: 0;

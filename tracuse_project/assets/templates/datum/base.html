@@ -1,5 +1,9 @@
 {% extends "common/container.html" %}
 
+{% block background %}
+    <i class="datum-icon {{ this_object.datum_type.icon_class }}"></i>
+{% endblock %}
+
 {% block content %}
     <section class="section elements">
         <p class="title">Associations</p>
