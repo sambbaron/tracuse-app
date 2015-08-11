@@ -1,9 +1,1 @@
-{% extends "datum/datum_base.html" %}
-{% set template_name = "datum_small" %}
-
-{% block datum_content %}
-
-    <p class="datum_type_name">{{ datum.datum_type_name }}</p>
-    <p class="headline" style="font-size: {{ 100 - datum.headline|length }}%">{{ datum.headline }}</p>
-
-{% endblock %}
+{% extends "datum/base.html" %}
