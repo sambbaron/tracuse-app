@@ -25,9 +25,7 @@ Tracuse.views.WindowuseBase = Tracuse.views.BaseContainer.extend({
 
         windowuseView.viewuseViews = new Tracuse.views.CollectionView({
             el: windowuseView.$content.get(0),
-            getCollection: function (callback) {
-                callback(windowuseView.model.get("viewuse_objects"));
-            },
+            collection: windowuseView.model.get("viewuse_objects"),
             subViewName: function (model) {
                 return model.get("viewuse_arrangement").get("entity_name");
             }

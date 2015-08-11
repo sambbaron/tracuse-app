@@ -38,9 +38,7 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
 
         datumView.elementViews = new Tracuse.views.CollectionView({
             el: datumView.el.querySelector(".elements"),
-            getCollection: function (callback) {
-                callback(datumView.model.get("elements"));
-            },
+            collection: datumView.model.get("elements"),
             subViewName: function (model) {
                 return model.get("element_type").get("element_view");
             },

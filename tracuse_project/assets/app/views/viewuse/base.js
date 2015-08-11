@@ -22,7 +22,7 @@ Tracuse.views.ViewuseBase = Tracuse.views.BaseContainer.extend({
 
         viewuseView.datumViews = new Tracuse.views.CollectionView({
             el: viewuseView.$content.get(0),
-            getCollection: function (callback) {
+            collection: function (callback) {
                 var filter = new Tracuse.models.FilterSet(viewuseView.model.get("datum_filter"));
                 filter.fetchFilteredDatums(function (datumObjects) {
                     callback(datumObjects);

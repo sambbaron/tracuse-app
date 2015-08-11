@@ -119,7 +119,7 @@ Tracuse.views.CollectionView = Tracuse.views.BaseView.extend({
         return collectionView;
     },
 
-    getCollection: function (callback) {
+    _getCollection: function (callback) {
         "use strict";
         var collectionView = this;
         if (_.isFunction(collectionView.collection)) {
@@ -170,7 +170,7 @@ Tracuse.views.CollectionView = Tracuse.views.BaseView.extend({
 
         var fragment = document.createDocumentFragment();
 
-        collectionView.getCollection(function (collection) {
+        collectionView._getCollection(function (collection) {
 
             collectionView.allCollection = collection.model.all;
 
@@ -234,7 +234,7 @@ Tracuse.views.CollectionView = Tracuse.views.BaseView.extend({
          * */
         var collectionView = this;
 
-        collectionView.getCollection(function (collection) {
+        collectionView._getCollection(function (collection) {
 
             var childInCollection = collection.get(model);
             var childInView = collectionView.findSubView(model);
