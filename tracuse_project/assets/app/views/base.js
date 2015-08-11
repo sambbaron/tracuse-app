@@ -112,11 +112,6 @@ Tracuse.views.CollectionView = Tracuse.views.BaseView.extend({
     initialize: function (options) {
         "use strict";
         var collectionView = Tracuse.views.BaseView.prototype.initialize.call(this, options);
-
-        if (!collectionView.el) {
-            collectionView.setElement(collectionView.parentView.el.querySelector(" > .content"));
-        }
-
         collectionView.views = [];
         collectionView.firstRender = true;
         return collectionView;
