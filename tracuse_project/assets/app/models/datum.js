@@ -86,9 +86,9 @@ Tracuse.models.DatumObject =
 
             if (direction) {
                 if (direction.toLowerCase() === "parent") {
-                    directionExpr = association.get("child_datum").id === datum.id;
+                    directionExpr = association.get("child_datum_id") === datum.id;
                 } else if (direction.toLowerCase() === "child") {
-                    directionExpr = association.get("parent_datum").id === datum.id;
+                    directionExpr = association.get("parent_datum_id") === datum.id;
                 }
             }
 
