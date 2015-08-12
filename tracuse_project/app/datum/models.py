@@ -1,5 +1,3 @@
-import itertools
-
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 from django.template import Context, Template
