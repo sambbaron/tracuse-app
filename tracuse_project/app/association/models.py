@@ -153,10 +153,10 @@ class AssociationAdjacent(AssociationModel):
 
         # Create new parent associations against adjacent child datum
         for parent_assoc in parent_associations:
-            new_assoc = AssociationAll.objects.get_or_create(
+            new_assoc = AssociationAll.objects.update_or_create(
+                defaults={"distance": parent_assoc.distance + 1},
                 parent_datum=parent_assoc.parent_datum,
                 child_datum=self.child_datum,
-                distance=parent_assoc.distance + 1
             )
             association_list.append(new_assoc[0])
 
@@ -166,10 +166,10 @@ class AssociationAdjacent(AssociationModel):
 
         # Create new child associations against adjacent parent datum
         for child_assoc in child_associations:
-            new_assoc = AssociationAll.objects.get_or_create(
+            new_assoc = AssociationAll.objects.update_or_create(
+                defaults={"distance": child_assoc.distance + 1},
                 parent_datum=self.parent_datum,
                 child_datum=child_assoc.child_datum,
-                distance=child_assoc.distance + 1
             )
             association_list.append(new_assoc[0])
 
