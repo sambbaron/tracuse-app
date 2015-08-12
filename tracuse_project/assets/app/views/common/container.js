@@ -119,7 +119,7 @@ Tracuse.views.BaseContainer = Tracuse.views.BaseView.extend({
          * Default to Inclusive of 'this'
          * */
         var $parents = this.$el.parents(".base-container");
-        if (!doNotIncludeThis && $parents.length) {
+        if (!doNotIncludeThis) {
             $parents = $parents.add(this.$el);
         }
         return $parents;
