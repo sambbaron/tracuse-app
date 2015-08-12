@@ -187,6 +187,13 @@ class TestModelDatumObjectAssociationProperties(TestCase):
         actual = test_object.all_child_datums.all()
         self.assertEqual(7, actual.count())
 
+    def test_adjacent_associations(self):
+        """Test DatumObject.adjacent_associations
+        """
+        test_object = self.test.datum_object3
+        actual = test_object.adjacent_associations
+        self.assertEqual(2, len(actual))
+
     def test_association_queryset_parent(self):
         """Test DatumObject.association_queryset
         with parent direction and no other args
