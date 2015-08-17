@@ -60,14 +60,12 @@ Tracuse.views.DatumBase = Tracuse.views.BaseContainer.extend({
         "use strict";
         var datumView = this;
 
-        datumView.associationView = new Tracuse.views.CollectionView({
+        datumView.associationViews = new Tracuse.views.AssociationCollection({
             el: datumView.el.querySelector(".associations"),
-            getCollection: function (callback) {
-                callback(datumView.model.get("adjacent_associations"));
-            },
-            subViewName: "DatumSmall"
+            model: datumView.model,
+            parentView: datumView
         });
-        datumView.associationView.render();
+        datumView.associationViews.render();
 
         return datumView;
     },

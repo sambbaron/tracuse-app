@@ -1,0 +1,8 @@
+{% for datum_group in datum_groups %}
+    {% for direction in ["parent", "child"] %}
+        <section class="section datum-group-{{ datum_group.datum_group_id }} {{ direction }}">
+            <p class="title">{{ direction|title }} {{ datum_group.readable_name }}</p>
+            <article class="content"></article>
+        </section>
+    {% endfor %}
+{% endfor %}

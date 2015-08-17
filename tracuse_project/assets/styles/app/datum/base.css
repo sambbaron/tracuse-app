@@ -12,5 +12,5 @@
 }
 
 .datum .associations {
-    display: none;
+    position: relative;
 }
